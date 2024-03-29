@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 36363389c99d365e4419236fd52d5b823b5b5c91 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719640 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/dng_sdk.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

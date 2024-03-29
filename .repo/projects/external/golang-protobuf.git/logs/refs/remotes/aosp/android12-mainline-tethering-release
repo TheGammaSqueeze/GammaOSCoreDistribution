@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 a1a0b81e16b88e8b00ddfc4008fdd7ebd4a2ea98 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719648 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/golang-protobuf.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

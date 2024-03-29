@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 1510820b8c4f11546318e1b007dc27fe7ed58391 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719664 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/libbrillo.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

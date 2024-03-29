@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 bfc9685533f4373378104aab6c524d1030a5707e TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719638 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/androidplot.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 8be27be8103252bac34a49da393778c20feec80f TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719690 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/dokka.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

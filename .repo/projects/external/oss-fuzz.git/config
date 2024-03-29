@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/oss-fuzz
+	review = android-review.googlesource.com
+	projectname = platform/external/oss-fuzz
+	fetch = +refs/heads/*:refs/remotes/aosp/*

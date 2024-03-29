@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 3c723907acc6a9af98ee46b05eed4b69c3f26e4c TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719636 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/device/generic/mini-emulator-x86.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

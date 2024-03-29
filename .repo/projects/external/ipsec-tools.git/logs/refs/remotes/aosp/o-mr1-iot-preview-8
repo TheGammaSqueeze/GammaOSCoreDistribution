@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 21ae2deacba0b38dd613d3912a1efdd7642785d0 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719658 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/ipsec-tools.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

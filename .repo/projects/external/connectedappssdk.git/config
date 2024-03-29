@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/connectedappssdk
+	review = android-review.googlesource.com
+	projectname = platform/external/connectedappssdk
+	fetch = +refs/heads/*:refs/remotes/aosp/*

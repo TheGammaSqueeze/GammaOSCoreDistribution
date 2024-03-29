@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 7424520e55439fb7600039919995a5e6df8e1e9f TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719677 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/nist-sip.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/google-styleguide
+	review = android-review.googlesource.com
+	projectname = platform/external/google-styleguide
+	fetch = +refs/heads/*:refs/remotes/aosp/*

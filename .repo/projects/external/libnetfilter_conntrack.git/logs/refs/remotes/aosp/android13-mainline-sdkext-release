@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 b7b69f55a25783b387101e70656b8ad41115a977 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719666 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/libnetfilter_conntrack.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/device/google/cuttlefish_prebuilts
+	review = android-review.googlesource.com
+	projectname = device/google/cuttlefish_prebuilts
+	fetch = +refs/heads/*:refs/remotes/aosp/*

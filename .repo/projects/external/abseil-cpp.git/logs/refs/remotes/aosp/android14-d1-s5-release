@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 eac159dea073babff3dd924e1b9025ca2664af18 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719657 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/abseil-cpp.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

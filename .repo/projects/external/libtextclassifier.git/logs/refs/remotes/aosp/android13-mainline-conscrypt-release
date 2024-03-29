@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 43d1d1b035ee2e4c08541b9eae1be45b9d89f017 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719677 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/libtextclassifier.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

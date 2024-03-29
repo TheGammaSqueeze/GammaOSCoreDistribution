@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 737309021088fc21fd143b3ce77b6150a4fbc7a8 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719650 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/gfxstream-protocols.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

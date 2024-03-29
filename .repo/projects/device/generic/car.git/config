@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/device/generic/car
+	review = android-review.googlesource.com
+	projectname = device/generic/car
+	fetch = +refs/heads/*:refs/remotes/aosp/*

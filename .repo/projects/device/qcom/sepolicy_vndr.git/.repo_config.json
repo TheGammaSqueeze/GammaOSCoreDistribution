@@ -1,0 +1,23 @@
+{
+  "core.repositoryformatversion": [
+    "1"
+  ],
+  "core.filemode": [
+    "true"
+  ],
+  "remote.github.url": [
+    "https://github.com/LineageOS/android_device_qcom_sepolicy_vndr"
+  ],
+  "remote.github.review": [
+    "review.lineageos.org"
+  ],
+  "remote.github.projectname": [
+    "LineageOS/android_device_qcom_sepolicy_vndr"
+  ],
+  "remote.github.fetch": [
+    "+refs/heads/*:refs/remotes/github/*"
+  ],
+  "extensions.preciousobjects": [
+    "true"
+  ]
+}

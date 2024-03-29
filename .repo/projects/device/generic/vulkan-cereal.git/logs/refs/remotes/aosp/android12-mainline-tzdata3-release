@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 08381904b600153a3c7f6e1631245d362f003b27 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719643 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/device/generic/vulkan-cereal.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

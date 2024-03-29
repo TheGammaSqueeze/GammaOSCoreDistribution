@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/build/bazel
+	review = android-review.googlesource.com
+	projectname = platform/build/bazel
+	fetch = +refs/heads/*:refs/remotes/aosp/*

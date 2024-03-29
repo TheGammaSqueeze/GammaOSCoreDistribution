@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 0c46ad245fc23b5f4c6afb89122b348c5999e9fa TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719638 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/doclava.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

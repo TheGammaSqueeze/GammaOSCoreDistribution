@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 8ebe06ebdac1ff1d786d9954b725718cee0fd8eb TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719700 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/psimd.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 7e06dfd212de9731533be24378da52cc3828d659 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719681 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/newfs_msdos.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

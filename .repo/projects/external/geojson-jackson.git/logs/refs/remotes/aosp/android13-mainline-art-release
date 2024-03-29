@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 db217a76fc1a44b3dfbe3b8d067e092797d5b8e8 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719648 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/geojson-jackson.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

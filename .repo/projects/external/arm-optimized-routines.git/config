@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/arm-optimized-routines
+	review = android-review.googlesource.com
+	projectname = platform/external/arm-optimized-routines
+	fetch = +refs/heads/*:refs/remotes/aosp/*

@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 e02f6533aaaadc17ff2ba3d4a0a34ce7f7dafd68 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719650 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/XNNPACK.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

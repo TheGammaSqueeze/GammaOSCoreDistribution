@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 fc7150c4c6b9af599ef8e409b6c4713580bd85a8 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719685 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/python/pyserial.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 d554620e6f7ad178b71ebb8c4269830cbd24ad8c TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719642 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/build/pesto.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

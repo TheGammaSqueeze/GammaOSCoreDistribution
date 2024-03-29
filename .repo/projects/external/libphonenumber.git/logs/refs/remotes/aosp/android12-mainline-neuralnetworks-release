@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 e420575a314b16bb18274d6487239bc2a43b8aca TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719670 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/libphonenumber.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

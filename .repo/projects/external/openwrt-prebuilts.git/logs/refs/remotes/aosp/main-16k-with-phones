@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 2fb899a07fe42b3b79b3c710c66c876a96e3cfea TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719679 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/openwrt-prebuilts.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

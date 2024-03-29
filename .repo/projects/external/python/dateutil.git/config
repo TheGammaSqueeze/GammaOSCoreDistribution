@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/python/dateutil
+	review = android-review.googlesource.com
+	projectname = platform/external/python/dateutil
+	fetch = +refs/heads/*:refs/remotes/aosp/*

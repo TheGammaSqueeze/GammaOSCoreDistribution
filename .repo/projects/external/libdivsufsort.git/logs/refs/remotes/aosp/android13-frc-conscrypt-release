@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 dc3fe08dc9df0b97fea56bc6858f3ed40e9c9ea7 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719663 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/libdivsufsort.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

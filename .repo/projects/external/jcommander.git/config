@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/jcommander
+	review = android-review.googlesource.com
+	projectname = platform/external/jcommander
+	fetch = +refs/heads/*:refs/remotes/aosp/*

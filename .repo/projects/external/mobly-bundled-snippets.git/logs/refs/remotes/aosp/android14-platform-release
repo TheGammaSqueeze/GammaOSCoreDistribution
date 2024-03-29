@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 446b4114fab291975569a67d4c630ce123196648 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719675 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/mobly-bundled-snippets.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 98ab56292d69a4ef8a9468d18e1bf9746a0e81e0 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719653 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/flatbuffers.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

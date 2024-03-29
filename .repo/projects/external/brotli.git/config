@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/brotli
+	review = android-review.googlesource.com
+	projectname = platform/external/brotli
+	fetch = +refs/heads/*:refs/remotes/aosp/*

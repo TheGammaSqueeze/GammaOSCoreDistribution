@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 dc7aa347fda1e559f077bb77ccd73cb249554845 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719663 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/libjpeg-turbo.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 475ed26947fb5319244fad2ae62464d6d1937048 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719662 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/jacoco.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

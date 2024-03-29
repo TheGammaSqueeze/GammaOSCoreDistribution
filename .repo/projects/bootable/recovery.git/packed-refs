@@ -1,0 +1,33 @@
+# pack-refs with: peeled fully-peeled sorted 
+cb54992c55a5ee37fd04dffe59d2d3e0dba811ef refs/remotes/github/lineage-20.0
+f462b5a1fffb829d46edebfa2dec6978da44e160 refs/tags/3.x
+^c56768cfb173cededb914e8c33399110cd2a2d3f
+5ca6fa9404c34f0678050e7a18799d8854cb6ea2 refs/tags/cm-10.1-M1
+7bbf5cba952b881474bc07a428ca7db7a23f7ea6 refs/tags/cm-10.1-M2
+fba8e1618c86c2b6ae571c6ed1f19f776fde4ab7 refs/tags/cm-10.1-M3
+884ee9bbf6212b9294d89b6ba8eeabb8e671e506 refs/tags/cm-10.1.0
+884ee9bbf6212b9294d89b6ba8eeabb8e671e506 refs/tags/cm-10.1.0-RC1
+884ee9bbf6212b9294d89b6ba8eeabb8e671e506 refs/tags/cm-10.1.0-RC2
+884ee9bbf6212b9294d89b6ba8eeabb8e671e506 refs/tags/cm-10.1.0-RC3
+884ee9bbf6212b9294d89b6ba8eeabb8e671e506 refs/tags/cm-10.1.0-RC4
+884ee9bbf6212b9294d89b6ba8eeabb8e671e506 refs/tags/cm-10.1.0-RC5
+884ee9bbf6212b9294d89b6ba8eeabb8e671e506 refs/tags/cm-10.1.1
+884ee9bbf6212b9294d89b6ba8eeabb8e671e506 refs/tags/cm-10.1.2
+0f7f15cb1bd8e8811dbb8a427557d13993761478 refs/tags/cm-10.1.3
+0f7f15cb1bd8e8811dbb8a427557d13993761478 refs/tags/cm-10.1.3-RC1
+0f7f15cb1bd8e8811dbb8a427557d13993761478 refs/tags/cm-10.1.3-RC2
+64f48a652d88fcebe939851ff0ba7426feaf7bf0 refs/tags/cm-10.2-M1
+d336807ff332978cef214341604888d40e4d6a88 refs/tags/cm-10.2.0
+ee9abb62a8ec2078bc767ebdd7e59aee7020b63b refs/tags/cm-10.2.1
+6a9437f39be94179b3e7777d2c7147861c41c4ea refs/tags/cm-11.0-XNPH05Q-bacon-5229c4ef56
+5d9a704376673cfd09d0b04f5ffa48efaa71d11d refs/tags/cm-11.0-XNPH05Q-tomato-9828f8e9cc
+81565410fcbb1309efe1100f05fd9e8e2ef9ee8b refs/tags/cm-11.0-XNPH22R-bacon-03d77315ea
+81565410fcbb1309efe1100f05fd9e8e2ef9ee8b refs/tags/cm-11.0-XNPH25R-bacon-d22b777afa
+fe2ad058ea11173eae022bedf2cc052bf2bd5d35 refs/tags/cm-11.0-XNPH30O-bacon-4f280f505a
+fe2ad058ea11173eae022bedf2cc052bf2bd5d35 refs/tags/cm-11.0-XNPH33R-bacon-3628510d76
+3f28d95ce11305cfa43ae2c85d402f776fbdbd1e refs/tags/cm-11.0-XNPH44S-bacon-5fa8c79c0b
+bab66b40f734194de26fbf37cace4da8f98c4a87 refs/tags/cm-7.0.0
+7364e82a5fc092ec246c4f1a2b70a2d58544f378 refs/tags/cm-7.0.1
+9c4c8e2c6675861e9983a1e40adb7f082de691fb refs/tags/cm-7.0.2.1
+9c4c8e2c6675861e9983a1e40adb7f082de691fb refs/tags/cm-7.0.3
+2e85422f89830054b31bb0194c39d037f033993a refs/tags/cm-7.1.0

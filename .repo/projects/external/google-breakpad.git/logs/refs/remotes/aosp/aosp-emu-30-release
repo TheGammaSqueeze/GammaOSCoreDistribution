@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 a1414818b9f9810a3b45f1f55d9c00f5116ec7d9 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719658 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/google-breakpad.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

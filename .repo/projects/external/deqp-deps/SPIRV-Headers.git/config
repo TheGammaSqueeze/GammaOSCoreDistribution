@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/deqp-deps/SPIRV-Headers
+	review = android-review.googlesource.com
+	projectname = platform/external/deqp-deps/SPIRV-Headers
+	fetch = +refs/heads/*:refs/remotes/aosp/*

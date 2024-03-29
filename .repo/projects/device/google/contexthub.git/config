@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "github"]
+	url = https://github.com/LineageOS/android_device_google_contexthub
+	review = review.lineageos.org
+	projectname = LineageOS/android_device_google_contexthub
+	fetch = +refs/heads/*:refs/remotes/github/*

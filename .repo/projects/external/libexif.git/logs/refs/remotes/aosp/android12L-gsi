@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 96de2a2d442ea4e752830847b48ef1463c1c6b40 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719664 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/libexif.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/python/pyasn1-modules
+	review = android-review.googlesource.com
+	projectname = platform/external/python/pyasn1-modules
+	fetch = +refs/heads/*:refs/remotes/aosp/*

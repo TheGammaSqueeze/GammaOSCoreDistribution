@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/nist-pkits
+	review = android-review.googlesource.com
+	projectname = platform/external/nist-pkits
+	fetch = +refs/heads/*:refs/remotes/aosp/*

@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 f4e24227564193d49b41b10c7f0956d2176d3432 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719645 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/gemmlowp.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

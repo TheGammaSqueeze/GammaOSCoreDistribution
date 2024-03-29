@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 36179bc6355e8d53a1e3fded314d14e9f56f4b92 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719662 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/libmpeg2.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

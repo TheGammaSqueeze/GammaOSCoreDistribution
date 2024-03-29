@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/python/mobly
+	review = android-review.googlesource.com
+	projectname = platform/external/python/mobly
+	fetch = +refs/heads/*:refs/remotes/aosp/*

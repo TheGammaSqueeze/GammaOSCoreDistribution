@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 31055dc8e7110e85be92f8d5033534ce6f3b632e TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719636 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/device/generic/armv7-a-neon.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

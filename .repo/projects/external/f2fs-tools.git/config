@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/f2fs-tools
+	review = android-review.googlesource.com
+	projectname = platform/external/f2fs-tools
+	fetch = +refs/heads/*:refs/remotes/aosp/*

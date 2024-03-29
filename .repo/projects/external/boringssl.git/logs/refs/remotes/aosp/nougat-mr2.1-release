@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 2798c34d7413c43aae6d6a9ad6df28b1d61b44de TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719667 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/boringssl.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

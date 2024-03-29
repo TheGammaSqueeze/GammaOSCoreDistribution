@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 f9f9b211940b35c464f6d479fa1d4c2090f5bd19 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719654 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/geonames.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 21b742bc1da1235309d33fdb4d20980e40eaef34 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719637 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/bazelbuild-rules_android.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 3d3788416430afc3ea6ee399ef292078aa79cd07 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719651 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/escapevelocity.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

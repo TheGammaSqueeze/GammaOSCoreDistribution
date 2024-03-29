@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 2395e9c98067706046c049b0a7e7142e0aec3445 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719635 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/android-clat.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

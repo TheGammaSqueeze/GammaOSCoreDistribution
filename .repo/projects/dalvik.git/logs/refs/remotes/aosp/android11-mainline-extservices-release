@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 3e83c287fa19accd431a15f56dd8a02729a4db2f TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719639 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/dalvik.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

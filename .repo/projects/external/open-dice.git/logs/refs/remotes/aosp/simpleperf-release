@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 18c4e4955b7e175651bb0cfc67502c80e1905032 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719675 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/open-dice.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

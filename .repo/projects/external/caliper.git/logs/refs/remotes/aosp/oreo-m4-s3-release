@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 4a0d9aba0856d0aa965d5653bfa4c138f0e8a8ba TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719643 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/caliper.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

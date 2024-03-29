@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 082577f3354478017a68886667ef0ee79953e8d0 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719642 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/erofs-utils.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

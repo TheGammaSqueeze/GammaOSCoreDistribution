@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 02ddc523ed0a3578dd2ba79fd78cc38e64645a33 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719690 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/robolectric-shadows.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

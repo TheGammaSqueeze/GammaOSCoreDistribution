@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/ms-tpm-20-ref
+	review = android-review.googlesource.com
+	projectname = platform/external/ms-tpm-20-ref
+	fetch = +refs/heads/*:refs/remotes/aosp/*

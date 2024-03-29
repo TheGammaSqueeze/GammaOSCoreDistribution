@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 781f9d9b6a6299577c061051676cd854b517ec31 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719674 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/libpalmrejection.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

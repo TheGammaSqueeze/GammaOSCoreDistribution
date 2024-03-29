@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 bcc6a2ba33c44e1deb37bd907ff0404be0fd52ef TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719653 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/google-fruit.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

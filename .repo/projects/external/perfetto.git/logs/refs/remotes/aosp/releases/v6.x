@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 35150ee7974449783a548d355c97da923012fcbe TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719711 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/perfetto.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

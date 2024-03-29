@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 db7a47b50c777b57dd5257d6ae6ebf4874632667 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719660 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/google-fonts/arbutus-slab.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

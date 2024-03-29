@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 958977170f3351a8b20f65580d375b81c3cf3d0a TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719656 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/iproute2.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

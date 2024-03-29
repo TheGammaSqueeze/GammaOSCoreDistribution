@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 8d7dc77b169d6324b312774a0a76529bfeab8385 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719660 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/libcppbor.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

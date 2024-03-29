@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 68d7b7d821ee0dc17672bbdd88736f17be718797 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719673 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/mockftpserver.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

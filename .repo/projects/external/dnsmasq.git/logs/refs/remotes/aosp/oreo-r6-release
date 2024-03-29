@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 0300be84162f38cc37e080f9fa37dfed9d5ddd73 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719636 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/dnsmasq.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

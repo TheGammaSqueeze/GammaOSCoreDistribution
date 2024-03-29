@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 45e615e5ead1b2129b40e9f180c924ce94e80993 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719671 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/minijail.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

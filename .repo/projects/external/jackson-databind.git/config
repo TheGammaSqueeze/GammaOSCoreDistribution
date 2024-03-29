@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/jackson-databind
+	review = android-review.googlesource.com
+	projectname = platform/external/jackson-databind
+	fetch = +refs/heads/*:refs/remotes/aosp/*

@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 f0194db4e09542856637b78bd4fbff21d50ddcb7 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719655 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/fsverity-utils.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

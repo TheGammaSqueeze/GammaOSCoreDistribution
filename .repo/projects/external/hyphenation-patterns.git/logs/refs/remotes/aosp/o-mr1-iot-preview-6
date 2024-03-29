@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 f0ce79b3e6624eff80848e16c9d96d7410b95d1d TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719665 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/hyphenation-patterns.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

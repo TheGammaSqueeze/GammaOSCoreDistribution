@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 623f8d923c9fb1c1d5dd2aceda7cbf683a578193 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719659 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/jackson-databind.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

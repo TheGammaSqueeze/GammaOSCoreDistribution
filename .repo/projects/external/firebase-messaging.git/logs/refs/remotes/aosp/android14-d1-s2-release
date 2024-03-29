@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 2b8dd5039be6406adfe77a0c3948ad2fd99cfd53 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719644 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/firebase-messaging.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

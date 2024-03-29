@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 fa22f5cec501b961afbfa0a15a64d52fa2d57e8c TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719638 +0000	fetch --quiet --progress github --prune --recurse-submodules=no --tags +refs/heads/lineage-20.0:refs/remotes/github/lineage-20.0 +refs/tags/*:refs/tags/*: storing head

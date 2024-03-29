@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/neon_2_sse
+	review = android-review.googlesource.com
+	projectname = platform/external/neon_2_sse
+	fetch = +refs/heads/*:refs/remotes/aosp/*

@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 3f7d472ada62a2927fa596d828a8712702ae8158 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719657 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/fmtlib.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

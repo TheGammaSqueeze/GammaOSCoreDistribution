@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/mobly-bundled-snippets
+	review = android-review.googlesource.com
+	projectname = platform/external/mobly-bundled-snippets
+	fetch = +refs/heads/*:refs/remotes/aosp/*

@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 8ef401c762447f358cbe88ec7a3b28ad36a55b96 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719678 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/mockito.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head
