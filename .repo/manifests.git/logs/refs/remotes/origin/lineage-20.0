@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 6c4cfb245c44dae7ee8c4ff8cf7a14ff50efc599 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719625 +0000	fetch --quiet origin --recurse-submodules=no --tags +refs/heads/lineage-20.0:refs/remotes/origin/lineage-20.0 +refs/tags/*:refs/tags/*: storing head

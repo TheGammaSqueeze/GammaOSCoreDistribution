@@ -1,0 +1,47 @@
+[core]
+	repositoryFormatVersion = 1
+	filemode = true
+[filter "lfs"]
+	smudge = git-lfs smudge --skip -- %f
+	process = git-lfs filter-process --skip
+[remote "origin"]
+	url = https://github.com/LineageOS/android.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[manifest]
+	platform = auto
+[repo]
+	git-lfs = true
+	existingprojectcount = 0
+	newprojectcount = 1244
+[extensions]
+	preciousObjects = true
+[branch "default"]
+	remote = origin
+	merge = refs/heads/lineage-20.0
+[repo "syncstate.main"]
+	synctime = 2024-03-29T13:58:04.823872+00:00
+	version = 1
+[repo "syncstate.sys"]
+	argv = ['/home/ubuntu/lineage20/.repo/repo/main.py', '--repo-dir=/home/ubuntu/lineage20/.repo', '--wrapper-version=2.45', '--wrapper-path=/usr/bin/repo', '--', 'sync', '-j32']
+[repo "syncstate.options"]
+	jobs = 32
+	outermanifest = true
+	jobsnetwork = 32
+	jobscheckout = 32
+	mpupdate = true
+	clonebundle = true
+	retryfetches = 0
+	prune = true
+	repoverify = true
+	quiet = false
+	verbose = false
+[repo "syncstate.remote.origin"]
+	url = https://github.com/LineageOS/android.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[repo "syncstate.repo"]
+	git-lfs = true
+	existingprojectcount = 0
+	newprojectcount = 1244
+[repo "syncstate.branch.default"]
+	remote = origin
+	merge = refs/heads/lineage-20.0

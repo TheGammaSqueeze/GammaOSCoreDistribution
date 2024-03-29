@@ -1,0 +1,104 @@
+{
+  "core.repositoryformatversion": [
+    "1"
+  ],
+  "core.filemode": [
+    "true"
+  ],
+  "filter.lfs.smudge": [
+    "git-lfs smudge --skip -- %f"
+  ],
+  "filter.lfs.process": [
+    "git-lfs filter-process --skip"
+  ],
+  "remote.origin.url": [
+    "https://github.com/LineageOS/android.git"
+  ],
+  "remote.origin.fetch": [
+    "+refs/heads/*:refs/remotes/origin/*"
+  ],
+  "manifest.platform": [
+    "auto"
+  ],
+  "repo.git-lfs": [
+    "true"
+  ],
+  "repo.existingprojectcount": [
+    "0"
+  ],
+  "repo.newprojectcount": [
+    "1244"
+  ],
+  "extensions.preciousobjects": [
+    "true"
+  ],
+  "branch.default.remote": [
+    "origin"
+  ],
+  "branch.default.merge": [
+    "refs/heads/lineage-20.0"
+  ],
+  "repo.syncstate.main.synctime": [
+    "2024-03-29T13:58:04.823872+00:00"
+  ],
+  "repo.syncstate.main.version": [
+    "1"
+  ],
+  "repo.syncstate.sys.argv": [
+    "['/home/ubuntu/lineage20/.repo/repo/main.py', '--repo-dir=/home/ubuntu/lineage20/.repo', '--wrapper-version=2.45', '--wrapper-path=/usr/bin/repo', '--', 'sync', '-j32']"
+  ],
+  "repo.syncstate.options.jobs": [
+    "32"
+  ],
+  "repo.syncstate.options.outermanifest": [
+    "true"
+  ],
+  "repo.syncstate.options.jobsnetwork": [
+    "32"
+  ],
+  "repo.syncstate.options.jobscheckout": [
+    "32"
+  ],
+  "repo.syncstate.options.mpupdate": [
+    "true"
+  ],
+  "repo.syncstate.options.clonebundle": [
+    "true"
+  ],
+  "repo.syncstate.options.retryfetches": [
+    "0"
+  ],
+  "repo.syncstate.options.prune": [
+    "true"
+  ],
+  "repo.syncstate.options.repoverify": [
+    "true"
+  ],
+  "repo.syncstate.options.quiet": [
+    "false"
+  ],
+  "repo.syncstate.options.verbose": [
+    "false"
+  ],
+  "repo.syncstate.remote.origin.url": [
+    "https://github.com/LineageOS/android.git"
+  ],
+  "repo.syncstate.remote.origin.fetch": [
+    "+refs/heads/*:refs/remotes/origin/*"
+  ],
+  "repo.syncstate.repo.git-lfs": [
+    "true"
+  ],
+  "repo.syncstate.repo.existingprojectcount": [
+    "0"
+  ],
+  "repo.syncstate.repo.newprojectcount": [
+    "1244"
+  ],
+  "repo.syncstate.branch.default.remote": [
+    "origin"
+  ],
+  "repo.syncstate.branch.default.merge": [
+    "refs/heads/lineage-20.0"
+  ]
+}
