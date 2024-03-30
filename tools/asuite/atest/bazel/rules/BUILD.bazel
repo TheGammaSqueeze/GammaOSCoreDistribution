@@ -1,0 +1,19 @@
+load("//bazel/rules:common_settings.bzl", "string_flag")
+load("//bazel/rules:common_settings.bzl", "string_list_flag")
+
+package(default_visibility = ["//visibility:public"])
+
+string_flag(name = "platform_flavor", build_setting_default = "")
+string_list_flag(name = "extra_tradefed_result_reporters", build_setting_default = [])
+
+config_setting(
+    name = "device",
+    flag_values = {":platform_flavor": "device"},
+)
+
+config_setting(
+    name = "host",
+    flag_values = {":platform_flavor": "host"},
+)
+
+exports_files(["tradefed_test.sh.template"])

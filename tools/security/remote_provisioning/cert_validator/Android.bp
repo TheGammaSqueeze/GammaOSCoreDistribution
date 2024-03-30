@@ -1,0 +1,88 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+rust_bindgen {
+    name: "libssl_bindgen",
+    crate_name: "ssl_bindgen",
+    wrapper_src: "libssl_wrapper.h",
+    source_stem: "bindings",
+    bindgen_flags: [
+        "--size_t-is-usize",
+        "--allowlist-function", "BN_bin2bn",
+        "--allowlist-function", "ECDSA_SIG_free",
+        "--allowlist-function", "ECDSA_SIG_new",
+        "--allowlist-function", "ECDSA_SIG_to_bytes",
+        "--allowlist-function", "ECDSA_verify",
+        "--allowlist-function", "EC_KEY_new_by_curve_name",
+        "--allowlist-function", "EC_KEY_free",
+        "--allowlist-function", "o2i_ECPublicKey",
+        "--allowlist-function", "ED25519_verify",
+        "--allowlist-function", "OPENSSL_free",
+        "--allowlist-function", "SHA256",
+        "--allowlist-var", "ED25519_PUBLIC_KEY_LEN",
+        "--allowlist-var", "ED25519_SIGNATURE_LEN",
+        "--allowlist-var", "NID_X9_62_prime256v1",
+    ],
+    cflags: ["-I/usr/include/android"],
+    shared_libs: ["libcrypto"],
+    host_supported: true,
+}
+
+rust_library {
+    name: "libcert_request_validator",
+    crate_name: "cert_request_validator",
+    srcs: ["src/lib.rs"],
+    host_supported: true,
+    rustlibs: [
+        "libanyhow",
+        "libthiserror",
+        "libciborium",
+        "libcoset",
+        "libchrono",
+        "libssl_bindgen",
+    ],
+}
+
+filegroup(
+    name = "testdata",
+    srcs = ["testdata/**/*"],
+)
+
+rust_test {
+    name: "libcert_request_validator_tests",
+    srcs: ["src/lib.rs"],
+    data: [":testdata"],
+    test_suites: ["general-tests"],
+    host_supported: true,
+    auto_gen_config: true,
+    compile_multilib: "first",
+    test_options: {
+        unit_test: false,
+    },
+    rustlibs: [
+        "libcert_request_validator",
+        "libanyhow",
+        "libthiserror",
+        "libciborium",
+        "libcoset",
+        "libchrono",
+        "libssl_bindgen",
+    ],
+}
+
+rust_binary {
+    name: "bcc_validator",
+    srcs: ["src/bcc_main.rs"],
+    host_supported: true,
+    rustlibs: [
+        "libcert_request_validator",
+        "libanyhow",
+        "libthiserror",
+        "libclap",
+        "libciborium",
+        "libcoset",
+        "libchrono",
+        "libssl_bindgen",
+    ],
+}

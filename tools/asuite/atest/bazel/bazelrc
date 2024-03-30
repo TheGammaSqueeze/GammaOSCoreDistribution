@@ -1,0 +1,36 @@
+# Enable building targets in //external:__subpackages__.
+common --experimental_sibling_repository_layout
+common --experimental_disable_external_package
+
+# Show the full set of flags for observability and debuggability.
+common --announce_rc
+
+# Depending on how many machines are in the remote execution instance, setting
+# this higher can make builds faster by allowing more jobs to run in parallel.
+# Setting it too high can result in jobs that timeout, however, while waiting
+# for a remote machine to execute them.
+build:remote --jobs=200
+
+# Set the Java used to launch Tradefed.
+build:remote --action_env=TF_JAVA_HOME=/usr/lib/jvm/11.29.3-ca-jdk11.0.2/reduced
+
+# Set a host platform specifying the Docker container image used by the RBE
+# instance.
+# See https://docs.bazel.build/versions/master/platforms.html for more about
+# platforms.
+build:remote --host_platform=//bazel/configs/rbe/config:platform
+
+# Enable the remote cache so that action results can be shared across machines,
+# developers, and workspaces.
+build:remote --remote_cache=grpcs://remotebuildexecution.googleapis.com
+
+# Enable remote execution so that actions are performed on the remote systems.
+build:remote --remote_executor=grpcs://remotebuildexecution.googleapis.com
+
+# Set a higher timeout value, just in case.
+build:remote --remote_timeout=3600
+
+# Enable authentication. This will pick up application default credentials by
+# default. You can use --auth_credentials=some_file.json to use a service
+# account credential instead.
+build:remote --google_default_credentials=true

@@ -1,0 +1,50 @@
+package {
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "tools_treble_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    default_applicable_licenses: ["tools_treble_license"],
+}
+
+python_defaults {
+  name: "repack_gki_defaults",
+  version: {
+      py2: {
+          enabled: false,
+          embedded_launcher: false,
+      },
+      py3: {
+          enabled: true,
+          embedded_launcher: false,
+      },
+  },
+}
+
+python_library_host {
+  name: "repack_gki_lib",
+  defaults: ["repack_gki_defaults"],
+  srcs: [
+    "repack_gki_lib.py",
+  ],
+  libs: [
+    "fetcher-lib",
+  ],
+  pkg_path: "treble/gki",
+}
+
+python_binary_host {
+    name: "repack_gki",
+    main: "repack_gki.py",
+    defaults: ["repack_gki_defaults"],
+    srcs: [
+        "repack_gki.py",
+    ],
+    libs: [
+        "repack_gki_lib",
+    ],
+    required: [
+        "mkbootimg",
+        "unpack_bootimg",
+    ],
+}
