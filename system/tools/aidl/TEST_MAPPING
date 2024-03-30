@@ -1,0 +1,22 @@
+{
+  "presubmit": [
+    {
+      "name": "aidl_unittests"
+    },
+    {
+      "name": "aidl_integration_test"
+    },
+    {
+      "name": "aidl_lazy_test"
+    },
+    {
+      "name": "CtsNdkBinderTestCases"
+    }
+  ],
+  "imports": [
+    {
+      "path": "frameworks/native/libs/binder"
+    }
+  ]
+}
+

@@ -1,0 +1,249 @@
+package {
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "system_netd_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    default_applicable_licenses: ["system_netd_license"],
+}
+
+aidl_interface {
+    // This interface is for OEM calls to netd and vice versa that do not exist in AOSP.
+    // Those calls cannot be part of INetd.aidl and INetdUnsolicitedEventListener.aidl
+    // because those interfaces are versioned.
+    // These interfaces must never be versioned or OEMs will not be able to change them.
+    name: "oemnetd_aidl_interface",
+    unstable: true,
+    local_include_dir: "binder",
+    srcs: [
+        "binder/com/android/internal/net/IOemNetd.aidl",
+        "binder/com/android/internal/net/IOemNetdUnsolicitedEventListener.aidl",
+    ],
+}
+
+// These are used in netd_integration_test
+// TODO: fold these into a cc_library_static after converting netd/server to Android.bp
+filegroup {
+    name: "netd_integration_test_shared",
+    srcs: [
+        "NetdConstants.cpp",
+        "InterfaceController.cpp",
+        "NetlinkCommands.cpp",
+        "SockDiag.cpp",
+        "XfrmController.cpp",
+    ],
+}
+
+// Modules common to both netd and netd_unit_test
+cc_library_static {
+    name: "libnetd_server",
+    defaults: [
+        "netd_aidl_interface_lateststable_cpp_shared",
+        "netd_defaults",
+    ],
+    include_dirs: [
+        "system/netd/include",
+        "system/netd/server/binder",
+    ],
+    header_libs: ["bpf_headers"],
+    srcs: [
+        "BandwidthController.cpp",
+        "Controllers.cpp",
+        "NetdConstants.cpp",
+        "FirewallController.cpp",
+        "IdletimerController.cpp",
+        "InterfaceController.cpp",
+        "IptablesRestoreController.cpp",
+        "NFLogListener.cpp",
+        "NetlinkCommands.cpp",
+        "NetlinkManager.cpp",
+        "RouteController.cpp",
+        "SockDiag.cpp",
+        "StrictController.cpp",
+        "TcpSocketMonitor.cpp",
+        "TetherController.cpp",
+        "UidRanges.cpp",
+        "WakeupController.cpp",
+        "XfrmController.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "libbinder",
+        "libnetutils",
+        "libnetdutils",
+        "libpcap",
+        "libssl",
+        "libsysutils",
+        "netd_event_listener_interface-V1-cpp",
+    ],
+    static_libs: [
+        "libip_checksum",
+        "libtcutils",
+    ],
+    aidl: {
+        export_aidl_headers: true,
+        local_include_dirs: ["binder"],
+    },
+}
+
+cc_binary {
+    name: "netd",
+    defaults: [
+        "netd_aidl_interface_lateststable_cpp_shared",
+        "netd_defaults",
+    ],
+    include_dirs: [
+        "external/mdnsresponder/mDNSShared",
+        "system/netd/include",
+    ],
+    init_rc: ["netd.rc"],
+    required: [
+        "bpfloader",
+    ],
+    header_libs: ["bpf_headers"],
+    shared_libs: [
+        "android.system.net.netd@1.0",
+        "android.system.net.netd@1.1",
+        "libbase",
+        "libbinder",
+        "libcutils",
+        "libdl",
+        "libhidlbase",
+        "liblog",
+        "libmdnssd",
+        "libnetd_updatable",
+        "libnetd_resolv",
+        "libnetdutils",
+        "libnetutils",
+        "libpcap",
+        "libprocessgroup",
+        "libselinux",
+        "libsysutils",
+        "libutils",
+        "mdns_aidl_interface-V1-cpp",
+        "netd_event_listener_interface-V1-cpp",
+        "oemnetd_aidl_interface-cpp",
+    ],
+    static_libs: [
+        "libip_checksum",
+        "libnetd_server",
+        "libtcutils",
+    ],
+    srcs: [
+        "DummyNetwork.cpp",
+        "EventReporter.cpp",
+        "FwmarkServer.cpp",
+        "LocalNetwork.cpp",
+        "MDnsEventReporter.cpp",
+        "MDnsSdListener.cpp",
+        "MDnsService.cpp",
+        "NetdCommand.cpp",
+        "NetdHwService.cpp",
+        "NetdNativeService.cpp",
+        "NetlinkHandler.cpp",
+        "Network.cpp",
+        "NetworkController.cpp",
+        "OemNetdListener.cpp",
+        "PhysicalNetwork.cpp",
+        "PppController.cpp",
+        "Process.cpp",
+        "UnreachableNetwork.cpp",
+        "VirtualNetwork.cpp",
+        "main.cpp",
+        "oem_iptables_hook.cpp",
+    ],
+    sanitize: {
+        cfi: true,
+        memtag_heap: true,
+    },
+}
+
+cc_binary {
+    name: "ndc",
+    defaults: [
+        "netd_aidl_interface_lateststable_cpp_shared",
+        "netd_defaults",
+    ],
+    include_dirs: [
+        "system/netd/include",
+    ],
+    header_libs: [
+        "libnetd_client_headers",
+    ],
+    shared_libs: [
+        "libbase",
+        "libnetdutils",
+        "libnetutils",
+        "libcutils",
+        "liblog",
+        "libutils",
+        "libbinder",
+        "dnsresolver_aidl_interface-V7-cpp",
+    ],
+    srcs: [
+        "ndc.cpp",
+        "UidRanges.cpp",
+        "NdcDispatcher.cpp",
+    ],
+    sanitize: {
+        cfi: true,
+        memtag_heap: true,
+    },
+}
+
+cc_test {
+    name: "netd_unit_test",
+    defaults: [
+        "netd_aidl_interface_lateststable_cpp_static",
+        "netd_defaults",
+    ],
+    test_suites: ["device-tests"],
+    require_root: true,
+    include_dirs: [
+        "system/netd/include",
+        "system/netd/server/binder",
+        "system/netd/tests",
+    ],
+    header_libs: ["bpf_headers"],
+    tidy_timeout_srcs: [
+        "BandwidthControllerTest.cpp",
+        "InterfaceControllerTest.cpp",
+        "XfrmControllerTest.cpp",
+    ],
+    srcs: [
+        "BandwidthControllerTest.cpp",
+        "ControllersTest.cpp",
+        "FirewallControllerTest.cpp",
+        "IdletimerControllerTest.cpp",
+        "InterfaceControllerTest.cpp",
+        "IptablesBaseTest.cpp",
+        "IptablesRestoreControllerTest.cpp",
+        "NFLogListenerTest.cpp",
+        "RouteControllerTest.cpp",
+        "SockDiagTest.cpp",
+        "StrictControllerTest.cpp",
+        "TetherControllerTest.cpp",
+        "XfrmControllerTest.cpp",
+        "WakeupControllerTest.cpp",
+    ],
+    static_libs: [
+        "libgmock",
+        "libip_checksum",
+        "libnetd_server",
+        "libnetd_test_tun_interface",
+        "libtcutils",
+        "netd_event_listener_interface-V1-cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "libbinder",
+        "libcrypto",
+        "libcutils",
+        "liblog",
+        "libnetdutils",
+        "libnetutils",
+        "libsysutils",
+        "libutils",
+    ],
+    // tidy: false,  // cuts test build time by almost 1 minute
+}

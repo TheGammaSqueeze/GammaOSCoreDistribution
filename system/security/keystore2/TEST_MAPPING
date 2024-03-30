@@ -1,0 +1,35 @@
+{
+  "presubmit": [
+    {
+      "name": "keystore2_crypto_test"
+    },
+    {
+      "name": "keystore2_crypto_test_rust"
+    },
+    {
+      "name": "keystore2_test"
+    },
+    {
+      "name": "keystore2_test_utils_test"
+    },
+    {
+      "name": "keystore2_legacy_blobs_test"
+    },
+    {
+      "name": "CtsIdentityTestCases"
+    },
+    {
+      "name": "CtsKeystoreTestCases",
+      "options": [
+        {
+          "include-annotation": "android.platform.test.annotations.RequiresDevice"
+        }
+      ]
+    }
+  ],
+  "postsubmit": [
+    {
+      "name": "CtsKeystorePerformanceTestCases"
+    }
+  ]
+}

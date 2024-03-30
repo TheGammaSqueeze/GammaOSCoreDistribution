@@ -1,0 +1,12 @@
+{
+  "presubmit": [
+    {
+      "name": "dmabufheap-unit-tests"
+    }
+  ],
+  "hwasan-postsubmit": [
+    {
+      "name": "dmabufheap-unit-tests"
+    }
+  ]
+}

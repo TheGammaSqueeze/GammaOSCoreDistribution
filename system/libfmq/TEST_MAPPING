@@ -1,0 +1,18 @@
+{
+  "presubmit": [
+    {
+      "name": "fmq_unit_tests"
+    },
+    {
+      "name": "fmq_test"
+    }
+  ],
+  "hwasan-postsubmit": [
+    {
+      "name": "fmq_unit_tests"
+    },
+    {
+      "name": "fmq_test"
+    }
+  ]
+}

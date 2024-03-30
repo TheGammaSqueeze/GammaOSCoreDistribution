@@ -1,0 +1,8 @@
+#############################
+# Vendor files
+#
+(/.*)?                  u:object_r:vendor_file:s0
+/etc(/.*)?              u:object_r:vendor_configs_file:s0
+
+# HAL location
+/bin/hw/android\.hardware\.security\.dice-service\.microdroid u:object_r:hal_dice_default_exec:s0

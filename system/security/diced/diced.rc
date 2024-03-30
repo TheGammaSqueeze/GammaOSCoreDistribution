@@ -1,0 +1,13 @@
+# Start the Diced service.
+#
+# See system/core/init/README.md for information on the init.rc language.
+
+service diced /system/bin/diced
+    class main
+    user diced
+    group diced
+    # The diced service must not be allowed to restart.
+    # If it crashes for any reason security critical state is lost.
+    # The only remedy is to restart the device.
+    oneshot
+    writepid /dev/cpuset/foreground/tasks

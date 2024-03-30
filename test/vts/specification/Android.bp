@@ -1,0 +1,100 @@
+//
+// Copyright (C) 2016 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+package {
+    // See: http://go/android-license-faq
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+cc_library_shared {
+    // libvts_interfacespecification does not include or link any HIDL HAL driver.
+    // HIDL HAL drivers and profilers are defined as separated shared libraries
+    // in a respective hardware/interfaces/<hal name>/<version>/Android.bp file.
+    // libvts_interfacespecification is the driver for:
+    //   legacy HALs,
+    //   conventional HALs,
+    //   shared libraries,
+    //   and so on.
+    name: "libvts_interfacespecification",
+    generated_sources: ["libvts_interfacespecification_vts.driver_genc++"],
+    generated_headers: ["libvts_interfacespecification_vts.driver_genc++_headers"],
+    export_generated_headers: ["libvts_interfacespecification_vts.driver_genc++_headers"],
+    shared_libs: [
+        "libbase",
+        "libcutils",
+        "liblog",
+        "libdl",
+        "libandroid_runtime",
+        "libcamera_metadata",
+        "libvts_datatype",
+        "libvts_common",
+        "libvts_measurement",
+        "libvts_multidevice_proto",
+        "libprotobuf-cpp-full",
+    ],
+    static_libs: [
+        "libbluetooth-types",
+    ],
+    cflags: [
+        "-Wall",
+        "-Werror",
+        // These warnings are in code generated with vtsc
+        // b/31362043
+        "-Wno-unused-parameter",
+        "-Wno-unused-value",
+        "-Wno-duplicate-decl-specifier",
+    ],
+    proto: {
+        type: "full",
+    },
+    compile_multilib: "both",
+}
+
+cc_genrule {
+    name: "libvts_interfacespecification_vts.driver_genc++",
+    srcs: [
+        "lib/**/*",
+    ],
+    tools: [
+        "vtsc",
+    ],
+    out: [
+        "vts/libcutilsV1.vts.cpp",
+        "vts/libcV1.vts.cpp",
+        "vts/libmV1.vts.cpp",
+    ],
+    cmd: "mkdir -p $(genDir)/vts && " +
+        "cp $(in) $(genDir)/vts/ && " +
+        "$(location vtsc) -mDRIVER -tSOURCE -b$(genDir) vts/ $(genDir)/vts/",
+}
+
+cc_genrule {
+    name: "libvts_interfacespecification_vts.driver_genc++_headers",
+    srcs: [
+        "lib/**/*",
+    ],
+    tools: [
+        "vtsc",
+    ],
+    out: [
+        "vts/libcutilsV1.vts.h",
+        "vts/libcV1.vts.h",
+        "vts/libmV1.vts.h",
+    ],
+    cmd: "mkdir -p $(genDir)/vts && " +
+        "cp $(in) $(genDir)/vts/ && " +
+        "$(location vtsc) -mDRIVER -tHEADER -b$(genDir) vts/ $(genDir)/vts/",
+}

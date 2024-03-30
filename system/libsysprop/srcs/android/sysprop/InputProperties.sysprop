@@ -1,0 +1,35 @@
+# Copyright (C) 2021 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+module: "android.sysprop.InputProperties"
+owner: Platform
+
+# The default VelocityTracker strategy.
+prop {
+    api_name: "velocitytracker_strategy"
+    type: String
+    scope: Internal
+    access: ReadWrite
+    prop_name: "persist.input.velocitytracker.strategy"
+}
+
+# A debug flag that converts all touch pointers to stylus pointers.
+# Requires a reboot to take effect.
+prop {
+    api_name: "simulate_stylus_with_touch"
+    type: Boolean
+    scope: Internal
+    access: Readonly
+    prop_name: "persist.debug.input.simulate_stylus_with_touch"
+}

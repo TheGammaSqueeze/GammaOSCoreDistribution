@@ -1,0 +1,8 @@
+{
+  "contributions": [
+    {
+      "namespace": "sphal",
+      "paths": ["${LIB}/egl"]
+    }
+  ]
+}
