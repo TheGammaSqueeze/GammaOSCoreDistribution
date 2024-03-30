@@ -1,0 +1,402 @@
+{
+  "assertors": [
+    {
+      "transition": "ROTATION",
+      "assertions": {
+        "presubmit": [
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NonAppWindowIsVisibleAlways",
+            "args": [
+              "/StatusBar"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.EntireScreenCoveredAtStart"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.EntireScreenCoveredAtEnd"
+          }
+        ],
+        "postsubmit": [],
+        "flaky": [
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NonAppWindowIsVisibleAlways",
+            "args": [
+              "/NavigationBar0"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LayerIsVisibleAlways",
+            "args": [
+              "/StatusBar"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LayerIsVisibleAtStart",
+            "args": [
+              "/NavigationBar0"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LayerIsVisibleAtEnd",
+            "args": [
+              "/NavigationBar0"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NavBarLayerPositionAtStart"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NavBarLayerPositionAtEnd"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.EntireScreenCoveredAlways"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.VisibleWindowsShownMoreThanOneConsecutiveEntry"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.VisibleLayersShownMoreThanOneConsecutiveEntry"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.RotationLayerAppearsAndVanishes"
+          }
+        ]
+      }
+    },
+    {
+      "transition": "APP_LAUNCH",
+      "assertions": {
+        "presubmit": [
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LayerIsVisibleAtStart",
+            "args": [
+              "/NavigationBar0"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LayerIsVisibleAtEnd",
+            "args": [
+              "/NavigationBar0"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NonAppWindowIsVisibleAlways",
+            "args": [
+              "/NavigationBar0"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NonAppWindowIsVisibleAlways",
+            "args": [
+              "/StatusBar"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LayerIsVisibleAlways",
+            "args": [
+              "/StatusBar"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.EntireScreenCoveredAtStart"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.EntireScreenCoveredAtEnd"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.AppLayerReplacesLauncher"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LayerIsVisibleAtStart",
+            "args": [
+              "com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LayerIsInvisibleAtEnd",
+            "args": [
+              "com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.AppLayerIsInvisibleAtStart"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.AppLayerIsVisibleAtEnd"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LauncherWindowMovesOutOfTop"
+          }
+        ],
+        "postsubmit": [],
+        "flaky": [
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NavBarLayerPositionAtStart"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NavBarLayerPositionAtEnd"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.StatusBarLayerPositionAtStart"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.StatusBarLayerPositionAtEnd"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.EntireScreenCoveredAlways"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.VisibleWindowsShownMoreThanOneConsecutiveEntry"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.VisibleLayersShownMoreThanOneConsecutiveEntry"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.AppWindowReplacesLauncherAsTopWindow"
+          }
+        ]
+      }
+    },
+    {
+      "transition": "APP_CLOSE",
+      "assertions": {
+        "presubmit": [
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LayerIsVisibleAtStart",
+            "args": [
+              "/NavigationBar0"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NonAppWindowIsVisibleAlways",
+            "args": [
+              "/NavigationBar0"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NonAppWindowIsVisibleAlways",
+            "args": [
+              "/StatusBar"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LayerIsVisibleAlways",
+            "args": [
+              "/StatusBar"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.EntireScreenCoveredAtStart"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.EntireScreenCoveredAtEnd"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LauncherWindowReplacesAppAsTopWindow"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NonAppWindowBecomesVisible",
+            "args": [
+              "com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LauncherReplacesAppLayer"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LayerIsVisibleAtEnd",
+            "args": [
+              "com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.AppLayerIsVisibleAtStart"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.AppLayerIsInvisibleAtEnd"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LauncherWindowMovesToTop"
+          }
+        ],
+        "postsubmit": [],
+        "flaky": [
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LayerIsVisibleAtEnd",
+            "args": [
+              "/NavigationBar0"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NavBarLayerPositionAtStart"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NavBarLayerPositionAtEnd"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.StatusBarLayerPositionAtStart"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.StatusBarLayerPositionAtEnd"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.EntireScreenCoveredAlways"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LayerIsInvisibleAtStart",
+            "args": [
+              "com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.VisibleWindowsShownMoreThanOneConsecutiveEntry"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.VisibleLayersShownMoreThanOneConsecutiveEntry"
+          }
+        ]
+      }
+    },
+    {
+      "transition": "PIP_ENTER",
+      "assertions": {
+        "presubmit": [
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LayerIsVisibleAlways",
+            "args": [
+              "/NavigationBar0"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NonAppWindowIsVisibleAlways",
+            "args": [
+              "/NavigationBar0"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LayerIsVisibleAlways",
+            "args": [
+              "/StatusBar"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NonAppWindowIsVisibleAlways",
+            "args": [
+              "/StatusBar"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.EntireScreenCoveredAtStart"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.EntireScreenCoveredAtEnd"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.AppLayerIsVisibleAlways"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.AppWindowIsVisibleAlways"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.AppWindowRemainInsideDisplayBounds"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.AppLayerRemainInsideDisplayBounds"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.AppLayerReduces"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.AppWindowBecomesPinned"
+          }
+        ],
+        "postsubmit": [],
+        "flaky": [
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NavBarLayerPositionAtStart"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NavBarLayerPositionAtEnd"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.StatusBarLayerPositionAtStart"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.StatusBarLayerPositionAtEnd"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.EntireScreenCoveredAlways"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NonAppWindowBecomesVisible",
+            "args": [
+              "com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "transition": "PIP_EXIT",
+      "assertions": {
+        "presubmit": [
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LayerIsVisibleAlways",
+            "args": [
+              "/NavigationBar0"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NonAppWindowIsVisibleAlways",
+            "args": [
+              "/NavigationBar0"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.LayerIsVisibleAlways",
+            "args": [
+              "/StatusBar"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NonAppWindowIsVisibleAlways",
+            "args": [
+              "/StatusBar"
+            ]
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.EntireScreenCoveredAtStart"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.EntireScreenCoveredAtEnd"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.AppLayerBecomesInvisible"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.PipWindowBecomesInvisible"
+          }
+        ],
+        "postsubmit": [],
+        "flaky": [
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.EntireScreenCoveredAlways"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NavBarLayerPositionAtStart"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.NavBarLayerPositionAtEnd"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.StatusBarLayerPositionAtStart"
+          },
+          {
+            "class": "com.android.server.wm.flicker.service.assertors.common.StatusBarLayerPositionAtEnd"
+          }
+        ]
+      }
+    }
+  ]
+}

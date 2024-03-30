@@ -1,0 +1,45 @@
+syntax = "proto2";
+
+package com.android.server.wm.flicker;
+
+// Each message has its own class file created.
+option java_multiple_files = true;
+
+message FlickerTagProto {
+  enum Transition {
+    ROTATION = 0;
+    APP_LAUNCH = 1;
+    APP_CLOSE = 2;
+    IME_APPEAR = 3;
+    IME_DISAPPEAR = 4;
+    PIP_ENTER = 5;
+    PIP_RESIZE = 6;
+    PIP_EXIT = 7;
+  };
+  required bool isStartTag = 1;
+  required Transition transition = 2;
+  required int32 id = 3;
+  optional int32 layerId = 4;
+  optional string windowToken = 5;
+  optional int32 taskId = 6;
+}
+
+message FlickerTagStateProto {
+  required int64 timestamp = 1;
+  repeated FlickerTagProto tags = 2;
+}
+
+message FlickerTagTraceProto {
+  /* constant; MAGIC_NUMBER = (long) MAGIC_NUMBER_H << 32 |
+     MagicNumber.MAGIC_NUMBER_L (this is needed because enums have to be 32 bits
+     and there's no nice way to put 64bit constants into .proto files. */
+  enum MagicNumber {
+    INVALID = 0;
+    MAGIC_NUMBER_L = 0x54474154; /* TAGT (little-endian ASCII) */
+    MAGIC_NUMBER_H = 0x45434152; /* RACE (little-endian ASCII) */
+  }
+
+  /* Must be the first field, set to value in MagicNumber */
+  optional fixed64 magic_number = 1;
+  repeated FlickerTagStateProto states = 2;
+}

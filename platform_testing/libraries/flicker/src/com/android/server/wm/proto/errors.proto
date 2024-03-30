@@ -1,0 +1,35 @@
+syntax = "proto2";
+
+package com.android.server.wm.flicker;
+
+// Each message has its own class file created.
+option java_multiple_files = true;
+
+message FlickerErrorProto {
+  required string stacktrace = 1;
+  required string message = 2;
+  optional int32 layerId = 3;
+  optional string windowToken = 4;
+  optional int32 taskId = 5;
+  optional string assertionName = 6;
+}
+
+message FlickerErrorStateProto {
+  required int64 timestamp = 1;
+  repeated FlickerErrorProto errors = 2;
+}
+
+message FlickerErrorTraceProto {
+  /* constant; MAGIC_NUMBER = (long) MAGIC_NUMBER_H << 32 |
+     MagicNumber.MAGIC_NUMBER_L (this is needed because enums have to be 32 bits
+     and there's no nice way to put 64bit constants into .proto files. */
+  enum MagicNumber {
+    INVALID = 0;
+    MAGIC_NUMBER_L = 0x54525245; /* ERRT (little-endian ASCII) */
+    MAGIC_NUMBER_H = 0x45434152; /* RACE (little-endian ASCII) */
+  }
+
+  /* Must be the first field, set to value in MagicNumber */
+  optional fixed64 magic_number = 1;
+  repeated FlickerErrorStateProto states = 2;
+}

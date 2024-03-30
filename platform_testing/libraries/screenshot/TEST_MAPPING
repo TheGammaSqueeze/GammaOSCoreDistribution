@@ -1,0 +1,12 @@
+{
+  "presubmit": [
+    {
+      "name": "platform-screenshot-diff-test",
+      "options": [
+        {
+          "exclude-annotation": "androidx.test.filters.FlakyTest"
+        }
+      ]
+    }
+  ]
+}
