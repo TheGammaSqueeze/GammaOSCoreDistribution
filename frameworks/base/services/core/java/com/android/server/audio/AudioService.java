@@ -423,10 +423,10 @@ public class AudioService extends IAudioService.Stub
         5,  // STREAM_VOICE_CALL
         7,  // STREAM_SYSTEM
         7,  // STREAM_RING            // configured by config_audio_ring_vol_steps
-        15, // STREAM_MUSIC
+        100, // STREAM_MUSIC
         7,  // STREAM_ALARM
         7,  // STREAM_NOTIFICATION    // configured by config_audio_notif_vol_steps
-        15, // STREAM_BLUETOOTH_SCO
+        100, // STREAM_BLUETOOTH_SCO
         7,  // STREAM_SYSTEM_ENFORCED
         15, // STREAM_DTMF
         15, // STREAM_TTS
