@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/packages/modules/AdServices
+	review = android-review.googlesource.com
+	projectname = platform/packages/modules/AdServices
+	fetch = +refs/heads/*:refs/remotes/aosp/*

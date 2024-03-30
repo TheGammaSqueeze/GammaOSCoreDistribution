@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/hardware/qcom/bootctrl
+	review = android-review.googlesource.com
+	projectname = platform/hardware/qcom/bootctrl
+	fetch = +refs/heads/*:refs/remotes/aosp/*

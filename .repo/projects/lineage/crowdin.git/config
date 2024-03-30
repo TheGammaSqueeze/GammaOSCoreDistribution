@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "github"]
+	url = https://github.com/LineageOS/cm_crowdin
+	review = review.lineageos.org
+	projectname = LineageOS/cm_crowdin
+	fetch = +refs/heads/*:refs/remotes/github/*

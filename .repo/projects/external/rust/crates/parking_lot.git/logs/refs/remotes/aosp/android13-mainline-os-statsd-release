@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 68d253ba0332c65cce81e7220ef7ed1327552a8b TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719701 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/rust/crates/parking_lot.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

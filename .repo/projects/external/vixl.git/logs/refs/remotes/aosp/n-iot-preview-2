@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 1c7bff344a70d3b17bef0e903e0790cc6248fb7b TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719725 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/vixl.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

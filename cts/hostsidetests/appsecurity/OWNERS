@@ -1,0 +1,67 @@
+# Bug component: 533114
+# Bug component: 36137 = per-file ApplicationVisibilityTest.java
+# Bug component: 36137 = per-file BaseInstallMultiple.java
+# Bug component: 568761 = per-file CorruptApkTests.java
+# Bug component: 36137 = per-file EphemeralTest.java
+# Bug component: 36137 = per-file InstantAppUserTest.java
+# Bug component: 36137 = per-file InstantCookieHostTest.java
+# Bug component: 36137 = per-file IsolatedSplitsTests.java
+# Bug component: 36137 = per-file MajorVersionTest.java
+# Bug component: 568631 = per-file OverlayHostTest.java
+# Bug component: 36137 = per-file Package*
+# Bug component: 36137 = per-file Pkg*
+# Bug component: 36137 = per-file PrivilegedUpdateTests.java
+# Bug component: 36137 = per-file SharedUserIdTest.java
+# Bug component: 36137 = per-file SplitTests.java
+
+patb@google.com
+per-file AccessSerialNumberTest.java = ewol@google.com
+per-file ApexSignatureVerificationTest.java = dariofreni@google.com
+per-file AppDataIsolationTests.java = rickywai@google.com,alanstokes@google.com
+per-file AppOpsTest.java = ewol@google.com
+per-file AppSecurityTests.java = cbrubaker@google.com
+per-file AuthBoundKeyTest.java = file:test-apps/AuthBoundKeyApp/OWNERS
+per-file DeviceIdentifierTest.java = cbrubaker@google.com
+per-file ExternalStorageHostTest.java = nandana@google.com
+per-file ExternalStorageHostTest.java = zezeozue@google.com
+per-file KeySetHostTest.java = cbrubaker@google.com
+per-file ListeningPortsTest.java = cbrubaker@google.com
+per-file PermissionsHostTest.java = ewol@google.com
+per-file PkgInstallSignatureVerificationTest.java = cbrubaker@google.com
+per-file RequestsOnlyCalendarApp22.java = ewol@google.com
+per-file UseEmbeddedDexTest.java = victorhsieh@google.com
+# Package Manager
+per-file ApplicationVisibilityTest.java = chiuwinson@google.com, patb@google.com, schfan@google.com
+per-file BaseInstallMultiple.java =  chiuwinson@google.com, patb@google.com, schfan@google.com
+per-file EphemeralTest.java =  chiuwinson@google.com, patb@google.com, schfan@google.com
+per-file InstantAppUserTest.java =  chiuwinson@google.com, patb@google.com, schfan@google.com
+per-file InstantCookieHostTest.java =  chiuwinson@google.com, patb@google.com, schfan@google.com
+per-file IsolatedSplitsTests.java = chiuwinson@google.com, patb@google.com, schfan@google.com
+per-file MajorVersionTest.java =  chiuwinson@google.com, patb@google.com, schfan@google.com
+per-file PermissionsHostTest.java = ewol@google.com
+per-file Pkg* = chiuwinson@google.com, patb@google.com, schfan@google.com
+per-file PrivilegedUpdateTests.java = chiuwinson@google.com, patb@google.com, schfan@google.com
+per-file SharedUserIdTest.java = chiuwinson@google.com, patb@google.com, schfan@google.com
+per-file SplitTests.java = chiuwinson@google.com, patb@google.com, schfan@google.com
+# Resources
+per-file CorruptApkTests.java = patb@google.com, zyy@google.com
+per-file OverlayHostTest.java = patb@google.com, zyy@google.com
+# test apps
+per-file BasePermissionsTest.java = ewol@google.com
+per-file RequestsOnlyCalendarApp22.java = ewol@google.com
+per-file ReviewPermissionHelper = ewol@google.com
+per-file UsePermission*.java = ewol@google.com
+# CTS shim packages
+per-file CtsShim*.apk = dariofreni@google.com
+per-file CtsShim*.apk = ioffe@google.com
+per-file com.android.apex.cts.shim.*.apex = dariofreni@google.com
+per-file com.android.apex.cts.shim.*.apex = ioffe@google.com
+
+per-file *Adoptable* = file:platform/frameworks/base:/core/java/android/os/storage/OWNERS
+per-file *DirectBoot* = file:platform/frameworks/base:/core/java/android/os/storage/OWNERS
+per-file *Storage* = file:platform/frameworks/base:/core/java/android/os/storage/OWNERS
+per-file *Documents* = file:platform/frameworks/base:/core/java/android/os/storage/OWNERS
+per-file ScopedDirectoryAccessTest.java = file:platform/frameworks/base:/core/java/android/os/storage/OWNERS
+
+per-file *Documents* = file:platform/packages/apps/DocumentsUI:/OWNERS
+per-file ScopedDirectoryAccessTest.java = file:platform/packages/apps/DocumentsUI:/OWNERS

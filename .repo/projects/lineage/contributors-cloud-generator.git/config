@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "github"]
+	url = https://github.com/LineageOS/contributors-cloud-generator
+	review = review.lineageos.org
+	projectname = LineageOS/contributors-cloud-generator
+	fetch = +refs/heads/*:refs/remotes/github/*

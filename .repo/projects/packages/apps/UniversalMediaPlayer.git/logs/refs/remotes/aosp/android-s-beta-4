@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 17d6decd385998b0954c7fed6773da21708db8c2 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719787 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/packages/apps/UniversalMediaPlayer.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

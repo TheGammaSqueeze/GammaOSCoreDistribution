@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/system/libufdt
+	review = android-review.googlesource.com
+	projectname = platform/system/libufdt
+	fetch = +refs/heads/*:refs/remotes/aosp/*

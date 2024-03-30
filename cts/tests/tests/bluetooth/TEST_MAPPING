@@ -1,0 +1,12 @@
+{
+  "presubmit-large": [
+    {
+      "name": "CtsBluetoothTestCases"
+    }
+  ],
+  "hwasan-postsubmit": [
+    {
+      "name": "CtsBluetoothTestCases"
+    }
+  ]
+}

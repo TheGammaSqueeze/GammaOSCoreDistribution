@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 056802c4b499cc8246783be18300d0ed3b199e70 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719875 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/tcpdump.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

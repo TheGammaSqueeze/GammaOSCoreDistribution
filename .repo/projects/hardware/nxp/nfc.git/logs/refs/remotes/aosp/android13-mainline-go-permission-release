@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 7cbd7e73fd056ea499efe4ce31412145c0c73702 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719730 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/hardware/nxp/nfc.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

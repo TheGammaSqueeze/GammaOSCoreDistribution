@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "github"]
+	url = https://github.com/LineageOS/android_packages_modules_DnsResolver
+	review = review.lineageos.org
+	projectname = LineageOS/android_packages_modules_DnsResolver
+	fetch = +refs/heads/*:refs/remotes/github/*

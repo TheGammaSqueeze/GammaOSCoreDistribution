@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/s2-geometry-library-java
+	review = android-review.googlesource.com
+	projectname = platform/external/s2-geometry-library-java
+	fetch = +refs/heads/*:refs/remotes/aosp/*

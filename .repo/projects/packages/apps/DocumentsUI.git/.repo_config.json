@@ -1,0 +1,20 @@
+{
+  "core.repositoryformatversion": [
+    "0"
+  ],
+  "core.filemode": [
+    "true"
+  ],
+  "remote.github.url": [
+    "https://github.com/LineageOS/android_packages_apps_DocumentsUI"
+  ],
+  "remote.github.review": [
+    "review.lineageos.org"
+  ],
+  "remote.github.projectname": [
+    "LineageOS/android_packages_apps_DocumentsUI"
+  ],
+  "remote.github.fetch": [
+    "+refs/heads/*:refs/remotes/github/*"
+  ]
+}

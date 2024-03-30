@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/kernel/google-modules/touch/fts_touch
+	review = android-review.googlesource.com
+	projectname = kernel/google-modules/touch/fts_touch
+	fetch = +refs/heads/*:refs/remotes/aosp/*

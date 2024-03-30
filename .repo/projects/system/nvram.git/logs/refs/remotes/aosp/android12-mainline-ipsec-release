@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 e3f35b004edb9ce672194297ec2a96675e5d4993 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719808 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/system/nvram.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

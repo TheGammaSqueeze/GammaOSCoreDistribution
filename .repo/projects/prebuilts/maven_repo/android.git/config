@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/prebuilts/maven_repo/android
+	review = android-review.googlesource.com
+	projectname = platform/prebuilts/maven_repo/android
+	fetch = +refs/heads/*:refs/remotes/aosp/*

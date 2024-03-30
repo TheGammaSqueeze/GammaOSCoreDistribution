@@ -1,0 +1,32 @@
+{
+  "presubmit": [
+    {
+      "name": "BedsteadQueryableTest"
+    },
+    {
+      "name": "ActivityContextTest"
+    },
+    {
+      "name": "ActivityContextInstrumentOtherAppTest"
+    }
+  ], "postsubmit": [
+    {
+      "name": "NeneTest"
+    },
+    {
+      "name": "EventLibTest"
+    },
+    {
+      "name": "DeviceAdminAppTest"
+    },
+    {
+      "name": "HarrierTest"
+    },
+    {
+      "name": "RemoteDPCTest"
+    },
+    {
+      "name": "TestAppTest"
+    }
+  ]
+}

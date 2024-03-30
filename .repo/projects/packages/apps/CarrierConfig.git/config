@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/packages/apps/CarrierConfig
+	review = android-review.googlesource.com
+	projectname = platform/packages/apps/CarrierConfig
+	fetch = +refs/heads/*:refs/remotes/aosp/*

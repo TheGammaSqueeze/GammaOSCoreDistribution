@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/tools/external_updater
+	review = android-review.googlesource.com
+	projectname = platform/tools/external_updater
+	fetch = +refs/heads/*:refs/remotes/aosp/*

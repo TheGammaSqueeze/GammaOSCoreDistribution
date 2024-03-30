@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 efc8bd996bab134dcc9bd93c35dc3dffaf4cca40 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719743 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/kernel/google/gs201/private/google-modules/sensors/hall_sensor.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

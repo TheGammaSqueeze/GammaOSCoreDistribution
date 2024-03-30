@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/wycheproof
+	review = android-review.googlesource.com
+	projectname = platform/external/wycheproof
+	fetch = +refs/heads/*:refs/remotes/aosp/*

@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 eb0519a7447c6b19c400acb24924e0db3df1269b TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719746 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/kernel/google/gs201/private/google-modules/touch/focaltech.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

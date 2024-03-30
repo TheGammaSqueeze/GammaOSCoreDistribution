@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/hardware/synaptics/wlan
+	review = android-review.googlesource.com
+	projectname = platform/hardware/synaptics/wlan
+	fetch = +refs/heads/*:refs/remotes/aosp/*

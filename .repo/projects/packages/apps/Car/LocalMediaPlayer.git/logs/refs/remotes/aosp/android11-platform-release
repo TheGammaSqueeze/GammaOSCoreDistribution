@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 2bdaf80a7306d6ceb6410c043ce7c904923bc5ab TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719752 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/packages/apps/Car/LocalMediaPlayer.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

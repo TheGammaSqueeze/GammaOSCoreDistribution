@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/packages/apps/SecureElement
+	review = android-review.googlesource.com
+	projectname = platform/packages/apps/SecureElement
+	fetch = +refs/heads/*:refs/remotes/aosp/*

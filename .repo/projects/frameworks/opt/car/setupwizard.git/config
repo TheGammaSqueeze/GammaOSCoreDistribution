@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/frameworks/opt/car/setupwizard
+	review = android-review.googlesource.com
+	projectname = platform/frameworks/opt/car/setupwizard
+	fetch = +refs/heads/*:refs/remotes/aosp/*

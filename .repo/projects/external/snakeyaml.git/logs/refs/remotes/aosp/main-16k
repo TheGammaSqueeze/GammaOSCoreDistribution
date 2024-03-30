@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 352dfdf69a3a0fae30028829ee8d66f5efbb5444 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719718 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/snakeyaml.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

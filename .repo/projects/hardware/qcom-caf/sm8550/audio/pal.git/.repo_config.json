@@ -1,0 +1,23 @@
+{
+  "core.repositoryformatversion": [
+    "1"
+  ],
+  "core.filemode": [
+    "true"
+  ],
+  "extensions.preciousobjects": [
+    "true"
+  ],
+  "remote.github.url": [
+    "https://github.com/LineageOS/android_vendor_qcom_opensource_arpal-lx"
+  ],
+  "remote.github.review": [
+    "review.lineageos.org"
+  ],
+  "remote.github.projectname": [
+    "LineageOS/android_vendor_qcom_opensource_arpal-lx"
+  ],
+  "remote.github.fetch": [
+    "+refs/heads/*:refs/remotes/github/*"
+  ]
+}

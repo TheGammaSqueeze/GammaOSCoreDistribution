@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 20f9e3383f6ff64dfc53294834048837986ceb3b TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719745 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/kernel/google/gs201/private/google-modules/edgetpu/janeiro.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

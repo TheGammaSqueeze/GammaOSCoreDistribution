@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 eb5ec464f0b9238c6b5c9eefed4848fb3923a891 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719811 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/test/vts-testcase/security.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

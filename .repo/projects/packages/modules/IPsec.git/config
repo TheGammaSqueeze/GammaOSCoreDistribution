@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/packages/modules/IPsec
+	review = android-review.googlesource.com
+	projectname = platform/packages/modules/IPsec
+	fetch = +refs/heads/*:refs/remotes/aosp/*

@@ -1,0 +1,20 @@
+{
+  "core.repositoryformatversion": [
+    "0"
+  ],
+  "core.filemode": [
+    "true"
+  ],
+  "remote.github.url": [
+    "https://github.com/LineageOS/contributors-cloud-generator"
+  ],
+  "remote.github.review": [
+    "review.lineageos.org"
+  ],
+  "remote.github.projectname": [
+    "LineageOS/contributors-cloud-generator"
+  ],
+  "remote.github.fetch": [
+    "+refs/heads/*:refs/remotes/github/*"
+  ]
+}

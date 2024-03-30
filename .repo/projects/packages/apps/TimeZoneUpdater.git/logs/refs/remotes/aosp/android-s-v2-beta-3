@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 d5cac73f2cbdca707fa310b0dbaa25e4374ae02b TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719766 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/packages/apps/TimeZoneUpdater.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

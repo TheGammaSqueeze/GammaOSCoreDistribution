@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 03c4ce23715ccf0dae1ce18a722f4bcc99b90860 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719740 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/hardware/google/camera.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

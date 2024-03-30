@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/kernel/google-modules/lwis
+	review = android-review.googlesource.com
+	projectname = kernel/google-modules/lwis
+	fetch = +refs/heads/*:refs/remotes/aosp/*

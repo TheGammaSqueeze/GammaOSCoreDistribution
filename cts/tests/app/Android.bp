@@ -1,0 +1,199 @@
+// Copyright (C) 2008 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+android_test {
+    name: "CtsAppTestCases",
+    defaults: ["cts_defaults"],
+    libs: [
+        "android.test.runner",
+        "org.apache.http.legacy",
+        "android.test.base",
+    ],
+    static_libs: [
+        "compatibility-device-util-axt",
+        "ctstestrunner-axt",
+        "ctstestserver",
+        "cts-opengl-util",
+        "cts-wm-util",
+        "mockito-target-minus-junit4",
+        "androidx.test.ext.junit",
+        "androidx.test.rules",
+        "platform-test-annotations",
+        "platformprotosnano",
+        "permission-test-util-lib",
+        "CtsAppTestStubsShared",
+    ],
+    srcs: [
+        "src/**/*.java",
+        "src/**/*.kt",
+        "app/src/android/app/stubs/RemoteActivity.java",
+        "NotificationListener/src/com/android/test/notificationlistener/INotificationUriAccessService.aidl",
+    ],
+    // Tag this module as a cts test artifact
+    test_suites: [
+        "cts",
+        "general-tests",
+        "sts",
+    ],
+    instrumentation_for: "CtsAppTestStubs",
+    sdk_version: "test_current",
+    // 21 required for multi-dex.
+    min_sdk_version: "21",
+    // Disable coverage since it pushes us over the dex limit and we don't
+    // actually need to measure the tests themselves.
+    jacoco: {
+        exclude_filter: ["**"],
+    },
+    // Even with coverage disabled, we're close to the single dex limit, so allow use of multi-dex.
+    dxflags: ["--multi-dex"],
+    data: [
+        ":CtsSimpleApp",
+        ":CtsAppTestStubs",
+        ":CtsAppTestStubsApp1",
+        ":CtsAppTestStubsApp3",
+        ":CtsAppTestStubsApp2",
+        ":CtsAppTestStubsApi30",
+        ":CtsBadProviderStubs",
+        ":CtsCantSaveState1",
+        ":CtsCantSaveState2",
+        ":NotificationApp",
+        ":NotificationProvider",
+        ":NotificationListener",
+        ":StorageDelegator",
+        ":CtsActivityManagerApi29",
+        ":NotificationTrampoline",
+        ":NotificationTrampolineApi30",
+        ":NotificationTrampolineApi32",
+    ],
+    per_testcase_directory: true,
+}
+
+android_test {
+    name: "CtsDownloadManagerApi28",
+    defaults: ["cts_defaults"],
+    libs: [
+        "android.test.runner",
+        "org.apache.http.legacy",
+        "android.test.base",
+    ],
+    static_libs: [
+        "compatibility-device-util-axt",
+        "ctstestrunner-axt",
+        "ctstestserver",
+        "mockito-target-minus-junit4",
+        "androidx.test.rules",
+        "platform-test-annotations",
+        "androidx.test.rules",
+    ],
+    srcs: [
+        "DownloadManagerApi28Test/src/**/*.java",
+        "src/android/app/cts/DownloadManagerTestBase.java",
+    ],
+    resource_dirs: ["app/res"],
+    asset_dirs: ["app/assets"],
+    // Tag this module as a cts test artifact
+    test_suites: [
+        "cts",
+        "general-tests",
+    ],
+    sdk_version: "test_current",
+    min_sdk_version: "14",
+    manifest: "DownloadManagerApi28Test/AndroidManifest.xml",
+    test_config: "DownloadManagerApi28Test/AndroidTest.xml",
+    lint: {
+        baseline_filename: "lint-baseline-api-28.xml",
+    },
+}
+
+android_test {
+    name: "CtsDownloadManagerInstaller",
+    defaults: ["cts_defaults"],
+    libs: [
+        "android.test.runner",
+        "org.apache.http.legacy",
+        "android.test.base",
+    ],
+    static_libs: [
+        "compatibility-device-util-axt",
+        "ctstestrunner-axt",
+        "ctstestserver",
+        "mockito-target-minus-junit4",
+        "androidx.test.rules",
+        "platform-test-annotations",
+        "androidx.test.rules",
+    ],
+    srcs: [
+        "DownloadManagerInstallerTest/src/**/*.java",
+        "src/android/app/cts/DownloadManagerTestBase.java",
+    ],
+    resource_dirs: ["app/res"],
+    asset_dirs: ["app/assets"],
+    // Tag this module as a cts test artifact
+    test_suites: [
+        "cts",
+        "general-tests",
+    ],
+    sdk_version: "test_current",
+    min_sdk_version: "14",
+    manifest: "DownloadManagerInstallerTest/AndroidManifest.xml",
+    test_config: "DownloadManagerInstallerTest/AndroidTest.xml",
+    lint: {
+        baseline_filename: "lint-baseline-installer.xml",
+    },
+}
+
+android_test {
+    name: "CtsAppExitTestCases",
+    defaults: ["cts_defaults"],
+    libs: [
+        "android.test.runner",
+        "org.apache.http.legacy",
+        "android.test.base",
+    ],
+    static_libs: [
+        "ub-uiautomator",
+        "androidx.test.rules",
+        "compatibility-device-util-axt",
+        "CtsExternalServiceCommon",
+        "cts-wm-util",
+        "libprotobuf-java-lite",
+    ],
+    aidl: {
+        local_include_dirs: ["app/src"],
+    },
+    srcs: [
+        ":libtombstone_proto-src",
+        "AppExitTest/src/**/*.java",
+        "app/src/**/*.aidl",
+        "src/android/app/cts/android/app/cts/tools/WatchUidRunner.java",
+    ],
+    jarjar_rules: "AppExitTest/jarjar-rules.txt",
+    test_suites: [
+        "cts",
+        "general-tests",
+    ],
+    manifest: "AppExitTest/AndroidManifest.xml",
+    test_config: "AppExitTest/AndroidTest.xml",
+    platform_apis: true,
+    data: [
+        ":CtsSimpleApp",
+        ":CtsExternalServiceService",
+        ":CtsAppTestStubs",
+    ],
+    per_testcase_directory: true,
+}

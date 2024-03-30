@@ -1,0 +1,18 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+android_library {
+    name: "SensorPrivacyTestAppUtils",
+
+    srcs: [
+        "src/**/*.java",
+        "src/**/*.kt"
+    ],
+
+    static_libs: [
+        "androidx.annotation_annotation",
+    ],
+
+    sdk_version: "test_current",
+}

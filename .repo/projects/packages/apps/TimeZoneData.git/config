@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/packages/apps/TimeZoneData
+	review = android-review.googlesource.com
+	projectname = platform/packages/apps/TimeZoneData
+	fetch = +refs/heads/*:refs/remotes/aosp/*

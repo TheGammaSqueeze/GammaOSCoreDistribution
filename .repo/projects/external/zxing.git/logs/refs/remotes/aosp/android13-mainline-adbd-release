@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 5b108c9241a2fca750683abcd169e2ca6e6f7fbd TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719739 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/zxing.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

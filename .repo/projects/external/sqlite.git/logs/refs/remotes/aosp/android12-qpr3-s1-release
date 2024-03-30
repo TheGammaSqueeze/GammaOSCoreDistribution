@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 08762c8aed208882de7889d1de69b3778f6de7ea TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719722 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/sqlite.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

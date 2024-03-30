@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 ca03e95a4d2a05b9c2e6fee622e6fc58adcc915f TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719785 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/kernel/google/gs201/private/devices/google/bluejay.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

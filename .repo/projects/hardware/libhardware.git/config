@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "github"]
+	url = https://github.com/LineageOS/android_hardware_libhardware
+	review = review.lineageos.org
+	projectname = LineageOS/android_hardware_libhardware
+	fetch = +refs/heads/*:refs/remotes/github/*

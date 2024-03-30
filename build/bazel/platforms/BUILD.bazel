@@ -1,0 +1,135 @@
+# Common target platforms for Android Platform builds.
+#
+# Platforms represent distinct hardware environments:
+#
+#   - CPU architecture
+#   - Hardware capabilities
+#   - Firmware differences
+#
+# Platforms do NOT represent different software packages, that is the
+# reposibility of the top-level targets being built.
+#
+# These model after the arch and OS definitions in build/soong/android/arch.go.
+
+load("@soong_injection//product_config:product_variables.bzl", "product_vars")
+load("//build/bazel/platforms:product_variables/product_platform.bzl", "android_platform", "product_variable_config")
+load("//build/bazel/platforms/arch/variants:constants.bzl", "constants")
+load(
+    "//prebuilts/clang/host/linux-x86:cc_toolchain_constants.bzl",
+    "arch_to_variants",
+    "variant_constraints",
+    "variant_name",
+)
+
+package(default_visibility = ["//visibility:public"])
+
+product_variable_config(
+    name = "android_target",
+    product_config_vars = product_vars,
+)
+
+# Linux is the OS
+# for the Linux kernel plus the glibc runtime.
+android_platform(
+    name = "linux_x86",
+    constraint_values = [
+        "//build/bazel/platforms/arch:x86",
+        "//build/bazel/platforms/os:linux",
+    ],
+    product = ":android_target",
+)
+
+android_platform(
+    name = "linux_x86_64",
+    constraint_values = [
+        "//build/bazel/platforms/arch:x86_64",
+        "//build/bazel/platforms/os:linux",
+    ],
+    product = ":android_target",
+)
+
+# linux_bionic is the OS for the Linux kernel plus the Bionic libc runtime, but
+# without the rest of Android.
+android_platform(
+    name = "linux_bionic_arm64",
+    constraint_values = [
+        "//build/bazel/platforms/arch:arm64",
+        "//build/bazel/platforms/os:linux_bionic",
+    ],
+    product = ":android_target",
+)
+
+android_platform(
+    name = "linux_bionic_x86_64",
+    constraint_values = [
+        "//build/bazel/platforms/arch:x86_64",
+        "//build/bazel/platforms/os:linux_bionic",
+    ],
+    product = ":android_target",
+)
+
+# Darwin is the OS for MacOS host machines.
+android_platform(
+    name = "darwin_arm64",
+    constraint_values = [
+        "//build/bazel/platforms/arch:arm64",
+        "//build/bazel/platforms/os:darwin",
+    ],
+    product = ":android_target",
+)
+
+android_platform(
+    name = "darwin_x86_64",
+    constraint_values = [
+        "//build/bazel/platforms/arch:x86_64",
+        "//build/bazel/platforms/os:darwin",
+    ],
+    product = ":android_target",
+)
+
+# Windows is the OS for Windows host machines.
+android_platform(
+    name = "windows_x86",
+    constraint_values = [
+        "//build/bazel/platforms/arch:x86",
+        "//build/bazel/platforms/os:windows",
+    ],
+    product = ":android_target",
+)
+
+android_platform(
+    name = "windows_x86_64",
+    constraint_values = [
+        "//build/bazel/platforms/arch:x86_64",
+        "//build/bazel/platforms/os:windows",
+    ],
+    product = ":android_target",
+)
+
+alias(
+    name = "android_arm",
+    actual = ":android_arm_armv7-a-neon",  # default to armv7-a-neon
+)
+
+alias(
+    name = "android_arm64",
+    actual = ":android_arm64_armv8-a",  # default to armv8-a
+)
+
+[
+    [
+        android_platform(
+            name = "android_" + arch + variant_name(variant),
+            constraint_values = [
+                "//build/bazel/platforms/arch:" + arch,
+                "//build/bazel/platforms/os:android",
+            ] + variant_constraints(
+                variant,
+                constants.AndroidArchToVariantToFeatures[arch],
+            ),
+            product = ":android_target",
+        )
+        for variant in variants
+    ]
+    for arch, variants in arch_to_variants.items()
+]

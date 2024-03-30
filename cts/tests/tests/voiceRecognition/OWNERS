@@ -1,0 +1,9 @@
+# Bug component: 533220
+volnov@google.com
+andreaambu@google.com
+eugeniom@google.com
+schfan@google.com
+
+# Framework team as backup
+
+include platform/frameworks/base:/core/java/android/service/voice/OWNERS

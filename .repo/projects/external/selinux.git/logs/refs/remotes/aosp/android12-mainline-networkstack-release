@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 3457fff1f4f759f73f431137b8cf8eed1772da1f TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719897 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/selinux.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

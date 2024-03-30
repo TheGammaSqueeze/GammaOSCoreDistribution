@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 7b2c9a75013dc0c03d5cc6111a61285ad96a8da2 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719721 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/frameworks/minikin.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

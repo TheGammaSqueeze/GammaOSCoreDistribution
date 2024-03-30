@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 c8d810f45996764677290c4e8eb8e079a5541b9f TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719760 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/packages/apps/QuickAccessWallet.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

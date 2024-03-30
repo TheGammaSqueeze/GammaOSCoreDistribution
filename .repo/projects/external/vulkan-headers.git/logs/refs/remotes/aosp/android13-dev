@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 fe7e9f4eb1d791afef4c6176ae3cc3f54fde63ab TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719741 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/vulkan-headers.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

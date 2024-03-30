@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/hardware/google/apf
+	review = android-review.googlesource.com
+	projectname = platform/hardware/google/apf
+	fetch = +refs/heads/*:refs/remotes/aosp/*

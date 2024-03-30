@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 9ff37364868974439b20486e7ce3d4800da35c58 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719720 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/tinyxml2.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

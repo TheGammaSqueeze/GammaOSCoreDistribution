@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/prebuilts/r8
+	review = android-review.googlesource.com
+	projectname = platform/prebuilts/r8
+	fetch = +refs/heads/*:refs/remotes/aosp/*

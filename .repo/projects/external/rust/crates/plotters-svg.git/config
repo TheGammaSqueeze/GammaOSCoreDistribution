@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/rust/crates/plotters-svg
+	review = android-review.googlesource.com
+	projectname = platform/external/rust/crates/plotters-svg
+	fetch = +refs/heads/*:refs/remotes/aosp/*

@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 a5596c972dabf66dc810b5a2f39385a9187e9bae TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719705 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/rust/crates/minimal-lexical.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

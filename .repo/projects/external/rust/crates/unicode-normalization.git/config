@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/rust/crates/unicode-normalization
+	review = android-review.googlesource.com
+	projectname = platform/external/rust/crates/unicode-normalization
+	fetch = +refs/heads/*:refs/remotes/aosp/*

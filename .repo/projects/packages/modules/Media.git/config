@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/packages/modules/Media
+	review = android-review.googlesource.com
+	projectname = platform/packages/modules/Media
+	fetch = +refs/heads/*:refs/remotes/aosp/*

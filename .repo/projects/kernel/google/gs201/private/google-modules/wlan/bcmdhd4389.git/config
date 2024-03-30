@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/kernel/google-modules/wlan/bcmdhd/bcm4389
+	review = android-review.googlesource.com
+	projectname = kernel/google-modules/wlan/bcmdhd/bcm4389
+	fetch = +refs/heads/*:refs/remotes/aosp/*

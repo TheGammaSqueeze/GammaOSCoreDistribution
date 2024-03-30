@@ -1,0 +1,10 @@
+[core]
+	repositoryFormatVersion = 1
+	filemode = true
+[remote "github"]
+	url = https://github.com/LineageOS/android_vendor_qcom_opensource_data-ipa-cfg-mgr
+	review = review.lineageos.org
+	projectname = LineageOS/android_vendor_qcom_opensource_data-ipa-cfg-mgr
+	fetch = +refs/heads/*:refs/remotes/github/*
+[extensions]
+	preciousObjects = true

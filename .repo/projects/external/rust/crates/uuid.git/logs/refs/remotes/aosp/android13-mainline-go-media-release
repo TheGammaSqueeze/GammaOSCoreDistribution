@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 a21ff1ab97e23899097761c36588aef16fe1e90f TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719712 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/rust/crates/uuid.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

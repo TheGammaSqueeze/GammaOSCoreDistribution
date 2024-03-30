@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 6e162b3c9475d35f6e243a906cbb431d77ce93ec TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719700 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/rust/crates/crossbeam-channel.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

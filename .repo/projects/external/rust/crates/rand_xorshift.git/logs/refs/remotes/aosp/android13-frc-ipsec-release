@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 20dba3938ddc2715914a48db36d2edb6907f811e TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719708 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/rust/crates/rand_xorshift.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

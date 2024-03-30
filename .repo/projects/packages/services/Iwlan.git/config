@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/packages/services/Iwlan
+	review = android-review.googlesource.com
+	projectname = platform/packages/services/Iwlan
+	fetch = +refs/heads/*:refs/remotes/aosp/*

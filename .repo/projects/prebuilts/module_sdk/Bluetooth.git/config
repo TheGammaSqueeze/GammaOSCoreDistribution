@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/prebuilts/module_sdk/Bluetooth
+	review = android-review.googlesource.com
+	projectname = platform/prebuilts/module_sdk/Bluetooth
+	fetch = +refs/heads/*:refs/remotes/aosp/*

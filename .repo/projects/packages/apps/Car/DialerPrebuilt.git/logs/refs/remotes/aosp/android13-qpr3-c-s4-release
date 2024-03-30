@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 bcf403550da36f3c525778f364a7b3a7ccc96a0b TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719755 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/packages/apps/Car/DialerPrebuilt.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

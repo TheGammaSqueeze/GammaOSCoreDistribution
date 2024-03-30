@@ -1,0 +1,27 @@
+# pack-refs with: peeled fully-peeled sorted 
+bfc901e7efbc591e052f0a81fe347539ba965f1c refs/remotes/github/lineage-20.0
+e0e5dd09791e41cc198a83e0f4559c0ed16f5693 refs/tags/cm-10.1-M1
+ad4585970a5901286891ed9a5b4cc6f1e3e6ea80 refs/tags/cm-10.1-M2
+aeacbb9eebd087e6eaf921a1cb6a12c43033548a refs/tags/cm-10.1-M3
+c70b94eac2766ceae1f99703792b0dc5856b087f refs/tags/cm-10.1.0
+c70b94eac2766ceae1f99703792b0dc5856b087f refs/tags/cm-10.1.0-RC1
+c70b94eac2766ceae1f99703792b0dc5856b087f refs/tags/cm-10.1.0-RC2
+c70b94eac2766ceae1f99703792b0dc5856b087f refs/tags/cm-10.1.0-RC3
+c70b94eac2766ceae1f99703792b0dc5856b087f refs/tags/cm-10.1.0-RC4
+c70b94eac2766ceae1f99703792b0dc5856b087f refs/tags/cm-10.1.0-RC5
+a20d358ecf4809462dd61573e4db6ea07131d238 refs/tags/cm-10.1.1
+a20d358ecf4809462dd61573e4db6ea07131d238 refs/tags/cm-10.1.2
+949aeb6d16adcc45453bbb8a76a1eb105641ebde refs/tags/cm-10.1.3
+da0db0bd997c327b1279ba03cf1cea8cfd501044 refs/tags/cm-10.1.3-RC1
+da0db0bd997c327b1279ba03cf1cea8cfd501044 refs/tags/cm-10.1.3-RC2
+7d7eed6f2856fbccfa2b84977f2cba9cdab1aac1 refs/tags/cm-10.2-M1
+59ff8c5e007707df33d50424132d1000d3bae884 refs/tags/cm-10.2.0
+d1dc770bb0a1e33fd93c0741c0f45756d4536d11 refs/tags/cm-10.2.1
+4908e67f0fa20d43f9872a59d3d78573cff7beee refs/tags/cm-10.2.1.1
+b2542e1d9e552279657c40777fd055bbea3b22fb refs/tags/cm-11.0-XNPH05Q-bacon-5229c4ef56
+6ff09a47a5f29a4efc47c988fbd05b8dc16ac9ae refs/tags/cm-11.0-XNPH05Q-tomato-9828f8e9cc
+181c6bb215d2604ce59a42dda030906b9bf3a751 refs/tags/cm-11.0-XNPH22R-bacon-03d77315ea
+181c6bb215d2604ce59a42dda030906b9bf3a751 refs/tags/cm-11.0-XNPH25R-bacon-d22b777afa
+e3d15fe3c1e29e77898e527e4b2f95b30c8fff80 refs/tags/cm-11.0-XNPH30O-bacon-4f280f505a
+e3d15fe3c1e29e77898e527e4b2f95b30c8fff80 refs/tags/cm-11.0-XNPH33R-bacon-3628510d76
+d61451e5e6e1ad6cce9dc45fd932600736546706 refs/tags/cm-11.0-XNPH44S-bacon-5fa8c79c0b

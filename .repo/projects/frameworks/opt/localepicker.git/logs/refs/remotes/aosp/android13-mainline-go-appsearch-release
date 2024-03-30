@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 ce4b130150f55bd6be442b2bd1ac3c89c552ce95 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719724 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/frameworks/opt/localepicker.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

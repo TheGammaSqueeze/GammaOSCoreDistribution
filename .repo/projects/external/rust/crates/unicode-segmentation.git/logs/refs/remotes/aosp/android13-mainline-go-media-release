@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 db1e66a4283a3b9f6a82cce5137b1e84dc77796f TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719711 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/rust/crates/unicode-segmentation.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

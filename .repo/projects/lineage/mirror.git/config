@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "github"]
+	url = https://github.com/LineageOS/mirror
+	review = review.lineageos.org
+	projectname = LineageOS/mirror
+	fetch = +refs/heads/*:refs/remotes/github/*

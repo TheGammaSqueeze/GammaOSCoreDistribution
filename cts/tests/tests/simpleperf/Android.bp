@@ -1,0 +1,51 @@
+package {
+    // See: http://go/android-license-faq
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+cc_test {
+    name: "CtsSimpleperfTestCases",
+    compile_multilib: "both",
+    multilib: {
+        lib32: {
+            suffix: "32",
+        },
+        lib64: {
+            suffix: "64",
+        },
+    },
+    whole_static_libs: ["libsimpleperf_cts_test"],
+    static_libs: [
+        "libsimpleperf_etm_decoder",
+        "libunwindstack",
+        "libdexfile_static",
+        "libziparchive",
+        "libz",
+        "libgtest",
+        "libbase",
+        "libcutils",
+        "liblog",
+        "libprocinfo",
+        "libutils",
+        "liblzma",
+        "libLLVMObject",
+        "libLLVMBitReader",
+        "libLLVMMC",
+        "libLLVMMCParser",
+        "libLLVMCore",
+        "libLLVMSupport",
+        "libprotobuf-cpp-lite",
+        "libevent",
+        "libopencsd_decoder",
+        "libc++fs",
+    ],
+    per_testcase_directory: true,
+    data: [
+        ":CtsSimpleperfProfileableApp",
+        ":CtsSimpleperfDebuggableApp",
+        ":system-extras-simpleperf-testdata"],
+    test_suites: [
+        "cts",
+        "general-tests",
+    ],
+}

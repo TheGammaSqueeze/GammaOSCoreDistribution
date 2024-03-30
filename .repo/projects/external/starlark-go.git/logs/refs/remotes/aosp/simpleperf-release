@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 191309c275bdc2750fd8ba3e0cc697bd864966c7 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719713 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/starlark-go.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

@@ -1,0 +1,3 @@
+on early-init
+    # Reboot if BOARD_VNDK_VERSION is not defined
+    exec - root -- /system/bin/reboot bootloader

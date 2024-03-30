@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 39db64f0464a8f0e91c8089e12f86299fb360491 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719762 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/packages/apps/QuickSearchBox.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

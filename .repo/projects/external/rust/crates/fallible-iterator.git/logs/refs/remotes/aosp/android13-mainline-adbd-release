@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 619f043a23ac2ae609ef60f83e8dce0d5904d844 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719696 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/rust/crates/fallible-iterator.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

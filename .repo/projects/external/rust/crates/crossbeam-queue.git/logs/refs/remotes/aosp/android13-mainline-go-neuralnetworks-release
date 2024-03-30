@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 9d3fc12bb97b97a14c3c5202d21d06708204762d TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719698 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/rust/crates/crossbeam-queue.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

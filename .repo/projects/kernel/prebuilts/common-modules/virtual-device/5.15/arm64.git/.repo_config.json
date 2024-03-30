@@ -1,0 +1,20 @@
+{
+  "core.repositoryformatversion": [
+    "0"
+  ],
+  "core.filemode": [
+    "true"
+  ],
+  "remote.aosp.url": [
+    "https://android.googlesource.com/kernel/prebuilts/common-modules/virtual-device/5.15/arm64"
+  ],
+  "remote.aosp.review": [
+    "android-review.googlesource.com"
+  ],
+  "remote.aosp.projectname": [
+    "kernel/prebuilts/common-modules/virtual-device/5.15/arm64"
+  ],
+  "remote.aosp.fetch": [
+    "+refs/heads/*:refs/remotes/aosp/*"
+  ]
+}

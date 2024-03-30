@@ -1,0 +1,20 @@
+{
+  "core.repositoryformatversion": [
+    "0"
+  ],
+  "core.filemode": [
+    "true"
+  ],
+  "remote.aosp.url": [
+    "https://android.googlesource.com/platform/external/rust/crates/thiserror"
+  ],
+  "remote.aosp.review": [
+    "android-review.googlesource.com"
+  ],
+  "remote.aosp.projectname": [
+    "platform/external/rust/crates/thiserror"
+  ],
+  "remote.aosp.fetch": [
+    "+refs/heads/*:refs/remotes/aosp/*"
+  ]
+}

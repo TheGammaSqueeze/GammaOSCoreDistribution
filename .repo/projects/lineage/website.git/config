@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "github"]
+	url = https://github.com/LineageOS/www
+	review = review.lineageos.org
+	projectname = LineageOS/www
+	fetch = +refs/heads/*:refs/remotes/github/*

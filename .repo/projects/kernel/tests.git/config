@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/kernel/tests
+	review = android-review.googlesource.com
+	projectname = kernel/tests
+	fetch = +refs/heads/*:refs/remotes/aosp/*

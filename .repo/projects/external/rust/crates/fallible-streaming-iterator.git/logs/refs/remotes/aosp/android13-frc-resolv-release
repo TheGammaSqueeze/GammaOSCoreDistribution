@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 84598a8c7cfae315ecee26856d2bc109b20762a4 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719698 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/rust/crates/fallible-streaming-iterator.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

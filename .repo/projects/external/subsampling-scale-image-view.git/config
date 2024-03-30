@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/subsampling-scale-image-view
+	review = android-review.googlesource.com
+	projectname = platform/external/subsampling-scale-image-view
+	fetch = +refs/heads/*:refs/remotes/aosp/*

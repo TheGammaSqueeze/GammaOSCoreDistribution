@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "github"]
+	url = https://github.com/LineageOS/android_hardware_qcom_camera
+	review = review.lineageos.org
+	projectname = LineageOS/android_hardware_qcom_camera
+	fetch = +refs/heads/*:refs/remotes/github/*

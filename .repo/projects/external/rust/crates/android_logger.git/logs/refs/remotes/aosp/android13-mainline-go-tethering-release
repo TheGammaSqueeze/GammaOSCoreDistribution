@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 1d533b0da4466839e8ade6767e86382c61e59dec TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719693 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/rust/crates/android_logger.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

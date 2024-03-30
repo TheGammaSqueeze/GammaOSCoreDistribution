@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/prebuilts/remoteexecution-client
+	review = android-review.googlesource.com
+	projectname = platform/prebuilts/remoteexecution-client
+	fetch = +refs/heads/*:refs/remotes/aosp/*

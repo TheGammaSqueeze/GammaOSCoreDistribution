@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 cf0dde30f877497c442e312d6d99cacfb4d14b58 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719699 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/rust/crates/der-parser.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

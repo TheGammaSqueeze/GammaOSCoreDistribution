@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 ace2ae7258a95073baaa0079a6539345655d3b11 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719716 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/wuffs-mirror-release-c.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

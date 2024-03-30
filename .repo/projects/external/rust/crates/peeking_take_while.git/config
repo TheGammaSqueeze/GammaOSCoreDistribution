@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/rust/crates/peeking_take_while
+	review = android-review.googlesource.com
+	projectname = platform/external/rust/crates/peeking_take_while
+	fetch = +refs/heads/*:refs/remotes/aosp/*

@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/rust/crates/downcast-rs
+	review = android-review.googlesource.com
+	projectname = platform/external/rust/crates/downcast-rs
+	fetch = +refs/heads/*:refs/remotes/aosp/*

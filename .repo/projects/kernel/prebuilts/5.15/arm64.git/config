@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/kernel/prebuilts/5.15/arm64
+	review = android-review.googlesource.com
+	projectname = kernel/prebuilts/5.15/arm64
+	fetch = +refs/heads/*:refs/remotes/aosp/*

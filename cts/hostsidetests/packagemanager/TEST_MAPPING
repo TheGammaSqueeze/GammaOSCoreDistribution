@@ -1,0 +1,33 @@
+{
+  "presubmit": [
+    {
+      "name": "CtsDomainVerificationHostTestCases"
+    },
+    {
+      "name": "CtsExtractNativeLibsHostTestCases"
+    },
+    {
+      "name": "CtsInstalledLoadingProgressHostTests"
+    },
+    {
+      "name": "CtsPackageManagerMultiUserHostTestCases"
+    },
+    {
+      "name": "CtsPackageManagerParsingHostTestCases"
+    },
+    {
+      "name": "CtsPackageManagerPreferredActivityHostTestCases"
+    },
+    {
+      "name": "CtsPackageManagerStatsHostTestCases"
+    },
+    {
+      "name": "CtsPackageSettingHostTestCases"
+    }
+  ],
+  "presubmit-large": [
+    {
+      "name": "CtsDynamicMimeHostTestCases"
+    }
+  ]
+}

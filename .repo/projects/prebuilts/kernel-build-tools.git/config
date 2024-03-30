@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/kernel/prebuilts/build-tools
+	review = android-review.googlesource.com
+	projectname = kernel/prebuilts/build-tools
+	fetch = +refs/heads/*:refs/remotes/aosp/*

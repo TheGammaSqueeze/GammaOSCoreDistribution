@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/toolchain-utils
+	review = android-review.googlesource.com
+	projectname = platform/external/toolchain-utils
+	fetch = +refs/heads/*:refs/remotes/aosp/*

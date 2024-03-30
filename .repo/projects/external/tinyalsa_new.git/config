@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/tinyalsa_new
+	review = android-review.googlesource.com
+	projectname = platform/external/tinyalsa_new
+	fetch = +refs/heads/*:refs/remotes/aosp/*

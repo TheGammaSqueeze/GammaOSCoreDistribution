@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/frameworks/libs/native_bridge_support
+	review = android-review.googlesource.com
+	projectname = platform/frameworks/libs/native_bridge_support
+	fetch = +refs/heads/*:refs/remotes/aosp/*

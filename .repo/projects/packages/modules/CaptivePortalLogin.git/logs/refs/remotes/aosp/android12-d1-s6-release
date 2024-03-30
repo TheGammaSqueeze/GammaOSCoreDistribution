@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 386f8466e0043e2712ed363fc44e1e872d3fbaee TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719788 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/packages/modules/CaptivePortalLogin.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

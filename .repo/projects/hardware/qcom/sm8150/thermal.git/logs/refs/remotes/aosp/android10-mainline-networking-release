@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 015a5444dae8fed21ebbc23878c5c460ab10ee45 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719740 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/hardware/qcom/sm8150/thermal.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

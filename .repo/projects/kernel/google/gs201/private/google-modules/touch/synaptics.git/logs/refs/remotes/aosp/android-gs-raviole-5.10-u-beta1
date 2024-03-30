@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 7ab600322e6f16d213f9af7db1f42b642a0e43c5 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719748 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/kernel/google/gs201/private/google-modules/touch/synaptics.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

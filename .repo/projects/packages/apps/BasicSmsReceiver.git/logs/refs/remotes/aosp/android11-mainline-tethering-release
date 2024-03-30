@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 868f4a2b719c733ac68b34817d7fe0c774527a3d TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719751 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/packages/apps/BasicSmsReceiver.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

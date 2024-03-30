@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/hardware/qcom/sm8150/vr
+	review = android-review.googlesource.com
+	projectname = platform/hardware/qcom/sm8150/vr
+	fetch = +refs/heads/*:refs/remotes/aosp/*

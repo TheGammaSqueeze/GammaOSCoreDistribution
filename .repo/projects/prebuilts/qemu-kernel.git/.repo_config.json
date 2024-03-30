@@ -1,0 +1,20 @@
+{
+  "core.repositoryformatversion": [
+    "0"
+  ],
+  "core.filemode": [
+    "true"
+  ],
+  "remote.aosp.url": [
+    "https://android.googlesource.com/platform/prebuilts/qemu-kernel"
+  ],
+  "remote.aosp.review": [
+    "android-review.googlesource.com"
+  ],
+  "remote.aosp.projectname": [
+    "platform/prebuilts/qemu-kernel"
+  ],
+  "remote.aosp.fetch": [
+    "+refs/heads/*:refs/remotes/aosp/*"
+  ]
+}

@@ -1,0 +1,10 @@
+[core]
+	repositoryFormatVersion = 1
+	filemode = true
+[remote "github"]
+	url = https://github.com/LineageOS/android_hardware_qcom_audio-ar
+	review = review.lineageos.org
+	projectname = LineageOS/android_hardware_qcom_audio-ar
+	fetch = +refs/heads/*:refs/remotes/github/*
+[extensions]
+	preciousObjects = true

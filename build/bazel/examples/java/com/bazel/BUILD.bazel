@@ -1,0 +1,11 @@
+java_binary(
+  name = "hello_java",
+  srcs = ["example/HelloWorld.java"],
+  main_class = "com.bazel.example.HelloWorld",
+  deps = [":hello_java_lib"],
+)
+
+java_library(
+  name = "hello_java_lib",
+  srcs = ["example_lib/HelloLib.java"],
+)

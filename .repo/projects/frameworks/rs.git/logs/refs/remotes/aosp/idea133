@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 356a02a07ba174e290bd61e2d1b0287c990acc72 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719735 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/frameworks/rs.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

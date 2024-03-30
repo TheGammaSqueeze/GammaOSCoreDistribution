@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/system/connectivity/wificond
+	review = android-review.googlesource.com
+	projectname = platform/system/connectivity/wificond
+	fetch = +refs/heads/*:refs/remotes/aosp/*

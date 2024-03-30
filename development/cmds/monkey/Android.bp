@@ -1,0 +1,14 @@
+// Copyright 2008 The Android Open Source Project
+//
+
+package {
+    // See: http://go/android-license-faq
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+//###############################################################
+java_binary {
+    name: "monkey",
+    srcs: ["**/*.java"],
+    wrapper: "monkey",
+}

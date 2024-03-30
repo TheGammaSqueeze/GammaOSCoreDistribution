@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 466b9480931d00c155acaec6351326a3b7e7320d TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719839 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/packages/services/Iwlan.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

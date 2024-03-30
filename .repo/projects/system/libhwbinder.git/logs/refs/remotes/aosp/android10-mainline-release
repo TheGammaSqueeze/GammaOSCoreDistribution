@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 160605599e6e6bff8cea31c54e1a6184f7d4abbd TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719794 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/system/libhwbinder.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

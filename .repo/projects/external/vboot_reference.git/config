@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/vboot_reference
+	review = android-review.googlesource.com
+	projectname = platform/external/vboot_reference
+	fetch = +refs/heads/*:refs/remotes/aosp/*

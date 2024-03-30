@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/tools/external/fat32lib
+	review = android-review.googlesource.com
+	projectname = platform/tools/external/fat32lib
+	fetch = +refs/heads/*:refs/remotes/aosp/*

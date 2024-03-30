@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "github"]
+	url = https://github.com/LineageOS/android_vendor_qcom_opensource_display-commonsys
+	review = review.lineageos.org
+	projectname = LineageOS/android_vendor_qcom_opensource_display-commonsys
+	fetch = +refs/heads/*:refs/remotes/github/*

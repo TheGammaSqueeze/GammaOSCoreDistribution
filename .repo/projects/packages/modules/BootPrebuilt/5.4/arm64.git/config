@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/packages/modules/BootPrebuilt/5.4/arm64
+	review = android-review.googlesource.com
+	projectname = platform/packages/modules/BootPrebuilt/5.4/arm64
+	fetch = +refs/heads/*:refs/remotes/aosp/*

@@ -1,0 +1,38 @@
+filegroup (
+  name = "collect_zip",
+  srcs = [":collect"],
+  output_group = "python_zip_file",
+)
+
+py_binary(
+    name = "collect",
+    srcs = ["collect.py"],
+    python_version = "PY3",
+)
+
+filegroup (
+  name = "difftool_zip",
+  srcs = [":difftool"],
+  output_group = "python_zip_file",
+)
+
+py_library(
+    name = "difftool_commands",
+    srcs = [
+        "clangcompile.py",
+        "commands.py",
+    ],
+)
+
+py_test(
+    name = "difftool_test",
+    srcs = ["difftool_test.py"],
+    deps = [":difftool", ":collect"],
+)
+
+py_binary(
+    name = "difftool",
+    srcs = ["difftool.py"],
+    deps = [":difftool_commands", ":collect"],
+    python_version = "PY3",
+)

@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/frameworks/opt/localepicker
+	review = android-review.googlesource.com
+	projectname = platform/frameworks/opt/localepicker
+	fetch = +refs/heads/*:refs/remotes/aosp/*

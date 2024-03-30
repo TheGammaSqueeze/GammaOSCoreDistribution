@@ -1,0 +1,10 @@
+import %workspace%/build/bazel/common.bazelrc
+
+build --host_platform //build/bazel/platforms:linux_x86_64
+
+# Workaround JVM segfault issue as suggested at
+# https://github.com/bazelbuild/bazel/issues/3236#issuecomment-310656266
+build --sandbox_tmpfs_path=/tmp/
+
+# Create a build number that will be injected later.
+build --workspace_status_command=build/bazel/scripts/gen_build_number.sh

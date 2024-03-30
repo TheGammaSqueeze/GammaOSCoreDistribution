@@ -1,0 +1,10 @@
+[core]
+	repositoryFormatVersion = 1
+	filemode = true
+[extensions]
+	preciousObjects = true
+[remote "github"]
+	url = https://github.com/LineageOS/android_hardware_qcom_media
+	review = review.lineageos.org
+	projectname = LineageOS/android_hardware_qcom_media
+	fetch = +refs/heads/*:refs/remotes/github/*

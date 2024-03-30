@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/packages/modules/GeoTZ
+	review = android-review.googlesource.com
+	projectname = platform/packages/modules/GeoTZ
+	fetch = +refs/heads/*:refs/remotes/aosp/*

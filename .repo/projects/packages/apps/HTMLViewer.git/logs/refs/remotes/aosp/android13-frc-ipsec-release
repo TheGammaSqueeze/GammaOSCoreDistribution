@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 85d3204f99f19b61691ca2792cabed9038b89db7 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719760 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/packages/apps/HTMLViewer.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

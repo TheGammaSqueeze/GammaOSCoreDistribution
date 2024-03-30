@@ -1,0 +1,12 @@
+{
+  "presubmit": [
+    {
+      "name": "CtsLibcoreLegacy22TestCases"
+    }
+  ],
+  "hwasan-postsubmit": [
+    {
+      "name": "CtsLibcoreLegacy22TestCases"
+    }
+  ]
+}

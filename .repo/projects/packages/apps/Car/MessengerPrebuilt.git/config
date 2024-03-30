@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/packages/apps/Car/MessengerPrebuilt
+	review = android-review.googlesource.com
+	projectname = platform/packages/apps/Car/MessengerPrebuilt
+	fetch = +refs/heads/*:refs/remotes/aosp/*

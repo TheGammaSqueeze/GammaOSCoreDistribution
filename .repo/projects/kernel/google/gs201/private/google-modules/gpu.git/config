@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/kernel/google-modules/gpu
+	review = android-review.googlesource.com
+	projectname = kernel/google-modules/gpu
+	fetch = +refs/heads/*:refs/remotes/aosp/*

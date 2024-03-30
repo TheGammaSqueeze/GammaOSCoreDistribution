@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 641855e39ada46b2ba89c043b7a8ff2c1f6ae3ac TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719764 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/packages/apps/WallpaperPicker.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

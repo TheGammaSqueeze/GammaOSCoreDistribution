@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 db8d28c0eb8db3b9d6e0ec5e3d05cc2e56e5ba9e TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719755 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/packages/apps/Car/RotaryController.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

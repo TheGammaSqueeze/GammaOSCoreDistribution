@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/prebuilts/vndk/v28
+	review = android-review.googlesource.com
+	projectname = platform/prebuilts/vndk/v28
+	fetch = +refs/heads/*:refs/remotes/aosp/*

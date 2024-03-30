@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 0b5297e7b75e8fb78c495e26875e9c91eb3c4580 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719833 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/kernel/google/gs201/private/devices/google/tangorpro.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

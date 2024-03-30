@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/packages/modules/AppSearch
+	review = android-review.googlesource.com
+	projectname = platform/packages/modules/AppSearch
+	fetch = +refs/heads/*:refs/remotes/aosp/*

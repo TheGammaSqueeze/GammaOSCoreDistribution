@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "github"]
+	url = https://github.com/LineageOS/android_system_libhidl
+	review = review.lineageos.org
+	projectname = LineageOS/android_system_libhidl
+	fetch = +refs/heads/*:refs/remotes/github/*

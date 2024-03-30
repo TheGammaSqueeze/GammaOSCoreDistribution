@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/hardware/knowles/athletico/sound_trigger_hal
+	review = android-review.googlesource.com
+	projectname = platform/hardware/knowles/athletico/sound_trigger_hal
+	fetch = +refs/heads/*:refs/remotes/aosp/*

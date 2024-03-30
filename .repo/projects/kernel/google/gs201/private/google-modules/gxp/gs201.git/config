@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/kernel/google-modules/gxp/gs201
+	review = android-review.googlesource.com
+	projectname = kernel/google-modules/gxp/gs201
+	fetch = +refs/heads/*:refs/remotes/aosp/*

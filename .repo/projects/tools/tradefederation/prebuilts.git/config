@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/tools/tradefederation/prebuilts
+	review = android-review.googlesource.com
+	projectname = platform/tools/tradefederation/prebuilts
+	fetch = +refs/heads/*:refs/remotes/aosp/*

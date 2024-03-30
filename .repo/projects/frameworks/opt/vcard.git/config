@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/frameworks/opt/vcard
+	review = android-review.googlesource.com
+	projectname = platform/frameworks/opt/vcard
+	fetch = +refs/heads/*:refs/remotes/aosp/*

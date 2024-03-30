@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/system/testing/gtest_extras
+	review = android-review.googlesource.com
+	projectname = platform/system/testing/gtest_extras
+	fetch = +refs/heads/*:refs/remotes/aosp/*

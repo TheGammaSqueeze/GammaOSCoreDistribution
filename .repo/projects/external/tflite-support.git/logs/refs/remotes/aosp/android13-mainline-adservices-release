@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 032958967daf750c3e6c4dec1228cfd8e3d61d25 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719730 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/tflite-support.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

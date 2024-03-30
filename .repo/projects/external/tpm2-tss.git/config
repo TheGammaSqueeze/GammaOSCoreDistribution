@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/external/tpm2-tss
+	review = android-review.googlesource.com
+	projectname = platform/external/tpm2-tss
+	fetch = +refs/heads/*:refs/remotes/aosp/*

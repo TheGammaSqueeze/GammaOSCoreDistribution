@@ -1,0 +1,15 @@
+This 'sample' folder is a sample which illustrates the basic structure and contents of a CTS module.
+
+Future users can refer to this folder to create their own CTS modules.
+
+Several things to notice:
+  1.  The users should update the `misc` value in
+      `<option name="config-descriptor:metadata" key="component" value="misc" />`
+      of the 'AndroidTest.xml' file into an appropriate group for the module they created.
+
+      The list of all available groups:
+      <https://cs.android.com/android/platform/superproject/+/master:cts/tools/cts-tradefed/tests/src/com/android/compatibility/common/tradefed/presubmit/CtsConfigLoadingTest.java;l=66>.
+
+  2.  If the module is added outside the 'cts/' folder, the user should also 1) add the module
+      directory into the ayeaye checker (as shown in cl/423435565), and 2) add an OWNERS file in the
+      module directory accordingly.

@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "github"]
+	url = https://github.com/LineageOS/hudson
+	review = review.lineageos.org
+	projectname = LineageOS/hudson
+	fetch = +refs/heads/*:refs/remotes/github/*

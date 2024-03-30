@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 532d2d9f7da863c5fa2521eba0fc97d7007cf99f TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719725 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/squashfs-tools.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/kernel/prebuilts/common-modules/virtual-device/5.15/x86-64
+	review = android-review.googlesource.com
+	projectname = kernel/prebuilts/common-modules/virtual-device/5.15/x86-64
+	fetch = +refs/heads/*:refs/remotes/aosp/*

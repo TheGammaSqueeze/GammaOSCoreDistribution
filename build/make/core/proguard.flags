@@ -1,0 +1,38 @@
+# We have moved -dontobfuscate and -dontoptimize to the makefiles.
+# dex does not like code run through proguard optimize and preverify steps.
+# -dontoptimize
+-dontpreverify
+
+# Don't obfuscate. We only need dead code striping.
+# -dontobfuscate
+
+# Add this flag in your package's own configuration if it's needed.
+#-flattenpackagehierarchy
+
+# Keep classes and methods that have the guava @VisibleForTesting annotation
+-keep @**.VisibleForTesting class *
+-keepclassmembers class * {
+@**.VisibleForTesting *;
+}
+
+# Understand the common @Keep annotation from various Android packages:
+#  * android.support.annotation
+#  * androidx.annotation
+#  * com.android.internal.annotations
+-keep class **android**.annotation*.Keep
+
+-keep @**android**.annotation*.Keep class * { *; }
+
+-keepclasseswithmembers class * {
+    @**android**.annotation*.Keep <methods>;
+}
+
+-keepclasseswithmembers class * {
+    @**android**.annotation*.Keep <fields>;
+}
+
+-keepclasseswithmembers class * {
+    @**android**.annotation*.Keep <init>(...);
+}
+
+-include proguard_basic_keeps.flags

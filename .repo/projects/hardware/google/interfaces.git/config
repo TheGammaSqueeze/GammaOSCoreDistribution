@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/hardware/google/interfaces
+	review = android-review.googlesource.com
+	projectname = platform/hardware/google/interfaces
+	fetch = +refs/heads/*:refs/remotes/aosp/*

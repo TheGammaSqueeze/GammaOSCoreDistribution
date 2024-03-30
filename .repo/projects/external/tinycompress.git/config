@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "github"]
+	url = https://github.com/LineageOS/android_external_tinycompress
+	review = review.lineageos.org
+	projectname = LineageOS/android_external_tinycompress
+	fetch = +refs/heads/*:refs/remotes/github/*

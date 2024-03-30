@@ -1,0 +1,47 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+android_library {
+    name: "RemoteFrameworkClasses",
+    sdk_version: "test_current",
+    srcs: [
+        "src/types/main/java/**/*.java"
+    ],
+    static_libs: [
+        "RemoteFrameworkClasses_Annotations",
+        "ConnectedAppsSDK_Annotations",
+        "ConnectedAppsSDK"
+    ],
+    manifest: "src/types/main/AndroidManifest.xml",
+    min_sdk_version: "27",
+    plugins: ["ConnectedAppsSDK_Processor", "RemoteFrameworkClasses_Processor"],
+}
+
+java_library {
+    name: "RemoteFrameworkClasses_Annotations",
+    srcs: [
+        "src/processor/main/java/com/android/bedstead/remoteframeworkclasses/processor/annotations/*.java"
+    ],
+    host_supported: true
+}
+
+java_plugin {
+    name: "RemoteFrameworkClasses_Processor",
+    processor_class: "com.android.bedstead.remoteframeworkclasses.processor.Processor",
+    static_libs: [
+        "guava",
+        "javapoet",
+        "auto_service_annotations",
+        "RemoteFrameworkClasses_Annotations",
+        "ConnectedAppsSDK_Annotations"
+    ],
+    srcs: [
+        "src/processor/main/java/com/android/bedstead/remoteframeworkclasses/processor/*.java"
+    ],
+    plugins: ["auto_service_plugin"],
+    generates_api: true,
+    java_resource_dirs: [
+        "src/processor/res"
+    ],
+}

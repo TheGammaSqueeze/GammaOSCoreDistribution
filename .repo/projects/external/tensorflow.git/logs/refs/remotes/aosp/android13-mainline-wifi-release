@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 18c04fad2e831ca0a47c3091cc93175b9bc81e35 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719948 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/tensorflow.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

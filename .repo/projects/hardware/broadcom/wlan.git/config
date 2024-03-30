@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/hardware/broadcom/wlan
+	review = android-review.googlesource.com
+	projectname = platform/hardware/broadcom/wlan
+	fetch = +refs/heads/*:refs/remotes/aosp/*

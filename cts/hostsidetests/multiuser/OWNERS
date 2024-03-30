@@ -1,0 +1,3 @@
+# Bug component: 71510
+include /tests/app/OWNERS
+include platform/frameworks/base:/MULTIUSER_OWNERS

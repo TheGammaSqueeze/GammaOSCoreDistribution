@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/frameworks/libs/service_entitlement
+	review = android-review.googlesource.com
+	projectname = platform/frameworks/libs/service_entitlement
+	fetch = +refs/heads/*:refs/remotes/aosp/*

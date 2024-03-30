@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "aosp"]
+	url = https://android.googlesource.com/platform/system/server_configurable_flags
+	review = android-review.googlesource.com
+	projectname = platform/system/server_configurable_flags
+	fetch = +refs/heads/*:refs/remotes/aosp/*

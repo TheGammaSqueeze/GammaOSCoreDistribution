@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "github"]
+	url = https://github.com/LineageOS/android_kernel_configs
+	review = review.lineageos.org
+	projectname = LineageOS/android_kernel_configs
+	fetch = +refs/heads/*:refs/remotes/github/*

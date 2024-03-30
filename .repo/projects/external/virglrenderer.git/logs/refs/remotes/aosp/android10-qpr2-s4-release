@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 59f85c99c1d1c7db8ca543288e12507a11f7cc20 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719744 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/virglrenderer.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

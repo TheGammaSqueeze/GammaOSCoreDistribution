@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 21ec36c3d9139a68269ce705ab427d5555a4f0ac TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719816 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/tools/apifinder.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

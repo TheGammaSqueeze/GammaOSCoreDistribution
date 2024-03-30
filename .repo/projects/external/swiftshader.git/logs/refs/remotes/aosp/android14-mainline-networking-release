@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 38a446c6f8efa6adb656764cbb578dc381a20468 TheGammaSqueeze <thegammasqueeze@gmail.com> 1711719868 +0000	fetch --quiet --progress /home/ubuntu/lineage20/.repo/projects/external/swiftshader.git/clone.bundle +refs/heads/*:refs/remotes/aosp/* +refs/tags/*:refs/tags/*: storing head

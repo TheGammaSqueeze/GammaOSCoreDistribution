@@ -1,0 +1,20 @@
+{
+  "core.repositoryformatversion": [
+    "0"
+  ],
+  "core.filemode": [
+    "true"
+  ],
+  "remote.github.url": [
+    "https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b"
+  ],
+  "remote.github.review": [
+    "review.lineageos.org"
+  ],
+  "remote.github.projectname": [
+    "LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b"
+  ],
+  "remote.github.fetch": [
+    "+refs/heads/*:refs/remotes/github/*"
+  ]
+}

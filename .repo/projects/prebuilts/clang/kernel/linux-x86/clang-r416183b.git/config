@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "github"]
+	url = https://github.com/LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b
+	review = review.lineageos.org
+	projectname = LineageOS/android_prebuilts_clang_kernel_linux-x86_clang-r416183b
+	fetch = +refs/heads/*:refs/remotes/github/*
