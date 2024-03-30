@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2017 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label">Gjestion dispositîfs associâts</string>
+    <string name="confirmation_title">Permet a &lt;strong&gt;<xliff:g id="app_name" example="Android Wear">%1$s</xliff:g>&lt;/strong&gt; di acedi al to &lt;strong&gt;<xliff:g id="device_name" example="ASUS ZenWatch 2">%2$s</xliff:g>&lt;/strong&gt;</string>
+    <string name="profile_name_watch">orloi</string>
+    <string name="chooser_title">Sielç un <xliff:g id="profile_name" example="watch">%1$s</xliff:g> di gjestî cun &lt;strong&gt;<xliff:g id="app_name" example="Android Wear">%2$s</xliff:g>&lt;/strong&gt;</string>
+    <string name="summary_watch">Cheste aplicazion e je necessarie par gjestî il to <xliff:g id="device_name" example="My Watch">%1$s</xliff:g>. Al vignarà consintût a <xliff:g id="app_name" example="Android Wear">%2$s</xliff:g> di interagjî cu lis notifichis e di acedi a Telefon, SMS, Contats, Calendari, regjistri des clamadis e ai permès dai dispositîfs tai contors.</string>
+    <string name="permission_apps">Aplicazions</string>
+    <string name="permission_apps_summary">Trasmet lis aplicazions dal to telefon</string>
+    <string name="title_app_streaming">Permet a &lt;strong&gt;<xliff:g id="app_name" example="Exo">%1$s</xliff:g>&lt;/strong&gt; di acedi a cheste informazion dal to telefon</string>
+    <string name="helper_title_app_streaming">Servizis inter-dispositîfs</string>
+    <string name="helper_summary_app_streaming"><xliff:g id="app_name" example="GMS">%1$s</xliff:g> al domande permès de bande dal to <xliff:g id="device_type" example="Chromebook">%2$s</xliff:g> par trasmeti aplicazions tra i tiei dispositîfs</string>
+    <string name="title_computer">Permet a &lt;strong&gt;<xliff:g id="app_name" example="GMS">%1$s</xliff:g>&lt;/strong&gt; di acedi a cheste informazion dal to telefon</string>
+    <string name="permission_notification">Notifichis</string>
+    <string name="permission_notification_summary">Al pues lei dutis lis notifichis, includudis lis informazions come contats, messaçs e fotos</string>
+    <string name="permission_storage">Fotos e multimedia</string>
+    <string name="helper_title_computer">Servizis Google Play</string>
+    <string name="helper_summary_computer"><xliff:g id="app_name" example="GMS">%1$s</xliff:g> al domande permès de bande dal to <xliff:g id="device_type" example="Chromebook">%2$s</xliff:g> par acedi a fotos, multimedia e notifichis dal to telefon</string>
+    <string name="profile_name_generic">dispositîf</string>
+    <string name="consent_yes">Permet</string>
+    <string name="consent_no">No sta permeti</string>
+    <string name="consent_back">Indaûr</string>
+    <string name="permission_sync_confirmation_title">Trasferìs i permès de aplicazion al to
+        orloi</string>
+    <string name="permission_sync_summary">Par rindi plui facil configurâ il to orloi,
+        lis aplicazions instaladis sul orloi intant de configurazion a dopraran i stes permès dal telefon.\n\n
+        Al è pussibil che chescj permès a includin l\'acès al microfon e ae posizion dal to orloi.</string>
+    <string name="vendor_icon_description">Icone aplicazion</string>
+    <string name="vendor_header_button_description">Boton Plui informazions</string>
+</resources>

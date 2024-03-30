@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright 2018 The Android Open Source Project
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="mobile_network_summary_count">        {count, plural, one {}
+            =1    {# SIM}
+            other {# SIMs}
+        }
+    </string>
+    <string name="network_and_internet_vehicle_internet_title">Internet del vehículu</string>
+    <string name="wifi_connecting">Conectando\u2026</string>
+    <string name="wifi_hotspot_wpa3_sae">WPA3-Personal</string>
+    <string name="wifi_security_psk_sae">WPA2/WPA3-Personal</string>
+    <string name="hotspot_settings_title">Puntu Wi-Fi</string>
+    <string name="display_brightness">Brillu</string>
+    <string name="prioritize_app_performance_dialog_action_on">Sí</string>
+    <string name="prioritize_app_performance_dialog_action_off">Non, gracies</string>
+    <string name="data_usage_all_apps_title">Toles aplicaciones</string>
+    <string name="runtime_permissions_additional_count">        {count, plural,
+            =1    {# permisu adicional}
+            other {# permisos adicionales}
+        }
+    </string>
+    <string name="apps_settings_title">Aplicaciones</string>
+    <string name="apps_permission_manager_title">Xestor de permisos</string>
+    <string name="location_toggle_title">Usar la llocalización</string>
+    <string name="microphone_settings_title">Micrófonu</string>
+    <string name="microphone_toggle_title">Usar el micrófonu</string>
+    <string name="show_dev_countdown">        {count, plural,
+            =1    {Fáltate # toque p\'activar les opciones de desendolcu.}
+            other {Fáltente # toques p\'activar les opciones de desendolcu.}
+        }
+    </string>
+    <string name="user_new_user_name">Perfil nuevu</string>
+    <string name="user_limit_reached_message">        {count, plural, one {}
+            =1    {Namás se pue crear un perfil.}
+            other {Pues crear hasta # perfiles.}
+        }
+    </string>
+    <string name="delete_user_dialog_title">¿Quies desaniciar esti perfil?</string>
+    <string name="delete_user_error_title">Nun se desanició\'l perfil. Pues reaniciar el preséu y volver tentalo.</string>
+    <string name="mute_mic_title">Micrófonu</string>
+    <string name="lockpassword_password_requires_alpha">Ha contener polo menos una lletra</string>
+    <string name="lockpassword_password_requires_digit">Ha contener polo menos un díxitu</string>
+    <string name="lockpassword_password_requires_symbol">Ha contener polo menos un símbolu</string>
+    <string name="lockpassword_password_requires_letters">        {count, plural, one {}
+        =1    {Ha contener polo menos # lletra}
+        other {Ha contener polo menos # lletres}
+        }
+    </string>
+    <string name="lockpassword_password_requires_lowercase">        {count, plural, one {}
+        =1    {Ha contener polo menos # lletra minúscula}
+        other {Ha contener polo menos # lletres minúscules}
+        }
+    </string>
+    <string name="lockpassword_password_requires_uppercase">        {count, plural, one {}
+        =1    {Ha contener polo menos # lletra mayúscula}
+        other {Ha contener polo menos # lletres mayúscules}
+        }
+    </string>
+    <string name="lockpassword_password_requires_numeric">        {count, plural, one {}
+        =1    {Ha contener polo menos # díxitu}
+        other {Ha contener polo menos # díxitos}
+        }
+    </string>
+    <string name="lockpassword_password_requires_symbols">        {count, plural, one {}
+        =1    {Ha contener polo menos # símbolu especial}
+        other {Ha contener polo menos # símbolos especiales}
+        }
+    </string>
+    <string name="lockpassword_password_requires_nonletter">        {count, plural, one {}
+        =1    {Ha contener polos menos # caráuter que nun seya una lletra}
+        other {Ha contener polos menos # caráuteres que nun seyan lletres}
+        }
+    </string>
+    <string name="lockpassword_password_requires_nonnumerical">        {count, plural, one {}
+        =1    {Ha contener polos menos # caráuter que nun seya numbéricu}
+        other {Ha contener polos menos # caráuteres que nun seyan numbéricos}
+        }
+    </string>
+    <string name="lockpassword_password_too_short">        {count, plural, one {}
+        =1    {Ha contener polos menos # caráuter}
+        other {Ha contener polos menos # caráuteres}
+        }
+    </string>
+    <string name="lockpassword_pin_too_short">        {count, plural, one {}
+        =1    {Ha contener polos menos # díxitu}
+        other {Ha contener polos menos # díxitos}
+        }
+    </string>
+    <string name="assistant_and_voice_setting_title">Asistente y voz</string>
+    <string name="notifications_all_apps">Toles aplicaciones</string>
+    <string name="profiles_and_accounts_settings_title">Perfiles y cuentes</string>
+    <string name="deactivate_and_uninstall_device_admin">Desactivar y desinstalar</string>
+    <string name="admin_profile_owner_message">El xestor de la organización pue supervisar y xestionar les aplicaciones
+        y los datos asociaos con esti perfil, incluyíos los axustes, l\'accesu corporativu,
+        los permisos, l\'actividá na rede y la información de llocalización del vehículu.</string>
+    <string name="admin_profile_owner_user_message">El xestor de la organización pue supervisar y xestionar les aplicaciones
+        y los datos asociaos con esti perfil, incluyíos los axustes, l\'accesu corporativu,
+        los permisos, l\'actividá na rede y la información de llocalización del preséu.</string>
+    <string name="disabled_by_policy_title">Nun ta disponible</string>
+    <string name="disabled_by_policy_title_adjust_volume">Nun se pue camudar el volume nesti vehículu xestionáu</string>
+    <string name="disabled_by_policy_title_outgoing_calls">Nun se puen facer llamaes nesti vehículu xestionáu</string>
+    <string name="disabled_by_policy_title_camera">La cámara nun ta disponible nesti vehículu xestionáu</string>
+    <string name="disabled_by_policy_title_screen_capture">Nun se puen facer captures de pantalla nesti vehículu xestionáu</string>
+    <string name="disabled_by_policy_title_suspend_packages">Nun se pue abrir esta aplicación nesti vehículu xestionáu</string>
+    <plurals name="enterprise_privacy_number_packages">
+        <item quantity="one"><xliff:g id="count">%d</xliff:g> aplicación</item>
+        <item quantity="other"><xliff:g id="count">%d</xliff:g> aplicaciones</item>
+    </plurals>
+    <plurals name="enterprise_privacy_number_failed_password_wipe">
+        <item quantity="one"><xliff:g id="count">%d</xliff:g> intentu</item>
+        <item quantity="other"><xliff:g id="count">%d</xliff:g> intentos</item>
+    </plurals>
+    <string name="share_remote_bugreport_action">Compartir</string>
+    <string name="decline_remote_bugreport_action">Refugar</string>
+    <string name="accessibility_settings_title">Accesibilidá</string>
+    <string name="show_captions_toggle_title">Amosar los sotítulos</string>
+    <string name="captions_settings_text_style_white_on_black">Blancu sobre prietu</string>
+    <string name="captions_settings_text_style_black_on_white">Prietu sobre blancu</string>
+    <string name="captions_settings_text_style_yellow_on_black">Mariellu sobre prietu</string>
+    <string name="captions_settings_text_style_yellow_on_blue">Mariellu sobre azul</string>
+    <string name="screen_reader_options_title">Opciones</string>
+</resources>

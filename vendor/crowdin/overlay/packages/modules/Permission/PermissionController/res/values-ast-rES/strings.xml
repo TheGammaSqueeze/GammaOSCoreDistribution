@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="cancel">Encaboxar</string>
+    <string name="back">Atrás</string>
+    <string name="uninstall_or_disable">Desinstalar o desactivar</string>
+    <string name="app_not_found_dlg_title">Nun s\'atopó l\'aplicación</string>
+    <string name="grant_dialog_button_deny">Nun permitir</string>
+    <string name="grant_dialog_button_more_info">Más información</string>
+    <string name="grant_dialog_button_dismiss">Escartar</string>
+    <string name="grant_dialog_button_allow">Permitir</string>
+    <string name="grant_dialog_button_allow_foreground">Mentanto s\'usa l\'aplicación</string>
+    <string name="grant_dialog_button_allow_one_time">Namás esta vegada</string>
+    <string name="grant_dialog_button_allow_all_files">Permitir la xestión de tolos ficheros</string>
+    <string name="grant_dialog_button_allow_media_only">Permitir l\'accesu al conteníu multimedia</string>
+    <string name="permission_summary_disabled_by_policy_background_only">La política desactivó l\'accesu al segundu planu</string>
+    <string name="permission_summary_enabled_by_policy_background_only">La política activó l\'accesu al segundu planu</string>
+    <string name="permission_summary_enabled_by_policy_foreground_only">La política activó l\'accesu al primer planu</string>
+    <string name="loading">Cargando\u2026</string>
+    <string name="all_permissions">Tolos permisos</string>
+    <string name="wear_not_allowed_dlg_title">Android Wear</string>
+    <string name="review_button_cancel">Encaboxar</string>
+    <string name="review_button_continue">Siguir</string>
+    <string name="new_permissions_category">Permisos nuevos</string>
+    <string name="current_permissions_category">Permisos actuales</string>
+    <string name="item_separator">,\u0020</string>
+    <string name="permission_history_category_today">Güei</string>
+    <string name="permission_history_category_yesterday">Ayeri</string>
+    <string name="app_permission_button_allow">Permitir</string>
+    <string name="app_permission_button_allow_all_files">Permitir la xestión de tolos ficheros</string>
+    <string name="app_permission_button_allow_media_only">Permitir namás l\'accesu al conteníu multimedia</string>
+    <string name="precise_image_description">Llocalización exauta</string>
+    <string name="approximate_image_description">Llocalización aproximada</string>
+    <string name="app_permission_footer_app_permissions_link">Ver tolos permisos de: <xliff:g id="app" example="Maps">%1$s</xliff:g></string>
+    <string name="app_permission_footer_permission_apps_link">Ver toles aplicaciones con esti permisu</string>
+    <string name="permission_description_summary_calendar">Les aplicaciones con esti permisu puen acceder al calendariu</string>
+    <string name="permission_description_summary_call_log">Les aplicaciones con esti permisu pue lleer y modificar el rexistru de llamaes</string>
+    <string name="permission_description_summary_camera">Les aplicaciones con esti permisu pue facer semeyes y grabar videu</string>
+    <string name="permission_description_summary_contacts">Les aplicaciones con esti permisu puen acceder a los contautos</string>
+    <string name="permission_description_summary_location">Les aplicaciones con esti permisu pue acceder a la llocalización del preséu</string>
+    <string name="permission_description_summary_storage">Les aplicaciones con esti permisu puen acceder al conteníu multimedia y a otros ficheros del preséu</string>
+    <string name="permission_subtitle_all_files">Tolos ficheros</string>
+    <string name="settings">Axustes</string>
+    <string name="role_emergency_search_keywords">en casu d\'emerxencia</string>
+    <string name="ongoing_usage_dialog_ok">Entendílo</string>
+    <string name="ongoing_usage_dialog_separator">,\u0020</string>
+    <string name="ongoing_usage_dialog_last_separator">\u0020y\u0020</string>
+    <string name="permgroup_list_microphone_and_camera">Micrófonu y cámara</string>
+    <string name="settings_button">Axustes</string>
+    <string name="home_missing_work_profile_support">Nun ye compatible col perfil llaboral</string>
+    <string name="incident_report_dialog_intro">El sistema detectó un problema.</string>
+    <string name="incident_report_dialog_allow_label">Permitir</string>
+    <string name="incident_report_dialog_deny_label">Negar</string>
+    <string name="adjust_user_sensitive_title">Axustes avanzaos</string>
+    <string name="menu_adjust_user_sensitive">Axustes avanzaos</string>
+    <string name="permgrouprequest_storage_isolated">¿Quies permitir a
+        &lt;b&gt;<xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b&gt; qu\'acceda al conteníu multimedia del preséu?</string>
+    <string name="permgrouprequest_contacts">¿Quies permitir que
+        &lt;b&gt;<xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b&gt; acceda a los contautos?</string>
+    <string name="permgrouprequest_location">¿Quies permitir que
+        &lt;b&gt;<xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b&gt; acceda la llocalización d\u2019esti preséu?</string>
+    <string name="permgrouprequest_coarselocation">¿Quies permitir que &lt;b&gt;<xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b&gt; acceda a la llocalización aproximada d\'esti preséu?</string>
+    <string name="permgrouprequest_calendar">¿Quies permitir que
+        &lt;b&gt;<xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b&gt; acceda al calendariu?</string>
+    <string name="permgrouprequest_sms">¿Quies permitir que
+        &lt;b&gt;<xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b&gt; unvie y vea los mensaxes SMS?</string>
+    <string name="permgrouprequest_calllog">¿Quies permitir que
+        &lt;b&gt;<xliff:g id="app_name" example="Gmail">%1$s</xliff:g>&lt;/b&gt; acceda al rexistru de llamaes del teléfonu?</string>
+    <string name="other_permissions_label">Otros permisos</string>
+    <string name="additional_permissions_label">Permisos adicionales</string>
+    <string name="privdash_label_camera">Cámara</string>
+    <string name="privdash_label_microphone">Micrófonu</string>
+    <string name="privdash_label_location">Llocalización</string>
+    <string name="safety_center_issue_card_dismiss_button">Escartar</string>
+    <string name="media_confirm_dialog_negative_button">Atrás</string>
+</resources>

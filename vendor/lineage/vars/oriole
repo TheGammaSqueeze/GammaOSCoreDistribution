@@ -1,0 +1,42 @@
+# Pixel 6
+
+# Usage: ${firmware_partitions[@]}
+readonly firmware_partitions=(
+  bl1
+  pbl
+  bl2
+  abl
+  bl31
+  tzsw
+  gsa
+  ldfw
+  modem
+)
+
+# Usage: ${device_repos[@]}
+device_repos=(
+  # common repos in raven
+)
+
+readonly fbpk_version="v2"
+
+# Updated semi-manually via pixel/update-any-var.sh
+
+readonly build_id="TQ3A.230901.001"
+
+# Updated automatically via pixel/update-device-vars.sh
+
+readonly prev_aosp_tag="android-13.0.0_r67"
+readonly aosp_tag="android-13.0.0_r75"
+
+readonly build_number="10750268"
+
+readonly image_url="https://dl.google.com/dl/android/aosp/oriole-tq3a.230901.001-factory-57afd319.zip"
+readonly image_sha256="57afd319cb7660c477c0063b3ae6b5e6159fa9f38597d9d21595a7f3a863b2cd"
+
+readonly flash_url="https://flash.android.com/build/10750268?target=oriole-user&signed"
+
+readonly ota_url="https://dl.google.com/dl/android/aosp/oriole-ota-tq3a.230901.001-ea9d9bca.zip"
+readonly ota_sha256="ea9d9bca6dfc031e2e7969b6e143005cd87531a95cf2b736cd57c1e37ec430e8"
+
+readonly security_patch="2023-09-01"

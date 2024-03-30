@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2011 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="sms_cb_sender_name_public_safety">Avisu informativu</string>
+    <string name="menu_preferences">Axustes</string>
+    <string name="notification_channel_emergency_alerts_high_priority">Alertes d\'emerxencia ensin reconocencia</string>
+    <string name="notification_channel_settings_updates">Cambeos de los axustes de les alertes d\'emerxencia ensin filos automátiques según la SIM</string>
+    <string name="enable_full_screen_public_safety_messages_title">Amosar los mensaxes a pantalla completa</string>
+    <string name="enable_exercise_test_alerts_title">@string/cmas_exercise_alert</string>
+    <string name="enable_operator_defined_test_alerts_title">@string/cmas_operator_defined_alert</string>
+    <string name="notification_cb_settings_changed_title">La operadora camudó los axustes</string>
+    <string name="notification_cb_settings_changed_text">Toca equí pa ver los axustes de les alertes d\'emerxencia ensin filos</string>
+</resources>

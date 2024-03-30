@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2018 The Android Open Source Project
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="assist_action_reply_label">Responder</string>
+    <string name="notification_recents">Elementos de recién</string>
+    <string name="notification_older">Avisos antiguos</string>
+    <string name="collapse_group">Contrayer el grupu</string>
+    <string name="show_more_from_app"><xliff:g id="count">%1$d</xliff:g> más de: <xliff:g id="app">%2$s</xliff:g></string>
+    <plurals name="message_unshown_count">
+        <item quantity="one"><xliff:g id="count">%d</xliff:g> mensaxe más</item>
+        <item quantity="other"><xliff:g id="count">%d</xliff:g> mensaxes más</item>
+    </plurals>
+    <plurals name="restricted_numbered_message_content">
+        <item quantity="one"><xliff:g id="count">%d</xliff:g> mensaxe nuevu</item>
+        <item quantity="other"><xliff:g id="count">%d</xliff:g> mensaxes nuevos</item>
+    </plurals>
+    <string name="see_more_message">Ver más</string>
+    <string name="restricted_hun_message_content">Mensaxe nuevu</string>
+    <string name="manage_text">Xestionar</string>
+</resources>

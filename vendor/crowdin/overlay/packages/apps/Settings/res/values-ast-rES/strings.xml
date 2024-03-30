@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="security_settings_face_preference_title">Desbloquéu facial</string>
+    <string name="security_settings_face_profile_preference_title">Desbloquéu facial pal perfil llaboral</string>
+    <string name="security_settings_fingerprint_v2_enroll_introduction_footer_message_2">El desbloquéu pel sensor de buelgues crea un modelu únicu de la to buelga pa verificar que yes tu. Pa crear esti modelu de buelga demientres la configuración, vas facer imáxenes de la to buelga dende posiciones estremaes.</string>
+    <string name="security_settings_fingerprint_v2_enroll_error_max_attempts">Algamesti\'l númberu máximu d\'intentos</string>
+    <string name="biometric_settings_use_face_preference_summary">Cola cara</string>
+    <string name="biometric_settings_use_fingerprint_preference_summary">Cola buelga</string>
+    <string name="biometric_settings_use_face_or_fingerprint_preference_summary">Cola cara o cola buelga</string>
+    <string name="lock_screen_pin_skip_message" product="tablet">Un PIN protexe la tableta si la pierdes o la roben</string>
+    <string name="lock_screen_pattern_skip_message" product="tablet">Un patrón protexe la tableta si la pierdes o la roben</string>
+    <string name="lock_screen_password_skip_message" product="tablet">Una contraseña protexe la tableta si la pierdes o la roben</string>
+    <string name="lock_screen_pin_skip_message" product="device">Un PIN protexe\'l preséu si lu pierdes o lu roben</string>
+    <string name="lock_screen_pattern_skip_message" product="device">Un patrón protexe\'l preséu si lu pierdes o lu roben</string>
+    <string name="lock_screen_password_skip_message" product="device">Una contraseña protexe\'l preséu si lu pierdes o lu roben</string>
+    <string name="lock_screen_pin_skip_message" product="default">Un PIN protexe\'l teléfonu si lu pierdes o lu roben</string>
+    <string name="lock_screen_pattern_skip_message" product="default">Un patrón protexe\'l teléfonu si lu pierdes o lu roben</string>
+    <string name="lock_screen_password_skip_message" product="default">Una contraseña protexe\'l teléfonu si lu pierdes o lu roben</string>
+    <string name="face_unlock_set_unlock_pattern">Desbloquéu facial + patrón</string>
+    <string name="face_unlock_set_unlock_pin">Desbloquéu facial + PIN</string>
+    <string name="face_unlock_set_unlock_password">Desbloquéu facial + contraseña</string>
+    <string name="wifi_band_6ghz">6 GHz</string>
+    <string name="style_and_wallpaper_settings_title">Fondu de pantalla y estilu</string>
+    <string name="main_clear_progress_text">Espera\u2026</string>
+    <string name="location_category_recent_location_access">Accesu recién</string>
+    <string name="screen_reader_category_title">Llector de pantalla</string>
+    <string name="captions_category_title">Sotítulos</string>
+    <string name="accessibility_shortcut_edit_dialog_summary_software_floating"><annotation id="link">Más opciones</annotation></string>
+    <string name="request_manage_credentials_more">Amosar más</string>
+    <string name="remove_credential_management_app">Quitar l\'aplicación</string>
+    <string name="remove_credential_management_app_dialog_title">¿Quies quitar esta apicación?</string>
+    <plurals name="number_of_urls">
+        <item quantity="one"><xliff:g id="number">%d</xliff:g> URL</item>
+        <item quantity="other"><xliff:g id="number">%d</xliff:g> URLs</item>
+    </plurals>
+    <string name="more_settings_button">Más axustes</string>
+    <string name="nfc_more_title">Más\u2026</string>
+    <string name="nr_advanced_calling_title">Vo5G</string>
+    <string name="account_dashboard_title">Contraseñes y cuentes</string>
+    <string name="zen_mode_duration_summary_time_hours">        {count, plural, one {}
+            =1    {1 hora}
+            other {# hores}
+        }
+    </string>
+    <string name="zen_mode_duration_summary_time_minutes">        {count, plural,
+            =1    {1 minutu}
+            other {# minutos}
+        }
+    </string>
+    <string name="work_sync_dialog_title">¿Quies usar los soníos del perfil personal?</string>
+    <string name="notification_assistant_security_warning_summary">        Los avisos ameyoraos trocaron los avisos adautables n\'Android 12.
+        Esta función amuesa aiciones y rempuestes suxeríes, y organiza los avisos.
+        \n\nLos avisos ameyoraos puen acceder al conteníu de los avisos, incluyida la información
+        personal como\'l nome y los mensaxes de los contautos. Esta función tamién pue escartar o
+        responder a los avisos, como les llamaes telefóniques y controlar el mou «Nun molestar».
+    </string>
+    <string name="notif_listener_not_migrated">Esta aplicación nun ye compatible colos axustes ameyoraos</string>
+    <string name="zen_mode_conversations_count">        {count, plural,
+            =0    {Nada}
+            =1    {1 conversación}
+            other {# conversaciones}
+        }
+    </string>
+    <string name="zen_mode_starred_contacts_summary_contacts">        {count, plural, offset:2
+            =0    {Nada}
+            =1    {{contact_1}}
+            =2    {{contact_1} y {contact_2}}
+            =3    {{contact_1}, {contact_2}, y {contact_3}}
+            other {{contact_1}, {contact_2}, y # más}
+        }
+    </string>
+    <string name="zen_mode_contacts_count">        {count, plural, one {}
+            =0    {Nada}
+            =1    {1 contautu}
+            other {# contautos}
+        }
+    </string>
+    <string name="warning_button_text">Alvertencia</string>
+    <string name="assistant_gesture_category_title">Asistente dixital</string>
+    <string name="autofill_passwords">Contraseñes</string>
+    <plurals name="autofill_passwords_count">
+        <item quantity="one"><xliff:g id="count">%1$d</xliff:g> contraseña</item>
+        <item quantity="other"><xliff:g id="count">%1$d</xliff:g> contraseñes</item>
+    </plurals>
+    <string-array name="graphics_driver_all_apps_preference_values">
+        <item>@string/graphics_driver_app_preference_default</item>
+        <item>@string/graphics_driver_app_preference_production_driver</item>
+        <item>@string/graphics_driver_app_preference_prerelease_driver</item>
+    </string-array>
+    <string-array name="graphics_driver_app_preference_values">
+        <item>@string/graphics_driver_app_preference_default</item>
+        <item>@string/graphics_driver_app_preference_prerelease_driver</item>
+        <item>@string/graphics_driver_app_preference_production_driver</item>
+        <item>@string/graphics_driver_app_preference_system</item>
+    </string-array>
+    <string name="my_device_info_basic_info_category_title">Información básica</string>
+    <string name="my_device_info_device_identifiers_category_title">Identificadores del preséu</string>
+    <string name="privileged_action_disable_fail_title">Nun se pue desactivar la operadora</string>
+    <string name="privileged_action_disable_fail_text">Asocedió daqué malo y nun se pudo desactivar la operadora.</string>
+    <string name="sim_action_enable_dsds_title">¿Quies usar 2 SIMs?</string>
+    <string name="sim_action_restart_title">¿Quies reaniciar el preséu?</string>
+    <string name="sim_action_restart_text">Pa comenzar, reanicia\'l preséu. Dempués vas poder amestar otra SIM.</string>
+    <string name="dsds_activation_failure_title">Nun se pue activar la SIM</string>
+    <string name="dsds_activation_failure_body_msg1">Quita la SIM y volvi inxertala. Si sigue\'l problema, reanicia\'l preséu.</string>
+    <string name="sim_switch_channel_id">Cambéu d\'operadora</string>
+    <string name="network_changed_notification_text">La rede móvil camudó</string>
+    <string name="sim_card_label">Tarxeta SIM</string>
+    <string name="power_menu_long_press_for_assistant_title">Asistente dixital</string>
+    <string name="provider_internet_settings">Internet</string>
+    <string name="provider_network_settings_title">SIMs</string>
+    <string name="sms_preference_title">SMS</string>
+    <string name="default_active_sim_sms">SMS</string>
+    <string name="preference_summary_default_combination"><xliff:g id="state" example="Connected">%1$s</xliff:g> / <xliff:g id="networkMode" example="LTE">%2$s</xliff:g></string>
+    <string name="category_name_appearance">Aspeutu</string>
+    <string name="dark_theme_main_switch_title">Usar l\'estilu escuru</string>
+    <string name="smart_forwarding_ongoing_text">Anovando los axustes…</string>
+    <string name="smart_forwarding_failed_text">Fallu de la rede o de la SIM.</string>
+    <string name="show_clip_access_notification">Amosar l\'accesu al cartafueyu</string>
+    <string name="show_clip_access_notification_summary">Amuesa un mensaxe cuando les aplicaciones accedan al testu, les imáxenes o a otru conteníu que copies</string>
+    <string name="mic_toggle_title">Accesu al micrófonu</string>
+</resources>

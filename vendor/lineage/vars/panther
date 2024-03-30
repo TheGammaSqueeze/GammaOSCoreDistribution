@@ -1,0 +1,42 @@
+# Pixel 7
+
+# Usage: ${firmware_partitions[@]}
+readonly firmware_partitions=(
+  bl1
+  pbl
+  bl2
+  abl
+  bl31
+  tzsw
+  gsa
+  ldfw
+  modem
+)
+
+# Usage: ${device_repos[@]}
+device_repos=(
+  # common repos in cheetah
+)
+
+readonly fbpk_version="v2"
+
+# Updated semi-manually via pixel/update-any-var.sh
+
+readonly build_id="TQ3A.230901.001"
+
+# Updated automatically via pixel/update-device-vars.sh
+
+readonly prev_aosp_tag="android-13.0.0_r67"
+readonly aosp_tag="android-13.0.0_r75"
+
+readonly build_number="10750268"
+
+readonly image_url="https://dl.google.com/dl/android/aosp/panther-tq3a.230901.001-factory-21bf556f.zip"
+readonly image_sha256="21bf556f0d65fc1e383a5d0614084c9dce685219537e6909d0bbcffe0ef331ea"
+
+readonly flash_url="https://flash.android.com/build/10750268?target=panther-user&signed"
+
+readonly ota_url="https://dl.google.com/dl/android/aosp/panther-ota-tq3a.230901.001-a8420d46.zip"
+readonly ota_sha256="a8420d46318e07094574d13415bf30be90c84f4be148582bc62c26e230102e87"
+
+readonly security_patch="2023-09-01"

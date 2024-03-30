@@ -1,0 +1,43 @@
+# Pixel 7 Pro
+
+# Usage: ${firmware_partitions[@]}
+readonly firmware_partitions=(
+  bl1
+  pbl
+  bl2
+  abl
+  bl31
+  tzsw
+  gsa
+  ldfw
+  modem
+)
+
+# Usage: ${device_repos[@]}
+device_repos=(
+  device/google/gs201
+  device/google/pantah
+)
+
+readonly fbpk_version="v2"
+
+# Updated semi-manually via pixel/update-any-var.sh
+
+readonly build_id="TQ3A.230901.001"
+
+# Updated automatically via pixel/update-device-vars.sh
+
+readonly prev_aosp_tag="android-13.0.0_r67"
+readonly aosp_tag="android-13.0.0_r75"
+
+readonly build_number="10750268"
+
+readonly image_url="https://dl.google.com/dl/android/aosp/cheetah-tq3a.230901.001-factory-6b946f4d.zip"
+readonly image_sha256="6b946f4db4b28d04ff436924f9e9dbf18f989df22c2298bbf7889f1a7db9d515"
+
+readonly flash_url="https://flash.android.com/build/10750268?target=cheetah-user&signed"
+
+readonly ota_url="https://dl.google.com/dl/android/aosp/cheetah-ota-tq3a.230901.001-6b881553.zip"
+readonly ota_sha256="6b881553f012d582080642d660e1cf5c9e6fe41e9f1c6ab12ae87fab7894e307"
+
+readonly security_patch="2023-09-01"

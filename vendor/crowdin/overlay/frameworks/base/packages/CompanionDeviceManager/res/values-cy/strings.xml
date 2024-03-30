@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2017 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label">Rheolwr Cymar Ddyfais</string>
+    <string name="confirmation_title">Caniatáu &lt;strong&gt;<xliff:g id="app_name" example="Android Wear">%1$s</xliff:g>&lt;/strong&gt; i gyrchu dy &lt;strong&gt;<xliff:g id="device_name" example="ASUS ZenWatch 2">%2$s</xliff:g>&lt;/strong&gt;</string>
+    <string name="profile_name_watch">oriawr</string>
+    <string name="chooser_title">Dewisa <xliff:g id="profile_name" example="watch">%1$s</xliff:g> i gael ei reoli gan &lt;strong&gt;<xliff:g id="app_name" example="Android Wear">%2$s</xliff:g>&lt;/strong&gt;</string>
+    <string name="summary_watch">Mae angen yr ap hwn i reoli dy <xliff:g id="device_name" example="My Watch">%1$s</xliff:g>. Bydd <xliff:g id="app_name" example="Android Wear">%2$s</xliff:g> yn cael rhyngweithio â dy hysbysiadau a chael mynediad at ganiatâd dy Ffôn, Cysylltiadau, Calendr, logiau galwadau a Dyfeisiau cyfagos.</string>
+    <string name="permission_apps">Apiau</string>
+    <string name="permission_apps_summary">Ffrydio apiau dy ffôn</string>
+    <string name="title_app_streaming">Caniatáu &lt;strong&gt;<xliff:g id="app_name" example="Exo">%1$s</xliff:g>&lt;/strong&gt; i gael mynediad at y wybodaeth hon o dy ffôn</string>
+    <string name="helper_title_app_streaming">Gwasanaethau traws dyfeisiau</string>
+    <string name="helper_summary_app_streaming">Mae <xliff:g id="app_name" example="GMS">%1$s</xliff:g> yn gofyn am ganiatâd ar ran dy <xliff:g id="device_type" example="Chromebook">%2$s</xliff:g> i ffrydio apiau rhwng dy ddyfeisiau</string>
+    <string name="title_computer">Caniatáu &lt;strong&gt;<xliff:g id="app_name" example="GMS">%1$s</xliff:g>&lt;/strong&gt; i gael mynediad at y wybodaeth hon o dy ddyfais</string>
+    <string name="permission_notification">Hysbysiadau</string>
+    <string name="permission_notification_summary">Mae\u2019n gallu darllen pob hysbysiad, gan gynnwys gwybodaeth fel cysylltiadau, negeseuon a lluniau</string>
+    <string name="permission_storage">Lluniau a chyfryngau</string>
+    <string name="helper_title_computer">Gwasanaethau Google Play</string>
+    <string name="helper_summary_computer">Mae <xliff:g id="app_name" example="GMS">%1$s</xliff:g> yn gofyn am ganiatâd ar ran dy <xliff:g id="device_type" example="Chromebook">%2$s</xliff:g> i gael mynediad at luniau, cyfryngau a hysbysiadau dy ffôn</string>
+    <string name="profile_name_generic">dyfais</string>
+    <string name="consent_yes">Caniatáu</string>
+    <string name="consent_no">Peidio â chaniatáu</string>
+    <string name="consent_back">Nôl</string>
+    <string name="permission_sync_confirmation_title">Trosglwyddo caniatâd yr ap
+        i dy oriawr</string>
+    <string name="permission_sync_summary">I\'w wneud yn haws gosod dy oriawr,
+        bydd apiau a gosodir ar dy oriawr wrth ei osod yn defnyddio\u2019r un caniatâd a dy ffôn.\n\n
+        Gall hyn gynnwys caniatâd i gael mynediad at feicroffon a lleoliad dy oriawr.</string>
+    <string name="vendor_icon_description">Eicon yr ap</string>
+    <string name="vendor_header_button_description">Botwm Rhagor o Wybodaeth</string>
+</resources>

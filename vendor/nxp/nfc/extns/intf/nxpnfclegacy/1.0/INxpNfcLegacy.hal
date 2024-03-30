@@ -1,0 +1,105 @@
+/******************************************************************************
+ *
+ *  Copyright 2020 NXP
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ *
+ ******************************************************************************/
+package vendor.nxp.nxpnfclegacy@1.0;
+
+interface INxpNfcLegacy {
+    /*
+     * Setting state of eSE for DWP/SPI sync
+     * @param eSE state
+     * @return status as uint8_t
+     */
+    setEseState(NxpNfcHalEseState EseState)  generates (uint8_t status);
+
+     /*
+     * Gets the chipType which is configured during bootup
+     * @return chipType as uint8_t
+     */
+     getchipType()  generates (uint8_t  chipType);
+
+     /*
+     * Set/Reset PID in driver for signalling during SPI / DWP open/close
+     * @param process Id as uint64_t
+     * @return status as uint16_t
+     */
+     setNfcServicePid(uint64_t pid) generates (uint16_t status);
+
+     /*
+     * Getting state of eSE for Wired Mode/SPI mode (For DWP/SPI sync)
+     * @Return  status as uint16_t
+     */
+     getEseState()  generates (uint16_t status);
+
+     /*
+     * This function release wait for svdd change
+     * of P61. output returned as Status
+     * @param svdd level as inputdata
+     * @return status as uint8_t
+     */
+     spiDwpSync(uint32_t level) generates (uint16_t status);
+
+     /*
+     * This function release wait for DWP On/Off
+     * of P73. output returned as Status
+     * @param eSE vsc as inputdata
+     * @return status as uint8_t
+     */
+     RelForceDwpOnOffWait(uint32_t level) generates (uint16_t status);
+
+     /*
+     * This function gets the SPM state before FW download
+     * @param eSE power GPIO value as input level
+     * @return status as uint8_t
+     */
+     getSPMStatus(uint32_t level) generates (int8_t status);
+
+     /*
+     * This function Sends HCI Events to nfc HAL
+     * @param HCI events as input
+     * @return status as uint8_t
+     */
+     hciInitUpdateState(NfcHciInitStatus HciStatus) generates(int32_t status);
+
+     /*
+     * This function posts event HAL_NFC_CONFIG_ESE_LINK_COMPLETE
+     * @param none
+     * @return status as uint8_t
+     */
+     hciInitUpdateStateComplete() generates(int32_t status);
+
+     /*
+     * This function gets the cached configinfo.
+     * @param none
+     * @return cached config structure NxpNciCfgInfo
+     */
+     getCachedNfccConfig() generates(NxpNciCfgInfo ConfigData);
+
+     /*
+     * This function gets vendor Config
+     * @param none
+     * @return vendor config structure NxpNfcHalConfig
+     */
+     getNxpConfig() generates(NxpNfcHalConfig ConfigData);
+
+     /*
+     * This function tarnsceive the nci command response
+     * @param Nci command as input
+     * @return nci response
+     */
+     nciTransceive(NxpNciExtnCmd NciCmd) generates(NxpNciExtnResp NciResp);
+
+};

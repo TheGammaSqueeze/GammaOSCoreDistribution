@@ -1,0 +1,43 @@
+# Pixel 6 Pro
+
+# Usage: ${firmware_partitions[@]}
+readonly firmware_partitions=(
+  bl1
+  pbl
+  bl2
+  abl
+  bl31
+  tzsw
+  gsa
+  ldfw
+  modem
+)
+
+# Usage: ${device_repos[@]}
+device_repos=(
+  device/google/gs101
+  device/google/raviole
+)
+
+readonly fbpk_version="v2"
+
+# Updated semi-manually via pixel/update-any-var.sh
+
+readonly build_id="TQ3A.230901.001"
+
+# Updated automatically via pixel/update-device-vars.sh
+
+readonly prev_aosp_tag="android-13.0.0_r67"
+readonly aosp_tag="android-13.0.0_r75"
+
+readonly build_number="10750268"
+
+readonly image_url="https://dl.google.com/dl/android/aosp/raven-tq3a.230901.001-factory-5917d34f.zip"
+readonly image_sha256="5917d34f251c8094b0db034127220a9244acf13559f16e929f83288de4545453"
+
+readonly flash_url="https://flash.android.com/build/10750268?target=raven-user&signed"
+
+readonly ota_url="https://dl.google.com/dl/android/aosp/raven-ota-tq3a.230901.001-16187f60.zip"
+readonly ota_sha256="16187f604421f90baeb73ddeb04c12328ffe8dd664fd25cb39b8324d25f4a0a5"
+
+readonly security_patch="2023-09-01"

@@ -1,0 +1,42 @@
+# Pixel 7a
+
+# Usage: ${firmware_partitions[@]}
+readonly firmware_partitions=(
+  bl1
+  pbl
+  bl2
+  abl
+  bl31
+  tzsw
+  gsa
+  ldfw
+  modem
+)
+
+# Usage: ${device_repos[@]}
+device_repos=(
+  device/google/lynx
+)
+
+readonly fbpk_version="v2"
+
+# Updated semi-manually via pixel/update-any-var.sh
+
+readonly build_id="TQ3A.230901.001"
+
+# Updated automatically via pixel/update-device-vars.sh
+
+readonly prev_aosp_tag="android-13.0.0_r67"
+readonly aosp_tag="android-13.0.0_r75"
+
+readonly build_number="10750268"
+
+readonly image_url="https://dl.google.com/dl/android/aosp/lynx-tq3a.230901.001-factory-c54b4a33.zip"
+readonly image_sha256="c54b4a33f42db91904a0b1ffb6c272207437b14e2331fc093b9f111e3b6d4ee4"
+
+readonly flash_url="https://flash.android.com/build/10750268?target=lynx-user&signed"
+
+readonly ota_url="https://dl.google.com/dl/android/aosp/lynx-ota-tq3a.230901.001-79bacf86.zip"
+readonly ota_sha256="79bacf863b8de86041086834b94e428a73337922cd73bde116f25c5deb57db3f"
+
+readonly security_patch="2023-09-01"

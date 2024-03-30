@@ -1,0 +1,65 @@
+cc_library_shared {
+    arch: {
+        arm: {
+            instruction_set: "arm",
+        },
+    },
+    name: "hal_libnfc",
+    defaults: ["hidl_defaults"],
+    proprietary: true,
+    shared_libs: [
+        "liblog",
+        "libhardware",
+        "libpower",
+        "libchrome",
+        "libbase",
+
+        // Treble configuration
+        "libhidlbase",
+        "libutils",
+        "ese_client",
+        "android.hardware.nfc@1.0",
+        "android.hardware.nfc@1.1",
+        "vendor.nxp.nxpnfc@2.0",
+        "vendor.nxp.nxpnfclegacy@1.0"
+    ],
+    cflags: [
+        "-DBUILDCFG=1",
+        "-Wall",
+        "-Werror",
+        "-DNXP_EXTNS=TRUE",
+        "-DNFC_NXP_AID_MAX_SIZE_DYN=TRUE",
+        "-DNXP_NFCC_HCE_F=TRUE",
+        "-DNFC_NXP_LISTEN_ROUTE_TBL_OPTIMIZATION=TRUE",
+        "-DANDROID"
+    ],
+    export_include_dirs: [
+        "include",
+        "nfc/include",
+        "nfa/include",
+        "gki/ulinux",
+        "gki/common",
+    ],
+    include_dirs: [
+        "vendor/nxp/nfc/extns/impl/nxpnfc/2.0",
+        "vendor/nxp/secure_element/extns/impl/",
+    ],
+    srcs: [
+        "nfa/dm/*.cc",
+        "nfa/hci/*.cc",
+        "nfa/ee/*.cc",
+        "nfa/sys/*.cc",
+        "nfc/nci/*.cc",
+        "nfc/nfc/*.cc",
+        "adaptation/*.cc",
+        "gki/common/*.cc",
+        "gki/ulinux/*.cc",
+    ],
+    product_variables: {
+        debuggable: {
+            cflags: [
+                "-DDCHECK_ALWAYS_ON"
+            ],
+        },
+    },
+}

@@ -1,0 +1,44 @@
+# Pixel 5
+
+# Usage: ${firmware_partitions[@]}
+readonly firmware_partitions=(
+  abl
+  aop
+  devcfg
+  hyp
+  keymaster
+  qupfw
+  tz
+  uefisecapp
+  xbl
+  xbl_config
+  featenabler
+  modem
+)
+
+# Usage: ${device_repos[@]}
+device_repos=(
+  device/google/redbull
+  device/google/redfin
+)
+
+# Updated semi-manually via pixel/update-any-var.sh
+
+readonly build_id="TQ3A.230901.001"
+
+# Updated automatically via pixel/update-device-vars.sh
+
+readonly prev_aosp_tag="android-13.0.0_r67"
+readonly aosp_tag="android-13.0.0_r75"
+
+readonly build_number="10750268"
+
+readonly image_url="https://dl.google.com/dl/android/aosp/redfin-tq3a.230901.001-factory-308061bf.zip"
+readonly image_sha256="308061bf6961ade40cae773395e01e5ca05fc8ebb554d4c56c42057b1022ec2e"
+
+readonly flash_url="https://flash.android.com/build/10750268?target=redfin-user&signed"
+
+readonly ota_url="https://dl.google.com/dl/android/aosp/redfin-ota-tq3a.230901.001-eac0a8f6.zip"
+readonly ota_sha256="eac0a8f686a2d16b5ee2944d22cda9dec7ca044f521b7b240f6a312daa3b5115"
+
+readonly security_patch="2023-09-01"

@@ -1,0 +1,44 @@
+# Pixel 5a
+
+# Usage: ${firmware_partitions[@]}
+readonly firmware_partitions=(
+  abl
+  aop
+  devcfg
+  hyp
+  keymaster
+  qupfw
+  tz
+  uefisecapp
+  xbl
+  xbl_config
+  featenabler
+  modem
+)
+
+# Usage: ${device_repos[@]}
+device_repos=(
+  # common repos in redfin
+  device/google/barbet
+)
+
+# Updated semi-manually via pixel/update-any-var.sh
+
+readonly build_id="TQ3A.230901.001"
+
+# Updated automatically via pixel/update-device-vars.sh
+
+readonly prev_aosp_tag="android-13.0.0_r67"
+readonly aosp_tag="android-13.0.0_r75"
+
+readonly build_number="10750268"
+
+readonly image_url="https://dl.google.com/dl/android/aosp/barbet-tq3a.230901.001-factory-533f6127.zip"
+readonly image_sha256="533f6127fd5cafb1667b3e177d9e9a4d70035f427861010f5c06befaaa5dfd9b"
+
+readonly flash_url="https://flash.android.com/build/10750268?target=barbet-user&signed"
+
+readonly ota_url="https://dl.google.com/dl/android/aosp/barbet-ota-tq3a.230901.001-3dd5e91e.zip"
+readonly ota_sha256="3dd5e91e3a3fe612e9d1d6b4d787113053c31d740a9f227b7243b3befeaa5263"
+
+readonly security_patch="2023-09-01"

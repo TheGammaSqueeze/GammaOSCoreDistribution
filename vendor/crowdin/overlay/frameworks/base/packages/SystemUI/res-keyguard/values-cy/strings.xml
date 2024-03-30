@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* //device/apps/common/assets/res/any/strings.xml
+**
+** Copyright 2006, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="keyguard_enter_your_pin">Rho dy PIN</string>
+    <string name="keyguard_enter_your_pattern">Rho dy batrwm</string>
+    <string name="keyguard_enter_your_password">Rho dy gyfrinair</string>
+    <string name="keyguard_sim_error_message_short">Cerdyn Annilys.</string>
+    <string name="keyguard_charged">Wedi gwefru</string>
+    <string name="keyguard_plugged_in_wireless"><xliff:g id="percentage" example="20%">%s</xliff:g> • Yn gwefru\u2019n ddi-wifr</string>
+    <string name="keyguard_plugged_in_dock"><xliff:g id="percentage" example="20%">%s</xliff:g> • Yn gwefru</string>
+    <string name="keyguard_plugged_in"><xliff:g id="percentage">%s</xliff:g> • Yn gwefru</string>
+    <string name="keyguard_plugged_in_charging_fast"><xliff:g id="percentage">%s</xliff:g> • Yn gwefru\'n gyflym</string>
+    <string name="keyguard_plugged_in_charging_slowly"><xliff:g id="percentage">%s</xliff:g> • Yn gwefru\'n araf</string>
+    <string name="keyguard_plugged_in_charging_limited"><xliff:g id="percentage">%s</xliff:g> • Gwefru wedi\u2019i optimeiddio i warchod y batri</string>
+    <string name="keyguard_instructions_when_pattern_disabled">Gwasga Dewislen i ddatgloi.</string>
+    <string name="keyguard_network_locked_message">Rhwydwaith wedi\'i gloi</string>
+    <string name="keyguard_missing_sim_message_short">Dim cerdyn SIM</string>
+    <string name="keyguard_missing_sim_instructions">Gosoda gerdyn SIM.</string>
+    <string name="keyguard_missing_sim_instructions_long">Mae\'r cerdyn SIM ar goll neu yn ddim yn ddarllenadwy. Rho gerdyn SIM darllenadwy.</string>
+    <string name="keyguard_permanent_disabled_sim_message_short">Dim posib defnyddio\'r SIM.</string>
+    <string name="keyguard_permanent_disabled_sim_instructions">Mae dy gerdyn SIM wedi ei analluogi yn barhaol.\nCysyllta â dy ddarparwr gwasanaeth i gael cerdyn SIM newydd.</string>
+    <string name="keyguard_sim_locked_message">Mae\'r cerdyn SIM wedi\'i gloi.</string>
+    <string name="keyguard_sim_puk_locked_message">Mae\'r cerdyn SIM wedi\'i gloi gyda PUK.</string>
+    <string name="keyguard_sim_unlock_progress_dialog_message">Yn datgloi\'r cerdyn SIM\u2026</string>
+    <string name="keyguard_accessibility_pin_area">Maes PIN</string>
+    <string name="keyguard_accessibility_password">Cyfrinair y ddyfais</string>
+    <string name="keyguard_accessibility_sim_pin_area">Maes PIN SIM</string>
+    <string name="keyguard_accessibility_sim_puk_area">Maes PUK SIM</string>
+    <string name="keyboardview_keycode_delete">Dileu</string>
+    <string name="disable_carrier_button_text">Analluogi eSIM</string>
+    <string name="error_disable_esim_title">Methu ag analluogi SIM</string>
+    <string name="error_disable_esim_msg">Ni ellir analluogi\u2019r eSIM oherwydd gwall.</string>
+    <string name="keyboardview_keycode_enter">Bysell \'Enter\'</string>
+    <string name="kg_wrong_pattern">Patrwm anghywir</string>
+    <string name="kg_wrong_password">Cyfrinair anghywir</string>
+    <string name="kg_wrong_pin">PIN Anghywir</string>
+    <string name="kg_too_many_failed_attempts_countdown">{count, plural,
+=1 {Rho gynnig arall ymhen # eiliad.}
+        other {Rho gynnig arall ymhen # eiliad.}
+    }
+    </string>
+    <string name="kg_sim_pin_instructions">Rho PIN y SIM</string>
+    <string name="kg_sim_pin_instructions_multi">Rho\'r PIN SIM ar gyfer \"<xliff:g id="carrier" example="CARD 1">%1$s</xliff:g>\"</string>
+    <string name="kg_sim_lock_esim_instructions"><xliff:g id="previous_msg" example="Enter SIM PIN.">%1$s</xliff:g> Analluoga eSIM i ddefnyddio\'r ddyfais heb wasanaeth ffôn symudol.</string>
+    <string name="kg_puk_enter_puk_hint">Mae\'r SIM bellach wedi\'i analluogi. Rho god PUK i barhau. Cysyllta â dy ddarparwr gwasanaeth am fanylion.</string>
+    <string name="kg_puk_enter_puk_hint_multi">Mae\'r SIM \"<xliff:g id="carrier" example="CARD 1">%1$s</xliff:g>\" bellach wedi\'i analluogi. Rho god PUK i barhau. Cysyllta â dy ddarparwr gwasanaeth symudol am fanylion.</string>
+    <string name="kg_puk_enter_pin_hint">Rho\'r cod PIN newydd</string>
+    <string name="kg_enter_confirm_pin_hint">Cadarnha\'r cod PIN newydd</string>
+    <string name="kg_sim_unlock_progress_dialog_message">Yn datgloi cerdyn SIM\u2026</string>
+    <string name="kg_invalid_sim_pin_hint">Rho rif PIN rhwng 4 ac 8 digid.</string>
+    <string name="kg_invalid_sim_puk_hint">Rhaid i\'r cod PUK fod yn o leiaf 8 digid.</string>
+    <string name="kg_too_many_failed_pin_attempts_dialog_message">        Rwyt wedi rhoi PIN anghywir <xliff:g id="number">%1$d</xliff:g> tro.
+        \n\nRho gynnig arall arni ymhen <xliff:g id="number">%2$d</xliff:g> eiliad.
+    </string>
+    <string name="kg_too_many_failed_password_attempts_dialog_message">        Rwyt wedi rhoi cyfrinair anghywir <xliff:g id="number">%1$d</xliff:g> tro.
+        \n\nRho gynnig arall arni ymhen <xliff:g id="number">%2$d</xliff:g> eiliad.
+    </string>
+    <string name="kg_too_many_failed_pattern_attempts_dialog_message">        Rwyt wedi rhoi patrwm anghywir <xliff:g id="number">%1$d</xliff:g> tro.
+        \n\nRho gynnig arall arni ymhen <xliff:g id="number">%2$d</xliff:g> eiliad.
+    </string>
+    <string name="kg_password_wrong_pin_code_pukked">Rhoddwyd PIN SIM anghywir a rhaid nawr cysylltu â dy ddarparwr gwasanaeth er mwyn datgloi dy ddyfais.</string>
+    <string name="kg_password_wrong_pin_code">{count, plural,
+       =1 {Cod PIN anghywir. Mae gennyt # cynnig arall cyn y bydd rhaid cysylltu â dy ddarparwr i ddatgloi dy ddyfais.}
+        two {Cod PIN anghywir. Mae gennyt # gynnig arall cyn y bydd rhaid cysylltu â dy ddarparwr i ddatgloi dy ddyfais.}
+        few {Cod PIN anghywir. Mae gennyt # chynnig arall cyn y bydd rhaid cysylltu â dy ddarparwr i ddatgloi dy ddyfais.}
+        many {Cod PIN anghywir. Mae gennyt # chynnig arall cyn y bydd rhaid cysylltu â dy ddarparwr i ddatgloi dy ddyfais.}
+        other {Cod PIN anghywir. Mae gennyt # cynnig arall cyn y bydd rhaid cysylltu â dy ddarparwr i ddatgloi dy ddyfais.}
+    }</string>
+    <string name="kg_password_wrong_puk_code_dead">Nid yw\'n bosib defnyddio\'r SIM. Cysyllta â dy ddarparwr gwasanaeth.</string>
+    <string name="kg_password_wrong_puk_code">{count, plural,
+       =1 {Cod PUK SIM anghywir. Mae gennyt # cynnig arall cyn y bydd dim bosib defnyddio\u2019r SIM byth eto.}
+        two {Cod PUK SIM anghywir. Mae gennyt # gynnig arall cyn y bydd dim bosib defnyddio\u2019r SIM byth eto.}
+        few {Cod PUK SIM anghywir. Mae gennyt # chynnig arall cyn y bydd dim bosib defnyddio\u2019r SIM byth eto.}
+        many {Cod PUK SIM anghywir. Mae gennyt # chynnig arall cyn y bydd dim bosib defnyddio\u2019r SIM byth eto.}
+        other {Cod PUK SIM anghywir. Mae gennyt # cynnig arall cyn y bydd dim bosib defnyddio\u2019r SIM byth eto.}
+    }</string>
+    <string name="kg_password_pin_failed">Methodd gweithred PIN y SIM!</string>
+    <string name="kg_password_puk_failed">Methodd gweithred PUK y SIM!</string>
+    <string name="accessibility_ime_switch_button" msgid="5032926134740456424">Newid dull mewnbwn</string>
+    <string name="airplane_mode">Modd awyren</string>
+    <string name="kg_prompt_reason_restart_pattern">Rhaid rhoi\'r patrwm ar ôl ailgychwyn y ddyfais</string>
+    <string name="kg_prompt_reason_restart_pin">Rhaid rhoi\'r PIN ar ôl ailgychwyn y ddyfais</string>
+    <string name="kg_prompt_reason_restart_password">Rhaid rhoi\'r cyfrinair ar ôl ailgychwyn y ddyfais</string>
+    <string name="kg_prompt_reason_timeout_pattern">Am ddiogelwch ychwanegol, defnyddia batrwm yn lle</string>
+    <string name="kg_prompt_reason_timeout_pin">Am ddiogelwch ychwanegol, defnyddia PIN yn lle</string>
+    <string name="kg_prompt_reason_timeout_password">Am ddiogelwch ychwanegol, defnyddia gyfrinair yn lle</string>
+    <string name="kg_prompt_reason_device_admin">Cafodd y ddyfais ei chloi gan weinyddwr</string>
+    <string name="kg_prompt_reason_user_request">Cafodd y ddyfais ei chloi gan rywun.</string>
+    <string name="kg_face_not_recognized">Dim yn ei adnabod</string>
+    <string name="kg_face_sensor_privacy_enabled">I ddefnyddio Datgloi ag Wyneb, tro fynediad at y camera ymlaen yn Gosodiadau</string>
+    <string name="kg_password_default_pin_message">{count, plural,
+       =1 {Rho PIN y SIM. Mae gennyt # cynnig arall cyn y bydd rhaid cysylltu â dy ddarparwr i ddatgloi dy ddyfais.}
+        two {Rho PIN y SIM. Mae gennyt # gynnig arall cyn y bydd rhaid cysylltu â dy ddarparwr i ddatgloi dy ddyfais.}
+        few {Rho PIN y SIM. Mae gennyt # chynnig arall cyn y bydd rhaid cysylltu â dy ddarparwr i ddatgloi dy ddyfais.}
+        many {Rho PIN y SIM. Mae gennyt # chynnig arall cyn y bydd rhaid cysylltu â dy ddarparwr i ddatgloi dy ddyfais.}
+        other {Rho PIN y SIM. Mae gennyt # cynnig arall cyn y bydd rhaid cysylltu â dy ddarparwr i ddatgloi dy ddyfais.}
+    }</string>
+    <string name="kg_password_default_puk_message">{count, plural,
+       =1 {Mae\u2019r SIM nawr wedi\u2019i analluogi. Rho god PUK i barhau. Mae gennyt # cynnig arall cyn y bydd dim posib defnyddio\u2019r SIM byth eto. Cysyllta â dy ddarparwr am fanylion.}
+        two {Mae\u2019r SIM nawr wedi\u2019i analluogi. Rho god PUK i barhau. Mae gennyt # gynnig arall cyn y bydd dim posib defnyddio\u2019r SIM byth eto. Cysyllta â dy ddarparwr am fanylion.}
+        few {Mae\u2019r SIM nawr wedi\u2019i analluogi. Rho god PUK i barhau. Mae gennyt # chynnig arall cyn y bydd dim posib defnyddio\u2019r SIM byth eto. Cysyllta â dy ddarparwr am fanylion.}
+        many {Mae\u2019r SIM nawr wedi\u2019i analluogi. Rho god PUK i barhau. Mae gennyt # chynnig arall cyn y bydd dim posib defnyddio\u2019r SIM byth eto. Cysyllta â dy ddarparwr am fanylion.}
+        other {Mae\u2019r SIM nawr wedi\u2019i analluogi. Rho god PUK i barhau. Mae gennyt # cynnig arall cyn y bydd dim posib defnyddio\u2019r SIM byth eto. Cysyllta â dy ddarparwr am fanylion.}
+    }</string>
+    <string name="clock_title_default">Rhagosodiad</string>
+    <string name="clock_title_bubble">Swigod</string>
+    <string name="clock_title_analog">Analog</string>
+    <string name="keyguard_unlock_to_continue">Datglo dy ddyfais i barhau</string>
+</resources>

@@ -1,0 +1,42 @@
+# Pixel Fold
+
+# Usage: ${firmware_partitions[@]}
+readonly firmware_partitions=(
+  bl1
+  pbl
+  bl2
+  abl
+  bl31
+  tzsw
+  gsa
+  ldfw
+  modem
+)
+
+# Usage: ${device_repos[@]}
+device_repos=(
+  device/google/felix
+)
+
+readonly fbpk_version="v2"
+
+# Updated semi-manually via pixel/update-any-var.sh
+
+readonly build_id="TQ3C.230901.001.A1"
+
+# Updated automatically via pixel/update-device-vars.sh
+
+readonly prev_aosp_tag="android-13.0.0_r72"
+readonly aosp_tag="android-13.0.0_r80"
+
+readonly build_number="10750808"
+
+readonly image_url="https://dl.google.com/dl/android/aosp/felix-tq3c.230901.001.a1-factory-334244a0.zip"
+readonly image_sha256="334244a068ae61f6f609c16171fdd06c17675f3ae1d7a802241892ec3a988df4"
+
+readonly flash_url="https://flash.android.com/build/10750808?target=felix-user&signed"
+
+readonly ota_url="https://dl.google.com/dl/android/aosp/felix-ota-tq3c.230901.001.a1-2fd0f36e.zip"
+readonly ota_sha256="2fd0f36e0ac316ca5678043cd2a597e09ca6ac0557d9d8e4499f17ce24cb032c"
+
+readonly security_patch="2023-09-01"

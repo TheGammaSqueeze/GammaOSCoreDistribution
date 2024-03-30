@@ -1,0 +1,2 @@
+/(vendor|system/vendor)/bin/hw/android\.hardware\.nfc@1\.2-service\.pn8x    u:object_r:hal_nfc_default_exec:s0
+/dev/pn553                                                                  u:object_r:nfc_device:s0

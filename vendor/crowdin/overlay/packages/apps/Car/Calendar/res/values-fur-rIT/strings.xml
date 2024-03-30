@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2020 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Calendari</string>
+    <string name="no_dialler">Nissune tastiere telef. disp.</string>
+    <string name="no_events">Nissun event programât. Tu puedis fâ ce che tu vûs!</string>
+    <string name="no_calendars">Al è pussibil che al sedi in cors l\'inviament di Calendari o che tu vedis di controlâ lis impostazions te aplicazion complementâr</string>
+    <string name="all_day_event">Dut il dì</string>
+    <string name="phone_number">        <xliff:g id="number" example="+49 (0) 555 1234567">%1$s</xliff:g>
+    </string>
+    <string name="phone_number_with_pin">        <xliff:g id="number" example="+49 (0) 555 1234567">%1$s</xliff:g>
+        PIN:
+        <xliff:g id="pin" example="4567">%2$s</xliff:g>
+    </string>
+    <plurals name="all_day_title">
+        <item quantity="one">%d event di dut il dì</item>
+        <item quantity="other">%d events di dut il dì</item>
+    </plurals>
+</resources>

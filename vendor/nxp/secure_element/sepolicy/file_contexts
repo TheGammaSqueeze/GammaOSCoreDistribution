@@ -1,0 +1,2 @@
+/(vendor|system/vendor)/bin/hw/android\.hardware\.secure_element@1\.2-service\.p73    u:object_r:hal_secure_element_default_exec:s0
+/dev/p73                                                                              u:object_r:secure_element_device:s0

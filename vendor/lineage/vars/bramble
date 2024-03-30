@@ -1,0 +1,44 @@
+# Pixel 4a (5G)
+
+# Usage: ${firmware_partitions[@]}
+readonly firmware_partitions=(
+  abl
+  aop
+  devcfg
+  hyp
+  keymaster
+  qupfw
+  tz
+  uefisecapp
+  xbl
+  xbl_config
+  featenabler
+  modem
+)
+
+# Usage: ${device_repos[@]}
+device_repos=(
+  # common repos in redfin
+  device/google/bramble
+)
+
+# Updated semi-manually via pixel/update-any-var.sh
+
+readonly build_id="TQ3A.230901.001"
+
+# Updated automatically via pixel/update-device-vars.sh
+
+readonly prev_aosp_tag="android-13.0.0_r67"
+readonly aosp_tag="android-13.0.0_r75"
+
+readonly build_number="10750268"
+
+readonly image_url="https://dl.google.com/dl/android/aosp/bramble-tq3a.230901.001-factory-ae237efd.zip"
+readonly image_sha256="ae237efd5531feedc43038ec8326f2f7f418541deab1363b500d23b3b355ee10"
+
+readonly flash_url="https://flash.android.com/build/10750268?target=bramble-user&signed"
+
+readonly ota_url="https://dl.google.com/dl/android/aosp/bramble-ota-tq3a.230901.001-6d107ffa.zip"
+readonly ota_sha256="6d107ffac1cd3da2c972112acc75957ed725e5c13d57ca724d9bcca5404fcebd"
+
+readonly security_patch="2023-09-01"

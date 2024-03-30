@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright (C) 2008 The Android Open Source Project
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="long_press_widget_to_add">Ten primío pa mover un widget.</string>
+    <string name="widget_preview_context_description">Widget de: <xliff:g id="widget_name" example="Calendar month view">%1$s</xliff:g></string>
+    <string name="widgets_count">        {count, plural, =1{# widget} other{# widgets}}
+    </string>
+    <string name="shortcuts_count">        {count, plural, =1{# atayu} other{# atayos}}
+    </string>
+    <string name="widgets_and_shortcuts_count"><xliff:g id="widgets_count" example="5 widgets">%1$s</xliff:g>, <xliff:g id="shortcuts_count" example="1 shortcut">%2$s</xliff:g></string>
+    <string name="widgets_full_sheet_cancel_button_description">Borrar el testu de la caxa de busca</string>
+    <string name="no_widgets_available">Los widgets y los atayos nun tán disponibles</string>
+    <string name="no_search_results">Nun s\'atopó nengún widget nin nengún atayu</string>
+    <string name="widget_category_conversations">Conversaciones</string>
+    <string name="widget_education_header">Información útil al algame</string>
+    <string name="reconfigurable_widget_education_tip">Toca pa camudar los axustes del widget</string>
+    <string name="all_apps_label">Toles aplicaciones</string>
+    <string name="all_apps_search_results">Resultaos de la busca</string>
+    <string name="gadget_error_text">Nun se pue cargar el widget</string>
+    <string name="styles_wallpaper_button_text">Fondu de pantalla y estilu</string>
+    <string name="app_installing_title">Instalando «<xliff:g id="name" example="Messenger">%1$s</xliff:g>», completóse\'l <xliff:g id="progress" example="30%">%2$s</xliff:g></string>
+    <string name="work_profile_edu_work_apps">Les aplicaciones llaborables tienen una insignia y l\'alministrador de TI pue veles</string>
+    <string name="work_apps_paused_title">Les aplicaciones llaborales tán en posa</string>
+    <string name="work_apps_paused_body">Les aplicaciones llaborales nun puen unviate avisos, consumir la batería nin acceder a la llocalización</string>
+    <string name="work_apps_paused_content_description">Les aplicaciones llaborales tán desactivaes y nun puen unviate avisos, consumir la batería o acceder a la llocalización</string>
+    <string name="work_apps_paused_edu_banner">Les aplicaciones llaborales tienen una insignia y l\'alministrador de TI pue veles</string>
+    <string name="work_apps_enable_btn_text">Activar les aplicaciones llaborales</string>
+</resources>

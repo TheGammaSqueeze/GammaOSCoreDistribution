@@ -1,0 +1,39 @@
+cc_library_shared {
+
+    name: "ese_client",
+    defaults: ["hidl_defaults"],
+    proprietary: true,
+
+    srcs: [
+        "utils/phNxpConfig.cc",
+        "utils/sparse_crc32.cc",
+        "utils/phNxpLog.cc",
+        "src/EseUpdateChecker.cc",
+        "src/JcDnld.cpp",
+    ],
+
+    local_include_dirs: [
+        "utils",
+    ],
+    export_include_dirs: [
+        "inc",
+    ],
+    shared_libs: [
+        "libbase",
+        "libcutils",
+        "libdl",
+        "libhidlbase",
+        "liblog",
+        "libutils",
+        "libchrome",
+        "libdl",
+        "libhidlbase",
+    ],
+    product_variables: {
+        debuggable: {
+            cflags: [
+                "-DDCHECK_ALWAYS_ON"
+            ],
+        },
+    },
+}

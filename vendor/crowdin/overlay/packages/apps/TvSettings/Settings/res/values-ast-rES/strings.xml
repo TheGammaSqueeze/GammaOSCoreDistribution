@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2014 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="surround_sound_format_dts_uhd">DTS-UHD</string>
+    <string name="surround_sound_format_dolby_mat">Dolby Atmos con Dolby TrueHD</string>
+    <string name="surround_sound_format_dolby_truehd">Dolby TrueHD</string>
+    <string name="surround_sound_format_e_ac3_joc">Dolby Atmos con Dolby Digital Plus</string>
+    <string name="surround_sound_supported_title">FORMATOS COMPATIBLES</string>
+    <string name="surround_sound_unsupported_title">FORMATOS INCOMPATIBLES</string>
+    <string name="hdmi_cec_settings_title">HDMI-CEC</string>
+    <string name="font_scale_sample_text_title">Testu d\'exemplu</string>
+    <string name="hdr_format_supported_title">FORMATOS COMPATIBLES</string>
+    <string name="hdr_format_unsupported_title">FORMATOS INCOMPATIBLES</string>
+    <string name="hdr_format_hdr10">HDR10</string>
+    <string name="hdr_format_hlg">HLG</string>
+    <string name="hdr_format_hdr10plus">HDR10+</string>
+    <string name="hdr_format_dolby_vision">Dolby Vision</string>
+    <string name="bluetooth_toggle_title">Bluetooth</string>
+    <string name="bluetooth_known_devices_category">Accesorios</string>
+    <string name="bluetooth_official_remote_category">Mandu</string>
+    <string name="number_of_device_admins_none">Nun hai nenguna aplicación activa</string>
+    <string name="enterprise_privacy_input_method">Tecláu predetermináu</string>
+    <string name="do_disclosure_generic">La to organización xestiona esti preséu.</string>
+    <string name="do_disclosure_with_name">«<xliff:g id="organization_name" example="Foo, Inc.">%s</xliff:g>» xestiona esti preséu.</string>
+    <string name="about_version">Versión del SO d\'Android TV</string>
+    <string name="about_build">Compilación del SO d\'Android TV</string>
+    <string name="ssl_ca_cert_warning">La rede pue tar supervisada</string>
+    <string name="done_button">Fecho</string>
+    <string name="wifi_setting_other_options_add_network_via_easyconnect">Conexón rápida</string>
+    <string name="wifi_setting_other_options_add_network_via_easyconnect_info_summary">        La conexón rápida ayúdate a conectate aína a redes Wi-Fi pente l\'escanéu d\'un códigu QR nel teléfonu.
+    </string>
+    <string name="storage_dcim_usage">Semeyes y vídeos</string>
+    <string name="microphone">Micrófonu</string>
+    <string name="camera">Cámara</string>
+    <string name="admin_support_more_info">Más detalles</string>
+    <string name="remove_and_uninstall_device_admin">Desactivar y desinstalar</string>
+    <string name="channels_and_inputs_title">Canales y entraes</string>
+    <string name="channels_settings_title">Canales</string>
+    <string name="external_inputs_settings_title">Entraes esternes</string>
+    <string name="power_and_energy">Potencia y enerxía</string>
+</resources>

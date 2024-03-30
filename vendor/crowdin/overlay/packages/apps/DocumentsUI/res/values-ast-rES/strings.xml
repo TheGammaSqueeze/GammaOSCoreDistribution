@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="missing_rename_error">Tienes de renomar esti elementu</string>
+    <string name="add_folder_name_error">Tienes d\'amestar un nome</string>
+    <string name="quiet_mode_error_title">Les aplicaciones llaborales tán en posa</string>
+    <string name="quiet_mode_button">Activar les aplicaciones llaborales</string>
+    <string name="grid_mode_showing">Amosando\'l mou de rexáu</string>
+    <string name="list_mode_showing">Amosando\'l mou de llista</string>
+</resources>

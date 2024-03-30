@@ -1,0 +1,4 @@
+hidl_package_root {
+    name: "vendor.nxp.nxpnfclegacy",
+    path: "vendor/nxp/nfc/extns/intf/nxpnfclegacy",
+}

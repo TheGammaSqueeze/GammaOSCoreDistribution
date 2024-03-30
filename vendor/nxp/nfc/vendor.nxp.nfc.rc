@@ -1,0 +1,9 @@
+#
+# Copyright (C) 2022 The LineageOS Project
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+on post-fs-data
+    mkdir /data/vendor/nfc 0777 nfc nfc
+    chown nfc nfc /dev/pn553
