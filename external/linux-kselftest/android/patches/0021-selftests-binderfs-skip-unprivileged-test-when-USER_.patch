@@ -1,0 +1,36 @@
+From e51806a0b6918cefbd068cbb8100f410e7b01970 Mon Sep 17 00:00:00 2001
+From: Carlos Llamas <cmllamas@google.com>
+Date: Mon, 26 Jul 2021 17:12:42 +0000
+Subject: [PATCH 2/2] selftests/binderfs: skip unprivileged test when !USER_NS
+
+Binderfs unprivileged test requires CONFIG_USER_NS to be set. However,
+this option is not required by Android platforms. Lets skip the test
+as the underlying routine __do_binderfs_test() has already been checked
+by the binderfs_test_privileged() anyway.
+
+Signed-off-by: Carlos Llamas <cmllamas@google.com>
+---
+ .../testing/selftests/filesystems/binderfs/binderfs_test.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/tools/testing/selftests/filesystems/binderfs/binderfs_test.c b/tools/testing/selftests/filesystems/binderfs/binderfs_test.c
+index 540ad4840495..397bf265ba97 100644
+--- a/tools/testing/selftests/filesystems/binderfs/binderfs_test.c
++++ b/tools/testing/selftests/filesystems/binderfs/binderfs_test.c
+@@ -262,6 +262,13 @@ static void binderfs_test_privileged()
+ 
+ static void binderfs_test_unprivileged()
+ {
++	/* This test depends on USER_NS which is not required by Android */
++	if (access("/proc/self/ns/user", F_OK) != 0) {
++		ksft_test_result_skip("%s: user namespace not supported\n",
++				__func__);
++		return;
++	}
++
+ 	change_to_userns();
+ 	__do_binderfs_test();
+ }
+-- 
+2.32.0.432.gabb21c7263-goog
+

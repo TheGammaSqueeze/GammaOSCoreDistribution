@@ -1,0 +1,8 @@
+{
+  "add_workspace": true,
+  "device": true,
+  "features": "device,vfio-device,vmm",
+  "global_defaults": "crosvm_defaults",
+  "run": true,
+  "tests": true
+}

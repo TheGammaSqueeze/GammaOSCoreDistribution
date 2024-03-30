@@ -1,0 +1,7 @@
+{
+  "copy-out": true,
+  "device": true,
+  "features": "crypto,x509",
+  "run": true,
+  "tests": true
+}

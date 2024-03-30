@@ -1,0 +1,19 @@
+name: "thiserror"
+description: "derive(Error)"
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://crates.io/crates/thiserror"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://static.crates.io/crates/thiserror/thiserror-1.0.30.crate"
+  }
+  version: "1.0.30"
+  license_type: NOTICE
+  last_upgrade_date {
+    year: 2022
+    month: 3
+    day: 1
+  }
+}

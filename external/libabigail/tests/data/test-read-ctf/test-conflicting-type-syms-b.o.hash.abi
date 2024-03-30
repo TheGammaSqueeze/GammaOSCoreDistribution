@@ -1,0 +1,13 @@
+<abi-corpus version='2.1' path='data/test-read-ctf/test-conflicting-type-syms-b.o'>
+  <elf-variable-symbols>
+    <elf-symbol name='b' size='8' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='ignore1' size='8' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+  </elf-variable-symbols>
+  <abi-instr address-size='64' language='LANG_C'>
+    <type-decl name='long int' size-in-bits='64' alignment-in-bits='64' id='bd54fe1a'/>
+    <typedef-decl name='a_t' type-id='bd54fe1a' id='40acc204'/>
+    <typedef-decl name='b_t' type-id='bd54fe1a' id='b3d2db81'/>
+    <var-decl name='b' type-id='40acc204' mangled-name='b' visibility='default'/>
+    <var-decl name='ignore1' type-id='b3d2db81' mangled-name='ignore1' visibility='default'/>
+  </abi-instr>
+</abi-corpus>

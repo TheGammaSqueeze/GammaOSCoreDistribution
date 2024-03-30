@@ -1,0 +1,9 @@
+# OpenGL ES 2.0 Tests to exclude when Testing ANGLE.
+
+# http://anglebug.com/2796
+dEQP-GLES2.functional.clipping.point.wide_point_clip
+dEQP-GLES2.functional.clipping.point.wide_point_z_clip
+dEQP-GLES2.functional.clipping.point.wide_point_z_clip_viewport_center
+dEQP-GLES2.functional.clipping.point.wide_point_z_clip_viewport_corner
+dEQP-GLES2.functional.rasterization.primitives.points
+dEQP-GLES2.functional.shaders.builtin_variable.pointcoord

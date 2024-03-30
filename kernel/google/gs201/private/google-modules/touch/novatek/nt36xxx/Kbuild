@@ -1,0 +1,6 @@
+obj-$(CONFIG_TOUCHSCREEN_NT36xxx_HOSTDL_SPI) = nvt_touch.o
+nvt_touch-objs += nt36xxx.o nt36xxx_fw_update.o nt36xxx_ext_proc.o \
+	nt36xxx_mp_ctrlram.o nt36xxx_ext_api.o nt36xxx_ext_usi.o
+ifneq ($(CONFIG_SOC_GOOGLE),)
+nvt_touch-objs += nt36xxx_goog.o
+endif

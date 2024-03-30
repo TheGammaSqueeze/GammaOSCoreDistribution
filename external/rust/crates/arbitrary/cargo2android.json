@@ -1,0 +1,12 @@
+{
+  "apex_available": [
+    "com.android.uwb"
+  ],
+  "dependencies": true,
+  "device": true,
+  "features": "derive",
+  "force-rlib": true,
+  "min_sdk_version": "Tiramisu",
+  "run": true,
+  "tests": true
+}

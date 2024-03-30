@@ -1,0 +1,14 @@
+diff --git a/Android.bp b/Android.bp
+index 2373253..c0b2349 100644
+--- a/Android.bp
++++ b/Android.bp
+@@ -39,4 +39,9 @@ rust_library {
+         "//apex_available:platform",
+         "com.android.virt",
+     ],
++    arch: {
++        arm: {
++            rustlibs: ["libcrossbeam_utils"],
++        },
++    },
+ }

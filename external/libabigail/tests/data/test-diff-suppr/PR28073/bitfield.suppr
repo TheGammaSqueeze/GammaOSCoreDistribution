@@ -1,0 +1,4 @@
+[suppress_type]
+  name = bigstruct
+  type_kind = struct
+  has_data_member_inserted_between = {offset_of(bitfield0), offset_of(other)}

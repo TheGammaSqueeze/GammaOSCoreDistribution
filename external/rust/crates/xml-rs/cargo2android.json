@@ -1,0 +1,15 @@
+{
+  "apex-available": [
+    "//apex_available:platform",
+    "com.android.virt"
+  ],
+  "dependency-blocklist": [
+    "doc_comment"
+  ],
+  "device": true,
+  "run": true,
+  "test-data": [
+    "tests/event_writer.rs=tests/documents/*"
+  ],
+  "tests": true
+}

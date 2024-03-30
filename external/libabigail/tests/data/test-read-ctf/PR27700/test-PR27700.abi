@@ -1,0 +1,22 @@
+<abi-corpus version='2.1' path='data/test-read-common/PR27700/test-PR27700.o'>
+  <elf-function-symbols>
+    <elf-symbol name='foo' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+  </elf-function-symbols>
+  <abi-instr address-size='64' language='LANG_C'>
+    <type-decl name='' is-anonymous='yes' size-in-bits='32' alignment-in-bits='32' id='811c9dc5'/>
+    <enum-decl name='foo' linkage-name='foo' id='022218d8'>
+      <underlying-type type-id='811c9dc5'/>
+      <enumerator name='foo_e0' value='0'/>
+      <enumerator name='foo_e1' value='1'/>
+      <enumerator name='foo_e2' value='2'/>
+      <enumerator name='foo_e3' value='3'/>
+    </enum-decl>
+    <type-decl name='unsigned int' size-in-bits='32' alignment-in-bits='32' id='f0981eeb'/>
+    <pointer-type-def type-id='022218d8' size-in-bits='64' alignment-in-bits='64' id='8750e847'/>
+    <function-decl name='foo' visibility='default' binding='global' size-in-bits='64' alignment-in-bits='8'>
+      <parameter type-id='8750e847'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <type-decl name='void' id='48b5725f'/>
+  </abi-instr>
+</abi-corpus>

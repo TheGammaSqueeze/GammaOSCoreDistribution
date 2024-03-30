@@ -1,0 +1,19 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 16
+        targetSdk 33
+    }
+
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}
+
+dependencies {
+    api project(":integration_tests:agp")
+}

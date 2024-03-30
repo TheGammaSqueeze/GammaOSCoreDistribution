@@ -1,0 +1,9 @@
+{
+  "add-toplevel-block": "cargo2android_protobuf.bp",
+  "add_workspace": true,
+  "device": true,
+  "global_defaults": "crosvm_defaults",
+  "patch": "patches/Android.bp.patch",
+  "run": true,
+  "tests": true
+}

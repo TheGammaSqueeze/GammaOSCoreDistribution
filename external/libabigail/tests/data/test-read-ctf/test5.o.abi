@@ -1,0 +1,50 @@
+<abi-corpus version='2.1' path='data/test-read-ctf/test5.o'>
+  <elf-function-symbols>
+    <elf-symbol name='bar' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='bar2' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='baz' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='baz2' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='foo' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+  </elf-function-symbols>
+  <abi-instr address-size='64' language='LANG_C'>
+    <type-decl name='' is-anonymous='yes' size-in-bits='32' alignment-in-bits='32' id='type-id-1'/>
+    <type-decl name='char' size-in-bits='8' alignment-in-bits='8' id='type-id-2'/>
+    <enum-decl name='E' linkage-name='E' id='type-id-3'>
+      <underlying-type type-id='type-id-1'/>
+      <enumerator name='e0' value='0'/>
+      <enumerator name='e1' value='1'/>
+    </enum-decl>
+    <type-decl name='int' size-in-bits='32' alignment-in-bits='32' id='type-id-4'/>
+    <type-decl name='long int' size-in-bits='64' alignment-in-bits='64' id='type-id-5'/>
+    <type-decl name='long long int' size-in-bits='64' alignment-in-bits='64' id='type-id-6'/>
+    <type-decl name='long long unsigned int' size-in-bits='64' alignment-in-bits='64' id='type-id-7'/>
+    <typedef-decl name='long_long' type-id='type-id-6' id='type-id-8'/>
+    <type-decl name='unsigned int' size-in-bits='32' alignment-in-bits='32' id='type-id-9'/>
+    <pointer-type-def type-id='type-id-2' size-in-bits='64' alignment-in-bits='64' id='type-id-10'/>
+    <qualified-type-def type-id='type-id-4' const='yes' id='type-id-11'/>
+    <qualified-type-def type-id='type-id-5' const='yes' id='type-id-12'/>
+    <qualified-type-def type-id='type-id-12' volatile='yes' id='type-id-13'/>
+    <function-decl name='foo' visibility='default' binding='global' size-in-bits='64' alignment-in-bits='8'>
+      <parameter type-id='type-id-10'/>
+      <parameter type-id='type-id-13'/>
+      <return type-id='type-id-5'/>
+    </function-decl>
+    <function-decl name='baz2' visibility='default' binding='global' size-in-bits='64' alignment-in-bits='8'>
+      <parameter type-id='type-id-4'/>
+      <return type-id='type-id-8'/>
+    </function-decl>
+    <function-decl name='bar' visibility='default' binding='global' size-in-bits='64' alignment-in-bits='8'>
+      <parameter is-variadic='yes'/>
+      <return type-id='type-id-14'/>
+    </function-decl>
+    <function-decl name='bar2' visibility='default' binding='global' size-in-bits='64' alignment-in-bits='8'>
+      <parameter type-id='type-id-3'/>
+      <return type-id='type-id-14'/>
+    </function-decl>
+    <function-decl name='baz' visibility='default' binding='global' size-in-bits='64' alignment-in-bits='8'>
+      <parameter type-id='type-id-4'/>
+      <return type-id='type-id-14'/>
+    </function-decl>
+    <type-decl name='void' id='type-id-14'/>
+  </abi-instr>
+</abi-corpus>

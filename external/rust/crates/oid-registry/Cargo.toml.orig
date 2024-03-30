@@ -1,0 +1,42 @@
+[package]
+name = "oid-registry"
+version = "0.2.0"
+authors = ["Pierre Chifflier <chifflier@wzdftpd.net>"]
+license = "MIT/Apache-2.0"
+description = "Object Identifier (OID) database"
+keywords = ["BER", "DER", "OID"]
+homepage = "https://github.com/rusticata/oid-registry"
+repository = "https://github.com/rusticata/oid-registry.git"
+edition = "2018"
+build = "build.rs"
+readme = "README.md"
+
+include = [
+  "LICENSE-*",
+  "README.md",
+  ".gitignore",
+  "Cargo.toml",
+  "assets/*.txt",
+  "build.rs",
+  "src/*.rs",
+]
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[features]
+default = []
+crypto = ["kdf","pkcs1","pkcs7","pkcs9","pkcs12","nist_algs","x962"]
+kdf = []
+ms_spc = []
+nist_algs = []
+pkcs1 = []
+pkcs7 = []
+pkcs9 = []
+pkcs12 = []
+x509 = []
+x962 = []
+
+[dependencies]
+der-parser = "6.0.0"

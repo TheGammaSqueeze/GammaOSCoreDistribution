@@ -1,0 +1,6 @@
+third_party {
+  license_type: RESTRICTED
+  security {
+    tag: "NVD-CPE2.3:cpe:/a:thekelleys:dnsmasq:2.51"
+  }
+}

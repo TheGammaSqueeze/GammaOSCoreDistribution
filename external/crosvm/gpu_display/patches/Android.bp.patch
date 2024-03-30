@@ -1,0 +1,121 @@
+diff --git b/gpu_display/Android.bp a/gpu_display/Android.bp
+--- b/gpu_display/Android.bp
++++ a/gpu_display/Android.bp
+@@ -32,7 +32,116 @@ rust_library {
+         "liblinux_input_sys",
+         "libthiserror",
+     ],
+     proc_macros: ["libremain"],
+     static_libs: ["libdisplay_wl"],
+-    shared_libs: ["libwayland-client"],
++
++    // added manually
++    target: {
++        host: {
++            shared_libs: ["libwayland_client"],
++        },
++        android: {
++            static_libs: [
++                "libwayland_client_static",
++                "libffi",
++            ],
++        },
++    },
++}
++
++cc_library_static {
++    name: "libdisplay_wl",
++    host_supported: true,
++    c_std: "c11",
++    srcs: ["src/display_wl.c"],
++
++    generated_sources: [
++        "gpu_display_protocol_sources",
++        "wayland_extension_protocol_sources",
++    ],
++    generated_headers: [
++        "gpu_display_client_protocol_headers",
++        "wayland_extension_client_protocol_headers",
++    ],
++    export_generated_headers: [
++        "gpu_display_client_protocol_headers",
++        "wayland_extension_client_protocol_headers",
++    ],
++
++    // added manually
++    target: {
++        host: {
++            shared_libs: ["libwayland_client"],
++        },
++        android: {
++            static_libs: [
++                "libwayland_client_static",
++                "libffi",
++            ],
++        },
++        linux_glibc_x86: {
++            // libffi broken on x86, see b/162610242
++            enabled: false,
++        },
++    },
++    apex_available: [
++        "//apex_available:platform",
++        "com.android.virt",
++    ],
++}
++
++wayland_protocol_codegen {
++    name: "gpu_display_protocol_sources",
++    cmd: "$(location wayland_scanner) private-code < $(in) > $(out)",
++    suffix: ".c",
++    srcs: [
++        "protocol/aura-shell.xml",
++        "protocol/linux-dmabuf-unstable-v1.xml",
++        "protocol/viewporter.xml",
++        "protocol/virtio-gpu-metadata-v1.xml",
++    ],
++    tools: ["wayland_scanner"],
++}
++
++wayland_protocol_codegen {
++    name: "gpu_display_client_protocol_headers",
++    cmd: "$(location wayland_scanner) client-header < $(in) > $(out)",
++    suffix: ".h",
++    srcs: [
++        "protocol/aura-shell.xml",
++        "protocol/linux-dmabuf-unstable-v1.xml",
++        "protocol/viewporter.xml",
++        "protocol/virtio-gpu-metadata-v1.xml",
++    ],
++    tools: ["wayland_scanner"],
++}
++
++wayland_protocol_codegen {
++    name: "gpu_display_server_protocol_headers",
++    cmd: "$(location wayland_scanner) server-header < $(in) > $(out)",
++    suffix: ".h",
++    srcs: [
++        "protocol/aura-shell.xml",
++        "protocol/linux-dmabuf-unstable-v1.xml",
++        "protocol/viewporter.xml",
++        "protocol/virtio-gpu-metadata-v1.xml",
++    ],
++    tools: ["wayland_scanner"],
++}
++
++cc_library_static {
++    name: "libwayland_crosvm_gpu_display_extension_server_protocols",
++    vendor_available: true,
++    host_supported: true,
++    cflags: [
++        "-Wall",
++        "-Wextra",
++        "-Werror",
++        "-g",
++        "-fvisibility=hidden",
++    ],
++    static_libs: ["libwayland_server"],
++    generated_sources: ["gpu_display_protocol_sources"],
++    generated_headers: ["gpu_display_server_protocol_headers"],
++    export_generated_headers: ["gpu_display_server_protocol_headers"],
+ }

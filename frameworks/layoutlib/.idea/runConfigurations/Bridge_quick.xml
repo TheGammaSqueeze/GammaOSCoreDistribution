@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Bridge quick" type="JUnit" factoryName="JUnit">
+    <module name="bridge" />
+    <option name="ALTERNATIVE_JRE_PATH" value="11" />
+    <option name="MAIN_CLASS_NAME" value="" />
+    <option name="METHOD_NAME" value="" />
+    <option name="TEST_OBJECT" value="pattern" />
+    <option name="PARAMETERS" value="" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <patterns>
+      <pattern testClass="com.android.layoutlib.bridge.TestDelegates" />
+      <pattern testClass="com.android.layoutlib.bridge.android.BridgeXmlBlockParserTest" />
+    </patterns>
+    <RunnerSettings RunnerId="Run" />
+    <ConfigurationWrapper RunnerId="Run" />
+    <method v="2" />
+  </configuration>
+</component>

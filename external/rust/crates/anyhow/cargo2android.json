@@ -1,0 +1,25 @@
+{
+  "apex-available": [
+    "//apex_available:platform",
+    "com.android.bluetooth",
+    "com.android.compos",
+    "com.android.resolv",
+    "com.android.uwb",
+    "com.android.virt"
+  ],
+  "dependencies": true,
+  "dependency-blocklist": [
+    "rustversion",
+    "syn",
+    "trybuild"
+  ],
+  "device": true,
+  "min-sdk-version": "29",
+  "run": true,
+  "test-blocklist": [
+    "tests/compiletest.rs",
+    "tests/test_backtrace.rs"
+  ],
+  "tests": true,
+  "vendor-available": true
+}

@@ -1,0 +1,19 @@
+name: "rusticata-macros"
+description: "Helper macros for Rusticata"
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://crates.io/crates/rusticata-macros"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://static.crates.io/crates/rusticata-macros/rusticata-macros-4.1.0.crate"
+  }
+  version: "4.1.0"
+  license_type: NOTICE
+  last_upgrade_date {
+    year: 2022
+    month: 3
+    day: 1
+  }
+}

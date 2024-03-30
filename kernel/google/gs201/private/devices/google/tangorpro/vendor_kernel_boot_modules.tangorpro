@@ -1,0 +1,14 @@
+#
+# tangorpro specific modules loaded during first stage init from vendor_kernel_boot
+# (platform common modules are from vendor_boot_modules.gs201)
+#
+google_dock.ko
+lp855x_bl.ko
+leds-pwm.ko
+pogo_transport.ko
+pwm-samsung.ko
+rt4539_bl.ko
+panel-boe-ts110f5mlg0.ko
+panel-csot-ppa957db2d.ko
+rt4801-regulator.ko
+tps65132-regulator.ko

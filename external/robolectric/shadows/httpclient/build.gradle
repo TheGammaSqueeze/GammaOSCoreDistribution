@@ -1,0 +1,44 @@
+import org.robolectric.gradle.DeployedRoboJavaModulePlugin
+import org.robolectric.gradle.RoboJavaModulePlugin
+
+apply plugin: RoboJavaModulePlugin
+apply plugin: DeployedRoboJavaModulePlugin
+
+apply plugin: ShadowsPlugin
+
+shadows {
+    packageName "org.robolectric.shadows.httpclient"
+    sdkCheckMode "OFF"
+}
+
+configurations {
+    earlyRuntime
+}
+
+dependencies {
+    api project(":annotations")
+    api project(":shadowapi")
+    api project(":utils")
+
+    // We should keep httpclient version for low level API compatibility.
+    earlyRuntime "org.apache.httpcomponents:httpcore:4.0.1"
+    api "org.apache.httpcomponents:httpclient:4.0.3"
+    compileOnly(AndroidSdk.LOLLIPOP_MR1.coordinates) { force = true }
+
+    testImplementation project(":robolectric")
+    testImplementation "junit:junit:${junitVersion}"
+    testImplementation "com.google.truth:truth:${truthVersion}"
+    testImplementation "org.mockito:mockito-core:${mockitoVersion}"
+    testImplementation "androidx.test.ext:junit:$axtJunitVersion@aar"
+
+    testCompileOnly(AndroidSdk.LOLLIPOP_MR1.coordinates) { force = true }
+    testRuntimeOnly AndroidSdk.S.coordinates
+}
+
+// httpcore needs to come before android-all on runtime classpath; the gradle IntelliJ plugin
+//   needs the compileClasspath order patched too (bug?)
+sourceSets.main.compileClasspath = configurations.earlyRuntime + sourceSets.main.compileClasspath
+sourceSets.main.runtimeClasspath = configurations.earlyRuntime + sourceSets.main.runtimeClasspath
+
+sourceSets.test.compileClasspath = configurations.earlyRuntime + sourceSets.test.compileClasspath
+sourceSets.test.runtimeClasspath = configurations.earlyRuntime + sourceSets.test.runtimeClasspath

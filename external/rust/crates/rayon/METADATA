@@ -1,0 +1,19 @@
+name: "rayon"
+description: "Simple work-stealing parallelism for Rust"
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://crates.io/crates/rayon"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://static.crates.io/crates/rayon/rayon-1.5.1.crate"
+  }
+  version: "1.5.1"
+  license_type: NOTICE
+  last_upgrade_date {
+    year: 2021
+    month: 5
+    day: 19
+  }
+}

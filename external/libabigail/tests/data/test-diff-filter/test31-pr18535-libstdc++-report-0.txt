@@ -1,0 +1,87 @@
+Functions changes summary: 0 Removed, 3 Changed (10 filtered out), 13 Added functions
+Variables changes summary: 0 Removed, 0 Changed, 0 Added variable
+Function symbols changes summary: 0 Removed, 0 Added function symbol not referenced by debug info
+Variable symbols changes summary: 0 Removed, 6 Added variable symbols not referenced by debug info
+
+13 Added functions:
+
+  [A] 'function void __cxxabiv1::__cxa_throw_bad_array_length()'
+  [A] 'function void __cxxabiv1::__cxa_throw_bad_array_new_length()'
+  [A] 'function void std::__throw_out_of_range_fmt(const char*, ...)'
+  [A] 'method virtual const char* std::bad_array_length::what() const'
+    note that this adds a new entry to the vtable of class std::bad_array_length
+  [A] 'method virtual std::bad_array_length::~bad_array_length(int)'
+    note that this adds a new entry to the vtable of class std::bad_array_length
+  [A] 'method virtual std::bad_array_length::~bad_array_length(int)'
+    note that this adds a new entry to the vtable of class std::bad_array_length
+  [A] 'method virtual const char* std::bad_array_new_length::what() const'
+    note that this adds a new entry to the vtable of class std::bad_array_new_length
+  [A] 'method virtual std::bad_array_new_length::~bad_array_new_length(int)'
+    note that this adds a new entry to the vtable of class std::bad_array_new_length
+  [A] 'method virtual std::bad_array_new_length::~bad_array_new_length(int)'
+    note that this adds a new entry to the vtable of class std::bad_array_new_length
+  [A] 'function std::new_handler std::get_new_handler()'
+  [A] 'function std::terminate_handler std::get_terminate()'
+  [A] 'function std::unexpected_handler std::get_unexpected()'
+  [A] 'method std::regex_error::regex_error(std::regex_constants::error_type)'
+
+3 functions with some indirect sub-type change:
+
+  [C] 'function __cxxabiv1::__cxa_dependent_exception* __cxxabiv1::__cxa_allocate_dependent_exception()' has some indirect sub-type changes:
+    return type changed:
+      in pointed to type 'struct __cxxabiv1::__cxa_dependent_exception':
+        type size hasn't changed
+        1 data member insertion:
+          'void (void*)* __padding', at offset 32 (in bits)
+        6 data member changes:
+          'std::unexpected_handler unexpectedHandler' offset changed from 32 to 64 (in bits) (by +32 bits)
+          'std::terminate_handler terminateHandler' offset changed from 64 to 96 (in bits) (by +32 bits)
+          '__cxxabiv1::__cxa_exception* nextException' offset changed from 96 to 128 (in bits) (by +32 bits)
+          'int handlerCount' offset changed from 128 to 160 (in bits) (by +32 bits)
+          '__cxxabiv1::__cxa_exception* nextPropagatingException' offset changed from 160 to 192 (in bits) (by +32 bits)
+          'int propagationCount' offset changed from 192 to 224 (in bits) (by +32 bits)
+
+  [C] 'method virtual std::__future_base::_State_base::~_State_base(int)' has some indirect sub-type changes:
+    implicit parameter 0 of type 'std::__future_base::_State_base*' has sub-type changes:
+      in pointed to type 'class std::__future_base::_State_base':
+        type size hasn't changed
+        1 member function changes (3 filtered):
+          'method virtual std::__future_base::_State_base* std::__future_base::_State_base::_M_run_deferred()' has some sub-type changes:
+            return type changed:
+              entity changed from 'std::__future_base::_State_base*' to 'void'
+              type size changed from 32 to 0 (in bits)
+            implicit parameter 0 of type 'std::__future_base::_State_base*' has sub-type changes:
+              pointed to type 'class std::__future_base::_State_base' changed, as being reported
+        1 data member change:
+          type of 'std::__future_base::_State_base::_Ptr_type _M_result' changed:
+            underlying type 'typedef std::__future_base::_Ptr' changed:
+              underlying type 'class std::unique_ptr<std::__future_base::_Result<void>, std::__future_base::_Result_base::_Deleter>' changed:
+                type name changed from 'std::unique_ptr<std::__future_base::_Result<void>, std::__future_base::_Result_base::_Deleter>' to 'std::unique_ptr<std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter>'
+                type size hasn't changed
+                1 data member change:
+                  type of 'std::unique_ptr<std::__future_base::_Result<void>, std::__future_base::_Result_base::_Deleter>::__tuple_type _M_t' changed:
+                    typedef name changed from std::unique_ptr<std::__future_base::_Result<void>, std::__future_base::_Result_base::_Deleter>::__tuple_type to std::unique_ptr<std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter>::__tuple_type
+                    underlying type 'class std::tuple<std::__future_base::_Result<void>*, std::__future_base::_Result_base::_Deleter>' changed:
+                      type name changed from 'std::tuple<std::__future_base::_Result<void>*, std::__future_base::_Result_base::_Deleter>' to 'std::tuple<std::__future_base::_Result_base*, std::__future_base::_Result_base::_Deleter>'
+                      type size hasn't changed
+                      1 base class deletion:
+                        struct std::_Tuple_impl<0u, std::__future_base::_Result<void>*, std::__future_base::_Result_base::_Deleter>
+                      1 base class insertion:
+                        struct std::_Tuple_impl<0u, std::__future_base::_Result_base*, std::__future_base::_Result_base::_Deleter>
+                  and name of 'std::unique_ptr<std::__future_base::_Result<void>, std::__future_base::_Result_base::_Deleter>::_M_t' changed to 'std::unique_ptr<std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter>::_M_t'
+
+  [C] 'function void std::__throw_regex_error(std::regex_constants::error_type)' has some indirect sub-type changes:
+    parameter 1 of type 'enum std::regex_constants::error_type' has sub-type changes:
+      type size hasn't changed
+      1 enumerator deletion:
+        'std::regex_constants::error_type::_S_error_last' value '13'
+
+6 Added variable symbols not referenced by debug info:
+
+  [A] _ZTISt16bad_array_length@@CXXABI_1.3.8
+  [A] _ZTISt20bad_array_new_length@@CXXABI_1.3.8
+  [A] _ZTSSt16bad_array_length@@CXXABI_1.3.8
+  [A] _ZTSSt20bad_array_new_length@@CXXABI_1.3.8
+  [A] _ZTVSt16bad_array_length@@CXXABI_1.3.8
+  [A] _ZTVSt20bad_array_new_length@@CXXABI_1.3.8
+

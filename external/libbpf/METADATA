@@ -1,0 +1,17 @@
+name: "libbpf"
+description:
+    "Supporting headers and tools to interact with BPF and BTF."
+
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://github.com/libbpf/libbpf"
+  }
+  url {
+    type: GIT
+    value: "https://github.com/libbpf/libbpf"
+  }
+  version: "9fab7c81ecd462ce6aa1eabd24b230f0fc6a14c7"
+  last_upgrade_date { year: 2022 month: 1 day: 5 }
+  license_type: RESTRICTED
+}

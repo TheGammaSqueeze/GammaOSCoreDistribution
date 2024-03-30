@@ -1,0 +1,4 @@
+Removed binaries:
+  [D] /lib64/libcrypt.so.1.1.0, SONAME: libcrypt.so.1
+Added binaries:
+  [A] /usr/lib64/libcrypt.so.2.0.0, SONAME: libcrypt.so.2

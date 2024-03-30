@@ -1,0 +1,22 @@
+name: "curl"
+description: "A command line tool and library for transferring data with URLs."
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://curl.haxx.se/"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://github.com/curl/curl/releases/download/curl-7_80_0/curl-7.80.0.tar.xz"
+  }
+  version: "curl-7_80_0"
+  license_type: NOTICE
+  security {
+    tag: "NVD-CPE2.3:cpe:/a:haxx:curl:7.78.0"
+  }
+  last_upgrade_date {
+    year: 2021
+    month: 12
+    day: 7
+  }
+}

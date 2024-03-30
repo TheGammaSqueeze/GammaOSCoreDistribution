@@ -1,0 +1,54 @@
+<abi-corpus version='2.1' path='data/test-read-ctf/test0'>
+  <elf-function-symbols>
+    <elf-symbol name='__libc_csu_fini' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='__libc_csu_init' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='_start' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='foo_1' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='main' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+  </elf-function-symbols>
+  <elf-variable-symbols>
+    <elf-symbol name='_IO_stdin_used' size='4' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='status' size='4' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='test_array' size='40' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='test_const' size='4' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='test_float' size='4' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='test_pointer' size='8' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='test_restrict' size='8' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='test_volatile' size='2' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+  </elf-variable-symbols>
+  <abi-instr address-size='64' language='LANG_C'>
+    <type-decl name='' is-anonymous='yes' size-in-bits='1' alignment-in-bits='8' id='type-id-1'/>
+    <type-decl name='char' size-in-bits='8' alignment-in-bits='8' id='type-id-2'/>
+    <class-decl name='S' size-in-bits='32' alignment-in-bits='32' is-struct='yes' visibility='default' id='type-id-3'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='m0' type-id='type-id-4' visibility='default'/>
+      </data-member>
+    </class-decl>
+    <class-decl name='' size-in-bits='32' alignment-in-bits='8' is-struct='yes' is-anonymous='yes' visibility='default' id='type-id-5'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='status0' type-id='type-id-1' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='1'>
+        <var-decl name='status1' type-id='type-id-1' visibility='default'/>
+      </data-member>
+    </class-decl>
+    <type-decl name='float' size-in-bits='32' alignment-in-bits='32' id='type-id-6'/>
+    <type-decl name='int' size-in-bits='32' alignment-in-bits='32' id='type-id-4'/>
+    <array-type-def dimensions='1' type-id='type-id-4' size-in-bits='320' alignment-in-bits='32' id='type-id-7'>
+      <subrange length='10' type-id='type-id-8' id='type-id-9'/>
+    </array-type-def>
+    <type-decl name='long int' size-in-bits='64' alignment-in-bits='64' id='type-id-10'/>
+    <type-decl name='short int' size-in-bits='16' alignment-in-bits='16' id='type-id-11'/>
+    <type-decl name='signed char' size-in-bits='8' alignment-in-bits='8' id='type-id-12'/>
+    <type-decl name='unsigned char' size-in-bits='8' alignment-in-bits='8' id='type-id-13'/>
+    <type-decl name='unsigned int' size-in-bits='32' alignment-in-bits='32' id='type-id-14'/>
+    <type-decl name='unsigned long int' size-in-bits='64' alignment-in-bits='64' id='type-id-8'/>
+    <type-decl name='unsigned short int' size-in-bits='16' alignment-in-bits='16' id='type-id-15'/>
+    <pointer-type-def type-id='type-id-3' size-in-bits='64' alignment-in-bits='64' id='type-id-16'/>
+    <pointer-type-def type-id='type-id-2' size-in-bits='64' alignment-in-bits='64' id='type-id-17'/>
+    <qualified-type-def type-id='type-id-3' const='yes' id='type-id-18'/>
+    <pointer-type-def type-id='type-id-10' size-in-bits='64' alignment-in-bits='64' id='type-id-19'/>
+    <qualified-type-def type-id='type-id-19' restrict='yes' id='type-id-20'/>
+    <qualified-type-def type-id='type-id-11' volatile='yes' id='type-id-21'/>
+  </abi-instr>
+</abi-corpus>

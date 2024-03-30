@@ -1,0 +1,47 @@
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -6301,7 +6301,7 @@ mod tests {
+             .load_priv_key_from_pem_file("examples/cert.key")
+             .unwrap();
+         config
+-            .set_application_protos(b"\x06proto1\06proto2")
++            .set_application_protos(b"\x06proto1\x06proto2")
+             .unwrap();
+ 
+         let mut pipe = testing::Pipe::with_server_config(&mut config).unwrap();
+@@ -8347,7 +8347,7 @@ mod tests {
+             .load_priv_key_from_pem_file("examples/cert.key")
+             .unwrap();
+         config
+-            .set_application_protos(b"\x06proto1\06proto2")
++            .set_application_protos(b"\x06proto1\x06proto2")
+             .unwrap();
+ 
+         let mut pipe = testing::Pipe::with_server_config(&mut config).unwrap();
+@@ -8407,7 +8407,7 @@ mod tests {
+             .load_priv_key_from_pem_file("examples/cert.key")
+             .unwrap();
+         config
+-            .set_application_protos(b"\x06proto1\06proto2")
++            .set_application_protos(b"\x06proto1\x06proto2")
+             .unwrap();
+ 
+         let mut pipe = testing::Pipe::with_server_config(&mut config).unwrap();
+@@ -8465,7 +8465,7 @@ mod tests {
+             .load_priv_key_from_pem_file("examples/cert.key")
+             .unwrap();
+         config
+-            .set_application_protos(b"\x06proto1\06proto2")
++            .set_application_protos(b"\x06proto1\x06proto2")
+             .unwrap();
+ 
+         let mut pipe = testing::Pipe::with_server_config(&mut config).unwrap();
+@@ -9509,7 +9509,7 @@ mod tests {
+             .load_priv_key_from_pem_file("examples/cert.key")
+             .unwrap();
+         config
+-            .set_application_protos(b"\x06proto1\06proto2")
++            .set_application_protos(b"\x06proto1\x06proto2")
+             .unwrap();
+ 
+         let mut pipe = testing::Pipe::with_server_config(&mut config).unwrap();

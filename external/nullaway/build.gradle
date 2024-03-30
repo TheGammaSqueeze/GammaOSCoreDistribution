@@ -1,0 +1,105 @@
+/*
+ * Copyright (C) 2017. Uber Technologies
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import net.ltgt.gradle.errorprone.CheckSeverity
+buildscript {
+    repositories {
+        mavenCentral()
+        google() // For Gradle 4.0+
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.1'
+        classpath 'com.vanniktech:gradle-maven-publish-plugin:0.14.2'
+    }
+}
+plugins {
+  id "com.github.sherter.google-java-format" version "0.9"
+  id "net.ltgt.errorprone" version "2.0.1" apply false
+  id "com.github.johnrengelman.shadow" version "6.1.0" apply false
+  id "com.github.kt3k.coveralls" version "2.12.0" apply false
+  id "com.android.application" version "3.5.0" apply false
+  id "me.champeau.jmh" version "0.6.6" apply false
+}
+
+repositories {
+  // to get the google-java-format jar and dependencies
+  mavenCentral()
+}
+
+apply from: "gradle/dependencies.gradle"
+
+subprojects { project ->
+    project.apply plugin: "net.ltgt.errorprone"
+    project.dependencies {
+        errorprone deps.build.errorProneCore
+        errorproneJavac deps.build.errorProneJavac
+    }
+    project.tasks.withType(JavaCompile) {
+        dependsOn(installGitHooks)
+        options.compilerArgs += [
+            "-Xlint:deprecation",
+            "-Xlint:rawtypes",
+            "-Xlint:unchecked",
+            "-Werror"
+        ]
+        options.errorprone {
+            // disable warnings in generated code; AutoValue code fails UnnecessaryParentheses check
+            disableWarningsInGeneratedCode = true
+            // Triggers for generated Android code (R.java)
+            check("MutablePublicArray", CheckSeverity.OFF)
+            // this check is too noisy
+            check("StringSplitter", CheckSeverity.OFF)
+            check("WildcardImport", CheckSeverity.ERROR)
+            check("MissingBraces", CheckSeverity.ERROR)
+        }
+    }
+
+    if (JavaVersion.current().java9Compatible) {
+        tasks.withType(JavaCompile) {
+            options.release = 8
+        }
+    }
+
+    tasks.withType(Test).configureEach {
+        maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+    }
+
+    repositories {
+        mavenCentral()
+        google()
+    }
+
+}
+
+googleJavaFormat {
+  toolVersion = "1.6"
+  // don't enforce formatting for generated Java code under buildSrc
+  exclude 'buildSrc/build/**/*.java'
+}
+
+////////////////////////////////////////////////////////////////////////
+//
+//  Google Java Format pre-commit hook installation
+//
+
+tasks.register('installGitHooks', Copy) {
+	from(file('config/hooks/pre-commit-stub')) {
+		rename 'pre-commit-stub', 'pre-commit'
+	}
+	into file('.git/hooks')
+	fileMode 0777
+}

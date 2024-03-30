@@ -1,0 +1,20 @@
+name: "pest"
+description: "The Elegant Parser"
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://crates.io/crates/pest"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://static.crates.io/crates/pest/pest-2.1.3.crate"
+  }
+  version: "2.1.3"
+  # Dual-licensed, using the least restrictive per go/thirdpartylicenses#same.
+  license_type: NOTICE
+  last_upgrade_date {
+    year: 2022
+    month: 1
+    day: 27
+  }
+}

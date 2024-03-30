@@ -1,0 +1,81 @@
+package {
+    // See: http://go/android-license-faq
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+aidl_interface {
+    name: "com.google.hardware.pixel.display",
+    vendor_available: true,
+    srcs: [
+        "com/google/hardware/pixel/display/*.aidl",
+    ],
+
+    stability: "vintf",
+
+    imports: [
+        "android.hardware.common-V2",
+        "android.hardware.graphics.common-V3",
+    ],
+
+    backend: {
+        java: {
+            platform_apis: true,
+        },
+        cpp: {
+            enabled: false,
+        },
+    },
+    versions_with_info: [
+        {
+            version: "1",
+            imports: [
+                "android.hardware.common-V2",
+                "android.hardware.graphics.common-V3",
+            ],
+        },
+        {
+            version: "2",
+            imports: [
+                "android.hardware.common-V2",
+                "android.hardware.graphics.common-V3",
+            ],
+        },
+        {
+            version: "3",
+            imports: [
+                "android.hardware.common-V2",
+                "android.hardware.graphics.common-V3",
+            ],
+        },
+        {
+            version: "4",
+            imports: [
+                "android.hardware.common-V2",
+                "android.hardware.graphics.common-V3",
+            ],
+        },
+        {
+            version: "5",
+            imports: [
+                "android.hardware.common-V2",
+                "android.hardware.graphics.common-V3",
+            ],
+        },
+        {
+            version: "6",
+            imports: [
+                "android.hardware.common-V2",
+                "android.hardware.graphics.common-V3",
+            ],
+        },
+        {
+            version: "7",
+            imports: [
+                "android.hardware.common-V2",
+                "android.hardware.graphics.common-V3",
+            ],
+        },
+
+    ],
+
+}

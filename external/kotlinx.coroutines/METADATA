@@ -1,0 +1,15 @@
+name: "kotlinx.coroutines"
+description: "Library support for Kotlin coroutines"
+third_party {
+  url {
+    type: GIT
+    value: "https://github.com/Kotlin/kotlinx.coroutines"
+  }
+  version: "1.6.4"
+  license_type: NOTICE
+  last_upgrade_date {
+    year: 2022
+    month: 7
+    day: 20
+  }
+}

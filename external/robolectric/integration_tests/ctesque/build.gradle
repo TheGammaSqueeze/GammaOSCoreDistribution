@@ -1,0 +1,71 @@
+import org.robolectric.gradle.AndroidProjectConfigPlugin
+import org.robolectric.gradle.GradleManagedDevicePlugin
+
+apply plugin: 'com.android.library'
+apply plugin: AndroidProjectConfigPlugin
+apply plugin: GradleManagedDevicePlugin
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 16
+        targetSdk 33
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+    aaptOptions {
+        noCompress 'txt'
+    }
+
+    sourceSets {
+        String sharedTestDir = 'src/sharedTest/'
+        String sharedTestSourceDir = sharedTestDir + 'java'
+        String sharedTestResourceDir = sharedTestDir + 'resources'
+        test.resources.srcDirs += sharedTestResourceDir
+        test.java.srcDirs += sharedTestSourceDir
+        androidTest.resources.srcDirs += sharedTestResourceDir
+        androidTest.java.srcDirs += sharedTestSourceDir
+    }
+}
+
+dependencies {
+    implementation project(':testapp')
+
+    testImplementation project(':robolectric')
+    testImplementation "junit:junit:${junitVersion}"
+    testImplementation("androidx.test:monitor:$axtMonitorVersion")
+    testImplementation("androidx.test:runner:$axtRunnerVersion")
+    testImplementation("androidx.test:rules:$axtRulesVersion")
+    testImplementation("androidx.test.ext:junit:$axtJunitVersion")
+    testImplementation("androidx.test.ext:truth:$axtTruthVersion")
+    testImplementation("androidx.test:core:$axtCoreVersion")
+    testImplementation("com.google.truth:truth:${truthVersion}")
+    testImplementation("com.google.guava:guava:$guavaJREVersion")
+
+    // Testing dependencies
+    androidTestImplementation project(':shadowapi')
+    androidTestImplementation("androidx.test:monitor:$axtMonitorVersion")
+    androidTestImplementation("androidx.test:runner:$axtRunnerVersion")
+    androidTestImplementation("androidx.test:rules:$axtRulesVersion")
+    androidTestImplementation("androidx.test.ext:junit:$axtJunitVersion")
+    androidTestImplementation("androidx.test.ext:truth:$axtTruthVersion")
+    androidTestImplementation("com.google.truth:truth:${truthVersion}")
+    androidTestImplementation("com.google.guava:guava:$guavaJREVersion")
+    androidTestUtil "androidx.test.services:test-services:$axtTestServicesVersion"
+}

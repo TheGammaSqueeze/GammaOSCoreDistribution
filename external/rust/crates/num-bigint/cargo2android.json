@@ -1,0 +1,10 @@
+{
+  "cfg-blocklist": [
+    "use_addcarry"
+  ],
+  "copy-out": true,
+  "device": true,
+  "run": true,
+  "tests": true,
+  "vendor-available": true
+}

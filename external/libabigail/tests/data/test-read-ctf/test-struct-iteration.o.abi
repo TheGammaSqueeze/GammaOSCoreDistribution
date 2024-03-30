@@ -1,0 +1,96 @@
+<abi-corpus version='2.1' path='data/test-read-ctf/test-struct-iteration-ctf.o'>
+  <elf-variable-symbols>
+    <elf-symbol name='used' size='64' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+  </elf-variable-symbols>
+  <abi-instr address-size='64' language='LANG_C'>
+    <type-decl name='char' size-in-bits='8' alignment-in-bits='8' id='type-id-1'/>
+    <class-decl name='' is-struct='yes' is-anonymous='yes' visibility='default' id='type-id-2'/>
+    <class-decl name='' size-in-bits='128' alignment-in-bits='64' is-struct='yes' is-anonymous='yes' visibility='default' id='type-id-3'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='unnamed_sub_member' type-id='type-id-4' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='64'>
+        <var-decl name='' type-id='type-id-5' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='one_more_level' type-id='type-id-6' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='yes_really_one_more' type-id='type-id-4' visibility='default'/>
+      </data-member>
+    </class-decl>
+    <class-decl name='foo_t' size-in-bits='512' alignment-in-bits='32' is-struct='yes' visibility='default' id='type-id-7'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='foo' type-id='type-id-8' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='64'>
+        <var-decl name='bar' type-id='type-id-9' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='128'>
+        <var-decl name='baz' type-id='type-id-10' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='192'>
+        <var-decl name='self' type-id='type-id-11' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='256'>
+        <var-decl name='named' type-id='type-id-12' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='64'>
+        <var-decl name='' type-id='type-id-3' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='unnamed_sub_member' type-id='type-id-4' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='64'>
+        <var-decl name='' type-id='type-id-5' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='one_more_level' type-id='type-id-6' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='yes_really_one_more' type-id='type-id-4' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='64'>
+        <var-decl name='' type-id='type-id-2' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='64'>
+        <var-decl name='' type-id='type-id-13' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='448'>
+        <var-decl name='after_the_end' type-id='type-id-8' visibility='default'/>
+      </data-member>
+    </class-decl>
+    <type-decl name='double' size-in-bits='64' alignment-in-bits='64' id='type-id-6'/>
+    <type-decl name='int' size-in-bits='32' alignment-in-bits='32' id='type-id-8'/>
+    <type-decl name='long int' size-in-bits='64' alignment-in-bits='64' id='type-id-4'/>
+    <type-decl name='short int' size-in-bits='16' alignment-in-bits='16' id='type-id-14'/>
+    <type-decl name='signed char' size-in-bits='8' alignment-in-bits='8' id='type-id-15'/>
+    <typedef-decl name='size_t' type-id='type-id-16' id='type-id-9'/>
+    <union-decl name='' size-in-bits='64' is-anonymous='yes' visibility='default' id='type-id-12'>
+      <data-member access='public'>
+        <var-decl name='should_not_appear' type-id='type-id-6' visibility='default'/>
+      </data-member>
+      <data-member access='public'>
+        <var-decl name='nor_should_this' type-id='type-id-17' visibility='default'/>
+      </data-member>
+    </union-decl>
+    <union-decl name='' is-anonymous='yes' visibility='default' id='type-id-13'/>
+    <union-decl name='' size-in-bits='64' is-anonymous='yes' visibility='default' id='type-id-5'>
+      <data-member access='public'>
+        <var-decl name='one_more_level' type-id='type-id-6' visibility='default'/>
+      </data-member>
+      <data-member access='public'>
+        <var-decl name='yes_really_one_more' type-id='type-id-4' visibility='default'/>
+      </data-member>
+    </union-decl>
+    <type-decl name='unsigned char' size-in-bits='8' alignment-in-bits='8' id='type-id-18'/>
+    <type-decl name='unsigned int' size-in-bits='32' alignment-in-bits='32' id='type-id-19'/>
+    <type-decl name='unsigned long int' size-in-bits='64' alignment-in-bits='64' id='type-id-16'/>
+    <type-decl name='unsigned short int' size-in-bits='16' alignment-in-bits='16' id='type-id-20'/>
+    <pointer-type-def type-id='type-id-1' size-in-bits='64' alignment-in-bits='64' id='type-id-17'/>
+    <qualified-type-def type-id='type-id-1' const='yes' id='type-id-21'/>
+    <pointer-type-def type-id='type-id-21' size-in-bits='64' alignment-in-bits='64' id='type-id-10'/>
+    <pointer-type-def type-id='type-id-7' size-in-bits='64' alignment-in-bits='64' id='type-id-11'/>
+    <var-decl name='used' type-id='type-id-7' mangled-name='used' visibility='default'/>
+  </abi-instr>
+</abi-corpus>

@@ -1,0 +1,22 @@
+diff --git a/Android.bp b/Android.bp
+index b6d9875..14124db 100644
+--- a/Android.bp
++++ b/Android.bp
+@@ -44,9 +44,16 @@ rust_library {
+     crate_name: "ahash",
+     srcs: ["src/lib.rs"],
+     edition: "2018",
++    arch: {
++        arm64: {
++            features: ["folded_multiply"],
++        },
++        x86_64: {
++            features: ["folded_multiply"],
++        },
++    },
+     features: [
+         "default",
+-        "folded_multiply",
+         "runtime-rng",
+         "specialize",
+         "std",

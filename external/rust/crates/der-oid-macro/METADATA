@@ -1,0 +1,19 @@
+name: "der-oid-macro"
+description: "Macro to encode DER oids at compile time"
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://crates.io/crates/der-oid-macro"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://static.crates.io/crates/der-oid-macro/der-oid-macro-0.5.0.crate"
+  }
+  version: "0.5.0"
+  license_type: NOTICE
+  last_upgrade_date {
+    year: 2021
+    month: 9
+    day: 28
+  }
+}

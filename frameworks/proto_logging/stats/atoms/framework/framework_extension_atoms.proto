@@ -1,0 +1,61 @@
+/*
+ * Copyright (C) 2023 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+syntax = "proto2";
+
+package android.os.statsd.framework;
+
+import "frameworks/proto_logging/stats/atoms.proto";
+import "frameworks/proto_logging/stats/atom_field_options.proto";
+
+option java_package = "com.android.os.framework";
+
+extend Atom {
+    optional FullScreenIntentLaunched full_screen_intent_launched = 631 [(module) = "framework"];
+    optional BalAllowed bal_allowed = 632 [(module) = "framework"];
+}
+
+/**
+ * Logs when a full screen intent is launched.
+ *
+ * Logged from:
+ *   frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarNotificationActivityStarter.java
+ */
+message FullScreenIntentLaunched {
+    optional int32 creator_uid = 1 [(is_uid) = true];
+    optional string activity = 2;
+}
+
+message BalAllowed {
+    optional string target_activity = 1;
+    optional Status allowed_reason = 2;
+    optional int32 calling_uid = 3 [(is_uid) = true];
+    optional int32 real_calling_uid = 4 [(is_uid) = true];
+
+    enum Status {
+        BAL_STATUS_UNKNOWN = 0;
+        BAL_ALLOW_DEFAULT = 1;
+        BAL_ALLOW_ALLOWLISTED_UID = 2;
+        BAL_ALLOW_ALLOWLISTED_COMPONENT = 3;
+        BAL_ALLOW_VISIBLE_WINDOW = 4;
+        BAL_ALLOW_PENDING_INTENT = 5;
+        BAL_ALLOW_BAL_PERMISSION = 6;
+        BAL_ALLOW_SAW_PERMISSION = 7;
+        BAL_ALLOW_GRACE_PERIOD = 8;
+        BAL_ALLOW_FOREGROUND = 9;
+        BAL_ALLOW_SDK_SANDBOX = 10;
+    }
+}

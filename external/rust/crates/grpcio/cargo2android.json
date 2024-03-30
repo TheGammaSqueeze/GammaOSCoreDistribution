@@ -1,0 +1,10 @@
+{
+  "apex-available": [
+    "//apex_available:platform",
+    "com.android.bluetooth"
+  ],
+  "device": true,
+  "features": "protobuf,protobuf-codec",
+  "min-sdk-version": "29",
+  "run": true
+}

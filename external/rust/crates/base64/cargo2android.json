@@ -1,0 +1,14 @@
+{
+  "apex-available": [
+    "//apex_available:platform",
+    "com.android.resolv"
+  ],
+  "device": true,
+  "min-sdk-version": "29",
+  "run": true,
+  "test-blocklist": [
+    "src/lib.rs",
+    "tests/tests.rs"
+  ],
+  "tests": true
+}

@@ -1,0 +1,17 @@
+name: "liburing"
+description:
+    "io_uring userspace library"
+
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://github.com/axboe/liburing"
+  }
+  url {
+    type: GIT
+    value: "https://github.com/axboe/liburing"
+  }
+  version: "2.0"
+  last_upgrade_date { year: 2021 month: 7 day: 20 }
+  license_type: NOTICE
+}

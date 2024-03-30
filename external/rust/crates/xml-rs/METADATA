@@ -1,0 +1,19 @@
+name: "xml-rs"
+description: "An XML library in pure Rust"
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://crates.io/crates/xml-rs"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://static.crates.io/crates/xml-rs/xml-rs-0.8.4.crate"
+  }
+  version: "0.8.4"
+  license_type: NOTICE
+  last_upgrade_date {
+    year: 2021
+    month: 8
+    day: 9
+  }
+}

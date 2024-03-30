@@ -1,0 +1,19 @@
+name: "zip"
+description: "Library to support the reading and writing of zip files."
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://crates.io/crates/zip"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://static.crates.io/crates/zip/zip-0.6.2.crate"
+  }
+  version: "0.6.2"
+  license_type: NOTICE
+  last_upgrade_date {
+    year: 2022
+    month: 4
+    day: 13
+  }
+}

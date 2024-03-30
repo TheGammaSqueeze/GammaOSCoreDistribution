@@ -1,0 +1,23 @@
+<abi-corpus version='2.1' path='data/test-read-ctf/test-ambiguous-struct-B.o'>
+  <abi-instr address-size='64' language='LANG_C'>
+    <class-decl name='A' size-in-bits='192' alignment-in-bits='64' is-struct='yes' visibility='default' id='3ed987a4'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='b' type-id='41d98c5d' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='64'>
+        <var-decl name='foo' type-id='95e97e5e' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='128'>
+        <var-decl name='b2' type-id='41d98c5d' visibility='default'/>
+      </data-member>
+    </class-decl>
+    <class-decl name='B' size-in-bits='64' alignment-in-bits='64' is-struct='yes' visibility='default' id='41d98c5d'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='a' type-id='84d5ac12' visibility='default'/>
+      </data-member>
+    </class-decl>
+    <type-decl name='int' size-in-bits='32' alignment-in-bits='32' id='95e97e5e'/>
+    <pointer-type-def type-id='3ed987a4' size-in-bits='64' alignment-in-bits='64' id='84d5ac12'/>
+    <var-decl name='a' type-id='3ed987a4' mangled-name='a' visibility='default'/>
+  </abi-instr>
+</abi-corpus>

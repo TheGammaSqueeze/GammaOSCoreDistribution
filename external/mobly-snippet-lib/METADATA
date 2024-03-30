@@ -1,0 +1,17 @@
+name: "mobly-snippet-lib"
+description:
+    "Mobly Snippet Lib is a library for triggering device-side code from host-side Mobly tests."
+
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://github.com/google/mobly-snippet-lib"
+  }
+  url {
+    type: GIT
+    value: "https://github.com/google/mobly-snippet-lib"
+  }
+  version: "1.3.1"
+  last_upgrade_date { year: 2022 month: 1 day: 4 }
+  license_type: NOTICE
+}

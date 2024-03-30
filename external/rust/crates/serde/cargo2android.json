@@ -1,0 +1,15 @@
+{
+  "apex-available": [
+    "//apex_available:platform",
+    "com.android.virt"
+  ],
+  "cfg-blocklist": [
+    "std_atomic64"
+  ],
+  "dependencies": true,
+  "device": true,
+  "features": "default,derive",
+  "run": true,
+  "tests": true,
+  "vendor-available": true
+}

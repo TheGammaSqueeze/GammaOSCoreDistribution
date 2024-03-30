@@ -1,0 +1,9 @@
+package {
+    default_applicable_licenses: ["libcore_ojluni_license"],
+}
+
+java_binary_host {
+    name: "spp",
+    srcs: ["build/tools/spp/*.java"],
+    manifest: "build/tools/spp/MANIFEST.MF",
+}

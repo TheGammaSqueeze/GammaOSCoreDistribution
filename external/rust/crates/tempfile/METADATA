@@ -1,0 +1,20 @@
+name: "tempfile"
+description: "A library for managing temporary files and directories."
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://crates.io/crates/tempfile"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://static.crates.io/crates/tempfile/tempfile-3.2.0.crate"
+  }
+  version: "3.2.0"
+  # Dual-licensed, using the least restrictive per go/thirdpartylicenses#same.
+  license_type: NOTICE
+  last_upgrade_date {
+    year: 2021
+    month: 10
+    day: 25
+  }
+}

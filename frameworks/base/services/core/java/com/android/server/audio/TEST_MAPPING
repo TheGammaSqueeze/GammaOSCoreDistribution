@@ -1,0 +1,18 @@
+{
+    "presubmit-large": [
+        {
+            "name": "CtsMediaAudioTestCases",
+            "options": [
+                {
+                    "include-filter": "android.media.audio.cts.AudioManagerTest"
+                },
+                {
+                    "include-filter": "android.media.audio.cts.AudioFocusTest"
+                },
+                {
+                    "include-filter": "android.media.audio.cts.SpatializerTest"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,261 @@
+--- b/tools/testing/selftests/vm/userfaultfd.c
++++ b/tools/testing/selftests/vm/userfaultfd.c
+@@ -82,9 +82,11 @@
+ static char *huge_fd_off0;
+ static unsigned long long *count_verify;
+ static int uffd, uffd_flags, finished, *pipefd;
++static volatile bool ready_for_fork;
+ static char *area_src, *area_src_alias, *area_dst, *area_dst_alias;
+ static char *zeropage;
+ pthread_attr_t attr;
++pthread_key_t long_jmp_key;
+ 
+ /* pthread_mutex_t starts at page offset 0 */
+ #define area_mutex(___area, ___nr)					\
+@@ -139,8 +141,11 @@
+ 
+ static void anon_allocate_area(void **alloc_area)
+ {
+-	if (posix_memalign(alloc_area, page_size, nr_pages * page_size)) {
+-		fprintf(stderr, "out of memory\n");
++	// We can't use posix_memalign due to pointer-tagging used in bionic.
++	*alloc_area = mmap(NULL, nr_pages * page_size, PROT_READ | PROT_WRITE,
++			   MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
++	if (*alloc_area == MAP_FAILED) {
++		fprintf(stderr, "anon memory mmap failed\n");
+ 		*alloc_area = NULL;
+ 	}
+ }
+@@ -284,23 +289,11 @@
+ static void *locking_thread(void *arg)
+ {
+ 	unsigned long cpu = (unsigned long) arg;
+-	struct random_data rand;
+ 	unsigned long page_nr = *(&(page_nr)); /* uninitialized warning */
+-	int32_t rand_nr;
+ 	unsigned long long count;
+-	char randstate[64];
+-	unsigned int seed;
+ 	time_t start;
+ 
+-	if (bounces & BOUNCE_RANDOM) {
+-		seed = (unsigned int) time(NULL) - bounces;
+-		if (!(bounces & BOUNCE_RACINGFAULTS))
+-			seed += cpu;
+-		bzero(&rand, sizeof(rand));
+-		bzero(&randstate, sizeof(randstate));
+-		if (initstate_r(seed, randstate, sizeof(randstate), &rand))
+-			fprintf(stderr, "srandom_r error\n"), exit(1);
+-	} else {
++	if (!(bounces & BOUNCE_RANDOM)) {
+ 		page_nr = -bounces;
+ 		if (!(bounces & BOUNCE_RACINGFAULTS))
+ 			page_nr += cpu * nr_pages_per_cpu;
+@@ -308,13 +301,9 @@
+ 
+ 	while (!finished) {
+ 		if (bounces & BOUNCE_RANDOM) {
+-			if (random_r(&rand, &rand_nr))
+-				fprintf(stderr, "random_r 1 error\n"), exit(1);
+-			page_nr = rand_nr;
+-			if (sizeof(page_nr) > sizeof(rand_nr)) {
+-				if (random_r(&rand, &rand_nr))
+-					fprintf(stderr, "random_r 2 error\n"), exit(1);
+-				page_nr |= (((unsigned long) rand_nr) << 16) <<
++			page_nr = random();
++			if (sizeof(page_nr) > sizeof(uint32_t)) {
++				page_nr |= (((unsigned long) random()) << 16) <<
+ 					   16;
+ 			}
+ 		} else
+@@ -501,6 +490,9 @@
+ 	pollfd[1].fd = pipefd[cpu*2];
+ 	pollfd[1].events = POLLIN;
+ 
++	// Notify the main thread that it can now fork.
++	ready_for_fork = true;
++
+ 	for (;;) {
+ 		ret = poll(pollfd, 2, -1);
+ 		if (!ret)
+@@ -548,18 +540,31 @@
+ 
+ pthread_mutex_t uffd_read_mutex = PTHREAD_MUTEX_INITIALIZER;
+ 
++static void sigusr1_handler(int signum, siginfo_t *siginfo, void *ptr)
++{
++	jmp_buf *env;
++	env = pthread_getspecific(long_jmp_key);
++	longjmp(*env, 1);
++}
++
+ static void *uffd_read_thread(void *arg)
+ {
+ 	unsigned long *this_cpu_userfaults;
+ 	struct uffd_msg msg;
++	jmp_buf env;
++	int setjmp_ret;
++
++	pthread_setspecific(long_jmp_key, &env);
+ 
+ 	this_cpu_userfaults = (unsigned long *) arg;
+ 	*this_cpu_userfaults = 0;
+ 
+ 	pthread_mutex_unlock(&uffd_read_mutex);
+-	/* from here cancellation is ok */
+ 
+-	for (;;) {
++	// One first return setjmp return 0. On second (fake) return from
++	// longjmp() it returns the provided value, which will be 1 in our case.
++	setjmp_ret = setjmp(env);
++	while (!setjmp_ret) {
+ 		if (uffd_read_msg(uffd, &msg))
+ 			continue;
+ 		(*this_cpu_userfaults) += uffd_handle_page_fault(&msg);
+@@ -608,6 +613,7 @@
+ 				   background_thread, (void *)cpu))
+ 			return 1;
+ 	}
++
+ 	for (cpu = 0; cpu < nr_cpus; cpu++)
+ 		if (pthread_join(background_threads[cpu], NULL))
+ 			return 1;
+@@ -640,7 +646,7 @@
+ 			if (pthread_join(uffd_threads[cpu], &_userfaults[cpu]))
+ 				return 1;
+ 		} else {
+-			if (pthread_cancel(uffd_threads[cpu]))
++			if (pthread_kill(uffd_threads[cpu], SIGUSR1))
+ 				return 1;
+ 			if (pthread_join(uffd_threads[cpu], NULL))
+ 				return 1;
+@@ -654,7 +660,7 @@
+ {
+ 	struct uffdio_api uffdio_api;
+ 
+-	uffd = syscall(__NR_userfaultfd, O_CLOEXEC | O_NONBLOCK);
++	uffd = syscall(__NR_userfaultfd, O_CLOEXEC | O_NONBLOCK | UFFD_USER_MODE_ONLY);
+ 	if (uffd < 0) {
+ 		fprintf(stderr,
+ 			"userfaultfd syscall not available in this kernel\n");
+@@ -914,6 +920,10 @@
+ 	pid_t pid;
+ 	char c;
+ 
++	// All the syscalls below up to pthread_create will ensure that this
++	// write is completed before, the uffd_thread sets it to true.
++	ready_for_fork = false;
++
+ 	printf("testing events (fork, remap, remove): ");
+ 	fflush(stdout);
+ 
+@@ -942,6 +952,11 @@
+ 	if (pthread_create(&uffd_mon, &attr, uffd_poll_thread, NULL))
+ 		perror("uffd_poll_thread create"), exit(1);
+ 
++	// Wait for the poll_thread to start executing before forking. This is
++	// required to avoid a deadlock, which can happen if poll_thread doesn't
++	// start getting executed by the time fork is invoked.
++	while (!ready_for_fork);
++
+ 	pid = fork();
+ 	if (pid < 0)
+ 		perror("fork"), exit(1);
+@@ -974,6 +989,10 @@
+ 	pid_t pid;
+ 	char c;
+ 
++	// All the syscalls below up to pthread_create will ensure that this
++	// write is completed before, the uffd_thread sets it to true.
++	ready_for_fork = false;
++
+ 	printf("testing signal delivery: ");
+ 	fflush(stdout);
+ 
+@@ -1007,6 +1026,11 @@
+ 	if (pthread_create(&uffd_mon, &attr, uffd_poll_thread, NULL))
+ 		perror("uffd_poll_thread create"), exit(1);
+ 
++	// Wait for the poll_thread to start executing before forking. This is
++	// required to avoid a deadlock, which can happen if poll_thread doesn't
++	// start getting executed by the time fork is invoked.
++	while (!ready_for_fork);
++
+ 	pid = fork();
+ 	if (pid < 0)
+ 		perror("fork"), exit(1);
+@@ -1036,6 +1060,7 @@
+ 	char *tmp_area;
+ 	unsigned long nr;
+ 	struct uffdio_register uffdio_register;
++	struct sigaction act;
+ 	unsigned long cpu;
+ 	int err;
+ 	unsigned long userfaults[nr_cpus];
+@@ -1094,6 +1119,17 @@
+ 	pthread_attr_init(&attr);
+ 	pthread_attr_setstacksize(&attr, 16*1024*1024);
+ 
++	// For handling thread termination of read thread in the absense of
++	// pthread_cancel().
++	pthread_key_create(&long_jmp_key, NULL);
++	memset(&act, 0, sizeof(act));
++	act.sa_sigaction = sigusr1_handler;
++	act.sa_flags = SA_SIGINFO;
++	if (sigaction(SIGUSR1, &act, 0)) {
++		perror("sigaction");
++		return 1;
++	}
++
+ 	err = 0;
+ 	while (bounces--) {
+ 		unsigned long expected_ioctls;
+@@ -1215,6 +1251,8 @@
+ 		printf("\n");
+ 	}
+ 
++	pthread_key_delete(long_jmp_key);
++
+ 	if (err)
+ 		return err;
+ 
+@@ -1291,6 +1329,9 @@
+ 
+ int main(int argc, char **argv)
+ {
++	char randstate[64];
++	unsigned int seed;
++
+ 	if (argc < 4)
+ 		usage();
+ 
+@@ -1332,6 +1373,12 @@
+ 	}
+ 	printf("nr_pages: %lu, nr_pages_per_cpu: %lu\n",
+ 	       nr_pages, nr_pages_per_cpu);
++
++	seed = (unsigned int) time(NULL);
++	bzero(&randstate, sizeof(randstate));
++	if (!initstate(seed, randstate, sizeof(randstate)))
++		fprintf(stderr, "srandom_r error\n"), exit(1);
++
+ 	return userfaultfd_stress();
+ }
+ 
+--- a/tools/testing/selftests/vm/userfaultfd.c
++++ b/tools/testing/selftests/vm/userfaultfd.c
+@@ -662,8 +662,13 @@ static int userfaultfd_open(int features)
+ 
+ 	uffd = syscall(__NR_userfaultfd, O_CLOEXEC | O_NONBLOCK | UFFD_USER_MODE_ONLY);
+ 	if (uffd < 0) {
++		if (errno == ENOSYS) {
++			fprintf(stderr,
++				"userfaultfd syscall not available in this kernel\n");
++			exit(KSFT_PASS);
++		}
+ 		fprintf(stderr,
+-			"userfaultfd syscall not available in this kernel\n");
++			"userfaultfd syscall failed with errno: %d\n", errno);
+ 		return 1;
+ 	}
+ 	uffd_flags = fcntl(uffd, F_GETFD, NULL);

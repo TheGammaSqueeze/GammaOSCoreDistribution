@@ -1,0 +1,5 @@
+{
+  "copy-out": true,
+  "features": "runtime,clang_10_0",
+  "run": true
+}

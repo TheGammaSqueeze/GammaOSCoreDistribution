@@ -1,0 +1,96 @@
+// Signature format: 2.0
+package com.android.internal.car {
+
+  public interface CarServiceHelperInterface {
+    method @Nullable public android.os.UserHandle createUserEvenWhenDisallowed(@Nullable String, @NonNull String, int);
+    method @Nullable public java.io.File dumpServiceStacks();
+    method public void setSafetyMode(boolean);
+  }
+
+  public interface CarServiceHelperServiceUpdatable {
+    method public void dump(@NonNull java.io.PrintWriter, @Nullable String[]);
+    method public com.android.server.wm.CarLaunchParamsModifierUpdatable getCarLaunchParamsModifierUpdatable();
+    method public void initBootUser();
+    method public void onFactoryReset(@NonNull java.util.function.BiConsumer<java.lang.Integer,android.os.Bundle>);
+    method public void onStart();
+    method public void onUserRemoved(@NonNull android.os.UserHandle);
+    method public void sendUserLifecycleEvent(int, @Nullable android.os.UserHandle, @NonNull android.os.UserHandle);
+  }
+
+}
+
+package com.android.server.wm {
+
+  public final class ActivityOptionsWrapper {
+    method public com.android.server.wm.TaskDisplayAreaWrapper getLaunchTaskDisplayArea();
+    method public android.app.ActivityOptions getOptions();
+  }
+
+  public final class ActivityRecordWrapper {
+    method public boolean allowingEmbedded();
+    method public android.content.ComponentName getComponentName();
+    method public com.android.server.wm.TaskDisplayAreaWrapper getDisplayArea();
+    method public int getHandoverLaunchDisplayId();
+    method public com.android.server.wm.TaskDisplayAreaWrapper getHandoverTaskDisplayArea();
+    method public int getUserId();
+    method public boolean isDisplayTrusted();
+    method public boolean isNoDisplay();
+  }
+
+  public final class CalculateParams {
+    method public com.android.server.wm.ActivityRecordWrapper getActivity();
+    method public com.android.server.wm.LaunchParamsWrapper getCurrentParams();
+    method public com.android.server.wm.ActivityOptionsWrapper getOptions();
+    method public com.android.server.wm.LaunchParamsWrapper getOutParams();
+    method public int getPhase();
+    method public com.android.server.wm.RequestWrapper getRequest();
+    method public com.android.server.wm.ActivityRecordWrapper getSource();
+    method public com.android.server.wm.TaskWrapper getTask();
+    method public com.android.server.wm.WindowLayoutWrapper getWindowLayout();
+    method public boolean supportsMultiDisplay();
+  }
+
+  public interface CarLaunchParamsModifierInterface {
+    method @Nullable public com.android.server.wm.TaskDisplayAreaWrapper findTaskDisplayArea(int, int);
+    method @Nullable public com.android.server.wm.TaskDisplayAreaWrapper getDefaultTaskDisplayAreaOnDisplay(int);
+    method @NonNull public java.util.List<com.android.server.wm.TaskDisplayAreaWrapper> getFallbackDisplayAreasForActivity(@NonNull com.android.server.wm.ActivityRecordWrapper, @Nullable com.android.server.wm.RequestWrapper);
+  }
+
+  public interface CarLaunchParamsModifierUpdatable {
+    method public int calculate(com.android.server.wm.CalculateParams);
+    method public android.hardware.display.DisplayManager.DisplayListener getDisplayListener();
+    method public void handleCurrentUserSwitching(int);
+    method public void handleUserStarting(int);
+    method public void handleUserStopped(int);
+  }
+
+  public final class LaunchParamsWrapper {
+    method public android.graphics.Rect getBounds();
+    method public com.android.server.wm.TaskDisplayAreaWrapper getPreferredTaskDisplayArea();
+    method public int getWindowingMode();
+    method public void setBounds(android.graphics.Rect);
+    method public void setPreferredTaskDisplayArea(com.android.server.wm.TaskDisplayAreaWrapper);
+    method public void setWindowingMode(int);
+    field public static int RESULT_CONTINUE;
+    field public static int RESULT_DONE;
+    field public static int RESULT_SKIP;
+  }
+
+  public final class RequestWrapper {
+  }
+
+  public final class TaskDisplayAreaWrapper {
+    method public android.view.Display getDisplay();
+  }
+
+  public final class TaskWrapper {
+    method public com.android.server.wm.TaskWrapper getRootTask();
+    method public com.android.server.wm.TaskDisplayAreaWrapper getTaskDisplayArea();
+    method public int getUserId();
+  }
+
+  public final class WindowLayoutWrapper {
+  }
+
+}
+

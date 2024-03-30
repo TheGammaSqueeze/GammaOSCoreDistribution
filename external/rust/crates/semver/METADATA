@@ -1,0 +1,19 @@
+name: "semver"
+description: "Parser and evaluator for Cargo\'s flavor of Semantic Versioning"
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://crates.io/crates/semver"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://static.crates.io/crates/semver/semver-1.0.6.crate"
+  }
+  version: "1.0.6"
+  license_type: NOTICE
+  last_upgrade_date {
+    year: 2022
+    month: 3
+    day: 1
+  }
+}

@@ -1,0 +1,2332 @@
+<abi-corpus version='2.1' path='data/test-read-dwarf/test-libaaudio.so' soname='libaaudio.so'>
+  <elf-needed>
+    <dependency name='libaaudio_internal.so'/>
+    <dependency name='libaudioclient.so'/>
+    <dependency name='libaudioutils.so'/>
+    <dependency name='libmedia_helper.so'/>
+    <dependency name='libmediametrics.so'/>
+    <dependency name='libmediautils.so'/>
+    <dependency name='liblog.so'/>
+    <dependency name='libcutils.so'/>
+    <dependency name='libutils.so'/>
+    <dependency name='libbinder.so'/>
+    <dependency name='libc++.so'/>
+    <dependency name='libc.so'/>
+    <dependency name='libm.so'/>
+    <dependency name='libdl.so'/>
+  </elf-needed>
+  <elf-function-symbols>
+    <elf-symbol name='AAudioStreamBuilder_delete' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStreamBuilder_openStream' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStreamBuilder_setAllowedCapturePolicy' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStreamBuilder_setBufferCapacityInFrames' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStreamBuilder_setChannelCount' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStreamBuilder_setContentType' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStreamBuilder_setDataCallback' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStreamBuilder_setDeviceId' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStreamBuilder_setDirection' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStreamBuilder_setErrorCallback' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStreamBuilder_setFormat' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStreamBuilder_setFramesPerDataCallback' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStreamBuilder_setInputPreset' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStreamBuilder_setPerformanceMode' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStreamBuilder_setPrivacySensitive' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStreamBuilder_setSampleRate' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStreamBuilder_setSamplesPerFrame' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStreamBuilder_setSessionId' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStreamBuilder_setSharingMode' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStreamBuilder_setUsage' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_close' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getAllowedCapturePolicy' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getBufferCapacityInFrames' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getBufferSizeInFrames' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getChannelCount' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getContentType' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getDeviceId' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getDirection' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getFormat' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getFramesPerBurst' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getFramesPerDataCallback' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getFramesRead' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getFramesWritten' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getInputPreset' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getPerformanceMode' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getSampleRate' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getSamplesPerFrame' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getSessionId' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getSharingMode' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getState' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getTimestamp' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getUsage' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_getXRunCount' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_isMMapUsed' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_isPrivacySensitive' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_read' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_release' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_requestFlush' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_requestPause' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_requestStart' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_requestStop' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_setBufferSizeInFrames' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_waitForStateChange' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudioStream_write' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudio_convertResultToText' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudio_convertStreamStateToText' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudio_createStreamBuilder' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudio_getMMapPolicy' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='AAudio_setMMapPolicy' version='LIBAAUDIO' is-default-version='yes' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='__cfi_check' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+  </elf-function-symbols>
+  <abi-instr address-size='64' path='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' language='LANG_C_plus_plus_14'>
+    <type-decl name='__ARRAY_SIZE_TYPE__' size-in-bits='64' id='7ff19f0f'/>
+    <type-decl name='bool' size-in-bits='8' id='c894953d'/>
+    <type-decl name='char' size-in-bits='8' id='a84c031d'/>
+    <type-decl name='double' size-in-bits='64' id='a0eb0f08'/>
+    <type-decl name='float' size-in-bits='32' id='a6c45d85'/>
+    <type-decl name='int' size-in-bits='32' id='95e97e5e'/>
+    <type-decl name='long double' size-in-bits='128' id='e095c704'/>
+    <type-decl name='long int' size-in-bits='64' id='bd54fe1a'/>
+    <type-decl name='long long int' size-in-bits='64' id='1eb56b1e'/>
+    <type-decl name='long long unsigned int' size-in-bits='64' id='3a47d82b'/>
+    <typedef-decl name='__builtin_va_list' type-id='30357e0a' id='7f896fb4'/>
+    <type-decl name='unnamed-enum-underlying-type-32' is-anonymous='yes' size-in-bits='32' alignment-in-bits='32' id='9cac1fee'/>
+    <type-decl name='unsigned char' size-in-bits='8' id='002ac4a6'/>
+    <array-type-def dimensions='1' type-id='002ac4a6' size-in-bits='32' id='09001d3c'>
+      <subrange length='4' type-id='7ff19f0f' id='16fe7105'/>
+    </array-type-def>
+    <type-decl name='unsigned int' size-in-bits='32' id='f0981eeb'/>
+    <type-decl name='unsigned long int' size-in-bits='64' id='7359adad'/>
+    <type-decl name='variadic parameter type' id='2c1145c5'/>
+    <type-decl name='wchar_t' size-in-bits='32' id='c523b9f1'/>
+    <class-decl name='mbstate_t' size-in-bits='64' is-struct='yes' naming-typedef-id='3d7d8cbf' visibility='default' filepath='bionic/libc/include/bits/mbstate_t.h' line='42' column='1' id='a76d8e48'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='__seq' type-id='09001d3c' visibility='default' filepath='bionic/libc/include/bits/mbstate_t.h' line='43' column='1'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='32'>
+        <var-decl name='__reserved' type-id='09001d3c' visibility='default' filepath='bionic/libc/include/bits/mbstate_t.h' line='45' column='1'/>
+      </data-member>
+    </class-decl>
+    <typedef-decl name='mbstate_t' type-id='a76d8e48' filepath='bionic/libc/include/bits/mbstate_t.h' line='47' column='1' id='3d7d8cbf'/>
+    <typedef-decl name='wint_t' type-id='f0981eeb' filepath='bionic/libc/include/bits/wctype.h' line='36' column='1' id='6dd37369'/>
+    <typedef-decl name='wctype_t' type-id='bd54fe1a' filepath='bionic/libc/include/bits/wctype.h' line='56' column='1' id='ba50424d'/>
+    <typedef-decl name='wctrans_t' type-id='eaa32e2f' filepath='bionic/libc/include/bits/wctype.h' line='60' column='1' id='183c72c3'/>
+    <typedef-decl name='__int32_t' type-id='95e97e5e' filepath='bionic/libc/include/stdint.h' line='40' column='1' id='33f57a65'/>
+    <typedef-decl name='__uint32_t' type-id='f0981eeb' filepath='bionic/libc/include/stdint.h' line='41' column='1' id='62f1140c'/>
+    <typedef-decl name='__int64_t' type-id='bd54fe1a' filepath='bionic/libc/include/stdint.h' line='43' column='1' id='0c9942d2'/>
+    <typedef-decl name='int32_t' type-id='33f57a65' filepath='bionic/libc/include/stdint.h' line='64' column='1' id='3ff5601b'/>
+    <typedef-decl name='uint32_t' type-id='62f1140c' filepath='bionic/libc/include/stdint.h' line='65' column='1' id='8f92235e'/>
+    <typedef-decl name='int64_t' type-id='0c9942d2' filepath='bionic/libc/include/stdint.h' line='67' column='1' id='9da381c4'/>
+    <typedef-decl name='fpos_t' type-id='ad707ada' filepath='bionic/libc/include/stdio.h' line='55' column='1' id='e322b6ef'/>
+    <typedef-decl name='FILE' type-id='8d7b2c1e' filepath='bionic/libc/include/stdio.h' line='59' column='1' id='aa12d1ba'/>
+    <class-decl name='ldiv_t' size-in-bits='128' is-struct='yes' naming-typedef-id='30397bf8' visibility='default' filepath='bionic/libc/include/stdlib.h' line='136' column='1' id='9b5926fd'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='quot' type-id='bd54fe1a' visibility='default' filepath='bionic/libc/include/stdlib.h' line='137' column='1'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='64'>
+        <var-decl name='rem' type-id='bd54fe1a' visibility='default' filepath='bionic/libc/include/stdlib.h' line='138' column='1'/>
+      </data-member>
+    </class-decl>
+    <typedef-decl name='ldiv_t' type-id='9b5926fd' filepath='bionic/libc/include/stdlib.h' line='139' column='1' id='30397bf8'/>
+    <class-decl name='lldiv_t' size-in-bits='128' is-struct='yes' naming-typedef-id='f5fa3b34' visibility='default' filepath='bionic/libc/include/stdlib.h' line='143' column='1' id='649cba4b'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='quot' type-id='1eb56b1e' visibility='default' filepath='bionic/libc/include/stdlib.h' line='144' column='1'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='64'>
+        <var-decl name='rem' type-id='1eb56b1e' visibility='default' filepath='bionic/libc/include/stdlib.h' line='145' column='1'/>
+      </data-member>
+    </class-decl>
+    <typedef-decl name='lldiv_t' type-id='649cba4b' filepath='bionic/libc/include/stdlib.h' line='146' column='1' id='f5fa3b34'/>
+    <typedef-decl name='clock_t' type-id='880ebc01' filepath='bionic/libc/include/sys/types.h' line='54' column='1' id='4c3a2c61'/>
+    <typedef-decl name='__clockid_t' type-id='7eb128d4' filepath='bionic/libc/include/sys/types.h' line='56' column='1' id='08f9a87a'/>
+    <typedef-decl name='clockid_t' type-id='08f9a87a' filepath='bionic/libc/include/sys/types.h' line='57' column='1' id='a1c3b834'/>
+    <typedef-decl name='__time_t' type-id='f7d92306' filepath='bionic/libc/include/sys/types.h' line='95' column='1' id='65eda9c0'/>
+    <typedef-decl name='time_t' type-id='65eda9c0' filepath='bionic/libc/include/sys/types.h' line='96' column='1' id='c9d12d66'/>
+    <typedef-decl name='off_t' type-id='9da381c4' filepath='bionic/libc/include/sys/types.h' line='101' column='1' id='ad707ada'/>
+    <class-decl name='tm' size-in-bits='448' is-struct='yes' visibility='default' filepath='bionic/libc/include/time.h' line='46' column='1' id='dddf6ca2'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='tm_sec' type-id='95e97e5e' visibility='default' filepath='bionic/libc/include/time.h' line='47' column='1'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='32'>
+        <var-decl name='tm_min' type-id='95e97e5e' visibility='default' filepath='bionic/libc/include/time.h' line='48' column='1'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='64'>
+        <var-decl name='tm_hour' type-id='95e97e5e' visibility='default' filepath='bionic/libc/include/time.h' line='49' column='1'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='96'>
+        <var-decl name='tm_mday' type-id='95e97e5e' visibility='default' filepath='bionic/libc/include/time.h' line='50' column='1'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='128'>
+        <var-decl name='tm_mon' type-id='95e97e5e' visibility='default' filepath='bionic/libc/include/time.h' line='51' column='1'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='160'>
+        <var-decl name='tm_year' type-id='95e97e5e' visibility='default' filepath='bionic/libc/include/time.h' line='52' column='1'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='192'>
+        <var-decl name='tm_wday' type-id='95e97e5e' visibility='default' filepath='bionic/libc/include/time.h' line='53' column='1'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='224'>
+        <var-decl name='tm_yday' type-id='95e97e5e' visibility='default' filepath='bionic/libc/include/time.h' line='54' column='1'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='256'>
+        <var-decl name='tm_isdst' type-id='95e97e5e' visibility='default' filepath='bionic/libc/include/time.h' line='55' column='1'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='320'>
+        <var-decl name='tm_gmtoff' type-id='bd54fe1a' visibility='default' filepath='bionic/libc/include/time.h' line='56' column='1'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='384'>
+        <var-decl name='tm_zone' type-id='80f4b756' visibility='default' filepath='bionic/libc/include/time.h' line='57' column='1'/>
+      </data-member>
+    </class-decl>
+    <typedef-decl name='__kernel_long_t' type-id='bd54fe1a' filepath='bionic/libc/kernel/uapi/asm-generic/posix_types.h' line='23' column='1' id='6a11bd61'/>
+    <typedef-decl name='__kernel_time_t' type-id='6a11bd61' filepath='bionic/libc/kernel/uapi/asm-generic/posix_types.h' line='78' column='1' id='f7d92306'/>
+    <typedef-decl name='__kernel_clock_t' type-id='6a11bd61' filepath='bionic/libc/kernel/uapi/asm-generic/posix_types.h' line='80' column='1' id='880ebc01'/>
+    <typedef-decl name='__kernel_clockid_t' type-id='95e97e5e' filepath='bionic/libc/kernel/uapi/asm-generic/posix_types.h' line='82' column='1' id='7eb128d4'/>
+    <typedef-decl name='aaudio_direction_t' type-id='3ff5601b' filepath='frameworks/av/media/libaaudio/include/aaudio/AAudio.h' line='60' column='1' id='a5156fbe'/>
+    <typedef-decl name='aaudio_format_t' type-id='3ff5601b' filepath='frameworks/av/media/libaaudio/include/aaudio/AAudio.h' line='82' column='1' id='f21c6374'/>
+    <typedef-decl name='aaudio_result_t' type-id='3ff5601b' filepath='frameworks/av/media/libaaudio/include/aaudio/AAudio.h' line='173' column='1' id='da775bc6'/>
+    <typedef-decl name='aaudio_stream_state_t' type-id='3ff5601b' filepath='frameworks/av/media/libaaudio/include/aaudio/AAudio.h' line='192' column='1' id='2e552d01'/>
+    <typedef-decl name='aaudio_sharing_mode_t' type-id='3ff5601b' filepath='frameworks/av/media/libaaudio/include/aaudio/AAudio.h' line='208' column='1' id='da67c8b9'/>
+    <typedef-decl name='aaudio_performance_mode_t' type-id='3ff5601b' filepath='frameworks/av/media/libaaudio/include/aaudio/AAudio.h' line='230' column='1' id='6757629b'/>
+    <typedef-decl name='aaudio_usage_t' type-id='3ff5601b' filepath='frameworks/av/media/libaaudio/include/aaudio/AAudio.h' line='330' column='1' id='8ee4dca8'/>
+    <typedef-decl name='aaudio_content_type_t' type-id='3ff5601b' filepath='frameworks/av/media/libaaudio/include/aaudio/AAudio.h' line='368' column='1' id='2df7abd1'/>
+    <typedef-decl name='aaudio_input_preset_t' type-id='3ff5601b' filepath='frameworks/av/media/libaaudio/include/aaudio/AAudio.h' line='415' column='1' id='a4168325'/>
+    <typedef-decl name='aaudio_allowed_capture_policy_t' type-id='3ff5601b' filepath='frameworks/av/media/libaaudio/include/aaudio/AAudio.h' line='457' column='1' id='abe3e34b'/>
+    <typedef-decl name='aaudio_session_id_t' type-id='3ff5601b' filepath='frameworks/av/media/libaaudio/include/aaudio/AAudio.h' line='485' column='1' id='4d6761d3'/>
+    <typedef-decl name='AAudioStream' type-id='119dbfcb' filepath='frameworks/av/media/libaaudio/include/aaudio/AAudio.h' line='487' column='1' id='f41d1deb'/>
+    <typedef-decl name='AAudioStreamBuilder' type-id='813682d4' filepath='frameworks/av/media/libaaudio/include/aaudio/AAudio.h' line='488' column='1' id='122f757a'/>
+    <typedef-decl name='aaudio_data_callback_result_t' type-id='3ff5601b' filepath='frameworks/av/media/libaaudio/include/aaudio/AAudio.h' line='832' column='1' id='ae10ac8d'/>
+    <typedef-decl name='AAudioStream_dataCallback' type-id='d51a0d27' filepath='frameworks/av/media/libaaudio/include/aaudio/AAudio.h' line='880' column='1' id='edb6186f'/>
+    <typedef-decl name='AAudioStream_errorCallback' type-id='8b51a308' filepath='frameworks/av/media/libaaudio/include/aaudio/AAudio.h' line='966' column='1' id='2e91990d'/>
+    <typedef-decl name='aaudio_policy_t' type-id='3ff5601b' filepath='frameworks/av/media/libaaudio/include/aaudio/AAudioTesting.h' line='50' column='1' id='d062bfb5'/>
+    <typedef-decl name='va_list' type-id='7f896fb4' filepath='prebuilts/clang/host/linux-x86/clang-r416183b/lib64/clang/12.0.5/include/stdarg.h' line='14' column='1' id='2aee9912'/>
+    <typedef-decl name='size_t' type-id='7359adad' filepath='prebuilts/clang/host/linux-x86/clang-r416183b/lib64/clang/12.0.5/include/stddef.h' line='46' column='1' id='b59d7dce'/>
+    <enum-decl name='audio_format_t' naming-typedef-id='aff86d3f' filepath='system/media/audio/include/system/audio-hal-enums.h' line='610' column='1' id='ff439793'>
+      <underlying-type type-id='9cac1fee'/>
+      <enumerator name='AUDIO_FORMAT_DEFAULT' value='0'/>
+      <enumerator name='AUDIO_FORMAT_PCM_16_BIT' value='1'/>
+      <enumerator name='AUDIO_FORMAT_PCM_8_BIT' value='2'/>
+      <enumerator name='AUDIO_FORMAT_PCM_32_BIT' value='3'/>
+      <enumerator name='AUDIO_FORMAT_PCM_8_24_BIT' value='4'/>
+      <enumerator name='AUDIO_FORMAT_PCM_FLOAT' value='5'/>
+      <enumerator name='AUDIO_FORMAT_PCM_24_BIT_PACKED' value='6'/>
+      <enumerator name='AUDIO_FORMAT_MP3' value='16777216'/>
+      <enumerator name='AUDIO_FORMAT_AMR_NB' value='33554432'/>
+      <enumerator name='AUDIO_FORMAT_AMR_WB' value='50331648'/>
+      <enumerator name='AUDIO_FORMAT_AAC' value='67108864'/>
+      <enumerator name='AUDIO_FORMAT_AAC_MAIN' value='67108865'/>
+      <enumerator name='AUDIO_FORMAT_AAC_LC' value='67108866'/>
+      <enumerator name='AUDIO_FORMAT_AAC_SSR' value='67108868'/>
+      <enumerator name='AUDIO_FORMAT_AAC_LTP' value='67108872'/>
+      <enumerator name='AUDIO_FORMAT_AAC_HE_V1' value='67108880'/>
+      <enumerator name='AUDIO_FORMAT_AAC_SCALABLE' value='67108896'/>
+      <enumerator name='AUDIO_FORMAT_AAC_ERLC' value='67108928'/>
+      <enumerator name='AUDIO_FORMAT_AAC_LD' value='67108992'/>
+      <enumerator name='AUDIO_FORMAT_AAC_HE_V2' value='67109120'/>
+      <enumerator name='AUDIO_FORMAT_AAC_ELD' value='67109376'/>
+      <enumerator name='AUDIO_FORMAT_AAC_XHE' value='67109632'/>
+      <enumerator name='AUDIO_FORMAT_HE_AAC_V1' value='83886080'/>
+      <enumerator name='AUDIO_FORMAT_HE_AAC_V2' value='100663296'/>
+      <enumerator name='AUDIO_FORMAT_VORBIS' value='117440512'/>
+      <enumerator name='AUDIO_FORMAT_OPUS' value='134217728'/>
+      <enumerator name='AUDIO_FORMAT_AC3' value='150994944'/>
+      <enumerator name='AUDIO_FORMAT_E_AC3' value='167772160'/>
+      <enumerator name='AUDIO_FORMAT_E_AC3_JOC' value='167772161'/>
+      <enumerator name='AUDIO_FORMAT_DTS' value='184549376'/>
+      <enumerator name='AUDIO_FORMAT_DTS_HD' value='201326592'/>
+      <enumerator name='AUDIO_FORMAT_IEC61937' value='218103808'/>
+      <enumerator name='AUDIO_FORMAT_DOLBY_TRUEHD' value='234881024'/>
+      <enumerator name='AUDIO_FORMAT_EVRC' value='268435456'/>
+      <enumerator name='AUDIO_FORMAT_EVRCB' value='285212672'/>
+      <enumerator name='AUDIO_FORMAT_EVRCWB' value='301989888'/>
+      <enumerator name='AUDIO_FORMAT_EVRCNW' value='318767104'/>
+      <enumerator name='AUDIO_FORMAT_AAC_ADIF' value='335544320'/>
+      <enumerator name='AUDIO_FORMAT_WMA' value='352321536'/>
+      <enumerator name='AUDIO_FORMAT_WMA_PRO' value='369098752'/>
+      <enumerator name='AUDIO_FORMAT_AMR_WB_PLUS' value='385875968'/>
+      <enumerator name='AUDIO_FORMAT_MP2' value='402653184'/>
+      <enumerator name='AUDIO_FORMAT_QCELP' value='419430400'/>
+      <enumerator name='AUDIO_FORMAT_DSD' value='436207616'/>
+      <enumerator name='AUDIO_FORMAT_FLAC' value='452984832'/>
+      <enumerator name='AUDIO_FORMAT_ALAC' value='469762048'/>
+      <enumerator name='AUDIO_FORMAT_APE' value='486539264'/>
+      <enumerator name='AUDIO_FORMAT_AAC_ADTS' value='503316480'/>
+      <enumerator name='AUDIO_FORMAT_AAC_ADTS_MAIN' value='503316481'/>
+      <enumerator name='AUDIO_FORMAT_AAC_ADTS_LC' value='503316482'/>
+      <enumerator name='AUDIO_FORMAT_AAC_ADTS_SSR' value='503316484'/>
+      <enumerator name='AUDIO_FORMAT_AAC_ADTS_LTP' value='503316488'/>
+      <enumerator name='AUDIO_FORMAT_AAC_ADTS_HE_V1' value='503316496'/>
+      <enumerator name='AUDIO_FORMAT_AAC_ADTS_SCALABLE' value='503316512'/>
+      <enumerator name='AUDIO_FORMAT_AAC_ADTS_ERLC' value='503316544'/>
+      <enumerator name='AUDIO_FORMAT_AAC_ADTS_LD' value='503316608'/>
+      <enumerator name='AUDIO_FORMAT_AAC_ADTS_HE_V2' value='503316736'/>
+      <enumerator name='AUDIO_FORMAT_AAC_ADTS_ELD' value='503316992'/>
+      <enumerator name='AUDIO_FORMAT_AAC_ADTS_XHE' value='503317248'/>
+      <enumerator name='AUDIO_FORMAT_SBC' value='520093696'/>
+      <enumerator name='AUDIO_FORMAT_APTX' value='536870912'/>
+      <enumerator name='AUDIO_FORMAT_APTX_HD' value='553648128'/>
+      <enumerator name='AUDIO_FORMAT_AC4' value='570425344'/>
+      <enumerator name='AUDIO_FORMAT_LDAC' value='587202560'/>
+      <enumerator name='AUDIO_FORMAT_MAT' value='603979776'/>
+      <enumerator name='AUDIO_FORMAT_MAT_1_0' value='603979777'/>
+      <enumerator name='AUDIO_FORMAT_MAT_2_0' value='603979778'/>
+      <enumerator name='AUDIO_FORMAT_MAT_2_1' value='603979779'/>
+      <enumerator name='AUDIO_FORMAT_AAC_LATM' value='620756992'/>
+      <enumerator name='AUDIO_FORMAT_AAC_LATM_LC' value='620756994'/>
+      <enumerator name='AUDIO_FORMAT_AAC_LATM_HE_V1' value='620757008'/>
+      <enumerator name='AUDIO_FORMAT_AAC_LATM_HE_V2' value='620757248'/>
+      <enumerator name='AUDIO_FORMAT_CELT' value='637534208'/>
+      <enumerator name='AUDIO_FORMAT_APTX_ADAPTIVE' value='654311424'/>
+      <enumerator name='AUDIO_FORMAT_LHDC' value='671088640'/>
+      <enumerator name='AUDIO_FORMAT_LHDC_LL' value='687865856'/>
+      <enumerator name='AUDIO_FORMAT_APTX_TWSP' value='704643072'/>
+      <enumerator name='AUDIO_FORMAT_LC3' value='721420288'/>
+      <enumerator name='AUDIO_FORMAT_MPEGH' value='738197504'/>
+      <enumerator name='AUDIO_FORMAT_MPEGH_BL_L3' value='738197523'/>
+      <enumerator name='AUDIO_FORMAT_MPEGH_BL_L4' value='738197524'/>
+      <enumerator name='AUDIO_FORMAT_MPEGH_LC_L3' value='738197539'/>
+      <enumerator name='AUDIO_FORMAT_MPEGH_LC_L4' value='738197540'/>
+      <enumerator name='AUDIO_FORMAT_IEC60958' value='754974720'/>
+      <enumerator name='AUDIO_FORMAT_DTS_UHD' value='771751936'/>
+      <enumerator name='AUDIO_FORMAT_DRA' value='788529152'/>
+      <enumerator name='AUDIO_FORMAT_INVALID' value='4294967295'/>
+      <enumerator name='AUDIO_FORMAT_PCM' value='0'/>
+    </enum-decl>
+    <typedef-decl name='audio_format_t' type-id='ff439793' filepath='system/media/audio/include/system/audio-hal-enums.h' line='616' column='1' id='aff86d3f'/>
+    <pointer-type-def type-id='f41d1deb' size-in-bits='64' id='b2a1b704'/>
+    <pointer-type-def type-id='b2a1b704' size-in-bits='64' id='62935d6a'/>
+    <pointer-type-def type-id='122f757a' size-in-bits='64' id='c56f4379'/>
+    <pointer-type-def type-id='c56f4379' size-in-bits='64' id='2126fba9'/>
+    <pointer-type-def type-id='aa12d1ba' size-in-bits='64' id='822cd80b'/>
+    <pointer-type-def type-id='84aa4341' size-in-bits='64' id='3e1b4f89'/>
+    <reference-type-def kind='lvalue' type-id='e5af4ed4' size-in-bits='64' id='b8bea77e'/>
+    <pointer-type-def type-id='e5af4ed4' size-in-bits='64' id='b4bea132'/>
+    <reference-type-def kind='lvalue' type-id='5f3aabfe' size-in-bits='64' id='7f0043f0'/>
+    <pointer-type-def type-id='5f3aabfe' size-in-bits='64' id='8b0056d4'/>
+    <pointer-type-def type-id='c1fdb0b3' size-in-bits='64' id='b01a1663'/>
+    <pointer-type-def type-id='2e552d01' size-in-bits='64' id='6de3cf18'/>
+    <reference-type-def kind='lvalue' type-id='f74dc428' size-in-bits='64' id='bb997e32'/>
+    <reference-type-def kind='rvalue' type-id='f74dc428' size-in-bits='64' id='66a1797c'/>
+    <pointer-type-def type-id='f74dc428' size-in-bits='64' id='bf99847e'/>
+    <reference-type-def kind='lvalue' type-id='862099c6' size-in-bits='64' id='fe3112c8'/>
+    <reference-type-def kind='rvalue' type-id='862099c6' size-in-bits='64' id='1540ccaa'/>
+    <pointer-type-def type-id='862099c6' size-in-bits='64' id='fa310c7c'/>
+    <pointer-type-def type-id='a84c031d' size-in-bits='64' id='26a90f95'/>
+    <pointer-type-def type-id='26a90f95' size-in-bits='64' id='9b23c9ad'/>
+    <qualified-type-def type-id='e5af4ed4' const='yes' id='a56b5b8f'/>
+    <pointer-type-def type-id='a56b5b8f' size-in-bits='64' id='0d0144bf'/>
+    <qualified-type-def type-id='f74dc428' const='yes' id='fd5524d9'/>
+    <reference-type-def kind='lvalue' type-id='fd5524d9' size-in-bits='64' id='cc093d6d'/>
+    <pointer-type-def type-id='fd5524d9' size-in-bits='64' id='c0092a89'/>
+    <qualified-type-def type-id='862099c6' const='yes' id='3d881ff3'/>
+    <reference-type-def kind='lvalue' type-id='3d881ff3' size-in-bits='64' id='b24a1c4f'/>
+    <pointer-type-def type-id='3d881ff3' size-in-bits='64' id='b64a229b'/>
+    <qualified-type-def type-id='a84c031d' const='yes' id='9b45d938'/>
+    <pointer-type-def type-id='9b45d938' size-in-bits='64' id='80f4b756'/>
+    <pointer-type-def type-id='80f4b756' size-in-bits='64' id='7d3cd834'/>
+    <qualified-type-def type-id='e322b6ef' const='yes' id='59d28eff'/>
+    <pointer-type-def type-id='59d28eff' size-in-bits='64' id='3b76d94f'/>
+    <qualified-type-def type-id='3d7d8cbf' const='yes' id='7411c98f'/>
+    <pointer-type-def type-id='7411c98f' size-in-bits='64' id='5d006ebf'/>
+    <qualified-type-def type-id='c9d12d66' const='yes' id='588b3216'/>
+    <pointer-type-def type-id='588b3216' size-in-bits='64' id='9f201474'/>
+    <qualified-type-def type-id='dddf6ca2' const='yes' id='e824a34f'/>
+    <pointer-type-def type-id='e824a34f' size-in-bits='64' id='d6ad37ff'/>
+    <qualified-type-def type-id='c523b9f1' const='yes' id='effb3702'/>
+    <pointer-type-def type-id='effb3702' size-in-bits='64' id='f077d3f8'/>
+    <pointer-type-def type-id='f077d3f8' size-in-bits='64' id='5ea27396'/>
+    <pointer-type-def type-id='a6c45d85' size-in-bits='64' id='361f7a7d'/>
+    <pointer-type-def type-id='e322b6ef' size-in-bits='64' id='c5f12884'/>
+    <pointer-type-def type-id='96ee24a5' size-in-bits='64' id='585e1de9'/>
+    <pointer-type-def type-id='95e97e5e' size-in-bits='64' id='7292109c'/>
+    <pointer-type-def type-id='9da381c4' size-in-bits='64' id='cb785ebf'/>
+    <pointer-type-def type-id='e095c704' size-in-bits='64' id='b9c88d6a'/>
+    <pointer-type-def type-id='3d7d8cbf' size-in-bits='64' id='a68021ce'/>
+    <pointer-type-def type-id='c9d12d66' size-in-bits='64' id='b2eb2c3f'/>
+    <pointer-type-def type-id='dddf6ca2' size-in-bits='64' id='d915a820'/>
+    <pointer-type-def type-id='055f9de3' size-in-bits='64' id='d51a0d27'/>
+    <pointer-type-def type-id='ee076206' size-in-bits='64' id='953b12f8'/>
+    <pointer-type-def type-id='d024f83e' size-in-bits='64' id='8b51a308'/>
+    <pointer-type-def type-id='48b5725f' size-in-bits='64' id='eaa32e2f'/>
+    <pointer-type-def type-id='c523b9f1' size-in-bits='64' id='323d93c1'/>
+    <pointer-type-def type-id='323d93c1' size-in-bits='64' id='01efdaf1'/>
+    <class-decl name='AAudioStreamBuilderStruct' is-struct='yes' visibility='default' is-declaration-only='yes' id='813682d4'/>
+    <class-decl name='AAudioStreamStruct' is-struct='yes' visibility='default' is-declaration-only='yes' id='119dbfcb'/>
+    <class-decl name='__sFILE' is-struct='yes' visibility='default' is-declaration-only='yes' id='8d7b2c1e'/>
+    <namespace-decl name='aaudio'>
+      <typedef-decl name='aaudio_stream_id_t' type-id='8f92235e' filepath='frameworks/av/media/libaaudio/src/core/AudioStream.h' line='41' column='1' id='a5eeae98'/>
+      <class-decl name='AAudioStreamParameters' visibility='default' is-declaration-only='yes' id='84aa4341'>
+        <member-function access='public'>
+          <function-decl name='setDeviceId' mangled-name='_ZN6aaudio22AAudioStreamParameters11setDeviceIdEi' filepath='frameworks/av/media/libaaudio/src/core/AAudioStreamParameters.h' line='36' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='3e1b4f89' is-artificial='yes'/>
+            <parameter type-id='3ff5601b'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='setSampleRate' mangled-name='_ZN6aaudio22AAudioStreamParameters13setSampleRateEi' filepath='frameworks/av/media/libaaudio/src/core/AAudioStreamParameters.h' line='44' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='3e1b4f89' is-artificial='yes'/>
+            <parameter type-id='3ff5601b'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='setSamplesPerFrame' mangled-name='_ZN6aaudio22AAudioStreamParameters18setSamplesPerFrameEi' filepath='frameworks/av/media/libaaudio/src/core/AAudioStreamParameters.h' line='55' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='3e1b4f89' is-artificial='yes'/>
+            <parameter type-id='3ff5601b'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='setDirection' mangled-name='_ZN6aaudio22AAudioStreamParameters12setDirectionEi' filepath='frameworks/av/media/libaaudio/src/core/AAudioStreamParameters.h' line='87' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='3e1b4f89' is-artificial='yes'/>
+            <parameter type-id='a5156fbe'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='setFormat' mangled-name='_ZN6aaudio22AAudioStreamParameters9setFormatE14audio_format_t' filepath='frameworks/av/media/libaaudio/src/core/AAudioStreamParameters.h' line='63' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='3e1b4f89' is-artificial='yes'/>
+            <parameter type-id='aff86d3f'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='setSharingMode' mangled-name='_ZN6aaudio22AAudioStreamParameters14setSharingModeEi' filepath='frameworks/av/media/libaaudio/src/core/AAudioStreamParameters.h' line='71' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='3e1b4f89' is-artificial='yes'/>
+            <parameter type-id='da67c8b9'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='setUsage' mangled-name='_ZN6aaudio22AAudioStreamParameters8setUsageEi' filepath='frameworks/av/media/libaaudio/src/core/AAudioStreamParameters.h' line='95' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='3e1b4f89' is-artificial='yes'/>
+            <parameter type-id='8ee4dca8'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='setContentType' mangled-name='_ZN6aaudio22AAudioStreamParameters14setContentTypeEi' filepath='frameworks/av/media/libaaudio/src/core/AAudioStreamParameters.h' line='103' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='3e1b4f89' is-artificial='yes'/>
+            <parameter type-id='2df7abd1'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='setInputPreset' mangled-name='_ZN6aaudio22AAudioStreamParameters14setInputPresetEi' filepath='frameworks/av/media/libaaudio/src/core/AAudioStreamParameters.h' line='111' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='3e1b4f89' is-artificial='yes'/>
+            <parameter type-id='a4168325'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='setBufferCapacity' mangled-name='_ZN6aaudio22AAudioStreamParameters17setBufferCapacityEi' filepath='frameworks/av/media/libaaudio/src/core/AAudioStreamParameters.h' line='79' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='3e1b4f89' is-artificial='yes'/>
+            <parameter type-id='3ff5601b'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='setAllowedCapturePolicy' mangled-name='_ZN6aaudio22AAudioStreamParameters23setAllowedCapturePolicyEi' filepath='frameworks/av/media/libaaudio/src/core/AAudioStreamParameters.h' line='119' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='3e1b4f89' is-artificial='yes'/>
+            <parameter type-id='abe3e34b'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='setSessionId' mangled-name='_ZN6aaudio22AAudioStreamParameters12setSessionIdEi' filepath='frameworks/av/media/libaaudio/src/core/AAudioStreamParameters.h' line='127' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='3e1b4f89' is-artificial='yes'/>
+            <parameter type-id='4d6761d3'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+      </class-decl>
+      <class-decl name='AudioStream' visibility='default' is-declaration-only='yes' id='e5af4ed4'>
+        <member-type access='private'>
+          <class-decl name='MyPlayerBase' visibility='default' is-declaration-only='yes' id='5f3aabfe'/>
+        </member-type>
+        <member-function access='public'>
+          <function-decl name='getId' mangled-name='_ZN6aaudio11AudioStream5getIdEv' filepath='frameworks/av/media/libaaudio/src/core/AudioStream.h' line='168' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='b4bea132' is-artificial='yes'/>
+            <return type-id='a5eeae98'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='registerPlayerBase' mangled-name='_ZN6aaudio11AudioStream18registerPlayerBaseEv' filepath='frameworks/av/media/libaaudio/src/core/AudioStream.h' line='390' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='b4bea132' is-artificial='yes'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='unregisterPlayerBase' mangled-name='_ZN6aaudio11AudioStream20unregisterPlayerBaseEv' filepath='frameworks/av/media/libaaudio/src/core/AudioStream.h' line='400' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='b4bea132' is-artificial='yes'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='isDataCallbackActive' mangled-name='_ZNK6aaudio11AudioStream20isDataCallbackActiveEv' filepath='frameworks/av/media/libaaudio/src/core/AudioStream.h' line='341' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='0d0144bf' is-artificial='yes'/>
+            <return type-id='c894953d'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='isDataCallbackSet' mangled-name='_ZNK6aaudio11AudioStream17isDataCallbackSetEv' filepath='frameworks/av/media/libaaudio/src/core/AudioStream.h' line='334' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='0d0144bf' is-artificial='yes'/>
+            <return type-id='c894953d'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='isActive' mangled-name='_ZNK6aaudio11AudioStream8isActiveEv' filepath='frameworks/av/media/libaaudio/src/core/AudioStream.h' line='216' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='0d0144bf' is-artificial='yes'/>
+            <return type-id='c894953d'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='getSampleRate' mangled-name='_ZNK6aaudio11AudioStream13getSampleRateEv' filepath='frameworks/av/media/libaaudio/src/core/AudioStream.h' line='224' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='0d0144bf' is-artificial='yes'/>
+            <return type-id='da775bc6'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='getSamplesPerFrame' mangled-name='_ZNK6aaudio11AudioStream18getSamplesPerFrameEv' filepath='frameworks/av/media/libaaudio/src/core/AudioStream.h' line='232' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='0d0144bf' is-artificial='yes'/>
+            <return type-id='da775bc6'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='getState' mangled-name='_ZNK6aaudio11AudioStream8getStateEv' filepath='frameworks/av/media/libaaudio/src/core/AudioStream.h' line='196' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='0d0144bf' is-artificial='yes'/>
+            <return type-id='2e552d01'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='getFormat' mangled-name='_ZNK6aaudio11AudioStream9getFormatEv' filepath='frameworks/av/media/libaaudio/src/core/AudioStream.h' line='228' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='0d0144bf' is-artificial='yes'/>
+            <return type-id='aff86d3f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='getFramesPerDataCallback' mangled-name='_ZNK6aaudio11AudioStream24getFramesPerDataCallbackEv' filepath='frameworks/av/media/libaaudio/src/core/AudioStream.h' line='327' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='0d0144bf' is-artificial='yes'/>
+            <return type-id='3ff5601b'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='getDeviceId' mangled-name='_ZNK6aaudio11AudioStream11getDeviceIdEv' filepath='frameworks/av/media/libaaudio/src/core/AudioStream.h' line='244' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='0d0144bf' is-artificial='yes'/>
+            <return type-id='3ff5601b'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='getSharingMode' mangled-name='_ZNK6aaudio11AudioStream14getSharingModeEv' filepath='frameworks/av/media/libaaudio/src/core/AudioStream.h' line='248' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='0d0144bf' is-artificial='yes'/>
+            <return type-id='da67c8b9'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='getUsage' mangled-name='_ZNK6aaudio11AudioStream8getUsageEv' filepath='frameworks/av/media/libaaudio/src/core/AudioStream.h' line='258' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='0d0144bf' is-artificial='yes'/>
+            <return type-id='8ee4dca8'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='getContentType' mangled-name='_ZNK6aaudio11AudioStream14getContentTypeEv' filepath='frameworks/av/media/libaaudio/src/core/AudioStream.h' line='262' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='0d0144bf' is-artificial='yes'/>
+            <return type-id='2df7abd1'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='getInputPreset' mangled-name='_ZNK6aaudio11AudioStream14getInputPresetEv' filepath='frameworks/av/media/libaaudio/src/core/AudioStream.h' line='266' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='0d0144bf' is-artificial='yes'/>
+            <return type-id='a4168325'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='getAllowedCapturePolicy' mangled-name='_ZNK6aaudio11AudioStream23getAllowedCapturePolicyEv' filepath='frameworks/av/media/libaaudio/src/core/AudioStream.h' line='270' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='0d0144bf' is-artificial='yes'/>
+            <return type-id='abe3e34b'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='getSessionId' mangled-name='_ZNK6aaudio11AudioStream12getSessionIdEv' filepath='frameworks/av/media/libaaudio/src/core/AudioStream.h' line='274' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='0d0144bf' is-artificial='yes'/>
+            <return type-id='3ff5601b'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='isPrivacySensitive' mangled-name='_ZNK6aaudio11AudioStream18isPrivacySensitiveEv' filepath='frameworks/av/media/libaaudio/src/core/AudioStream.h' line='278' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='0d0144bf' is-artificial='yes'/>
+            <return type-id='c894953d'/>
+          </function-decl>
+        </member-function>
+      </class-decl>
+      <class-decl name='AudioStreamBuilder' visibility='default' is-declaration-only='yes' id='c1fdb0b3'>
+        <member-type access='private'>
+          <enum-decl name='__anonymous_enum__' is-anonymous='yes' filepath='frameworks/av/media/libaaudio/src/core/AudioStreamBuilder.h' line='131' column='1' id='08f5ca17'>
+            <underlying-type type-id='9cac1fee'/>
+            <enumerator name='PRIVACY_SENSITIVE_DEFAULT' value='-1'/>
+            <enumerator name='PRIVACY_SENSITIVE_DISABLED' value='0'/>
+            <enumerator name='PRIVACY_SENSITIVE_ENABLED' value='1'/>
+          </enum-decl>
+        </member-type>
+        <member-function access='public'>
+          <function-decl name='setPerformanceMode' mangled-name='_ZN6aaudio18AudioStreamBuilder18setPerformanceModeEi' filepath='frameworks/av/media/libaaudio/src/core/AudioStreamBuilder.h' line='51' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='b01a1663' is-artificial='yes'/>
+            <parameter type-id='6757629b'/>
+            <return type-id='b01a1663'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='setPrivacySensitiveRequest' mangled-name='_ZN6aaudio18AudioStreamBuilder26setPrivacySensitiveRequestEb' filepath='frameworks/av/media/libaaudio/src/core/AudioStreamBuilder.h' line='101' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='b01a1663' is-artificial='yes'/>
+            <parameter type-id='c894953d'/>
+            <return type-id='b01a1663'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='setDataCallbackProc' mangled-name='_ZN6aaudio18AudioStreamBuilder19setDataCallbackProcEPFiP18AAudioStreamStructPvS3_iE' filepath='frameworks/av/media/libaaudio/src/core/AudioStreamBuilder.h' line='60' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='b01a1663' is-artificial='yes'/>
+            <parameter type-id='edb6186f'/>
+            <return type-id='b01a1663'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='setDataCallbackUserData' mangled-name='_ZN6aaudio18AudioStreamBuilder23setDataCallbackUserDataEPv' filepath='frameworks/av/media/libaaudio/src/core/AudioStreamBuilder.h' line='69' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='b01a1663' is-artificial='yes'/>
+            <parameter type-id='eaa32e2f'/>
+            <return type-id='b01a1663'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='setErrorCallbackProc' mangled-name='_ZN6aaudio18AudioStreamBuilder20setErrorCallbackProcEPFvP18AAudioStreamStructPviE' filepath='frameworks/av/media/libaaudio/src/core/AudioStreamBuilder.h' line='78' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='b01a1663' is-artificial='yes'/>
+            <parameter type-id='2e91990d'/>
+            <return type-id='b01a1663'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='setErrorCallbackUserData' mangled-name='_ZN6aaudio18AudioStreamBuilder24setErrorCallbackUserDataEPv' filepath='frameworks/av/media/libaaudio/src/core/AudioStreamBuilder.h' line='83' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='b01a1663' is-artificial='yes'/>
+            <parameter type-id='eaa32e2f'/>
+            <return type-id='b01a1663'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='setFramesPerDataCallback' mangled-name='_ZN6aaudio18AudioStreamBuilder24setFramesPerDataCallbackEi' filepath='frameworks/av/media/libaaudio/src/core/AudioStreamBuilder.h' line='96' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='b01a1663' is-artificial='yes'/>
+            <parameter type-id='3ff5601b'/>
+            <return type-id='b01a1663'/>
+          </function-decl>
+        </member-function>
+      </class-decl>
+    </namespace-decl>
+    <namespace-decl name='android'>
+      <class-decl name='sp&lt;aaudio::AudioStream::MyPlayerBase&gt;' size-in-bits='64' visibility='default' filepath='system/core/libutils/include/utils/StrongPointer.h' line='31' column='1' id='f74dc428'>
+        <data-member access='private' layout-offset-in-bits='0'>
+          <var-decl name='m_ptr' type-id='8b0056d4' visibility='default' filepath='system/core/libutils/include/utils/StrongPointer.h' line='124' column='1'/>
+        </data-member>
+        <member-function access='public'>
+          <function-decl name='sp' filepath='system/core/libutils/include/utils/StrongPointer.h' line='33' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='bf99847e' is-artificial='yes'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='sp' filepath='system/core/libutils/include/utils/StrongPointer.h' line='64' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='bf99847e' is-artificial='yes'/>
+            <parameter type-id='8b0056d4'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='sp' filepath='system/core/libutils/include/utils/StrongPointer.h' line='72' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='bf99847e' is-artificial='yes'/>
+            <parameter type-id='cc093d6d'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='sp' filepath='system/core/libutils/include/utils/StrongPointer.h' line='73' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='bf99847e' is-artificial='yes'/>
+            <parameter type-id='66a1797c'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public' destructor='yes'>
+          <function-decl name='~sp' filepath='system/core/libutils/include/utils/StrongPointer.h' line='84' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='bf99847e' is-artificial='yes'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='operator-&gt;' mangled-name='_ZNK7android2spIN6aaudio11AudioStream12MyPlayerBaseEEptEv' filepath='system/core/libutils/include/utils/StrongPointer.h' line='104' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='c0092a89' is-artificial='yes'/>
+            <return type-id='8b0056d4'/>
+          </function-decl>
+        </member-function>
+      </class-decl>
+      <class-decl name='sp&lt;aaudio::AudioStream&gt;' size-in-bits='64' visibility='default' filepath='system/core/libutils/include/utils/StrongPointer.h' line='31' column='1' id='862099c6'>
+        <data-member access='private' layout-offset-in-bits='0'>
+          <var-decl name='m_ptr' type-id='b4bea132' visibility='default' filepath='system/core/libutils/include/utils/StrongPointer.h' line='124' column='1'/>
+        </data-member>
+        <member-function access='public'>
+          <function-decl name='sp' filepath='system/core/libutils/include/utils/StrongPointer.h' line='33' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='fa310c7c' is-artificial='yes'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='sp' mangled-name='_ZN7android2spIN6aaudio11AudioStreamEEC2EPS2_' filepath='system/core/libutils/include/utils/StrongPointer.h' line='64' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='fa310c7c' is-artificial='yes'/>
+            <parameter type-id='b4bea132'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='sp' filepath='system/core/libutils/include/utils/StrongPointer.h' line='72' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='fa310c7c' is-artificial='yes'/>
+            <parameter type-id='b24a1c4f'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public'>
+          <function-decl name='sp' filepath='system/core/libutils/include/utils/StrongPointer.h' line='73' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='fa310c7c' is-artificial='yes'/>
+            <parameter type-id='1540ccaa'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='public' destructor='yes'>
+          <function-decl name='~sp' mangled-name='_ZN7android2spIN6aaudio11AudioStreamEED2Ev' filepath='system/core/libutils/include/utils/StrongPointer.h' line='84' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='fa310c7c' is-artificial='yes'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+        <member-function access='private' static='yes'>
+          <function-decl name='check_not_on_stack' mangled-name='_ZN7android2spIN6aaudio11AudioStreamEE18check_not_on_stackEPKv' filepath='system/core/libutils/include/utils/StrongPointer.h' line='123' column='1' visibility='default' binding='global' size-in-bits='64'>
+            <parameter type-id='eaa32e2f'/>
+            <return type-id='48b5725f'/>
+          </function-decl>
+        </member-function>
+      </class-decl>
+    </namespace-decl>
+    <namespace-decl name='std'>
+      <class-decl name='__va_list' size-in-bits='256' is-struct='yes' visibility='default' id='30357e0a'>
+        <data-member access='public' layout-offset-in-bits='0'>
+          <var-decl name='__stack' type-id='eaa32e2f' visibility='default'/>
+        </data-member>
+        <data-member access='public' layout-offset-in-bits='64'>
+          <var-decl name='__gr_top' type-id='eaa32e2f' visibility='default'/>
+        </data-member>
+        <data-member access='public' layout-offset-in-bits='128'>
+          <var-decl name='__vr_top' type-id='eaa32e2f' visibility='default'/>
+        </data-member>
+        <data-member access='public' layout-offset-in-bits='192'>
+          <var-decl name='__gr_offs' type-id='95e97e5e' visibility='default'/>
+        </data-member>
+        <data-member access='public' layout-offset-in-bits='224'>
+          <var-decl name='__vr_offs' type-id='95e97e5e' visibility='default'/>
+        </data-member>
+      </class-decl>
+    </namespace-decl>
+    <function-decl name='iswalnum' filepath='bionic/libc/include/bits/wctype.h' line='40' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='6dd37369'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='iswalpha' filepath='bionic/libc/include/bits/wctype.h' line='41' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='6dd37369'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='iswblank' filepath='bionic/libc/include/bits/wctype.h' line='42' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='6dd37369'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='iswcntrl' filepath='bionic/libc/include/bits/wctype.h' line='43' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='6dd37369'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='iswdigit' filepath='bionic/libc/include/bits/wctype.h' line='44' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='6dd37369'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='iswgraph' filepath='bionic/libc/include/bits/wctype.h' line='45' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='6dd37369'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='iswlower' filepath='bionic/libc/include/bits/wctype.h' line='46' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='6dd37369'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='iswprint' filepath='bionic/libc/include/bits/wctype.h' line='47' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='6dd37369'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='iswpunct' filepath='bionic/libc/include/bits/wctype.h' line='48' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='6dd37369'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='iswspace' filepath='bionic/libc/include/bits/wctype.h' line='49' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='6dd37369'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='iswupper' filepath='bionic/libc/include/bits/wctype.h' line='50' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='6dd37369'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='iswxdigit' filepath='bionic/libc/include/bits/wctype.h' line='51' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='6dd37369'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='towlower' filepath='bionic/libc/include/bits/wctype.h' line='53' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='6dd37369'/>
+      <return type-id='6dd37369'/>
+    </function-decl>
+    <function-decl name='towupper' filepath='bionic/libc/include/bits/wctype.h' line='54' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='6dd37369'/>
+      <return type-id='6dd37369'/>
+    </function-decl>
+    <function-decl name='wctype' filepath='bionic/libc/include/bits/wctype.h' line='57' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <return type-id='ba50424d'/>
+    </function-decl>
+    <function-decl name='iswctype' filepath='bionic/libc/include/bits/wctype.h' line='58' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='6dd37369'/>
+      <parameter type-id='ba50424d'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='towctrans' filepath='bionic/libc/include/bits/wctype.h' line='61' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='6dd37369'/>
+      <parameter type-id='183c72c3'/>
+      <return type-id='6dd37369'/>
+    </function-decl>
+    <function-decl name='wctrans' filepath='bionic/libc/include/bits/wctype.h' line='62' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <return type-id='183c72c3'/>
+    </function-decl>
+    <function-decl name='malloc' filepath='bionic/libc/include/malloc.h' line='43' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='b59d7dce'/>
+      <return type-id='eaa32e2f'/>
+    </function-decl>
+    <function-decl name='calloc' filepath='bionic/libc/include/malloc.h' line='52' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='b59d7dce'/>
+      <parameter type-id='b59d7dce'/>
+      <return type-id='eaa32e2f'/>
+    </function-decl>
+    <function-decl name='realloc' filepath='bionic/libc/include/malloc.h' line='61' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='eaa32e2f'/>
+      <parameter type-id='b59d7dce'/>
+      <return type-id='eaa32e2f'/>
+    </function-decl>
+    <function-decl name='free' filepath='bionic/libc/include/malloc.h' line='79' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='eaa32e2f'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='acosf' filepath='bionic/libc/include/math.h' line='77' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='acosl' filepath='bionic/libc/include/math.h' line='78' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='asinf' filepath='bionic/libc/include/math.h' line='81' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='asinl' filepath='bionic/libc/include/math.h' line='82' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='atanf' filepath='bionic/libc/include/math.h' line='85' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='atanl' filepath='bionic/libc/include/math.h' line='86' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='atan2f' filepath='bionic/libc/include/math.h' line='89' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='atan2l' filepath='bionic/libc/include/math.h' line='90' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='cosf' filepath='bionic/libc/include/math.h' line='93' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='cosl' filepath='bionic/libc/include/math.h' line='94' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='sinf' filepath='bionic/libc/include/math.h' line='97' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='sinl' filepath='bionic/libc/include/math.h' line='98' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='tanf' filepath='bionic/libc/include/math.h' line='101' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='tanl' filepath='bionic/libc/include/math.h' line='102' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='acoshf' filepath='bionic/libc/include/math.h' line='105' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='acoshl' filepath='bionic/libc/include/math.h' line='106' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='asinhf' filepath='bionic/libc/include/math.h' line='109' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='asinhl' filepath='bionic/libc/include/math.h' line='110' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='atanhf' filepath='bionic/libc/include/math.h' line='113' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='atanhl' filepath='bionic/libc/include/math.h' line='114' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='coshf' filepath='bionic/libc/include/math.h' line='117' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='coshl' filepath='bionic/libc/include/math.h' line='118' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='sinhf' filepath='bionic/libc/include/math.h' line='121' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='sinhl' filepath='bionic/libc/include/math.h' line='122' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='tanhf' filepath='bionic/libc/include/math.h' line='125' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='tanhl' filepath='bionic/libc/include/math.h' line='126' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='expf' filepath='bionic/libc/include/math.h' line='129' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='expl' filepath='bionic/libc/include/math.h' line='130' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='exp2f' filepath='bionic/libc/include/math.h' line='133' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='exp2l' filepath='bionic/libc/include/math.h' line='134' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='expm1f' filepath='bionic/libc/include/math.h' line='137' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='expm1l' filepath='bionic/libc/include/math.h' line='138' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='frexpf' filepath='bionic/libc/include/math.h' line='141' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <parameter type-id='7292109c'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='frexpl' filepath='bionic/libc/include/math.h' line='142' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <parameter type-id='7292109c'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='ilogbf' filepath='bionic/libc/include/math.h' line='145' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='ilogbl' filepath='bionic/libc/include/math.h' line='146' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='ldexpf' filepath='bionic/libc/include/math.h' line='149' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <parameter type-id='95e97e5e'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='ldexpl' filepath='bionic/libc/include/math.h' line='150' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <parameter type-id='95e97e5e'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='logf' filepath='bionic/libc/include/math.h' line='153' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='logl' filepath='bionic/libc/include/math.h' line='154' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='log10f' filepath='bionic/libc/include/math.h' line='157' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='log10l' filepath='bionic/libc/include/math.h' line='158' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='log1pf' filepath='bionic/libc/include/math.h' line='161' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='log1pl' filepath='bionic/libc/include/math.h' line='162' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='log2f' filepath='bionic/libc/include/math.h' line='165' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='log2l' filepath='bionic/libc/include/math.h' line='166' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='logbf' filepath='bionic/libc/include/math.h' line='169' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='logbl' filepath='bionic/libc/include/math.h' line='170' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='modff' filepath='bionic/libc/include/math.h' line='173' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <parameter type-id='361f7a7d'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='modfl' filepath='bionic/libc/include/math.h' line='174' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <parameter type-id='b9c88d6a'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='scalbnf' filepath='bionic/libc/include/math.h' line='177' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <parameter type-id='95e97e5e'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='scalbnl' filepath='bionic/libc/include/math.h' line='178' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <parameter type-id='95e97e5e'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='scalblnf' filepath='bionic/libc/include/math.h' line='182' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <parameter type-id='bd54fe1a'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='scalblnl' filepath='bionic/libc/include/math.h' line='183' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <parameter type-id='bd54fe1a'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='cbrtf' filepath='bionic/libc/include/math.h' line='186' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='cbrtl' filepath='bionic/libc/include/math.h' line='187' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='fabsf' filepath='bionic/libc/include/math.h' line='190' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='fabsl' filepath='bionic/libc/include/math.h' line='191' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='hypotf' filepath='bionic/libc/include/math.h' line='194' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='hypotl' filepath='bionic/libc/include/math.h' line='195' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='powf' filepath='bionic/libc/include/math.h' line='198' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='powl' filepath='bionic/libc/include/math.h' line='199' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='sqrtf' filepath='bionic/libc/include/math.h' line='202' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='sqrtl' filepath='bionic/libc/include/math.h' line='203' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='erff' filepath='bionic/libc/include/math.h' line='206' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='erfl' filepath='bionic/libc/include/math.h' line='207' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='erfcf' filepath='bionic/libc/include/math.h' line='210' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='erfcl' filepath='bionic/libc/include/math.h' line='211' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='lgammaf' filepath='bionic/libc/include/math.h' line='214' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='lgammal' filepath='bionic/libc/include/math.h' line='215' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='tgammaf' filepath='bionic/libc/include/math.h' line='218' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='tgammal' filepath='bionic/libc/include/math.h' line='219' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='ceilf' filepath='bionic/libc/include/math.h' line='222' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='ceill' filepath='bionic/libc/include/math.h' line='223' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='floorf' filepath='bionic/libc/include/math.h' line='226' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='floorl' filepath='bionic/libc/include/math.h' line='227' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='nearbyintf' filepath='bionic/libc/include/math.h' line='230' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='nearbyintl' filepath='bionic/libc/include/math.h' line='231' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='rintf' filepath='bionic/libc/include/math.h' line='234' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='rintl' filepath='bionic/libc/include/math.h' line='235' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='lrintf' filepath='bionic/libc/include/math.h' line='238' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='bd54fe1a'/>
+    </function-decl>
+    <function-decl name='lrintl' filepath='bionic/libc/include/math.h' line='239' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='bd54fe1a'/>
+    </function-decl>
+    <function-decl name='llrintf' filepath='bionic/libc/include/math.h' line='242' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='1eb56b1e'/>
+    </function-decl>
+    <function-decl name='llrintl' filepath='bionic/libc/include/math.h' line='243' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='1eb56b1e'/>
+    </function-decl>
+    <function-decl name='roundf' filepath='bionic/libc/include/math.h' line='246' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='roundl' filepath='bionic/libc/include/math.h' line='247' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='lroundf' filepath='bionic/libc/include/math.h' line='250' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='bd54fe1a'/>
+    </function-decl>
+    <function-decl name='lroundl' filepath='bionic/libc/include/math.h' line='251' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='bd54fe1a'/>
+    </function-decl>
+    <function-decl name='llroundf' filepath='bionic/libc/include/math.h' line='254' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='1eb56b1e'/>
+    </function-decl>
+    <function-decl name='llroundl' filepath='bionic/libc/include/math.h' line='255' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='1eb56b1e'/>
+    </function-decl>
+    <function-decl name='truncf' filepath='bionic/libc/include/math.h' line='258' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='truncl' filepath='bionic/libc/include/math.h' line='259' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='fmodf' filepath='bionic/libc/include/math.h' line='262' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='fmodl' filepath='bionic/libc/include/math.h' line='263' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='remainderf' filepath='bionic/libc/include/math.h' line='266' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='remainderl' filepath='bionic/libc/include/math.h' line='267' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='remquof' filepath='bionic/libc/include/math.h' line='270' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <parameter type-id='a6c45d85'/>
+      <parameter type-id='7292109c'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='remquol' filepath='bionic/libc/include/math.h' line='271' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <parameter type-id='e095c704'/>
+      <parameter type-id='7292109c'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='copysignf' filepath='bionic/libc/include/math.h' line='274' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='copysignl' filepath='bionic/libc/include/math.h' line='275' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='nan' filepath='bionic/libc/include/math.h' line='277' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <return type-id='a0eb0f08'/>
+    </function-decl>
+    <function-decl name='nanf' filepath='bionic/libc/include/math.h' line='278' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='nanl' filepath='bionic/libc/include/math.h' line='279' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='nextafterf' filepath='bionic/libc/include/math.h' line='282' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='nextafterl' filepath='bionic/libc/include/math.h' line='283' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='nexttowardf' filepath='bionic/libc/include/math.h' line='286' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <parameter type-id='e095c704'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='nexttowardl' filepath='bionic/libc/include/math.h' line='287' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='fdimf' filepath='bionic/libc/include/math.h' line='290' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='fdiml' filepath='bionic/libc/include/math.h' line='291' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='fmaxf' filepath='bionic/libc/include/math.h' line='294' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='fmaxl' filepath='bionic/libc/include/math.h' line='295' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='fminf' filepath='bionic/libc/include/math.h' line='298' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='fminl' filepath='bionic/libc/include/math.h' line='299' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='fmaf' filepath='bionic/libc/include/math.h' line='302' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='a6c45d85'/>
+      <parameter type-id='a6c45d85'/>
+      <parameter type-id='a6c45d85'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='fmal' filepath='bionic/libc/include/math.h' line='303' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='e095c704'/>
+      <parameter type-id='e095c704'/>
+      <parameter type-id='e095c704'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='clearerr' filepath='bionic/libc/include/stdio.h' line='106' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='fclose' filepath='bionic/libc/include/stdio.h' line='107' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='feof' filepath='bionic/libc/include/stdio.h' line='108' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='ferror' filepath='bionic/libc/include/stdio.h' line='109' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='fflush' filepath='bionic/libc/include/stdio.h' line='110' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='fgetc' filepath='bionic/libc/include/stdio.h' line='111' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='fprintf' filepath='bionic/libc/include/stdio.h' line='113' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <parameter type-id='80f4b756'/>
+      <parameter is-variadic='yes'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='fputc' filepath='bionic/libc/include/stdio.h' line='114' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='95e97e5e'/>
+      <parameter type-id='822cd80b'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='fputs' filepath='bionic/libc/include/stdio.h' line='115' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='822cd80b'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='fscanf' filepath='bionic/libc/include/stdio.h' line='117' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <parameter type-id='80f4b756'/>
+      <parameter is-variadic='yes'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='getc' filepath='bionic/libc/include/stdio.h' line='119' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='getchar' filepath='bionic/libc/include/stdio.h' line='120' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='perror' filepath='bionic/libc/include/stdio.h' line='124' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='printf' filepath='bionic/libc/include/stdio.h' line='125' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter is-variadic='yes'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='putc' filepath='bionic/libc/include/stdio.h' line='126' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='95e97e5e'/>
+      <parameter type-id='822cd80b'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='putchar' filepath='bionic/libc/include/stdio.h' line='127' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='95e97e5e'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='puts' filepath='bionic/libc/include/stdio.h' line='128' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='remove' filepath='bionic/libc/include/stdio.h' line='129' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='rewind' filepath='bionic/libc/include/stdio.h' line='130' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='scanf' filepath='bionic/libc/include/stdio.h' line='131' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter is-variadic='yes'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='setbuf' filepath='bionic/libc/include/stdio.h' line='132' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <parameter type-id='26a90f95'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='setvbuf' filepath='bionic/libc/include/stdio.h' line='133' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <parameter type-id='26a90f95'/>
+      <parameter type-id='95e97e5e'/>
+      <parameter type-id='b59d7dce'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='sscanf' filepath='bionic/libc/include/stdio.h' line='134' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='80f4b756'/>
+      <parameter is-variadic='yes'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='ungetc' filepath='bionic/libc/include/stdio.h' line='135' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='95e97e5e'/>
+      <parameter type-id='822cd80b'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='vfprintf' filepath='bionic/libc/include/stdio.h' line='136' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='2aee9912'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='vprintf' filepath='bionic/libc/include/stdio.h' line='137' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='2aee9912'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='tmpnam' filepath='bionic/libc/include/stdio.h' line='162' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='26a90f95'/>
+      <return type-id='26a90f95'/>
+    </function-decl>
+    <function-decl name='rename' filepath='bionic/libc/include/stdio.h' line='174' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='80f4b756'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='fseek' filepath='bionic/libc/include/stdio.h' line='215' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <parameter type-id='bd54fe1a'/>
+      <parameter type-id='95e97e5e'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='ftell' filepath='bionic/libc/include/stdio.h' line='216' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <return type-id='bd54fe1a'/>
+    </function-decl>
+    <function-decl name='fgetpos' filepath='bionic/libc/include/stdio.h' line='232' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <parameter type-id='c5f12884'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='fsetpos' filepath='bionic/libc/include/stdio.h' line='233' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <parameter type-id='3b76d94f'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='fopen' filepath='bionic/libc/include/stdio.h' line='256' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='80f4b756'/>
+      <return type-id='822cd80b'/>
+    </function-decl>
+    <function-decl name='freopen' filepath='bionic/libc/include/stdio.h' line='258' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='822cd80b'/>
+      <return type-id='822cd80b'/>
+    </function-decl>
+    <function-decl name='tmpfile' filepath='bionic/libc/include/stdio.h' line='260' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <return type-id='822cd80b'/>
+    </function-decl>
+    <function-decl name='vfscanf' filepath='bionic/libc/include/stdio.h' line='264' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='2aee9912'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='vscanf' filepath='bionic/libc/include/stdio.h' line='265' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='2aee9912'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='vsscanf' filepath='bionic/libc/include/stdio.h' line='267' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='2aee9912'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='abort' filepath='bionic/libc/include/stdlib.h' line='44' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='exit' filepath='bionic/libc/include/stdlib.h' line='45' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='95e97e5e'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='_Exit' filepath='bionic/libc/include/stdlib.h' line='47' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='95e97e5e'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='atexit' filepath='bionic/libc/include/stdlib.h' line='52' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='953b12f8'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='at_quick_exit' filepath='bionic/libc/include/stdlib.h' line='54' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='953b12f8'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='quick_exit' filepath='bionic/libc/include/stdlib.h' line='55' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='95e97e5e'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='getenv' filepath='bionic/libc/include/stdlib.h' line='57' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <return type-id='26a90f95'/>
+    </function-decl>
+    <function-decl name='strtol' filepath='bionic/libc/include/stdlib.h' line='75' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='9b23c9ad'/>
+      <parameter type-id='95e97e5e'/>
+      <return type-id='bd54fe1a'/>
+    </function-decl>
+    <function-decl name='strtoll' filepath='bionic/libc/include/stdlib.h' line='76' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='9b23c9ad'/>
+      <parameter type-id='95e97e5e'/>
+      <return type-id='1eb56b1e'/>
+    </function-decl>
+    <function-decl name='strtoul' filepath='bionic/libc/include/stdlib.h' line='77' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='9b23c9ad'/>
+      <parameter type-id='95e97e5e'/>
+      <return type-id='7359adad'/>
+    </function-decl>
+    <function-decl name='strtoull' filepath='bionic/libc/include/stdlib.h' line='78' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='9b23c9ad'/>
+      <parameter type-id='95e97e5e'/>
+      <return type-id='3a47d82b'/>
+    </function-decl>
+    <function-decl name='strtod' filepath='bionic/libc/include/stdlib.h' line='84' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='9b23c9ad'/>
+      <return type-id='a0eb0f08'/>
+    </function-decl>
+    <function-decl name='strtold' filepath='bionic/libc/include/stdlib.h' line='85' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='9b23c9ad'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='atoi' filepath='bionic/libc/include/stdlib.h' line='89' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='atol' filepath='bionic/libc/include/stdlib.h' line='90' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <return type-id='bd54fe1a'/>
+    </function-decl>
+    <function-decl name='atoll' filepath='bionic/libc/include/stdlib.h' line='91' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <return type-id='1eb56b1e'/>
+    </function-decl>
+    <function-decl name='system' filepath='bionic/libc/include/stdlib.h' line='94' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='bsearch' filepath='bionic/libc/include/stdlib.h' line='96' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='eaa32e2f'/>
+      <parameter type-id='eaa32e2f'/>
+      <parameter type-id='b59d7dce'/>
+      <parameter type-id='b59d7dce'/>
+      <parameter type-id='585e1de9'/>
+      <return type-id='eaa32e2f'/>
+    </function-decl>
+    <function-decl name='qsort' filepath='bionic/libc/include/stdlib.h' line='98' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='eaa32e2f'/>
+      <parameter type-id='b59d7dce'/>
+      <parameter type-id='b59d7dce'/>
+      <parameter type-id='585e1de9'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='ldiv' filepath='bionic/libc/include/stdlib.h' line='141' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='bd54fe1a'/>
+      <parameter type-id='bd54fe1a'/>
+      <return type-id='30397bf8'/>
+    </function-decl>
+    <function-decl name='lldiv' filepath='bionic/libc/include/stdlib.h' line='148' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='1eb56b1e'/>
+      <parameter type-id='1eb56b1e'/>
+      <return type-id='f5fa3b34'/>
+    </function-decl>
+    <function-decl name='mblen' filepath='bionic/libc/include/stdlib.h' line='163' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='b59d7dce'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='mbstowcs' filepath='bionic/libc/include/stdlib.h' line='164' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='323d93c1'/>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='b59d7dce'/>
+      <return type-id='b59d7dce'/>
+    </function-decl>
+    <function-decl name='mbtowc' filepath='bionic/libc/include/stdlib.h' line='165' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='323d93c1'/>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='b59d7dce'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='wctomb' filepath='bionic/libc/include/stdlib.h' line='166' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='26a90f95'/>
+      <parameter type-id='c523b9f1'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='wcstombs' filepath='bionic/libc/include/stdlib.h' line='168' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='26a90f95'/>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='b59d7dce'/>
+      <return type-id='b59d7dce'/>
+    </function-decl>
+    <function-decl name='labs' filepath='bionic/libc/include/stdlib.h' line='188' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='bd54fe1a'/>
+      <return type-id='bd54fe1a'/>
+    </function-decl>
+    <function-decl name='llabs' filepath='bionic/libc/include/stdlib.h' line='189' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='1eb56b1e'/>
+      <return type-id='1eb56b1e'/>
+    </function-decl>
+    <function-decl name='strtof' filepath='bionic/libc/include/stdlib.h' line='195' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='9b23c9ad'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='atof' filepath='bionic/libc/include/stdlib.h' line='196' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <return type-id='a0eb0f08'/>
+    </function-decl>
+    <function-decl name='rand' filepath='bionic/libc/include/stdlib.h' line='197' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='srand' filepath='bionic/libc/include/stdlib.h' line='198' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f0981eeb'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='memcmp' filepath='bionic/libc/include/string.h' line='52' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='eaa32e2f'/>
+      <parameter type-id='eaa32e2f'/>
+      <parameter type-id='b59d7dce'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='strcmp' filepath='bionic/libc/include/string.h' line='78' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='80f4b756'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='strtok' filepath='bionic/libc/include/string.h' line='91' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='26a90f95'/>
+      <parameter type-id='80f4b756'/>
+      <return type-id='26a90f95'/>
+    </function-decl>
+    <function-decl name='strerror' filepath='bionic/libc/include/string.h' line='94' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='95e97e5e'/>
+      <return type-id='26a90f95'/>
+    </function-decl>
+    <function-decl name='strncmp' filepath='bionic/libc/include/string.h' line='105' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='b59d7dce'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='strcspn' filepath='bionic/libc/include/string.h' line='112' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='80f4b756'/>
+      <return type-id='b59d7dce'/>
+    </function-decl>
+    <function-decl name='strspn' filepath='bionic/libc/include/string.h' line='115' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='80f4b756'/>
+      <return type-id='b59d7dce'/>
+    </function-decl>
+    <function-decl name='strcoll' filepath='bionic/libc/include/string.h' line='119' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='80f4b756'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='strxfrm' filepath='bionic/libc/include/string.h' line='120' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='26a90f95'/>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='b59d7dce'/>
+      <return type-id='b59d7dce'/>
+    </function-decl>
+    <function-decl name='time' filepath='bionic/libc/include/time.h' line='62' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='b2eb2c3f'/>
+      <return type-id='c9d12d66'/>
+    </function-decl>
+    <function-decl name='asctime' filepath='bionic/libc/include/time.h' line='65' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='d6ad37ff'/>
+      <return type-id='26a90f95'/>
+    </function-decl>
+    <function-decl name='difftime' filepath='bionic/libc/include/time.h' line='68' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='c9d12d66'/>
+      <parameter type-id='c9d12d66'/>
+      <return type-id='a0eb0f08'/>
+    </function-decl>
+    <function-decl name='mktime' filepath='bionic/libc/include/time.h' line='69' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='d915a820'/>
+      <return type-id='c9d12d66'/>
+    </function-decl>
+    <function-decl name='localtime' filepath='bionic/libc/include/time.h' line='71' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='9f201474'/>
+      <return type-id='d915a820'/>
+    </function-decl>
+    <function-decl name='gmtime' filepath='bionic/libc/include/time.h' line='74' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='9f201474'/>
+      <return type-id='d915a820'/>
+    </function-decl>
+    <function-decl name='strftime' filepath='bionic/libc/include/time.h' line='80' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='26a90f95'/>
+      <parameter type-id='b59d7dce'/>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='d6ad37ff'/>
+      <return type-id='b59d7dce'/>
+    </function-decl>
+    <function-decl name='ctime' filepath='bionic/libc/include/time.h' line='87' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='9f201474'/>
+      <return type-id='26a90f95'/>
+    </function-decl>
+    <function-decl name='clock' filepath='bionic/libc/include/time.h' line='92' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <return type-id='4c3a2c61'/>
+    </function-decl>
+    <function-decl name='btowc' filepath='bionic/libc/include/wchar.h' line='46' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='95e97e5e'/>
+      <return type-id='6dd37369'/>
+    </function-decl>
+    <function-decl name='fwprintf' filepath='bionic/libc/include/wchar.h' line='47' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <parameter type-id='f077d3f8'/>
+      <parameter is-variadic='yes'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='fwscanf' filepath='bionic/libc/include/wchar.h' line='48' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <parameter type-id='f077d3f8'/>
+      <parameter is-variadic='yes'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='fgetwc' filepath='bionic/libc/include/wchar.h' line='49' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <return type-id='6dd37369'/>
+    </function-decl>
+    <function-decl name='fgetws' filepath='bionic/libc/include/wchar.h' line='50' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='323d93c1'/>
+      <parameter type-id='95e97e5e'/>
+      <parameter type-id='822cd80b'/>
+      <return type-id='323d93c1'/>
+    </function-decl>
+    <function-decl name='fputwc' filepath='bionic/libc/include/wchar.h' line='51' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='c523b9f1'/>
+      <parameter type-id='822cd80b'/>
+      <return type-id='6dd37369'/>
+    </function-decl>
+    <function-decl name='fputws' filepath='bionic/libc/include/wchar.h' line='52' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='822cd80b'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='fwide' filepath='bionic/libc/include/wchar.h' line='53' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <parameter type-id='95e97e5e'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='getwc' filepath='bionic/libc/include/wchar.h' line='54' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <return type-id='6dd37369'/>
+    </function-decl>
+    <function-decl name='getwchar' filepath='bionic/libc/include/wchar.h' line='55' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <return type-id='6dd37369'/>
+    </function-decl>
+    <function-decl name='mbsinit' filepath='bionic/libc/include/wchar.h' line='56' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='5d006ebf'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='mbrlen' filepath='bionic/libc/include/wchar.h' line='57' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='b59d7dce'/>
+      <parameter type-id='a68021ce'/>
+      <return type-id='b59d7dce'/>
+    </function-decl>
+    <function-decl name='mbrtowc' filepath='bionic/libc/include/wchar.h' line='58' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='323d93c1'/>
+      <parameter type-id='80f4b756'/>
+      <parameter type-id='b59d7dce'/>
+      <parameter type-id='a68021ce'/>
+      <return type-id='b59d7dce'/>
+    </function-decl>
+    <function-decl name='mbsrtowcs' filepath='bionic/libc/include/wchar.h' line='59' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='323d93c1'/>
+      <parameter type-id='7d3cd834'/>
+      <parameter type-id='b59d7dce'/>
+      <parameter type-id='a68021ce'/>
+      <return type-id='b59d7dce'/>
+    </function-decl>
+    <function-decl name='putwc' filepath='bionic/libc/include/wchar.h' line='61' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='c523b9f1'/>
+      <parameter type-id='822cd80b'/>
+      <return type-id='6dd37369'/>
+    </function-decl>
+    <function-decl name='putwchar' filepath='bionic/libc/include/wchar.h' line='62' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='c523b9f1'/>
+      <return type-id='6dd37369'/>
+    </function-decl>
+    <function-decl name='swprintf' filepath='bionic/libc/include/wchar.h' line='63' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='323d93c1'/>
+      <parameter type-id='b59d7dce'/>
+      <parameter type-id='f077d3f8'/>
+      <parameter is-variadic='yes'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='swscanf' filepath='bionic/libc/include/wchar.h' line='64' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='f077d3f8'/>
+      <parameter is-variadic='yes'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='ungetwc' filepath='bionic/libc/include/wchar.h' line='65' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='6dd37369'/>
+      <parameter type-id='822cd80b'/>
+      <return type-id='6dd37369'/>
+    </function-decl>
+    <function-decl name='vfwprintf' filepath='bionic/libc/include/wchar.h' line='66' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='2aee9912'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='vfwscanf' filepath='bionic/libc/include/wchar.h' line='67' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='822cd80b'/>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='2aee9912'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='vswprintf' filepath='bionic/libc/include/wchar.h' line='68' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='323d93c1'/>
+      <parameter type-id='b59d7dce'/>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='2aee9912'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='vswscanf' filepath='bionic/libc/include/wchar.h' line='69' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='2aee9912'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='vwprintf' filepath='bionic/libc/include/wchar.h' line='70' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='2aee9912'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='vwscanf' filepath='bionic/libc/include/wchar.h' line='71' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='2aee9912'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='wcrtomb' filepath='bionic/libc/include/wchar.h' line='74' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='26a90f95'/>
+      <parameter type-id='c523b9f1'/>
+      <parameter type-id='a68021ce'/>
+      <return type-id='b59d7dce'/>
+    </function-decl>
+    <function-decl name='wcscat' filepath='bionic/libc/include/wchar.h' line='77' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='323d93c1'/>
+      <parameter type-id='f077d3f8'/>
+      <return type-id='323d93c1'/>
+    </function-decl>
+    <function-decl name='wcscmp' filepath='bionic/libc/include/wchar.h' line='79' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='f077d3f8'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='wcscoll' filepath='bionic/libc/include/wchar.h' line='80' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='f077d3f8'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='wcscpy' filepath='bionic/libc/include/wchar.h' line='81' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='323d93c1'/>
+      <parameter type-id='f077d3f8'/>
+      <return type-id='323d93c1'/>
+    </function-decl>
+    <function-decl name='wcscspn' filepath='bionic/libc/include/wchar.h' line='82' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='f077d3f8'/>
+      <return type-id='b59d7dce'/>
+    </function-decl>
+    <function-decl name='wcsftime' filepath='bionic/libc/include/wchar.h' line='83' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='323d93c1'/>
+      <parameter type-id='b59d7dce'/>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='d6ad37ff'/>
+      <return type-id='b59d7dce'/>
+    </function-decl>
+    <function-decl name='wcslen' filepath='bionic/libc/include/wchar.h' line='85' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <return type-id='b59d7dce'/>
+    </function-decl>
+    <function-decl name='wcsncat' filepath='bionic/libc/include/wchar.h' line='88' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='323d93c1'/>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='b59d7dce'/>
+      <return type-id='323d93c1'/>
+    </function-decl>
+    <function-decl name='wcsncmp' filepath='bionic/libc/include/wchar.h' line='89' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='b59d7dce'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='wcsncpy' filepath='bionic/libc/include/wchar.h' line='90' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='323d93c1'/>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='b59d7dce'/>
+      <return type-id='323d93c1'/>
+    </function-decl>
+    <function-decl name='wcsrtombs' filepath='bionic/libc/include/wchar.h' line='94' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='26a90f95'/>
+      <parameter type-id='5ea27396'/>
+      <parameter type-id='b59d7dce'/>
+      <parameter type-id='a68021ce'/>
+      <return type-id='b59d7dce'/>
+    </function-decl>
+    <function-decl name='wcsspn' filepath='bionic/libc/include/wchar.h' line='95' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='f077d3f8'/>
+      <return type-id='b59d7dce'/>
+    </function-decl>
+    <function-decl name='wcstod' filepath='bionic/libc/include/wchar.h' line='97' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='01efdaf1'/>
+      <return type-id='a0eb0f08'/>
+    </function-decl>
+    <function-decl name='wcstof' filepath='bionic/libc/include/wchar.h' line='99' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='01efdaf1'/>
+      <return type-id='a6c45d85'/>
+    </function-decl>
+    <function-decl name='wcstok' filepath='bionic/libc/include/wchar.h' line='101' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='323d93c1'/>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='01efdaf1'/>
+      <return type-id='323d93c1'/>
+    </function-decl>
+    <function-decl name='wcstol' filepath='bionic/libc/include/wchar.h' line='102' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='01efdaf1'/>
+      <parameter type-id='95e97e5e'/>
+      <return type-id='bd54fe1a'/>
+    </function-decl>
+    <function-decl name='wcstoll' filepath='bionic/libc/include/wchar.h' line='104' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='01efdaf1'/>
+      <parameter type-id='95e97e5e'/>
+      <return type-id='1eb56b1e'/>
+    </function-decl>
+    <function-decl name='wcstold' filepath='bionic/libc/include/wchar.h' line='105' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='01efdaf1'/>
+      <return type-id='e095c704'/>
+    </function-decl>
+    <function-decl name='wcstoul' filepath='bionic/libc/include/wchar.h' line='106' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='01efdaf1'/>
+      <parameter type-id='95e97e5e'/>
+      <return type-id='7359adad'/>
+    </function-decl>
+    <function-decl name='wcstoull' filepath='bionic/libc/include/wchar.h' line='108' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='01efdaf1'/>
+      <parameter type-id='95e97e5e'/>
+      <return type-id='3a47d82b'/>
+    </function-decl>
+    <function-decl name='wcsxfrm' filepath='bionic/libc/include/wchar.h' line='110' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='323d93c1'/>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='b59d7dce'/>
+      <return type-id='b59d7dce'/>
+    </function-decl>
+    <function-decl name='wctob' filepath='bionic/libc/include/wchar.h' line='111' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='6dd37369'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='wmemcmp' filepath='bionic/libc/include/wchar.h' line='114' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='b59d7dce'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='wmemcpy' filepath='bionic/libc/include/wchar.h' line='115' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='323d93c1'/>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='b59d7dce'/>
+      <return type-id='323d93c1'/>
+    </function-decl>
+    <function-decl name='wmemmove' filepath='bionic/libc/include/wchar.h' line='119' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='323d93c1'/>
+      <parameter type-id='f077d3f8'/>
+      <parameter type-id='b59d7dce'/>
+      <return type-id='323d93c1'/>
+    </function-decl>
+    <function-decl name='wmemset' filepath='bionic/libc/include/wchar.h' line='120' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='323d93c1'/>
+      <parameter type-id='c523b9f1'/>
+      <parameter type-id='b59d7dce'/>
+      <return type-id='323d93c1'/>
+    </function-decl>
+    <function-decl name='wprintf' filepath='bionic/libc/include/wchar.h' line='121' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <parameter is-variadic='yes'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='wscanf' filepath='bionic/libc/include/wchar.h' line='122' column='1' visibility='default' binding='global' size-in-bits='64'>
+      <parameter type-id='f077d3f8'/>
+      <parameter is-variadic='yes'/>
+      <return type-id='95e97e5e'/>
+    </function-decl>
+    <function-decl name='AAudio_convertResultToText' mangled-name='AAudio_convertResultToText' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='48' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudio_convertResultToText@@LIBAAUDIO'>
+      <parameter type-id='da775bc6' name='returnCode' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='48' column='1'/>
+      <return type-id='80f4b756'/>
+    </function-decl>
+    <function-decl name='AAudio_convertStreamStateToText' mangled-name='AAudio_convertStreamStateToText' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='52' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudio_convertStreamStateToText@@LIBAAUDIO'>
+      <parameter type-id='2e552d01' name='state' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='52' column='1'/>
+      <return type-id='80f4b756'/>
+    </function-decl>
+    <function-decl name='AAudio_createStreamBuilder' mangled-name='AAudio_createStreamBuilder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='66' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudio_createStreamBuilder@@LIBAAUDIO'>
+      <parameter type-id='2126fba9' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='66' column='1'/>
+      <return type-id='da775bc6'/>
+    </function-decl>
+    <function-decl name='AAudioStreamBuilder_setPerformanceMode' mangled-name='AAudioStreamBuilder_setPerformanceMode' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='76' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStreamBuilder_setPerformanceMode@@LIBAAUDIO'>
+      <parameter type-id='c56f4379' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='76' column='1'/>
+      <parameter type-id='6757629b' name='mode' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='77' column='1'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='AAudioStreamBuilder_setDeviceId' mangled-name='AAudioStreamBuilder_setDeviceId' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='83' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStreamBuilder_setDeviceId@@LIBAAUDIO'>
+      <parameter type-id='c56f4379' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='83' column='1'/>
+      <parameter type-id='3ff5601b' name='deviceId' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='84' column='1'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='AAudioStreamBuilder_setSampleRate' mangled-name='AAudioStreamBuilder_setSampleRate' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='90' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStreamBuilder_setSampleRate@@LIBAAUDIO'>
+      <parameter type-id='c56f4379' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='83' column='1'/>
+      <parameter type-id='3ff5601b' name='deviceId' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='84' column='1'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='AAudioStreamBuilder_setChannelCount' mangled-name='AAudioStreamBuilder_setChannelCount' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='97' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStreamBuilder_setChannelCount@@LIBAAUDIO'>
+      <parameter type-id='c56f4379' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='83' column='1'/>
+      <parameter type-id='3ff5601b' name='deviceId' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='84' column='1'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='AAudioStreamBuilder_setSamplesPerFrame' mangled-name='AAudioStreamBuilder_setSamplesPerFrame' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='103' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStreamBuilder_setSamplesPerFrame@@LIBAAUDIO'>
+      <parameter type-id='c56f4379' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='83' column='1'/>
+      <parameter type-id='3ff5601b' name='deviceId' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='84' column='1'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='AAudioStreamBuilder_setDirection' mangled-name='AAudioStreamBuilder_setDirection' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='110' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStreamBuilder_setDirection@@LIBAAUDIO'>
+      <parameter type-id='c56f4379' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='110' column='1'/>
+      <parameter type-id='a5156fbe' name='direction' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='111' column='1'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='AAudioStreamBuilder_setFormat' mangled-name='AAudioStreamBuilder_setFormat' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='117' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStreamBuilder_setFormat@@LIBAAUDIO'>
+      <parameter type-id='c56f4379' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='117' column='1'/>
+      <parameter type-id='f21c6374' name='format' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='118' column='1'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='AAudioStreamBuilder_setSharingMode' mangled-name='AAudioStreamBuilder_setSharingMode' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='126' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStreamBuilder_setSharingMode@@LIBAAUDIO'>
+      <parameter type-id='c56f4379' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='126' column='1'/>
+      <parameter type-id='da67c8b9' name='sharingMode' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='127' column='1'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='AAudioStreamBuilder_setUsage' mangled-name='AAudioStreamBuilder_setUsage' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='133' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStreamBuilder_setUsage@@LIBAAUDIO'>
+      <parameter type-id='c56f4379' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='133' column='1'/>
+      <parameter type-id='8ee4dca8' name='usage' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='134' column='1'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='AAudioStreamBuilder_setContentType' mangled-name='AAudioStreamBuilder_setContentType' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='139' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStreamBuilder_setContentType@@LIBAAUDIO'>
+      <parameter type-id='c56f4379' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='139' column='1'/>
+      <parameter type-id='2df7abd1' name='contentType' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='140' column='1'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='AAudioStreamBuilder_setInputPreset' mangled-name='AAudioStreamBuilder_setInputPreset' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='145' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStreamBuilder_setInputPreset@@LIBAAUDIO'>
+      <parameter type-id='c56f4379' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='145' column='1'/>
+      <parameter type-id='a4168325' name='inputPreset' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='146' column='1'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='AAudioStreamBuilder_setPrivacySensitive' mangled-name='AAudioStreamBuilder_setPrivacySensitive' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='151' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStreamBuilder_setPrivacySensitive@@LIBAAUDIO'>
+      <parameter type-id='c56f4379' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='151' column='1'/>
+      <parameter type-id='c894953d' name='privacySensitive' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='152' column='1'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='AAudioStreamBuilder_setBufferCapacityInFrames' mangled-name='AAudioStreamBuilder_setBufferCapacityInFrames' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='157' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStreamBuilder_setBufferCapacityInFrames@@LIBAAUDIO'>
+      <parameter type-id='c56f4379' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='83' column='1'/>
+      <parameter type-id='3ff5601b' name='deviceId' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='84' column='1'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='AAudioStreamBuilder_setAllowedCapturePolicy' mangled-name='AAudioStreamBuilder_setAllowedCapturePolicy' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='164' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStreamBuilder_setAllowedCapturePolicy@@LIBAAUDIO'>
+      <parameter type-id='c56f4379' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='165' column='1'/>
+      <parameter type-id='abe3e34b' name='policy' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='165' column='1'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='AAudioStreamBuilder_setSessionId' mangled-name='AAudioStreamBuilder_setSessionId' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='170' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStreamBuilder_setSessionId@@LIBAAUDIO'>
+      <parameter type-id='c56f4379' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='170' column='1'/>
+      <parameter type-id='4d6761d3' name='sessionId' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='171' column='1'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='AAudioStreamBuilder_setDataCallback' mangled-name='AAudioStreamBuilder_setDataCallback' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='177' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStreamBuilder_setDataCallback@@LIBAAUDIO'>
+      <parameter type-id='c56f4379' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='177' column='1'/>
+      <parameter type-id='edb6186f' name='callback' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='178' column='1'/>
+      <parameter type-id='eaa32e2f' name='userData' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='179' column='1'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='AAudioStreamBuilder_setErrorCallback' mangled-name='AAudioStreamBuilder_setErrorCallback' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='186' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStreamBuilder_setErrorCallback@@LIBAAUDIO'>
+      <parameter type-id='c56f4379' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='186' column='1'/>
+      <parameter type-id='2e91990d' name='callback' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='187' column='1'/>
+      <parameter type-id='eaa32e2f' name='userData' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='188' column='1'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='AAudioStreamBuilder_setFramesPerDataCallback' mangled-name='AAudioStreamBuilder_setFramesPerDataCallback' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='195' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStreamBuilder_setFramesPerDataCallback@@LIBAAUDIO'>
+      <parameter type-id='c56f4379' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='83' column='1'/>
+      <parameter type-id='3ff5601b' name='deviceId' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='84' column='1'/>
+      <return type-id='48b5725f'/>
+    </function-decl>
+    <function-decl name='AAudioStreamBuilder_openStream' mangled-name='AAudioStreamBuilder_openStream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='202' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStreamBuilder_openStream@@LIBAAUDIO'>
+      <parameter type-id='c56f4379' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='202' column='1'/>
+      <parameter type-id='62935d6a' name='streamPtr' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='203' column='1'/>
+      <return type-id='da775bc6'/>
+    </function-decl>
+    <function-decl name='AAudioStreamBuilder_delete' mangled-name='AAudioStreamBuilder_delete' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='223' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStreamBuilder_delete@@LIBAAUDIO'>
+      <parameter type-id='c56f4379' name='builder' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='223' column='1'/>
+      <return type-id='da775bc6'/>
+    </function-decl>
+    <function-decl name='AAudioStream_release' mangled-name='AAudioStream_release' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='233' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_release@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='233' column='1'/>
+      <return type-id='da775bc6'/>
+    </function-decl>
+    <function-decl name='AAudioStream_close' mangled-name='AAudioStream_close' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='252' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_close@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='233' column='1'/>
+      <return type-id='da775bc6'/>
+    </function-decl>
+    <function-decl name='AAudioStream_requestStart' mangled-name='AAudioStream_requestStart' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='274' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_requestStart@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='233' column='1'/>
+      <return type-id='da775bc6'/>
+    </function-decl>
+    <function-decl name='AAudioStream_requestPause' mangled-name='AAudioStream_requestPause' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='284' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_requestPause@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='233' column='1'/>
+      <return type-id='da775bc6'/>
+    </function-decl>
+    <function-decl name='AAudioStream_requestFlush' mangled-name='AAudioStream_requestFlush' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='291' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_requestFlush@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='233' column='1'/>
+      <return type-id='da775bc6'/>
+    </function-decl>
+    <function-decl name='AAudioStream_requestStop' mangled-name='AAudioStream_requestStop' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='298' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_requestStop@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='233' column='1'/>
+      <return type-id='da775bc6'/>
+    </function-decl>
+    <function-decl name='AAudioStream_waitForStateChange' mangled-name='AAudioStream_waitForStateChange' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='305' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_waitForStateChange@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='305' column='1'/>
+      <parameter type-id='2e552d01' name='inputState' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='306' column='1'/>
+      <parameter type-id='6de3cf18' name='nextState' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='307' column='1'/>
+      <parameter type-id='9da381c4' name='timeoutNanoseconds' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='308' column='1'/>
+      <return type-id='da775bc6'/>
+    </function-decl>
+    <function-decl name='AAudioStream_read' mangled-name='AAudioStream_read' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='319' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_read@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='319' column='1'/>
+      <parameter type-id='eaa32e2f' name='buffer' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='320' column='1'/>
+      <parameter type-id='3ff5601b' name='numFrames' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='321' column='1'/>
+      <parameter type-id='9da381c4' name='timeoutNanoseconds' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='322' column='1'/>
+      <return type-id='da775bc6'/>
+    </function-decl>
+    <function-decl name='AAudioStream_write' mangled-name='AAudioStream_write' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='339' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_write@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='319' column='1'/>
+      <parameter type-id='eaa32e2f' name='buffer' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='320' column='1'/>
+      <parameter type-id='3ff5601b' name='numFrames' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='321' column='1'/>
+      <parameter type-id='9da381c4' name='timeoutNanoseconds' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='322' column='1'/>
+      <return type-id='da775bc6'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getSampleRate' mangled-name='AAudioStream_getSampleRate' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='370' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getSampleRate@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='370' column='1'/>
+      <return type-id='3ff5601b'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getChannelCount' mangled-name='AAudioStream_getChannelCount' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='376' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getChannelCount@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='370' column='1'/>
+      <return type-id='3ff5601b'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getSamplesPerFrame' mangled-name='AAudioStream_getSamplesPerFrame' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='382' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getSamplesPerFrame@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='370' column='1'/>
+      <return type-id='3ff5601b'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getState' mangled-name='AAudioStream_getState' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='387' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getState@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='387' column='1'/>
+      <return type-id='2e552d01'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getFormat' mangled-name='AAudioStream_getFormat' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='393' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getFormat@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='393' column='1'/>
+      <return type-id='f21c6374'/>
+    </function-decl>
+    <function-decl name='AAudioStream_setBufferSizeInFrames' mangled-name='AAudioStream_setBufferSizeInFrames' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='401' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_setBufferSizeInFrames@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='401' column='1'/>
+      <parameter type-id='3ff5601b' name='requestedFrames' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='402' column='1'/>
+      <return type-id='da775bc6'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getBufferSizeInFrames' mangled-name='AAudioStream_getBufferSizeInFrames' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='408' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getBufferSizeInFrames@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='370' column='1'/>
+      <return type-id='3ff5601b'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getDirection' mangled-name='AAudioStream_getDirection' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='414' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getDirection@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='414' column='1'/>
+      <return type-id='a5156fbe'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getFramesPerBurst' mangled-name='AAudioStream_getFramesPerBurst' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='420' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getFramesPerBurst@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='370' column='1'/>
+      <return type-id='3ff5601b'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getFramesPerDataCallback' mangled-name='AAudioStream_getFramesPerDataCallback' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='426' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getFramesPerDataCallback@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='370' column='1'/>
+      <return type-id='3ff5601b'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getBufferCapacityInFrames' mangled-name='AAudioStream_getBufferCapacityInFrames' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='432' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getBufferCapacityInFrames@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='370' column='1'/>
+      <return type-id='3ff5601b'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getXRunCount' mangled-name='AAudioStream_getXRunCount' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='438' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getXRunCount@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='370' column='1'/>
+      <return type-id='3ff5601b'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getPerformanceMode' mangled-name='AAudioStream_getPerformanceMode' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='444' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getPerformanceMode@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='444' column='1'/>
+      <return type-id='6757629b'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getDeviceId' mangled-name='AAudioStream_getDeviceId' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='450' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getDeviceId@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='370' column='1'/>
+      <return type-id='3ff5601b'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getSharingMode' mangled-name='AAudioStream_getSharingMode' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='456' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getSharingMode@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='456' column='1'/>
+      <return type-id='da67c8b9'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getUsage' mangled-name='AAudioStream_getUsage' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='462' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getUsage@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='462' column='1'/>
+      <return type-id='8ee4dca8'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getContentType' mangled-name='AAudioStream_getContentType' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='468' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getContentType@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='468' column='1'/>
+      <return type-id='2df7abd1'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getInputPreset' mangled-name='AAudioStream_getInputPreset' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='474' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getInputPreset@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='474' column='1'/>
+      <return type-id='a4168325'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getAllowedCapturePolicy' mangled-name='AAudioStream_getAllowedCapturePolicy' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='480' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getAllowedCapturePolicy@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='481' column='1'/>
+      <return type-id='abe3e34b'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getSessionId' mangled-name='AAudioStream_getSessionId' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='487' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getSessionId@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='370' column='1'/>
+      <return type-id='3ff5601b'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getFramesWritten' mangled-name='AAudioStream_getFramesWritten' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='493' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getFramesWritten@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='493' column='1'/>
+      <return type-id='9da381c4'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getFramesRead' mangled-name='AAudioStream_getFramesRead' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='499' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getFramesRead@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='493' column='1'/>
+      <return type-id='9da381c4'/>
+    </function-decl>
+    <function-decl name='AAudioStream_getTimestamp' mangled-name='AAudioStream_getTimestamp' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='505' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_getTimestamp@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='505' column='1'/>
+      <parameter type-id='a1c3b834' name='clockid' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='506' column='1'/>
+      <parameter type-id='cb785ebf' name='framePosition' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='507' column='1'/>
+      <parameter type-id='cb785ebf' name='timeNanoseconds' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='508' column='1'/>
+      <return type-id='da775bc6'/>
+    </function-decl>
+    <function-decl name='AAudio_getMMapPolicy' mangled-name='AAudio_getMMapPolicy' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='522' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudio_getMMapPolicy@@LIBAAUDIO'>
+      <return type-id='d062bfb5'/>
+    </function-decl>
+    <function-decl name='AAudio_setMMapPolicy' mangled-name='AAudio_setMMapPolicy' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='526' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudio_setMMapPolicy@@LIBAAUDIO'>
+      <parameter type-id='d062bfb5' name='policy' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='526' column='1'/>
+      <return type-id='da775bc6'/>
+    </function-decl>
+    <function-decl name='AAudioStream_isMMapUsed' mangled-name='AAudioStream_isMMapUsed' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='530' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_isMMapUsed@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='530' column='1'/>
+      <return type-id='c894953d'/>
+    </function-decl>
+    <function-decl name='AAudioStream_isPrivacySensitive' mangled-name='AAudioStream_isPrivacySensitive' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='536' column='1' visibility='default' binding='global' size-in-bits='64' elf-symbol-id='AAudioStream_isPrivacySensitive@@LIBAAUDIO'>
+      <parameter type-id='b2a1b704' name='stream' filepath='frameworks/av/media/libaaudio/src/core/AAudioAudio.cpp' line='530' column='1'/>
+      <return type-id='c894953d'/>
+    </function-decl>
+    <function-type size-in-bits='64' id='96ee24a5'>
+      <parameter type-id='eaa32e2f'/>
+      <parameter type-id='eaa32e2f'/>
+      <return type-id='95e97e5e'/>
+    </function-type>
+    <function-type size-in-bits='64' id='055f9de3'>
+      <parameter type-id='b2a1b704'/>
+      <parameter type-id='eaa32e2f'/>
+      <parameter type-id='eaa32e2f'/>
+      <parameter type-id='3ff5601b'/>
+      <return type-id='ae10ac8d'/>
+    </function-type>
+    <function-type size-in-bits='64' id='ee076206'>
+      <return type-id='48b5725f'/>
+    </function-type>
+    <function-type size-in-bits='64' id='d024f83e'>
+      <parameter type-id='b2a1b704'/>
+      <parameter type-id='eaa32e2f'/>
+      <parameter type-id='da775bc6'/>
+      <return type-id='48b5725f'/>
+    </function-type>
+    <type-decl name='void' id='48b5725f'/>
+  </abi-instr>
+</abi-corpus>

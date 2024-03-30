@@ -1,0 +1,18 @@
+rust_library_rlib {
+    name: "libspin_nostd",
+    host_supported: true,
+    crate_name: "spin",
+    cargo_env_compat: true,
+    cargo_pkg_version: "0.9.2",
+    srcs: ["src/lib.rs"],
+    edition: "2015",
+    features: [
+        "mutex",
+        "spin_mutex",
+    ],
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.virt",
+    ],
+    min_sdk_version: "29",
+}

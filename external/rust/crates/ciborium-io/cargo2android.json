@@ -1,0 +1,6 @@
+{
+  "device": true,
+  "features": "alloc,std,",
+  "run": true,
+  "dependencies": true
+}

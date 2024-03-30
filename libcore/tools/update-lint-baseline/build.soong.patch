@@ -1,0 +1,12 @@
+diff --git a/java/lint.go b/java/lint.go
+index 7845c336b..499c0b8c1 100644
+--- a/java/lint.go
++++ b/java/lint.go
+@@ -432,6 +432,7 @@ func (l *linter) lint(ctx android.ModuleContext) {
+ 		FlagWithArg("--kotlin-language-level ", l.kotlinLanguageLevel).
+ 		FlagWithArg("--url ", fmt.Sprintf(".=.,%s=out", android.PathForOutput(ctx).String())).
+ 		Flag("--exitcode").
++		Flag("--nowarn").
+ 		Flags(l.properties.Lint.Flags).
+ 		Implicit(annotationsZipPath).
+ 		Implicit(apiVersionsXMLPath)

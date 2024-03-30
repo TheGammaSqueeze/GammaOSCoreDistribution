@@ -1,0 +1,32 @@
+BasedOnStyle: LLVM
+AlwaysBreakAfterReturnType: TopLevel
+BinPackParameters: false
+BraceWrapping:
+  AfterControlStatement: false
+  AfterEnum: false
+  AfterFunction: true
+  AfterStruct: false
+  BeforeElse: false
+  SplitEmptyFunction: true
+BreakBeforeBraces: Custom
+ColumnLimit: 90
+ContinuationIndentWidth: 3
+Cpp11BracedListStyle: false
+ForEachMacros:
+  - LIST_FOR_EACH_ENTRY
+  - LIST_FOR_EACH_ENTRY_SAFE
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex:           '^("config.h"|"vkr_common.h")$'
+    Priority:        0
+  - Regex:           '^"vkr_'
+    Priority:        3
+  - Regex:           '^"(virgl|vrend_|c11/|util/|os/|pipe/|venus-protocol/)'
+    Priority:        2
+  - Regex:           '.*'
+    Priority:        1
+IndentWidth: 3
+PenaltyBreakBeforeFirstCallParameter: 1
+PenaltyExcessCharacter: 100
+SpaceAfterCStyleCast: false
+SpaceBeforeCpp11BracedList: false

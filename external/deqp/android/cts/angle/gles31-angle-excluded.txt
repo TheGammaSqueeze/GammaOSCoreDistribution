@@ -1,0 +1,11 @@
+# OpenGL ES 3.1 Tests to exclude when Testing ANGLE.
+
+# http://anglebug.com/6876
+dEQP-GLES31.functional.shaders.multisample_interpolation.sample_qualifier.multisample_texture_1
+dEQP-GLES31.functional.shaders.multisample_interpolation.sample_qualifier.multisample_texture_2
+dEQP-GLES31.functional.shaders.multisample_interpolation.sample_qualifier.multisample_texture_4
+dEQP-GLES31.functional.shaders.multisample_interpolation.sample_qualifier.multisample_texture_8
+dEQP-GLES31.functional.shaders.multisample_interpolation.sample_qualifier.multisample_rbo_1
+dEQP-GLES31.functional.shaders.multisample_interpolation.sample_qualifier.multisample_rbo_2
+dEQP-GLES31.functional.shaders.multisample_interpolation.sample_qualifier.multisample_rbo_4
+dEQP-GLES31.functional.shaders.multisample_interpolation.sample_qualifier.multisample_rbo_8

@@ -1,0 +1,13 @@
+================ changes of 'libcrypt.so.1.1.0'===============
+  Functions changes summary: 0 Removed, 0 Changed, 4 Added functions
+  Variables changes summary: 0 Removed, 0 Changed, 0 Added variable
+
+  4 Added functions:
+
+    [A] 'function int _crypt_crypt_checksalt(const char*)'    {crypt_checksalt@@XCRYPT_4.3}
+    [A] 'function char* _crypt_crypt_gensalt_rn(const char*, unsigned long int, const char*, int, char*, int)'    {xcrypt_gensalt_r@XCRYPT_2.0, aliases crypt_gensalt_r@XCRYPT_2.0, crypt_gensalt_rn@@XCRYPT_2.0}
+    [A] 'function const char* _crypt_crypt_preferred_method()'    {crypt_preferred_method@@XCRYPT_4.4}
+    [A] 'function char* _crypt_crypt_r(const char*, const char*, crypt_data*)'    {xcrypt_r@XCRYPT_2.0, aliases crypt_r@@XCRYPT_2.0, crypt_r@GLIBC_2.2.5}
+
+================ end of changes of 'libcrypt.so.1.1.0'===============
+

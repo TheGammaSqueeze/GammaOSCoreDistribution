@@ -1,0 +1,10 @@
+{
+  "name": "com.android.media",
+  "version": 330400000,
+  "requireNativeLibs": [
+    "libandroid.so",
+    "libbinder_ndk.so",
+    "libmediandk.so",
+    ":sphal"
+  ]
+}

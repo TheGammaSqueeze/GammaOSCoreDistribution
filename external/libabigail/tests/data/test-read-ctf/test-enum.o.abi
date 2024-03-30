@@ -1,0 +1,24 @@
+<abi-corpus version='2.1' path='data/test-read-ctf/test-enum.o'>
+  <elf-variable-symbols>
+    <elf-symbol name='bar' size='4' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='foo' size='4' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+  </elf-variable-symbols>
+  <abi-instr address-size='64' language='LANG_C'>
+    <type-decl name='' is-anonymous='yes' size-in-bits='32' alignment-in-bits='32' id='type-id-1'/>
+    <enum-decl name='e' linkage-name='e' id='type-id-2'>
+      <underlying-type type-id='type-id-1'/>
+      <enumerator name='ENUMSAMPLE_1' value='0'/>
+      <enumerator name='ENUMSAMPLE_2' value='1'/>
+    </enum-decl>
+    <enum-decl name='ie' linkage-name='ie' id='type-id-3'>
+      <underlying-type type-id='type-id-1'/>
+      <enumerator name='IENUMSAMPLE_1' value='-10'/>
+      <enumerator name='IENUMSAMPLE_2' value='-9'/>
+      <enumerator name='IENUMSAMPLE_3' value='-8'/>
+    </enum-decl>
+    <type-decl name='int' size-in-bits='32' alignment-in-bits='32' id='type-id-4'/>
+    <type-decl name='unsigned int' size-in-bits='32' alignment-in-bits='32' id='type-id-5'/>
+    <var-decl name='foo' type-id='type-id-2' mangled-name='foo' visibility='default'/>
+    <var-decl name='bar' type-id='type-id-3' mangled-name='bar' visibility='default'/>
+  </abi-instr>
+</abi-corpus>

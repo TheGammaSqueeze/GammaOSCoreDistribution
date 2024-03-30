@@ -1,0 +1,78 @@
+/*
+ * Copyright 2016-2021 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license.
+ */
+
+apply plugin: "com.github.johnrengelman.shadow"
+
+configurations {
+    shadowDeps // shaded dependencies, not included into the resulting .pom file
+    compileOnly.extendsFrom(shadowDeps)
+    runtimeOnly.extendsFrom(shadowDeps)
+}
+
+dependencies {
+    compileOnly "junit:junit:$junit_version"
+    compileOnly "org.junit.jupiter:junit-jupiter-api:$junit5_version"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:$junit5_version"
+    testImplementation "org.junit.platform:junit-platform-testkit:1.7.0"
+    shadowDeps "net.bytebuddy:byte-buddy:$byte_buddy_version"
+    shadowDeps "net.bytebuddy:byte-buddy-agent:$byte_buddy_version"
+    compileOnly "io.projectreactor.tools:blockhound:$blockhound_version"
+    testImplementation "io.projectreactor.tools:blockhound:$blockhound_version"
+    testImplementation "com.google.code.gson:gson:2.8.6"
+    api "net.java.dev.jna:jna:$jna_version"
+    api "net.java.dev.jna:jna-platform:$jna_version"
+}
+
+java {
+    /* This is needed to be able to run JUnit5 tests. Otherwise, Gradle complains that it can't find the
+    JVM1.6-compatible version of the `junit-jupiter-api` artifact. */
+    disableAutoTargetJvm()
+}
+
+jar {
+    setEnabled(false)
+}
+
+// This is a rough estimation of what shadow plugin has been doing with our default configuration prior to
+// 1.6.2: https://github.com/johnrengelman/shadow/blob/1ff12fc816629ae5bc331fa3889c8ecfcaee7b27/src/main/groovy/com/github/jengelman/gradle/plugins/shadow/ShadowJavaPlugin.groovy#L72-L82
+// We just emulate it here for backwards compatibility
+shadowJar.configure {
+    def classpath = project.objects.fileCollection().from { ->
+        project.configurations.findByName('runtimeClasspath')
+    }
+    doFirst {
+        manifest.attributes 'Class-Path': classpath.collect { "${it.name}" }.findAll { it }.join(' ')
+    }
+}
+
+def shadowJarTask = shadowJar {
+    classifier null
+    // Shadow only byte buddy, do not package kotlin stdlib
+    configurations = [project.configurations.shadowDeps]
+    relocate('net.bytebuddy', 'kotlinx.coroutines.repackaged.net.bytebuddy')
+
+    manifest {
+        attributes "Premain-Class": "kotlinx.coroutines.debug.AgentPremain"
+        attributes "Can-Redefine-Classes": "true"
+    }
+}
+
+configurations {
+    artifacts {
+        add("apiElements", shadowJarTask)
+        add("runtimeElements", shadowJarTask)
+    }
+}
+
+def commonKoverExcludes =
+        // Never used, safety mechanism
+        ["kotlinx.coroutines.debug.internal.NoOpProbesKt"]
+
+tasks.koverHtmlReport {
+    excludes = commonKoverExcludes
+}
+
+tasks.koverVerify {
+    excludes = commonKoverExcludes
+}

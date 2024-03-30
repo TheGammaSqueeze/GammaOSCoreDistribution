@@ -1,0 +1,11 @@
+{
+  "add-module-block": "cargo2android_libs.bp",
+  "add_workspace": true,
+  "device": true,
+  "features": "audio,usb",
+  "global_defaults": "crosvm_defaults",
+  "no_presubmit": true,
+  "patch": "patches/Android.bp.patch",
+  "run": true,
+  "tests": true
+}

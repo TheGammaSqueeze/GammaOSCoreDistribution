@@ -1,0 +1,120 @@
+// Copyright 2022 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package pandora;
+
+import "google/protobuf/empty.proto";
+
+option java_outer_classname = "HostProto";
+
+// Service to trigger Bluetooth Host procedures
+//
+// Requirements for the implementer:
+// At startup, the Host must be in BR/EDR connectable mode
+// (see GAP connectability modes)
+service Host {
+  // Reset the host.
+  // **After** responding to this command, the GRPC server should loose
+  // all its state.
+  // This is comparable to a process restart or an hardware reset.
+  // The GRPC server might take some time to be available after
+  // this command.
+  rpc Reset(google.protobuf.Empty) returns (google.protobuf.Empty);
+  // Create an ACL BR/EDR connection to a peer.
+  // This should send a CreateConnection on the HCI level.
+  // If the two devices have not established a previous bond,
+  // the peer must be discoverable.
+  rpc Connect(ConnectRequest) returns (ConnectResponse);
+  // Get an active ACL BR/EDR connection to a peer.
+  rpc GetConnection(GetConnectionRequest) returns (GetConnectionResponse);
+  // Wait for an ACL BR/EDR connection from a peer.
+  rpc WaitConnection(WaitConnectionRequest) returns (WaitConnectionResponse);
+  // Disconnect an ACL BR/EDR connection. The Connection must not be reused
+  // afterwards.
+  rpc Disconnect(DisconnectRequest) returns (DisconnectResponse);
+  // Read the local Bluetooth device address.
+  // This should return the same value as a Read BD_ADDR HCI command.
+  rpc ReadLocalAddress(google.protobuf.Empty)
+      returns (ReadLocalAddressResponse);
+}
+
+// A Token representing an ACL connection.
+// It's acquired via a Connect on the Host service.
+message Connection {
+  // Opaque value filled by the GRPC server, must not
+  // be modified nor crafted.
+  bytes cookie = 1;
+}
+
+// Request of the `Connect` method.
+message ConnectRequest {
+  // Peer Bluetooth Device Address as array of 6 bytes.
+  bytes address = 1;
+}
+
+// Response of the `Connect` method.
+message ConnectResponse {
+  // Result of the `Connect` call:
+  // - If successful: a Connection
+  oneof result {
+    Connection connection = 1;
+  }
+}
+
+// Request of the `GetConnection` method.
+message GetConnectionRequest {
+  // Peer Bluetooth Device Address as array of 6 bytes.
+  bytes address = 1;
+}
+
+// Response of the `GetConnection` method.
+message GetConnectionResponse {
+  // Result of the `GetConnection` call:
+  // - If successful: a Connection
+  oneof result {
+    Connection connection = 1;
+  }
+}
+
+// Request of the `WaitConnection` method.
+message WaitConnectionRequest {
+  // Peer Bluetooth Device Address as array of 6 bytes.
+  bytes address = 1;
+}
+
+// Response of the `WaitConnection` method.
+message WaitConnectionResponse {
+  // Result of the `WaitConnection` call:
+  // - If successful: a Connection
+  oneof result {
+    Connection connection = 1;
+  }
+}
+
+// Request of the `Disconnect` method.
+message DisconnectRequest {
+  // Connection that should be disconnected.
+  Connection connection = 1;
+}
+
+// Response of the `Disconnect` method.
+message DisconnectResponse {}
+
+// Response of the `ReadLocalAddress` method.
+message ReadLocalAddressResponse {
+  // Local Bluetooth Device Address as array of 6 bytes.
+  bytes address = 1;
+}

@@ -1,0 +1,31 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+java_library {
+    name: "car-frameworks-service-module",
+    installable: true,
+    libs: [
+            "android.car",
+            "android.car.builtin",
+            "car-frameworks-service",
+            "framework-annotations-lib",
+            "modules-utils-preconditions",
+    ],
+    srcs: [
+        "src/**/*.java",
+    ],
+
+    sdk_version: "module_current",
+    min_sdk_version: "31",
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.car.framework"
+    ],
+    product_variables: {
+        pdk: {
+            enabled: false,
+        },
+    },
+}
+

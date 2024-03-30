@@ -1,0 +1,462 @@
+# Copyright 2020 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not
+# use this file except in compliance with the License. You may obtain a copy of
+# the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+# License for the specific language governing permissions and limitations under
+# the License.
+
+import("//build_overrides/pigweed.gni")
+import("$dir_pw_bloat/bloat.gni")
+import("$dir_pw_build/target_types.gni")
+import("$dir_pw_unit_test/test.gni")
+
+group("default") {
+  deps = [
+    ":fuzzers(//toolchains:host_fuzz)",
+    ":optimized_libs(//toolchains:host_optimized)",
+    ":tests.run(//toolchains:host_debug)",
+  ]
+}
+
+pw_source_set("cbor_writer") {
+  public = [
+    "include/dice/cbor_writer.h",
+  ]
+  sources = [ "src/cbor_writer.c" ]
+}
+
+pw_source_set("cbor_reader") {
+  public = [
+    "include/dice/cbor_reader.h",
+  ]
+  sources = [ "src/cbor_reader.c" ]
+}
+
+config("standalone_ops_config") {
+  include_dirs = [ "//include/dice/config/standalone" ]
+}
+
+pw_static_library("dice_standalone") {
+  public = [
+    "include/dice/dice.h",
+    "include/dice/utils.h",
+  ]
+  sources = [
+    "src/clear_memory.c",
+    "src/dice.c"
+  ]
+  all_dependent_configs = [ ":standalone_ops_config" ]
+}
+
+config("boringssl_ed25519_ops_config") {
+  include_dirs = [ "//include/dice/config/boringssl_ed25519" ]
+}
+
+pw_static_library("dice_with_boringssl_ops") {
+  public = [
+    "include/dice/dice.h",
+    "include/dice/utils.h",
+  ]
+  sources = [
+    "src/boringssl_cert_op.c",
+    "src/boringssl_hash_kdf_ops.c",
+    "src/boringssl_ed25519_ops.c",
+    "src/clear_memory.c",
+    "src/dice.c",
+    "src/utils.c",
+  ]
+  deps = [
+    "//third_party/boringssl:crypto",
+  ]
+  all_dependent_configs = [ ":boringssl_ed25519_ops_config" ]
+}
+
+config("mbedtls_ops_config") {
+  include_dirs = [ "//include//dice/config/mbedtls_ecdsa_p256" ]
+}
+
+pw_static_library("dice_with_mbedtls_ops") {
+  public = [
+    "include/dice/dice.h",
+    "include/dice/utils.h",
+  ]
+  sources = [
+    "src/clear_memory.c",
+    "src/dice.c",
+    "src/mbedtls_ops.c",
+    "src/utils.c",
+  ]
+  deps = [
+    "//third_party/mbedtls:mbedcrypto",
+  ]
+  all_dependent_configs = [ ":mbedtls_ops_config" ]
+}
+
+pw_static_library("dice_with_cbor_cert") {
+  public = [
+    "include/dice/dice.h",
+    "include/dice/utils.h",
+  ]
+  sources = [
+    "src/boringssl_hash_kdf_ops.c",
+    "src/boringssl_ed25519_ops.c",
+    "src/cbor_cert_op.c",
+    "src/clear_memory.c",
+    "src/dice.c",
+    "src/utils.c",
+  ]
+  deps = [
+    ":cbor_writer",
+    "//third_party/boringssl:crypto",
+  ]
+  all_dependent_configs = [ ":boringssl_ed25519_ops_config" ]
+}
+
+pw_static_library("dice_with_cbor_template_cert") {
+  public = [
+    "include/dice/dice.h",
+    "include/dice/utils.h",
+  ]
+  sources = [
+    "src/boringssl_hash_kdf_ops.c",
+    "src/boringssl_ed25519_ops.c",
+    "src/clear_memory.c",
+    "src/dice.c",
+    "src/template_cbor_cert_op.c",
+    "src/utils.c",
+  ]
+  deps = [
+    "//third_party/boringssl:crypto",
+  ]
+  all_dependent_configs = [ ":boringssl_ed25519_ops_config" ]
+}
+
+pw_static_library("dice_with_x509_template_cert") {
+  public = [
+    "include/dice/dice.h",
+    "include/dice/utils.h",
+  ]
+  sources = [
+    "src/boringssl_hash_kdf_ops.c",
+    "src/boringssl_ed25519_ops.c",
+    "src/clear_memory.c",
+    "src/dice.c",
+    "src/template_cert_op.c",
+    "src/utils.c",
+  ]
+  deps = [
+    "//third_party/boringssl:crypto",
+  ]
+  all_dependent_configs = [ ":boringssl_ed25519_ops_config" ]
+}
+
+pw_source_set("fuzzer") {
+  sources = [ "src/fuzzer.cc" ]
+}
+
+pw_test("cbor_writer_test") {
+  sources = [ "src/cbor_writer_test.cc" ]
+  deps = [
+    ":cbor_writer",
+  ]
+}
+
+pw_test("cbor_reader_test") {
+  sources = [ "src/cbor_reader_test.cc" ]
+  deps = [
+    ":cbor_reader",
+  ]
+}
+
+pw_executable("cbor_writer_fuzzer") {
+  sources = [ "src/cbor_writer_fuzzer.cc" ]
+  deps = [
+    ":cbor_writer",
+  ]
+}
+
+pw_executable("cbor_reader_fuzzer") {
+  sources = [ "src/cbor_reader_fuzzer.cc" ]
+  deps = [
+    ":cbor_reader",
+  ]
+}
+
+pw_test("dice_test") {
+  sources = [ "src/dice_test.cc" ]
+  deps = [
+    ":dice_standalone",
+    "//third_party/boringssl:crypto",
+  ]
+}
+
+pw_test("boringssl_ops_test") {
+  sources = [
+    "src/boringssl_ops_test.cc",
+    "src/test_utils.cc",
+  ]
+  deps = [
+    ":dice_with_boringssl_ops",
+    "//third_party/boringssl:crypto",
+    "//third_party/cose-c:cose-c",
+    "$dir_pw_string:pw_string",
+  ]
+}
+
+pw_executable("boringssl_ops_fuzzer") {
+  deps = [
+    ":dice_with_boringssl_ops",
+    ":fuzzer",
+  ]
+}
+
+pw_test("template_cert_op_test") {
+  sources = [
+    "src/template_cert_op_test.cc",
+    "src/test_utils.cc",
+  ]
+  deps = [
+    ":dice_with_x509_template_cert",
+    "//third_party/boringssl:crypto",
+    "//third_party/cose-c:cose-c",
+    "$dir_pw_string:pw_string",
+  ]
+}
+
+pw_executable("template_cert_op_fuzzer") {
+  deps = [
+    ":dice_with_x509_template_cert",
+    ":fuzzer",
+  ]
+}
+
+pw_test("cbor_cert_op_test") {
+  sources = [
+    "src/cbor_cert_op_test.cc",
+    "src/test_utils.cc",
+  ]
+  deps = [
+    ":dice_with_cbor_cert",
+    "//third_party/boringssl:crypto",
+    "//third_party/cose-c:cose-c",
+    "$dir_pw_string:pw_string",
+  ]
+}
+
+pw_executable("cbor_cert_op_fuzzer") {
+  deps = [
+    ":dice_with_cbor_cert",
+    ":fuzzer",
+  ]
+}
+
+pw_test("template_cbor_cert_op_test") {
+  sources = [
+    "src/template_cbor_cert_op_test.cc",
+    "src/test_utils.cc",
+  ]
+  deps = [
+    ":dice_with_cbor_template_cert",
+    "//third_party/boringssl:crypto",
+    "//third_party/cose-c:cose-c",
+    "$dir_pw_string:pw_string",
+  ]
+}
+
+pw_executable("template_cbor_cert_op_fuzzer") {
+  deps = [
+    ":dice_with_cbor_template_cert",
+    ":fuzzer",
+  ]
+}
+
+pw_test("mbedtls_ops_test") {
+  sources = [
+    "src/mbedtls_ops_test.cc",
+    "src/test_utils.cc",
+  ]
+  deps = [
+    ":dice_with_mbedtls_ops",
+    "//third_party/boringssl:crypto",
+    "//third_party/cose-c:cose-c",
+    "$dir_pw_string:pw_string",
+  ]
+}
+
+pw_executable("mbedtls_ops_fuzzer") {
+  deps = [
+    ":dice_with_mbedtls_ops",
+    ":fuzzer",
+  ]
+}
+
+pw_test_group("tests") {
+  tests = [
+    ":boringssl_ops_test",
+    ":cbor_cert_op_test",
+    ":cbor_reader_test",
+    ":cbor_writer_test",
+    ":dice_test",
+    ":mbedtls_ops_test",
+    ":template_cbor_cert_op_test",
+    ":template_cert_op_test",
+    "//src/android:bcc_test",
+  ]
+}
+
+group("fuzzers") {
+  deps = [
+    ":boringssl_ops_fuzzer",
+    ":cbor_cert_op_fuzzer",
+    ":cbor_reader_fuzzer",
+    ":cbor_writer_fuzzer",
+    ":mbedtls_ops_fuzzer",
+    ":template_cbor_cert_op_fuzzer",
+    ":template_cert_op_fuzzer",
+    "//src/android:bcc_fuzzer",
+  ]
+}
+
+pw_static_library("empty_lib") {
+}
+
+pw_executable("empty_main") {
+  sources = [ "src/empty_main.c" ]
+}
+
+pw_executable("dice_standalone_main") {
+  sources = [ "src/dice_standalone_main.c" ]
+  deps = [ ":dice_standalone" ]
+}
+
+pw_source_set("dice_main") {
+  sources = [ "src/dice_main.c" ]
+}
+
+pw_executable("dice_with_boringssl_ops_main") {
+  deps = [
+    ":dice_main",
+    ":dice_with_boringssl_ops",
+  ]
+}
+
+pw_executable("dice_with_mbedtls_ops_main") {
+  deps = [
+    ":dice_main",
+    ":dice_with_mbedtls_ops",
+  ]
+}
+
+pw_executable("dice_with_cbor_cert_main") {
+  deps = [
+    ":dice_main",
+    ":dice_with_cbor_cert",
+  ]
+}
+
+pw_executable("dice_with_cbor_template_cert_main") {
+  deps = [
+    ":dice_main",
+    ":dice_with_cbor_template_cert",
+  ]
+}
+
+pw_executable("dice_with_x509_template_cert_main") {
+  deps = [
+    ":dice_main",
+    ":dice_with_x509_template_cert",
+  ]
+}
+
+pw_size_report("executable_size_report") {
+  title = "Executable sizes (includes thirdparty deps)"
+  base = ":empty_main"
+  binaries = [
+    {
+      target = ":dice_standalone_main"
+      label = "DiceMainFlow only (No Ops)"
+    },
+    {
+      target = ":dice_with_boringssl_ops_main"
+      label = "Boringssl Ops"
+      base = ":dice_standalone_main"
+    },
+    {
+      target = ":dice_with_mbedtls_ops_main"
+      label = "MbedTLS Ops"
+      base = ":dice_standalone_main"
+    },
+    {
+      target = ":dice_with_cbor_cert_main"
+      label = "Boringssl with CBOR Cert"
+      base = ":dice_with_boringssl_ops_main"
+    },
+    {
+      target = ":dice_with_cbor_template_cert_main"
+      label = "Boringssl with CBOR Template Cert"
+      base = ":dice_with_boringssl_ops_main"
+    },
+    {
+      target = ":dice_with_x509_template_cert_main"
+      label = "Boringssl with X.509 Template Cert"
+      base = ":dice_with_boringssl_ops_main"
+    },
+  ]
+}
+
+pw_size_report("library_size_report") {
+  title = "Library sizes (excludes thirdparty deps)"
+  base = ":empty_lib"
+  binaries = [
+    {
+      target = ":dice_standalone"
+      label = "DICE Standalone (No Ops)"
+    },
+    {
+      target = ":dice_with_boringssl_ops"
+      label = "Boringssl Ops"
+      base = ":dice_standalone"
+    },
+    {
+      target = ":dice_with_mbedtls_ops"
+      label = "MbedTLS Ops"
+      base = ":dice_standalone"
+    },
+    {
+      target = ":dice_with_cbor_cert"
+      label = "CBOR Cert"
+      base = ":dice_standalone"
+    },
+    {
+      target = ":dice_with_cbor_template_cert"
+      label = "CBOR Template Cert"
+      base = ":dice_standalone"
+    },
+    {
+      target = ":dice_with_x509_template_cert"
+      label = "X.509 Template Cert"
+      base = ":dice_standalone"
+    },
+  ]
+}
+
+group("optimized_libs") {
+  deps = [
+    ":dice_standalone",
+    ":dice_with_boringssl_ops",
+    ":dice_with_cbor_cert",
+    ":dice_with_cbor_template_cert",
+    ":dice_with_mbedtls_ops",
+    ":dice_with_x509_template_cert",
+    ":executable_size_report",
+    ":library_size_report",
+    "//src/android:bcc",
+  ]
+}

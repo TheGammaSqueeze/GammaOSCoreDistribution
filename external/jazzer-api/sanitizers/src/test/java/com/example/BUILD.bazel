@@ -1,0 +1,32 @@
+load("//bazel:fuzz_target.bzl", "java_fuzz_target_test")
+
+java_fuzz_target_test(
+    name = "ObjectInputStreamDeserialization",
+    srcs = [
+        "ObjectInputStreamDeserialization.java",
+    ],
+    target_class = "com.example.ObjectInputStreamDeserialization",
+)
+
+java_fuzz_target_test(
+    name = "ReflectiveCall",
+    srcs = [
+        "ReflectiveCall.java",
+    ],
+    target_class = "com.example.ReflectiveCall",
+)
+
+java_fuzz_target_test(
+    name = "ExpressionLanguageInjection",
+    srcs = [
+        "ExpressionLanguageInjection.java",
+        "InsecureEmailValidator.java",
+    ],
+    target_class = "com.example.ExpressionLanguageInjection",
+    deps = [
+        "@maven//:javax_el_javax_el_api",
+        "@maven//:javax_validation_validation_api",
+        "@maven//:javax_xml_bind_jaxb_api",
+        "@maven//:org_hibernate_hibernate_validator",
+    ],
+)

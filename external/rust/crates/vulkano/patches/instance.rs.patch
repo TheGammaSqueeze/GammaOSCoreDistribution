@@ -1,0 +1,38 @@
+diff --git a/src/instance/instance.rs b/src/instance/instance.rs
+index b887f1e2..d9f02276 100644
+--- a/src/instance/instance.rs
++++ b/src/instance/instance.rs
+@@ -541,12 +541,12 @@ impl<'a> ApplicationInfo<'a> {
+     #[deprecated(note = "Please use the `app_info_from_cargo_toml!` macro instead")]
+     pub fn from_cargo_toml() -> ApplicationInfo<'a> {
+         let version = Version {
+-            major: env!("CARGO_PKG_VERSION_MAJOR").parse().unwrap(),
+-            minor: env!("CARGO_PKG_VERSION_MINOR").parse().unwrap(),
+-            patch: env!("CARGO_PKG_VERSION_PATCH").parse().unwrap(),
++            major: 0,
++            minor: 0,
++            patch: 0,
+         };
+ 
+-        let name = env!("CARGO_PKG_NAME");
++        let name = "";
+ 
+         ApplicationInfo {
+             application_name: Some(name.into()),
+@@ -568,12 +568,12 @@ impl<'a> ApplicationInfo<'a> {
+ macro_rules! app_info_from_cargo_toml {
+     () => {{
+         let version = $crate::instance::Version {
+-            major: env!("CARGO_PKG_VERSION_MAJOR").parse().unwrap(),
+-            minor: env!("CARGO_PKG_VERSION_MINOR").parse().unwrap(),
+-            patch: env!("CARGO_PKG_VERSION_PATCH").parse().unwrap(),
++            major: 0,
++            minor: 0,
++            patch: 0,
+         };
+ 
+-        let name = env!("CARGO_PKG_NAME");
++        let name = "";
+ 
+         $crate::instance::ApplicationInfo {
+             application_name: Some(name.into()),

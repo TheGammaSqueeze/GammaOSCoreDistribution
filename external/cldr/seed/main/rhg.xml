@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ldml SYSTEM "../../common/dtd/ldml.dtd">
+<!-- Copyright © 1991-2021 Unicode, Inc.
+For terms of use, see http://www.unicode.org/copyright.html
+SPDX-License-Identifier: Unicode-DFS-2016
+CLDR data files are interpreted according to the LDML specification (http://unicode.org/reports/tr35/)
+-->
+<ldml>
+	<identity>
+		<version number="$Revision$"/>
+		<language type="rhg"/>
+	</identity>
+	<localeDisplayNames>
+		<languages>
+			<language type="rhg" draft="contributed">𐴌𐴗𐴥𐴝𐴙𐴚𐴒𐴙𐴝</language>
+		</languages>
+	</localeDisplayNames>
+	<layout>
+		<orientation>
+			<characterOrder>right-to-left</characterOrder>
+		</orientation>
+	</layout>
+	<characters>
+		<exemplarCharacters draft="contributed">[\U00010D24\U00010D25\U00010D26\U00010D27 𐴀 𐴝 𐴞 𐴟 𐴠 𐴡 𐴁 𐴂 𐴃 𐴄 𐴅 𐴆 𐴇 𐴈 𐴉 𐴊 𐴋 𐴌 𐴍 𐴎 𐴏 𐴐 𐴑 𐴒 𐴓 𐴔 𐴕 𐴖 𐴗 𐴘 𐴙 𐴚 𐴛 𐴢 𐴣]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary" draft="contributed">[ـ]</exemplarCharacters>
+		<exemplarCharacters type="numbers" draft="contributed">[\- ‑ , . % + 0𐴰 1𐴱 2𐴲 3𐴳 4𐴴 5𐴵 6𐴶 7𐴷 8𐴸 9𐴹]</exemplarCharacters>
+		<exemplarCharacters type="punctuation" draft="contributed">[\- ‐ ‑ – — ، ؛ \: ! ؟ . … ' &quot; ( ) \[ \]]</exemplarCharacters>
+	</characters>
+	<dates>
+		<calendars>
+			<calendar type="gregorian">
+				<timeFormats>
+					<timeFormatLength type="full">
+						<timeFormat>
+							<pattern>HH:mm:ss zzzz</pattern>
+							<datetimeSkeleton>HHmmsszzzz</datetimeSkeleton>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="long">
+						<timeFormat>
+							<pattern>HH:mm:ss z</pattern>
+							<datetimeSkeleton>HHmmssz</datetimeSkeleton>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="medium">
+						<timeFormat>
+							<pattern>HH:mm:ss</pattern>
+							<datetimeSkeleton>HHmmss</datetimeSkeleton>
+						</timeFormat>
+					</timeFormatLength>
+					<timeFormatLength type="short">
+						<timeFormat>
+							<pattern>H:mm</pattern>
+							<datetimeSkeleton>Hmm</datetimeSkeleton>
+						</timeFormat>
+					</timeFormatLength>
+				</timeFormats>
+			</calendar>
+		</calendars>
+	</dates>
+</ldml>

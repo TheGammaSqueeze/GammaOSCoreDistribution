@@ -1,0 +1,19 @@
+name: "serde-xml-rs"
+description: "xml-rs based deserializer for Serde (compatible with 0.9+)"
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://crates.io/crates/serde_xml_rs"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://static.crates.io/crates/serde-xml-rs/serde-xml-rs-0.5.1.crate"
+  }
+  version: "0.5.1"
+  license_type: NOTICE
+  last_upgrade_date {
+    year: 2021
+    month: 9
+    day: 28
+  }
+}

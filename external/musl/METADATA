@@ -1,0 +1,23 @@
+name: "musl"
+description:
+    "musl is an implementation of the C standard library built on top of the "
+    "Linux system call API, including interfaces defined in the base language "
+    "standard, POSIX, and widely agreed-upon extensions. musl is lightweight, "
+    "fast, simple, free, and strives to be correct in the sense of "
+    "standards-conformance and safety. "
+    " "
+    ""
+
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://musl.libc.org/"
+  }
+  url {
+    type: GIT
+    value: "git://git.musl-libc.org/musl"
+  }
+  version: "v1.2.2"
+  last_upgrade_date { year: 2021 month: 6 day: 10 }
+  license_type: NOTICE
+}

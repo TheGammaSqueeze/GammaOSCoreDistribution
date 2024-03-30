@@ -1,0 +1,14 @@
+================ changes of 'libiso9660++.so.0.0.0'===============
+  Functions changes summary: 1 Removed, 0 Changed, 1 Added functions
+  Variables changes summary: 0 Removed, 0 Changed, 0 Added variable
+
+  1 Removed function:
+
+    [D] 'method void std::vector<ISO9660::Stat*, std::allocator<ISO9660::Stat*> >::_M_emplace_back_aux<ISO9660::Stat*>(ISO9660::Stat*&&)'    {_ZNSt6vectorIPN7ISO96604StatESaIS2_EE19_M_emplace_back_auxIJS2_EEEvDpOT_}
+
+  1 Added function:
+
+    [A] 'method void std::vector<ISO9660::Stat*, std::allocator<ISO9660::Stat*> >::_M_realloc_insert<ISO9660::Stat*>(std::vector<ISO9660::Stat*, std::allocator<ISO9660::Stat*> >::iterator, ISO9660::Stat*&&)'    {_ZNSt6vectorIPN7ISO96604StatESaIS2_EE17_M_realloc_insertIJS2_EEEvN9__gnu_cxx17__normal_iteratorIPS2_S4_EEDpOT_}
+
+================ end of changes of 'libiso9660++.so.0.0.0'===============
+

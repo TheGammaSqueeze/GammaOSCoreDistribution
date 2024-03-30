@@ -1,0 +1,124 @@
+{
+  "presubmit": [
+    {
+      "name": "CtsPackageInstallTestCases",
+      "file_patterns": [
+        "core/java/.*Install.*",
+        "services/core/.*Install.*",
+        "services/core/java/com/android/server/pm/.*"
+      ]
+    },
+    {
+      "name": "CtsUsesLibraryHostTestCases"
+    },
+    {
+      "name": "CtsClassloaderSplitsHostTestCases"
+    },
+    {
+      "name": "CtsCompilationTestCases"
+    },
+    {
+      "name": "CtsAppEnumerationTestCases"
+    },
+    {
+      "name": "CtsMatchFlagTestCases"
+    },
+    {
+      "name": "FrameworksMockingServicesTests",
+      "options": [
+        {
+          "include-filter": "com.android.server.pm."
+        }
+      ]
+    },
+    {
+      "name": "CtsShortcutHostTestCases",
+      "file_patterns": ["(/|^)ShortcutService\\.java"]
+    },
+    {
+      "name": "CtsShortcutManagerTestCases",
+      "file_patterns": ["(/|^)ShortcutService\\.java"]
+    },
+    {
+      "name": "GtsContentTestCases",
+      "options": [
+        {
+          "include-filter": "com.google.android.content.gts"
+        }
+      ]
+    },
+    {
+      "name": "GtsSecurityHostTestCases",
+      "options": [
+        {
+          "include-filter": "com.google.android.security.gts.PackageVerifierTest"
+        }
+      ]
+    },
+    {
+      "name": "PackageManagerServiceHostTests",
+      "options": [
+        {
+          "include-annotation": "android.platform.test.annotations.Presubmit"
+        }
+      ]
+    },
+    {
+      "name": "PackageManagerServiceHostTests",
+      "file_patterns": ["AppsFilter\\.java"],
+      "options": [
+        {
+          "include-filter": "com.android.server.pm.test.OverlayActorVisibilityTest"
+        }
+      ]
+    },
+    {
+      "name": "CtsSharedUserMigrationTestCases",
+      "options": [
+        {
+          "include-filter": "android.uidmigration.cts"
+        }
+      ]
+    }
+  ],
+  "presubmit-large": [
+    {
+      "name": "CtsContentTestCases",
+      "options": [
+        {
+          "exclude-annotation": "androidx.test.filters.FlakyTest"
+        },
+        {
+          "exclude-annotation": "org.junit.Ignore"
+        },
+        {
+          "include-filter": "android.content.pm.cts"
+        }
+      ]
+    }
+  ],
+  "postsubmit": [
+    {
+      "name": "CtsPermissionTestCases",
+      "options": [
+        {
+            "include-filter": "android.permission.cts.PermissionUpdateListenerTest"
+        }
+      ]
+    },
+    {
+      "name": "CtsAppSecurityHostTestCases"
+    },
+    {
+      "name": "PackageManagerServiceHostTests"
+    }
+  ],
+  "imports": [
+    {
+      "path": "frameworks/base/core/java/android/content/pm"
+    },
+    {
+      "path": "vendor/xts/gts-tests/hostsidetests/stagedinstall"
+    }
+  ]
+}

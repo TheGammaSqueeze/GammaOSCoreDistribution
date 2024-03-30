@@ -1,0 +1,15 @@
+<abi-corpus version='2.1' path='data/test-read-dwarf/PR28584/PR28584-smv.clang.o'>
+  <elf-variable-symbols>
+    <elf-symbol name='_ZN1N1S1DE' size='4' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+  </elf-variable-symbols>
+  <abi-instr address-size='64' path='smv.cc' comp-dir-path='/usr/local/google/home/gprocida/dev/stg/static_member_variable' language='LANG_C_plus_plus_14'>
+    <type-decl name='int' size-in-bits='32' id='type-id-1'/>
+    <namespace-decl name='N'>
+      <class-decl name='S' size-in-bits='8' is-struct='yes' visibility='default' filepath='/usr/local/google/home/gprocida/dev/stg/static_member_variable/smv.cc' line='2' column='1' id='type-id-2'>
+        <data-member access='public' static='yes'>
+          <var-decl name='D' type-id='type-id-1' mangled-name='_ZN1N1S1DE' visibility='default' filepath='/usr/local/google/home/gprocida/dev/stg/static_member_variable/smv.cc' line='2' column='1' elf-symbol-id='_ZN1N1S1DE'/>
+        </data-member>
+      </class-decl>
+    </namespace-decl>
+  </abi-instr>
+</abi-corpus>

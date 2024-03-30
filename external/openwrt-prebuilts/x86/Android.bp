@@ -1,0 +1,74 @@
+package {
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "openwrt_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    //   SPDX-license-identifier-BSD
+    //   SPDX-license-identifier-GPL-2.0
+    default_applicable_licenses: ["openwrt_license"],
+}
+
+genrule {
+    name: "openwrt_customization",
+    tools: [
+        "make_f2fs",
+        "sload_f2fs",
+    ],
+    srcs: [
+        ":openwrt_license_files",
+        "kmods/*",
+        "packages/*",
+        "uci-defaults/*",
+        "config/*",
+    ],
+    out: ["customization.img"],
+    cmd: "mkdir -p $(genDir)/root/upper/etc/uci-defaults && " +
+         "mkdir -p $(genDir)/root/upper/ipks && " +
+         "mkdir -p $(genDir)/root/upper/etc/config && " +
+         "cp $(in) $(genDir)/ && " +
+         "mv $(genDir)/*.ipk $(genDir)/root/upper/ipks && " +
+         "mv $(genDir)/LICENSE $(genDir)/HOW_TO_GET_SOURCE_CODE $(genDir)/root/upper && " +
+         "mv $(genDir)/0_default_config $(genDir)/root/upper/etc/uci-defaults && " +
+         "find $(genDir) -maxdepth 1 -type f -exec mv {} $(genDir)/root/upper/etc/config \\; && " +
+         "ln -s 2 $(genDir)/root/.fs_state && " +
+         "truncate -s 128M $(out) && " +
+         "$(location make_f2fs) $(out) && " +
+         "$(location sload_f2fs) -f $(genDir)/root -t / $(out)",
+}
+
+genrule {
+    name: "openwrt_rootfs_base_img",
+    srcs: [
+        "images/openwrt-21.02.0-x86-64-generic-squashfs-rootfs.img.gz",
+    ],
+    out: ["base_rootfs.img"],
+    cmd: "cp $(in) $(genDir) && gzip -d $(genDir)/* && cp $(genDir)/* $(out)",
+}
+
+genrule {
+    name: "combined_openwrt_rootfs",
+    tools: [
+        "append_squashfs_overlay",
+    ],
+    srcs: [
+        ":openwrt_rootfs_base_img",
+        ":openwrt_customization",
+    ],
+    out: ["openwrt_rootfs.img"],
+    cmd: "$(location append_squashfs_overlay) $(in) $(out) -w",
+}
+
+prebuilt_etc_host {
+    name: "openwrt_rootfs",
+    src: ":combined_openwrt_rootfs",
+    sub_dir: "openwrt/images",
+    visibility: ["//device/google/cuttlefish/build"],
+}
+
+prebuilt_etc_host {
+    name: "kernel_for_openwrt",
+    src: "images/openwrt-21.02.0-x86-64-generic-kernel.bin",
+    sub_dir: "openwrt/images",
+    visibility: ["//device/google/cuttlefish/build"],
+}

@@ -1,0 +1,20 @@
+rust_library {
+    name: "liblibsqlite3_sys_noicu",
+    host_supported: true,
+    crate_name: "libsqlite3_sys",
+    cargo_env_compat: true,
+    srcs: [
+        "src/lib.rs",
+        ":libsqlite3_bindgen",
+    ],
+    edition: "2018",
+    features: [
+        "default",
+        "min_sqlite_version_3_6_8",
+        "pkg-config",
+        "vcpkg",
+    ],
+    static_libs: [
+        "libsqlite_static_noicu",
+    ],
+}

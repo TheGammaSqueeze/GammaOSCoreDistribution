@@ -1,0 +1,19 @@
+target: {
+    host_linux: {
+        features: [
+            "gdb",
+        ],
+        rustlibs: [
+            "libgdbstub_arch",
+        ],
+    },
+},
+// Exclude arm family manually
+arch: {
+    arm: {
+        enabled: false,
+    },
+    arm64: {
+        enabled: false,
+    },
+}

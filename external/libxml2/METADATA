@@ -1,0 +1,26 @@
+# *** THIS PACKAGE HAS SPECIAL LICENSING CONDITIONS.  PLEASE
+#     CONSULT THE OWNERS AND opensource-licensing@google.com BEFORE
+#     DEPENDING ON IT IN YOUR PROJECT. ***
+name: "libxml2"
+description: "Libxml2 is the XML C parser and toolkit developed for the Gnome project (but usable outside of the Gnome platform), it is free software available under the MIT License."
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "http://www.xmlsoft.org/"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://github.com/GNOME/libxml2/archive/c41bc10da31a4a4e5416270110b6d1b79606cad1.zip"
+  }
+  version: "c41bc10da31a4a4e5416270110b6d1b79606cad1"
+  license_note: "contains GFDL documentation"
+  license_type: BY_EXCEPTION_ONLY
+  security {
+    tag: "NVD-CPE2.3:cpe:/a:xmlsoft:libxml2:2.9.2:-"
+  }
+  last_upgrade_date {
+    year: 2022
+    month: 2
+    day: 23
+  }
+}

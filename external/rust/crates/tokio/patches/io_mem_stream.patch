@@ -1,0 +1,12 @@
+diff --git a/tests/io_mem_stream.rs b/tests/io_mem_stream.rs
+index 01baa53..520391a 100644
+--- a/tests/io_mem_stream.rs
++++ b/tests/io_mem_stream.rs
+@@ -63,6 +63,7 @@ async fn disconnect() {
+ }
+ 
+ #[tokio::test]
++#[cfg(not(target_os = "android"))]
+ async fn disconnect_reader() {
+     let (a, mut b) = duplex(2);
+ 

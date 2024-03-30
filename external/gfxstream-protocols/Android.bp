@@ -1,0 +1,27 @@
+package {
+    default_applicable_licenses: ["external_gfxstream-protocols_license"],
+}
+
+license {
+    name: "external_gfxstream-protocols_license",
+    visibility: [":__subpackages__"],
+    license_kinds: [
+        "SPDX-license-identifier-Apache-2.0",
+        "SPDX-license-identifier-BSD",
+        "SPDX-license-identifier-CC-BY-4.0",
+        "SPDX-license-identifier-MIT",
+    ],
+    license_text: [
+        "LICENSE",
+    ],
+}
+
+cc_library_headers {
+    name: "gfxstream_vulkan_headers",
+    export_include_dirs: ["include/vulkan/include"],
+    host_supported: true,
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.virt",
+    ],
+}

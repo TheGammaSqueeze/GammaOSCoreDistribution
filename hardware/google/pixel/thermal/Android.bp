@@ -1,0 +1,110 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+soong_config_module_type {
+  name: "thermal_hal_feature_cc_defaults",
+  module_type: "cc_defaults",
+  config_namespace: "thermal_hal_feature",
+  variables: ["pid"],
+  properties: ["cflags", "srcs"],
+}
+
+soong_config_string_variable {
+  name: "pid",
+  values: ["apply_1_0", "apply_2_0"],
+}
+
+thermal_hal_feature_cc_defaults {
+  name: "thermal_hal_feature_defaults",
+  soong_config_variables: {
+    pid: {
+      apply_1_0: {
+        srcs: [
+          "pid_1_0/service.cpp",
+          "pid_1_0/Thermal.cpp",
+          "pid_1_0/thermal-helper.cpp",
+          "pid_1_0/utils/thermal_throttling.cpp",
+          "pid_1_0/utils/thermal_info.cpp",
+          "pid_1_0/utils/thermal_files.cpp",
+          "pid_1_0/utils/power_files.cpp",
+          "pid_1_0/utils/powerhal_helper.cpp",
+          "pid_1_0/utils/thermal_watcher.cpp",
+        ],
+      },
+      apply_2_0: {
+        srcs: [
+          "service.cpp",
+          "Thermal.cpp",
+          "thermal-helper.cpp",
+          "utils/thermal_throttling.cpp",
+          "utils/thermal_info.cpp",
+          "utils/thermal_files.cpp",
+          "utils/power_files.cpp",
+          "utils/powerhal_helper.cpp",
+          "utils/thermal_watcher.cpp",
+        ],
+      },
+    },
+  },
+}
+
+cc_binary {
+  name: "android.hardware.thermal@2.0-service.pixel",
+  defaults: [
+    "hidl_defaults",
+    "thermal_hal_feature_defaults",
+  ],
+  vendor: true,
+  relative_install_path: "hw",
+  vintf_fragments: ["android.hardware.thermal@2.0-service.pixel.xml"],
+  init_rc: [
+    "android.hardware.thermal@2.0-service.pixel.rc",
+  ],
+  shared_libs: [
+    "libbase",
+    "libcutils",
+    "libhidlbase",
+    "libjsoncpp",
+    "libutils",
+    "libnl",
+    "libbinder_ndk",
+    "android.hardware.thermal@1.0",
+    "android.hardware.thermal@2.0",
+    "android.hardware.power-V1-ndk",
+    "pixel-power-ext-V1-ndk"
+  ],
+  cflags: [
+    "-Wall",
+    "-Werror",
+    "-Wextra",
+    "-Wunused",
+  ],
+  tidy: true,
+  tidy_checks: [
+    "android-*",
+    "cert-*",
+    "clang-analyzer-security*",
+  ],
+  tidy_flags: [
+    "-warnings-as-errors=android-*,clang-analyzer-security*,cert-*"
+  ],
+}
+
+sh_binary {
+  name: "thermal_logd",
+  src: "init.thermal.logging.sh",
+  vendor: true,
+  init_rc: [
+    "pixel-thermal-logd.rc",
+  ],
+}
+
+sh_binary {
+  name: "thermal_symlinks",
+  src: "init.thermal.symlinks.sh",
+  vendor: true,
+  init_rc: [
+    "pixel-thermal-symlinks.rc",
+  ],
+}

@@ -1,0 +1,19 @@
+name: "oid-registry"
+description: "Object Identifier (OID) database"
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://crates.io/crates/oid-registry"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://static.crates.io/crates/oid-registry/oid-registry-0.2.0.crate"
+  }
+  version: "0.2.0"
+  license_type: NOTICE
+  last_upgrade_date {
+    year: 2021
+    month: 9
+    day: 22
+  }
+}

@@ -1,0 +1,90 @@
+package {
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "frameworks_av_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    default_applicable_licenses: ["frameworks_av_license"],
+}
+
+cc_library_shared {
+    name: "libaudiopolicyservice",
+
+    srcs: [
+        "AudioPolicyClientImpl.cpp",
+        "AudioPolicyEffects.cpp",
+        "AudioPolicyInterfaceImpl.cpp",
+        "AudioPolicyService.cpp",
+        "CaptureStateNotifier.cpp",
+        "Spatializer.cpp",
+        "SpatializerPoseController.cpp",
+    ],
+
+    include_dirs: [
+        "frameworks/av/services/audioflinger"
+    ],
+
+    shared_libs: [
+        "libactivitymanager_aidl",
+        "libaudioclient",
+        "libaudioclient_aidl_conversion",
+        "libaudiofoundation",
+        "libaudiohal",
+        "libaudiopolicy",
+        "libaudiopolicymanagerdefault",
+        "libaudioutils",
+        "libbinder",
+        "libcutils",
+        "libeffectsconfig",
+        "libhardware_legacy",
+        "libheadtracking",
+        "libheadtracking-binding",
+        "liblog",
+        "libmedia_helper",
+        "libmediametrics",
+        "libmediautils",
+        "libpermission",
+        "libsensor",
+        "libsensorprivacy",
+        "libshmemcompat",
+        "libutils",
+        "libstagefright_foundation",
+        "android.media.audio.common.types-V1-cpp",
+        "audioclient-types-aidl-cpp",
+        "audioflinger-aidl-cpp",
+        "audiopolicy-aidl-cpp",
+        "audiopolicy-types-aidl-cpp",
+        "capture_state_listener-aidl-cpp",
+        "framework-permission-aidl-cpp",
+        "packagemanager_aidl-cpp",
+        "spatializer-aidl-cpp",
+    ],
+
+    static_libs: [
+        "libaudiopolicycomponents",
+        "framework-permission-aidl-cpp",
+    ],
+
+    header_libs: [
+        "libaudiohal_headers",
+        "libaudiopolicycommon",
+        "libaudiopolicyengine_interface_headers",
+        "libaudiopolicymanager_interface_headers",
+        "libaudioutils_headers",
+    ],
+
+    cflags: [
+        "-fvisibility=hidden",
+        "-Werror",
+        "-Wall",
+        "-Wthread-safety",
+    ],
+
+    export_shared_lib_headers: [
+        "libactivitymanager_aidl",
+        "libheadtracking",
+        "libheadtracking-binding",
+        "libsensorprivacy",
+        "framework-permission-aidl-cpp",
+    ],
+}

@@ -1,0 +1,152 @@
+package {
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "frameworks_base_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    default_applicable_licenses: ["frameworks_base_license"],
+}
+
+android_test {
+    name: "FrameworksCoreTests",
+
+    srcs: [
+        "src/**/*.java",
+        "src/**/*.kt",
+        "src/**/I*.aidl",
+        "DisabledTestApp/src/**/*.java",
+        "EnabledTestApp/src/**/*.java",
+        "BinderProxyCountingTestApp/src/**/*.java",
+        "BinderProxyCountingTestService/src/**/*.java",
+        "BinderDeathRecipientHelperApp/src/**/*.java",
+        "aidl/**/I*.aidl",
+    ],
+
+    aidl: {
+        generate_get_transaction_name: true,
+        local_include_dirs: ["aidl"],
+    },
+
+    dxflags: ["--core-library"],
+
+    aaptflags: [
+        "-0 .dat",
+        "-0 .gld",
+        "-c fa",
+    ],
+    static_libs: [
+        "frameworks-base-testutils",
+        "core-test-rules", // for libcore.dalvik.system.CloseGuardSupport
+        "core-tests-support",
+        "android-common",
+        "frameworks-core-util-lib",
+        "mockwebserver",
+        "guava",
+        "androidx.core_core",
+        "androidx.test.espresso.core",
+        "androidx.test.ext.junit",
+        "androidx.test.runner",
+        "androidx.test.rules",
+        "kotlin-test",
+        "mockito-target-minus-junit4",
+        "ub-uiautomator",
+        "platform-test-annotations",
+        "platform-compat-test-rules",
+        "truth-prebuilt",
+        "print-test-util-lib",
+        "testng",
+        "servicestests-utils",
+    ],
+
+    libs: [
+        "android.test.runner",
+        "testables",
+        "org.apache.http.legacy",
+        "android.test.base",
+        "android.test.mock",
+        "framework",
+        "ext",
+        "framework-res",
+    ],
+    jni_libs: [
+        "libpowermanagertest_jni",
+    ],
+
+    platform_apis: true,
+    sdk_version: "core_platform",
+    test_suites: ["device-tests"],
+
+    certificate: "platform",
+
+    resource_dirs: ["res"],
+    resource_zips: [":FrameworksCoreTests_apks_as_resources"],
+
+    data: [
+        ":BstatsTestApp",
+        ":BinderDeathRecipientHelperApp1",
+        ":BinderDeathRecipientHelperApp2",
+    ],
+    required: ["com.android.cts.helpers.aosp"],
+}
+
+// Rules to copy all the test apks to the intermediate raw resource directory
+java_genrule {
+    name: "FrameworksCoreTests_apks_as_resources",
+    srcs: [
+        ":FrameworksCoreTests_install_jni_lib_open_from_apk",
+        ":FrameworksCoreTests_install_verifier_bad",
+        ":FrameworksCoreTests_install_verifier_good",
+        ":FrameworksCoreTests_locales",
+        ":FrameworksCoreTests_overlay_config",
+        ":FrameworksCoreTests_version_1",
+        ":FrameworksCoreTests_version_1_diff",
+        ":FrameworksCoreTests_version_1_nosys",
+        ":FrameworksCoreTests_version_2",
+        ":FrameworksCoreTests_version_2_diff",
+        ":FrameworksCoreTests_version_3",
+    ],
+    out: ["FrameworkCoreTests_apks_as_resources.res.zip"],
+    tools: ["soong_zip"],
+
+    cmd: "mkdir -p $(genDir)/res/raw && " +
+        "for i in $(in); do " +
+        "  x=$${i##*FrameworksCoreTests_}; echo $${x}; cp $$i $(genDir)/res/raw/$${x%.apk};" +
+        "done && " +
+        "$(location soong_zip) -o $(out) -C $(genDir)/res -D $(genDir)/res",
+}
+
+// In addition to running as part of FrameworksCoreTests, we run (a subclass of)
+// ChooserActivityTest against the unbundled ChooserActivity implementation in
+// //packages/modules/IntentResolver/. The following library provides the
+// minimum dependencies required to build that test in the unbundled package.
+android_library {
+    name: "ChooserActivityTestsLib",
+    visibility: ["//packages/modules/IntentResolver/java/tests:__pkg__"],
+
+    srcs: [
+        "src/com/android/internal/app/ChooserActivityLoggerFake.java",
+        "src/com/android/internal/app/ChooserActivityOverrideData.java",
+        "src/com/android/internal/app/ChooserActivityTest.java",
+        "src/com/android/internal/app/ChooserWrapperActivity.java",
+        "src/com/android/internal/app/IChooserWrapper.java",
+        "src/com/android/internal/app/MatcherUtils.java",
+        "src/com/android/internal/app/ResolverDataProvider.java",
+    ],
+
+    static_libs: [
+        "androidx.test.espresso.core",
+        "androidx.test.ext.junit",
+        "androidx.test.runner",
+        "androidx.test.rules",
+        "mockito-target-minus-junit4",
+        "truth-prebuilt",
+    ],
+
+    libs: [
+        "android.test.runner",
+        "android.test.base",
+        "android.test.mock",
+        "framework",
+        "framework-res",
+    ],
+}

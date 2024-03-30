@@ -1,0 +1,25 @@
+<abi-corpus version='2.1' path='data/test-read-ctf/test2.so'>
+  <elf-function-symbols>
+    <elf-symbol name='bar' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='foo' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+  </elf-function-symbols>
+  <abi-instr address-size='64' language='LANG_C'>
+    <class-decl name='S0' size-in-bits='64' alignment-in-bits='64' is-struct='yes' visibility='default' id='109cd6fe'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='m0' type-id='eaa32e2f' visibility='default'/>
+      </data-member>
+    </class-decl>
+    <class-decl name='S1' size-in-bits='64' alignment-in-bits='64' is-struct='yes' visibility='default' id='119cd891'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='m0' type-id='8a34a235' visibility='default'/>
+      </data-member>
+    </class-decl>
+    <typedef-decl name='POINTER' type-id='6e97a70c' id='8a34a235'/>
+    <pointer-type-def type-id='109cd6fe' size-in-bits='64' alignment-in-bits='64' id='842ea234'/>
+    <pointer-type-def type-id='119cd891' size-in-bits='64' alignment-in-bits='64' id='5e30a4f9'/>
+    <qualified-type-def type-id='48b5725f' const='yes' id='8581546e'/>
+    <pointer-type-def type-id='8581546e' size-in-bits='64' alignment-in-bits='64' id='6e97a70c'/>
+    <pointer-type-def type-id='48b5725f' size-in-bits='64' alignment-in-bits='64' id='eaa32e2f'/>
+    <type-decl name='void' id='48b5725f'/>
+  </abi-instr>
+</abi-corpus>

@@ -1,0 +1,3 @@
+#!/bin/sh
+opkg install /ipks/*
+ip link set eth0 mtu 1460

@@ -1,0 +1,3 @@
+# SPDX-License-Identifier: GPL-2.0
+
+obj-$(CONFIG_BACKLIGHT_RT4539)		+= rt4539_bl.o

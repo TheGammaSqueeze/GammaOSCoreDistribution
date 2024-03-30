@@ -1,0 +1,23 @@
+<abi-corpus version='2.1' path='data/test-read-ctf/test1.so'>
+  <elf-function-symbols>
+    <elf-symbol name='fn' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+  </elf-function-symbols>
+  <abi-instr address-size='64' language='LANG_C'>
+    <type-decl name='' is-anonymous='yes' size-in-bits='32' alignment-in-bits='32' id='type-id-1'/>
+    <class-decl name='opaque_struct' size-in-bits='32' alignment-in-bits='32' is-struct='yes' visibility='default' id='type-id-2'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='m0' type-id='type-id-3' visibility='default'/>
+      </data-member>
+    </class-decl>
+    <enum-decl name='opaque_enum' linkage-name='opaque_enum' id='type-id-4'>
+      <underlying-type type-id='type-id-1'/>
+      <enumerator name='e0' value='0'/>
+      <enumerator name='e1' value='1'/>
+    </enum-decl>
+    <typedef-decl name='opaque_enum' type-id='type-id-4' id='type-id-3'/>
+    <typedef-decl name='opaque_struct' type-id='type-id-2' id='type-id-5'/>
+    <type-decl name='unsigned int' size-in-bits='32' alignment-in-bits='32' id='type-id-6'/>
+    <pointer-type-def type-id='type-id-3' size-in-bits='64' alignment-in-bits='64' id='type-id-7'/>
+    <pointer-type-def type-id='type-id-5' size-in-bits='64' alignment-in-bits='64' id='type-id-8'/>
+  </abi-instr>
+</abi-corpus>

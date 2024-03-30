@@ -1,0 +1,19 @@
+name: "webpki"
+description: "Web PKI X.509 Certificate Verification."
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://crates.io/crates/webpki"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://static.crates.io/crates/webpki/webpki-0.22.0.crate"
+  }
+  version: "0.22.0"
+  license_type: NOTICE
+  last_upgrade_date {
+    year: 2021
+    month: 7
+    day: 19
+  }
+}

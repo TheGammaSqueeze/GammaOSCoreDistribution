@@ -1,0 +1,19 @@
+import org.robolectric.gradle.DeployedRoboJavaModulePlugin
+import org.robolectric.gradle.RoboJavaModulePlugin
+
+apply plugin: RoboJavaModulePlugin
+apply plugin: DeployedRoboJavaModulePlugin
+
+dependencies {
+    api project(":utils")
+    api project(":annotations")
+    api project(":pluginapi")
+
+    api "com.google.guava:guava:$guavaJREVersion"
+    compileOnly "com.google.code.findbugs:jsr305:3.0.2"
+
+    testImplementation "junit:junit:${junitVersion}"
+    testImplementation "com.google.truth:truth:${truthVersion}"
+    testImplementation "com.google.testing.compile:compile-testing:0.21.0"
+    testImplementation "org.mockito:mockito-core:${mockitoVersion}"
+}

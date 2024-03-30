@@ -1,0 +1,19 @@
+name: "libc"
+description: "Raw FFI bindings to platform libraries like libc."
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://crates.io/crates/libc"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://static.crates.io/crates/libc/libc-0.2.119.crate"
+  }
+  version: "0.2.119"
+  license_type: NOTICE
+  last_upgrade_date {
+    year: 2022
+    month: 3
+    day: 1
+  }
+}

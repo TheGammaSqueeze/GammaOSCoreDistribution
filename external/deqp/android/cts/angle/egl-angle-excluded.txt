@@ -1,0 +1,4 @@
+# EGL Tests to exclude when Testing ANGLE.
+
+# http://anglebug.com/6797
+dEQP-EGL.functional.mutable_render_buffer.basic

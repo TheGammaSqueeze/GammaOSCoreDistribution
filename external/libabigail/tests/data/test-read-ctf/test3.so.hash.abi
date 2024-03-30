@@ -1,0 +1,12 @@
+<abi-corpus version='2.1' path='data/test-read-common/test3.so'>
+  <elf-function-symbols>
+    <elf-symbol name='__foo' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='__foo__' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='_fini' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='_init' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='foo' type='func-type' binding='weak-binding' visibility='default-visibility' alias='foo__,__foo__,__foo' is-defined='yes'/>
+    <elf-symbol name='foo__' type='func-type' binding='weak-binding' visibility='default-visibility' is-defined='yes'/>
+  </elf-function-symbols>
+  <abi-instr address-size='64' language='LANG_C'>
+  </abi-instr>
+</abi-corpus>

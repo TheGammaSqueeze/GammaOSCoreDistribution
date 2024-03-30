@@ -1,0 +1,19 @@
+name: "intrusive-collections"
+description: "Intrusive collections for Rust (linked list and red-black tree)"
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://crates.io/crates/intrusive-collections"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://static.crates.io/crates/intrusive-collections/intrusive-collections-0.9.3.crate"
+  }
+  version: "0.9.3"
+  license_type: NOTICE
+  last_upgrade_date {
+    year: 2022
+    month: 3
+    day: 1
+  }
+}

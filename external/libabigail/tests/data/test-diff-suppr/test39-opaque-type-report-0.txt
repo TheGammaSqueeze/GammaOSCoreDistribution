@@ -1,0 +1,10 @@
+Functions changes summary: 0 Removed, 1 Changed (1 filtered out), 0 Added functions
+Variables changes summary: 0 Removed, 0 Changed, 0 Added variable
+
+1 function with some indirect sub-type change:
+
+  [C] 'function void bar(StructType*)' at test39-opaque-type-v1.c:20:1 has some indirect sub-type changes:
+    parameter 1 of type 'StructType*' changed:
+      in pointed to type 'typedef StructType' at test39-header-v1.h:2:1:
+        typedef name changed from StructType to AnotherStructType at test39-header-v1.h:2:1
+

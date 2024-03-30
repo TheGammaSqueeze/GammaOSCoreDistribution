@@ -1,0 +1,356 @@
+[
+  {
+    "wd": "/tmp/stable",
+    "env": [
+      "WITH_TIDY=1"
+    ],
+    "wrapper": {
+      "cmd": {
+        "path": "./x86_64-cros-linux-gnu-clang",
+        "args": [
+          "main.cc"
+        ]
+      }
+    },
+    "cmds": [
+      {
+        "cmd": {
+          "path": "/tmp/stable/clang",
+          "args": [
+            "--print-resource-dir"
+          ]
+        },
+        "stdout": "someResourceDir"
+      },
+      {
+        "cmd": {
+          "path": "/tmp/stable/clang-tidy",
+          "args": [
+            "-checks=*,-bugprone-narrowing-conversions,-cppcoreguidelines-*,-fuchsia-*,-google-readability*,-google-runtime-references,-hicpp-*,-llvm-*,-misc-non-private-member-variables-in-classes,-misc-unused-parameters,-modernize-*,-readability-*",
+            "main.cc",
+            "--",
+            "-resource-dir=someResourceDir",
+            "-Qunused-arguments",
+            "-fno-addrsig",
+            "-fuse-ld=lld",
+            "-fdebug-default-version=5",
+            "-Wno-unused-local-typedefs",
+            "-Wno-tautological-constant-compare",
+            "-Wno-tautological-unsigned-enum-zero-compare",
+            "-Wno-final-dtor-non-final-class",
+            "-Werror=poison-system-directories",
+            "-Wno-unknown-warning-option",
+            "-fexperimental-new-pass-manager",
+            "-Wno-compound-token-split-by-macro",
+            "-Wno-deprecated-declarations",
+            "-fcrash-diagnostics-dir=/tmp/stable/clang_crash_diagnostics",
+            "-fcommon",
+            "main.cc",
+            "-Wno-implicit-int-float-conversion",
+            "-Wno-compound-token-split-by-space",
+            "-Wno-string-concatenation",
+            "-Wno-deprecated-copy",
+            "-Wno-unused-but-set-variable"
+          ]
+        }
+      },
+      {
+        "cmd": {
+          "path": "/tmp/stable/clang",
+          "args": [
+            "-Qunused-arguments",
+            "-fno-addrsig",
+            "-fuse-ld=lld",
+            "-fdebug-default-version=5",
+            "-Wno-unused-local-typedefs",
+            "-Wno-tautological-constant-compare",
+            "-Wno-tautological-unsigned-enum-zero-compare",
+            "-Wno-final-dtor-non-final-class",
+            "-Werror=poison-system-directories",
+            "-Wno-unknown-warning-option",
+            "-fexperimental-new-pass-manager",
+            "-Wno-compound-token-split-by-macro",
+            "-Wno-deprecated-declarations",
+            "-fcrash-diagnostics-dir=/tmp/stable/clang_crash_diagnostics",
+            "-fcommon",
+            "main.cc",
+            "-Wno-implicit-int-float-conversion",
+            "-Wno-compound-token-split-by-space",
+            "-Wno-string-concatenation",
+            "-Wno-deprecated-copy",
+            "-Wno-unused-but-set-variable"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "wd": "/tmp/stable",
+    "env": [
+      "WITH_TIDY=1",
+      "GOMACC_PATH=/tmp/stable/gomacc"
+    ],
+    "wrapper": {
+      "cmd": {
+        "path": "./x86_64-cros-linux-gnu-clang",
+        "args": [
+          "main.cc"
+        ]
+      }
+    },
+    "cmds": [
+      {
+        "cmd": {
+          "path": "/tmp/stable/clang",
+          "args": [
+            "--print-resource-dir"
+          ]
+        },
+        "stdout": "someResourceDir"
+      },
+      {
+        "cmd": {
+          "path": "/tmp/stable/clang-tidy",
+          "args": [
+            "-checks=*,-bugprone-narrowing-conversions,-cppcoreguidelines-*,-fuchsia-*,-google-readability*,-google-runtime-references,-hicpp-*,-llvm-*,-misc-non-private-member-variables-in-classes,-misc-unused-parameters,-modernize-*,-readability-*",
+            "main.cc",
+            "--",
+            "-resource-dir=someResourceDir",
+            "-Qunused-arguments",
+            "-fno-addrsig",
+            "-fuse-ld=lld",
+            "-fdebug-default-version=5",
+            "-Wno-unused-local-typedefs",
+            "-Wno-tautological-constant-compare",
+            "-Wno-tautological-unsigned-enum-zero-compare",
+            "-Wno-final-dtor-non-final-class",
+            "-Werror=poison-system-directories",
+            "-Wno-unknown-warning-option",
+            "-fexperimental-new-pass-manager",
+            "-Wno-compound-token-split-by-macro",
+            "-Wno-deprecated-declarations",
+            "-fcrash-diagnostics-dir=/tmp/stable/clang_crash_diagnostics",
+            "-fcommon",
+            "main.cc",
+            "-Wno-implicit-int-float-conversion",
+            "-Wno-compound-token-split-by-space",
+            "-Wno-string-concatenation",
+            "-Wno-deprecated-copy",
+            "-Wno-unused-but-set-variable"
+          ]
+        }
+      },
+      {
+        "cmd": {
+          "path": "/tmp/stable/clang",
+          "args": [
+            "-Qunused-arguments",
+            "-fno-addrsig",
+            "-fuse-ld=lld",
+            "-fdebug-default-version=5",
+            "-Wno-unused-local-typedefs",
+            "-Wno-tautological-constant-compare",
+            "-Wno-tautological-unsigned-enum-zero-compare",
+            "-Wno-final-dtor-non-final-class",
+            "-Werror=poison-system-directories",
+            "-Wno-unknown-warning-option",
+            "-fexperimental-new-pass-manager",
+            "-Wno-compound-token-split-by-macro",
+            "-Wno-deprecated-declarations",
+            "-fcrash-diagnostics-dir=/tmp/stable/clang_crash_diagnostics",
+            "-fcommon",
+            "main.cc",
+            "-Wno-implicit-int-float-conversion",
+            "-Wno-compound-token-split-by-space",
+            "-Wno-string-concatenation",
+            "-Wno-deprecated-copy",
+            "-Wno-unused-but-set-variable"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "wd": "/tmp/stable",
+    "env": [
+      "WITH_TIDY=1",
+      "GOMACC_PATH=/tmp/stable/gomacc"
+    ],
+    "wrapper": {
+      "cmd": {
+        "path": "./x86_64-cros-linux-gnu-clang",
+        "args": [
+          "main.cc"
+        ]
+      },
+      "stdout": "somemessage",
+      "stderr": "someerrorclang-tidy failed"
+    },
+    "cmds": [
+      {
+        "cmd": {
+          "path": "/tmp/stable/clang",
+          "args": [
+            "--print-resource-dir"
+          ]
+        },
+        "stdout": "someResourceDir"
+      },
+      {
+        "cmd": {
+          "path": "/tmp/stable/clang-tidy",
+          "args": [
+            "-checks=*,-bugprone-narrowing-conversions,-cppcoreguidelines-*,-fuchsia-*,-google-readability*,-google-runtime-references,-hicpp-*,-llvm-*,-misc-non-private-member-variables-in-classes,-misc-unused-parameters,-modernize-*,-readability-*",
+            "main.cc",
+            "--",
+            "-resource-dir=someResourceDir",
+            "-Qunused-arguments",
+            "-fno-addrsig",
+            "-fuse-ld=lld",
+            "-fdebug-default-version=5",
+            "-Wno-unused-local-typedefs",
+            "-Wno-tautological-constant-compare",
+            "-Wno-tautological-unsigned-enum-zero-compare",
+            "-Wno-final-dtor-non-final-class",
+            "-Werror=poison-system-directories",
+            "-Wno-unknown-warning-option",
+            "-fexperimental-new-pass-manager",
+            "-Wno-compound-token-split-by-macro",
+            "-Wno-deprecated-declarations",
+            "-fcrash-diagnostics-dir=/tmp/stable/clang_crash_diagnostics",
+            "-fcommon",
+            "main.cc",
+            "-Wno-implicit-int-float-conversion",
+            "-Wno-compound-token-split-by-space",
+            "-Wno-string-concatenation",
+            "-Wno-deprecated-copy",
+            "-Wno-unused-but-set-variable"
+          ]
+        },
+        "stdout": "somemessage",
+        "stderr": "someerror",
+        "exitcode": 1
+      },
+      {
+        "cmd": {
+          "path": "/tmp/stable/clang",
+          "args": [
+            "-Qunused-arguments",
+            "-fno-addrsig",
+            "-fuse-ld=lld",
+            "-fdebug-default-version=5",
+            "-Wno-unused-local-typedefs",
+            "-Wno-tautological-constant-compare",
+            "-Wno-tautological-unsigned-enum-zero-compare",
+            "-Wno-final-dtor-non-final-class",
+            "-Werror=poison-system-directories",
+            "-Wno-unknown-warning-option",
+            "-fexperimental-new-pass-manager",
+            "-Wno-compound-token-split-by-macro",
+            "-Wno-deprecated-declarations",
+            "-fcrash-diagnostics-dir=/tmp/stable/clang_crash_diagnostics",
+            "-fcommon",
+            "main.cc",
+            "-Wno-implicit-int-float-conversion",
+            "-Wno-compound-token-split-by-space",
+            "-Wno-string-concatenation",
+            "-Wno-deprecated-copy",
+            "-Wno-unused-but-set-variable"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "wd": "/tmp/stable",
+    "env": [
+      "WITH_TIDY=1",
+      "GOMACC_PATH=/tmp/stable/gomacc"
+    ],
+    "wrapper": {
+      "cmd": {
+        "path": "./x86_64-cros-linux-gnu-clang",
+        "args": [
+          "main.cc"
+        ]
+      },
+      "stdout": "somemessage",
+      "stderr": "someerror",
+      "exitcode": 1
+    },
+    "cmds": [
+      {
+        "cmd": {
+          "path": "/tmp/stable/clang",
+          "args": [
+            "--print-resource-dir"
+          ]
+        },
+        "stdout": "someResourceDir"
+      },
+      {
+        "cmd": {
+          "path": "/tmp/stable/clang-tidy",
+          "args": [
+            "-checks=*,-bugprone-narrowing-conversions,-cppcoreguidelines-*,-fuchsia-*,-google-readability*,-google-runtime-references,-hicpp-*,-llvm-*,-misc-non-private-member-variables-in-classes,-misc-unused-parameters,-modernize-*,-readability-*",
+            "main.cc",
+            "--",
+            "-resource-dir=someResourceDir",
+            "-Qunused-arguments",
+            "-fno-addrsig",
+            "-fuse-ld=lld",
+            "-fdebug-default-version=5",
+            "-Wno-unused-local-typedefs",
+            "-Wno-tautological-constant-compare",
+            "-Wno-tautological-unsigned-enum-zero-compare",
+            "-Wno-final-dtor-non-final-class",
+            "-Werror=poison-system-directories",
+            "-Wno-unknown-warning-option",
+            "-fexperimental-new-pass-manager",
+            "-Wno-compound-token-split-by-macro",
+            "-Wno-deprecated-declarations",
+            "-fcrash-diagnostics-dir=/tmp/stable/clang_crash_diagnostics",
+            "-fcommon",
+            "main.cc",
+            "-Wno-implicit-int-float-conversion",
+            "-Wno-compound-token-split-by-space",
+            "-Wno-string-concatenation",
+            "-Wno-deprecated-copy",
+            "-Wno-unused-but-set-variable"
+          ]
+        }
+      },
+      {
+        "cmd": {
+          "path": "/tmp/stable/clang",
+          "args": [
+            "-Qunused-arguments",
+            "-fno-addrsig",
+            "-fuse-ld=lld",
+            "-fdebug-default-version=5",
+            "-Wno-unused-local-typedefs",
+            "-Wno-tautological-constant-compare",
+            "-Wno-tautological-unsigned-enum-zero-compare",
+            "-Wno-final-dtor-non-final-class",
+            "-Werror=poison-system-directories",
+            "-Wno-unknown-warning-option",
+            "-fexperimental-new-pass-manager",
+            "-Wno-compound-token-split-by-macro",
+            "-Wno-deprecated-declarations",
+            "-fcrash-diagnostics-dir=/tmp/stable/clang_crash_diagnostics",
+            "-fcommon",
+            "main.cc",
+            "-Wno-implicit-int-float-conversion",
+            "-Wno-compound-token-split-by-space",
+            "-Wno-string-concatenation",
+            "-Wno-deprecated-copy",
+            "-Wno-unused-but-set-variable"
+          ]
+        },
+        "stdout": "somemessage",
+        "stderr": "someerror",
+        "exitcode": 1
+      }
+    ]
+  }
+]

@@ -1,0 +1,49 @@
+From 5bce943cdb8fc81525257413f174844d644d63c8 Mon Sep 17 00:00:00 2001
+From: Eric Biggers <ebiggers@google.com>
+Date: Tue, 20 Apr 2021 16:48:07 -0700
+Subject: [PATCH] Use /dev/urandom instead of getrandom()
+
+To generate the ahash crate's default hash keys, use /dev/urandom
+instead of getrandom() to avoid blocking boot on systems where the
+entropy pool isn't initialized in time and where the use case of this
+crate doesn't actually require cryptographic randomness.
+
+If opening or reading from /dev/urandom fails, fall back to getrandom().
+
+Note that std::collections::HashMap doesn't block for randomness either,
+for the same reason.  So this change just makes ahash work like HashMap.
+
+Bug: 185934601
+Change-Id: Ie81a1f3a893d578348db11aee114d1a8f2d9fac5
+---
+diff --git a/src/random_state.rs b/src/random_state.rs
+index c3628bf..835467c 100644
+--- a/src/random_state.rs
++++ b/src/random_state.rs
+@@ -48,6 +48,15 @@ use crate::fallback_hash::*;
+ #[cfg(not(all(target_arch = "arm", target_os = "none")))]
+ static RAND_SOURCE: OnceBox<Box<dyn RandomSource + Send + Sync>> = OnceBox::new();
+ 
++#[cfg(all(feature = "runtime-rng", not(all(feature = "compile-time-rng", test))))]
++fn read_urandom(dest: &mut [u8]) -> Result<(), std::io::Error> {
++    use std::fs::File;
++    use std::io::Read;
++
++    let mut f = File::open("/dev/urandom")?;
++    f.read_exact(dest)
++}
++
+ /// A supplier of Randomness used for different hashers.
+ /// See [RandomState.set_random_source].
+ pub trait RandomSource {
+@@ -98,7 +107,9 @@ impl RandomSource for DefaultRandomSource {
+ 
+         SEEDS.get_or_init(|| {
+             let mut result: [u8; 64] = [0; 64];
+-            getrandom::getrandom(&mut result).expect("getrandom::getrandom() failed.");
++            if read_urandom(&mut result).is_err() {
++                getrandom::getrandom(&mut result).expect("getrandom::getrandom() failed.");
++            }
+             Box::new(result.convert())
+         })
+     }

@@ -1,0 +1,67 @@
+2.1 version
+===========
+
+This occurred in libabigail 2.1.  The IR doesn't contain no-op
+qualified types anymore.  These were the ancient way to represent
+qualified type that were edited by libabigail to avoid spurious
+diagnostics. E.g, const references or const void type.  In those
+cases, we were replacing these by qualified types that were no-ops.
+Those no-ops qualified types further needed to be stripped off in the
+diff IR to avoid emitting spurious changes.  It turned out stripping
+out those no-op qualified types was causing some difficulties in the
+algorithms that propagate type diff node categorization.
+
+For instance, variable diff type node would have the categorization of
+its diff->type_diff() be different from what we could see from the
+change observed between its diff->first_subject()->get_type() and
+diff->second_subject()->get_type().  This is because diff->type_diff()
+strips the no-op qualified types to create a new diff IR node, whereas
+looking at the difference between diff->first_subject->get_type() and
+diff->second_subject()->get_type() gives a different perspective.
+
+So looking at the "changes" carried by 'diff' could yield a result
+suggesting that there was a change to be diagnosed, carried by the
+difference between diff->first_subject()->get_type() and
+diff->second_subject()->get_type() -- a difference between two no-ops
+qualified types -- whereas actually looking at diff->type_diff() (that
+should be equivalent) yields a different information because it's
+stripped off of the no-op qualified type.
+
+Just removing the no-op qualified types removed all those issues
+altogether.  So in concrete terms, when we see a const reference, it's
+replaced by a reference (because a reference is always const) and
+when we see a const void, it's replaced by void.  As simple as that.
+
+But then the emitted ABIXML won't carry any no-op qualified type
+anymore. Older versions of ABIXML might still carry those, and so
+abidiff-ing those against their original binary might yield some
+spurious diagnostics.  Hence the minor version bump.
+
+relevant commit:
+----------------
+commit 8a4f72005bc96fecf63414784cf94857eddbd124
+Author: Dodji Seketeli <dodji@redhat.com>
+Date:   Thu Nov 4 10:59:32 2021 +0100
+
+    Bug 28450 - Fix cloned member function handling in DWARF
+2.0 version
+===========
+
+This occured in libabigail 2.0.  The interpretation of
+DW_AT_bit_offset (DWARF 5) changed so the value of the
+'layout-offset-in-bits' property of the 'data-member' element might
+now have changed in an incompatible way.
+
+relevant commit:
+----------------
+commit 23046152e0843bc2f141e37dcce047305c3f4379
+Author: Dodji Seketeli <dodji@redhat.com>
+Date:   Thu Oct 22 16:04:08 2020 +0200
+
+    Bump ABIXML format version to 2.0
+
+
+1.0 version
+===========
+
+This was the initial version of abixml.

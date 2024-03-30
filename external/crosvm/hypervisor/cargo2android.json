@@ -1,0 +1,8 @@
+{
+  "add_workspace": true,
+  "device": true,
+  "global_defaults": "crosvm_defaults",
+  "no_presubmit": true,
+  "run": true,
+  "tests": true
+}

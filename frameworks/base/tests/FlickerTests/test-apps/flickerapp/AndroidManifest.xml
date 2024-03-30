@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2018 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+     package="com.android.server.wm.flicker.testapp">
+
+    <uses-sdk android:minSdkVersion="29"
+         android:targetSdkVersion="29"/>
+    <application android:allowBackup="false"
+         android:supportsRtl="true">
+        <activity android:name=".SimpleActivity"
+             android:taskAffinity="com.android.server.wm.flicker.testapp.SimpleActivity"
+             android:theme="@style/CutoutShortEdges"
+             android:label="SimpleApp"
+             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".ImeActivity"
+             android:taskAffinity="com.android.server.wm.flicker.testapp.ImeActivity"
+             android:theme="@style/CutoutShortEdges"
+             android:label="ImeApp"
+             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".ImeActivityAutoFocus"
+             android:theme="@style/CutoutShortEdges"
+             android:taskAffinity="com.android.server.wm.flicker.testapp.ImeActivityAutoFocus"
+             android:windowSoftInputMode="stateVisible"
+             android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout"
+             android:label="ImeAppAutoFocus"
+             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".ImeStateInitializeActivity"
+                  android:theme="@style/no_starting_window"
+                  android:windowSoftInputMode="stateAlwaysHidden"
+                  android:label="ImeStateInitializeActivity"
+                  android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".SeamlessRotationActivity"
+             android:taskAffinity="com.android.server.wm.flicker.testapp.SeamlessRotationActivity"
+             android:theme="@style/CutoutShortEdges"
+             android:configChanges="orientation|screenSize"
+             android:label="SeamlessApp"
+             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".NonResizeableActivity"
+            android:theme="@style/CutoutShortEdges"
+            android:resizeableActivity="false"
+            android:taskAffinity="com.android.server.wm.flicker.testapp.NonResizeableActivity"
+            android:label="NonResizeableApp"
+            android:exported="true"
+            android:showOnLockScreen="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".ButtonActivity"
+            android:taskAffinity="com.android.server.wm.flicker.testapp.ButtonActivity"
+            android:theme="@style/CutoutShortEdges"
+            android:configChanges="orientation|screenSize"
+            android:label="ButtonActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".LaunchNewTaskActivity"
+                  android:taskAffinity="com.android.server.wm.flicker.testapp.LaunchNewTaskActivity"
+                  android:theme="@style/CutoutShortEdges"
+                  android:configChanges="orientation|screenSize"
+                  android:label="LaunchNewTaskActivity"
+                  android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".DialogThemedActivity"
+            android:taskAffinity="com.android.server.wm.flicker.testapp.DialogThemedActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/DialogTheme"
+            android:label="DialogThemedActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".PortraitOnlyActivity"
+            android:taskAffinity="com.android.server.wm.flicker.testapp.PortraitOnlyActivity"
+            android:theme="@style/CutoutShortEdges"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".ImeEditorPopupDialogActivity"
+            android:taskAffinity="com.android.server.wm.flicker.testapp.ImeEditorPopupDialogActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/CutoutShortEdges"
+            android:label="ImeEditorPopupDialogActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".ShowWhenLockedActivity"
+            android:taskAffinity="com.android.server.wm.flicker.testapp.ShowWhenLockedActivity"
+            android:theme="@style/CutoutShortEdges"
+            android:configChanges="orientation|screenSize"
+            android:label="ShowWhenLockedActivity"
+            android:showWhenLocked="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".NotificationActivity"
+            android:taskAffinity="com.android.server.wm.flicker.testapp.NotificationActivity"
+            android:theme="@style/CutoutShortEdges"
+            android:configChanges="orientation|screenSize"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".MailActivity"
+            android:exported="true"
+            android:label="MailApp"
+            android:taskAffinity="com.android.server.wm.flicker.testapp.MailActivity"
+            android:theme="@style/Theme.AppCompat.Light">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".GameActivity"
+            android:taskAffinity="com.android.server.wm.flicker.testapp.GameActivity"
+            android:immersive="true"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:configChanges="screenSize"
+            android:label="GameApp"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <service
+            android:name=".AssistantInteractionSessionService"
+            android:exported="true"
+            android:permission="android.permission.BIND_VOICE_INTERACTION" />
+        <service
+            android:name=".AssistantRecognitionService"
+            android:exported="true"
+            android:label="Test Voice Interaction Service">
+            <intent-filter>
+                <action android:name="android.speech.RecognitionService" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data
+                android:name="android.speech"
+                android:resource="@xml/recognition_service" />
+        </service>
+        <service
+            android:name=".AssistantInteractionService"
+            android:exported="true"
+            android:label="Test Voice Interaction Service"
+            android:permission="android.permission.BIND_VOICE_INTERACTION">
+            <intent-filter>
+                <action android:name="android.service.voice.VoiceInteractionService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.voice_interaction"
+                android:resource="@xml/interaction_service" />
+        </service>
+    </application>
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+</manifest>

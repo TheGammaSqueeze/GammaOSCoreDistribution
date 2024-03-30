@@ -1,0 +1,18 @@
+name: "ciborium-io"
+description:
+    "Simplified Read/Write traits for no_std usage"
+
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://crates.io/crates/ciborium-io/0.2.0"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://static.crates.io/crates/ciborium-io/ciborium-io-0.2.0.crate"
+  }
+  version: "0.2.0"
+  last_upgrade_date { year: 2022 month: 1 day: 17 }
+  license_type: NOTICE
+}
+

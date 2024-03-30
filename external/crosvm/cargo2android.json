@@ -1,0 +1,15 @@
+{
+  "add-module-block": "cargo2android_module.bp",
+  "add-toplevel-block": "cargo2android_defaults.bp",
+  "dependencies": true,
+  "dependency-blocklist": ["aarch64", "x86_64"],
+  "device": true,
+  "features": "audio,usb",
+  "global_defaults": "crosvm_defaults",
+  "no-pkg-vers": true,
+  "no-subdir": true,
+  "patch": "patches/Android.bp.patch",
+  "run": true,
+  "test-blocklist": ["tests/plugins.rs"],
+  "tests": true
+}

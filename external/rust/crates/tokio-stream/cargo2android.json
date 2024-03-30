@@ -1,0 +1,10 @@
+{
+  "apex-available": [
+    "//apex_available:platform",
+    "com.android.bluetooth"
+  ],
+  "device": true,
+  "features": "time,net,io-util,fs",
+  "min-sdk-version": "29",
+  "run": true
+}

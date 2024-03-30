@@ -1,0 +1,56 @@
+<abi-corpus version='2.1' path='data/test-read-common/test-PR26568-1.o'>
+  <elf-function-symbols>
+    <elf-symbol name='fun' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+  </elf-function-symbols>
+  <abi-instr address-size='64' language='LANG_C'>
+    <class-decl name='A' size-in-bits='64' alignment-in-bits='64' is-struct='yes' visibility='default' id='type-id-1'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='' type-id='type-id-2' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='' type-id='type-id-3' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='x' type-id='type-id-4' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='' type-id='type-id-5' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='y' type-id='type-id-6' visibility='default'/>
+      </data-member>
+    </class-decl>
+    <class-decl name='' size-in-bits='32' alignment-in-bits='32' is-struct='yes' is-anonymous='yes' visibility='default' id='type-id-3'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='x' type-id='type-id-4' visibility='default'/>
+      </data-member>
+    </class-decl>
+    <class-decl name='' size-in-bits='64' alignment-in-bits='64' is-struct='yes' is-anonymous='yes' visibility='default' id='type-id-5'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='y' type-id='type-id-6' visibility='default'/>
+      </data-member>
+    </class-decl>
+    <type-decl name='int' size-in-bits='32' alignment-in-bits='32' id='type-id-4'/>
+    <type-decl name='long int' size-in-bits='64' alignment-in-bits='64' id='type-id-6'/>
+    <union-decl name='' size-in-bits='64' is-anonymous='yes' visibility='default' id='type-id-2'>
+      <data-member access='public'>
+        <var-decl name='' type-id='type-id-3' visibility='default'/>
+      </data-member>
+      <data-member access='public'>
+        <var-decl name='x' type-id='type-id-4' visibility='default'/>
+      </data-member>
+      <data-member access='public'>
+        <var-decl name='' type-id='type-id-5' visibility='default'/>
+      </data-member>
+      <data-member access='public'>
+        <var-decl name='y' type-id='type-id-6' visibility='default'/>
+      </data-member>
+    </union-decl>
+    <pointer-type-def type-id='type-id-1' size-in-bits='64' alignment-in-bits='64' id='type-id-7'/>
+    <function-decl name='fun' visibility='default' binding='global' size-in-bits='64' alignment-in-bits='8'>
+      <parameter type-id='type-id-7'/>
+      <return type-id='type-id-8'/>
+    </function-decl>
+    <type-decl name='void' id='type-id-8'/>
+  </abi-instr>
+</abi-corpus>

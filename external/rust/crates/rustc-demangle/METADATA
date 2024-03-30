@@ -1,0 +1,19 @@
+name: "rustc-demangle"
+description: "Rust compiler symbol demangling."
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://crates.io/crates/rustc-demangle"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://static.crates.io/crates/rustc-demangle/rustc-demangle-0.1.21.crate"
+  }
+  version: "0.1.21"
+  license_type: NOTICE
+  last_upgrade_date {
+    year: 2021
+    month: 9
+    day: 22
+  }
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="5" by="lint 7.2.0-dev" client="" dependencies="true" name="" type="baseline" variant="all" version="7.2.0-dev">
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 33 (current min is 31): `android.app.admin.DevicePolicyManager#getWifiSsidPolicy`">
+        <location
+            file="frameworks/opt/net/wifi/libs/WifiTrackerLib/src/com/android/wifitrackerlib/NonSdkApiWrapper.java"
+            line="131"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 33 (current min is 31): `android.app.admin.DevicePolicyManager#getWifiSsidPolicy`">
+        <location
+            file="frameworks/opt/net/wifi/libs/WifiTrackerLib/src/com/android/wifitrackerlib/NonSdkApiWrapper.java"
+            line="131"/>
+    </issue>
+
+</issues>

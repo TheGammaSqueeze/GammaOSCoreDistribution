@@ -1,0 +1,13 @@
+#
+# felix specific modules loaded during first stage init from vendor_kernel_boot
+# (platform common modules are from vendor_boot_modules.gs201)
+#
+hall_sensor.ko
+panel-samsung-ana6707-f10.ko
+panel-samsung-ea8182-f10.ko
+panel-samsung-s6e3fc3.ko
+panel-samsung-s6e3fc3-p10.ko
+panel-samsung-s6e3hc2.ko
+panel-samsung-s6e3hc3.ko
+panel-samsung-sofef01.ko
+google_dual_batt_gauge.ko

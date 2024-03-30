@@ -1,0 +1,45 @@
+import org.gradle.internal.jvm.Jvm
+import org.robolectric.gradle.DeployedRoboJavaModulePlugin
+import org.robolectric.gradle.RoboJavaModulePlugin
+
+apply plugin: RoboJavaModulePlugin
+apply plugin: DeployedRoboJavaModulePlugin
+
+// Disable annotation processor for tests
+compileTestJava {
+    options.compilerArgs.add("-proc:none")
+}
+
+test {
+    enabled = false
+}
+
+dependencies {
+    // Project dependencies
+    implementation project(":annotations")
+    implementation project(":shadowapi")
+
+    // Compile dependencies
+    implementation "com.google.errorprone:error_prone_annotation:$errorproneVersion"
+    implementation "com.google.errorprone:error_prone_refaster:$errorproneVersion"
+    implementation "com.google.errorprone:error_prone_check_api:$errorproneVersion"
+    compileOnly "com.google.auto.service:auto-service-annotations:$autoServiceVersion"
+    compileOnly(AndroidSdk.MAX_SDK.coordinates) { force = true }
+
+    annotationProcessor "com.google.auto.service:auto-service:$autoServiceVersion"
+    annotationProcessor "com.google.errorprone:error_prone_core:$errorproneVersion"
+
+    // in jdk 9, tools.jar disappears!
+    def toolsJar = Jvm.current().getToolsJar()
+    if (toolsJar != null) {
+        compile files(toolsJar)
+    }
+
+    // Testing dependencies
+    testImplementation "junit:junit:${junitVersion}"
+    testImplementation "com.google.truth:truth:${truthVersion}"
+    testImplementation("com.google.errorprone:error_prone_test_helpers:${errorproneVersion}") {
+        exclude group: 'junit', module: 'junit' // because it depends on a snapshot!?
+    }
+    testCompileOnly(AndroidSdk.MAX_SDK.coordinates) { force = true }
+}

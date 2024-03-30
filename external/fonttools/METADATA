@@ -1,0 +1,23 @@
+# *** THIS PACKAGE HAS SPECIAL LICENSING CONDITIONS.  PLEASE
+#     CONSULT THE OWNERS AND opensource-licensing@google.com BEFORE
+#     DEPENDING ON IT IN YOUR PROJECT. ***
+name: "fonttools"
+description: "fontTools is a library for manipulating fonts, written in Python."
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://github.com/fonttools/fonttools"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://github.com/fonttools/fonttools/archive/4.31.2.zip"
+  }
+  version: "4.31.2"
+  license_type: BY_EXCEPTION_ONLY
+  license_note: "contains OFL fonts"
+  last_upgrade_date {
+    year: 2022
+    month: 3
+    day: 25
+  }
+}

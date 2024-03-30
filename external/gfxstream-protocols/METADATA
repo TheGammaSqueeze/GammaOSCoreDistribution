@@ -1,0 +1,15 @@
+name: "gfxstream-protocols"
+description:
+    "gfxstream-protocols is a package containing Vulkan specifications and "
+    "Vulkan encoder/decoder generator scripts used for gfxstream "
+    "(https://android.googlesource.com/device/generic/vulkan-cereal/)."
+
+third_party {
+  url {
+    type: GIT
+    value: "https://github.com/KhronosGroup/Vulkan-Docs.git"
+  }
+  version: "v1.2.198"
+  last_upgrade_date { year: 2022 month: 2 day: 3 }
+  license_type: NOTICE 
+}

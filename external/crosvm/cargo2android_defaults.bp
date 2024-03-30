@@ -1,0 +1,27 @@
+rust_defaults {
+    name: "crosvm_defaults",
+    edition: "2018",
+    enabled: false,
+    target: {
+        linux_glibc_x86_64: {
+            enabled: true,
+        },
+        linux_musl_x86_64: {
+            enabled: true,
+        },
+        android64: {
+            compile_multilib: "64",
+            enabled: true,
+        },
+        linux_bionic_arm64: {
+            enabled: true,
+        },
+        darwin: {
+            enabled: false,
+        },
+    },
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.virt",
+    ],
+}

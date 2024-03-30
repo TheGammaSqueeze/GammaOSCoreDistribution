@@ -1,0 +1,26 @@
+[package]
+name = "async-stream"
+# When releasing to crates.io:
+# - Update version number
+#   - README.md
+# - Update CHANGELOG.md
+# - Create git tag
+version = "0.3.2"
+edition = "2018"
+license = "MIT"
+authors = ["Carl Lerche <me@carllerche.com>"]
+description = "Asynchronous streams using async & await notation"
+documentation = "https://docs.rs/async-stream"
+homepage = "https://github.com/tokio-rs/async-stream"
+repository = "https://github.com/tokio-rs/async-stream"
+readme = "README.md"
+
+[dependencies]
+async-stream-impl = { version = "=0.3.2", path = "../async-stream-impl" }
+futures-core = "0.3"
+
+[dev-dependencies]
+futures-util = "0.3"
+tokio = { version = "1", features = ["full"] }
+tokio-test = "0.4"
+trybuild = "1"

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2015 The CyanogenMod Project
+                   2017-2023 The LineageOS Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="permlab_modifyProfiles">سىستېما سەپلەنمىسىنى ئۆزگەرتىش</string>
+    <string name="permdesc_modifyProfiles">ئەپنىڭ سىستېما سەپلەنمىسىنى ئۆزگەرتىشىگە يول قويۇش.</string>
+    <string name="permlab_useHardwareFramework">قاتتىق دىتال جازىسىنى ئىشلىتىش</string>
+    <string name="profileNameDefault">كۆڭۈلدىكى</string>
+    <string name="profileNameWork">ئىش</string>
+    <string name="profileNameHome">باش ئېكران</string>
+    <string name="profileNameSilent">ئۈنسىز</string>
+    <string name="profileNameNight">كېچە</string>
+    <string name="profileNameAutomobile">ئاپتوموبىل</string>
+    <string name="profileGroupPhone">تېلېفون</string>
+    <string name="profileGroupCalendar">كالېندار</string>
+    <string name="profileGroupGmail">Gmail</string>
+    <string name="profileGroupEmail">ئېلخەت</string>
+    <string name="profileGroupSMS">قىسقا ئۇچۇر</string>
+    <string name="wildcardProfile">باشقا</string>
+    <string name="live_display_auto">ئاپتوماتېك</string>
+    <string name="live_display_auto_summary">كۈن چىققان ۋە كۈن پاتقاندىن كېيىن ئېكران رەڭ تېمپېراتورىسىنى ئۆزلۈكىدىن تەڭشەيدۇ</string>
+    <string name="live_display_off">تاقاق</string>
+    <string name="live_display_off_summary">بارلىق تەڭشەشلەرنى چەكلەيدۇ</string>
+    <string name="live_display_day">كۈن</string>
+    <string name="live_display_day_summary">كۈندۈز تەڭشەكلىرىنىلا ئىشلىتىدۇ</string>
+    <string name="live_display_night">كېچە</string>
+    <string name="live_display_night_summary">كېچە تەڭشەكلىرىنىلا ئىشلىتىدۇ</string>
+    <string name="live_display_outdoor">تالا (قۇياش نۇرى)</string>
+    <string name="live_display_outdoor_summary">تالا تەڭشەكلىرىنىلا ئىشلىتىدۇ</string>
+    <string name="live_display_hint">LiveDisplay كۆز چارچىشىنى يېنىكلىتىشكە ياردەم بېرىدۇ، كېچىدە ئۇخلىشىڭىزغا ياردەم بېرىدۇ. سىناش ئۈچۈن بۇ جاينى چېكىڭ!</string>
+</resources>

@@ -1,0 +1,53 @@
+adamp@google.com
+alanv@google.com
+asc@google.com
+cinek@google.com
+dsandler@android.com
+dsandler@google.com
+dupin@google.com
+hackbod@android.com
+hackbod@google.com
+ilyamaty@google.com
+jaggies@google.com
+jdemeulenaere@google.com
+jsharkey@android.com
+jsharkey@google.com
+juliacr@google.com
+kchyn@google.com
+michaelwr@google.com
+nandana@google.com
+narayan@google.com
+ogunwale@google.com
+patb@google.com
+shanh@google.com
+svetoslavganov@android.com
+svetoslavganov@google.com
+toddke@google.com
+tsuji@google.com
+yamasani@google.com
+
+# WindowManager team
+# TODO(262451702): Move WindowManager configs out of config.xml in a separate file
+per-file res/values/config.xml = file:/services/core/java/com/android/server/wm/OWNERS
+per-file res/values/symbols.xml = file:/services/core/java/com/android/server/wm/OWNERS
+
+# Resources finalization
+per-file res/xml/public-staging.xml = file:/tools/aapt2/OWNERS
+per-file res/xml/public-final.xml = file:/tools/aapt2/OWNERS
+
+# Multiuser
+per-file res/xml/config_user_types.xml = file:/MULTIUSER_OWNERS
+
+# Car
+per-file res/values/dimens_car.xml = file:/platform/packages/services/Car:/OWNERS
+
+# Wear
+per-file res/*-watch/* = file:/platform/frameworks/opt/wear:/OWNERS
+
+# PowerProfile
+per-file res/xml/power_profile.xml = file:/BATTERY_STATS_OWNERS
+per-file res/xml/power_profile_test.xml = file:/BATTERY_STATS_OWNERS
+
+# Telephony
+per-file res/values/config_telephony.xml = file:/platform/frameworks/opt/telephony:/OWNERS
+per-file res/xml/sms_short_codes.xml = file:/platform/frameworks/opt/telephony:/OWNERS

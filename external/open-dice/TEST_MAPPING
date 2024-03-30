@@ -1,0 +1,10 @@
+{
+  "presubmit": [
+    {
+      "name": "libopen_dice_cbor_bindgen_test"
+    },
+    {
+      "name": "libopen_dice_bcc_bindgen_test"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+<abi-corpus version='2.1' path='data/test-read-ctf/test-callback2.o'>
+  <elf-variable-symbols>
+    <elf-symbol name='s0' size='8' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+  </elf-variable-symbols>
+  <abi-instr address-size='64' language='LANG_C'>
+    <class-decl name='s0' size-in-bits='64' alignment-in-bits='64' is-struct='yes' visibility='default' id='type-id-1'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='mem_fun' type-id='type-id-2' visibility='default'/>
+      </data-member>
+    </class-decl>
+    <type-decl name='int' size-in-bits='32' alignment-in-bits='32' id='type-id-3'/>
+    <pointer-type-def type-id='type-id-4' size-in-bits='64' alignment-in-bits='64' id='type-id-2'/>
+    <pointer-type-def type-id='type-id-1' size-in-bits='64' alignment-in-bits='64' id='type-id-5'/>
+    <var-decl name='s0' type-id='type-id-5' mangled-name='s0' visibility='default'/>
+    <function-type size-in-bits='64' alignment-in-bits='8' id='type-id-4'>
+      <parameter type-id='type-id-5'/>
+      <return type-id='type-id-3'/>
+    </function-type>
+  </abi-instr>
+</abi-corpus>

@@ -1,0 +1,4 @@
+[style]
+based_on_style = pep8
+blank_line_before_module_docstring = true
+indent_width = 2

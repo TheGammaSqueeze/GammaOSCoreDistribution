@@ -1,0 +1,12 @@
+diff --git a/Android.bp b/Android.bp
+index 62e8f1f..691d848 100644
+--- a/Android.bp
++++ b/Android.bp
+@@ -12,7 +12,6 @@ rust_library_host {
+     srcs: ["src/lib.rs"],
+     edition: "2015",
+     rustlibs: [
+-        "libmaplit",
+         "libpest",
+     ],
+     compile_multilib: "first",

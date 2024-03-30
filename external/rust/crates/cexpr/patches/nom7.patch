@@ -1,0 +1,84 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 8f6dcc2..a3067d0 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -21,7 +21,7 @@ keywords = ["C", "expression", "parser"]
+ license = "Apache-2.0/MIT"
+ repository = "https://github.com/jethrogb/rust-cexpr"
+ [dependencies.nom]
+-version = "6"
++version = "7"
+ features = ["std"]
+ default-features = false
+ [dev-dependencies.clang-sys]
+diff --git a/src/expr.rs b/src/expr.rs
+index 5dce3c7..7f7e458 100644
+--- a/src/expr.rs
++++ b/src/expr.rs
+@@ -308,7 +308,7 @@ impl<'a> PRef<'a> {
+             pair(complete(one_of_punctuation(&["*", "/", "%"][..])), |i| {
+                 self.unary(i)
+             }),
+-            acc,
++            move || acc.clone(),
+             |mut acc, (op, val): (&[u8], EvalResult)| {
+                 match op[0] as char {
+                     '*' => acc *= &val,
+@@ -327,7 +327,7 @@ impl<'a> PRef<'a> {
+             pair(complete(one_of_punctuation(&["+", "-"][..])), |i| {
+                 self.mul_div_rem(i)
+             }),
+-            acc,
++            move || acc.clone(),
+             |mut acc, (op, val): (&[u8], EvalResult)| {
+                 match op[0] as char {
+                     '+' => acc += &val,
+@@ -345,7 +345,7 @@ impl<'a> PRef<'a> {
+             pair(complete(one_of_punctuation(&["<<", ">>"][..])), |i| {
+                 self.add_sub(i)
+             }),
+-            acc,
++            move || acc.clone(),
+             |mut acc, (op, val): (&[u8], EvalResult)| {
+                 match op {
+                     b"<<" => acc <<= &val,
+@@ -361,7 +361,7 @@ impl<'a> PRef<'a> {
+         let (input, acc) = self.shl_shr(input)?;
+         numeric(fold_many0(
+             preceded(complete(p("&")), |i| self.shl_shr(i)),
+-            acc,
++            move || acc.clone(),
+             |mut acc, val: EvalResult| {
+                 acc &= &val;
+                 acc
+@@ -373,7 +373,7 @@ impl<'a> PRef<'a> {
+         let (input, acc) = self.and(input)?;
+         numeric(fold_many0(
+             preceded(complete(p("^")), |i| self.and(i)),
+-            acc,
++            move || acc.clone(),
+             |mut acc, val: EvalResult| {
+                 acc ^= &val;
+                 acc
+@@ -385,7 +385,7 @@ impl<'a> PRef<'a> {
+         let (input, acc) = self.xor(input)?;
+         numeric(fold_many0(
+             preceded(complete(p("|")), |i| self.xor(i)),
+-            acc,
++            move || acc.clone(),
+             |mut acc, val: EvalResult| {
+                 acc |= &val;
+                 acc
+diff --git a/src/literal.rs b/src/literal.rs
+index b74699f..68e85c7 100644
+--- a/src/literal.rs
++++ b/src/literal.rs
+@@ -224,7 +224,7 @@ fn c_string(i: &[u8]) -> nom::IResult<&[u8], Vec<u8>> {
+                 map(escaped_char, |c: CChar| c.into()),
+                 map(is_not([b'\\', b'"']), |c: &[u8]| c.into()),
+             )),
+-            Vec::new(),
++            Vec::new,
+             |mut v: Vec<u8>, res: Vec<u8>| {
+                 v.extend_from_slice(&res);
+                 v

@@ -1,0 +1,19 @@
+name: "vsock"
+description: "Virtio socket support for Rust"
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://crates.io/crates/vsock"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://static.crates.io/crates/vsock/vsock-0.2.6.crate"
+  }
+  version: "0.2.6"
+  license_type: NOTICE
+  last_upgrade_date {
+    year: 2022
+    month: 3
+    day: 1
+  }
+}

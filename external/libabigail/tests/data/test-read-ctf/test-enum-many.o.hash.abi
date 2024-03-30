@@ -1,0 +1,69 @@
+<abi-corpus version='2.1' path='data/test-read-ctf/test-enum-many.o'>
+  <elf-variable-symbols>
+    <elf-symbol name='bar' size='4' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='foo' size='4' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+  </elf-variable-symbols>
+  <abi-instr address-size='64' language='LANG_C'>
+    <type-decl name='' is-anonymous='yes' size-in-bits='32' alignment-in-bits='32' id='811c9dc5'/>
+    <enum-decl name='e' linkage-name='e' id='a6c2eddf'>
+      <underlying-type type-id='811c9dc5'/>
+      <enumerator name='ENUMSAMPLE_1' value='0'/>
+      <enumerator name='ENUMSAMPLE_2' value='1'/>
+    </enum-decl>
+    <enum-decl name='ie' linkage-name='ie' id='1ee696ca'>
+      <underlying-type type-id='811c9dc5'/>
+      <enumerator name='IE_0' value='-10'/>
+      <enumerator name='IE_1' value='-9'/>
+      <enumerator name='IE_2' value='-8'/>
+      <enumerator name='IE_3' value='-7'/>
+      <enumerator name='IE_4' value='-6'/>
+      <enumerator name='IE_5' value='-5'/>
+      <enumerator name='IE_6' value='-4'/>
+      <enumerator name='IE_7' value='-3'/>
+      <enumerator name='IE_8' value='-2'/>
+      <enumerator name='IE_9' value='-1'/>
+      <enumerator name='IE_A' value='0'/>
+      <enumerator name='IE_B' value='1'/>
+      <enumerator name='IE_C' value='2'/>
+      <enumerator name='IE_D' value='3'/>
+      <enumerator name='IE_E' value='4'/>
+      <enumerator name='IE_F' value='5'/>
+      <enumerator name='IE_10' value='6'/>
+      <enumerator name='IE_11' value='7'/>
+      <enumerator name='IE_12' value='8'/>
+      <enumerator name='IE_13' value='9'/>
+      <enumerator name='IE_14' value='10'/>
+      <enumerator name='IE_15' value='11'/>
+      <enumerator name='IE_16' value='12'/>
+      <enumerator name='IE_17' value='13'/>
+      <enumerator name='IE_18' value='14'/>
+      <enumerator name='IE_19' value='15'/>
+      <enumerator name='IE_1A' value='16'/>
+      <enumerator name='IE_1B' value='17'/>
+      <enumerator name='IE_1C' value='18'/>
+      <enumerator name='IE_1D' value='19'/>
+      <enumerator name='IE_1E' value='20'/>
+      <enumerator name='IE_1F' value='21'/>
+      <enumerator name='IE_20' value='22'/>
+      <enumerator name='IE_21' value='23'/>
+      <enumerator name='IE_22' value='24'/>
+      <enumerator name='IE_23' value='25'/>
+      <enumerator name='IE_24' value='26'/>
+      <enumerator name='IE_25' value='27'/>
+      <enumerator name='IE_26' value='28'/>
+      <enumerator name='IE_27' value='29'/>
+      <enumerator name='IE_28' value='30'/>
+      <enumerator name='IE_29' value='31'/>
+      <enumerator name='IE_2A' value='32'/>
+      <enumerator name='IE_2B' value='33'/>
+      <enumerator name='IE_2C' value='34'/>
+      <enumerator name='IE_2D' value='35'/>
+      <enumerator name='IE_2E' value='36'/>
+      <enumerator name='IE_2F' value='37'/>
+    </enum-decl>
+    <type-decl name='int' size-in-bits='32' alignment-in-bits='32' id='95e97e5e'/>
+    <type-decl name='unsigned int' size-in-bits='32' alignment-in-bits='32' id='f0981eeb'/>
+    <var-decl name='foo' type-id='a6c2eddf' mangled-name='foo' visibility='default'/>
+    <var-decl name='bar' type-id='1ee696ca' mangled-name='bar' visibility='default'/>
+  </abi-instr>
+</abi-corpus>

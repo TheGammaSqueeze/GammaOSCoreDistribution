@@ -1,0 +1,75 @@
+diff --git a/Android.bp b/Android.bp
+index 1764165..df125da 100644
+--- a/Android.bp
++++ b/Android.bp
+@@ -36,13 +36,6 @@
+     ],
+ }
+ 
+-genrule {
+-    name: "copy_libsqlite3-sys_build_out",
+-    srcs: ["out/*"],
+-    cmd: "cp $(in) $(genDir)",
+-    out: ["bindgen.rs"],
+-}
+-
+ rust_library {
+     name: "liblibsqlite3_sys",
+     host_supported: true,
+@@ -50,7 +43,7 @@
+     cargo_env_compat: true,
+     srcs: [
+         "src/lib.rs",
+-        ":copy_libsqlite3-sys_build_out",
++        ":libsqlite3_bindgen",
+     ],
+     edition: "2018",
+     features: [
+@@ -59,7 +52,7 @@
+         "pkg-config",
+         "vcpkg",
+     ],
+-    shared_libs: ["libsqlite3"],
++    shared_libs: ["libsqlite"],
+ }
+ 
+ rust_test {
+@@ -69,7 +62,7 @@
+     cargo_env_compat: true,
+     srcs: [
+         "src/lib.rs",
+-        ":copy_libsqlite3-sys_build_out",
++        ":libsqlite3_bindgen",
+     ],
+     test_suites: ["general-tests"],
+     auto_gen_config: true,
+@@ -83,7 +76,28 @@
+         "pkg-config",
+         "vcpkg",
+     ],
+-    shared_libs: ["libsqlite3"],
++    shared_libs: ["libsqlite"],
++}
++
++rust_bindgen {
++    name: "libsqlite3_bindgen",
++    host_supported: true,
++    crate_name: "sqlite3_bindgen",
++    custom_bindgen: "sqlite3_bindgen_build",
++    wrapper_src: "wrapper.h",
++    source_stem: "bindgen",
++    cflags: ["-I external/sqlite/dist"],
++    defaults: ["sqlite-defaults"],
++}
++
++rust_test {
++    name: "libsqlite3_bindgen_test",
++    srcs: [":libsqlite3_bindgen"],
++    crate_name: "sqlite3_bindgen_test",
++    test_suites: ["general-tests"],
++    auto_gen_config: true,
++    clippy_lints: "none",
++    lints: "none",
+ }
+ 
+ rust_library {

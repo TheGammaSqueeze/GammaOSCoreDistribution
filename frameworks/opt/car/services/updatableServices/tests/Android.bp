@@ -1,0 +1,50 @@
+package {
+    // See: http://go/android-license-faq
+    default_applicable_licenses: [
+        "Android-Apache-2.0",
+    ],
+}
+
+android_test {
+    name: "FrameworkOptCarServicesUpdatableTest",
+
+    srcs: [
+        "src/**/*.java",
+    ],
+
+    platform_apis: true,
+
+    certificate: "platform",
+
+    optimize: {
+        enabled: false,
+    },
+
+    libs: [
+        "android.car",
+        "android.car.builtin",
+        "android.test.runner",
+        "android.test.base",
+        "android.hardware.automotive.vehicle-V2.0-java",
+    ],
+
+    static_libs: [
+        "android.car.test.utils",
+        "android.car.watchdoglib",
+        "androidx.test.ext.junit",
+        "androidx.test.rules",
+        "car-frameworks-service.impl",
+        "car-frameworks-service-module",
+        "mockito-target-extended-minus-junit4",
+        "services.core",
+        "testng",
+        "truth-prebuilt",
+    ],
+
+    // mockito-target-extended dependencies
+    jni_libs: [
+        "libdexmakerjvmtiagent",
+        "libstaticjvmtiagent",
+    ],
+
+}

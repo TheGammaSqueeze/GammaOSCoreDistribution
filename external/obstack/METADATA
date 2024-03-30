@@ -1,0 +1,19 @@
+name: "obstack"
+description: "obstack.c and obstack.h from the GCC libiberty library."
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://gcc.gnu.org/onlinedocs/libiberty/Obstacks.html"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://github.com/gcc-mirror/gcc/archive/releases/gcc-11.2.0.tar.gz"
+  }
+  version: "releases/gcc-11.2.0"
+  license_type: RESTRICTED
+  last_upgrade_date {
+    year: 2021
+    month: 10
+    day: 1
+  }
+}

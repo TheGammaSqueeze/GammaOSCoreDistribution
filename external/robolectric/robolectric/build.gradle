@@ -1,0 +1,84 @@
+import org.robolectric.gradle.DeployedRoboJavaModulePlugin
+import org.robolectric.gradle.RoboJavaModulePlugin
+
+apply plugin: RoboJavaModulePlugin
+apply plugin: DeployedRoboJavaModulePlugin
+
+dependencies {
+    annotationProcessor "com.google.auto.service:auto-service:$autoServiceVersion"
+    annotationProcessor "com.google.errorprone:error_prone_core:$errorproneVersion"
+
+    api project(":annotations")
+    api project(":junit")
+    api project(":pluginapi")
+    api project(":resources")
+    api project(":sandbox")
+    api project(":utils")
+    api project(":utils:reflector")
+    api project(":plugins:maven-dependency-resolver")
+    api "javax.inject:javax.inject:1"
+    compileOnly "com.google.auto.service:auto-service-annotations:$autoServiceVersion"
+    api "javax.annotation:javax.annotation-api:1.3.2"
+
+    // We need to have shadows-framework.jar on the runtime system classpath so ServiceLoader
+    //   can find its META-INF/services/org.robolectric.shadows.ShadowAdapter.
+    api project(":shadows:framework")
+
+    implementation 'org.conscrypt:conscrypt-openjdk-uber:2.5.2'
+    api "org.bouncycastle:bcprov-jdk18on:1.72"
+    compileOnly "com.google.code.findbugs:jsr305:3.0.2"
+
+    compileOnly AndroidSdk.MAX_SDK.coordinates
+    compileOnly "junit:junit:${junitVersion}"
+    api "androidx.test:monitor:$axtMonitorVersion@aar"
+    implementation "androidx.test.espresso:espresso-idling-resource:$espressoVersion@aar"
+
+    testImplementation "junit:junit:${junitVersion}"
+    testImplementation "com.google.truth:truth:${truthVersion}"
+    testImplementation "com.google.truth.extensions:truth-java8-extension:${truthVersion}"
+    testImplementation "org.mockito:mockito-core:${mockitoVersion}"
+    testImplementation "org.hamcrest:hamcrest-junit:2.0.0.0"
+    testImplementation "androidx.test:core:$axtCoreVersion@aar"
+    testImplementation "androidx.test.ext:junit:$axtJunitVersion@aar"
+    testImplementation "androidx.test.ext:truth:$axtTruthVersion@aar"
+    testImplementation "androidx.test:runner:$axtRunnerVersion@aar"
+    testImplementation("com.google.guava:guava:$guavaJREVersion")
+    testCompileOnly AndroidSdk.MAX_SDK.coordinates // compile against latest Android SDK
+    testRuntimeOnly AndroidSdk.MAX_SDK.coordinates // run against whatever this JDK supports
+}
+
+project.apply plugin: CheckApiChangesPlugin
+
+checkApiChanges {
+    from = [
+            "org.robolectric:robolectric:${apiCompatVersion}@jar",
+            "org.robolectric:annotations:${apiCompatVersion}@jar",
+            "org.robolectric:junit:${apiCompatVersion}@jar",
+            "org.robolectric:resources:${apiCompatVersion}@jar",
+            "org.robolectric:sandbox:${apiCompatVersion}@jar",
+            "org.robolectric:utils:${apiCompatVersion}@jar",
+            "org.robolectric:shadowapi:${apiCompatVersion}@jar",
+            "org.robolectric:shadows-framework:${apiCompatVersion}@jar",
+    ]
+
+    to = [
+            project(":robolectric"),
+            project(":annotations"),
+            project(":junit"),
+            project(":resources"),
+            project(":sandbox"),
+            project(":shadows:framework"),
+            project(":utils"),
+            project(":shadowapi"),
+    ]
+
+    entryPoints += "org.robolectric.RobolectricTestRunner"
+    expectedChanges = [
+            "^org.robolectric.util.ActivityController#",
+            "^org.robolectric.util.ComponentController#",
+            "^org.robolectric.util.ContentProviderController#",
+            "^org.robolectric.util.FragmentController#",
+            "^org.robolectric.util.IntentServiceController#",
+            "^org.robolectric.util.ServiceController#",
+    ]
+}

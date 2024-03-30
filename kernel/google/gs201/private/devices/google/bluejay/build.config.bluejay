@@ -1,0 +1,54 @@
+KERNEL_DIR=private/gs-google
+
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.gs101
+VENDOR_RAMDISK_BINARY=${ROOT_DIR}/private/devices/google/bluejay/vendor_ramdisk-bluejay.img
+
+MAKE_GOALS="$MAKE_GOALS
+modules
+google/devices/bluejay/google-base/gs101-a0.dtb
+google/devices/bluejay/google-base/gs101-b0.dtb
+google/devices/bluejay/gs101-bluejay-dev.dtb
+google/devices/bluejay/gs101-bluejay-proto1_0.dtb
+google/devices/bluejay/gs101-bluejay-proto1_1.dtb
+google/devices/bluejay/gs101-bluejay-evt1_0.dtb
+google/devices/bluejay/gs101-bluejay-evt1_1.dtb
+google/devices/bluejay/gs101-bluejay-evt1_2.dtb
+google/devices/bluejay/gs101-bluejay-dvt1_0.dtb
+google/devices/bluejay/gs101-bluejay-dvt1_1.dtb
+google/devices/bluejay/gs101-bluejay-pvt1_0.dtb
+google/devices/bluejay/gs101-bluejay-mp1_0.dtb
+google/devices/bluejay/dtbo.img
+google/devices/bluejay/google-base/gs101-dpm-eng.dtbo
+google/devices/bluejay/google-base/gs101-dpm-user.dtbo
+"
+
+FILES="
+arch/arm64/boot/dts/google/devices/bluejay/google-base/gs101-a0.dtb
+arch/arm64/boot/dts/google/devices/bluejay/google-base/gs101-b0.dtb
+arch/arm64/boot/dts/google/devices/bluejay/dtbo.img
+arch/arm64/boot/dts/google/devices/bluejay/google-base/gs101-dpm-eng.dtbo
+arch/arm64/boot/dts/google/devices/bluejay/google-base/gs101-dpm-user.dtbo
+"
+
+if [ -z "$MIXED_BUILD" ]; then
+FILES="$FILES
+$DEVICE_KERNEL_FILES
+"
+fi
+
+# Concatenate vendor_boot_modules.gs101 (platform common) and vendor_boot_modules.bluejay (device specified) into one file
+POST_KERNEL_BUILD_CMDS="concat_vendor_boot_modules"
+function concat_vendor_boot_modules() {
+  cat ${KERNEL_DIR}/vendor_boot_modules.gs101 \
+    private/devices/google/bluejay/vendor_boot_modules.bluejay > \
+    ${OUT_DIR}/vendor_boot_modules.concat
+  MODULES_LIST=${OUT_DIR}/vendor_boot_modules.concat
+}
+
+VENDOR_RAMDISK_CMDS="modify_vendor_ramdisk"
+function modify_vendor_ramdisk() {
+  ln -f first_stage_ramdisk/system/etc/fstab.gs101 first_stage_ramdisk/fstab.gs101
+  ln -f init.recovery.gs101.rc init.recovery.bluejay.rc
+}
+
+EXT_MODULES_MAKEFILE=private/devices/google/bluejay/Makefile.ext_modules.bluejay

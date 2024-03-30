@@ -1,0 +1,20 @@
+<abi-corpus version='2.1' path='data/test-read-ctf/test-list-struct.o'>
+  <elf-variable-symbols>
+    <elf-symbol name='n1' size='16' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='n2' size='16' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+  </elf-variable-symbols>
+  <abi-instr address-size='64' language='LANG_C'>
+    <class-decl name='rb_node_b' size-in-bits='128' alignment-in-bits='64' is-struct='yes' visibility='default' id='type-id-1'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='this' type-id='type-id-2' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='64'>
+        <var-decl name='a' type-id='type-id-3' visibility='default'/>
+      </data-member>
+    </class-decl>
+    <type-decl name='int' size-in-bits='32' alignment-in-bits='32' id='type-id-3'/>
+    <pointer-type-def type-id='type-id-1' size-in-bits='64' alignment-in-bits='64' id='type-id-2'/>
+    <var-decl name='n1' type-id='type-id-1' mangled-name='n1' visibility='default'/>
+    <var-decl name='n2' type-id='type-id-1' mangled-name='n2' visibility='default'/>
+  </abi-instr>
+</abi-corpus>

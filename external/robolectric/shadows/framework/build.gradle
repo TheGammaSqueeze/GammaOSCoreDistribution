@@ -1,0 +1,66 @@
+import org.robolectric.gradle.DeployedRoboJavaModulePlugin
+import org.robolectric.gradle.RoboJavaModulePlugin
+
+apply plugin: RoboJavaModulePlugin
+apply plugin: DeployedRoboJavaModulePlugin
+
+apply plugin: ShadowsPlugin
+
+shadows {
+    packageName "org.robolectric"
+    sdkCheckMode "ERROR"
+}
+
+configurations {
+    sqlite4java
+}
+
+task copySqliteNatives(type: Copy) {
+    from project.configurations.sqlite4java {
+        include '**/*.dll'
+        include '**/*.so'
+        include '**/*.dylib'
+        rename { String filename ->
+            def filenameMatch = filename =~ /^([^\-]+)-(.+)-${sqlite4javaVersion}\.(.+)/
+            if (filenameMatch) {
+                def platformFilename = filenameMatch[0][1]
+                def platformFolder = filenameMatch[0][2]
+                def platformExtension = filenameMatch[0][3]
+
+                "${platformFolder}/${platformFilename}.${platformExtension}"
+            }
+        }
+    }
+    into project.file("$buildDir/resources/main/sqlite4java")
+}
+
+jar {
+    dependsOn copySqliteNatives
+}
+
+dependencies {
+    api project(":annotations")
+    api project(":nativeruntime")
+    api project(":resources")
+    api project(":pluginapi")
+    api project(":sandbox")
+    api project(":shadowapi")
+    api project(":utils")
+    api project(":utils:reflector")
+    api "androidx.test:monitor:$axtMonitorVersion@aar"
+
+    implementation "com.google.errorprone:error_prone_annotations:$errorproneVersion"
+    compileOnly "com.google.code.findbugs:jsr305:3.0.2"
+    api "com.almworks.sqlite4java:sqlite4java:$sqlite4javaVersion"
+    compileOnly(AndroidSdk.MAX_SDK.coordinates) { force = true }
+    api "com.ibm.icu:icu4j:72.1"
+    api "androidx.annotation:annotation:1.1.0"
+    api "com.google.auto.value:auto-value-annotations:1.10.1"
+    annotationProcessor "com.google.auto.value:auto-value:1.10.1"
+
+    sqlite4java "com.almworks.sqlite4java:libsqlite4java-osx:$sqlite4javaVersion"
+    sqlite4java "com.almworks.sqlite4java:libsqlite4java-linux-amd64:$sqlite4javaVersion"
+    sqlite4java "com.almworks.sqlite4java:sqlite4java-win32-x64:$sqlite4javaVersion"
+    sqlite4java "com.almworks.sqlite4java:libsqlite4java-linux-i386:$sqlite4javaVersion"
+    sqlite4java "com.almworks.sqlite4java:sqlite4java-win32-x86:$sqlite4javaVersion"
+}

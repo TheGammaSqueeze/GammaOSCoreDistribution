@@ -1,0 +1,20 @@
+diff --git a/tests/task_abort.rs b/tests/task_abort.rs
+index cdaa405..ec0eed7 100644
+--- a/tests/task_abort.rs
++++ b/tests/task_abort.rs
+@@ -180,6 +180,7 @@ fn test_abort_wakes_task_3964() {
+ /// Checks that aborting a task whose destructor panics does not allow the
+ /// panic to escape the task.
+ #[test]
++#[cfg(not(target_os = "android"))]
+ fn test_abort_task_that_panics_on_drop_contained() {
+     let rt = Builder::new_current_thread().enable_time().build().unwrap();
+ 
+@@ -204,6 +205,7 @@ fn test_abort_task_that_panics_on_drop_contained() {
+ 
+ /// Checks that aborting a task whose destructor panics has the expected result.
+ #[test]
++#[cfg(not(target_os = "android"))]
+ fn test_abort_task_that_panics_on_drop_returned() {
+     let rt = Builder::new_current_thread().enable_time().build().unwrap();
+ 

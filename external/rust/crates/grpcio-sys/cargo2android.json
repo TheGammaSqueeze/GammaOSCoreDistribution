@@ -1,0 +1,13 @@
+{
+  "apex_available": [
+    "//apex_available:platform",
+    "com.android.bluetooth"
+  ],
+  "device": true,
+  "features": "default,secure",
+  "ignore-cargo-errors": true,
+  "min-sdk-version": "29",
+  "no-pkg-vers": true,
+  "patch": "patches/Android.bp.patch",
+  "run": true
+}

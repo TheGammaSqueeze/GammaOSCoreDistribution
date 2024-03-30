@@ -1,0 +1,72 @@
+diff --git a/rutabaga_gfx/Android.bp b/rutabaga_gfx/Android.bp
+index 40b9b3f5..c368d22f 100644
+--- a/rutabaga_gfx/Android.bp
++++ b/rutabaga_gfx/Android.bp
+@@ -32,14 +32,25 @@ rust_library {
+         "libthiserror",
+     ],
+     proc_macros: ["libremain"],
+-    static_libs: [
+-        "libgbm",
+-        "libvirglrenderer",
+-    ],
+-    shared_libs: [
+-        "libdrm",
+-        "libepoxy",
+-    ],
++    target: {
++        host: {
++            features: ["gfxstream"],
++            shared_libs: [
++                "libgfxstream_backend",
++                "libvirglrenderer",
++            ],
++        },
++        android: {
++            shared_libs: [
++                "libdrm",
++            ],
++            static_libs: [
++                "libepoxy",
++                "libgbm",
++                "libvirglrenderer",
++            ],
++        },
++    },
+ }
+ 
+ rust_defaults {
+@@ -65,14 +73,25 @@ rust_defaults {
+         "libthiserror",
+     ],
+     proc_macros: ["libremain"],
+-    static_libs: [
+-        "libgbm",
+-        "libvirglrenderer",
+-    ],
+-    shared_libs: [
+-        "libdrm",
+-        "libepoxy",
+-    ],
++    target: {
++        host: {
++            features: ["gfxstream"],
++            shared_libs: [
++                "libgfxstream_backend",
++                "libvirglrenderer",
++            ],
++        },
++        android: {
++            shared_libs: [
++                "libdrm",
++            ],
++            static_libs: [
++                "libepoxy",
++                "libgbm",
++                "libvirglrenderer",
++            ],
++        },
++    },
+ }
+ 
+ rust_test_host {

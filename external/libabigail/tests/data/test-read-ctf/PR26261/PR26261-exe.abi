@@ -1,0 +1,58 @@
+<abi-corpus version='2.1' path='data/test-read-common/PR26261/PR26261-exe'>
+  <elf-function-symbols>
+    <elf-symbol name='__libc_csu_fini' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='__libc_csu_init' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='_start' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='fun_obja' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='fun_objb' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='main' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+    <elf-symbol name='wrapped_call' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+  </elf-function-symbols>
+  <elf-variable-symbols>
+    <elf-symbol name='_IO_stdin_used' size='4' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+  </elf-variable-symbols>
+  <abi-instr address-size='64' language='LANG_C'>
+    <type-decl name='char' size-in-bits='8' alignment-in-bits='8' id='type-id-1'/>
+    <class-decl name='SA' size-in-bits='192' alignment-in-bits='32' is-struct='yes' visibility='default' id='type-id-2'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='m1' type-id='type-id-3' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='64'>
+        <var-decl name='m2' type-id='type-id-4' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='128'>
+        <var-decl name='m3' type-id='type-id-5' visibility='default'/>
+      </data-member>
+    </class-decl>
+    <class-decl name='SB' size-in-bits='128' alignment-in-bits='32' is-struct='yes' visibility='default' id='type-id-6'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='m1' type-id='type-id-3' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='64'>
+        <var-decl name='m2' type-id='type-id-7' visibility='default'/>
+      </data-member>
+    </class-decl>
+    <type-decl name='int' size-in-bits='32' alignment-in-bits='32' id='type-id-3'/>
+    <typedef-decl name='fn_ptr_type_a2_t' type-id='type-id-8' id='type-id-5'/>
+    <typedef-decl name='fn_ptr_type_a_t' type-id='type-id-8' id='type-id-4'/>
+    <typedef-decl name='fn_ptr_type_b_t' type-id='type-id-9' id='type-id-7'/>
+    <pointer-type-def type-id='type-id-2' size-in-bits='64' alignment-in-bits='64' id='type-id-10'/>
+    <pointer-type-def type-id='type-id-6' size-in-bits='64' alignment-in-bits='64' id='type-id-11'/>
+    <pointer-type-def type-id='type-id-1' size-in-bits='64' alignment-in-bits='64' id='type-id-12'/>
+    <pointer-type-def type-id='type-id-12' size-in-bits='64' alignment-in-bits='64' id='type-id-13'/>
+    <pointer-type-def type-id='type-id-14' size-in-bits='64' alignment-in-bits='64' id='type-id-8'/>
+    <pointer-type-def type-id='type-id-15' size-in-bits='64' alignment-in-bits='64' id='type-id-9'/>
+    <function-type size-in-bits='64' alignment-in-bits='8' id='type-id-14'>
+      <parameter type-id='type-id-3'/>
+      <parameter type-id='type-id-3'/>
+      <return type-id='type-id-16'/>
+    </function-type>
+    <function-type size-in-bits='64' alignment-in-bits='8' id='type-id-15'>
+      <parameter type-id='type-id-3'/>
+      <parameter type-id='type-id-3'/>
+      <parameter type-id='type-id-1'/>
+      <return type-id='type-id-16'/>
+    </function-type>
+    <type-decl name='void' id='type-id-16'/>
+  </abi-instr>
+</abi-corpus>

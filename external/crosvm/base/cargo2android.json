@@ -1,0 +1,9 @@
+{
+  "add_workspace": true,
+  "device": true,
+  "global_defaults": "crosvm_defaults",
+  "no_presubmit": true,
+  "patch": "patches/Android.bp.patch",
+  "run": true,
+  "tests": true
+}

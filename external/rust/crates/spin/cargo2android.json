@@ -1,0 +1,15 @@
+{
+  "add-toplevel-block": "cargo2android_nostd.bp",
+  "apex-available": [
+    "//apex_available:platform",
+    "com.android.compos",
+    "com.android.resolv",
+    "com.android.virt"
+  ],
+  "dependencies": true,
+  "device": true,
+  "features": "once,std",
+  "min-sdk-version": "29",
+  "run": true,
+  "tests": true
+}

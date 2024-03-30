@@ -1,0 +1,21 @@
+{
+  "apex-available": [
+    "//apex_available:platform",
+    "com.android.runtime",
+    "com.android.art.debug",
+    "com.android.art"
+  ],
+  "device": true,
+  "exported-c-header-dir": [
+    "include"
+  ],
+  "min-sdk-version": "S",
+  "native-bridge-supported": true,
+  "product-available": true,
+  "ramdisk-available": true,
+  "recovery-available": true,
+  "run": true,
+  "tests": true,
+  "vendor-available": true,
+  "vendor-ramdisk-available": true
+}

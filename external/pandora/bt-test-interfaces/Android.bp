@@ -1,0 +1,64 @@
+package {
+    default_applicable_licenses: [
+        "external_pandora_bt-test-interfaces_license",
+    ],
+}
+
+// Added automatically by a large-scale-change
+// See: http://go/android-license-faq
+license {
+    name: "external_pandora_bt-test-interfaces_license",
+    visibility: [":__subpackages__"],
+    license_kinds: [
+        "SPDX-license-identifier-Apache-2.0",
+    ],
+    license_text: [
+        "LICENSE",
+    ],
+}
+
+genrule {
+    name: "protoc-gen-mmi2grpc-python-src-interfaces",
+    srcs: ["python/_build/protoc-gen-custom_grpc"],
+    cmd: "cp $(in) $(out)",
+    out: ["protoc-gen-custom_grpc.py"],
+}
+
+python_binary_host {
+    name: "protoc-gen-custom_grpc",
+    main: "protoc-gen-custom_grpc.py",
+    srcs: [":protoc-gen-mmi2grpc-python-src-interfaces"],
+    libs: ["libprotobuf-python"],
+}
+
+genrule {
+    name: "pandora-python-src",
+    tools: [
+        "aprotoc",
+        "protoc-gen-custom_grpc"
+    ],
+    cmd: "$(location aprotoc)" +
+         "    -Iexternal/pandora/bt-test-interfaces" +
+         "    -Iexternal/protobuf/src" +
+         "    --plugin=protoc-gen-grpc=$(location protoc-gen-custom_grpc)" +
+         "    --grpc_out=$(genDir)" +
+         "    --python_out=$(genDir)" +
+         "    $(in)",
+    srcs: [
+        "pandora/a2dp.proto",
+        "pandora/host.proto",
+    ],
+    out: [
+        "pandora/a2dp_grpc.py",
+        "pandora/a2dp_pb2.py",
+        "pandora/host_grpc.py",
+        "pandora/host_pb2.py",
+    ]
+}
+
+python_library_host {
+    name: "pandora-python",
+    srcs: [
+        ":pandora-python-src",
+    ],
+}

@@ -1,0 +1,21 @@
+diff --git a/src/x509.rs b/src/x509.rs
+index 0f8c0fd..9590fe6 100644
+--- a/src/x509.rs
++++ b/src/x509.rs
+@@ -6,7 +6,6 @@
+ use crate::objects::*;
+ use crate::traits::FromDer;
+ 
+-use data_encoding::HEXUPPER;
+ use der_parser::ber::{parse_ber_integer, BitStringObject, MAX_OBJECT_SIZE};
+ use der_parser::der::*;
+ use der_parser::error::*;
+@@ -365,7 +364,7 @@ fn attribute_value_to_string(attr: &DerObject, _attr_type: &Oid) -> Result<Strin
+         _ => {
+             // type is not a string, get slice and convert it to base64
+             attr.as_slice()
+-                .map(|s| HEXUPPER.encode(s))
++                .map(|s| base64::encode(s))
+                 .or(Err(X509Error::InvalidX509Name))
+         }
+     }

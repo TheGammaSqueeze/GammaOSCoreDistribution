@@ -1,0 +1,10 @@
+{
+  "apex-available": [
+    "//apex_available:platform",
+    "com.android.virt"
+  ],
+  "device": true,
+  "run": true,
+  "tests": true,
+  "vendor-available": true
+}

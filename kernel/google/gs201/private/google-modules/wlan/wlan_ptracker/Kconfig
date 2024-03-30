@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: GPL-2.0-only
+#
+# WiFi Performance Tracker Driver
+#
+
+config WLAN_PTRACKER
+	bool "WiFi Performance Tracker Driver"
+	help
+	 WiFi Performance Tracker support.
+	default y
+
+config DYNAMIC_TWT_SUPPORT
+	bool "Dynamic TWT Setup Support "
+	help
+	 WiFi Performance Tracker support dynamic TWT setup.
+	default y

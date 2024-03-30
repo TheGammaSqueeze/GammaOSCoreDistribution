@@ -1,0 +1,123 @@
+// Copyright (C) 2020 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package {
+    default_applicable_licenses: ["external_libabigail_license"],
+}
+
+// http://go/android-license-faq
+license {
+    name: "external_libabigail_license",
+    visibility: [":__subpackages__"],
+    license_kinds: [
+        "SPDX-license-identifier-Apache-2.0",
+        "SPDX-license-identifier-BSL-1.0",
+        "SPDX-license-identifier-MIT",
+    ],
+    license_text: [
+        "LICENSE",
+    ],
+}
+
+cc_defaults {
+    name: "libabigail_defaults",
+    cflags: [
+        "-DABIGAIL_ROOT_SYSTEM_LIBDIR=\"lib\"",
+        "-DUSE_ANDROID_BUILD_NUMBER",
+        "-fexceptions",
+        "-Wno-implicit-fallthrough",
+    ],
+
+    local_include_dirs: [
+        "src",
+    ],
+
+    static_libs: [
+        "libdw",
+        "libelf",
+        "libicuuc",
+        "libicuuc_stubdata",
+        "libxml2",
+        "libbuildversion",
+        "libz",
+    ],
+
+    visibility: [
+        "//external/stg",
+    ],
+    compile_multilib: "64",
+    target: {
+        darwin: {
+            enabled: false,
+        },
+        musl: {
+            static_libs: ["libfts"],
+        },
+    },
+}
+
+cc_library_host_static {
+    name: "libabigail",
+    defaults: ["libabigail_defaults"],
+    srcs: [
+        "src/*.cc",
+    ],
+    exclude_srcs: [
+        "src/abg-ctf-reader.cc",
+        "src/abg-viz-*",
+    ],
+    export_include_dirs: ["include"],
+}
+
+cc_library_headers {
+    name: "libabigail_src_headers",
+    host_supported: true,
+    visibility: ["//external/stg"],
+    export_include_dirs: [
+        "src",
+    ],
+}
+
+cc_binary_host {
+    name: "abidiff",
+    defaults: ["libabigail_defaults"],
+    srcs: [
+        "tools/abidiff.cc",
+    ],
+    static_libs: [
+        "libabigail",
+    ],
+}
+
+cc_binary_host {
+    name: "abidw",
+    defaults: ["libabigail_defaults"],
+    srcs: [
+        "tools/abidw.cc",
+    ],
+    static_libs: [
+        "libabigail",
+    ],
+}
+
+cc_binary_host {
+    name: "abitidy",
+    defaults: ["libabigail_defaults"],
+    srcs: [
+        "tools/abitidy.cc",
+    ],
+    static_libs: [
+        "libabigail",
+    ],
+}

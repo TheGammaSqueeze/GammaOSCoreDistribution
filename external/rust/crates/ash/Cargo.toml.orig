@@ -1,0 +1,20 @@
+[package]
+name = "ash"
+version = "0.33.3+1.2.191"
+authors = ["maik klein <maikklein@googlemail.com>"]
+description = "Vulkan bindings for Rust"
+license = "MIT"
+repository = "https://github.com/MaikKlein/ash"
+readme = "../README.md"
+keywords = ["vulkan", "graphic"]
+documentation = "https://docs.rs/ash"
+edition = "2018"
+
+[dependencies]
+libloading = { version = "0.7", optional = true }
+
+[features]
+default = ["libloading"]
+
+[package.metadata.release]
+no-dev-version = true

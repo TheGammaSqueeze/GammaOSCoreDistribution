@@ -1,0 +1,8 @@
+URL: https://chromium.googlesource.com/webm/libvpx/+archive/v1.11.0.tar.gz
+Version: v1.11.0
+BugComponent: 42195
+Owners: jzern, jianj
+Local Modifications:
+  218b99892 vp8 encoder: fix some integer overflows
+  05f80a920 vp8,calc_pframe_target_size: fix integer overflow
+  7afb3a676 vp8_update_rate_correction_factors: fix integer overflow

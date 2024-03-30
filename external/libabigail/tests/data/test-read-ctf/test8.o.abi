@@ -1,0 +1,13 @@
+<abi-corpus version='2.1' path='data/test-read-ctf/test8.o'>
+  <elf-function-symbols>
+    <elf-symbol name='bar' type='func-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+  </elf-function-symbols>
+  <abi-instr address-size='64' language='LANG_C'>
+    <pointer-type-def type-id='type-id-1' size-in-bits='64' alignment-in-bits='64' id='type-id-2'/>
+    <function-decl name='bar' visibility='default' binding='global' size-in-bits='64' alignment-in-bits='8'>
+      <parameter type-id='type-id-2'/>
+      <return type-id='type-id-1'/>
+    </function-decl>
+    <type-decl name='void' id='type-id-1'/>
+  </abi-instr>
+</abi-corpus>

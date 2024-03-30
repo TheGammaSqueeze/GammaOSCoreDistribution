@@ -1,0 +1,12 @@
+diff --git a/tests/rt_common.rs b/tests/rt_common.rs
+index cb1d0f6..e5fc7a9 100644
+--- a/tests/rt_common.rs
++++ b/tests/rt_common.rs
+@@ -647,6 +647,7 @@ rt_test! {
+     }
+ 
+     #[test]
++    #[cfg(not(target_os = "android"))]
+     fn panic_in_task() {
+         let rt = rt();
+         let (tx, rx) = oneshot::channel();

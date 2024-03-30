@@ -1,0 +1,81 @@
+
+/*
+ * Copyright (C) 2020 Arm Limited.
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+cc_library_headers {
+	name: "libgralloc_headers",
+	vendor: true,
+	host_supported: true,
+	export_include_dirs: [
+		".",
+	],
+	header_libs: [
+		"libsystem_headers",
+	],
+	export_header_lib_headers: [
+		"libsystem_headers",
+	],
+}
+
+cc_library_shared {
+	name: "libGralloc4Wrapper",
+	vendor: true,
+	srcs: [
+		"libGralloc4Wrapper/wrapper.cpp",
+		"allocator/mali_gralloc_ion.cpp",
+		"allocator/mali_gralloc_shared_memory.cpp",
+		"core/format_info.cpp",
+		"core/mali_gralloc_formats.cpp",
+		"core/mali_gralloc_bufferallocation.cpp",
+		"core/mali_gralloc_bufferdescriptor.cpp",
+		"core/mali_gralloc_reference.cpp",
+		":libgralloc_hidl_common_shared_metadata",
+	],
+	cflags: [
+		"-DGRALLOC_LIBRARY_BUILD=1",
+		"-Wthread-safety",
+	],
+	static_libs: [
+		"libgralloc_capabilities",
+	],
+	shared_libs: [
+		"liblog",
+		"libcutils",
+		"libutils",
+		"libsync",
+		"libhardware",
+		"libhidlbase",
+		"libhidltransport",
+		"libnativewindow",
+		"libion_google",
+		"android.hardware.graphics.common@1.2",
+		"android.hardware.graphics.common-V3-ndk",
+		"android.hardware.graphics.mapper@4.0",
+		"libdmabufheap",
+		"libgralloctypes",
+		"libdrm",
+	],
+	header_libs: [
+		"google_hal_headers",
+		"device_kernel_headers",
+	],
+	export_include_dirs: ["libGralloc4Wrapper/include"]
+}

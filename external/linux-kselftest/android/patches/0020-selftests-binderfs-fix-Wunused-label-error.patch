@@ -1,0 +1,31 @@
+From c4970a0b5461b65ce3b7d1c40a76672bd18d3ba5 Mon Sep 17 00:00:00 2001
+From: Carlos Llamas <cmllamas@google.com>
+Date: Mon, 26 Jul 2021 17:06:02 +0000
+Subject: [PATCH 1/2] selftests/binderfs: fix Wunused-label error
+
+Fix the following build issue:
+  tools/testing/selftests/filesystems/binderfs/binderfs_test.c:244:1:
+  error: unused label 'on_error' [-Werror,-Wunused-label]
+  on_error:
+  ^~~~~~~~~
+
+Signed-off-by: Carlos Llamas <cmllamas@google.com>
+---
+ tools/testing/selftests/filesystems/binderfs/binderfs_test.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/tools/testing/selftests/filesystems/binderfs/binderfs_test.c b/tools/testing/selftests/filesystems/binderfs/binderfs_test.c
+index 8c2ed962e1c7..540ad4840495 100644
+--- a/tools/testing/selftests/filesystems/binderfs/binderfs_test.c
++++ b/tools/testing/selftests/filesystems/binderfs/binderfs_test.c
+@@ -241,7 +241,6 @@ static void __do_binderfs_test(void)
+ 	/* binder-control device removal failed as expected */
+ 	ksft_inc_xfail_cnt();
+ 
+-on_error:
+ 	ret = umount2("/dev/binderfs", MNT_DETACH);
+ 	keep ?: rmdir_protect_errno("/dev/binderfs");
+ 	if (ret < 0)
+-- 
+2.32.0.432.gabb21c7263-goog
+

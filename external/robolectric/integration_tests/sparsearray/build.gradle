@@ -1,0 +1,47 @@
+import org.robolectric.gradle.AndroidProjectConfigPlugin
+
+apply plugin: 'com.android.library'
+apply plugin: AndroidProjectConfigPlugin
+apply plugin: 'kotlin-android'
+apply plugin: "com.diffplug.spotless"
+
+spotless {
+    kotlin {
+        target '**/*.kt'
+        ktfmt('0.42').googleStyle()
+    }
+}
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 16
+        targetSdk 33
+    }
+
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+
+    android {
+        testOptions {
+            unitTests {
+                includeAndroidResources = true
+            }
+        }
+    }
+}
+
+dependencies {
+    compileOnly AndroidSdk.MAX_SDK.coordinates
+    implementation project(path: ':shadowapi', configuration: 'default')
+
+    testCompileOnly AndroidSdk.MAX_SDK.coordinates
+    testRuntimeOnly AndroidSdk.MAX_SDK.coordinates
+    testImplementation project(":robolectric")
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "com.google.truth:truth:$truthVersion"
+    testImplementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+}

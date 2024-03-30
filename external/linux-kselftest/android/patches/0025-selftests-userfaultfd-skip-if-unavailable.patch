@@ -1,0 +1,33 @@
+From 30c060a86f0e56c19e18ade48c0ee7592edfc317 Mon Sep 17 00:00:00 2001
+From: Edward Liaw <edliaw@google.com>
+Date: Thu, 24 Mar 2022 00:29:56 +0000
+Subject: [PATCH] selftests: userfaultfd skip if unavailable
+
+Skip userfaultfd selftest if the syscall is not available for this
+kernel.
+
+Bug: 207175332
+Bug: 206503000
+Test: atest vts_linux_kselftest_arm_64:vm_userfaultfd_shmem_arm_64
+Change-Id: I60e4d6cc5b3886048ffa1995e4b090f6fbe26b3d
+Signed-off-by: Edward Liaw <edliaw@google.com>
+---
+ tools/testing/selftests/vm/userfaultfd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/testing/selftests/vm/userfaultfd.c b/tools/testing/selftests/vm/userfaultfd.c
+index ffc78f3..17947fe 100644
+--- a/tools/testing/selftests/vm/userfaultfd.c
++++ b/tools/testing/selftests/vm/userfaultfd.c
+@@ -665,7 +665,7 @@ static int userfaultfd_open(int features)
+ 		if (errno == ENOSYS) {
+ 			fprintf(stderr,
+ 				"userfaultfd syscall not available in this kernel\n");
+-			exit(KSFT_PASS);
++			exit(KSFT_SKIP);
+ 		}
+ 		fprintf(stderr,
+ 			"userfaultfd syscall failed with errno: %d\n", errno);
+-- 
+2.35.1.1021.g381101b075-goog
+

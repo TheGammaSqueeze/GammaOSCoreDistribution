@@ -1,0 +1,17 @@
+import org.robolectric.gradle.RoboJavaModulePlugin
+
+apply plugin: RoboJavaModulePlugin
+
+dependencies {
+    api project(":robolectric")
+    compileOnly AndroidSdk.MAX_SDK.coordinates
+
+    testRuntimeOnly AndroidSdk.MAX_SDK.coordinates
+    testImplementation "junit:junit:${junitVersion}"
+    testImplementation "com.google.truth:truth:${truthVersion}"
+
+    testImplementation "org.powermock:powermock-module-junit4:2.0.9"
+    testImplementation "org.powermock:powermock-module-junit4-rule:2.0.9"
+    testImplementation "org.powermock:powermock-api-mockito2:2.0.9"
+    testImplementation "org.powermock:powermock-classloading-xstream:2.0.9"
+}

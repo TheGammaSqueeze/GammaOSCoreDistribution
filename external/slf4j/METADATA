@@ -1,0 +1,6 @@
+third_party {
+  license_note: "would be NOTICE save for:\n"
+  "   log4j-over-slf4j/compatibility/src/main/java/test/Log4j12Calls.java\n"
+  "   log4j-over-slf4j/compatibility/src/main/java/test/Log4j13Calls.java"
+  license_type: RESTRICTED
+}

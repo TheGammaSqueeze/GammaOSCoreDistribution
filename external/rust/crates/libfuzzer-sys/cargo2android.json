@@ -1,0 +1,11 @@
+{
+  "dependencies": true,
+  "device": true,
+  "features": "arbitrary-derive",
+  "force-rlib": true,
+  "lib-blocklist": [
+    "fuzzer",
+    "stdc++"
+  ],
+  "run": true
+}

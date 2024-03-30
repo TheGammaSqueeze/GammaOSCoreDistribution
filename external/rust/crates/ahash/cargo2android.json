@@ -1,0 +1,5 @@
+{
+  "device": true,
+  "patch": "patches/Android.bp.diff",
+  "run": true
+}

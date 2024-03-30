@@ -1,0 +1,29 @@
+<abi-corpus version='2.1' path='data/test-read-ctf/test-forward-type-decl.o'>
+  <elf-variable-symbols>
+    <elf-symbol name='addr' size='8' type='object-type' binding='global-binding' visibility='default-visibility' is-defined='yes'/>
+  </elf-variable-symbols>
+  <abi-instr address-size='64' language='LANG_C'>
+    <class-decl name='address_space' size-in-bits='128' alignment-in-bits='64' is-struct='yes' visibility='default' id='type-id-1'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='rb_root' type-id='type-id-2' visibility='default'/>
+      </data-member>
+      <data-member access='public' layout-offset-in-bits='64'>
+        <var-decl name='page' type-id='type-id-3' visibility='default'/>
+      </data-member>
+    </class-decl>
+    <class-decl name='page' size-in-bits='64' alignment-in-bits='64' is-struct='yes' visibility='default' id='type-id-4'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='mapping' type-id='type-id-5' visibility='default'/>
+      </data-member>
+    </class-decl>
+    <class-decl name='rb_node' size-in-bits='64' alignment-in-bits='64' is-struct='yes' visibility='default' id='type-id-6'>
+      <data-member access='public' layout-offset-in-bits='0'>
+        <var-decl name='rb_left' type-id='type-id-2' visibility='default'/>
+      </data-member>
+    </class-decl>
+    <pointer-type-def type-id='type-id-1' size-in-bits='64' alignment-in-bits='64' id='type-id-5'/>
+    <pointer-type-def type-id='type-id-4' size-in-bits='64' alignment-in-bits='64' id='type-id-3'/>
+    <pointer-type-def type-id='type-id-6' size-in-bits='64' alignment-in-bits='64' id='type-id-2'/>
+    <var-decl name='addr' type-id='type-id-5' mangled-name='addr' visibility='default'/>
+  </abi-instr>
+</abi-corpus>

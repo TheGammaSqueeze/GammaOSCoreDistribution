@@ -1,0 +1,21 @@
+package {
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "frameworks_base_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    default_applicable_licenses: ["frameworks_base_license"],
+}
+
+java_binary_host {
+    name: "lockedregioncodeinjection",
+    manifest: "manifest.txt",
+    srcs: ["src/**/*.java"],
+    static_libs: [
+        "asm-9.2",
+        "asm-commons-9.2",
+        "asm-tree-9.2",
+        "asm-analysis-9.2",
+        "guava-21.0",
+    ],
+}

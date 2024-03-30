@@ -1,0 +1,16 @@
+// for frameworks/wilhelm
+{
+    "presubmit": [
+        {
+            "name": "CtsMediaTestCases",
+            "options" : [
+                {
+                    "include-annotation": "android.platform.test.annotations.Presubmit"
+                },
+                {
+                    "include-filter": "android.media.cts.AudioNativeTest"
+                }
+            ]
+        }
+    ]
+}

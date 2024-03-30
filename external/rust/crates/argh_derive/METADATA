@@ -1,0 +1,19 @@
+name: "argh_derive"
+description: "Derive-based argument parsing optimized for code size"
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://crates.io/crates/argh_derive"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://static.crates.io/crates/argh_derive/argh_derive-0.1.7.crate"
+  }
+  version: "0.1.7"
+  license_type: NOTICE
+  last_upgrade_date {
+    year: 2022
+    month: 1
+    day: 13
+  }
+}

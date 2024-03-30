@@ -1,0 +1,10 @@
+target: {
+    host_linux: {
+        features: [
+            "gdb",
+        ],
+        rustlibs: [
+            "libgdbstub_arch",
+        ],
+    },
+}

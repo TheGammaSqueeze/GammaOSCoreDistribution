@@ -1,0 +1,19 @@
+name: "memchr"
+description: "Safe interface to memchr."
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://crates.io/crates/memchr"
+  }
+  url {
+    type: ARCHIVE
+    value: "https://static.crates.io/crates/memchr/memchr-2.4.1.crate"
+  }
+  version: "2.4.1"
+  license_type: NOTICE
+  last_upgrade_date {
+    year: 2021
+    month: 9
+    day: 22
+  }
+}

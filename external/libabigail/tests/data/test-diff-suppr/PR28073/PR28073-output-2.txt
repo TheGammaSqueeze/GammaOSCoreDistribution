@@ -1,0 +1,14 @@
+Functions changes summary: 0 Removed, 1 Changed, 0 Added function
+Variables changes summary: 0 Removed, 0 Changed, 0 Added variable
+
+1 function with some indirect sub-type change:
+
+  [C] 'function void access_bigstruct(bigstruct*)' at PR28073-bitfield-removed.c:12:1 has some indirect sub-type changes:
+    parameter 1 of type 'bigstruct*' has sub-type changes:
+      in pointed to type 'struct bigstruct' at PR28073-bitfield-removed.c:7:1:
+        type size changed from 1040 to 1032 (in bits)
+        1 data member deletion:
+          'uint8_t bitfield0', at offset 1024 (in bits) at plop.c:5:1
+        1 data member change:
+          'uint8_t other' offset changed from 1032 to 1024 (in bits) (by -8 bits)
+

@@ -1,0 +1,41 @@
+From ec84856e0f0bc5a307529122bfed3d94d2ef4011 Mon Sep 17 00:00:00 2001
+From: Matthew Maurer <mmaurer@google.com>
+Date: Thu, 24 Feb 2022 14:07:03 -0800
+Subject: [PATCH] Use older API to avoid requiring API v30
+
+Test: Check that keystore still outputs logs to system
+Bug: 221185310
+Change-Id: I25174f1617557e270db70cd432cec78c037c6b75
+---
+ src/lib.rs | 14 ++++----------
+ 1 file changed, 4 insertions(+), 10 deletions(-)
+
+diff --git a/src/lib.rs b/src/lib.rs
+index d21be3f..bc4fa61 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -113,17 +113,11 @@ impl LogId {
+ /// Output log to android system.
+ #[cfg(target_os = "android")]
+ fn android_log(log_id: log_ffi::log_id_t, prio: log_ffi::LogPriority, tag: &CStr, msg: &CStr) {
+-    let mut message = log_ffi::__android_log_message {
+-        struct_size: std::mem::size_of::<log_ffi::__android_log_message>(),
+-        buffer_id: log_id as i32,
+-        priority: prio as i32,
+-        tag: tag.as_ptr() as *const log_ffi::c_char,
+-        file: ptr::null(),
+-        line: 0,
+-        message: msg.as_ptr() as *const log_ffi::c_char,
+-    };
+     unsafe {
+-        log_ffi::__android_log_write_log_message(&mut message as *mut _);
++        log_ffi::__android_log_buf_write(log_id as i32,
++                                         prio as i32,
++                                         tag.as_ptr() as *const log_ffi::c_char,
++                                         msg.as_ptr() as *const log_ffi::c_char);
+     };
+ }
+ 
+-- 
+2.35.1.574.g5d30c73bfb-goog
+

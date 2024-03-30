@@ -1,0 +1,17 @@
+name: "cffi"
+description:
+    "Foreign Function Interface for Python calling C code."
+
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://bitbucket.org/cffi/cffi"
+  }
+  url {
+    type: HG
+    value: "https://bitbucket.org/cffi/cffi/src"
+  }
+  version: "1.15.0"
+  last_upgrade_date { year: 2020 month: 11 day: 8 }
+  license_type: NOTICE
+}
