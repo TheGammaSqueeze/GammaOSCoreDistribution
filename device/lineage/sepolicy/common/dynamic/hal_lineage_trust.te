@@ -1,0 +1,10 @@
+# HwBinder IPC from client to server
+binder_call(hal_lineage_trust_client, hal_lineage_trust_server)
+
+add_hwservice(hal_lineage_trust_server, hal_lineage_trust_hwservice)
+allow hal_lineage_trust_client hal_lineage_trust_hwservice:hwservice_manager find;
+
+allow hal_lineage_trust_server self:capability sys_admin;
+
+allow hal_lineage_trust_server proc_deny_new_usb:file rw_file_perms;
+allow hal_lineage_trust_server sysfs_usb_data_enabled:file rw_file_perms;

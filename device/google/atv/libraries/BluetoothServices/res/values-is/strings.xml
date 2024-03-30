@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) 2021 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="battery_not_available" msgid="4363239544686724984">"Ekki tiltækt"</string>
+    <string name="battery_level_critical" msgid="5923330432434405521">"Mikilvægt"</string>
+    <string name="battery_level_low" msgid="3732072669162559152">"Lág"</string>
+    <string name="battery_level_good" msgid="4981454057830724794">"Gott"</string>
+    <string name="settings_bt_confirm_update" msgid="6129230380492578493">"Staðfestu uppfærslu fjarstýringar"</string>
+    <string name="settings_bt_update_summary" msgid="1407162346756478508">"Meðan á uppfærslunni stendur getur fjarstýringin aftengst í stutta stund."</string>
+    <string name="settings_continue" msgid="7439781146866165114">"Áfram"</string>
+    <string name="settings_cancel" msgid="3939686184230439505">"Hætta við"</string>
+    <string name="settings_bt_update" msgid="966832530402103023">"Uppfærsla á fjarstýringu"</string>
+    <string name="settings_bt_update_software_available" msgid="3120140118110089670">"Nýr hugbúnaður í boði"</string>
+    <string name="settings_bt_update_available" msgid="7871859692542595220">"Uppfærsla í boði"</string>
+    <string name="settings_bt_update_not_necessary" msgid="1272127906146895359">"Fjarstýringin er uppfærð"</string>
+    <string name="settings_bt_update_failed" msgid="9099155837532638335">"Uppfærsla á fjarstýringu mistókst"</string>
+    <string name="settings_bt_update_error" msgid="2552121342045814857">"Vandamál kom upp þegar verið var að uppfæra fjarstýringuna. Reyndu aftur."</string>
+    <string name="settings_bt_update_please_wait" msgid="7215892536971160069">"Augnablik"</string>
+    <string name="settings_bt_update_needs_repair" msgid="1096426599808505928">"Paraðu fjarstýringuna aftur"</string>
+    <string name="settings_enabled" msgid="4164674211291175678">"Kveikt"</string>
+    <string name="settings_disabled" msgid="4626695692196357413">"Slökkt"</string>
+    <string name="settings_remote_battery_level_label" msgid="8649612732948142737">"Staða rafhlöðu"</string>
+    <string name="settings_remote_battery_level_percentage_label" msgid="1771717432090516984">%1$d%%</string>
+    <string name="settings_remote_firmware_label" msgid="8924845692887005455">"Fastbúnaður"</string>
+    <string name="settings_remote_serial_number_label" msgid="407950420697944948">"Bluetooth-vistfang"</string>
+    <string name="settings_bt_battery_low" msgid="4487348957313624256">"Skiptu um rafhlöðu"</string>
+    <string name="settings_bt_battery_low_warning" msgid="5660789688799457747">"Rafhlaða að tæmast"</string>
+    <string name="connected_devices_pref_title" msgid="2617255292554345723">"Tengd tæki"</string>
+    <string name="connected_devices_slice_pref_title" msgid="8716252057083688885">"Fjarstýringar og fylgihlutir"</string>
+    <string name="settings_notif_update_title" msgid="5463118574346079495">"Uppfærðu fjarstýringuna"</string>
+    <string name="settings_notif_update_text" msgid="5466918316361570215">"Tilbúið til uppsetningar"</string>
+    <string name="settings_notif_update_action" msgid="5970935876855410574">"UPPFÆRA"</string>
+    <string name="settings_notif_update_dismiss" msgid="6614203755972578657">"LOKA"</string>
+    <string name="settings_notif_low_battery_title" msgid="8363515608568792551">"Rafhlaða fjarstýringar er að tæmast"</string>
+    <string name="settings_notif_low_battery_text" msgid="5036367259620134537">"Skiptu um rafhlöðu fljótlega"</string>
+    <string name="settings_notif_critical_battery_title" msgid="2932744213624091546">"Rafhlaða fjarstýringar er næstum því tóm"</string>
+    <string name="settings_notif_critical_battery_text" msgid="7611153628893734902">"Skiptu um rafhlöðu fljótlega"</string>
+    <string name="settings_notif_depleted_battery_title" msgid="2571917420776818173">"Rafhlaða fjarstýringar er tóm"</string>
+    <string name="settings_notif_depleted_battery_text" msgid="2398532528486464044">"Skiptu um rafhlöðu til að nota fjarstýringuna"</string>
+    <string name="settings_choices_yes" msgid="2846918703851679454">"Já"</string>
+    <string name="settings_choices_no" msgid="1069494287551959027">"Nei"</string>
+    <string name="settings_bt_disconnect" msgid="3926883493314648711">"Aftengja %1$s"</string>
+    <string name="settings_bt_connect" msgid="7488569500103145573">"Tengja við %1$s"</string>
+    <string name="settings_bt_forget" msgid="7862641043281426278">"Gleyma %1$s"</string>
+    <string name="settings_bt_rename" msgid="296394594397921021">"Endurnefndu tengda tækið"</string>
+    <string name="settings_hdmi_cec" msgid="7227878981727034559">"HDMI-CEC"</string>
+    <string name="settings_enable_hdmi_cec" msgid="2522493967942490013">"Kveikja á HDMI-CEC"</string>
+    <string name="settings_cec_explain" msgid="911626255223049913">"HDMI-CEC gerir þér kleift að nota eina fjarstýringu til að stjórna, kveikja og slökkva á öðrum tækjum sem eru með kveikt á HDMI-CEC.\n\nMundu að ganga úr skugga um að kveikt sé á HDMI-CEC í sjónvarpinu og öðrum HDMI-tækjum. Framleiðendur nota oft annað heiti fyrir HDMI-CEC, til dæmis:"</string>
+    <string name="settings_cec_feature_names" msgid="8470424063788054136">"Samsung: Anynet+\nLG: SimpLink\nSony: BRAVIA Sync\nPhilips: EasyLink\nSharp: Aquos Link"</string>
+    <string name="settings_axel" msgid="859248404436889205">"Setja upp hnappa fyrir fjarstýringu"</string>
+    <string name="settings_axel_description" msgid="6033294262165949416">"Stjórnaðu hljóðstyrk, afli, sjónvarpsinntaki, mögnurum og soundbar-tækjum"</string>
+    <string name="settings_remote_battery_level" msgid="457729442110109776">"Staða rafhlöðu: %1$s"</string>
+    <string name="settings_known_devices_category" msgid="1540063892581931395">"Fylgihlutir"</string>
+    <string name="settings_official_remote_category" msgid="5188969235127184097">"Fjarstýring"</string>
+    <string name="settings_devices_connected" msgid="6877350530040954951">"Tengt"</string>
+    <string name="settings_devices_paired" msgid="2621291277619909987">"Áður tengt"</string>
+    <string name="settings_pair_remote" msgid="6703692816294828667">"Para fjarstýringu eða fylgihlut"</string>
+    <string name="bluetooth_disconnect" msgid="6750118548623705193">"Aftengja"</string>
+    <string name="bluetooth_connect" msgid="4809187070439789397">"Tengja"</string>
+    <string name="bluetooth_rename" msgid="3866030281590534078">"Endurnefna"</string>
+    <string name="bluetooth_forget" msgid="2304557507840517178">"Gleyma"</string>
+    <string name="bluetooth_connected_status" msgid="2445751338303462640">"Tengt"</string>
+    <string name="bluetooth_disconnected_status" msgid="8217553843170356254">"Aftengt"</string>
+    <string name="settings_devices_control" msgid="5315752605677221119">"Tækisstjórnun"</string>
+    <string name="settings_bt_pair_title" msgid="7666400883358524553">"Tengja nýtt tæki"</string>
+    <string name="pair_device_description" msgid="7955553499324666950">"Áður en þú tengir ný Bluetooth-tæki skaltu tryggja að þau séu í pörunarstillingu. Til að tengja %1$s skaltu halda inni %2$s + %3$s í 3 sekúndur."</string>
+    <string name="pair_device_device_name" msgid="580032998745434834">"fjarstýring Android TV"</string>
+    <string name="settings_bt_available_devices" msgid="6645182819584578819">"Tæki í boði"</string>
+    <string name="settings_bt_empty_text" msgid="8332085133838257843">"Leitar að tækjum…"</string>
+    <string name="settings_bt_pair_status_error" msgid="1795732485043154388">"Villa"</string>
+    <string name="settings_bt_pair_status_connecting" msgid="4157328222685537069">"Tengist…"</string>
+    <string name="settings_bt_pair_status_done" msgid="3574182448076062786">"Tengt"</string>
+    <string name="settings_bt_pair_status_cancelled" msgid="8669857835593073002">"Hætt við"</string>
+    <string name="settings_bt_pair_toast_fail" msgid="6775531736952071145">"Ekki tókst að tengja %1$s"</string>
+    <string name="settings_bt_pair_toast_connected" msgid="4892704875054315689">"%1$s tengt"</string>
+    <string name="settings_bt_pair_toast_disconnected" msgid="3661543481090697131">"%1$s aftengt"</string>
+</resources>

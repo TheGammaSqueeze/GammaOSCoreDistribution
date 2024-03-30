@@ -1,0 +1,17 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+cc_binary {
+    name: "cuttlefish_sensor_injection",
+    srcs: ["main.cpp"],
+    shared_libs: [
+        "android.hardware.sensors-V1-ndk",
+        "libbase",
+        "libbinder_ndk",
+        "libhidlbase",
+        "liblog",
+        "libutils",
+    ],
+    defaults: ["cuttlefish_guest_only"],
+}

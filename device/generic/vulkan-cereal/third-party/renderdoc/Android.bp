@@ -1,0 +1,23 @@
+package {
+    default_applicable_licenses: [
+        "device_generic_vulkan-cereal_third-party_renderdoc_license",
+    ],
+}
+
+license {
+    name: "device_generic_vulkan-cereal_third-party_renderdoc_license",
+    visibility: [":__subpackages__"],
+    license_kinds: [
+        "SPDX-license-identifier-MIT",
+    ],
+    license_text: [
+        "LICENSE",
+    ],
+}
+
+cc_library_headers {
+    name: "gfxstream_renderdoc_headers",
+    defaults: ["gfxstream_defaults"],
+    host_supported: true,
+    export_include_dirs: [ ".", "include" ],
+}

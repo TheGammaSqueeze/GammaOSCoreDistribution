@@ -1,0 +1,27 @@
+# Fingerprint HAL
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.0-service u:object_r:hal_fingerprint_default_exec:s0
+
+# GNSS HAL
+/(vendor|system/vendor)/bin/hw/android\.hardware\.gnss@1\.0-service\.legacy u:object_r:hal_gnss_default_exec:s0
+
+# Health HAL
+/(vendor|system/vendor)/bin/hw/vendor\.lineage\.health-service\.default u:object_r:hal_lineage_health_default_exec:s0
+
+# Light HAL
+/(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.aw2013 u:object_r:hal_light_default_exec:s0
+
+# LiveDisplay HAL
+/(vendor|system/vendor)/bin/hw/vendor\.lineage\.livedisplay@2\.0-service-sysfs    u:object_r:hal_lineage_livedisplay_sysfs_exec:s0
+
+# Trust HAL
+/(vendor|system/vendor)/bin/hw/vendor\.lineage\.trust@1\.0-service u:object_r:hal_lineage_trust_default_exec:s0
+
+# USB HAL
+/(vendor|system/vendor)/bin/hw/android\.hardware\.usb@1\.0-service\.basic u:object_r:hal_usb_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.usb@1\.1-service\.typec u:object_r:hal_usb_default_exec:s0
+
+# Vibrator HAL
+/(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator@1\.0-service\.lineage u:object_r:hal_vibrator_default_exec:s0
+
+# Wi-Fi HAL
+/(vendor|system/vendor)/bin/hw/android\.hardware\.wifi@1\.0-service\.legacy u:object_r:hal_wifi_default_exec:s0

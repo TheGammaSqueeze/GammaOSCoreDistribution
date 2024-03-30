@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) 2021 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="battery_not_available" msgid="4363239544686724984">"Brak danych"</string>
+    <string name="battery_level_critical" msgid="5923330432434405521">"Krytyczny"</string>
+    <string name="battery_level_low" msgid="3732072669162559152">"Niski"</string>
+    <string name="battery_level_good" msgid="4981454057830724794">"Dobry"</string>
+    <string name="settings_bt_confirm_update" msgid="6129230380492578493">"Potwierdź aktualizację pilota"</string>
+    <string name="settings_bt_update_summary" msgid="1407162346756478508">"Podczas aktualizowania pilot może się na chwilę rozłączyć."</string>
+    <string name="settings_continue" msgid="7439781146866165114">"Dalej"</string>
+    <string name="settings_cancel" msgid="3939686184230439505">"Anuluj"</string>
+    <string name="settings_bt_update" msgid="966832530402103023">"Aktualizacja pilota"</string>
+    <string name="settings_bt_update_software_available" msgid="3120140118110089670">"Dostępne jest nowe oprogramowanie"</string>
+    <string name="settings_bt_update_available" msgid="7871859692542595220">"Dostępna aktualizacja"</string>
+    <string name="settings_bt_update_not_necessary" msgid="1272127906146895359">"Pilot jest aktualny"</string>
+    <string name="settings_bt_update_failed" msgid="9099155837532638335">"Nie udało się zaktualizować pilota"</string>
+    <string name="settings_bt_update_error" msgid="2552121342045814857">"Podczas aktualizowania pilota wystąpił błąd. Spróbuj ponownie."</string>
+    <string name="settings_bt_update_please_wait" msgid="7215892536971160069">"Zaczekaj"</string>
+    <string name="settings_bt_update_needs_repair" msgid="1096426599808505928">"Jeszcze raz sparuj pilota"</string>
+    <string name="settings_enabled" msgid="4164674211291175678">"Włączono"</string>
+    <string name="settings_disabled" msgid="4626695692196357413">"Wyłączono"</string>
+    <string name="settings_remote_battery_level_label" msgid="8649612732948142737">"Poziom naładowania baterii"</string>
+    <string name="settings_remote_battery_level_percentage_label" msgid="1771717432090516984">%1$d%%</string>
+    <string name="settings_remote_firmware_label" msgid="8924845692887005455">"Oprogramowanie układowe"</string>
+    <string name="settings_remote_serial_number_label" msgid="407950420697944948">"Adres Bluetooth"</string>
+    <string name="settings_bt_battery_low" msgid="4487348957313624256">"Wymień baterię"</string>
+    <string name="settings_bt_battery_low_warning" msgid="5660789688799457747">"Słaba bateria"</string>
+    <string name="connected_devices_pref_title" msgid="2617255292554345723">"Połączone urządzenia"</string>
+    <string name="connected_devices_slice_pref_title" msgid="8716252057083688885">"Piloty i akcesoria"</string>
+    <string name="settings_notif_update_title" msgid="5463118574346079495">"Zaktualizuj pilota"</string>
+    <string name="settings_notif_update_text" msgid="5466918316361570215">"Można zainstalować"</string>
+    <string name="settings_notif_update_action" msgid="5970935876855410574">"AKTUALIZUJ"</string>
+    <string name="settings_notif_update_dismiss" msgid="6614203755972578657">"ODRZUĆ"</string>
+    <string name="settings_notif_low_battery_title" msgid="8363515608568792551">"Niski poziom naładowania baterii w pilocie"</string>
+    <string name="settings_notif_low_battery_text" msgid="5036367259620134537">"Wymień baterię"</string>
+    <string name="settings_notif_critical_battery_title" msgid="2932744213624091546">"Bateria w pilocie jest prawie rozładowana"</string>
+    <string name="settings_notif_critical_battery_text" msgid="7611153628893734902">"Wymień baterię"</string>
+    <string name="settings_notif_depleted_battery_title" msgid="2571917420776818173">"Bateria w pilocie jest rozładowana"</string>
+    <string name="settings_notif_depleted_battery_text" msgid="2398532528486464044">"Wymień baterię, by móc korzystać z pilota"</string>
+    <string name="settings_choices_yes" msgid="2846918703851679454">"Tak"</string>
+    <string name="settings_choices_no" msgid="1069494287551959027">"Nie"</string>
+    <string name="settings_bt_disconnect" msgid="3926883493314648711">"Odłącz od: %1$s"</string>
+    <string name="settings_bt_connect" msgid="7488569500103145573">"Połącz z %1$s"</string>
+    <string name="settings_bt_forget" msgid="7862641043281426278">"Zapomnij: %1$s"</string>
+    <string name="settings_bt_rename" msgid="296394594397921021">"Zmień nazwę połączonego urządzenia"</string>
+    <string name="settings_hdmi_cec" msgid="7227878981727034559">"HDMI-CEC"</string>
+    <string name="settings_enable_hdmi_cec" msgid="2522493967942490013">"Włącz HDMI-CEC"</string>
+    <string name="settings_cec_explain" msgid="911626255223049913">"Złącze HDMI-CEC umożliwia sterowanie innymi urządzeniami obsługującymi ten standard oraz ich automatyczne włączanie i wyłączanie przy użyciu jednego pilota.\n\nUwaga: na telewizorze i pozostałych urządzeniach ze złączem HDMI musi być włączona komunikacja HDMI-CEC. Różni producenci stosują różne nazwy standardu HDMI-CEC, na przykład:"</string>
+    <string name="settings_cec_feature_names" msgid="8470424063788054136">"Samsung: Anynet+\nLG: SimpLink\nSony: BRAVIA Sync\nPhilips: EasyLink\nSharp: Aquos Link"</string>
+    <string name="settings_axel" msgid="859248404436889205">"Skonfiguruj przyciski pilota"</string>
+    <string name="settings_axel_description" msgid="6033294262165949416">"Steruj głośnością, zasilaniem i źródłem sygnału na telewizorach, amplitunerach i soundbarach"</string>
+    <string name="settings_remote_battery_level" msgid="457729442110109776">"Poziom naładowania baterii: %1$s"</string>
+    <string name="settings_known_devices_category" msgid="1540063892581931395">"Akcesoria"</string>
+    <string name="settings_official_remote_category" msgid="5188969235127184097">"Pilot"</string>
+    <string name="settings_devices_connected" msgid="6877350530040954951">"Połączono"</string>
+    <string name="settings_devices_paired" msgid="2621291277619909987">"Wcześniej połączone"</string>
+    <string name="settings_pair_remote" msgid="6703692816294828667">"Sparuj pilota lub akcesorium"</string>
+    <string name="bluetooth_disconnect" msgid="6750118548623705193">"Rozłącz"</string>
+    <string name="bluetooth_connect" msgid="4809187070439789397">"Połącz"</string>
+    <string name="bluetooth_rename" msgid="3866030281590534078">"Zmień nazwę"</string>
+    <string name="bluetooth_forget" msgid="2304557507840517178">"Zapomnij"</string>
+    <string name="bluetooth_connected_status" msgid="2445751338303462640">"Połączono"</string>
+    <string name="bluetooth_disconnected_status" msgid="8217553843170356254">"Rozłączono"</string>
+    <string name="settings_devices_control" msgid="5315752605677221119">"Sterowanie urządzeniem"</string>
+    <string name="settings_bt_pair_title" msgid="7666400883358524553">"Połącz z nowym urządzeniem"</string>
+    <string name="pair_device_description" msgid="7955553499324666950">"Przed połączeniem nowych urządzeń Bluetooth przestaw je w tryb parowania. Aby połączyć z %1$s, naciśnij i przytrzymaj %2$s + %3$s przez trzy sekundy."</string>
+    <string name="pair_device_device_name" msgid="580032998745434834">"pilot Android TV"</string>
+    <string name="settings_bt_available_devices" msgid="6645182819584578819">"Dostępne urządzenia"</string>
+    <string name="settings_bt_empty_text" msgid="8332085133838257843">"Szukam urządzeń…"</string>
+    <string name="settings_bt_pair_status_error" msgid="1795732485043154388">"Błąd"</string>
+    <string name="settings_bt_pair_status_connecting" msgid="4157328222685537069">"Łączę…"</string>
+    <string name="settings_bt_pair_status_done" msgid="3574182448076062786">"Połączono"</string>
+    <string name="settings_bt_pair_status_cancelled" msgid="8669857835593073002">"Anulowano"</string>
+    <string name="settings_bt_pair_toast_fail" msgid="6775531736952071145">"Nie można połączyć z: %1$s"</string>
+    <string name="settings_bt_pair_toast_connected" msgid="4892704875054315689">"Połączono: %1$s"</string>
+    <string name="settings_bt_pair_toast_disconnected" msgid="3661543481090697131">"Odłączono: %1$s"</string>
+</resources>

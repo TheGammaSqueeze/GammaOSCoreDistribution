@@ -1,0 +1,1 @@
+"arm_compute_version=v20.11 Build options: {'os': 'android', 'build': 'embed_only', 'neon': '0', 'opencl': '1', 'embed_kernels': '1', 'validation_tests': '0', 'arch': 'arm64-v8a', 'build_dir': 'android-arm64v8a', 'benchmark_tests': '0'} Git hash=b'9063e9a0497ebd299d4c48b5e5dd3faeb9a18083'"

@@ -1,0 +1,22 @@
+# Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause-Clear
+
+#============= vendor_usbudev_qti ==============
+
+type vendor_usbudev_qti, domain;
+type vendor_usbudev_qti_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(vendor_usbudev_qti)
+domain_auto_trans(init, vendor_usbudev_qti_exec, vendor_usbudev_qti)
+
+allow vendor_usbudev_qti self:capability net_admin;
+allow vendor_usbudev_qti self:netlink_route_socket { nlmsg_read read };
+allow vendor_usbudev_qti self:udp_socket { create ioctl };
+allow vendor_usbudev_qti self:netlink_kobject_uevent_socket { bind create getopt read setopt };
+allow vendor_usbudev_qti self:netlink_route_socket { create nlmsg_readpriv write };
+allow vendor_usbudev_qti vendor_sysfs_usb_node:dir search;
+allow vendor_usbudev_qti vendor_sysfs_usb_node:file { getattr open read };
+allow vendor_usbudev_qti proc_net:file { getattr open read };
+allow vendor_usbudev_qti vendor_shell_exec:file rx_file_perms;
+allow vendor_usbudev_qti vendor_toolbox_exec:file rx_file_perms;
+allowxperm vendor_usbudev_qti self:udp_socket ioctl { SIOCSIFHWADDR SIOCSIFFLAGS SIOCSIFADDR };

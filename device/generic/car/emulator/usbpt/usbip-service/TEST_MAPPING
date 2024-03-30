@@ -1,0 +1,8 @@
+{
+  "presubmit": [
+    {
+      "name": "usbpip_test",
+      "host": true
+    }
+  ]
+}

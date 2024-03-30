@@ -1,0 +1,4 @@
+service vendor.vehicle-hal-emulator /vendor/bin/hw/android.hardware.automotive.vehicle@V1-emulator-service
+    class early_hal
+    user vehicle_network
+    group system inet

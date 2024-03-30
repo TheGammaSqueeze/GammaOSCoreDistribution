@@ -1,0 +1,13 @@
+on property:init.svc.qemu-adb-keys=stopped
+    start qemu-adb-setup
+
+on property:vendor.qemu.adb.copykey=1
+    copy /data/vendor/adb/adb_keys /data/misc/adb/adb_keys
+    chown system shell /data/misc/adb/adb_keys
+    chmod 0640 /data/misc/adb/adb_keys
+
+on property:init.svc.qemu-device-state=stopped && property:ro.boot.qemu.device_state=*
+    mkdir /data/system/devicestate/ 0755 system system
+    copy /data/vendor/devicestate/device_state_configuration.xml /data/system/devicestate/device_state_configuration.xml
+    rm /data/vendor/devicestate/device_state_configuration.xml
+    chown system system /data/system/devicestate/device_state_configuration.xml

@@ -1,0 +1,18 @@
+# Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause-Clear
+
+#Define domain
+type vendor_hal_umd_qti, domain;
+type vendor_hal_umd_qti_exec, file_type, vendor_file_type, exec_type;
+
+#Allow for transition from init domain to umdservice
+init_daemon_domain(vendor_hal_umd_qti)
+
+#Allow a base set of permissions required
+hal_server_domain(vendor_hal_umd_qti, vendor_hal_umd)
+binder_call(vendor_hal_umd_client, vendor_hal_umd_server)
+binder_call(vendor_hal_umd_server, vendor_hal_umd_client)
+
+#Ability for domain to get vendor_hal_umd_hwservice to hwservice_manager
+#and find it
+hal_attribute_hwservice(vendor_hal_umd, vendor_hal_umd_hwservice)

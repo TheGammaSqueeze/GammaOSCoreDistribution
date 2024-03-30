@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) 2021 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="battery_not_available" msgid="4363239544686724984">"N/A"</string>
+    <string name="battery_level_critical" msgid="5923330432434405521">"วิกฤต"</string>
+    <string name="battery_level_low" msgid="3732072669162559152">"ต่ำ"</string>
+    <string name="battery_level_good" msgid="4981454057830724794">"ดี"</string>
+    <string name="settings_bt_confirm_update" msgid="6129230380492578493">"ยืนยันการอัปเดตรีโมต"</string>
+    <string name="settings_bt_update_summary" msgid="1407162346756478508">"รีโมตอาจยกเลิกการเชื่อมต่อเป็นระยะเวลาสั้นๆ ระหว่างการอัปเดต"</string>
+    <string name="settings_continue" msgid="7439781146866165114">"ดำเนินการต่อ"</string>
+    <string name="settings_cancel" msgid="3939686184230439505">"ยกเลิก"</string>
+    <string name="settings_bt_update" msgid="966832530402103023">"การอัปเดตรีโมต"</string>
+    <string name="settings_bt_update_software_available" msgid="3120140118110089670">"มีซอฟแวร์ใหม่ให้บริการ"</string>
+    <string name="settings_bt_update_available" msgid="7871859692542595220">"มีการอัปเดต"</string>
+    <string name="settings_bt_update_not_necessary" msgid="1272127906146895359">"รีโมตอัปเดตแล้ว"</string>
+    <string name="settings_bt_update_failed" msgid="9099155837532638335">"อัปเดตรีโมตไม่สำเร็จ"</string>
+    <string name="settings_bt_update_error" msgid="2552121342045814857">"เราพบปัญหาขณะอัปเดตรีโมต โปรดลองอีกครั้ง"</string>
+    <string name="settings_bt_update_please_wait" msgid="7215892536971160069">"โปรดรอสักครู่"</string>
+    <string name="settings_bt_update_needs_repair" msgid="1096426599808505928">"จับคู่รีโมตอีกครั้ง"</string>
+    <string name="settings_enabled" msgid="4164674211291175678">"เปิดใช้"</string>
+    <string name="settings_disabled" msgid="4626695692196357413">"ปิดใช้"</string>
+    <string name="settings_remote_battery_level_label" msgid="8649612732948142737">"ระดับแบตเตอรี่"</string>
+    <string name="settings_remote_battery_level_percentage_label" msgid="1771717432090516984">%1$d%%</string>
+    <string name="settings_remote_firmware_label" msgid="8924845692887005455">"เฟิร์มแวร์"</string>
+    <string name="settings_remote_serial_number_label" msgid="407950420697944948">"ที่อยู่บลูทูธ"</string>
+    <string name="settings_bt_battery_low" msgid="4487348957313624256">"โปรดเปลี่ยนแบตเตอรี่"</string>
+    <string name="settings_bt_battery_low_warning" msgid="5660789688799457747">"แบตเตอรี่อ่อน"</string>
+    <string name="connected_devices_pref_title" msgid="2617255292554345723">"อุปกรณ์ที่เชื่อมต่อ"</string>
+    <string name="connected_devices_slice_pref_title" msgid="8716252057083688885">"รีโมตและอุปกรณ์เสริม"</string>
+    <string name="settings_notif_update_title" msgid="5463118574346079495">"อัปเดตรีโมต"</string>
+    <string name="settings_notif_update_text" msgid="5466918316361570215">"พร้อมติดตั้ง"</string>
+    <string name="settings_notif_update_action" msgid="5970935876855410574">"อัปเดต"</string>
+    <string name="settings_notif_update_dismiss" msgid="6614203755972578657">"ปิด"</string>
+    <string name="settings_notif_low_battery_title" msgid="8363515608568792551">"แบตเตอรี่รีโมตอ่อน"</string>
+    <string name="settings_notif_low_battery_text" msgid="5036367259620134537">"เปลี่ยนแบตเตอรี่โดยเร็ว"</string>
+    <string name="settings_notif_critical_battery_title" msgid="2932744213624091546">"แบตเตอรี่รีโมตใกล้หมด"</string>
+    <string name="settings_notif_critical_battery_text" msgid="7611153628893734902">"เปลี่ยนแบตเตอรี่โดยเร็ว"</string>
+    <string name="settings_notif_depleted_battery_title" msgid="2571917420776818173">"แบตเตอรี่รีโมตหมด"</string>
+    <string name="settings_notif_depleted_battery_text" msgid="2398532528486464044">"เปลี่ยนแบตเตอรี่เพื่อใช้รีโมต"</string>
+    <string name="settings_choices_yes" msgid="2846918703851679454">"ใช่"</string>
+    <string name="settings_choices_no" msgid="1069494287551959027">"ไม่"</string>
+    <string name="settings_bt_disconnect" msgid="3926883493314648711">"ยกเลิกการเชื่อมต่อจาก %1$s"</string>
+    <string name="settings_bt_connect" msgid="7488569500103145573">"เชื่อมต่อกับ %1$s"</string>
+    <string name="settings_bt_forget" msgid="7862641043281426278">"ไม่จำ %1$s"</string>
+    <string name="settings_bt_rename" msgid="296394594397921021">"เปลี่ยนชื่ออุปกรณ์ที่เชื่อมต่อ"</string>
+    <string name="settings_hdmi_cec" msgid="7227878981727034559">"HDMI-CEC"</string>
+    <string name="settings_enable_hdmi_cec" msgid="2522493967942490013">"เปิดใช้ HDMI-CEC"</string>
+    <string name="settings_cec_explain" msgid="911626255223049913">"HDMI-CEC ช่วยให้คุณควบคุมและเปิดหรือปิดอุปกรณ์ที่ใช้ HDMI-CEC อื่นๆ โดยอัตโนมัติได้ด้วยรีโมตคอนโทรลอันเดียว\n\nหมายเหตุ: ตรวจสอบว่าเปิดใช้ HDMI-CEC ในทีวีและอุปกรณ์ HDMI อื่นๆ แล้ว ผู้ผลิตมักจะใช้ชื่อสำหรับ HDMI-CEC แตกต่างกันไป เช่น"</string>
+    <string name="settings_cec_feature_names" msgid="8470424063788054136">"Samsung: Anynet+\nLG: SimpLink\nSony: BRAVIA Sync\nPhilips: EasyLink\nSharp: Aquos Link"</string>
+    <string name="settings_axel" msgid="859248404436889205">"ตั้งค่าปุ่มรีโมต"</string>
+    <string name="settings_axel_description" msgid="6033294262165949416">"ควบคุมระดับเสียง การเปิด/ปิด อินพุตในทีวี ตัวรับสัญญาณ และซาวด์บาร์"</string>
+    <string name="settings_remote_battery_level" msgid="457729442110109776">"ระดับแบตเตอรี่: %1$s"</string>
+    <string name="settings_known_devices_category" msgid="1540063892581931395">"อุปกรณ์เสริม"</string>
+    <string name="settings_official_remote_category" msgid="5188969235127184097">"รีโมตคอนโทรล"</string>
+    <string name="settings_devices_connected" msgid="6877350530040954951">"เชื่อมต่อแล้ว"</string>
+    <string name="settings_devices_paired" msgid="2621291277619909987">"อุปกรณ์ที่เคยเชื่อมต่อ"</string>
+    <string name="settings_pair_remote" msgid="6703692816294828667">"จับคู่รีโมทหรืออุปกรณ์เสริม"</string>
+    <string name="bluetooth_disconnect" msgid="6750118548623705193">"ยกเลิกการเชื่อมต่อ"</string>
+    <string name="bluetooth_connect" msgid="4809187070439789397">"เชื่อมต่อ"</string>
+    <string name="bluetooth_rename" msgid="3866030281590534078">"เปลี่ยนชื่อ"</string>
+    <string name="bluetooth_forget" msgid="2304557507840517178">"ไม่จำ"</string>
+    <string name="bluetooth_connected_status" msgid="2445751338303462640">"เชื่อมต่อแล้ว"</string>
+    <string name="bluetooth_disconnected_status" msgid="8217553843170356254">"เลิกเชื่อมต่อแล้ว"</string>
+    <string name="settings_devices_control" msgid="5315752605677221119">"การควบคุมอุปกรณ์"</string>
+    <string name="settings_bt_pair_title" msgid="7666400883358524553">"เชื่อมต่ออุปกรณ์ใหม่"</string>
+    <string name="pair_device_description" msgid="7955553499324666950">"ก่อนเชื่อมต่ออุปกรณ์บลูทูธใหม่ ให้ตรวจสอบว่าอุปกรณ์อยู่ในโหมดจับคู่อุปกรณ์ หากต้องการเชื่อมต่อ %1$s ให้กด %2$s + %3$s ค้างไว้ 3 วินาที"</string>
+    <string name="pair_device_device_name" msgid="580032998745434834">"รีโมต Android TV"</string>
+    <string name="settings_bt_available_devices" msgid="6645182819584578819">"อุปกรณ์ที่ใช้ได้"</string>
+    <string name="settings_bt_empty_text" msgid="8332085133838257843">"กำลังค้นหาอุปกรณ์…"</string>
+    <string name="settings_bt_pair_status_error" msgid="1795732485043154388">"ข้อผิดพลาด"</string>
+    <string name="settings_bt_pair_status_connecting" msgid="4157328222685537069">"กำลังเชื่อมต่อ…"</string>
+    <string name="settings_bt_pair_status_done" msgid="3574182448076062786">"เชื่อมต่อแล้ว"</string>
+    <string name="settings_bt_pair_status_cancelled" msgid="8669857835593073002">"ยกเลิกแล้ว"</string>
+    <string name="settings_bt_pair_toast_fail" msgid="6775531736952071145">"%1$s เชื่อมต่อไม่สำเร็จ"</string>
+    <string name="settings_bt_pair_toast_connected" msgid="4892704875054315689">"เชื่อมต่อ %1$s แล้ว"</string>
+    <string name="settings_bt_pair_toast_disconnected" msgid="3661543481090697131">"ยกเลิกการเชื่อมต่อ %1$s แล้ว"</string>
+</resources>
