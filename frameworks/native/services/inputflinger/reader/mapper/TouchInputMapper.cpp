@@ -1593,9 +1593,9 @@ void TouchInputMapper::cookAndDispatch(nsecs_t when, nsecs_t readTime) {
             getContext()->fadePointer();
         }
 
-        if (mParameters.wake) {
-            policyFlags |= POLICY_FLAG_WAKE;
-        }
+        //if (mParameters.wake) {
+        //    policyFlags |= POLICY_FLAG_WAKE;
+        //}
     }
 
     // Consume raw off-screen touches before cooking pointer data.
