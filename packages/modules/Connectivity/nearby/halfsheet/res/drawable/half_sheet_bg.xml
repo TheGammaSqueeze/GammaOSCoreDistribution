@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:targetApi="23">
+  <solid android:color="@color/fast_pair_half_sheet_background" />
+  <corners
+      android:topLeftRadius="16dp"
+      android:topRightRadius="16dp"
+      android:padding="8dp"/>
+</shape>

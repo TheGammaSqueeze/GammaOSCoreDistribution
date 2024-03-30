@@ -1,0 +1,92 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+rust_defaults {
+    name: "authfs_defaults",
+    crate_name: "authfs",
+    srcs: [
+        "src/main.rs",
+    ],
+    edition: "2018",
+    rustlibs: [
+        "authfs_aidl_interface-rust",
+        "libandroid_logger",
+        "libanyhow",
+        "libauthfs_crypto_bindgen",
+        "libauthfs_fsverity_metadata",
+        "libbinder_rpc_unstable_bindgen",
+        "libbinder_rs",
+        "libcfg_if",
+        "libfsverity_digests_proto_rust",
+        "libfuse_rust",
+        "liblibc",
+        "liblog_rust",
+        "libnix",
+        "libprotobuf",
+        "libstructopt",
+        "libthiserror",
+    ],
+    prefer_rlib: true,
+    target: {
+        darwin: {
+            enabled: false,
+        },
+    },
+    shared_libs: [
+        "libcrypto",
+        "libbinder_rpc_unstable",
+    ],
+    defaults: ["crosvm_defaults"],
+}
+
+// TODO(b/172687320): remove once there is a canonical bindgen.
+rust_bindgen {
+    name: "libauthfs_crypto_bindgen",
+    wrapper_src: "src/crypto.hpp",
+    crate_name: "authfs_crypto_bindgen",
+    source_stem: "bindings",
+    shared_libs: [
+        "libcrypto",
+    ],
+    bindgen_flags: ["--size_t-is-usize"],
+    cflags: ["-D BORINGSSL_NO_CXX"],
+    apex_available: ["com.android.virt"],
+}
+
+rust_binary {
+    name: "authfs",
+    defaults: ["authfs_defaults"],
+    apex_available: ["com.android.virt"],
+}
+
+rust_test {
+    name: "authfs_device_test_src_lib",
+    defaults: ["authfs_defaults"],
+    test_suites: ["general-tests"],
+    data: [":authfs_test_files"],
+}
+
+filegroup {
+    name: "authfs_test_files",
+    srcs: [
+        "testdata/cert.der",
+        "testdata/input.4k",
+        "testdata/input.4k.fsv_meta",
+        "testdata/input.4k1",
+        "testdata/input.4k1.fsv_meta",
+        "testdata/input.4m",
+        "testdata/input.4m.fsv_meta",
+        "testdata/input.4m.fsv_meta.bad_merkle",
+    ],
+}
+
+rust_test {
+    name: "libauthfs_crypto_bindgen_test",
+    srcs: [":libauthfs_crypto_bindgen"],
+    crate_name: "authfs_crypto_bindgen_test",
+    test_suites: ["general-tests"],
+    auto_gen_config: true,
+    clippy_lints: "none",
+    lints: "none",
+}

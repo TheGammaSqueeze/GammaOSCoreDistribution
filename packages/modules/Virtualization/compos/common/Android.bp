@@ -1,0 +1,28 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+rust_library {
+    name: "libcompos_common",
+    crate_name: "compos_common",
+    srcs: ["lib.rs"],
+    edition: "2018",
+    rustlibs: [
+        "android.system.virtualizationservice-rust",
+        "compos_aidl_interface-rust",
+        "libanyhow",
+        "libbinder_common",
+        "libbinder_rpc_unstable_bindgen",
+        "libbinder_rs",
+        "liblog_rust",
+        "libnum_traits",
+        "librustutils",
+    ],
+    proc_macros: ["libnum_derive"],
+    shared_libs: [
+        "libbinder_rpc_unstable",
+    ],
+    apex_available: [
+        "com.android.compos",
+    ],
+}

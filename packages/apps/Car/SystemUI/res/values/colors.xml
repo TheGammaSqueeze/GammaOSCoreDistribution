@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2018 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+  -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- colors for user switcher -->
+    <color name="car_user_switcher_background_color">#000000</color>
+    <color name="car_user_switcher_name_text_color">@*android:color/car_body1_light</color>
+    <color name="car_user_switcher_add_user_background_color">#131313</color>
+    <color name="car_user_switcher_add_user_add_sign_color">@*android:color/car_body1_light</color>
+    <color name="car_managed_device_icon_color">@android:color/white</color>
+    <color name="car_nav_icon_fill_color">#8F8F8F</color>
+    <color name="car_nav_icon_fill_color_selected">#ffffff</color>
+    <!-- colors for seekbar -->
+    <color name="car_seekbar_track_background">#131315</color>
+    <color name="car_seekbar_track_secondary_progress">@*android:color/car_accent</color>
+    <!-- colors for volume dialog tint -->
+    <color name="car_volume_dialog_tint">@*android:color/car_tint</color>
+
+    <color name="docked_divider_background">@*android:color/car_grey_50</color>
+    <color name="system_bar_background_opaque">#ff172026</color>
+
+    <!-- colors for status bar -->
+    <color name="system_bar_background_pill_color">#282A2D</color>
+    <color name="privacy_chip_indicator_color">#66BB6A</color>
+    <color name="privacy_chip_dark_icon_color">#000000</color>
+    <color name="privacy_chip_light_icon_color">@color/car_nav_icon_fill_color_selected</color>
+    <color name="privacy_chip_indicator_outside_stroke_color">#000000</color>
+    <color name="system_bar_icon_color">#FFFFFF</color>
+    <color name="system_bar_icon_selected_color">#000000</color>
+    <color name="system_bar_text_color">#FFFFFF</color>
+    <color name="system_bar_text_selected_color">#000000</color>
+    <color name="system_bar_text_unavailable_color">#B0B0B0</color>
+    <drawable name="system_bar_background">#000000</drawable>
+
+    <!-- colors for quick controls entry points icon   -->
+    <color name="car_quick_controls_icon_drawable_color">#FFFFFF</color>
+
+    <!-- colors for hvac temperature view -->
+    <color name="hvac_temperature_adjust_button_color">#3C4043</color>
+    <color name="hvac_temperature_decrease_arrow_color">#8AB4F8</color>
+    <color name="hvac_temperature_increase_arrow_color">#F28B82</color>
+
+    <!-- The background color of the notification shade -->
+    <color name="notification_shade_background_color">#D6000000</color>
+
+    <!-- The background color of the car volume dialog -->
+    <color name="car_volume_dialog_background_color">@color/system_bar_background_opaque</color>
+
+    <!-- The color of the dividing line between grouped notifications. -->
+    <color name="notification_divider_color">@*android:color/notification_action_list</color>
+
+    <!-- The color for the unseen indicator. -->
+    <color name="car_nav_unseen_indicator_color">#e25142</color>
+
+    <!-- The color of the ripples on the untinted notifications -->
+    <color name="notification_ripple_untinted_color">?android:attr/colorControlHighlight</color>
+
+    <color name="keyguard_keypad_image_color">@android:color/white</color>
+
+    <color name="list_divider_color">@*android:color/car_list_divider_light</color>
+    <color name="car_volume_item_divider_color">@*android:color/car_list_divider</color>
+    <color name="car_volume_item_background_color">@*android:color/car_card_dark</color>
+
+    <color name="car_user_switching_dialog_background_color">@android:color/black</color>
+    <color name="car_user_switching_dialog_loading_text_color">@*android:color/car_body1</color>
+
+    <!-- colors for the HVAC application. -->
+
+    <color name="hvac_panel_handle_bar_color">@*android:color/white</color>
+
+    <!-- Different colors to indicate different temperature levels. The upper bound for each color
+    is defined in integers.xml (see hvac_temperature_control_levels). -->
+    <string-array name="hvac_temperature_level_backgrounds">
+        <item>#00AFFF</item>
+        <item>#7AA9F6</item>
+        <item>#F4F4F4</item>
+        <item>#FFD63F</item>
+        <item>#FF5151</item>
+    </string-array>
+
+    <color name="hvac_module_background_color">#99222B31</color>
+
+    <color name="hvac_icon_color">#F5F5F5</color>
+    <color name="hvac_master_switch_color">#000000</color>
+    <color name="hvac_background_color">#FF172026</color>
+    <color name="hvac_temperature_floating_text_color">#9FA2A5</color>
+    <color name="hvac_temperature_off_text_bg_color">#9FA2A5</color>
+    <color name="hvac_fanspeed_bg_color">#141C21</color>
+    <color name="hvac_fanspeed_segment_color">#7FCAC3</color>
+    <color name="hvac_seat_heat_level_drawable_fill_color">#222B31</color>
+    <color name="hvac_temperature_control_icon_fill_color">#000000</color>
+    <color name="hvac_fanspeed_off_enabled_bg">#F5F6F5</color>
+    <color name="hvac_fanspeed_off_enabled_text_color">#13181C</color>
+    <color name="hvac_fanspeed_off_disabled_text_color">#89F5F5F5</color>
+    <color name="hvac_fan_drawable_fill_color">#F5F5F5</color>
+    <color name="hvac_fanspeed_off_active_bg">#F5F6F5</color>
+    <color name="hvac_fanspeed_off_active_text_color">#13181C</color>
+    <color name="hvac_fanspeed_off_inactive_text_color">#89F5F5F5</color>
+    <color name="hvac_scrim_color">#3F000000</color>
+
+    <!-- Semi-transparent background color of blocking activity. -->
+    <color name="activity_blocking_activity_background">#c7000000</color>
+    <color name="activity_blocking_action_button_background_color">
+        @*android:color/car_grey_868
+    </color>
+
+    <!-- Color of text in blocking activity. -->
+    <color name="blocking_text">@android:color/white</color>
+    <color name="ic_ux_restricted_color">@android:color/white</color>
+
+    <!-- Color for status icon panel background. -->
+    <color name="status_icon_panel_bg_color">#282A2D</color>
+
+    <!-- Color for highlighting the status icon button that is currently selected. -->
+    <color name="status_icon_selected_button_color">#66B5FF</color>
+    <!-- Color for status icon that is currently highlighted. -->
+    <color name="status_icon_highlighted_color">#000000</color>
+    <!-- Color for status icon that is not highlighted. -->
+    <color name="status_icon_not_highlighted_color">#FFFFFF</color>
+
+    <!-- Color for clock text -->
+    <color name="system_bar_clock_text_color">@*android:color/car_headline3</color>
+</resources>

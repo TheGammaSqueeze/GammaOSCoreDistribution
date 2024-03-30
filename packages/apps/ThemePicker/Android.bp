@@ -1,0 +1,137 @@
+//
+// Copyright (C) 2021 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+filegroup {
+    name: "ThemePicker_srcs",
+    srcs: [
+        "src/**/*.java",
+        "src/**/*.kt",
+    ],
+}
+
+filegroup {
+    name: "ThemePicker_src_overrides",
+    srcs: [
+        "src_override/**/*.java",
+        "src_override/**/*.kt",
+    ],
+}
+
+filegroup {
+    name: "ThemePicker_Manifest",
+    srcs: [
+        "AndroidManifest.xml",
+    ],
+}
+
+genrule {
+    name: "ThemePicker_res",
+    tools: ["soong_zip"],
+    srcs: [
+        "res/**/*",
+    ],
+    out: ["ThemePicker_res.zip"],
+    cmd: "INPUTS=($(in)) && "
+        + "RES_DIR=$$(dirname $$(dirname $${INPUTS[0]})) && "
+        + "$(location soong_zip) -o $(out) -C $$RES_DIR -D $$RES_DIR"
+}
+
+genrule {
+    name: "ThemePicker_res_overrides",
+    tools: ["soong_zip"],
+    srcs: [
+        "res_override/**/*",
+    ],
+    out: ["ThemePicker_res_overrides.zip"],
+    cmd: "INPUTS=($(in)) && "
+        + "RES_DIR=$$(dirname $$(dirname $${INPUTS[0]})) && "
+        + "$(location soong_zip) -o $(out) -C $$RES_DIR -D $$RES_DIR"
+}
+
+java_defaults {
+    name: "ThemePicker_defaults",
+
+    static_libs: [
+        "guava",
+        "monet",
+	    "renderscript_toolkit",
+        "wallpaper-common-deps",
+        "SettingsLibSettingsTheme",
+        "SystemUI-statsd",
+        "styleprotoslite",
+        "androidx.lifecycle_lifecycle-livedata-ktx",
+        "androidx.lifecycle_lifecycle-runtime-ktx",
+        "androidx.lifecycle_lifecycle-viewmodel-ktx",
+        "androidx.recyclerview_recyclerview",
+        "SystemUICustomizationLib",
+    ],
+
+    jni_libs: [
+        "librenderscript-toolkit",
+    ],
+
+    srcs: [
+        ":WallpaperPicker2_srcs",
+        ":ThemePicker_srcs",
+        ":ThemePicker_src_overrides",
+    ],
+
+    use_embedded_native_libs: true,
+
+    resource_zips: [":WallpaperPicker2_res", ":ThemePicker_res", ":ThemePicker_res_overrides"],
+
+    optimize: {
+        enabled: false,
+    },
+    kotlincflags: ["-Xjvm-default=enable"],
+    certificate: "",
+
+    privileged: true,
+    system_ext_specific: true,
+}
+
+//
+// Build app code.
+//
+android_app {
+    name: "ThemePicker",
+    defaults: ["ThemePicker_defaults"],
+
+    platform_apis: true,
+    manifest: "AndroidManifest.xml",
+    additional_manifests: [":WallpaperPicker2_Manifest"],
+    overrides: [
+        "WallpaperCropper",
+        "WallpaperPicker",
+        "WallpaperPicker2",
+    ],
+    required: [
+        "privapp_whitelist_com.android.wallpaper"
+    ],
+}
+
+prebuilt_etc {
+    name: "privapp_whitelist_com.android.wallpaper",
+    system_ext_specific: true,
+    src: "privapp_whitelist_com.android.wallpaper.xml",
+    sub_dir: "permissions",
+    filename_from_src: true,
+}

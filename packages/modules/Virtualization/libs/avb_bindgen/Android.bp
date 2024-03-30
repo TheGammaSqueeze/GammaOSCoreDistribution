@@ -1,0 +1,32 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+rust_bindgen {
+    name: "libavb_bindgen",
+    host_supported: true,
+    wrapper_src: "bindgen/avb.h",
+    crate_name: "avb_bindgen",
+    source_stem: "bindings",
+    bindgen_flags: [
+        "--size_t-is-usize",
+        "--allowlist-function=.*",
+    ],
+    static_libs: [
+        "libavb",
+    ],
+    shared_libs: [
+        "libcrypto",
+    ],
+    cflags: ["-DBORINGSSL_NO_CXX"],
+}
+
+rust_test {
+    name: "libavb_bindgen_test",
+    srcs: [":libavb_bindgen"],
+    crate_name: "avb_bindgen_test",
+    test_suites: ["general-tests"],
+    auto_gen_config: true,
+    clippy_lints: "none",
+    lints: "none",
+}

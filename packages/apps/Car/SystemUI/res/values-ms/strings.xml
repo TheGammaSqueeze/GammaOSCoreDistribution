@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (c) 2018 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="hvac_min_text" msgid="866677328637088715">"Min"</string>
+    <string name="hvac_max_text" msgid="7627950157128770380">"Maks"</string>
+    <string name="fan_speed_max" msgid="956683571700419211">"MAKS"</string>
+    <string name="fan_speed_off" msgid="3860115181014880798">"MATI"</string>
+    <string name="hvac_temperature_off" msgid="8370977023494579242">"MATI"</string>
+    <string name="voice_recognition_toast" msgid="7579725862117020349">"Pengecaman suara kini dikendalikan peranti Bluetooth tersmbg"</string>
+    <string name="car_add_user" msgid="6182764665687382136">"Tambah profil"</string>
+    <string name="end_session" msgid="2765206020435441421">"Tamatkan sesi"</string>
+    <string name="car_new_user" msgid="6766334721724989964">"Profil Baharu"</string>
+    <string name="user_add_profile_title" msgid="828371911076521952">"Tambah profil baharu?"</string>
+    <string name="user_add_user_message_setup" msgid="6136074867764164790">"Selepas anda membuat profil baharu, orang itu perlu menyesuaikan profil untuk diri sendiri."</string>
+    <string name="user_add_user_message_update" msgid="3310089453006545712">"Apl boleh dikemas kini daripada mana-mana profil untuk kegunaan semua profil lain."</string>
+    <string name="profile_limit_reached_title" msgid="7891779218496729653">"Had profil dicapai"</string>
+    <string name="profile_limit_reached_message" msgid="1534369584753840606">"{count,plural, =1{Hanya satu profil boleh dibuat.}other{Anda boleh menambahkan sehingga # profil.}}"</string>
+    <string name="car_loading_profile" msgid="458961191993686065">"Memuatkan"</string>
+    <string name="car_loading_profile_developer_message" msgid="737810794567935702">"Memuatkan pengguna (daripada <xliff:g id="FROM_USER">%1$d</xliff:g> hingga <xliff:g id="TO_USER">%2$d</xliff:g>)"</string>
+    <string name="privacy_chip_off_content" msgid="8406415098507955316">"<xliff:g id="SENSOR">%1$s</xliff:g> dimatikan."</string>
+    <string name="privacy_chip_use_sensor" msgid="7688230720803089653">"Gunakan <xliff:g id="SENSOR">%1$s</xliff:g>"</string>
+    <string name="privacy_chip_use_sensor_subtext" msgid="5655148288310815742">"Untuk apl yang mempunyai kebenaran"</string>
+    <string name="mic_privacy_chip_microphone_settings" msgid="4520886720588226450">"Tetapan mikrofon"</string>
+    <string name="privacy_chip_app_using_sensor_suffix" msgid="7921315376271490004">"<xliff:g id="APP">%1$s</xliff:g> sedang menggunakan <xliff:g id="SENSOR">%2$s</xliff:g>"</string>
+    <string name="mic_privacy_chip_apps_using_mic_suffix" msgid="6656026041668305817">"<xliff:g id="APP_LIST">%s</xliff:g> sedang menggunakan mikrofon"</string>
+    <string name="privacy_chip_app_recently_used_sensor_suffix" msgid="4632772067170022529">"<xliff:g id="APP">%1$s</xliff:g> menggunakan <xliff:g id="SENSOR">%2$s</xliff:g> baru-baru ini"</string>
+    <string name="privacy_chip_apps_recently_used_sensor_suffix" msgid="2715537466314464047">"<xliff:g id="APP_0">%1$s</xliff:g> dan <xliff:g id="ADDITIONAL_APP_COUNT">%2$d</xliff:g> lagi apl menggunakan <xliff:g id="SENSOR">%3$s</xliff:g> baru-baru ini"</string>
+    <string name="mic_privacy_chip_on_toast" msgid="7003896860896586181">"Mikrofon dihidupkan"</string>
+    <string name="mic_privacy_chip_off_toast" msgid="8718743873640788032">"Mikrofon dimatikan"</string>
+    <string name="mic_privacy_chip_dialog_ok" msgid="2298690833121720237">"OK"</string>
+    <string name="sensor_privacy_start_use_mic_dialog_title" msgid="8774244900043105266">"Hidupkan mikrofon kenderaan?"</string>
+    <string name="sensor_privacy_start_use_mic_dialog_content" msgid="8382980879434990801">"Untuk meneruskan, hidupkan mikrofon sistem maklumat hibur. Tindakan ini akan menghidupkan mikrofon untuk semua aplikasi yang mempunyai kebenaran."</string>
+    <string name="camera_privacy_chip_camera_settings" msgid="96342672670928980">"Tetapan kamera"</string>
+    <string name="camera_privacy_chip_app_using_camera_suffix" msgid="2591363552459967509">"<xliff:g id="APP">%s</xliff:g> sedang menggunakan kamera"</string>
+    <string name="camera_privacy_chip_apps_using_camera_suffix" msgid="8033118959615498419">"<xliff:g id="APP_LIST">%s</xliff:g> sedang menggunakan kamera"</string>
+    <string name="camera_privacy_chip_app_recently_used_camera_suffix" msgid="4534950658276502559">"<xliff:g id="APP">%s</xliff:g> menggunakan kamera baru-baru ini"</string>
+    <string name="camera_privacy_chip_apps_recently_used_camera_suffix" msgid="3094973410349692954">"<xliff:g id="APP_0">%1$s</xliff:g> dan <xliff:g id="ADDITIONAL_APP_COUNT">%2$d</xliff:g> lagi apl menggunakan kamera baru-baru ini"</string>
+    <string name="camera_privacy_chip_on_toast" msgid="7901274903678512207">"Kamera dihidupkan"</string>
+    <string name="camera_privacy_chip_off_toast" msgid="7135472255099347229">"Kamera dimatikan"</string>
+    <string name="camera_privacy_chip_dialog_ok" msgid="7285467760928137765">"OK"</string>
+    <string name="sensor_privacy_start_use_camera_dialog_title" msgid="4787836783010823885">"Hidupkan kamera kenderaan?"</string>
+    <string name="sensor_privacy_start_use_camera_dialog_content" msgid="7749639131326657668">"Untuk meneruskan, hidupkan kamera sistem maklumat hibur. Tindakan ini akan menghidupkan kamera untuk semua apl yang mempunyai kebenaran."</string>
+    <string name="system_bar_home_label" msgid="8413273833405495948">"Skrin Utama"</string>
+    <string name="system_bar_phone_label" msgid="5664288201806823777">"Telefon"</string>
+    <string name="system_bar_applications_label" msgid="7081862804211786227">"Aplikasi"</string>
+    <string name="system_bar_climate_control_label" msgid="4091187805919276017">"Kawalan Iklim"</string>
+    <string name="system_bar_notifications_label" msgid="6039158514903928210">"Pemberitahuan"</string>
+    <string name="system_bar_maps_label" msgid="7883864993280235380">"Peta"</string>
+    <string name="system_bar_media_label" msgid="6156112139796274847">"Media"</string>
+    <string name="hvac_decrease_button_label" msgid="5628481079099995286">"Kurangkan suhu"</string>
+    <string name="hvac_increase_button_label" msgid="2855688290787396792">"Tinggikan suhu"</string>
+    <string name="status_icon_bluetooth_disconnected" msgid="6773447522499007010">"Tetapan Bluetooth: Diputuskan Sambungan"</string>
+    <string name="status_icon_bluetooth_connected" msgid="4548446117525711779">"Tetapan Bluetooth: Disambungkan"</string>
+    <string name="status_icon_bluetooth_off" msgid="5435041393564635821">"Tetapan Bluetooth: Bluetooth dimatikan"</string>
+    <string name="status_icon_signal_mobile" msgid="7264721079060179783">"Tetapan Isyarat: Menggunakan Data Mudah Alih"</string>
+    <string name="status_icon_signal_wifi" msgid="1257569337648058522">"Tetapan Isyarat: Wi-Fi Dihidupkan"</string>
+    <string name="status_icon_signal_hotspot" msgid="1023039120452006880">"Tetapan Isyarat: Tempat Liputan Dihidupkan"</string>
+    <string name="status_icon_display_status" msgid="2970020923181359144">"Tetapan Paparan"</string>
+    <string name="activity_blocked_text" msgid="5353157279548801554">"Anda tidak boleh menggunakan ciri ini semasa memandu"</string>
+    <string name="exit_button_close_application" msgid="112227710467017144">"Tutup apl"</string>
+    <string name="exit_button_go_back" msgid="7988866855775300902">"Kembali"</string>
+    <string name="qc_footer_settings" msgid="5471523941092316743">"Tetapan"</string>
+    <string name="qc_footer_bluetooth_settings" msgid="2870204430643762847">"Tetapan Bluetooth"</string>
+    <string name="qc_footer_network_internet_settings" msgid="2480582764252681575">"Tetapan rangkaian &amp; Internet"</string>
+    <string name="qc_footer_display_settings" msgid="2950539240110437704">"Tetapan paparan"</string>
+    <string name="qc_footer_network_sound_settings" msgid="5117011034908775097">"Tetapan bunyi"</string>
+    <string name="qc_footer_profiles_accounts_settings" msgid="4456419248123950232">"Tetapan profil &amp; akaun"</string>
+    <string name="lockpattern_does_not_support_rotary" msgid="4605787900312103476">"Corak tak sokong putaran; guna sentuhan"</string>
+</resources>

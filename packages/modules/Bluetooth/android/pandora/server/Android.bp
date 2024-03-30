@@ -1,0 +1,75 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+java_library_static {
+    name: "PandoraServerLib",
+
+    srcs: ["src/**/*.kt"],
+
+    sdk_version: "core_platform",
+
+    libs: [
+        // Access to hidden apis in Bluetooth:
+        "framework-bluetooth.impl",
+        "framework",
+    ],
+
+    static_libs: [
+        "androidx.test.runner",
+        "androidx.test.core",
+        "androidx.test.uiautomator_uiautomator",
+        "grpc-java-netty-shaded-test",
+        "grpc-java-lite",
+        "guava",
+        "opencensus-java-api",
+        "kotlin-test",
+        "kotlinx_coroutines",
+        "pandora_experimental-grpc-java",
+        "pandora_experimental-proto-java",
+        "opencensus-java-contrib-grpc-metrics",
+    ],
+}
+
+android_test_helper_app {
+    name: "PandoraServer",
+
+    static_libs: [
+        "PandoraServerLib",
+    ],
+
+    dex_preopt: {
+        enabled: false,
+    },
+    optimize: {
+        enabled: false,
+    },
+
+    test_suites: [
+        "general-tests",
+        "device-tests",
+        "mts-bluetooth",
+    ],
+}
+
+android_test {
+    name: "pts-bot",
+    required: ["PandoraServer"],
+    test_config: "configs/PtsBotTest.xml",
+    data: [
+        "configs/pts_bot_tests_config.json",
+        ":mmi2grpc"
+    ],
+    test_suites: ["device-tests"],
+}
+
+android_test {
+    name: "pts-bot-mts",
+    required: ["PandoraServer"],
+    test_config: "configs/PtsBotTestMts.xml",
+    data: [
+        "configs/pts_bot_tests_config.json",
+        ":mmi2grpc"
+    ],
+    test_suites: ["mts-bluetooth"],
+}

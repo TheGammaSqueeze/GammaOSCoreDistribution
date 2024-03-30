@@ -1,0 +1,4 @@
+# Only keep classes imported by ConnectivityServiceTest
+keep com.android.server.VpnManagerService
+keep com.android.server.connectivity.Vpn
+keep com.android.server.connectivity.VpnProfileStore

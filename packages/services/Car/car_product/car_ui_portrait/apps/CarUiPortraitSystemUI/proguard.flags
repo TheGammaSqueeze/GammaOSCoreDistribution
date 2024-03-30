@@ -1,0 +1,6 @@
+-keep class com.android.systemui.CarUiPortraitSystemUIInitializer
+
+-keep class com.android.systemui.DaggerCarUiPortraitGlobalRootComponent { *; }
+-keep class com.android.systemui.DaggerCarUiPortraitGlobalRootComponent$CarUiPortraitSysUIComponentImpl { *; }
+
+-include ../../../../../../../packages/apps/Car/SystemUI/proguard.flags

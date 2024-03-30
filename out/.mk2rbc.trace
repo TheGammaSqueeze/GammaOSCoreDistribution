@@ -1,0 +1,20 @@
+1711722128173524 B microfactory /home/ubuntu/lineage20/out/microfactory_Linux
+1711722128173554 B findDeps
+1711722128173766 E findDeps
+1711722128173799 B check compile github.com/google/blueprint/microfactory
+1711722128173889 E check compile github.com/google/blueprint/microfactory
+1711722128173901 B check compile main
+1711722128173945 E check compile main
+1711722128173949 B check link main
+1711722128173964 E check link main
+1711722128173983 B findDeps
+1711722128174660 E findDeps
+1711722128174694 B check compile android/soong/androidmk/parser
+1711722128174804 E check compile android/soong/androidmk/parser
+1711722128174816 B check compile android/soong/mk2rbc
+1711722128175085 E check compile android/soong/mk2rbc
+1711722128175096 B check compile main
+1711722128175152 E check compile main
+1711722128175155 B check link main
+1711722128175178 E check link main
+1711722128175186 E microfactory /home/ubuntu/lineage20/out/microfactory_Linux

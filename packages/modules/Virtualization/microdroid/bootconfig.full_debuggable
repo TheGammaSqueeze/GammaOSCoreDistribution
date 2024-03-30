@@ -1,0 +1,17 @@
+# The app is debuggable as full_debuggable is a superser of app_debuggable.
+androidboot.microdroid.app_debuggable=1
+
+# ro.debuggable is set.
+androidboot.microdroid.debuggable=1
+
+# Kernel message is exported.
+kernel.printk.devkmsg=on
+kernel.console=hvc0
+
+# ADB is supported and rooting is possible. Note that
+# ro.adb.secure is still 0 (see build.prop) which means that adbd is started
+# unrooted by default. To root, developer should explicitly execute `adb root`.
+androidboot.adb.enabled=1
+
+# logd is enabled
+androidboot.logd.enabled=1

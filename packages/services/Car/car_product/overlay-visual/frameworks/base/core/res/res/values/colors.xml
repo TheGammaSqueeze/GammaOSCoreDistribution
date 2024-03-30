@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+** Copyright 2017, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<resources>
+
+    <!-- The background color for the container of notification actions. -->
+    <color name="notification_action_list">@*android:color/car_colorSecondary</color>
+
+    <!-- The primary text color if the text is on top of a light background. -->
+    <color name="notification_primary_text_color_light">@*android:color/car_body1</color>
+
+    <!-- The primary text color if the text is on top of a dark background. -->
+    <color name="notification_primary_text_color_dark">@*android:color/car_body1</color>
+
+    <!-- The secondary text color if the text is on top of a light background. -->
+    <color name="notification_secondary_text_color_light">@*android:color/car_body2</color>
+
+    <!-- The secondary text color if the text is on top of a dark background. -->
+    <color name="notification_secondary_text_color_dark">@*android:color/car_body2</color>
+
+    <!-- The default color for text in a notification. This color is also the default color for
+         icons. -->
+    <color name="notification_default_color">@*android:color/car_accent</color>
+
+    <!-- Focus colors -->
+    <color name="focus_stroke_color">#94CBFF</color>
+    <color name="focus_fill_color">#3D94CBFF</color>
+    <color name="focus_pressed_stroke_color">#94CBFF</color>
+    <color name="focus_pressed_fill_color">#8A94CBFF</color>
+
+    <!-- The Switch track background color when checked. -->
+    <color name="car_switch_track_background_checked">#66B5FF</color>
+    <!-- The Switch track background color when unchecked. -->
+    <color name="car_switch_track_background_unchecked">#757575</color>
+    <!-- The Switch track background color when checked and disabled. -->
+    <color name="car_switch_track_background_checked_disabled">#7566B5FF</color>
+    <!-- The Switch track background color when unchecked and disabled. -->
+    <color name="car_switch_track_background_unchecked_disabled">#75757575</color>
+    <!-- The Switch thumb color. -->
+    <color name="car_switch_thumb_color">#FFFFFF</color>
+    <!-- The Switch thumb color when disabled and using the dark theme. -->
+    <color name="car_switch_thumb_color_disabled_on_dark">#757575</color>
+    <!-- The Switch thumb color when disabled and using the light theme. -->
+    <color name="car_switch_thumb_color_disabled_on_light">@color/car_switch_thumb_color</color>
+    <!-- The Switch track's background color. -->
+    <color name="car_seekbar_track_background">#757575</color>
+    <!-- The Switch track's progress color. -->
+    <color name="car_seekbar_track_progress">#66B5FF</color>
+    <!-- The Switch track's secondary progress color. -->
+    <color name="car_seekbar_track_progress_secondary">#A6A6A9</color>
+    <!-- Color of the outer ring when the SeekBar is selected. -->
+    <color name="car_seekbar_thumb_selected_stroke_color">#94CBFF</color>
+    <!-- Color of the background of the ring when the SeekBar is selected. -->
+    <color name="car_seekbar_thumb_selected_background_color">#3D94CBFF</color>
+    <!-- The SeekBar thumb color. -->
+    <color name="car_seekbar_thumb">#FFFFFF</color>
+    <!-- The SeekBar thumb color when disabled. Use for the dark theme. -->
+    <color name="car_seekbar_thumb_disabled_on_dark">#757575</color>
+</resources>

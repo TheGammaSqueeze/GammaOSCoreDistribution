@@ -1,0 +1,13 @@
+## used by service-uwb ##
+# Statically included annotations.
+rule androidx.annotation.** com.android.x.uwb.@0
+# Statically included module utils.
+rule com.android.modules.utils.** com.android.x.uwb.@0
+# Statically included HAL stubs.
+rule android.hardware.uwb.** com.android.x.uwb.@0
+# Statically included UWB support lib and guava lib.
+rule com.google.** com.android.x.uwb.@0
+# Included by support lib.
+rule com.android.internal.util.** com.android.x.uwb.@0
+
+## used by both framework-uwb and service-uwb ##

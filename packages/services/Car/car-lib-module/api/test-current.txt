@@ -1,0 +1,266 @@
+// Signature format: 2.0
+package android.car {
+
+  public final class Car {
+    field public static final String CAR_DEVICE_POLICY_SERVICE = "car_device_policy_service";
+    field public static final String CAR_TELEMETRY_SERVICE = "car_telemetry_service";
+    field public static final String CAR_USER_SERVICE = "car_user_service";
+    field @android.car.annotation.ApiRequirements(minCarVersion=android.car.annotation.ApiRequirements.CarVersion.TIRAMISU_1, minPlatformVersion=android.car.annotation.ApiRequirements.PlatformVersion.TIRAMISU_0) public static final String PROPERTY_EMULATED_PLATFORM_VERSION_MAJOR = "com.android.car.internal.debug.platform_major_version";
+    field @android.car.annotation.ApiRequirements(minCarVersion=android.car.annotation.ApiRequirements.CarVersion.TIRAMISU_1, minPlatformVersion=android.car.annotation.ApiRequirements.PlatformVersion.TIRAMISU_0) public static final String PROPERTY_EMULATED_PLATFORM_VERSION_MINOR = "com.android.car.internal.debug.platform_minor_version";
+  }
+
+  public final class CarAppFocusManager {
+    method public int[] getActiveAppTypes();
+  }
+
+  public class VehiclePropertyType {
+    field public static final int BOOLEAN = 2097152; // 0x200000
+    field public static final int BYTES = 7340032; // 0x700000
+    field public static final int FLOAT = 6291456; // 0x600000
+    field public static final int FLOAT_VEC = 6356992; // 0x610000
+    field public static final int INT32 = 4194304; // 0x400000
+    field public static final int INT32_VEC = 4259840; // 0x410000
+    field public static final int INT64 = 5242880; // 0x500000
+    field public static final int INT64_VEC = 5308416; // 0x510000
+    field public static final int MASK = 16711680; // 0xff0000
+    field public static final int MIXED = 14680064; // 0xe00000
+    field public static final int STRING = 1048576; // 0x100000
+  }
+
+}
+
+package android.car.admin {
+
+  public final class CarDevicePolicyManager {
+    method @NonNull @RequiresPermission(anyOf={android.Manifest.permission.MANAGE_USERS, android.Manifest.permission.CREATE_USERS}) public android.car.admin.CreateUserResult createUser(@Nullable String, int);
+    method @NonNull @RequiresPermission(anyOf={android.Manifest.permission.MANAGE_USERS, android.Manifest.permission.CREATE_USERS}) public android.car.admin.RemoveUserResult removeUser(@NonNull android.os.UserHandle);
+    method @NonNull @RequiresPermission(anyOf={android.Manifest.permission.MANAGE_USERS, android.Manifest.permission.CREATE_USERS}) public android.car.admin.StartUserInBackgroundResult startUserInBackground(@NonNull android.os.UserHandle);
+    method @NonNull @RequiresPermission(anyOf={android.Manifest.permission.MANAGE_USERS, android.Manifest.permission.CREATE_USERS}) public android.car.admin.StopUserResult stopUser(@NonNull android.os.UserHandle);
+    field public static final int USER_TYPE_ADMIN = 1; // 0x1
+    field public static final int USER_TYPE_GUEST = 2; // 0x2
+    field public static final int USER_TYPE_REGULAR = 0; // 0x0
+  }
+
+  public final class CreateUserResult {
+    method public int getStatus();
+    method @Nullable public android.os.UserHandle getUserHandle();
+    method public boolean isSuccess();
+    field public static final int STATUS_FAILURE_GENERIC = 100; // 0x64
+    field public static final int STATUS_FAILURE_INVALID_ARGUMENTS = 2; // 0x2
+    field public static final int STATUS_SUCCESS = 1; // 0x1
+  }
+
+  public final class RemoveUserResult {
+    method public int getStatus();
+    method public boolean isSuccess();
+    field public static final int STATUS_FAILURE_GENERIC = 100; // 0x64
+    field public static final int STATUS_FAILURE_INVALID_ARGUMENTS = 5; // 0x5
+    field public static final int STATUS_FAILURE_USER_DOES_NOT_EXIST = 4; // 0x4
+    field public static final int STATUS_SUCCESS = 1; // 0x1
+    field public static final int STATUS_SUCCESS_LAST_ADMIN_REMOVED = 2; // 0x2
+    field public static final int STATUS_SUCCESS_LAST_ADMIN_SET_EPHEMERAL = 6; // 0x6
+    field public static final int STATUS_SUCCESS_SET_EPHEMERAL = 3; // 0x3
+  }
+
+  public final class StartUserInBackgroundResult {
+    method public int getStatus();
+    method public boolean isSuccess();
+    field public static final int STATUS_FAILURE_GENERIC = 100; // 0x64
+    field public static final int STATUS_FAILURE_USER_DOES_NOT_EXIST = 3; // 0x3
+    field public static final int STATUS_SUCCESS = 1; // 0x1
+    field public static final int STATUS_SUCCESS_CURRENT_USER = 2; // 0x2
+  }
+
+  public final class StopUserResult {
+    method public int getStatus();
+    method public boolean isSuccess();
+    field public static final int STATUS_FAILURE_CURRENT_USER = 2; // 0x2
+    field public static final int STATUS_FAILURE_GENERIC = 100; // 0x64
+    field public static final int STATUS_FAILURE_SYSTEM_USER = 3; // 0x3
+    field public static final int STATUS_FAILURE_USER_DOES_NOT_EXIST = 4; // 0x4
+    field public static final int STATUS_SUCCESS = 1; // 0x1
+  }
+
+}
+
+package android.car.annotation {
+
+  @java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy.RUNTIME) @java.lang.annotation.Target({java.lang.annotation.ElementType.ANNOTATION_TYPE, java.lang.annotation.ElementType.FIELD, java.lang.annotation.ElementType.TYPE, java.lang.annotation.ElementType.METHOD}) public @interface ApiRequirements {
+    method public abstract android.car.annotation.ApiRequirements.CarVersion minCarVersion();
+    method public abstract android.car.annotation.ApiRequirements.PlatformVersion minPlatformVersion();
+  }
+
+  public enum ApiRequirements.CarVersion {
+    method public android.car.CarVersion get();
+    enum_constant public static final android.car.annotation.ApiRequirements.CarVersion TIRAMISU_0;
+    enum_constant public static final android.car.annotation.ApiRequirements.CarVersion TIRAMISU_1;
+    enum_constant public static final android.car.annotation.ApiRequirements.CarVersion TIRAMISU_2;
+    enum_constant public static final android.car.annotation.ApiRequirements.CarVersion TIRAMISU_3;
+  }
+
+  public enum ApiRequirements.PlatformVersion {
+    method public android.car.PlatformVersion get();
+    enum_constant public static final android.car.annotation.ApiRequirements.PlatformVersion TIRAMISU_0;
+    enum_constant public static final android.car.annotation.ApiRequirements.PlatformVersion TIRAMISU_1;
+    enum_constant public static final android.car.annotation.ApiRequirements.PlatformVersion TIRAMISU_2;
+    enum_constant public static final android.car.annotation.ApiRequirements.PlatformVersion TIRAMISU_3;
+  }
+
+}
+
+package android.car.app {
+
+  public final class CarActivityManager {
+    method @RequiresPermission(android.car.Car.PERMISSION_CONTROL_CAR_APP_LAUNCH) public int setPersistentActivity(@NonNull android.content.ComponentName, int, int);
+    field public static final int RESULT_FAILURE = -1; // 0xffffffff
+    field public static final int RESULT_INVALID_USER = -2; // 0xfffffffe
+    field public static final int RESULT_SUCCESS = 0; // 0x0
+  }
+
+}
+
+package android.car.content.pm {
+
+  public final class CarPackageManager {
+    method public void setEnableActivityBlocking(boolean);
+  }
+
+}
+
+package android.car.drivingstate {
+
+  public final class CarDrivingStateManager {
+    method public void injectDrivingState(int);
+  }
+
+}
+
+package android.car.hardware.power {
+
+  public class CarPowerManager {
+    method public static boolean isCompletionAllowed(int);
+  }
+
+}
+
+package android.car.media {
+
+  public final class CarAudioManager {
+    method @Deprecated public boolean isDynamicRoutingEnabled();
+  }
+
+}
+
+package android.car.telemetry {
+
+  public final class CarTelemetryManager {
+    method @RequiresPermission(android.car.Car.PERMISSION_USE_CAR_TELEMETRY_SERVICE) public void addMetricsConfig(@NonNull String, @NonNull byte[], @NonNull java.util.concurrent.Executor, @NonNull android.car.telemetry.CarTelemetryManager.AddMetricsConfigCallback);
+    method @RequiresPermission(android.car.Car.PERMISSION_USE_CAR_TELEMETRY_SERVICE) public void clearReportReadyListener();
+    method @RequiresPermission(android.car.Car.PERMISSION_USE_CAR_TELEMETRY_SERVICE) public void getAllFinishedReports(@NonNull java.util.concurrent.Executor, @NonNull android.car.telemetry.CarTelemetryManager.MetricsReportCallback);
+    method @RequiresPermission(android.car.Car.PERMISSION_USE_CAR_TELEMETRY_SERVICE) public void getFinishedReport(@NonNull String, @NonNull java.util.concurrent.Executor, @NonNull android.car.telemetry.CarTelemetryManager.MetricsReportCallback);
+    method @RequiresPermission(android.car.Car.PERMISSION_USE_CAR_TELEMETRY_SERVICE) public void removeAllMetricsConfigs();
+    method @RequiresPermission(android.car.Car.PERMISSION_USE_CAR_TELEMETRY_SERVICE) public void removeMetricsConfig(@NonNull String);
+    method @RequiresPermission(android.car.Car.PERMISSION_USE_CAR_TELEMETRY_SERVICE) public void setReportReadyListener(@NonNull java.util.concurrent.Executor, @NonNull android.car.telemetry.CarTelemetryManager.ReportReadyListener);
+    field public static final int STATUS_ADD_METRICS_CONFIG_ALREADY_EXISTS = 1; // 0x1
+    field public static final int STATUS_ADD_METRICS_CONFIG_PARSE_FAILED = 3; // 0x3
+    field public static final int STATUS_ADD_METRICS_CONFIG_SIGNATURE_VERIFICATION_FAILED = 4; // 0x4
+    field public static final int STATUS_ADD_METRICS_CONFIG_SUCCEEDED = 0; // 0x0
+    field public static final int STATUS_ADD_METRICS_CONFIG_UNKNOWN = 5; // 0x5
+    field public static final int STATUS_ADD_METRICS_CONFIG_VERSION_TOO_OLD = 2; // 0x2
+    field public static final int STATUS_GET_METRICS_CONFIG_DOES_NOT_EXIST = 4; // 0x4
+    field public static final int STATUS_GET_METRICS_CONFIG_FINISHED = 0; // 0x0
+    field public static final int STATUS_GET_METRICS_CONFIG_INTERIM_RESULTS = 2; // 0x2
+    field public static final int STATUS_GET_METRICS_CONFIG_PENDING = 1; // 0x1
+    field public static final int STATUS_GET_METRICS_CONFIG_RUNTIME_ERROR = 3; // 0x3
+  }
+
+  public static interface CarTelemetryManager.AddMetricsConfigCallback {
+    method public void onAddMetricsConfigStatus(@NonNull String, int);
+  }
+
+  public static interface CarTelemetryManager.MetricsReportCallback {
+    method public void onResult(@NonNull String, @Nullable android.os.PersistableBundle, @Nullable byte[], int);
+  }
+
+  public static interface CarTelemetryManager.ReportReadyListener {
+    method public void onReady(@NonNull String);
+  }
+
+}
+
+package android.car.test {
+
+  public final class CarTestManager {
+    ctor public CarTestManager(@NonNull android.car.Car, @NonNull android.os.IBinder);
+    method @android.car.annotation.ApiRequirements(minCarVersion=android.car.annotation.ApiRequirements.CarVersion.TIRAMISU_2, minPlatformVersion=android.car.annotation.ApiRequirements.PlatformVersion.TIRAMISU_0) @RequiresPermission(android.car.Car.PERMISSION_CAR_TEST_SERVICE) public String getOemServiceName() throws android.os.RemoteException;
+    method @RequiresPermission(android.car.Car.PERMISSION_CAR_TEST_SERVICE) public void startCarService(@NonNull android.os.IBinder);
+    method @RequiresPermission(android.car.Car.PERMISSION_CAR_TEST_SERVICE) public void stopCarService(@NonNull android.os.IBinder);
+  }
+
+}
+
+package android.car.user {
+
+  public final class CarUserManager {
+    method @RequiresPermission(anyOf={android.Manifest.permission.INTERACT_ACROSS_USERS, android.Manifest.permission.INTERACT_ACROSS_USERS_FULL}) public void addListener(@NonNull java.util.concurrent.Executor, @NonNull android.car.user.CarUserManager.UserLifecycleListener);
+    method @RequiresPermission(anyOf={android.Manifest.permission.INTERACT_ACROSS_USERS, android.Manifest.permission.INTERACT_ACROSS_USERS_FULL}) public void addListener(@NonNull java.util.concurrent.Executor, @NonNull android.car.user.UserLifecycleEventFilter, @NonNull android.car.user.CarUserManager.UserLifecycleListener);
+    method public static String lifecycleEventTypeToString(int);
+    method @RequiresPermission(anyOf={android.Manifest.permission.INTERACT_ACROSS_USERS, android.Manifest.permission.INTERACT_ACROSS_USERS_FULL}) public void removeListener(@NonNull android.car.user.CarUserManager.UserLifecycleListener);
+    method @RequiresPermission(anyOf={android.Manifest.permission.MANAGE_USERS, android.Manifest.permission.CREATE_USERS}) public android.car.util.concurrent.AsyncFuture<android.car.user.UserSwitchResult> switchUser(int);
+    field public static final int USER_LIFECYCLE_EVENT_TYPE_STARTING = 1; // 0x1
+    field public static final int USER_LIFECYCLE_EVENT_TYPE_STOPPED = 6; // 0x6
+    field public static final int USER_LIFECYCLE_EVENT_TYPE_STOPPING = 5; // 0x5
+    field public static final int USER_LIFECYCLE_EVENT_TYPE_SWITCHING = 2; // 0x2
+    field public static final int USER_LIFECYCLE_EVENT_TYPE_UNLOCKED = 4; // 0x4
+    field public static final int USER_LIFECYCLE_EVENT_TYPE_UNLOCKING = 3; // 0x3
+  }
+
+  public static final class CarUserManager.UserLifecycleEvent {
+    method public int getEventType();
+    method @Nullable public android.os.UserHandle getPreviousUserHandle();
+    method @NonNull public android.os.UserHandle getUserHandle();
+  }
+
+  public static interface CarUserManager.UserLifecycleListener {
+    method public void onEvent(@NonNull android.car.user.CarUserManager.UserLifecycleEvent);
+  }
+
+  public final class UserLifecycleEventFilter implements android.os.Parcelable {
+    method public boolean apply(@NonNull android.car.user.CarUserManager.UserLifecycleEvent);
+    method public int describeContents();
+    method public void writeToParcel(@NonNull android.os.Parcel, int);
+    field @NonNull public static final android.os.Parcelable.Creator<android.car.user.UserLifecycleEventFilter> CREATOR;
+  }
+
+  public final class UserSwitchResult implements android.os.Parcelable {
+    method public int describeContents();
+    method @Nullable public String getErrorMessage();
+    method public int getStatus();
+    method public boolean isSuccess();
+    method public void writeToParcel(@NonNull android.os.Parcel, int);
+    field @NonNull public static final android.os.Parcelable.Creator<android.car.user.UserSwitchResult> CREATOR;
+    field public static final int STATUS_ANDROID_FAILURE = 2; // 0x2
+    field public static final int STATUS_HAL_FAILURE = 3; // 0x3
+    field public static final int STATUS_HAL_INTERNAL_FAILURE = 4; // 0x4
+    field public static final int STATUS_INVALID_REQUEST = 5; // 0x5
+    field public static final int STATUS_NOT_LOGGED_IN = 105; // 0x69
+    field public static final int STATUS_NOT_SWITCHABLE = 104; // 0x68
+    field public static final int STATUS_OK_USER_ALREADY_IN_FOREGROUND = 101; // 0x65
+    field public static final int STATUS_SUCCESSFUL = 1; // 0x1
+    field public static final int STATUS_TARGET_USER_ABANDONED_DUE_TO_A_NEW_REQUEST = 103; // 0x67
+    field public static final int STATUS_TARGET_USER_ALREADY_BEING_SWITCHED_TO = 102; // 0x66
+    field public static final int STATUS_UX_RESTRICTION_FAILURE = 6; // 0x6
+  }
+
+}
+
+package android.car.util.concurrent {
+
+  public interface AsyncFuture<T> {
+    method @Nullable public T get() throws java.util.concurrent.ExecutionException, java.lang.InterruptedException;
+    method @Nullable public T get(long, @NonNull java.util.concurrent.TimeUnit) throws java.util.concurrent.ExecutionException, java.lang.InterruptedException, java.util.concurrent.TimeoutException;
+    method @NonNull public android.car.util.concurrent.AsyncFuture<T> whenCompleteAsync(@NonNull java.util.function.BiConsumer<? super T,? super java.lang.Throwable>, @NonNull java.util.concurrent.Executor);
+  }
+
+}
+

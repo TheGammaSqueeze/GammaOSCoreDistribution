@@ -1,0 +1,46 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+rust_defaults {
+    name: "apkdmverity.defaults",
+    crate_name: "apkdmverity",
+    srcs: ["src/main.rs"],
+    edition: "2018",
+    prefer_rlib: true,
+    rustlibs: [
+        "libanyhow",
+        "libbitflags",
+        "libclap",
+        "libdata_model",
+        "libidsig",
+        "libitertools",
+        "liblibc",
+        "libnix",
+        "libnum_traits",
+        "libscopeguard",
+        "libuuid",
+    ],
+    proc_macros: ["libnum_derive"],
+    multilib: {
+        lib32: {
+            enabled: false,
+        },
+    },
+}
+
+rust_binary {
+    name: "apkdmverity",
+    defaults: ["apkdmverity.defaults"],
+    bootstrap: true,
+}
+
+rust_test {
+    name: "apkdmverity.test",
+    defaults: ["apkdmverity.defaults"],
+    test_suites: ["general-tests"],
+    compile_multilib: "first",
+    rustlibs: [
+        "libtempfile",
+    ],
+}

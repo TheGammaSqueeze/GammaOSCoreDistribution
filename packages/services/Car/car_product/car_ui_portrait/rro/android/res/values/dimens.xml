@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2021 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources>
+    <!-- Height of the status bar -->
+    <dimen name="status_bar_height">92dp</dimen>
+    <!-- Height of the bottom navigation / climate bar. -->
+    <dimen name="navigation_bar_height">160dp</dimen>
+    <dimen name="navigation_bar_height_landscape">160dp</dimen>
+
+    <!-- ****** Alert dialog dimens ***** -->
+
+    <!-- Dialog corner radius -->
+    <dimen name="alert_dialog_corner_radius">32dp</dimen>
+    <!-- Dialog button corner radius -->
+    <dimen name="alert_dialog_button_corner_radius">24dp</dimen>
+    <!-- Dialog header size -->
+    <dimen name="car_card_header_height">88dp</dimen>
+    <!-- Dialog image size -->
+    <dimen name="car_alert_dialog_title_image_size">@dimen/car_card_header_height</dimen>
+    <!-- Default dialog margin -->
+    <dimen name="car_alert_dialog_margin">36dp</dimen>
+    <!-- Dialog button layout height -->
+    <dimen name="button_layout_height">88dp</dimen>
+    <!-- Default dialog button margin -->
+    <dimen name="car_alert_dialog_button_margin">24dp</dimen>
+
+    <!-- ****** Toast dimens ***** -->
+
+    <!-- Toast corner radius -->
+    <dimen name="toast_corner_radius">24dp</dimen>
+    <!-- Toast margin -->
+    <dimen name="toast_margin">24dp</dimen>
+    <!-- Toast elevation -->
+    <dimen name="toast_elevation">2dp</dimen>
+    <!-- Toast max width -->
+    <dimen name="toast_width">760dp</dimen>
+    <!-- Toast y offset (should be the same as the height of the audio bar -->
+    <dimen name="toast_y_offset">136dp</dimen>
+    <dimen name="toast_bottom_margin">32dp</dimen>
+</resources>

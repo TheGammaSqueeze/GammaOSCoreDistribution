@@ -1,0 +1,23 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+cc_binary {
+    name: "fs_benchmark",
+    static_executable: true,
+    static_libs: ["libbase"],
+    srcs: ["fs_benchmark.cpp"],
+}
+
+cc_library_shared {
+    name: "empty_payload",
+    srcs: ["empty_payload.cpp"],
+}
+
+android_app {
+    name: "MicrodroidFilesystemBenchmarkApp",
+    srcs: [],
+    jni_libs: ["empty_payload"],
+    platform_apis: true,
+    use_embedded_native_libs: true,
+}

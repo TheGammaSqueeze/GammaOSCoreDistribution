@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2022 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="android.nearby.multidevices">
+
+    <uses-feature android:name="android.hardware.bluetooth" />
+    <uses-feature android:name="android.hardware.bluetooth_le" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+
+    <application>
+        <meta-data
+            android:name="mobly-log-tag"
+            android:value="NearbyMainlineSnippet" />
+        <meta-data
+            android:name="mobly-snippets"
+            android:value="android.nearby.multidevices.fastpair.seeker.FastPairSeekerSnippet,
+                           android.nearby.multidevices.fastpair.provider.FastPairProviderSimulatorSnippet" />
+    </application>
+
+    <instrumentation
+        android:name="androidx.test.runner.AndroidJUnitRunner"
+        android:label="Nearby Mainline Module Instrumentation Test"
+        android:targetPackage="android.nearby.multidevices" />
+
+    <instrumentation
+        android:name="com.google.android.mobly.snippet.SnippetRunner"
+        android:label="Nearby Mainline Module Mobly Snippet"
+        android:targetPackage="android.nearby.multidevices" />
+
+</manifest>

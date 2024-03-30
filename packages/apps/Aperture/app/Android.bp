@@ -1,0 +1,54 @@
+//
+// SPDX-FileCopyrightText: 2022-2023 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+android_app {
+    name: "Aperture",
+
+    defaults: ["aapt_version_code_defaults"],
+
+    srcs: ["src/main/java/**/*.kt"],
+    resource_dirs: ["src/main/res"],
+    manifest: "src/main/AndroidManifest.xml",
+
+    sdk_version: "33",
+    product_specific: true,
+
+    static_libs: [
+        // DO NOT EDIT THIS SECTION MANUALLY
+        "androidx.core_core-ktx",
+        "androidx.activity_activity-ktx",
+        "androidx.appcompat_appcompat",
+        "androidx-constraintlayout_constraintlayout",
+        "androidx.exifinterface_exifinterface",
+        "androidx.lifecycle_lifecycle-viewmodel-ktx",
+        "androidx.preference_preference",
+        "Aperture_com.google.android.material_material",
+        "Aperture_androidx.camera_camera-core",
+        "Aperture_androidx.camera_camera-camera2",
+        "Aperture_androidx.camera_camera-lifecycle",
+        "Aperture_androidx.camera_camera-video",
+        "Aperture_androidx.camera_camera-view",
+        "Aperture_androidx.camera_camera-extensions",
+        "Aperture_androidx.media3_media3-exoplayer",
+        "Aperture_androidx.media3_media3-ui",
+        "Aperture_com.google.zxing_core",
+        "Aperture_io.coil-kt_coil",
+        "Aperture_io.coil-kt_coil-video",
+    ],
+    optional_uses_libs: [
+        "androidx.camera.extensions.impl"
+    ],
+    required: [
+        "ApertureLensLauncher",
+    ],
+
+    optimize: {
+        proguard_flags_files: ["proguard-rules.pro"],
+    },
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2022 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="@dimen/system_bar_user_icon_drawing_size"
+        android:height="@dimen/system_bar_user_icon_drawing_size"
+        android:viewportWidth="36"
+        android:viewportHeight="36">
+    <path
+        android:pathData="M24.75 18C26.82 18 28.485 16.32 28.485 14.25C28.485 12.18 26.82 10.5 24.75 10.5C22.68 10.5 21 12.18 21 14.25C21 16.32 22.68 18 24.75 18ZM13.5 16.5C15.9825 16.5 17.985 14.4825 17.985 12C17.985 9.5175 15.9825 7.5 13.5 7.5C11.0175 7.5 9 9.5175 9 12C9 14.4825 11.0175 16.5 13.5 16.5ZM24.75 21C21.9975 21 16.5 22.38 16.5 25.125V28.5H33V25.125C33 22.38 27.5025 21 24.75 21ZM13.5 19.5C9.9975 19.5 3 21.255 3 24.75V28.5H13.5V25.125C13.5 23.85 14.0025 21.6225 17.055 19.92C15.75 19.6425 14.4825 19.5 13.5 19.5Z"
+        android:fillColor="@color/system_bar_icon_color"/>
+</vector>

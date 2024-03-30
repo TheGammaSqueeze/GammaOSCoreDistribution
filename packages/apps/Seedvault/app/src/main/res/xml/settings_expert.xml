@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="unlimited_quota"
+        android:summary="@string/settings_expert_quota_summary"
+        android:title="@string/settings_expert_quota_title" />
+    <Preference
+        android:icon="@drawable/ic_bug_report"
+        android:key="logcat"
+        android:summary="@string/settings_expert_logcat_summary"
+        android:title="@string/settings_expert_logcat_title" />
+</PreferenceScreen>

@@ -1,0 +1,142 @@
+package {
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "system_bt_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    default_applicable_licenses: ["system_bt_license"],
+}
+
+rust_library_host_rlib {
+    name: "libbt_topshim",
+    defaults: ["gd_rust_defaults"],
+    crate_name: "bt_topshim",
+    srcs: [
+        "src/lib.rs",
+        ":libbt_topshim_wrapper_bindgen",
+    ],
+    rustlibs: [
+        "libbitflags",
+        "libbluetooth_rs",
+        "libbt_common",
+        "libbt_facade_helpers",
+        "libclap",
+        "libcxx",
+        "libgrpcio",
+        "libtokio",
+        "libtokio_stream",
+        "libbt_packets",
+        "libfutures",
+        "libnum_traits",
+        "libnix",
+        "liblog_rust",
+    ],
+    proc_macros: [
+        "libnum_derive",
+        "libpaste",
+        "libtopshim_macros",
+    ],
+    lints: "none",
+    clippy_lints: "none",
+}
+
+
+cc_library_static {
+    name: "libbt_topshim_cxx",
+    defaults: [
+        "gd_ffi_defaults",
+        "libchrome_support_defaults",
+    ],
+    header_libs: ["libbt_callbacks_cxx_headers"],
+    srcs: [
+        "btav/btav_shim.cc",
+        "btav_sink/btav_sink_shim.cc",
+        "btif/btif_shim.cc",
+        "gatt/gatt_shim.cc",
+        "gatt/gatt_ble_scanner_shim.cc",
+        "gatt/gatt_ble_advertiser_shim.cc",
+        "hfp/hfp_shim.cc",
+        "controller/controller_shim.cc",
+        "common/utils.cc",
+    ],
+    generated_headers: [
+        "libbt_init_flags_bridge_header",
+        "libbt_topshim_bridge_header",
+        "cxx-bridge-header"
+    ],
+    generated_sources: ["libbt_topshim_bridge_code"],
+    include_dirs: [
+        "packages/modules/Bluetooth/system",
+        "packages/modules/Bluetooth/system/gd",
+        "packages/modules/Bluetooth/system/gd/rust/topshim",
+        "packages/modules/Bluetooth/system/include",
+        "packages/modules/Bluetooth/system/types",
+    ],
+    host_supported: true,
+}
+
+gensrcs {
+    name: "libbt_topshim_bridge_header",
+    tools: ["cxxbridge"],
+    cmd: "$(location cxxbridge) $(in) --header > $(out)",
+    srcs: [
+        "src/btif.rs",
+        "src/profiles/a2dp.rs",
+        "src/profiles/avrcp.rs",
+        "src/profiles/hfp.rs",
+        "src/profiles/gatt.rs",
+        "src/controller.rs",
+    ],
+    output_extension: "rs.h",
+    export_include_dirs: ["."],
+}
+
+gensrcs {
+    name: "libbt_topshim_bridge_code",
+    tools: ["cxxbridge"],
+    cmd: "$(location cxxbridge) $(in) > $(out)",
+    srcs: [
+        "src/btif.rs",
+        "src/profiles/a2dp.rs",
+        "src/profiles/avrcp.rs",
+        "src/profiles/hfp.rs",
+        "src/profiles/gatt.rs",
+        "src/controller.rs",
+    ],
+    output_extension: "cc",
+    export_include_dirs: ["."],
+}
+
+rust_bindgen {
+    name: "libbt_topshim_wrapper_bindgen",
+    wrapper_src: "bindings/wrapper.hpp",
+    crate_name: "bt_topshim_wrapper_bindgen",
+    source_stem: "bindings",
+    cpp_std: "c++17",
+    host_supported: true,
+    bindgen_flags: [
+        "--size_t-is-usize",
+        "--allowlist-function=bt_.*",
+        "--allowlist-function=bthh_.*",
+        "--allowlist-function=btgatt_.*",
+        "--allowlist-function=btsdp.*",
+        "--allowlist-function=hal_util_.*",
+        "--allowlist-type=bt_.*",
+        "--allowlist-type=bthh_.*",
+        "--allowlist-type=btgatt_.*",
+        "--allowlist-type=bluetooth_sdp.*",
+        "--allowlist-type=btsdp.*",
+        "--enable-cxx-namespaces",
+        "--opaque-type=std::.*",
+        "--with-derive-default",
+        "--with-derive-partialeq",
+        "--with-derive-eq",
+    ],
+    shared_libs: [
+        "libc++",
+    ],
+    header_libs: [
+        "libbluetooth_headers",
+    ],
+    include_dirs: ["packages/modules/Bluetooth/system"],
+}

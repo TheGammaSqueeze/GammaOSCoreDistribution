@@ -1,0 +1,77 @@
+<!--
+  ~ Copyright (C) 2021 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<safety-center-config>
+    <safety-sources-config>
+        <safety-sources-group
+            id="AndroidLockScreenSources"
+            title="@com.android.safetycenter.resources:string/lock_screen_sources_title"
+            summary="@com.android.safetycenter.resources:string/lock_screen_sources_summary">
+            <dynamic-safety-source
+                id="AndroidLockScreen"
+                packageName="com.android.settings"
+                profile="primary_profile_only"
+                title="@com.android.safetycenter.resources:string/lock_screen_title"
+                summary="@com.android.safetycenter.resources:string/lock_screen_summary_disabled"
+                initialDisplayState="disabled"/>
+            <dynamic-safety-source
+                id="AndroidBiometrics"
+                packageName="com.android.settings"
+                profile="primary_profile_only"
+                initialDisplayState="hidden"/>
+        </safety-sources-group>
+        <safety-sources-group
+            id="AndroidPrivacySources"
+            title="@com.android.safetycenter.resources:string/privacy_sources_title"
+            summary="@com.android.safetycenter.resources:string/privacy_sources_summary"
+            statelessIconType="privacy">
+            <static-safety-source
+                id="AndroidPermissionUsage"
+                profile="primary_profile_only"
+                intentAction="android.intent.action.REVIEW_PERMISSION_USAGE"
+                title="@com.android.safetycenter.resources:string/permission_usage_title"
+                summary="@com.android.safetycenter.resources:string/permission_usage_summary"/>
+            <static-safety-source
+                id="AndroidPermissionManager"
+                profile="primary_profile_only"
+                intentAction="android.intent.action.MANAGE_PERMISSIONS"
+                title="@com.android.safetycenter.resources:string/permission_manager_title"
+                summary="@com.android.safetycenter.resources:string/permission_manager_summary"/>
+            <static-safety-source
+                id="AndroidPrivacyControls"
+                profile="primary_profile_only"
+                intentAction="android.settings.PRIVACY_CONTROLS"
+                title="@com.android.safetycenter.resources:string/privacy_controls_title"
+                summary="@com.android.safetycenter.resources:string/privacy_controls_summary"/>
+        </safety-sources-group>
+        <safety-sources-group
+            id="AndroidAdvancedSources"
+            title="@com.android.safetycenter.resources:string/advanced_title">
+            <static-safety-source
+                id="AndroidAdvancedSecurity"
+                profile="primary_profile_only"
+                intentAction="com.android.settings.security.SECURITY_ADVANCED_SETTINGS"
+                title="@com.android.safetycenter.resources:string/advanced_security_title"
+                summary="@com.android.safetycenter.resources:string/advanced_security_summary"/>
+            <static-safety-source
+                id="AndroidAdvancedPrivacy"
+                profile="primary_profile_only"
+                intentAction="android.settings.PRIVACY_ADVANCED_SETTINGS"
+                title="@com.android.safetycenter.resources:string/advanced_privacy_title"
+                summary="@com.android.safetycenter.resources:string/advanced_privacy_summary"/>
+        </safety-sources-group>
+    </safety-sources-config>
+</safety-center-config>

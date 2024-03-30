@@ -1,0 +1,61 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+cc_defaults {
+    name: "microdroid_metadata_default",
+    host_supported: true,
+    srcs: [
+        "metadata.proto",
+        "metadata.cc",
+    ],
+    shared_libs: [
+        "libbase",
+        "liblog",
+    ],
+    export_include_dirs: ["include"],
+}
+
+cc_library_static {
+    name: "lib_microdroid_metadata_proto",
+    proto: {
+        export_proto_headers: true,
+        type: "full",
+    },
+    defaults: ["microdroid_metadata_default"],
+}
+
+rust_protobuf {
+    name: "libmicrodroid_metadata_proto_rust",
+    crate_name: "microdroid_metadata",
+    protos: ["metadata.proto"],
+    source_stem: "microdroid_metadata",
+    host_supported: true,
+    apex_available: [
+        "com.android.virt",
+    ],
+}
+
+cc_binary_host {
+    name: "mk_payload",
+    srcs: [
+        "mk_payload.cc",
+    ],
+    static_libs: [
+        "lib_microdroid_metadata_proto",
+        "libbase",
+        "libcdisk_spec",
+        "libcuttlefish_fs",
+        "libcuttlefish_utils",
+        "libext2_uuid",
+        "libimage_aggregator",
+        "libjsoncpp",
+        "liblog",
+        "libprotobuf-cpp-full",
+        "libprotobuf-cpp-lite",
+        "libsparse",
+        "libxml2",
+        "libz",
+    ],
+    static_executable: true,
+}

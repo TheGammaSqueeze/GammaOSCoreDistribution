@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package blueberry.facade.topshim;
+
+service AdapterService {
+  rpc FetchEvents(FetchEventsRequest) returns (stream FetchEventsResponse) {}
+  rpc ToggleStack(ToggleStackRequest) returns (ToggleStackResponse) {}
+  rpc SetDiscoveryMode(SetDiscoveryModeRequest) returns (SetDiscoveryModeResponse) {}
+  rpc ClearEventFilter(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+enum EventType {
+  ADAPTER_STATE = 0;
+  SSP_REQUEST = 1;
+}
+message FetchEventsRequest {}
+
+message FetchEventsResponse {
+  EventType event_type = 1;
+  string data = 2;
+}
+
+message ToggleStackRequest {
+  bool start_stack = 1;  // True for enable; false for disable
+}
+
+message ToggleStackResponse {}
+
+message SetDiscoveryModeRequest {
+  bool enable_page_scan = 1;
+}
+
+message SetDiscoveryModeResponse {}
+
+service MediaService {
+  rpc StartA2dp(StartA2dpRequest) returns (StartA2dpResponse) {}
+  rpc A2dpSourceConnect(A2dpSourceConnectRequest) returns (A2dpSourceConnectResponse) {}
+  rpc A2dpSourceSetActiveDevice(A2dpSourceSetActiveDeviceRequest) returns (A2dpSourceSetActiveDevicetResponse) {}
+}
+
+message StartA2dpRequest {
+  bool start_a2dp_source = 1;
+  bool start_a2dp_sink = 2;
+}
+
+message StartA2dpResponse {}
+
+message A2dpSourceConnectRequest {
+  string address = 1;
+}
+
+message A2dpSourceConnectResponse {}
+
+message A2dpSourceSetActiveDeviceRequest {
+  string address = 1;
+}
+
+message A2dpSourceSetActiveDevicetResponse {}

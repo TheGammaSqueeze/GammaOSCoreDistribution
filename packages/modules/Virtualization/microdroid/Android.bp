@@ -1,0 +1,632 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+microdroid_shell_and_utilities = [
+    "reboot",
+    "sh",
+    "strace",
+    "toolbox",
+    "toybox",
+]
+
+microdroid_rootdirs = [
+    "dev",
+    "proc",
+    "sys",
+
+    "system",
+    "vendor",
+    "debug_ramdisk",
+    "mnt",
+    "data",
+
+    "apex",
+    "linkerconfig",
+    "second_stage_resources",
+]
+
+microdroid_symlinks = [
+    {
+        target: "/sys/kernel/debug",
+        name: "d",
+    },
+    {
+        target: "/system/etc",
+        name: "etc",
+    },
+    {
+        target: "/system/bin",
+        name: "bin",
+    },
+]
+
+android_system_image {
+    name: "microdroid",
+    use_avb: true,
+    avb_private_key: ":microdroid_sign_key",
+    avb_algorithm: "SHA256_RSA4096",
+    avb_hash_algorithm: "sha256",
+    partition_name: "system",
+    deps: [
+        "init_second_stage",
+        "microdroid_build_prop",
+        "microdroid_init_rc",
+        "microdroid_ueventd_rc",
+        "microdroid_launcher",
+
+        "libbinder",
+        "libbinder_ndk",
+        "libstdc++",
+        "logcat",
+        "logd",
+        "secilc",
+
+        // "com.android.adbd" requires these,
+        "libadbd_auth",
+        "libadbd_fs",
+
+        // "com.android.art" requires
+        "heapprofd_client_api",
+        "libartpalette-system",
+
+        "apexd",
+        "atrace",
+        "debuggerd",
+        "diced.microdroid",
+        "linker",
+        "linkerconfig",
+        "servicemanager.microdroid",
+        "tombstoned",
+        "tombstone_transmit.microdroid",
+        "cgroups.json",
+        "task_profiles.json",
+        "public.libraries.android.txt",
+
+        "microdroid_compatibility_matrix",
+        "microdroid_event-log-tags",
+        "microdroid_file_contexts",
+        "microdroid_manifest",
+        "microdroid_plat_sepolicy_and_mapping.sha256",
+        "microdroid_property_contexts",
+        "microdroid_service_contexts",
+
+        // TODO(b/195425111) these should be added automatically
+        "libcrypto", // used by many (init_second_stage, microdroid_manager, toybox, etc)
+        "liblzma", // used by init_second_stage
+    ] + microdroid_shell_and_utilities,
+    multilib: {
+        common: {
+            deps: [
+                // non-updatable & mandatory apexes
+                "com.android.runtime",
+
+                "microdroid_plat_sepolicy.cil",
+                "microdroid_plat_mapping_file",
+            ],
+        },
+        lib64: {
+            deps: [
+                "apkdmverity",
+                "authfs",
+                "authfs_service",
+                "microdroid_manager",
+                "zipfuse",
+            ],
+        },
+    },
+    linker_config_src: "linker.config.json",
+    base_dir: "system",
+    dirs: microdroid_rootdirs,
+    symlinks: microdroid_symlinks,
+    file_contexts: ":microdroid_file_contexts.gen",
+}
+
+prebuilt_etc {
+    name: "microdroid_init_rc",
+    filename: "init.rc",
+    src: "init.rc",
+    relative_install_path: "init/hw",
+    installable: false, // avoid collision with system partition's init.rc
+}
+
+prebuilt_etc {
+    name: "microdroid_ueventd_rc",
+    filename: "ueventd.rc",
+    src: "ueventd.rc",
+    installable: false, // avoid collision with system partition's ueventd.rc
+}
+
+prebuilt_root {
+    name: "microdroid_build_prop",
+    filename: "build.prop",
+    src: "build.prop",
+    arch: {
+        x86_64: {
+            src: ":microdroid_build_prop_gen_x86_64",
+        },
+        arm64: {
+            src: ":microdroid_build_prop_gen_arm64",
+        },
+    },
+    installable: false,
+}
+
+genrule {
+    name: "microdroid_build_prop_gen_x86_64",
+    srcs: [
+        "build.prop",
+        ":buildinfo.prop",
+    ],
+    out: ["build.prop.out"],
+    cmd: "(echo '# build properties from buildinfo.prop module' && " +
+        "grep ro\\.build\\.version\\.codename= $(location :buildinfo.prop) && " +
+        "grep ro\\.build\\.version\\.release= $(location :buildinfo.prop) && " +
+        "grep ro\\.build\\.version\\.sdk= $(location :buildinfo.prop) && " +
+        "grep ro\\.build\\.version\\.security_patch= $(location :buildinfo.prop) && " +
+        "cat $(location build.prop) && " +
+        "echo ro.product.cpu.abilist=x86_64) > $(out)",
+}
+
+genrule {
+    name: "microdroid_build_prop_gen_arm64",
+    srcs: [
+        "build.prop",
+        ":buildinfo.prop",
+    ],
+    out: ["build.prop.out"],
+    cmd: "(echo '# build properties from buildinfo.prop module' && " +
+        "grep ro\\.build\\.version\\.codename= $(location :buildinfo.prop) && " +
+        "grep ro\\.build\\.version\\.release= $(location :buildinfo.prop) && " +
+        "grep ro\\.build\\.version\\.sdk= $(location :buildinfo.prop) && " +
+        "grep ro\\.build\\.version\\.security_patch= $(location :buildinfo.prop) && " +
+        "cat $(location build.prop) && " +
+        "echo ro.product.cpu.abilist=arm64-v8a) > $(out)",
+}
+
+android_filesystem {
+    name: "microdroid_vendor",
+    partition_name: "vendor",
+    use_avb: true,
+    deps: [
+        "android.hardware.security.dice-service.microdroid",
+        "microdroid_fstab",
+        "microdroid_precompiled_sepolicy.plat_sepolicy_and_mapping.sha256",
+        "microdroid_vendor_manifest",
+        "microdroid_vendor_compatibility_matrix",
+    ],
+    multilib: {
+        common: {
+            deps: [
+                "microdroid_vendor_sepolicy.cil",
+                "microdroid_plat_pub_versioned.cil",
+                "microdroid_plat_sepolicy_vers.txt",
+                "microdroid_precompiled_sepolicy",
+            ],
+        },
+    },
+    avb_private_key: ":microdroid_sign_key",
+    avb_algorithm: "SHA256_RSA4096",
+    avb_hash_algorithm: "sha256",
+    file_contexts: ":microdroid_vendor_file_contexts.gen",
+}
+
+logical_partition {
+    name: "microdroid_super",
+    sparse: true,
+    size: "auto",
+    default_group: [
+        {
+            name: "system_a",
+            filesystem: ":microdroid",
+        },
+        {
+            name: "vendor_a",
+            filesystem: ":microdroid_vendor",
+        },
+    ],
+}
+
+microdroid_boot_cmdline = [
+    "panic=-1",
+    "bootconfig",
+    "ioremap_guard",
+]
+
+bootimg {
+    name: "microdroid_boot-5.10",
+    // We don't have kernel for arm and x86. But Soong demands one when it builds for
+    // arm or x86 target. Satisfy that by providing an empty file as the kernel.
+    kernel_prebuilt: "empty_kernel",
+    arch: {
+        arm64: {
+            kernel_prebuilt: ":kernel_prebuilts-5.10-arm64",
+            cmdline: microdroid_boot_cmdline,
+        },
+        x86_64: {
+            kernel_prebuilt: ":kernel_prebuilts-5.10-x86_64",
+            cmdline: microdroid_boot_cmdline + [
+                // console=none is to work around the x86 specific u-boot behavior which when
+                // console= option is not found in the kernel commandline console=ttyS0 is
+                // automatically added. By adding console=none, we can prevent u-boot from doing
+                // that. Note that console is set to hvc0 by bootconfig if the VM is configured as
+                // debuggable.
+                "console=none",
+                "acpi=noirq",
+            ],
+        },
+    },
+
+    dtb_prebuilt: "dummy_dtb.img",
+    header_version: "4",
+    partition_name: "boot",
+    use_avb: true,
+    avb_private_key: ":microdroid_sign_key",
+}
+
+bootimg {
+    name: "microdroid_init_boot",
+    ramdisk_module: "microdroid_ramdisk-5.10",
+    kernel_prebuilt: "empty_kernel",
+    header_version: "4",
+    partition_name: "init_boot",
+    use_avb: true,
+    avb_private_key: ":microdroid_sign_key",
+}
+
+android_filesystem {
+    name: "microdroid_ramdisk-5.10",
+    deps: [
+        "init_first_stage",
+    ],
+    dirs: [
+        "dev",
+        "proc",
+        "sys",
+
+        // TODO(jiyong): remove these
+        "mnt",
+        "debug_ramdisk",
+        "second_stage_resources",
+    ],
+    type: "compressed_cpio",
+}
+
+bootimg {
+    name: "microdroid_vendor_boot-5.10",
+    ramdisk_module: "microdroid_vendor_ramdisk-5.10",
+    dtb_prebuilt: "dummy_dtb.img",
+    header_version: "4",
+    vendor_boot: true,
+    arch: {
+        arm64: {
+            bootconfig: ":microdroid_bootconfig_arm64_gen",
+        },
+        x86_64: {
+            bootconfig: ":microdroid_bootconfig_x86_64_gen",
+        },
+    },
+    partition_name: "vendor_boot",
+    use_avb: true,
+    avb_private_key: ":microdroid_sign_key",
+}
+
+prebuilt_kernel_modules {
+    name: "microdroid_kernel_modules",
+    arch: {
+        arm64: {
+            srcs: [":virt_device_prebuilts_kernel_modules_microdroid-5.10-arm64"],
+        },
+        x86_64: {
+            srcs: [":virt_device_prebuilts_kernel_modules_microdroid-5.10-x86_64"],
+        },
+    },
+    kernel_version: "5.10",
+}
+
+android_filesystem {
+    name: "microdroid_vendor_ramdisk-5.10",
+    deps: [
+        "microdroid_fstab",
+        "microdroid_kernel_modules",
+    ],
+    base_dir: "first_stage_ramdisk",
+    type: "compressed_cpio",
+    symlinks: [
+        {
+            target: "etc/fstab.microdroid",
+            name: "first_stage_ramdisk/fstab.microdroid",
+        },
+        {
+            target: "first_stage_ramdisk/lib",
+            name: "lib",
+        },
+    ],
+}
+
+genrule {
+    name: "microdroid_bootconfig_arm64_gen",
+    srcs: [
+        "bootconfig.common",
+        "bootconfig.arm64",
+    ],
+    out: ["bootconfig"],
+    cmd: "cat $(in) > $(out)",
+}
+
+genrule {
+    name: "microdroid_bootconfig_x86_64_gen",
+    srcs: [
+        "bootconfig.common",
+        "bootconfig.x86_64",
+    ],
+    out: ["bootconfig"],
+    cmd: "cat $(in) > $(out)",
+}
+
+vbmeta {
+    name: "microdroid_vbmeta_bootconfig",
+    partition_name: "vbmeta",
+    private_key: ":microdroid_sign_key",
+    chained_partitions: [
+        {
+            name: "bootconfig",
+            private_key: ":microdroid_sign_key",
+        },
+        {
+            name: "uboot_env",
+            private_key: ":microdroid_sign_key",
+        },
+    ],
+}
+
+// See external/avb/avbtool.py
+// MAX_VBMETA_SIZE=64KB, MAX_FOOTER_SIZE=4KB
+avb_hash_footer_kb = "68"
+
+prebuilt_etc {
+    name: "microdroid_bootconfig_normal",
+    src: ":microdroid_bootconfig_normal_gen",
+    filename: "microdroid_bootconfig.normal",
+}
+
+prebuilt_etc {
+    name: "microdroid_bootconfig_app_debuggable",
+    src: ":microdroid_bootconfig_app_debuggable_gen",
+    filename: "microdroid_bootconfig.app_debuggable",
+}
+
+prebuilt_etc {
+    name: "microdroid_bootconfig_full_debuggable",
+    src: ":microdroid_bootconfig_full_debuggable_gen",
+    filename: "microdroid_bootconfig.full_debuggable",
+}
+
+// TODO(jiyong): make a new module type that does the avb signing
+genrule {
+    name: "microdroid_bootconfig_normal_gen",
+    tools: ["avbtool"],
+    srcs: [
+        "bootconfig.normal",
+        ":microdroid_sign_key",
+    ],
+    out: ["microdroid_bootconfig.normal"],
+    cmd: "cp $(location bootconfig.normal) $(out) && " +
+        "$(location avbtool) add_hash_footer " +
+        "--algorithm SHA256_RSA4096 " +
+        "--partition_name bootconfig " +
+        "--key $(location :microdroid_sign_key) " +
+        "--partition_size $$(( " + avb_hash_footer_kb + " * 1024 + ( $$(stat --format=%s $(out)) + 4096 - 1 ) / 4096 * 4096 )) " +
+        "--image $(out)",
+}
+
+genrule {
+    name: "microdroid_bootconfig_app_debuggable_gen",
+    tools: ["avbtool"],
+    srcs: [
+        "bootconfig.app_debuggable",
+        ":microdroid_sign_key",
+    ],
+    out: ["microdroid_bootconfig.app_debuggable"],
+    cmd: "cp $(location bootconfig.app_debuggable) $(out) && " +
+        "$(location avbtool) add_hash_footer " +
+        "--algorithm SHA256_RSA4096 " +
+        "--partition_name bootconfig " +
+        "--key $(location :microdroid_sign_key) " +
+        "--partition_size $$(( " + avb_hash_footer_kb + " * 1024 + ( $$(stat --format=%s $(out)) + 4096 - 1 ) / 4096 * 4096 )) " +
+        "--image $(out)",
+}
+
+genrule {
+    name: "microdroid_bootconfig_full_debuggable_gen",
+    tools: ["avbtool"],
+    srcs: [
+        "bootconfig.full_debuggable",
+        ":microdroid_sign_key",
+    ],
+    out: ["microdroid_bootconfig.full_debuggable"],
+    cmd: "cp $(location bootconfig.full_debuggable) $(out) && " +
+        "$(location avbtool) add_hash_footer " +
+        "--algorithm SHA256_RSA4096 " +
+        "--partition_name bootconfig " +
+        "--key $(location :microdroid_sign_key) " +
+        "--partition_size $$(( " + avb_hash_footer_kb + " * 1024 + ( $$(stat --format=%s $(out)) + 4096 - 1 ) / 4096 * 4096 )) " +
+        "--image $(out)",
+}
+
+prebuilt_etc {
+    name: "microdroid_fstab",
+    src: "fstab.microdroid",
+    filename: "fstab.microdroid",
+    installable: false,
+}
+
+prebuilt_etc {
+    name: "microdroid_bootloader",
+    src: ":microdroid_bootloader_gen",
+    arch: {
+        x86_64: {
+            // For unknown reason, the signed bootloader doesn't work on x86_64. Until the problem
+            // is fixed, let's use the unsigned bootloader for the architecture.
+            // TODO(b/185115783): remove this
+            src: ":microdroid_bootloader_pubkey_replaced",
+        },
+    },
+    filename: "microdroid_bootloader",
+}
+
+genrule {
+    name: "microdroid_bootloader_gen",
+    tools: ["avbtool"],
+    srcs: [
+        ":microdroid_bootloader_pubkey_replaced",
+        ":microdroid_sign_key",
+    ],
+    out: ["bootloader-signed"],
+    // 1. Copy the input to the output becaise avbtool modifies --image in
+    // place.
+    // 2. Check if the file is big enough. For arm and x86 we have fake
+    // bootloader file whose size is 1. It can't pass avbtool.
+    // 3. Add the hash footer. The partition size is set to (image size + 68KB)
+    // rounded up to 4KB boundary.
+    cmd: "cp $(location :microdroid_bootloader_pubkey_replaced) $(out) && " +
+        "if [ $$(stat --format=%s $(out)) -gt 4096 ]; then " +
+        "$(location avbtool) add_hash_footer " +
+        "--algorithm SHA256_RSA4096 " +
+        "--partition_name bootloader " +
+        "--key $(location :microdroid_sign_key) " +
+        "--partition_size $$(( " + avb_hash_footer_kb + " * 1024 + ( $$(stat --format=%s $(out)) + 4096 - 1 ) / 4096 * 4096 )) " +
+        "--image $(out)" +
+        "; fi",
+}
+
+// Replace avbpubkey of prebuilt bootloader with the avbpubkey of the signing key
+genrule {
+    name: "microdroid_bootloader_pubkey_replaced",
+    tools: ["replace_bytes"],
+    srcs: [
+        ":microdroid_crosvm_bootloader", // input (bootloader)
+        ":microdroid_crosvm_bootloader.avbpubkey", // old bytes (old pubkey)
+        ":microdroid_bootloader_avbpubkey_gen", // new bytes (new pubkey)
+    ],
+    out: ["bootloader-pubkey-replaced"],
+    // 1. Copy the input to the output (replace_bytes modifies the file in-place)
+    // 2. Check if the file is big enough. For arm and x86 we have fake
+    // bootloader file whose size is 1. (replace_bytes fails if key not found)
+    // 3. Replace embedded pubkey with new one.
+    cmd: "cp $(location :microdroid_crosvm_bootloader) $(out) && " +
+        "if [ $$(stat --format=%s $(out)) -gt 4096 ]; then " +
+        "$(location replace_bytes) $(out) " +
+        "$(location :microdroid_crosvm_bootloader.avbpubkey) " +
+        "$(location :microdroid_bootloader_avbpubkey_gen)" +
+        "; fi",
+}
+
+// Apex keeps a copy of avbpubkey embedded in bootloader so that embedded avbpubkey can be replaced
+// while re-signing bootloader.
+prebuilt_etc {
+    name: "microdroid_bootloader.avbpubkey",
+    src: ":microdroid_bootloader_avbpubkey_gen",
+}
+
+// Generate avbpukey from the signing key
+genrule {
+    name: "microdroid_bootloader_avbpubkey_gen",
+    tools: ["avbtool"],
+    srcs: [":microdroid_sign_key"],
+    out: ["bootloader.pubkey"],
+    cmd: "$(location avbtool) extract_public_key " +
+        "--key $(location :microdroid_sign_key) " +
+        "--output $(out)",
+}
+
+prebuilt_etc {
+    name: "microdroid_uboot_env",
+    src: ":microdroid_uboot_env_gen",
+    filename: "uboot_env.img",
+}
+
+genrule {
+    name: "microdroid_uboot_env_gen",
+    tools: [
+        "mkenvimage_slim",
+        "avbtool",
+    ],
+    srcs: [
+        "uboot-env.txt",
+        ":microdroid_sign_key",
+    ],
+    out: ["output.img"],
+    cmd: "$(location mkenvimage_slim) -output_path $(out) -input_path $(location uboot-env.txt) && " +
+        "$(location avbtool) add_hash_footer " +
+        "--algorithm SHA256_RSA4096 " +
+        "--partition_name uboot_env " +
+        "--key $(location :microdroid_sign_key) " +
+        "--partition_size $$(( " + avb_hash_footer_kb + " * 1024 + ( $$(stat --format=%s $(out)) + 4096 - 1 ) / 4096 * 4096 )) " +
+        "--image $(out)",
+}
+
+// Note that keys can be different for filesystem images even though we're using the same key
+// for microdroid. However, the key signing VBmeta should match with the pubkey embedded in
+// bootloader.
+filegroup {
+    name: "microdroid_sign_key",
+    srcs: [":avb_testkey_rsa4096"],
+}
+
+vbmeta {
+    name: "microdroid_vbmeta",
+    partition_name: "vbmeta",
+    private_key: ":microdroid_sign_key",
+    partitions: [
+        "microdroid_vendor",
+        "microdroid_vendor_boot-5.10",
+        "microdroid",
+        "microdroid_boot-5.10",
+        "microdroid_init_boot",
+    ],
+}
+
+prebuilt_etc {
+    name: "microdroid.json",
+    src: "microdroid.json",
+}
+
+prebuilt_etc {
+    name: "microdroid_vendor_manifest",
+    src: "microdroid_vendor_manifest.xml",
+    filename: "manifest.xml",
+    relative_install_path: "vintf",
+    installable: false,
+}
+
+prebuilt_etc {
+    name: "microdroid_vendor_compatibility_matrix",
+    src: "microdroid_vendor_compatibility_matrix.xml",
+    filename: "compatibility_matrix.xml",
+    relative_install_path: "vintf",
+    installable: false,
+}
+
+prebuilt_etc {
+    name: "microdroid_compatibility_matrix",
+    src: "microdroid_compatibility_matrix.xml",
+    filename: "compatibility_matrix.current.xml",
+    relative_install_path: "vintf",
+    installable: false,
+}
+
+prebuilt_etc {
+    name: "microdroid_manifest",
+    src: "microdroid_manifest.xml",
+    filename: "manifest.xml",
+    relative_install_path: "vintf",
+    installable: false,
+}
+
+prebuilt_etc {
+    name: "microdroid_event-log-tags",
+    src: "microdroid_event-log-tags",
+    filename: "event-log-tags",
+    installable: false,
+}

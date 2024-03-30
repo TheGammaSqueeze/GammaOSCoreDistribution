@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2017-2023 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="update_failed_notification">Agiornamentu fallidu</string>
+    <string name="new_updates_found_title">Agiornamentos noos</string>
+    <string name="pause_button">Pàusa</string>
+    <string name="resume_button">Sighi</string>
+    <string name="installing_update_finished">Agiornamentu installadu</string>
+    <string name="reboot">Torra a allùghere</string>
+    <string name="menu_preferences">Preferèntzias</string>
+    <string name="menu_delete_update">Iscantzella</string>
+    <string name="action_download">Iscàrriga</string>
+    <string name="action_pause">Pàusa</string>
+    <string name="action_resume">Sighi</string>
+    <string name="action_install">Installa</string>
+    <string name="action_info">Informatziones</string>
+    <string name="action_delete">Iscantzella</string>
+    <string name="action_cancel">Annulla</string>
+    <string name="update_over_metered_network_title">Atentzione</string>
+    <string name="new_updates_channel_title">Agiornamentos noos</string>
+    <string name="update_failed_channel_title">Agiornamentu fallidu</string>
+</resources>

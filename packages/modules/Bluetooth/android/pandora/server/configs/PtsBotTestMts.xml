@@ -1,0 +1,60 @@
+<configuration description="Runs PTS-bot tests in MTS">
+    <target_preparer class="com.android.tradefed.targetprep.TestAppInstallSetup">
+        <option name="test-file-name" value="PandoraServer.apk" />
+        <option name="install-arg" value="-r" />
+        <option name="install-arg" value="-g" />
+    </target_preparer>
+
+    <target_preparer class="com.android.tradefed.targetprep.RootTargetPreparer">
+      <option name="force-root" value="true"/>
+    </target_preparer>
+
+    <target_preparer class="com.android.tradefed.targetprep.RunHostCommandTargetPreparer">
+        <option name="host-background-command" value="adb -s $SERIAL shell am instrument --no-hidden-api-checks -w com.android.pandora/.Main" />
+    </target_preparer>
+
+    <target_preparer class="com.android.tradefed.targetprep.PythonVirtualenvPreparer">
+        <option name="dep-module" value="grpcio" />
+        <option name="dep-module" value="protobuf==3.20.1" />
+        <option name="dep-module" value="scipy" />
+    </target_preparer>
+
+    <test class="com.android.tradefed.testtype.pandora.PtsBotTest" >
+        <!-- Creates a randomized temp dir for pts-bot binaries and avoid
+             conflicts when running multiple pts-bot on the same machine -->
+        <option name="create-bin-temp-dir" value="true"/>
+        <!-- mmi2grpc is contained inside testcases folder -->
+        <option name="mmi2grpc" value="testcases" />
+        <option name="tests-config-file" value="pts_bot_tests_config.json" />
+        <option name="max-flaky-tests" value="3" />
+        <option name="max-retries-per-test" value="3" />
+        <option name="physical" value="false" />
+        <option name="profile" value="A2DP/SNK" />
+        <option name="profile" value="A2DP/SRC" />
+        <option name="profile" value="AVCTP" />
+        <option name="profile" value="AVDTP/SNK" />
+        <option name="profile" value="AVDTP/SRC" />
+        <option name="profile" value="AVRCP" />
+        <option name="profile" value="GAP" />
+        <option name="profile" value="GATT" />
+        <option name="profile" value="HFP/AG" />
+        <option name="profile" value="HFP/HF" />
+        <option name="profile" value="HID/HOS" />
+        <option name="profile" value="HOGP" />
+        <option name="profile" value="L2CAP/COS" />
+        <option name="profile" value="L2CAP/EXF" />
+        <option name="profile" value="L2CAP/LE" />
+        <option name="profile" value="MAP" />
+        <option name="profile" value="OPP" />
+        <option name="profile" value="PBAP/PSE" />
+        <option name="profile" value="RFCOMM" />
+        <option name="profile" value="SDP" />
+        <option name="profile" value="SM" />
+    </test>
+
+    <object type="module_controller"
+            class="com.android.tradefed.testtype.suite.module.MainlineTestModuleController">
+        <option name="mainline-module-package-name" value="com.android.btservices" />
+        <option name="mainline-module-package-name" value="com.google.android.btservices" />
+    </object>
+</configuration>

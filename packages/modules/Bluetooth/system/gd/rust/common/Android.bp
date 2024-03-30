@@ -1,0 +1,66 @@
+package {
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "system_bt_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    default_applicable_licenses: ["system_bt_license"],
+}
+
+rust_library {
+    name: "libbt_common",
+    defaults: ["gd_rust_defaults"],
+    crate_name: "bt_common",
+    srcs: ["src/lib.rs"],
+    edition: "2018",
+    rustlibs: [
+        "libtokio",
+        "libnix",
+        "liblazy_static",
+        "liblog_rust",
+        "libcxx",
+        "libgrpcio",
+    ],
+    target: {
+        android: {
+            rustlibs: [
+                "libandroid_logger",
+                "librustutils",
+            ],
+            shared_libs: [
+                "libcutils",
+            ],
+        },
+        host: {
+            rustlibs: [
+                "libenv_logger",
+            ],
+        },
+    },
+    proc_macros: [
+        "libpaste",
+    ],
+    apex_available: [
+        "com.android.bluetooth",
+    ],
+    min_sdk_version: "30",
+}
+
+rust_test_host {
+    name: "libbt_common_inline_tests",
+    srcs: ["src/lib.rs"],
+    test_suites: ["general-tests"],
+    auto_gen_config: true,
+    rustlibs: [
+        "libtokio",
+        "libnix",
+        "liblazy_static",
+        "liblog_rust",
+        "libenv_logger",
+        "libcxx",
+        "libgrpcio",
+    ],
+    proc_macros: [
+        "libpaste",
+    ],
+}

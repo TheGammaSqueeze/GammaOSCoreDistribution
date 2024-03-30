@@ -1,0 +1,45 @@
+// Copyright (C) 2022 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+android_app_certificate {
+    name: "com.android.adservices.api.certificate",
+    certificate: "com.android.adservices.api",
+}
+
+android_app {
+    name: "AdServicesApk",
+    sdk_version: "module_current",
+    min_sdk_version: "Tiramisu",
+    certificate: ":com.android.adservices.api.certificate",
+    privileged: true,
+    srcs: [
+        "java/**/*.java",
+    ],
+    libs: [
+        // Need it to access hidden stuff in framework-adservices.
+        "framework-adservices.impl",
+    ],
+    static_libs: [
+        "adservices-service-core",
+    ],
+    // TODO(b/208705888): Renable tflite.
+    // jni_libs: ["libtensorflowlite_jni"],
+    use_embedded_native_libs: true,
+    required: ["privapp_allowlist_com.android.adservices.api.xml"],
+    apex_available: ["com.android.adservices"],
+}

@@ -1,0 +1,7 @@
+# jarjar rules to use on API stable builds.
+# Use the latest stable apishim package as the main apishim package, to replace and avoid building
+# the unstable, non-compatibility shims.
+# Once API 34 is stable, apishim/34/com.android.networkstack.apishim should be moved to the
+# com.android.networkstack.apishim.api34 package, a new apishim/34/com.android.networkstack.apishim
+# package should be created, and this rule should reference api34.
+rule com.android.networkstack.apishim.api33.** com.android.networkstack.apishim.@1

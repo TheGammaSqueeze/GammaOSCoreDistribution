@@ -1,0 +1,43 @@
+//
+// SPDX-FileCopyrightText: 2017-2024 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+android_app {
+    name: "Jelly",
+
+    srcs: [
+        "src/main/java/**/*.kt",
+        "src_aosp/main/java/**/*.kt",
+    ],
+    resource_dirs: ["src/main/res"],
+    manifest: "src/main/AndroidManifest.xml",
+
+    product_specific: true,
+
+    overrides: [
+        "Browser2",
+        "CarHTMLViewer",
+    ],
+
+    static_libs: [
+        // DO NOT EDIT THIS SECTION MANUALLY
+        "androidx.core_core-ktx",
+        "androidx.annotation_annotation",
+        "Jelly_androidx.appcompat_appcompat",
+        "androidx.cardview_cardview",
+        "androidx.palette_palette",
+        "androidx.preference_preference",
+        "androidx.recyclerview_recyclerview",
+        "androidx.transition_transition",
+        "Jelly_com.google.android.material_material",
+        "kotlinx-coroutines-android",
+        "kotlinx-coroutines-core",
+    ],
+
+    sdk_version: "33",
+}

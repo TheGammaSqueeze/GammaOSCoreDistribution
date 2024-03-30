@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2021 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <color name="car_nav_icon_fill_color">#FFFFFF</color>
+    <color name="car_nav_icon_background_color">#282A2D</color>
+    <color name="car_nav_minimize_icon_fill_color">@android:color/black</color>
+
+    <drawable name="system_bar_background">#000000</drawable>
+    <color name="system_bar_text_color">#E8EAED</color>
+    <color name="hvac_temperature_adjust_button_color">#282A2D</color>
+    <color name="hvac_temperature_decrease_arrow_color">#E8EAED</color>
+    <color name="hvac_temperature_increase_arrow_color">#E8EAED</color>
+    <color name="system_bar_background_pill_color">#fff</color>
+    <color name="status_icon_panel_bg_color">#fff</color>
+    <color name="status_icon_not_highlighted_color">#202124</color>
+    <color name="status_icon_selected_button_color">#6BF0FF</color>
+
+    <color name="status_bar_background_color">#00000000</color>
+    <drawable name="status_bar_background">@color/status_bar_background_color</drawable>
+
+    <color name="hvac_background_color">#202124</color>
+    <color name="hvac_master_switch_color">@color/car_nav_icon_fill_color</color>
+    <color name="hvac_on_icon_fill_color">@android:color/black</color>
+    <color name="hvac_off_icon_fill_color">@android:color/white</color>
+    <color name="hvac_on_cooling_background_color">#6BF0FF</color>
+    <color name="hvac_on_heating_background_color">#EE675C</color>
+    <color name="hvac_on_background_color">#6BF0FF</color>
+    <color name="hvac_off_background_color">#3C4043</color>
+    <color name="hvac_panel_handle_bar_color">#3C4043</color>
+
+    <color name="dark_mode_icon_color_single_tone">@color/car_nav_icon_fill_color</color>
+    <color name="light_mode_icon_color_single_tone">@color/car_nav_icon_fill_color</color>
+
+    <color name="title_bar_display_area_handle_bar_color">#9aa0a6</color>
+    <color name="title_bar_display_area_background_color">#ffffff</color>
+    <color name="immersive_chevron_icon_color">@color/title_bar_display_area_handle_bar_color</color>
+
+    <color name="privacy_chip_light_icon_color">#000000</color>
+    <color name="privacy_chip_dark_icon_color">#ffffff</color>
+</resources>

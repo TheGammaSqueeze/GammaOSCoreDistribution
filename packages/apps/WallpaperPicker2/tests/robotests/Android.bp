@@ -1,0 +1,24 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+android_robolectric_test {
+    enabled: true,
+
+    name: "WallpaperPicker2RoboTests",
+
+    srcs: [
+        "src/**/*.java",
+    ],
+
+    java_resource_dirs: ["config"],
+
+    libs: [
+        "androidx.test.core",
+        "androidx.test.runner",
+    ],
+
+    upstream: true,
+
+    instrumentation_for: "WallpaperPicker2",
+}

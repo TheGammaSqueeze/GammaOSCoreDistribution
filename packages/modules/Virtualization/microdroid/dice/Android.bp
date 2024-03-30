@@ -1,0 +1,29 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+rust_binary {
+    name: "android.hardware.security.dice-service.microdroid",
+    srcs: ["service.rs"],
+    relative_install_path: "hw",
+    vendor: true,
+    prefer_rlib: true,
+    rustlibs: [
+        "android.hardware.security.dice-V1-rust",
+        "libandroid_logger",
+        "libanyhow",
+        "libbinder_rs",
+        "libbyteorder",
+        "libdiced_open_dice_cbor",
+        "libdiced_sample_inputs",
+        "libdiced_vendor",
+        "liblibc",
+        "liblog_rust",
+        "libserde",
+    ],
+    init_rc: ["android.hardware.security.dice-service.microdroid.rc"],
+    vintf_fragments: [
+        "android.hardware.security.dice-service.microdroid.xml",
+    ],
+    bootstrap: true,
+}

@@ -1,0 +1,11 @@
+{
+  "version": 339990000,
+  "provideNativeLibs": [
+  ],
+  "provideSharedApexLibs": false,
+  "requireSharedApexLibs": [
+  ],
+  "name": "com.android.btservices",
+  "requireNativeLibs": [
+  ]
+}

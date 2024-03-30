@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Fast Pair notification values -->
+  <dimen name="fast_pair_halfsheet_mid_image_size">160dp</dimen>
+  <dimen name="fast_pair_notification_text_size">14sp</dimen>
+  <dimen name="fast_pair_notification_text_size_small">11sp</dimen>
+  <dimen name="fast_pair_battery_notification_empty_view_height">4dp</dimen>
+  <dimen name="fast_pair_battery_notification_margin_top">8dp</dimen>
+  <dimen name="fast_pair_battery_notification_margin_bottom">8dp</dimen>
+  <dimen name="fast_pair_battery_notification_content_height">40dp</dimen>
+  <dimen name="fast_pair_battery_notification_content_height_v2">64dp</dimen>
+  <dimen name="fast_pair_battery_notification_image_size">32dp</dimen>
+  <dimen name="fast_pair_battery_notification_image_padding">3dp</dimen>
+  <dimen name="fast_pair_half_sheet_min_height">350dp</dimen>
+  <dimen name="fast_pair_half_sheet_image_size">215dp</dimen>
+  <dimen name="fast_pair_half_sheet_land_image_size">136dp</dimen>
+  <dimen name="fast_pair_connect_button_height">36dp</dimen>
+  <dimen name="accessibility_required_min_touch_target_size">48dp</dimen>
+  <dimen name="fast_pair_half_sheet_battery_case_image_size">152dp</dimen>
+  <dimen name="fast_pair_half_sheet_battery_bud_image_size">100dp</dimen>
+  <integer name="half_sheet_battery_case_width_dp">156</integer>
+  <integer name="half_sheet_battery_case_height_dp">182</integer>
+
+  <!-- Maximum height for SliceView, override on slices/view/src/main/res/values/dimens.xml -->
+  <dimen name="abc_slice_large_height">360dp</dimen>
+
+  <dimen name="action_dialog_content_margin_left">16dp</dimen>
+  <dimen name="action_dialog_content_margin_top">70dp</dimen>
+  <dimen name="action_button_focused_elevation">4dp</dimen>
+  <!-- Subsequent Notification -->
+  <dimen name="fast_pair_notification_padding">4dp</dimen>
+  <dimen name="fast_pair_notification_large_image_size">32dp</dimen>
+  <dimen name="fast_pair_notification_small_image_size">32dp</dimen>
+  <!-- Battery Notification -->
+  <dimen name="fast_pair_battery_notification_main_view_padding">0dp</dimen>
+  <dimen name="fast_pair_battery_notification_title_image_margin_start">0dp</dimen>
+  <dimen name="fast_pair_battery_notification_title_text_margin_start">0dp</dimen>
+  <dimen name="fast_pair_battery_notification_title_text_margin_start_v2">0dp</dimen>
+  <dimen name="fast_pair_battery_notification_image_margin_start">0dp</dimen>
+
+  <dimen name="fast_pair_half_sheet_bottom_button_height">48dp</dimen>
+</resources>

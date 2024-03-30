@@ -1,0 +1,32 @@
+# Keep class's integer static field for MessageUtils to parsing their name.
+-keep class com.android.networkstack.tethering.Tethering$TetherMainSM {
+    static final int CMD_*;
+    static final int EVENT_*;
+}
+
+-keep class com.android.networkstack.tethering.util.BpfMap {
+    native <methods>;
+}
+
+-keep class com.android.networkstack.tethering.util.TcUtils {
+    native <methods>;
+}
+
+# Ensure runtime-visible field annotations are kept when using R8 full mode.
+-keepattributes RuntimeVisibleAnnotations,AnnotationDefault
+-keep interface com.android.networkstack.tethering.util.Struct$Field {
+    *;
+}
+-keepclassmembers public class * extends com.android.networkstack.tethering.util.Struct {
+    *;
+}
+
+-keepclassmembers class android.net.ip.IpServer {
+    static final int CMD_*;
+}
+
+# The lite proto runtime uses reflection to access fields based on the names in
+# the schema, keep all the fields.
+-keepclassmembers class * extends com.android.networkstack.tethering.protobuf.MessageLite {
+    <fields>;
+}

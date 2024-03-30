@@ -1,0 +1,55 @@
+//
+// Copyright (C) 2021 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+genrule_defaults {
+    name: "sepolicy_sig_gen_default",
+    tool_files: [":SEPolicyKeyPem", ":SEPolicyCertPem"],
+    // openssl dgst -sign com.android.sepolicy.pem -keyform PEM -sha256 -out foo.sign
+    // -binary $OUT/apex/com.android.sepolicy/etc/SEPolicy-33/SEPolicy-33.zip
+    cmd: "openssl dgst -sign $(location :SEPolicyKeyPem) -keyform PEM -sha256 " +
+        "-out $(out) -binary $(in)"
+}
+
+genrule_defaults {
+    name: "sepolicy_verity_sig_gen_default",
+    tools: ["fsverity"],
+    tool_files: [":SEPolicyKeyPem", ":SEPolicyCertPem"],
+    // Use fsverity tool to generate the signature file which
+    // will be stored in the apex.
+    // https://git.kernel.org/pub/scm/linux/kernel/git/ebiggers/fsverity-utils.git/tree/README.md
+    cmd: "$(location fsverity) sign $(in) $(out) " +
+        "--key=$(location :SEPolicyKeyPem) " +
+        "--cert=$(location :SEPolicyCertPem) " +
+        "> /dev/null",
+}
+
+genrule_defaults {
+    name: "sepolicy_create_zip_gen_default",
+    tools: ["soong_zip"],
+    cmd: "mkdir $(genDir)/files && " +
+        "cp $(in) $(genDir)/files && " +
+        "$(location soong_zip) -o $(out) -C $(genDir)/files -D $(genDir)/files",
+}
+
+prebuilt_etc {
+    name: "sepolicy_apex_test_file",
+    src: "sepolicy_apex_test_file",
+    filename: "apex_test",
+    installable: false,
+}

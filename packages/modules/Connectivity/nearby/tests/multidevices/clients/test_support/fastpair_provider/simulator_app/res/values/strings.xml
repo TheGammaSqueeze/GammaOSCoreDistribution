@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Fast Pair Provider Simulator</string>
+    <string-array name="adv_options">
+        <item>0: No battery info</item>
+        <item>1: Show L(⬆) + R(⬆) + C(⬆)</item>
+        <item>2: Show L + R + C(unknown)</item>
+        <item>3: Show L(low 10) + R(low 9) + C(low 25)</item>
+        <item>4: Suppress battery w/o level changes</item>
+        <item>5: Suppress L(low 10) + R(11) + C</item>
+        <item>6: Suppress L(low ⬆) + R(low ⬆) + C(low 10)</item>
+        <item>7: Suppress L(low ⬆) + R(low ⬆) + C(low ⬆)</item>
+        <item>8: Show subsequent pairing notification</item>
+        <item>9: Suppress subsequent pairing notification</item>
+    </string-array>
+    <string-array name="event_stream_options">
+        <item>OHD event</item>
+        <item>Log event</item>
+        <item>Battery event</item>
+    </string-array>
+    <string name="firmware_dialog_title">Firmware version number</string>
+    <string name="firmware_input_hint">Type in version number</string>
+    <string name="passkey_dialog_title">Passkey needed</string>
+    <string name="passkey_input_hint">Type in passkey</string>
+    <!-- Passkey confirmation dialog title. [CHAR_LIMIT=NONE]-->
+    <string name="confirm_passkey">Confirm passkey</string>
+    <string name="model_id_progress_title">Get models from server</string>
+
+    <!-- Fast Pair Simulator: pair one device only. -->
+    <string name="fast_pair_simulator" translatable="false">Fast Pair Simulator</string>
+
+</resources>

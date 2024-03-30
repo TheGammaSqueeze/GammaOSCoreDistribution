@@ -1,0 +1,19 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+rust_library {
+    name: "libbinder_common",
+    crate_name: "binder_common",
+    srcs: ["lib.rs"],
+    edition: "2018",
+    rustlibs: [
+        "libbinder_rs",
+        "libbinder_rpc_unstable_bindgen",
+        "liblazy_static",
+    ],
+    apex_available: [
+        "com.android.compos",
+        "com.android.virt",
+    ],
+}

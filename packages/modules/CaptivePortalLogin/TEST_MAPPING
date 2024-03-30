@@ -1,0 +1,12 @@
+{
+  "presubmit": [
+    {
+      "name": "CaptivePortalLoginTests"
+    }
+  ],
+  "mainline-presubmit": [
+    {
+      "name": "CaptivePortalLoginTests[CaptivePortalLoginGoogle.apk+NetworkStackGoogle.apk+com.google.android.resolv.apex+com.google.android.tethering.apex]"
+    }
+  ]
+}

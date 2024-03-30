@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2022 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="role_dialer_request_description" msgid="6188305064871543419">"ഈ ആപ്പിന് നിങ്ങൾക്ക് അറിയിപ്പുകൾ അയയ്ക്കാനുള്ള അനുമതി ലഭിക്കുകയും നിങ്ങളുടെ ക്യാമറ, കോൺടാക്റ്റുകൾ, മൈക്രോഫോൺ, SMS എന്നിവയിലേക്ക് ആക്‌സസ് നൽകുകയും ചെയ്യും"</string>
+    <string name="role_sms_request_description" msgid="1506966389698625395">"ഈ ആപ്പിന് നിങ്ങൾക്ക് അറിയിപ്പുകൾ അയയ്ക്കാനുള്ള അനുമതി ലഭിക്കുകയും നിങ്ങളുടെ ക്യാമറ, കോൺടാക്റ്റുകൾ, ഫയലുകൾ, മൈക്രോഫോൺ, SMS എന്നിവയിലേക്ക് ആക്‌സസ് നൽകുകയും ചെയ്യും"</string>
+    <string name="permission_description_summary_storage" msgid="1917071243213043858">"ഈ അനുമതിയുള്ള ആപ്പുകൾക്ക് ഈ ഉപകരണത്തിലെ എല്ലാ ഫയലുകളും ആക്‌സസ് ചെയ്യാനാകും"</string>
+</resources>

@@ -1,0 +1,80 @@
+package {
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "system_bt_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    default_applicable_licenses: ["system_bt_license"],
+}
+
+rust_binary_host {
+    name: "bt_topshim_facade",
+    defaults: [
+        "gd_rust_defaults",
+        "libchrome_support_defaults"
+    ],
+    crate_name: "bt_topshim_facade",
+    srcs: ["src/main.rs"],
+    ld_flags: ["-fsanitize=undefined", "-fsanitize-minimal-runtime"],
+    rustlibs: [
+        "libbluetooth_rs",
+        "libbt_common",
+        "libtokio",
+        "libbt_packets",
+        "libfutures",
+        "libgrpcio",
+        "libnum_traits",
+        "libnix",
+        "liblog_rust",
+        "libbt_facade_helpers",
+        "libbt_topshim",
+        "libbt_topshim_facade_protobuf",
+        "libbt_shim",
+    ],
+    static_libs: [
+        "avrcp-target-service",
+        "lib-bt-packets",
+        "lib-bt-packets-avrcp",
+        "lib-bt-packets-base",
+        "libchrome",
+        "libevent",
+        "libbt_topshim_cxx",
+        "libbt-bta",
+        "libbt-common",
+        "libbtdevice",
+        "libbtif",
+        "libbt-hci",
+        "libbt-stack",
+        "libbt-utils",
+        "libbtcore",
+        "libosi",
+        "libbt-protos-lite",
+        "libbte",
+        "libbt-sbc-decoder",
+        "libbt-sbc-encoder",
+        "libFraunhoferAAC",
+        "libg722codec",
+        "liblc3",
+        "libopus",
+        "libudrv-uipc",
+        "libbluetooth_gd", // Gabeldorsche
+        "libbluetooth-dumpsys",
+        "libbluetooth-types",
+        "libflatbuffers-cpp",
+        "libbt_shim_bridge",
+        "libbt_topshim_cxx",
+        "libbt-audio-hal-interface",
+        "libaudio-a2dp-hw-utils",
+        "libc++fs",
+    ],
+    shared_libs: [
+        "libcrypto",
+        "liblog",
+        "libcutils",
+        "libgrpc++",
+        "libgrpc_wrap"
+    ],
+    proc_macros: [
+        "libpaste",
+    ],
+}

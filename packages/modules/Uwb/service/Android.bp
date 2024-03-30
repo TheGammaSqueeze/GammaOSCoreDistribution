@@ -1,0 +1,123 @@
+//
+// Copyright (C) 2021 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+java_defaults {
+    name: "service-uwb-common-defaults",
+    defaults: ["uwb-module-sdk-version-defaults"],
+    errorprone: {
+        javacflags: ["-Xep:CheckReturnValue:ERROR"],
+    },
+    product_variables: {
+        pdk: {
+            enabled: false,
+        },
+    },
+}
+
+filegroup {
+    name: "service-uwb-srcs",
+    srcs: [
+        "java/**/*.java",
+        ":statslog-uwb-java-gen",
+        ":uwb_config"
+    ],
+}
+
+// pre-jarjar version of service-uwb that builds against pre-jarjar version of framework-uwb
+java_library {
+    name: "service-uwb-pre-jarjar",
+    installable: false,
+    defaults: ["service-uwb-common-defaults"],
+    srcs: [ ":service-uwb-srcs" ],
+    // java_api_finder must accompany `srcs`
+    plugins: ["java_api_finder"],
+    required: ["libuwb_uci_jni_rust"],
+    sdk_version: "system_server_Tiramisu",
+
+    lint: {
+        strict_updatability_linting: true,
+    },
+    libs: [
+        "framework-annotations-lib",
+        "framework-uwb-pre-jarjar",
+        "ServiceUwbResources",
+        "framework-statsd.stubs.module_lib",
+        "framework-wifi.stubs.module_lib",
+    ],
+
+    static_libs: [
+        "androidx.annotation_annotation",
+        "android.hardware.uwb.fira_android-V1-java",
+        "com.uwb.support.ccc",
+        "com.uwb.support.fira",
+        "com.uwb.support.generic",
+        "com.uwb.support.multichip",
+        "com.uwb.support.profile",
+        "modules-utils-shell-command-handler",
+        "modules-utils-handlerexecutor",
+        "modules-utils-preconditions",
+        "guava",
+    ],
+
+    apex_available: [
+        "com.android.uwb",
+    ],
+}
+
+// service-uwb static library
+// ============================================================
+java_library {
+    name: "service-uwb",
+    defaults: ["service-uwb-common-defaults"],
+    installable: true,
+    static_libs: ["service-uwb-pre-jarjar"],
+
+    // need to include `libs` so that Soong doesn't complain about missing classes after jarjaring
+    libs: [
+        "framework-uwb.impl",
+    ],
+
+    sdk_version: "system_server_Tiramisu",
+
+    jarjar_rules: ":uwb-jarjar-rules",
+    optimize: {
+        enabled: true,
+        shrink: true,
+        proguard_flags_files: ["proguard.flags"],
+    },
+
+    visibility: [
+        "//packages/modules/Uwb/apex",
+        "//packages/modules/Uwb/service/tests/uwbtests/apex",
+    ],
+    apex_available: [
+        "com.android.uwb",
+    ],
+}
+
+// Statsd auto-generated code
+// ============================================================
+genrule {
+    name: "statslog-uwb-java-gen",
+    tools: ["stats-log-api-gen"],
+    cmd: "$(location stats-log-api-gen) --java $(out) --module uwb " +
+         " --javaPackage com.android.server.uwb.proto --javaClass UwbStatsLog" +
+         " --minApiLevel 33",
+    out: ["com/android/server/uwb/proto/UwbStatsLog.java"],
+}

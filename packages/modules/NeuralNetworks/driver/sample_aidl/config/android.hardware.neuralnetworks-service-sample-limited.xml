@@ -1,0 +1,10 @@
+<manifest version="1.0" type="device">
+    <hal format="aidl">
+        <name>android.hardware.neuralnetworks</name>
+        <version>4</version>
+        <fqname>IDevice/nnapi-sample_float_fast</fqname>
+        <fqname>IDevice/nnapi-sample_float_slow</fqname>
+        <fqname>IDevice/nnapi-sample_minimal</fqname>
+        <fqname>IDevice/nnapi-sample_quant</fqname>
+    </hal>
+</manifest>

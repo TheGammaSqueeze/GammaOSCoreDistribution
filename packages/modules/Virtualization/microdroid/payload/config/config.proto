@@ -1,0 +1,58 @@
+/*
+ * Copyright (C) 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+syntax = "proto3";
+
+package android.microdroid;
+
+// This .proto is for the schema of a VM payload config (JSON)
+
+message PayloadConfig {
+  uint32 version = 1;
+
+  OsConfig os = 2;
+
+  Task task = 3;
+
+  repeated ApexConfig apexes = 4;
+}
+
+message OsConfig {
+  // for now "microdroid" is the only type we support
+  string name = 1;
+}
+
+message Task {
+  enum TaskType {
+    EXECUTABLE = 0,          // "executable" in JSON
+    MICRODROID_LAUNCHER = 1, // "microdroid_launcher" in JSON
+  }
+  // when the type is "microdroid_launcher", command is searched in /mnt/apk/lib/{arch}"
+  TaskType type = 1;
+
+  string command = 2;
+  repeated string args = 3;
+}
+
+message ApexConfig {
+  string name = 1;
+
+  // TODO(b/186396080) An APEX can be identified either by
+  // (1) its name
+  // (2) name and public key (or cert)
+  // or (3) name and exact hash.
+  // Rollback index should be supported for the case (2).
+}

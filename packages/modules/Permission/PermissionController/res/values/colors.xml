@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2016 The Android Open Source Project
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+  -->
+
+<resources>
+    <color name="bigIconColor">#C8CCCE</color>
+    <color name="google_grey_800">#3C4043</color>
+    <color name="system_notification_accent_color">#ff607D8B</color>
+    <color name="incident_reason_bullet_color">#de000000</color>
+    <color name="divider_color_primary">#24000000</color>
+    <color name="divider_color_secondary">#85FFFFFF</color>
+    <color name="safety_center_secondary">#FF777777</color>
+
+    <!-- Auto related colors -->
+    <color name="car_tint">#fff8f9fa</color>
+    <color name="car_card_ripple_background">#27ffffff</color>
+    <color name="car_accent">#ff60a8f0</color>
+    <color name="car_divider_color">#1fffffff</color>
+
+    <!-- Safety center colors -->
+    <color name="safety_center_card_background">#D3D3D3</color>
+    <color name="safety_center_info">#1E8E3E</color>
+    <color name="safety_center_recommend">#F9AB00</color>
+    <color name="safety_center_warn">#D93025</color>
+    <color name="safety_center_status_unfilled_wedge">#DADCE0</color> <!-- Material Gray 300 -->
+    <color name="safety_center_done">#767676</color>
+    <color name="safety_center_qs_background">#2f3133</color>
+</resources>

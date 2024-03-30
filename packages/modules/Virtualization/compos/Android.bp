@@ -1,0 +1,42 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+rust_defaults {
+    name: "compsvc_defaults",
+    srcs: ["src/compsvc_main.rs"],
+    rustlibs: [
+        "android.system.virtualmachineservice-rust",
+        "authfs_aidl_interface-rust",
+        "compos_aidl_interface-rust",
+        "libandroid_logger",
+        "libanyhow",
+        "libbinder_common",
+        "libbinder_rpc_unstable_bindgen",
+        "libbinder_rs",
+        "libclap",
+        "libcompos_common",
+        "liblibc",
+        "liblog_rust",
+        "libminijail_rust",
+        "libnix",
+        "libodsign_proto_rust",
+        "libprotobuf",
+        "libregex",
+        "librustutils",
+        "libscopeguard",
+    ],
+    prefer_rlib: true,
+    shared_libs: [
+        "libbinder_rpc_unstable",
+        "libcrypto",
+    ],
+}
+
+rust_binary {
+    name: "compsvc",
+    defaults: ["compsvc_defaults"],
+    apex_available: [
+        "com.android.compos",
+    ],
+}

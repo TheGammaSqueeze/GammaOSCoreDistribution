@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2021 The Android Open Source Project
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<configuration description="Config for CTS Nearby Mainline multi devices end-to-end test suite">
+    <!-- Only run tests if the device under test is SDK version 33 (Android 13) or above. -->
+    <object type="module_controller"
+            class="com.android.tradefed.testtype.suite.module.Sdk33ModuleController" />
+    <!-- Only run NearbyMultiDevicesTestSuite in MTS if the Nearby Mainline module is installed. -->
+    <object type="module_controller"
+            class="com.android.tradefed.testtype.suite.module.MainlineTestModuleController">
+        <option name="mainline-module-package-name" value="com.google.android.tethering" />
+    </object>
+
+    <option name="test-suite-tag" value="apct" />
+    <option name="test-tag" value="NearbyMultiDevicesTestSuite" />
+    <option name="config-descriptor:metadata" key="component" value="wifi" />
+    <option name="config-descriptor:metadata" key="parameter" value="not_instant_app" />
+    <option name="config-descriptor:metadata" key="parameter" value="not_multi_abi" />
+    <option name="config-descriptor:metadata" key="parameter" value="not_secondary_user" />
+
+    <device name="device1">
+        <!-- For coverage to work, the APK should not be uninstalled until after coverage is pulled.
+             So it's a lot easier to install APKs outside the python code.
+        -->
+        <target_preparer class="com.android.tradefed.targetprep.RootTargetPreparer" />
+        <target_preparer class="com.android.compatibility.common.tradefed.targetprep.FilePusher">
+            <option name="remount-system" value="true" />
+            <option name="push" value="NearbyMultiDevicesClientsSnippets.apk->/system/app/NearbyMultiDevicesClientsSnippets/NearbyMultiDevicesClientsSnippets.apk" />
+            <option name="push" value="NearbyFastPairSeekerDataProvider.apk->/system/app/NearbyFastPairSeekerDataProvider/NearbyFastPairSeekerDataProvider.apk" />
+        </target_preparer>
+        <target_preparer class="com.android.tradefed.targetprep.RebootTargetPreparer" />
+        <target_preparer class="com.android.tradefed.targetprep.RunCommandTargetPreparer">
+            <option name="run-command" value="input keyevent KEYCODE_WAKEUP" />
+            <option name="run-command" value="wm dismiss-keyguard" />
+        </target_preparer>
+        <target_preparer class="com.android.tradefed.targetprep.PythonVirtualenvPreparer">
+          <!-- Any python dependencies can be specified and will be installed with pip -->
+          <!-- TODO(b/225958696): Import python dependencies -->
+          <option name="dep-module" value="mobly" />
+        </target_preparer>
+        <target_preparer class="com.android.tradefed.targetprep.DeviceSetup">
+            <option name="force-skip-system-props" value="true" /> <!-- avoid restarting device -->
+            <option name="screen-always-on" value="on" />
+            <!-- List permissions requested by the APK: aapt d permissions <PATH_TO_YOUR_APK> -->
+            <option
+                name="run-command"
+                value="pm grant android.nearby.multidevices android.permission.BLUETOOTH" />
+            <option
+                name="run-command"
+                value="pm grant android.nearby.multidevices android.permission.BLUETOOTH_ADMIN" />
+            <option
+                name="run-command"
+                value="pm grant android.nearby.multidevices android.permission.BLUETOOTH_ADVERTISE" />
+            <option
+                name="run-command"
+                value="pm grant android.nearby.multidevices android.permission.BLUETOOTH_CONNECT" />
+            <option
+                name="run-command"
+                value="pm grant android.nearby.multidevices android.permission.BLUETOOTH_PRIVILEGED" />
+            <option
+                name="run-command"
+                value="pm grant android.nearby.multidevices android.permission.BLUETOOTH_SCAN" />
+            <option
+                name="run-command"
+                value="pm grant android.nearby.multidevices android.permission.INTERNET" />
+            <option
+                name="run-command"
+                value="pm grant android.nearby.multidevices android.permission.GET_ACCOUNTS" />
+            <option
+                name="run-command"
+                value="pm grant android.nearby.multidevices android.permission.WRITE_SECURE_SETTINGS" />
+            <option
+                name="run-command"
+                value="pm grant android.nearby.multidevices android.permission.REORDER_TASKS" />
+        </target_preparer>
+    </device>
+    <device name="device2">
+        <target_preparer class="com.android.tradefed.targetprep.RootTargetPreparer" />
+        <target_preparer class="com.android.compatibility.common.tradefed.targetprep.FilePusher">
+            <option name="remount-system" value="true" />
+            <option name="push" value="NearbyMultiDevicesClientsSnippets.apk->/system/app/NearbyMultiDevicesClientsSnippets/NearbyMultiDevicesClientsSnippets.apk" />
+            <option name="push" value="NearbyFastPairSeekerDataProvider.apk->/system/app/NearbyFastPairSeekerDataProvider/NearbyFastPairSeekerDataProvider.apk" />
+        </target_preparer>
+        <target_preparer class="com.android.tradefed.targetprep.RebootTargetPreparer" />
+        <target_preparer class="com.android.tradefed.targetprep.RunCommandTargetPreparer">
+            <option name="run-command" value="input keyevent KEYCODE_WAKEUP" />
+            <option name="run-command" value="wm dismiss-keyguard" />
+        </target_preparer>
+        <target_preparer class="com.android.tradefed.targetprep.DeviceSetup">
+            <option name="force-skip-system-props" value="true" /> <!-- avoid restarting device -->
+            <option name="screen-always-on" value="on" />
+            <!-- List permissions requested by the APK: aapt d permissions <PATH_TO_YOUR_APK> -->
+            <option
+                name="run-command"
+                value="pm grant android.nearby.multidevices android.permission.BLUETOOTH" />
+            <option
+                name="run-command"
+                value="pm grant android.nearby.multidevices android.permission.BLUETOOTH_ADMIN" />
+            <option
+                name="run-command"
+                value="pm grant android.nearby.multidevices android.permission.BLUETOOTH_ADVERTISE" />
+            <option
+                name="run-command"
+                value="pm grant android.nearby.multidevices android.permission.BLUETOOTH_CONNECT" />
+            <option
+                name="run-command"
+                value="pm grant android.nearby.multidevices android.permission.BLUETOOTH_PRIVILEGED" />
+            <option
+                name="run-command"
+                value="pm grant android.nearby.multidevices android.permission.BLUETOOTH_SCAN" />
+            <option
+                name="run-command"
+                value="pm grant android.nearby.multidevices android.permission.INTERNET" />
+            <option
+                name="run-command"
+                value="pm grant android.nearby.multidevices android.permission.GET_ACCOUNTS" />
+            <option
+                name="run-command"
+                value="pm grant android.nearby.multidevices android.permission.WRITE_SECURE_SETTINGS" />
+            <option
+                name="run-command"
+                value="pm grant android.nearby.multidevices android.permission.REORDER_TASKS" />
+        </target_preparer>
+    </device>
+
+    <test class="com.android.tradefed.testtype.mobly.MoblyBinaryHostTest">
+      <!-- The mobly-par-file-name should match the module name -->
+      <option name="mobly-par-file-name" value="NearbyMultiDevicesTestSuite" />
+      <!-- Timeout limit in milliseconds for all test cases of the python binary -->
+      <option name="mobly-test-timeout" value="60000" />
+    </test>
+</configuration>
+

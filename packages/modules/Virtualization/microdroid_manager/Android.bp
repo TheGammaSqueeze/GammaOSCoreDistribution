@@ -1,0 +1,75 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+rust_defaults {
+    name: "microdroid_manager_defaults",
+    crate_name: "microdroid_manager",
+    srcs: ["src/main.rs"],
+    edition: "2018",
+    prefer_rlib: true,
+    rustlibs: [
+        "android.hardware.security.dice-V1-rust",
+        "android.security.dice-rust",
+        "android.system.virtualizationservice-rust",
+        "android.system.virtualmachineservice-rust",
+        "libanyhow",
+        "libapkverify",
+        "libavb_bindgen",
+        "libbinder_rpc_unstable_bindgen",
+        "libbinder_rs",
+        "libbyteorder",
+        "libdiced_utils",
+        "libglob",
+        "libidsig",
+        "libitertools",
+        "libkernlog",
+        "liblibc",
+        "liblog_rust",
+        "libmicrodroid_metadata",
+        "libmicrodroid_payload_config",
+        "libnix",
+        "libonce_cell",
+        "libprotobuf",
+        "libring",
+        "librustutils",
+        "libserde",
+        "libserde_cbor",
+        "libserde_json",
+        "libthiserror",
+        "libuuid",
+        "libvsock",
+        "librand",
+        "libzip",
+    ],
+    shared_libs: [
+        "libbinder_rpc_unstable",
+    ],
+    init_rc: ["microdroid_manager.rc"],
+    multilib: {
+        lib32: {
+            enabled: false,
+        },
+    },
+}
+
+rust_binary {
+    name: "microdroid_manager",
+    defaults: ["microdroid_manager_defaults"],
+    bootstrap: true,
+}
+
+rust_test {
+    name: "microdroid_manager_test",
+    defaults: ["microdroid_manager_defaults"],
+    test_suites: ["general-tests"],
+    rustlibs: [
+        "libtempfile",
+    ],
+    multilib: {
+        lib32: {
+            enabled: false,
+        },
+    },
+    data: ["tests/data/*"],
+}

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2021 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Title of the IntentResolver application. [CHAR LIMIT=50] -->
+    <string name="app_label">IntentResolver</string>
+
+    <!-- Label for a link to a intent resolver dialog to view something -->
+    <string name="whichViewApplicationLabel">Open</string>
+     <!-- Title of the list of alternate options to complete an action shown when the
+         last used option is being displayed separately. -->
+    <string name="use_a_different_app">Use a different app</string>
+    <!-- Text to display when there are no activities found to display in the
+         activity chooser. See the "Select an action" title. -->
+    <string name="noApplications">No apps can perform this action.</string>
+
+    <!-- Title for a button to choose the currently selected activity
+         as the default in the activity resolver. [CHAR LIMIT=25] -->
+    <string name="activity_resolver_use_always">Always</string>
+
+    <!-- Title for a button to choose the currently selected activity
+         from the activity resolver to use just this once. [CHAR LIMIT=25] -->
+    <string name="activity_resolver_use_once">Just once</string>
+
+    <!-- Resolver target actions strings -->
+    <!-- Pin this app to the top of the Sharesheet app list. [CHAR LIMIT=60]-->
+    <string name="pin_specific_target">Pin <xliff:g id="label" example="Tweet">%1$s</xliff:g></string>
+    <!-- Un-pin this app in the Sharesheet, so that it is sorted normally. [CHAR LIMIT=60]-->
+    <string name="unpin_specific_target">Unpin <xliff:g id="label" example="Tweet">%1$s</xliff:g></string>
+
+    <string name="file_count">{count, plural,
+        =1    {{file_name} + # file}
+        other {{file_name} + # files}
+    }
+    </string>
+
+    <!-- ChooserActivity - No direct share targets are available. [CHAR LIMIT=NONE] -->
+    <string name="chooser_no_direct_share_targets">No recommended people to share with</string>
+
+    <!-- ChooserActivity - Alphabetically sorted apps list label. [CHAR LIMIT=NONE] -->
+    <string name="chooser_all_apps_button_label">Apps list</string>
+
+     <!-- Prompt for the USB device resolver dialog with warning text for USB device dialogs.  [CHAR LIMIT=200] -->
+    <string name="usb_device_resolve_prompt_warn">This app has not been granted record permission but could capture audio through this USB device.</string>
+
+    <!-- ResolverActivity - profile tabs -->
+    <!-- Label of a tab on a screen. A user can tap this tap to switch to the 'Personal' view (that shows their personal content) if they have a work profile on their device. [CHAR LIMIT=NONE] -->
+    <string name="resolver_personal_tab">Personal</string>
+    <!-- Label of a tab on a screen. A user can tap this tab to switch to the 'Work' view (that shows their work content) if they have a work profile on their device. [CHAR LIMIT=NONE] -->
+    <string name="resolver_work_tab">Work</string>
+
+    <!-- Accessibility label for the personal tab button. [CHAR LIMIT=NONE] -->
+    <string name="resolver_personal_tab_accessibility">Personal view</string>
+    <!-- Accessibility label for the work tab button. [CHAR LIMIT=NONE] -->
+    <string name="resolver_work_tab_accessibility">Work view</string>
+
+    <!-- Title of a screen. This text lets the user know that their IT admin doesn't allow them to share this content across profiles. [CHAR LIMIT=NONE] -->
+    <string name="resolver_cross_profile_blocked">Blocked by your IT admin</string>
+    <!-- Error message. This text is explaining that the user's IT admin doesn't allow this specific content to be shared with apps in the work profile. [CHAR LIMIT=NONE] -->
+    <string name="resolver_cant_share_with_work_apps_explanation">This content can\u2019t be shared with work apps</string>
+
+    <!-- Error message. This message lets the user know that their IT admin doesn't allow them to open this specific content with an app in their work profile. [CHAR LIMIT=NONE] -->
+    <string name="resolver_cant_access_work_apps_explanation">This content can\u2019t be opened with work apps</string>
+
+    <!-- Error message. This text is explaining that the user's IT admin doesn't allow them to share this specific content with apps in their personal profile. [CHAR LIMIT=NONE] -->
+    <string name="resolver_cant_share_with_personal_apps_explanation">This content can\u2019t be shared with personal apps</string>
+
+    <!-- Error message. This message lets the user know that their IT admin doesn't allow them to open this specific content with an app in their personal profile. [CHAR LIMIT=NONE] -->
+    <string name="resolver_cant_access_personal_apps_explanation">This content can\u2019t be opened with personal apps</string>
+
+    <!-- Error message. This text lets the user know that they need to turn on work apps in order to share or open content. There's also a button a user can tap to turn on the apps. [CHAR LIMIT=NONE] -->
+    <string name="resolver_turn_on_work_apps">Work profile is paused</string>
+    <!-- Button text. This button turns on a user's work profile so they can access their work apps and data. [CHAR LIMIT=NONE] -->
+    <string name="resolver_switch_on_work">Tap to turn on</string>
+
+    <!-- Error message. This text lets the user know that their current work apps don't support the specific content. [CHAR LIMIT=NONE] -->
+    <string name="resolver_no_work_apps_available">No work apps</string>
+
+    <!-- Error message. This text lets the user know that their current personal apps don't support the specific content. [CHAR LIMIT=NONE] -->
+    <string name="resolver_no_personal_apps_available">No personal apps</string>
+
+    <!-- Dialog title. User must choose between opening content in a cross-profile app or same-profile browser. [CHAR LIMIT=NONE] -->
+    <string name="miniresolver_open_in_personal">Open <xliff:g id="app" example="YouTube">%s</xliff:g> in your personal profile?</string>
+    <!-- Dialog title. User must choose between opening content in a cross-profile app or same-profile browser. [CHAR LIMIT=NONE] -->
+    <string name="miniresolver_open_in_work">Open <xliff:g id="app" example="YouTube">%s</xliff:g> in your work profile?</string>
+    <!-- Button option. Open the link in the personal browser. [CHAR LIMIT=NONE] -->
+    <string name="miniresolver_use_personal_browser">Use personal browser</string>
+    <!-- Button option. Open the link in the work browser. [CHAR LIMIT=NONE] -->
+    <string name="miniresolver_use_work_browser">Use work browser</string>
+
+    <!-- Tittle for a button. Launches client-provided content reselection action. -->
+    <string name="select_files">Select Files</string>
+    <!-- Tittle for a button. Launches client-provided content reselection action. -->
+    <string name="select_images">Select Images</string>
+    <!-- Tittle for a button. Launches client-provided content reselection action. -->
+    <string name="select_text">Select Text</string>
+
+    <!-- Title for a button. Excludes a text from the shared content (a media and a text). -->
+    <string name="exclude_text">Exclude text</string>
+    <!-- Title for a button. Adds back a (previously excluded) text into the shared content. -->
+    <string name="include_text">Include text</string>
+    <!-- Title for a button. Excludes a web link from the shared content (a media and a text). -->
+    <string name="exclude_link">Exclude link</string>
+    <!-- Title for a button. Adds back a (previously excluded) web link into the shared content. -->
+    <string name="include_link">Include link</string>
+</resources>

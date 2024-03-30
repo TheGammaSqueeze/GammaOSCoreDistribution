@@ -1,0 +1,48 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+aidl_interface {
+    name: "android.system.virtualizationservice",
+    srcs: ["android/system/virtualizationservice/**/*.aidl"],
+    // This is never accessed directly. Apps are expected to use this indirectly via the Java
+    // wrapper android.system.virtualmachine.
+    unstable: true,
+    backend: {
+        java: {
+            sdk_version: "module_current",
+            apex_available: ["com.android.virt"],
+        },
+        cpp: {
+            enabled: true,
+        },
+        ndk: {
+            apex_available: [
+                "com.android.virt",
+                "com.android.compos",
+            ],
+        },
+        rust: {
+            enabled: true,
+            apex_available: [
+                "com.android.virt",
+                "com.android.compos",
+            ],
+        },
+    },
+}
+
+aidl_interface {
+    name: "android.system.virtualmachineservice",
+    srcs: ["android/system/virtualmachineservice/**/*.aidl"],
+    unstable: true,
+    backend: {
+        rust: {
+            enabled: true,
+            apex_available: [
+                "com.android.virt",
+                "com.android.compos",
+            ],
+        },
+    },
+}

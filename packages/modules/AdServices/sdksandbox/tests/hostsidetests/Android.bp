@@ -1,0 +1,98 @@
+// Copyright (C) 2021 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+java_test_host {
+    name: "SdkSandboxHostTest",
+    srcs: ["src/**/SdkSandboxHostTest.java"],
+    libs: ["tradefed"],
+    test_suites: ["general-tests"],
+}
+
+java_test_host {
+    name: "SdkSandboxLifecycleHostTest",
+    srcs: ["src/**/SdkSandboxLifecycleHostTest.java"],
+    test_config: "SdkSandboxLifecycleHostTest.xml",
+    libs: ["tradefed"],
+    test_suites: ["general-tests"],
+    data: [
+        ":TestCodeProvider",
+        ":TestCodeProvider2",
+        ":SdkSandboxTestApp",
+        ":SdkSandboxTestApp2",
+    ],
+}
+
+android_test_helper_app {
+    name: "SdkSandboxTestApp",
+    manifest: "app/SdkSandboxTestAppManifest.xml",
+    defaults: ["platform_app_defaults"],
+    platform_apis: true,
+    srcs: [
+        "app/src/**/SdkSandboxTestActivity.java",
+        ":framework-sdksandbox-sources",
+        ":sdksandbox_aidl",
+        ":sdksandbox-sources",
+    ],
+    static_libs: [
+        "androidx.core_core",
+        "SdkSandboxTestUtils",
+    ],
+}
+
+android_test_helper_app {
+    name: "SdkSandboxTestApp2",
+    manifest: "app/SdkSandboxTestApp2Manifest.xml",
+    defaults: ["platform_app_defaults"],
+    platform_apis: true,
+    srcs: [
+        "app/src/**/SdkSandboxTestActivity2.java",
+        ":framework-sdksandbox-sources",
+        ":sdksandbox_aidl",
+        ":sdksandbox-sources",
+    ],
+    static_libs: [
+        "androidx.core_core",
+        "SdkSandboxTestUtils",
+    ],
+}
+
+android_test_helper_app {
+    name: "TestCodeProvider",
+    manifest: "codeprovider/TestCodeProviderManifest.xml",
+    defaults: ["platform_app_defaults"],
+    // TODO(b/215372846): Create our own signing key.
+    certificate: ":cts-keyset-test-b",
+    srcs: [
+       "codeprovider/src/**/TestSandboxedSdkProvider.java",
+       ":framework-sdksandbox-sources",
+    ],
+    platform_apis: true,
+}
+
+android_test_helper_app {
+    name: "TestCodeProvider2",
+    manifest: "codeprovider/TestCodeProvider2Manifest.xml",
+    // TODO(b/215372846): Create our own signing key.
+    certificate: ":cts-keyset-test-b",
+    defaults: ["platform_app_defaults"],
+    srcs: [
+       "codeprovider/src/**/TestSandboxedSdkProvider2.java",
+       ":framework-sdksandbox-sources",
+    ],
+    platform_apis: true,
+}

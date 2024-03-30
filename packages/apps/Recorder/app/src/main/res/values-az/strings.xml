@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2017-2021 The LineageOS Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="app_name">Səsyazan</string>
+    <string name="share">Paylaş</string>
+    <string name="share_selected">Seçiləni paylaş</string>
+    <string name="stop">Dayandır</string>
+    <string name="play">Oynat</string>
+    <string name="pause">Fasilə ver</string>
+    <string name="resume">Davam etdir</string>
+    <string name="delete">Sil</string>
+    <string name="delete_all">Hamısını sil</string>
+    <string name="delete_selected">Seçiləni sil</string>
+    <string name="cancel">İmtina</string>
+    <string name="rename">Yenidən adlandır</string>
+    <string name="delete_title">Səsyazma silinir</string>
+    <string name="delete_recording_message">Bu səsyazmanı silmək istədiyinizə əminsiniz? Bu, geri qaytarıla bilməyəcək</string>
+    <string name="confirm">Təsdiqlə</string>
+    <string name="discard">Ləğv et</string>
+    <string name="record_again">Yenidən yaz</string>
+    <string name="confirm_result_title">Səsyazma istifadə edilsin?</string>
+    <string name="confirm_result_message">Son səsyazmanı istifadə etmək istəyirsiniz?</string>
+    <string name="sound_notification_title">Səs Yazma</string>
+    <string name="sound_notification_message">Səs uzunluğu: %1$s</string>
+    <string name="sound_recording_title_working">Səs yazılır</string>
+    <string name="sound_recording_title_paused">Fasilə verildi</string>
+    <string name="sound_last_title">Son səsyazma</string>
+    <string name="sound_channel_title">Səs yazma</string>
+    <string name="sound_channel_desc">Səs yazanda davamlı bildiriş göstər və tamamlandıqdan sonra bildiriş göstər</string>
+    <string name="settings_title">Ayarlar</string>
+    <string name="settings_location_message">Səsyazmalarınızı mövcud mövqeyinizlə etiketləyin</string>
+    <string name="settings_quality_high">Yüksək keyfiyyətdə səsyazma</string>
+    <string name="dialog_permissions_title">İcazələr</string>
+    <string name="dialog_permissions_mic">\"Səsyazan\"ın səs yazmaq üçün mikrofona müraciətinə ehtiyacı var</string>
+    <string name="dialog_permissions_phone">Zəng zamanı bu tətbiqin yazmasını əngəlləmək üçün \"Səsyazan\" telefon statusuna müraciət etməlidir.</string>
+    <string name="dialog_permissions_notifications">\"Səsyazan\"ın səs kontrollarını göstərməsi üçün bildirişlərə müraciətinə ehtiyacı var</string>
+    <string name="dialog_permissions_mic_phone">\"Səsyazan\"ın zəng zamanı yazmasını əngəlləmək üçün mikrofon icazəsinə və telefon statusuna müraciətə ehtiyacı var</string>
+    <string name="dialog_permissions_mic_notifications">\"Səsyazan\"ın səs yazmaq üçün mikrofona və səs kontrollarını göstərməsi üçün bildirişlərə müraciətinə ehtiyacı var</string>
+    <string name="dialog_permissions_phone_notifications">\"Səsyazan\"ın siz zəng edərkən bu tətbiqin səs yazmasını önləmək üçün telefon statusuna müraciətinə və səs kontrollarını göstərməsi üçün bildirişlərə müraciətinə ehtiyacı var</string>
+    <string name="dialog_permissions_mic_phone_notifications">\"Səsyazan\"ın səs yazmaq üçün mikrofona müraciətinə, siz zəng edərkən bu tətbiqin səs yazmasını önləmək üçün telefon statusuna müraciətinə və səs kontrollarını göstərməsi üçün bildirişlərə müraciətinə ehtiyacı var</string>
+    <string name="dialog_permissions_location">Səsyazanın, yazılmış qeydləri nizama salmanıza kömək etməsi üzrə avtomatik etiketləməsi üçün yerləşmə icazəsinə ehtiyac var</string>
+    <string name="dialog_permissions_ask">Təkrar soruş</string>
+    <string name="dialog_permissions_dismiss">Rədd et</string>
+    <string name="snack_permissions_no_permission">Tələb edilən icazələr rədd edildi, səs yazmağa başlamaq üçün Ayarlardan icazələri fəallaşdırın</string>
+    <string name="snack_permissions_no_permission_location">Yerləşmə icazəsi rədd edildi, səs yazılarını etiketləmək üçün Ayarlardan fəallaşdırın</string>
+    <string name="main_sound_action">Səs yaz</string>
+    <string name="list_title">Səsyazmalarım</string>
+    <string name="list_error_empty">Bütün yazılmış səsləriniz burada görünəcək</string>
+    <string name="list_edit_title">Yazılmış səsin adına düzəliş edin</string>
+    <string name="list_edit_confirm">Dəyişdir</string>
+    <string name="list_item_menu">Daha çox əməliyyat</string>
+    <string name="delete_all_title">Hamısını sil</string>
+    <string name="delete_all_message">Bütün səsyazmaları silmək istədiyinizə əminsiniz? Bunun geri dönüşü yoxdur</string>
+    <string name="delete_selected_title">Seçiləni sil</string>
+    <string name="delete_selected_message">Seçilmiş səsyazmalarıı silmək istədiyinizə əminsiniz? Bunun geri dönüşü yoxdur</string>
+</resources>

@@ -1,0 +1,30 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+android_app {
+    name: "LeAudioTestApp",
+    certificate: "platform",
+    platform_apis: true,
+
+    srcs: ["app/src/main/**/*.java"],
+    resource_dirs: ["app/src/main/res"],
+    manifest: "app/src/main/AndroidManifest.xml",
+
+    static_libs: [
+        "androidx.appcompat_appcompat",
+        "androidx-constraintlayout_constraintlayout",
+        "com.google.android.material_material",
+        "androidx.legacy_legacy-support-v4",
+        "androidx.lifecycle_lifecycle-extensions",
+    ],
+
+    privileged: true,
+
+    required: ["libbluetooth"],
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.bluetooth.updatable",
+    ],
+
+}

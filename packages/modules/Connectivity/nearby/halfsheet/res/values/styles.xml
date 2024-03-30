@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+  <style name="HalfSheetStyle" parent="Theme.Material3.DayNight.NoActionBar">
+    <item name="android:windowFrame">@null</item>
+    <item name="android:windowBackground">@android:color/transparent</item>
+    <item name="android:windowEnterAnimation">@anim/fast_pair_half_sheet_slide_in</item>
+    <item name="android:windowExitAnimation">@anim/fast_pair_half_sheet_slide_out</item>
+    <item name="android:windowIsTranslucent">true</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:backgroundDimEnabled">true</item>
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:fitsSystemWindows">true</item>
+    <item name="android:windowTranslucentNavigation">true</item>
+  </style>
+
+  <style name="HalfSheetButton" parent="@style/Widget.Material3.Button.TonalButton">
+    <item name="android:textColor">@color/fast_pair_half_sheet_button_accent_text</item>
+    <item name="android:backgroundTint">@color/fast_pair_half_sheet_button_color</item>
+    <item name="android:textSize">@dimen/fast_pair_notification_text_size</item>
+    <item name="android:fontFamily">google-sans-medium</item>
+    <item name="android:textAlignment">center</item>
+    <item name="android:textAllCaps">false</item>
+  </style>
+
+  <style name="HalfSheetButtonBorderless" parent="@style/Widget.Material3.Button.OutlinedButton">
+    <item name="android:textColor">@color/fast_pair_half_sheet_button_text</item>
+    <item name="android:strokeColor">@color/fast_pair_half_sheet_button_color</item>
+    <item name="android:textAllCaps">false</item>
+    <item name="android:textSize">@dimen/fast_pair_notification_text_size</item>
+    <item name="android:fontFamily">google-sans-medium</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textAlignment">center</item>
+    <item name="android:minHeight">@dimen/accessibility_required_min_touch_target_size</item>
+  </style>
+
+</resources>

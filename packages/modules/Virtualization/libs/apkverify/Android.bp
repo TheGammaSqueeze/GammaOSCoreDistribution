@@ -1,0 +1,45 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+rust_defaults {
+    name: "libapkverify.defaults",
+    crate_name: "apkverify",
+    srcs: ["src/lib.rs"],
+    prefer_rlib: true,
+    edition: "2018",
+    rustlibs: [
+        "libanyhow",
+        "libbyteorder",
+        "libbytes",
+        "liblog_rust",
+        "libring",
+        "libx509_parser",
+        "libzip",
+    ],
+}
+
+rust_library {
+    name: "libapkverify",
+    defaults: ["libapkverify.defaults"],
+}
+
+rust_test {
+    name: "libapkverify.test",
+    defaults: ["libapkverify.defaults"],
+    test_suites: ["general-tests"],
+}
+
+rust_test {
+    name: "libapkverify.integration_test",
+    crate_name: "apkverify_test",
+    srcs: ["tests/*_test.rs"],
+    prefer_rlib: true,
+    edition: "2018",
+    test_suites: ["general-tests"],
+    rustlibs: [
+        "libapkverify",
+        "libzip",
+    ],
+    data: ["tests/data/*"],
+}

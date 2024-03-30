@@ -1,0 +1,110 @@
+syntax = "proto2";
+
+package android.nearby.fastpair.provider.simulator;
+
+option java_package = "android.nearby.fastpair.provider.simulator";
+option java_outer_classname = "SimulatorStreamProtocol";
+
+// Used by remote devices to control simulator behaviors.
+message Command {
+  // Type of this command.
+  required Code code = 1;
+
+  // Required for SHOW_BATTERY.
+  optional BatteryInfo battery_info = 2;
+
+  enum Code {
+    // Request for simulator's acknowledge message.
+    POLLING = 0;
+
+    // Reset and clear bluetooth state.
+    RESET = 1;
+
+    // Present battery information in the advertisement.
+    SHOW_BATTERY = 2;
+
+    // Remove battery information in the advertisement.
+    HIDE_BATTERY = 3;
+
+    // Request for BR/EDR address.
+    REQUEST_BLUETOOTH_ADDRESS_PUBLIC = 4;
+
+    // Request for BLE address.
+    REQUEST_BLUETOOTH_ADDRESS_BLE = 5;
+
+    // Request for account key.
+    REQUEST_ACCOUNT_KEY = 6;
+  }
+
+  // Battery information for true wireless headsets.
+  // https://devsite.googleplex.com/nearby/fast-pair/early-access/spec#BatteryNotification
+  message BatteryInfo {
+    // Show or hide the battery UI notification.
+    optional bool suppress_notification = 1;
+    repeated BatteryValue battery_values = 2;
+
+    // Advertised battery level data.
+    message BatteryValue {
+      // The charging flag.
+      required bool charging = 1;
+
+      // Battery level from 0 to 100.
+      required uint32 level = 2;
+    }
+  }
+}
+
+// Notify the remote devices when states are changed or response the command on
+// the simulator.
+message Event {
+  // Type of this event.
+  required Code code = 1;
+
+  // Required for BLUETOOTH_STATE_BOND.
+  optional int32 bond_state = 2;
+
+  // Required for BLUETOOTH_STATE_CONNECTION.
+  optional int32 connection_state = 3;
+
+  // Required for BLUETOOTH_STATE_SCAN_MODE.
+  optional int32 scan_mode = 4;
+
+  // Required for BLUETOOTH_ADDRESS_PUBLIC.
+  optional string public_address = 5;
+
+  // Required for BLUETOOTH_ADDRESS_BLE.
+  optional string ble_address = 6;
+
+  // Required for BLUETOOTH_ALIAS_NAME.
+  optional string alias_name = 7;
+
+  // Required for REQUEST_ACCOUNT_KEY.
+  optional bytes account_key = 8;
+
+  enum Code {
+    // Response the polling.
+    ACKNOWLEDGE = 0;
+
+    // Notify the event android.bluetooth.device.action.BOND_STATE_CHANGED
+    BLUETOOTH_STATE_BOND = 1;
+
+    // Notify the event
+    // android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED
+    BLUETOOTH_STATE_CONNECTION = 2;
+
+    // Notify the event android.bluetooth.adapter.action.SCAN_MODE_CHANGED
+    BLUETOOTH_STATE_SCAN_MODE = 3;
+
+    // Notify the current BR/EDR address
+    BLUETOOTH_ADDRESS_PUBLIC = 4;
+
+    // Notify the current BLE address
+    BLUETOOTH_ADDRESS_BLE = 5;
+
+    // Notify the event android.bluetooth.device.action.ALIAS_CHANGED
+    BLUETOOTH_ALIAS_NAME = 6;
+
+    // Response the REQUEST_ACCOUNT_KEY.
+    ACCOUNT_KEY = 7;
+  }
+}

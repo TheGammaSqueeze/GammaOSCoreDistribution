@@ -1,0 +1,208 @@
+{
+  "presubmit": [
+    {
+      "name": "ConnectivityCoverageTests"
+    },
+    {
+      // In addition to ConnectivityCoverageTests, runs non-connectivity-module tests
+      "name": "FrameworksNetTests"
+    },
+    // Run in addition to mainline-presubmit as mainline-presubmit is not
+    // supported in every branch.
+    // CtsNetTestCasesLatestSdk uses stable API shims, so does not exercise
+    // some latest APIs. Run CtsNetTestCases to get coverage of newer APIs.
+    {
+      "name": "CtsNetTestCases",
+      "options": [
+        {
+          "exclude-annotation": "com.android.testutils.SkipPresubmit"
+        },
+        {
+          "exclude-annotation": "androidx.test.filters.RequiresDevice"
+        }
+      ]
+    },
+    // Also run CtsNetTestCasesLatestSdk to ensure tests using older shims pass.
+    {
+      "name": "CtsNetTestCasesLatestSdk",
+      "options": [
+        {
+          "exclude-annotation": "com.android.testutils.SkipPresubmit"
+        },
+        {
+          "exclude-annotation": "androidx.test.filters.RequiresDevice"
+        }
+      ]
+    },
+    // CTS tests that target older SDKs.
+    {
+      "name": "CtsNetTestCasesMaxTargetSdk31",
+      "options": [
+        {
+          "exclude-annotation": "com.android.testutils.SkipPresubmit"
+        },
+        {
+          "exclude-annotation": "androidx.test.filters.RequiresDevice"
+        }
+      ]
+    },
+    {
+      "name": "bpf_existence_test"
+    },
+    {
+      "name": "connectivity_native_test"
+    },
+    {
+      "name": "netd_updatable_unit_test"
+    },
+    {
+      "name": "TetheringTests"
+    },
+    {
+      "name": "TetheringIntegrationTests"
+    },
+    {
+      "name": "traffic_controller_unit_test"
+    },
+    {
+      "name": "libnetworkstats_test"
+    },
+    {
+      "name": "FrameworksNetIntegrationTests"
+    }
+  ],
+  "postsubmit": [
+    {
+      "name": "TetheringPrivilegedTests"
+    },
+    {
+      "name": "netd_updatable_unit_test",
+      "keywords": ["netd-device-kernel-4.9", "netd-device-kernel-4.14"]
+    },
+    {
+      "name": "libclat_test"
+    },
+    {
+      "name": "traffic_controller_unit_test",
+      "keywords": ["netd-device-kernel-4.9", "netd-device-kernel-4.14"]
+    },
+    {
+      "name": "libnetworkstats_test"
+    },
+    {
+      "name": "FrameworksNetDeflakeTest"
+    }
+  ],
+  "mainline-presubmit": [
+    {
+      "name": "CtsNetTestCasesLatestSdk[CaptivePortalLoginGoogle.apk+NetworkStackGoogle.apk+com.google.android.resolv.apex+com.google.android.tethering.apex]",
+      "options": [
+        {
+          "exclude-annotation": "com.android.testutils.SkipPresubmit"
+        },
+        {
+          "exclude-annotation": "androidx.test.filters.RequiresDevice"
+        }
+      ]
+    },
+    {
+      "name": "CtsNetTestCasesMaxTargetSdk31[CaptivePortalLoginGoogle.apk+NetworkStackGoogle.apk+com.google.android.resolv.apex+com.google.android.tethering.apex]",
+      "options": [
+        {
+          "exclude-annotation": "com.android.testutils.SkipPresubmit"
+        },
+        {
+          "exclude-annotation": "androidx.test.filters.RequiresDevice"
+        }
+      ]
+    },
+    {
+      "name": "bpf_existence_test[CaptivePortalLoginGoogle.apk+NetworkStackGoogle.apk+com.google.android.resolv.apex+com.google.android.tethering.apex]"
+    },
+    {
+      "name": "connectivity_native_test[CaptivePortalLoginGoogle.apk+NetworkStackGoogle.apk+com.google.android.resolv.apex+com.google.android.tethering.apex]"
+    },
+    {
+      "name": "netd_updatable_unit_test[CaptivePortalLoginGoogle.apk+NetworkStackGoogle.apk+com.google.android.resolv.apex+com.google.android.tethering.apex]"
+    },
+    {
+      "name": "ConnectivityCoverageTests[CaptivePortalLoginGoogle.apk+NetworkStackGoogle.apk+com.google.android.resolv.apex+com.google.android.tethering.apex]"
+    },
+    {
+      "name": "traffic_controller_unit_test[CaptivePortalLoginGoogle.apk+NetworkStackGoogle.apk+com.google.android.resolv.apex+com.google.android.tethering.apex]"
+    },
+    {
+      "name": "libnetworkstats_test[CaptivePortalLoginGoogle.apk+NetworkStackGoogle.apk+com.google.android.resolv.apex+com.google.android.tethering.apex]"
+    }
+  ],
+  "mainline-postsubmit": [
+    // Tests on physical devices with SIM cards: postsubmit only for capacity constraints
+    {
+      "name": "CtsNetTestCasesLatestSdk[CaptivePortalLoginGoogle.apk+NetworkStackGoogle.apk+com.google.android.resolv.apex+com.google.android.tethering.apex]",
+      "keywords": ["sim"]
+    },
+    // TODO: move to mainline-presubmit when known green.
+    // Test with APK modules only, in cases where APEX is not supported, or the other modules were simply not updated
+    {
+      "name": "CtsNetTestCasesLatestSdk[CaptivePortalLoginGoogle.apk+NetworkStackGoogle.apk]",
+      "options": [
+        {
+          "exclude-annotation": "com.android.testutils.SkipPresubmit"
+        },
+        {
+          "exclude-annotation": "androidx.test.filters.RequiresDevice"
+        },
+        {
+          "exclude-annotation": "com.android.testutils.ConnectivityModuleTest"
+        }
+      ]
+    },
+    // TODO: move to mainline-presubmit when known green.
+    // Test with connectivity/tethering module only, to catch integration issues with older versions of other modules.
+    // "new tethering + old NetworkStack" is not a configuration that should really exist in the field, but
+    // there is no strong guarantee, and it is required by MTS testing for module qualification, where modules
+    // are tested independently.
+    {
+      "name": "CtsNetTestCasesLatestSdk[com.google.android.tethering.apex]",
+      "options": [
+        {
+          "exclude-annotation": "com.android.testutils.SkipPresubmit"
+        },
+        {
+          "exclude-annotation": "androidx.test.filters.RequiresDevice"
+        }
+      ]
+    }
+  ],
+  "auto-postsubmit": [
+    // Test tag for automotive targets. These are only running in postsubmit so as to harden the
+    // automotive targets to avoid introducing additional test flake and build time. The plan for
+    // presubmit testing for auto is to augment the existing tests to cover auto use cases as well.
+    // Additionally, this tag is used in targeted test suites to limit resource usage on the test
+    // infra during the hardening phase.
+    // TODO: this tag to be removed once the above is no longer an issue.
+    {
+      "name": "FrameworksNetTests"
+    },
+    {
+      "name": "FrameworksNetIntegrationTests"
+    },
+    {
+      "name": "FrameworksNetDeflakeTest"
+    }
+  ],
+  "imports": [
+    {
+      "path": "frameworks/base/core/java/android/net"
+    },
+    {
+      "path": "frameworks/opt/net/ethernet"
+    },
+    {
+      "path": "packages/modules/NetworkStack"
+    },
+    {
+      "path": "packages/modules/CaptivePortalLogin"
+    }
+  ]
+}

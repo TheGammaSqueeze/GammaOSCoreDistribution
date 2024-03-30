@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package service.proto;
+import "src/fastpair/cache.proto";
+
+// A device that has been Fast Paired with.
+message FastPairDeviceWithAccountKey {
+  // The account key which was written to the device after pairing completed.
+  bytes account_key = 1;
+
+  // The stored discovery item which represents the notification that should be
+  // associated with the device. Note, this is stored as a raw byte array
+  // instead of StoredDiscoveryItem because icing only supports proto lite and
+  // StoredDiscoveryItem is handed around as a nano proto in implementation,
+  // which are not compatible with each other.
+  StoredDiscoveryItem discovery_item = 3;
+
+  // SHA256 of "account key + headset's public address", this is used to
+  // identify the paired headset. Because of adding account key to generate the
+  // hash value, it makes the information anonymous, even for the same headset,
+  // different accounts have different values.
+  bytes sha256_account_key_public_address = 4;
+
+  // Deprecated fields.
+  reserved 2;
+}

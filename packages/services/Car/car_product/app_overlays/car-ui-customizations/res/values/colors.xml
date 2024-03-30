@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+** Copyright 2017, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<resources>
+
+    <!-- The Switch track's background color. -->
+    <color name="car_ui_seekbar_track_background">#757575</color>
+    <!-- The Switch track's progress color. -->
+    <color name="car_ui_seekbar_track_progress">#66B5FF</color>
+    <!-- The Switch track's secondary progress color. -->
+    <color name="car_ui_seekbar_track_progress_secondary">#A6A6A9</color>
+    <!-- Color of the outer ring when the SeekBar is selected. -->
+    <color name="car_ui_seekbar_thumb_selected_stroke_color">#94CBFF</color>
+    <!-- Color of the background of the ring when the SeekBar is selected. -->
+    <color name="car_ui_seekbar_thumb_selected_background_color">#3D94CBFF</color>
+    <!-- The SeekBar thumb color. -->
+    <color name="car_ui_seekbar_thumb">#FFFFFF</color>
+    <!-- The SeekBar thumb color when disabled. Use for the dark theme. -->
+    <color name="car_ui_seekbar_thumb_disabled_on_dark">#757575</color>
+    <!-- The preference category icon color-->
+    <color name="car_ui_preference_icon_color">@color/car_ui_text_color_primary</color>
+</resources>

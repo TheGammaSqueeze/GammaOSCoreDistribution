@@ -1,0 +1,115 @@
+//
+// Copyright (C) 2021 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+java_defaults {
+    name: "support-lib-uwb-common-defaults",
+    defaults: ["uwb-module-sdk-version-defaults"],
+    sdk_version: "module_Tiramisu",
+    libs: [
+        "framework-annotations-lib",
+        "framework-uwb-pre-jarjar",
+    ],
+    apex_available: [
+        "com.android.uwb",
+    ],
+    visibility : [
+        "//cts/tests/uwb",
+        "//cts/hostsidetests/multidevices/uwb/snippet",
+        "//external/sl4a/Common",
+        "//packages/modules/Uwb/service:__subpackages__",
+    ]
+}
+
+java_library {
+    name: "com.uwb.support.base",
+    defaults: ["support-lib-uwb-common-defaults"],
+    srcs: [
+        "src/com/google/uwb/support/base/**/*.java",
+    ],
+    static_libs: [
+        "androidx.annotation_annotation",
+        "modules-utils-preconditions",
+    ],
+}
+
+java_library {
+    name: "com.uwb.support.ccc",
+    defaults: ["support-lib-uwb-common-defaults"],
+    srcs: [
+        "src/com/google/uwb/support/ccc/**/*.java",
+    ],
+    static_libs: [
+        "androidx.annotation_annotation",
+        "com.uwb.support.base",
+        "modules-utils-preconditions",
+    ],
+}
+
+java_library {
+    name: "com.uwb.support.fira",
+    defaults: ["support-lib-uwb-common-defaults"],
+    srcs: [
+        "src/com/google/uwb/support/fira/**/*.java",
+    ],
+    static_libs: [
+        "androidx.annotation_annotation",
+        "com.uwb.support.base",
+        "modules-utils-preconditions",
+    ],
+}
+
+java_library {
+    name: "com.uwb.support.generic",
+    defaults: ["support-lib-uwb-common-defaults"],
+    srcs: [
+        "src/com/google/uwb/support/generic/**/*.java",
+    ],
+    static_libs: [
+        "androidx.annotation_annotation",
+        "com.uwb.support.base",
+        "com.uwb.support.ccc",
+        "com.uwb.support.fira",
+        "modules-utils-preconditions",
+    ],
+}
+
+java_library {
+    name: "com.uwb.support.multichip",
+    defaults: ["support-lib-uwb-common-defaults"],
+    srcs: [
+        "src/com/google/uwb/support/multichip/**/*.java",
+    ],
+    static_libs: [
+    ],
+    visibility: ["//cts/tests/uwb"],
+}
+
+java_library {
+    name: "com.uwb.support.profile",
+    defaults: ["support-lib-uwb-common-defaults"],
+    srcs: [
+        "src/com/google/uwb/support/profile/**/*.java",
+    ],
+    static_libs: [
+        "androidx.annotation_annotation",
+        "com.uwb.support.base",
+        "com.uwb.support.fira",
+        "modules-utils-preconditions",
+    ],
+}

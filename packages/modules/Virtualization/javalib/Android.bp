@@ -1,0 +1,29 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+java_sdk_library {
+    name: "android.system.virtualmachine",
+    installable: true,
+    compile_dex: true,
+
+    srcs: ["src/**/*.java"],
+    static_libs: [
+        "android.system.virtualizationservice-java",
+    ],
+
+    apex_available: ["com.android.virt"],
+    permitted_packages: [
+        "android.system.virtualmachine",
+        "android.system.virtualizationservice",
+    ],
+    // TODO(jiyong): remove the below once this gets public
+    unsafe_ignore_missing_latest_api: true,
+}
+
+android_app {
+    name: "android.system.virtualmachine.res",
+    installable: true,
+    apex_available: ["com.android.virt"],
+    sdk_version: "current",
+}

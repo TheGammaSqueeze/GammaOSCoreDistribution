@@ -1,0 +1,142 @@
+// Copyright (C) 2021 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+runtime_resource_overlay {
+    name: "GoogleCarUiBase",
+    manifest: "AndroidManifest.xml",
+    resource_dirs: ["res"],
+}
+
+override_runtime_resource_overlay {
+    name: "googlecarui-com-android-car-ui-paintbooth",
+    base: "GoogleCarUiBase",
+    package_name: "com.android.car.ui.paintbooth.googlecarui.rro",
+    target_package_name: "com.android.car.ui.paintbooth",
+}
+
+override_runtime_resource_overlay {
+    name: "googlecarui-com-android-car-rotaryplayground",
+    base: "GoogleCarUiBase",
+    package_name: "com.android.car.rotaryplayground.googlecarui.rro",
+    target_package_name: "com.android.car.rotaryplayground",
+}
+
+override_runtime_resource_overlay {
+    name: "googlecarui-com-android-car-themeplayground",
+    base: "GoogleCarUiBase",
+    package_name: "com.android.car.themeplayground.googlecarui.rro",
+    target_package_name: "com.android.car.themeplayground",
+}
+
+override_runtime_resource_overlay {
+    name: "googlecarui-com-android-car-carlauncher",
+    base: "GoogleCarUiBase",
+    package_name: "com.android.car.carlauncher.googlecarui.rro",
+    target_package_name: "com.android.car.carlauncher",
+}
+
+override_runtime_resource_overlay {
+    name: "googlecarui-com-android-car-home",
+    base: "GoogleCarUiBase",
+    package_name: "com.android.car.home.googlecarui.rro",
+    target_package_name: "com.android.car.home",
+}
+
+override_runtime_resource_overlay {
+    name: "googlecarui-com-android-car-media",
+    base: "GoogleCarUiBase",
+    package_name: "com.android.car.media.googlecarui.rro",
+    target_package_name: "com.android.car.media",
+}
+
+override_runtime_resource_overlay {
+    name: "googlecarui-com-android-car-messenger",
+    base: "GoogleCarUiBase",
+    package_name: "com.android.car.messenger.googlecarui.rro",
+    target_package_name: "com.android.car.messenger",
+}
+
+override_runtime_resource_overlay {
+    name: "googlecarui-com-android-car-radio",
+    base: "GoogleCarUiBase",
+    package_name: "com.android.car.radio.googlecarui.rro",
+    target_package_name: "com.android.car.radio",
+}
+
+override_runtime_resource_overlay {
+    name: "googlecarui-com-android-car-calendar",
+    base: "GoogleCarUiBase",
+    package_name: "com.android.car.calendar.googlecarui.rro",
+    target_package_name: "com.android.car.calendar",
+}
+
+override_runtime_resource_overlay {
+    name: "googlecarui-com-android-car-systemupdater",
+    base: "GoogleCarUiBase",
+    package_name: "com.android.car.systemupdater.googlecarui.rro",
+    target_package_name: "com.android.car.systemupdater",
+}
+
+override_runtime_resource_overlay {
+    name: "googlecarui-com-android-car-dialer",
+    base: "GoogleCarUiBase",
+    package_name: "com.android.car.dialer.googlecarui.rro",
+    target_package_name: "com.android.car.dialer",
+}
+
+override_runtime_resource_overlay {
+    name: "googlecarui-com-android-car-linkviewer",
+    base: "GoogleCarUiBase",
+    package_name: "com.android.car.linkviewer.googlecarui.rro",
+    target_package_name: "com.android.car.linkviewer",
+}
+
+override_runtime_resource_overlay {
+    name: "googlecarui-com-android-car-settings",
+    base: "GoogleCarUiBase",
+    package_name: "com.android.car.settings.googlecarui.rro",
+    target_package_name: "com.android.car.settings",
+}
+
+override_runtime_resource_overlay {
+    name: "googlecarui-com-android-car-developeroptions",
+    base: "GoogleCarUiBase",
+    package_name: "com.android.car.developeroptions.googlecarui.rro",
+    target_package_name: "com.android.car.developeroptions",
+}
+
+override_runtime_resource_overlay {
+    name: "googlecarui-com-android-managedprovisioning",
+    base: "GoogleCarUiBase",
+    package_name: "com.android.managedprovisioning.googlecarui.rro",
+    target_package_name: "com.android.managedprovisioning",
+}
+
+override_runtime_resource_overlay {
+    name: "googlecarui-com-android-settings-intelligence",
+    base: "GoogleCarUiBase",
+    package_name: "com.android.settings.intelligence.googlecarui.rro",
+    target_package_name: "com.android.settings.intelligence",
+}
+
+override_runtime_resource_overlay {
+    name: "googlecarui-com-android-htmlviewer",
+    base: "GoogleCarUiBase",
+    package_name: "com.android.htmlviewer.googlecarui.rro",
+    target_package_name: "com.android.htmlviewer",
+}

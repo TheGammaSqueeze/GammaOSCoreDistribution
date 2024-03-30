@@ -1,0 +1,33 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+android_test {
+    name: "FrameworkBluetoothTests",
+
+    defaults: ["framework-bluetooth-tests-defaults"],
+
+    min_sdk_version: "current",
+    target_sdk_version: "current",
+
+    // Include all test java files.
+    srcs: ["src/**/*.java"],
+    jacoco: {
+        include_filter: ["android.bluetooth.*"],
+        exclude_filter: [],
+    },
+    libs: [
+        "android.test.runner",
+        "android.test.base",
+    ],
+    static_libs: [
+        "androidx.test.ext.truth",
+        "androidx.test.rules",
+        "junit",
+        "modules-utils-bytesmatcher",
+    ],
+    test_suites: [
+        "general-tests",
+        "mts-bluetooth",
+    ],
+}

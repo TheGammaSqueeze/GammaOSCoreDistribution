@@ -1,0 +1,42 @@
+{
+  "bootloader": "/apex/com.android.virt/etc/microdroid_bootloader",
+  "disks": [
+    {
+      "partitions": [
+        {
+          "label": "boot_a",
+          "path": "/apex/com.android.virt/etc/fs/microdroid_boot-5.10.img"
+        },
+        {
+          "label": "init_boot_a",
+          "path": "/apex/com.android.virt/etc/fs/microdroid_init_boot.img"
+        },
+        {
+          "label": "vendor_boot_a",
+          "path": "/apex/com.android.virt/etc/fs/microdroid_vendor_boot-5.10.img"
+        },
+        {
+          "label": "vbmeta_a",
+          "path": "/apex/com.android.virt/etc/fs/microdroid_vbmeta.img"
+        },
+        {
+          "label": "super",
+          "path": "/apex/com.android.virt/etc/fs/microdroid_super.img"
+        }
+      ],
+      "writable": false
+    },
+    {
+      "partitions": [
+        {
+          "label": "uboot_env",
+          "path": "/apex/com.android.virt/etc/uboot_env.img",
+          "writable": false
+        }
+      ],
+      "writable": true
+    }
+  ],
+  "memory_mib": 256,
+  "platform_version": "~1.0"
+}

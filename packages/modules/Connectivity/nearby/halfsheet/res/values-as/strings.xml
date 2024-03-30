@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Copyright (C) 2021 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+   -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="fast_pair_setup_in_progress" msgid="4158762239172829807">"ছেটআপ আৰম্ভ কৰি থকা হৈছে…"</string>
+    <string name="fast_pair_title_setup" msgid="2894360355540593246">"ডিভাইচ ছেট আপ কৰক"</string>
+    <string name="fast_pair_device_ready" msgid="2903490346082833101">"ডিভাইচ সংযোগ কৰা হ’ল"</string>
+    <string name="fast_pair_title_fail" msgid="5677174346601290232">"সংযোগ কৰিব পৰা নগ’ল"</string>
+    <string name="paring_action_done" msgid="6888875159174470731">"হ’ল"</string>
+    <string name="paring_action_save" msgid="6259357442067880136">"ছেভ কৰক"</string>
+    <string name="paring_action_connect" msgid="4801102939608129181">"সংযোগ কৰক"</string>
+    <string name="paring_action_launch" msgid="8940808384126591230">"ছেট আপ কৰক"</string>
+    <string name="paring_action_settings" msgid="424875657242864302">"ছেটিং"</string>
+</resources>

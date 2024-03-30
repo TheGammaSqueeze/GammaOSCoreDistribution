@@ -1,0 +1,12 @@
+# Project owners
+sattiraju@google.com
+siyuanh@google.com
+sungsoo@google.com
+zachoverflow@google.com
+
+# Per-file ownership
+
+# ChromeOS team owns Linux build files
+# - build.py is used for Linux build
+# - *.gn is for GN build rules
+per-file build.py,*.gn=file:/OWNERS_chromeos

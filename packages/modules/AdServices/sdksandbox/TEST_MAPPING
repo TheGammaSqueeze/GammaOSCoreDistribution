@@ -1,0 +1,19 @@
+{
+  "presubmit": [
+    {
+      "name": "SdkSandboxManagerServiceUnitTests"
+    },
+    {
+      "name": "SdkSandboxTests"
+    },
+    {
+      "name": "SdkSandboxManagerTests"
+    },
+    {
+      "name": "SdkSandboxLifecycleHostTest"
+    },
+    {
+      "name": "SdkSandboxStorageHostTest"
+    }
+  ]
+}

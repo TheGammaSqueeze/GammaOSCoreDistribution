@@ -1,0 +1,19 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+android_test {
+    name: "UwbSupportLibTests",
+    srcs: ["*.java"],
+    static_libs: [
+        "androidx.test.ext.junit",
+        "androidx.test.rules",
+        "com.uwb.support.ccc",
+        "com.uwb.support.fira",
+        "com.uwb.support.generic",
+        "com.uwb.support.multichip",
+    ],
+    platform_apis: true,
+    certificate: "platform",
+    test_suites: ["device-tests"],
+}

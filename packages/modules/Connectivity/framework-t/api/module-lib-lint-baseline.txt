@@ -1,0 +1,7 @@
+// Baseline format: 1.0
+BannedThrow: android.app.usage.NetworkStatsManager#queryDetailsForUidTagState(android.net.NetworkTemplate, long, long, int, int, int):
+    Methods must not mention RuntimeException subclasses in throws clauses (was `java.lang.SecurityException`)
+BannedThrow: android.app.usage.NetworkStatsManager#querySummary(android.net.NetworkTemplate, long, long):
+    Methods must not mention RuntimeException subclasses in throws clauses (was `java.lang.SecurityException`)
+BannedThrow: android.app.usage.NetworkStatsManager#queryTaggedSummary(android.net.NetworkTemplate, long, long):
+    Methods must not mention RuntimeException subclasses in throws clauses (was `java.lang.SecurityException`)

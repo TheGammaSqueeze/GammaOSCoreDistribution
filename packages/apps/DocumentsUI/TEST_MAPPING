@@ -1,0 +1,17 @@
+{
+  "presubmit": [
+    {
+      "name": "DocumentsUIGoogleTests",
+      "keywords": ["primary-device"]
+    },
+    {
+      "name": "DocumentsUIUnitTests"
+    }
+  ],
+  "postsubmit": [
+    {
+      "name": "DocumentsUIGoogleTests",
+      "keywords": ["primary-device"]
+    }
+  ]
+}

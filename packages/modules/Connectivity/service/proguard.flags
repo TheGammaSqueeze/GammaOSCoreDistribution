@@ -1,0 +1,17 @@
+# Make sure proguard keeps all connectivity classes
+# TODO: instead of keeping everything, consider listing only "entry points"
+# (service loader, JNI registered methods, etc) and letting the optimizer do its job
+-keep class android.net.** { *; }
+-keep class com.android.connectivity.** { *; }
+-keep class com.android.net.** { *; }
+-keep class !com.android.server.nearby.**,com.android.server.** { *; }
+
+# Prevent proguard from stripping out any nearby-service and fast-pair-lite-protos fields.
+-keep class com.android.server.nearby.NearbyService { *; }
+
+# The lite proto runtime uses reflection to access fields based on the names in
+# the schema, keep all the fields.
+# This replicates the base proguard rule used by the build by default
+# (proguard_basic_keeps.flags), but needs to be specified here because the
+# com.google.protobuf package is jarjared to the below package.
+-keepclassmembers class * extends android.net.connectivity.com.google.protobuf.MessageLite { <fields>; }

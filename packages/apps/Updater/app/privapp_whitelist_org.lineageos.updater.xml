@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2017-2020 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<permissions>
+    <privapp-permissions package="org.lineageos.updater">
+        <permission name="android.permission.ACCESS_CACHE_FILESYSTEM"/>
+        <permission name="android.permission.REBOOT"/>
+        <permission name="android.permission.RECOVERY"/>
+        <permission name="android.permission.START_ACTIVITIES_FROM_BACKGROUND"/>
+    </privapp-permissions>
+</permissions>

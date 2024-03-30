@@ -1,0 +1,112 @@
+//
+// Copyright (C) 2021 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+package {
+    // See: http://go/android-license-faq
+    // This was chosen for Sharesheet to match existing packages.
+    default_applicable_licenses: ["packages_modules_IntentResolver_license"],
+}
+
+license {
+    name: "packages_modules_IntentResolver_license",
+    visibility: [":__subpackages__"],
+    license_kinds: [
+        "SPDX-license-identifier-Apache-2.0",
+    ],
+    license_text: [
+        "NOTICE",
+    ],
+}
+
+filegroup {
+    name: "ReleaseSources",
+    srcs: [
+        "java/src-release/**/*.kt",
+    ],
+}
+
+filegroup {
+    name: "DebugSources",
+    srcs: [
+        "java/src-debug/**/*.kt",
+    ],
+}
+
+android_library {
+    name: "IntentResolver-core",
+    min_sdk_version: "current",
+    srcs: [
+        "java/src/**/*.java",
+        "java/src/**/*.kt",
+        ":ReleaseSources",
+    ],
+    product_variables: {
+        debuggable: {
+            srcs: [":DebugSources"],
+            exclude_srcs: [":ReleaseSources"],
+        }
+    },
+    resource_dirs: [
+        "java/res",
+    ],
+
+    manifest: "AndroidManifest.xml",
+
+    static_libs: [
+        "androidx.annotation_annotation",
+        "androidx.concurrent_concurrent-futures",
+        "androidx.recyclerview_recyclerview",
+        "androidx.viewpager_viewpager",
+        "androidx.lifecycle_lifecycle-common-java8",
+        "androidx.lifecycle_lifecycle-extensions",
+        "androidx.lifecycle_lifecycle-runtime-ktx",
+        "androidx.lifecycle_lifecycle-viewmodel-ktx",
+        "kotlin-stdlib",
+        "kotlinx_coroutines",
+        "kotlinx-coroutines-android",
+        "//external/kotlinc:kotlin-annotations",
+        "guava",
+        "SystemUIFlagsLib",
+    ],
+
+    plugins: ["java_api_finder"],
+    lint: {
+        strict_updatability_linting: false,
+    },
+}
+
+android_app {
+    name: "IntentResolver",
+    min_sdk_version: "current",
+    certificate: "platform",
+    privileged: true,
+    required: [
+        "privapp_whitelist_com.android.intentresolver",
+    ],
+    srcs: ["src/**/*.java"],
+    platform_apis: true,
+    static_libs: [
+        "IntentResolver-core",
+    ],
+    optimize: {
+        enabled: true,
+    },
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.intentresolver",
+        "test_com.android.intentresolver",
+    ],
+}

@@ -1,0 +1,37 @@
+tidy_errors = [
+    "*",
+    "-altera-struct-pack-align",
+    "-altera-unroll-loops",
+    "-bugprone-narrowing-conversions",
+    "-cppcoreguidelines-avoid-magic-numbers",
+    "-cppcoreguidelines-init-variables",
+    "-cppcoreguidelines-narrowing-conversions",
+    "-hicpp-signed-bitwise",
+    "-llvm-header-guard",
+    "-readability-avoid-const-params-in-decls",
+    "-readability-identifier-length",
+    "-readability-magic-numbers",
+]
+
+cc_library_static {
+    name: "libaptx_enc",
+    host_supported: true,
+    export_include_dirs: ["include"],
+    srcs: [
+        "src/aptXbtenc.c",
+        "src/ProcessSubband.c",
+        "src/QmfConv.c",
+        "src/QuantiseDifference.c",
+    ],
+    cflags: ["-O2", "-Werror", "-Wall", "-Wextra"],
+    tidy: true,
+    tidy_checks: tidy_errors,
+    tidy_checks_as_errors: tidy_errors,
+    min_sdk_version: "Tiramisu",
+    apex_available: [
+        "com.android.btservices",
+    ],
+    visibility: [
+        "//packages/modules/Bluetooth:__subpackages__",
+    ],
+}

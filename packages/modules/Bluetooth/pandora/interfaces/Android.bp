@@ -1,0 +1,113 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+java_library {
+    name: "pandora_experimental-grpc-java",
+    visibility: ["//packages/modules/Bluetooth/android/pandora/server"],
+    srcs: [
+        "pandora_experimental/*.proto",
+    ],
+    static_libs: [
+        "grpc-java-lite",
+        "guava",
+        "javax_annotation-api_1.3.2",
+        "libprotobuf-java-lite",
+        "opencensus-java-api",
+        "pandora_experimental-proto-java",
+    ],
+    proto: {
+        include_dirs: [
+            "external/protobuf/src",
+            "packages/modules/Bluetooth/pandora/interfaces",
+        ],
+        plugin: "grpc-java-plugin",
+        output_params: [
+           "lite",
+        ],
+    },
+}
+
+java_library {
+    name: "pandora_experimental-proto-java",
+    visibility: ["//packages/modules/Bluetooth/android/pandora/server"],
+    srcs: [
+        "pandora_experimental/*.proto",
+        ":libprotobuf-internal-protos",
+    ],
+    static_libs: [
+        "libprotobuf-java-lite",
+    ],
+    proto: {
+        // Disable canonical path as this breaks the identification of
+        // well known protobufs
+        canonical_path_from_root: false,
+        type: "lite",
+        include_dirs: [
+            "external/protobuf/src",
+            "packages/modules/Bluetooth/pandora/interfaces",
+        ],
+    },
+}
+
+genrule {
+    name: "pandora_experimental-python-src",
+    tools: [
+        "aprotoc",
+        "protoc-gen-mmi2grpc-python"
+    ],
+    cmd: "$(location aprotoc)" +
+         "    -Ipackages/modules/Bluetooth/pandora/interfaces" +
+         "    -Iexternal/protobuf/src" +
+         "    --plugin=protoc-gen-grpc=$(location protoc-gen-mmi2grpc-python)" +
+         "    --grpc_out=$(genDir)" +
+         "    --python_out=$(genDir)" +
+         "    $(in)",
+    srcs: [
+        "pandora_experimental/_android.proto",
+        "pandora_experimental/a2dp.proto",
+        "pandora_experimental/avrcp.proto",
+        "pandora_experimental/gatt.proto",
+        "pandora_experimental/hfp.proto",
+        "pandora_experimental/hid.proto",
+        "pandora_experimental/host.proto",
+        "pandora_experimental/l2cap.proto",
+        "pandora_experimental/mediaplayer.proto",
+        "pandora_experimental/pbap.proto",
+        "pandora_experimental/rfcomm.proto",
+        "pandora_experimental/security.proto",
+    ],
+    out: [
+        "pandora_experimental/_android_grpc.py",
+        "pandora_experimental/_android_pb2.py",
+        "pandora_experimental/a2dp_grpc.py",
+        "pandora_experimental/a2dp_pb2.py",
+        "pandora_experimental/avrcp_grpc.py",
+        "pandora_experimental/avrcp_pb2.py",
+        "pandora_experimental/gatt_grpc.py",
+        "pandora_experimental/gatt_pb2.py",
+        "pandora_experimental/hfp_grpc.py",
+        "pandora_experimental/hfp_pb2.py",
+        "pandora_experimental/hid_grpc.py",
+        "pandora_experimental/hid_pb2.py",
+        "pandora_experimental/host_grpc.py",
+        "pandora_experimental/host_pb2.py",
+        "pandora_experimental/l2cap_grpc.py",
+        "pandora_experimental/l2cap_pb2.py",
+        "pandora_experimental/mediaplayer_grpc.py",
+        "pandora_experimental/mediaplayer_pb2.py",
+        "pandora_experimental/pbap_grpc.py",
+        "pandora_experimental/pbap_pb2.py",
+        "pandora_experimental/rfcomm_grpc.py",
+        "pandora_experimental/rfcomm_pb2.py",
+        "pandora_experimental/security_grpc.py",
+        "pandora_experimental/security_pb2.py",
+    ]
+}
+
+python_library_host {
+    name: "pandora_experimental-python",
+    srcs: [
+        ":pandora_experimental-python-src",
+    ],
+}

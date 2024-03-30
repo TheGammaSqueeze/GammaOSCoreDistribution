@@ -1,0 +1,301 @@
+// RPCs for the Nearby Console service.
+syntax = "proto3";
+
+package service.proto;
+// Response containing an observed device.
+message GetObservedDeviceResponse {
+  // The device from the request.
+  Device device = 1;
+
+  // The image icon that shows in the notification
+  bytes image = 3;
+
+  // Strings to be displayed on notifications during the pairing process.
+  ObservedDeviceStrings strings = 4;
+
+  reserved 2;
+}
+
+message Device {
+  // Output only. The server-generated ID of the device.
+  int64 id = 1;
+
+  // The pantheon project number the device is created under. Only Nearby admins
+  // can change this.
+  int64 project_number = 2;
+
+  // How the notification will be displayed to the user
+  NotificationType notification_type = 3;
+
+  // The image to show on the notification.
+  string image_url = 4;
+
+  // The name of the device.
+  string name = 5;
+
+  // The intent that will be launched via the notification.
+  string intent_uri = 6;
+
+  // The transmit power of the device's BLE chip.
+  int32 ble_tx_power = 7;
+
+  // The distance that the device must be within to show a notification.
+  // If no distance is set, we default to 0.6 meters. Only Nearby admins can
+  // change this.
+  float trigger_distance = 8;
+
+  // Output only. Fast Pair only - The anti-spoofing key pair for the device.
+  AntiSpoofingKeyPair anti_spoofing_key_pair = 9;
+
+  // Output only. The current status of the device.
+  Status status = 10;
+
+
+  // DEPRECATED - check for published_version instead.
+  // Output only.
+  // Whether the device has a different, already published version.
+  bool has_published_version = 12;
+
+  // Fast Pair only - The type of device being registered.
+  DeviceType device_type = 13;
+
+
+  // Fast Pair only - Additional images for true wireless headsets.
+  TrueWirelessHeadsetImages true_wireless_images = 15;
+
+  // Fast Pair only - When true, this device can support assistant function.
+  bool assistant_supported = 16;
+
+  // Output only.
+  // The published version of a device that has been approved to be displayed
+  // as a notification - only populated if the device has a different published
+  // version. (A device that only has a published version would not have this
+  // populated).
+  Device published_version = 17;
+
+  // Fast Pair only - When true, Fast Pair will only create a bond with the
+  // device and not attempt to connect any profiles (for example, A2DP or HFP).
+  bool data_only_connection = 18;
+
+  // Name of the company/brand that will be selling the product.
+  string company_name = 19;
+
+  repeated FastPairFeature features = 20;
+
+  // Name of the device that is displayed on the console.
+  string display_name = 21;
+
+  // How the device will be interacted with by the user when the scan record
+  // is detected.
+  InteractionType interaction_type = 22;
+
+  // Companion app information.
+  CompanionAppDetails companion_detail = 23;
+
+  reserved 11, 14;
+}
+
+
+// Represents the format of the final device notification (which is directly
+// correlated to the action taken by the notification).
+enum NotificationType {
+  // Unspecified notification type.
+  NOTIFICATION_TYPE_UNSPECIFIED = 0;
+  // Notification launches the fast pair intent.
+  // Example Notification Title: "Bose SoundLink II"
+  // Notification Description: "Tap to pair with this device"
+  FAST_PAIR = 1;
+  // Notification launches an app.
+  // Notification Title: "[X]" where X is type/name of the device.
+  // Notification Description: "Tap to setup this device"
+  APP_LAUNCH = 2;
+  // Notification launches for Nearby Setup. The notification title and
+  // description is the same as APP_LAUNCH.
+  NEARBY_SETUP = 3;
+  // Notification launches the fast pair intent, but doesn't include an anti-
+  // spoofing key. The notification title and description is the same as
+  // FAST_PAIR.
+  FAST_PAIR_ONE = 4;
+  // Notification launches Smart Setup on devices.
+  // These notifications are identical to APP_LAUNCH except that they always
+  // launch Smart Setup intents within GMSCore.
+  SMART_SETUP = 5;
+}
+
+// How the device will be interacted with when it is seen.
+enum InteractionType {
+  INTERACTION_TYPE_UNKNOWN = 0;
+  AUTO_LAUNCH = 1;
+  NOTIFICATION = 2;
+}
+
+// Features that can be enabled for a Fast Pair device.
+enum FastPairFeature {
+  FAST_PAIR_FEATURE_UNKNOWN = 0;
+  SILENCE_MODE = 1;
+  WIRELESS_CHARGING = 2;
+  DYNAMIC_BUFFER_SIZE = 3;
+  NO_PERSONALIZED_NAME = 4;
+  EDDYSTONE_TRACKING = 5;
+}
+
+message CompanionAppDetails {
+  // Companion app slice provider's authority.
+  string authority = 1;
+
+  // Companion app certificate value.
+  string certificate_hash = 2;
+
+  // Deprecated fields.
+  reserved 3;
+}
+
+// Additional images for True Wireless Fast Pair devices.
+message TrueWirelessHeadsetImages {
+  // Image URL for the left bud.
+  string left_bud_url = 1;
+
+  // Image URL for the right bud.
+  string right_bud_url = 2;
+
+  // Image URL for the case.
+  string case_url = 3;
+}
+
+// Represents the type of device that is being registered.
+enum DeviceType {
+  DEVICE_TYPE_UNSPECIFIED = 0;
+  HEADPHONES = 1;
+  SPEAKER = 2;
+  WEARABLE = 3;
+  INPUT_DEVICE = 4;
+  AUTOMOTIVE = 5;
+  OTHER = 6;
+  TRUE_WIRELESS_HEADPHONES = 7;
+  WEAR_OS = 8;
+  ANDROID_AUTO = 9;
+}
+
+// An anti-spoofing key pair for a device that allows us to verify the device is
+// broadcasting legitimately.
+message AntiSpoofingKeyPair {
+  // The private key (restricted to only be viewable by trusted clients).
+  bytes private_key = 1;
+
+  // The public key.
+  bytes public_key = 2;
+}
+
+// Various states that a customer-configured device notification can be in.
+// PUBLISHED is the only state that shows notifications to the public.
+message Status {
+  // Status types available for each device.
+  enum StatusType {
+    // Unknown status.
+    TYPE_UNSPECIFIED = 0;
+    // Drafted device.
+    DRAFT = 1;
+    // Submitted and waiting for approval.
+    SUBMITTED = 2;
+    // Fully approved and available for end users.
+    PUBLISHED = 3;
+    // Rejected and not available for end users.
+    REJECTED = 4;
+  }
+
+  // Details about a device that has been rejected.
+  message RejectionDetails {
+    // The reason for the rejection.
+    enum RejectionReason {
+      // Unspecified reason.
+      REASON_UNSPECIFIED = 0;
+      // Name is not valid.
+      NAME = 1;
+      // Image is not valid.
+      IMAGE = 2;
+      // Tests have failed.
+      TESTS = 3;
+      // Other reason.
+      OTHER = 4;
+    }
+
+    // A list of reasons the device was rejected.
+    repeated RejectionReason reasons = 1;
+    // Comment about an OTHER rejection reason.
+    string additional_comment = 2;
+  }
+
+  // The status of the device.
+  StatusType status_type = 1;
+
+  // Accompanies Status.REJECTED.
+  RejectionDetails rejection_details = 2;
+}
+
+// Strings to be displayed in notifications surfaced for a device.
+message ObservedDeviceStrings {
+  // The notification description for when the device is initially discovered.
+  string initial_notification_description = 2;
+
+  // The notification description for when the device is initially discovered
+  // and no account is logged in.
+  string initial_notification_description_no_account = 3;
+
+  // The notification description for once we have finished pairing and the
+  // companion app has been opened. For google assistant devices, this string will point
+  // users to setting up the assistant.
+  string open_companion_app_description = 4;
+
+  // The notification description for once we have finished pairing and the
+  // companion app needs to be updated before use.
+  string update_companion_app_description = 5;
+
+  // The notification description for once we have finished pairing and the
+  // companion app needs to be installed.
+  string download_companion_app_description = 6;
+
+  // The notification title when a pairing fails.
+  string unable_to_connect_title = 7;
+
+  // The notification summary when a pairing fails.
+  string unable_to_connect_description = 8;
+
+  // The description that helps user initially paired with device.
+  string initial_pairing_description = 9;
+
+  // The description that let user open the companion app.
+  string connect_success_companion_app_installed = 10;
+
+  // The description that let user download the companion app.
+  string connect_success_companion_app_not_installed = 11;
+
+  // The description that reminds user there is a paired device nearby.
+  string subsequent_pairing_description = 12;
+
+  // The description that reminds users opt in their device.
+  string retroactive_pairing_description = 13;
+
+  // The description that indicates companion app is about to launch.
+  string wait_launch_companion_app_description = 14;
+
+  // The description that indicates go to bluetooth settings when connection
+  // fail.
+  string fail_connect_go_to_settings_description = 15;
+
+  reserved 1, 16, 17, 18, 19, 20, 21, 22, 23, 24;
+}
+
+// The buffer size range of a Fast Pair devices support dynamic buffer size.
+message BufferSizeRange {
+  // The max buffer size in ms.
+  int32 max_size = 1;
+
+  // The min buffer size in ms.
+  int32 min_size = 2;
+
+  // The default buffer size in ms.
+  int32 default_size = 3;
+
+  // The codec of this buffer size range.
+  int32 codec = 4;
+}

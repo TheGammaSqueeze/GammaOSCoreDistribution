@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright 2019, The Android Open Source Project
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:androidprv="http://schemas.android.com/apk/prv/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="?android:attr/colorBackground">
+
+  <CheckBox
+      android:id="@+id/include_text_action"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="end"
+      android:layout_marginEnd="@dimen/chooser_edge_margin_normal"
+      android:visibility="gone" />
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:gravity="center_horizontal"
+      android:layout_marginBottom="@dimen/chooser_view_spacing">
+
+      <ViewStub
+          android:id="@+id/image_preview_stub"
+          android:inflatedId="@androidprv:id/content_preview_image_area"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" />
+
+      <TextView
+          android:id="@androidprv:id/content_preview_text"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:layout_gravity="center_vertical"
+          android:paddingEnd="@dimen/chooser_edge_margin_normal"
+          android:maxLines="6"
+          android:ellipsize="end"
+          android:linksClickable="false"
+          android:visibility="gone"
+          android:textAppearance="@style/TextAppearance.ChooserDefault" />
+  </LinearLayout>
+
+  <TextView
+      android:id="@+id/reselection_action"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:visibility="gone"
+      android:text="@string/select_images"
+      android:gravity="center"
+      style="@style/ReselectionAction" />
+
+  <ViewStub
+      android:id="@+id/action_row_stub"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+
+</LinearLayout>

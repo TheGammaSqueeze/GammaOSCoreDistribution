@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2013 The CyanogenMod Project
+     Copyright (C) 2017-2022 The LineageOS Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <color name="black">#21272b</color>
+    <color name="white">#ffffff</color>
+    <color name="page_background">#e4e7e9</color>
+
+    <color name="primary">@color/page_background</color>
+    <color name="primary_dark">#c2c5c7</color>
+    <color name="accent">@*android:color/accent_device_default_light</color>
+    <color name="lineage_accent">#167C80</color>
+    <color name="primary_text">#8a000000</color>
+    <color name="secondary_text">#42000000</color>
+    <color name="button_bar_text_enabled">#ff1e1e1e</color>
+    <color name="button_bar_text_disabled">#321e1e1e</color>
+    <color name="divider">#40000000</color>
+    <color name="header_bg">@color/primary</color>
+    <color name="header_condensed_bg">@color/primary</color>
+    <color name="button_bar_background">@color/primary</color>
+    <color name="biometric_setup_text_color">#167C80</color>
+
+    <!-- Partner customization -->
+    <color name="sud_glif_background_color_light">@color/white</color>
+    <color name="sud_color_accent_glif_v3_light">@color/accent</color>
+    <color name="sud_color_accent_glif_v3_dark">@color/accent</color>
+</resources>

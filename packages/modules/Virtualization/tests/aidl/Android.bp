@@ -1,0 +1,18 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+aidl_interface {
+    name: "com.android.microdroid.testservice",
+    srcs: ["com/android/microdroid/testservice/**/*.aidl"],
+    unstable: true,
+    backend: {
+        java: {
+            platform_apis: true,
+            gen_rpc: true,
+        },
+        cpp: {
+            enabled: true,
+        },
+    },
+}

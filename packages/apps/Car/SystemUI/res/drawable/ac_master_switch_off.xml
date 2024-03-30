@@ -1,0 +1,95 @@
+<!--
+  ~ Copyright (C) 2021 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:viewportWidth="48"
+    android:viewportHeight="48"
+    android:width="@dimen/hvac_power_icon_drawable_width"
+    android:height="@dimen/hvac_power_icon_drawable_height">
+    <path
+        android:pathData="M16 6L20 6L20 14L28 14L28 6L32 6L32 14.5L33.5 15L36 18.5L36 29L34.5 29L16 10.5L16 6Z"
+        android:fillColor="@color/hvac_master_switch_color"
+        android:strokeColor="@color/hvac_master_switch_color"
+        android:strokeWidth="1" />
+    <path
+        android:pathData="M7.5 9L41 41.5L38.5 43L29 35L29 42L19 42L19 35.5L12 28.5L12 18.5L13 17.5L6 10.5L7.5 9Z"
+        android:fillColor="@color/hvac_master_switch_color"
+        android:strokeColor="@color/hvac_master_switch_color"
+        android:strokeWidth="1" />
+    <path
+        android:pathData="M7.5 8L6.5 10L7.5 8Z"
+        android:fillColor="@color/hvac_master_switch_color"
+        android:fillAlpha="0.5372549"
+        android:strokeColor="@color/hvac_master_switch_color"
+        android:strokeAlpha="0.5372549"
+        android:strokeWidth="1" />
+    <path
+        android:pathData="M6.5 11L11.5 17L6.5 11Z"
+        android:fillColor="@color/hvac_master_switch_color"
+        android:fillAlpha="0.5372549"
+        android:strokeColor="@color/hvac_master_switch_color"
+        android:strokeAlpha="0.5372549"
+        android:strokeWidth="1" />
+    <path
+        android:pathData="M15.5 15L31.5 32L15.5 15Z"
+        android:fillColor="@color/hvac_master_switch_color"
+        android:fillAlpha="0.5372549"
+        android:strokeColor="@color/hvac_master_switch_color"
+        android:strokeAlpha="0.5372549"
+        android:strokeWidth="1" />
+    <path
+        android:pathData="M29.5 35L39 43.5L30.5 36L29.5 35Z"
+        android:fillColor="@color/hvac_master_switch_color"
+        android:fillAlpha="0.5372549"
+        android:strokeColor="@color/hvac_master_switch_color"
+        android:strokeAlpha="0.5372549"
+        android:strokeWidth="1" />
+    <path
+        android:pathData="M8.5 8L14.5 15L8.5 8Z"
+        android:fillColor="@color/hvac_master_switch_color"
+        android:fillAlpha="0.454902"
+        android:strokeColor="@color/hvac_master_switch_color"
+        android:strokeAlpha="0.454902"
+        android:strokeWidth="1" />
+    <path
+        android:pathData="M16.5 11L36 29.5L34.5 30L16.5 11Z"
+        android:fillColor="@color/hvac_master_switch_color"
+        android:fillAlpha="0.454902"
+        android:strokeColor="@color/hvac_master_switch_color"
+        android:strokeAlpha="0.454902"
+        android:strokeWidth="1" />
+    <path
+        android:pathData="M12.5 29L17.5 35L12.5 29Z"
+        android:fillColor="@color/hvac_master_switch_color"
+        android:fillAlpha="0.454902"
+        android:strokeColor="@color/hvac_master_switch_color"
+        android:strokeAlpha="0.454902"
+        android:strokeWidth="1" />
+    <path
+        android:pathData="M32.5 32L39.5 40L32.5 32Z"
+        android:fillColor="@color/hvac_master_switch_color"
+        android:fillAlpha="0.454902"
+        android:strokeColor="@color/hvac_master_switch_color"
+        android:strokeAlpha="0.454902"
+        android:strokeWidth="1" />
+    <path
+        android:pathData="M40.5 42L39.5 44L40.5 42Z"
+        android:fillColor="@color/hvac_master_switch_color"
+        android:fillAlpha="0.454902"
+        android:strokeColor="@color/hvac_master_switch_color"
+        android:strokeAlpha="0.454902"
+        android:strokeWidth="1" />
+</vector>

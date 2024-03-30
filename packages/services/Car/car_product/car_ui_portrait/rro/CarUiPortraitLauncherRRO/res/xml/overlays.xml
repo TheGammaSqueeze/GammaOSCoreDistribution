@@ -1,0 +1,65 @@
+<!--
+  ~ Copyright (C) 2021 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<overlay>
+    <item target="color/dialer_button_icon_color" value="@color/dialer_button_icon_color"/>
+    <item target="color/icon_tint" value="@color/icon_tint" />
+    <item target="color/media_button_tint" value="@color/media_button_tint"/>
+    <item target="color/recent_apps_line_divider_color" value="@color/recent_apps_line_divider_color"/>
+
+    <item target="id/bottom_card" value="@id/bottom_card" />
+    <item target="id/card_background" value="@id/card_background" />
+    <item target="id/card_background_image" value="@id/card_background_image" />
+    <item target="id/card_icon" value="@id/card_icon" />
+    <item target="id/card_name" value="@id/card_name" />
+    <item target="id/card_view" value="@id/card_view" />
+    <item target="id/descriptive_text_layout" value="@id/descriptive_text_layout" />
+    <item target="id/text_block_layout" value="@id/text_block_layout" />
+    <item target="id/descriptive_text_with_controls_layout" value="@id/descriptive_text_with_controls_layout" />
+    <item target="id/media_descriptive_text" value="@id/media_descriptive_text" />
+    <item target="id/media_layout" value="@id/media_layout"/>
+    <item target="id/media_playback_controls_bar" value="@id/media_playback_controls_bar" />
+    <item target="id/optional_image" value="@id/optional_image" />
+    <item target="id/optional_timer" value="@id/optional_timer"/>
+    <item target="id/optional_timer_separator" value="@id/optional_timer_separator"/>
+    <item target="id/primary_text" value="@id/primary_text" />
+    <item target="id/secondary_text" value="@id/secondary_text"/>
+    <item target="id/title" value="@id/title"/>
+    <item target="id/recent_apps_row" value="@id/recent_apps_row"/>
+    <item target="id/divider" value="@id/divider"/>
+    <item target="id/top_card" value="@id/top_card"/>
+
+    <item target="id/button_trio" value="@id/button_trio"/>
+    <item target="id/button_center" value="@id/button_center"/>
+    <item target="id/button_left" value="@id/button_left"/>
+    <item target="id/button_right" value="@id/button_right"/>
+
+
+    <item target="layout/card_content_media" value="@layout/card_content_media" />
+    <item target="layout/card_fragment" value="@layout/card_fragment" />
+    <item target="layout/car_launcher" value="@layout/car_launcher"/>
+    <item target="layout/descriptive_text" value="@layout/descriptive_text" />
+    <item target="layout/recent_apps_row" value="@layout/recent_apps_row" />
+
+    <item target="dimen/card_background_image_blur_radius" value="@dimen/card_background_image_blur_radius" />
+    <item target="dimen/button_tap_target_size" value="@dimen/button_tap_target_size"/>
+    <item target="dimen/recent_apps_row_height" value="@dimen/recent_apps_row_height"/>
+    <item target="dimen/app_grid_row_margin" value="@dimen/app_grid_row_margin"/>
+
+    <item target="drawable/default_audio_background" value="@drawable/default_audio_background"/>
+    <item target="array/config_homeCardModuleClasses" value="@array/config_homeCardModuleClasses"/>
+
+    <item target="string/default_media_song_title" value="@string/default_media_song_title"/>
+</overlay>

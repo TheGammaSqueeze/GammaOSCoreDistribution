@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<compatibility-matrix version="1.0" type="framework">
+    <hal format="aidl" optional="true">
+        <name>android.hardware.security.dice</name>
+        <version>1</version>
+        <interface>
+            <name>IDiceDevice</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+</compatibility-matrix>

@@ -1,0 +1,37 @@
+From 1153211a5615156f450a4f521da284a7df4d4e5f Mon Sep 17 00:00:00 2001
+From: Abhishek Pandit-Subedi <abhishekpandit@google.com>
+Date: Mon, 14 Feb 2022 14:40:41 -0800
+Subject: [PATCH] Fix build issues on 930012
+
+---
+ BUILD.gn            | 1 +
+ base/command_line.h | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/libchrome/BUILD.gn b/libchrome/BUILD.gn
+index 292c08565a..dbe3fb0981 100644
+--- a/libchrome/BUILD.gn
++++ b/libchrome/BUILD.gn
+@@ -42,6 +42,7 @@ config("libchrome_config") {
+     "-Wno-unreachable-code-return",
+     "-Wno-unused-local-typedefs",
+     "-Xclang-only=-Wno-char-subscripts",
++    "-Wno-implicit-int-float-conversion",
+   ]
+ 
+   # Address sanitizer + coverage builds do not support -z,defs.
+diff --git a/libchrome/base/command_line.h b/libchrome/base/command_line.h
+index 706726a73e..ad0281283a 100644
+--- a/libchrome/base/command_line.h
++++ b/libchrome/base/command_line.h
+@@ -19,6 +19,7 @@
+ #include <stddef.h>
+ #include <functional>
+ #include <map>
++#include <memory>
+ #include <string>
+ #include <vector>
+ 
+-- 
+2.35.1.265.g69c8d7142f-goog
+

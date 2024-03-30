@@ -1,0 +1,11 @@
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@android:id/icon"
+    android:layout_width="@dimen/fast_pair_notification_small_image_size"
+    android:layout_height="@dimen/fast_pair_notification_small_image_size"
+    android:layout_marginTop="@dimen/fast_pair_notification_padding"
+    android:layout_marginBottom="@dimen/fast_pair_notification_padding"
+    android:layout_marginStart="@dimen/fast_pair_notification_padding"
+    android:layout_marginEnd="@dimen/fast_pair_notification_padding"
+    android:scaleType="fitStart"
+    tools:ignore="ContentDescription,RtlCompat"/>

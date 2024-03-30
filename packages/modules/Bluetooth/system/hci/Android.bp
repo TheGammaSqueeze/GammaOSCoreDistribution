@@ -1,0 +1,115 @@
+package {
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "system_bt_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    default_applicable_licenses: ["system_bt_license"],
+}
+
+// HCI static library for target
+cc_library_static {
+    name: "libbt-hci",
+    defaults: ["fluoride_basic_defaults"],
+    srcs: [
+        "src/btsnoop.cc",
+        "src/btsnoop_mem.cc",
+        "src/btsnoop_net.cc",
+        "src/buffer_allocator.cc",
+        "src/hci_inject.cc",
+        "src/hci_packet_factory.cc",
+        "src/hci_packet_parser.cc",
+        "src/packet_fragmenter.cc",
+    ],
+    target: {
+        android: {
+            srcs: ["src/hci_layer_android.cc"],
+        },
+        host: {
+            srcs: ["src/hci_layer_linux.cc"],
+        },
+    },
+    local_include_dirs: [
+        "include",
+    ],
+    include_dirs: [
+        "packages/modules/Bluetooth/system",
+        "packages/modules/Bluetooth/system/gd",
+        "packages/modules/Bluetooth/system/internal_include",
+        "packages/modules/Bluetooth/system/stack/include",
+        "packages/modules/Bluetooth/system/utils/include",
+        "packages/modules/Bluetooth/system/bta/include",
+        "packages/modules/Bluetooth/system/btif/include",
+        "system/libhwbinder/include",
+        "packages/modules/Bluetooth/system/gd/rust/shim",
+    ],
+    product_variables: {
+        debuggable: {
+            cflags: [
+                "-DBT_NET_DEBUG=true",
+            ],
+        },
+    },
+    host_supported: true,
+    min_sdk_version: "Tiramisu"
+}
+
+// HCI unit tests for target
+cc_test {
+    name: "net_test_hci",
+    test_suites: ["device-tests"],
+    defaults: [
+        "fluoride_basic_defaults",
+        "fluoride_test_defaults",
+        "mts_defaults",
+    ],
+    host_supported: false,
+    local_include_dirs: [
+        "include",
+    ],
+    include_dirs: [
+        "packages/modules/Bluetooth/system",
+        "packages/modules/Bluetooth/system/internal_include",
+        "packages/modules/Bluetooth/system/osi/test",
+        "packages/modules/Bluetooth/system/stack/include",
+        "packages/modules/Bluetooth/system/utils/include",
+        "system/libhwbinder/include",
+        "packages/modules/Bluetooth/system/gd/rust/shim",
+    ],
+    srcs: [
+        "test/packet_fragmenter_test.cc",
+    ],
+    shared_libs: [
+        "android.hardware.bluetooth.audio@2.0",
+        "android.hardware.bluetooth.audio@2.1",
+        "libdl",
+    ],
+    static_libs: [
+        "libbluetooth-for-tests",
+        "libbtcore",
+        "libbt-hci",
+    ],
+}
+
+cc_test {
+    name: "net_test_hci_fragmenter_native",
+    test_suites: ["device-tests"],
+    defaults: [
+        "fluoride_unit_test_defaults",
+        "mts_defaults",
+    ],
+    local_include_dirs: [
+        "include",
+    ],
+    include_dirs: [
+        "packages/modules/Bluetooth/system",
+        "packages/modules/Bluetooth/system/gd",
+        "packages/modules/Bluetooth/system/stack/include",
+        "packages/modules/Bluetooth/system/osi/test",
+    ],
+    srcs: [
+        "src/buffer_allocator.cc",
+        "test/packet_fragmenter_host_test.cc",
+    ],
+}
+

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2021 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+    <!-- Car System UI's OverlayViewsMediator.
+         Whenever a new class is added, make sure to also add that class to OverlayWindowModule. -->
+    <string-array name="config_carSystemUIOverlayViewsMediators" translatable="false">
+        <item>com.android.systemui.car.hvac.AutoDismissHvacPanelOverlayViewMediator</item>
+        <item>com.android.systemui.car.keyguard.CarKeyguardViewMediator</item>
+        <item>com.android.systemui.car.userswitcher.FullscreenUserSwitcherViewMediator</item>
+        <item>com.android.systemui.car.userswitcher.UserSwitchTransitionViewMediator</item>
+    </string-array>
+
+    <integer name="hvac_num_fan_speeds">8</integer>
+
+    <integer name="config_hvacAutoDismissDurationMs">15000</integer>
+
+    <!-- Allow foreground DA to have rounded corner -->
+    <bool name="config_enableRoundedCornerForForegroundDisplayArea">false</bool>
+
+    <string-array name="config_systemUIServiceComponentsInclude" translatable="false">
+        <item>com.android.systemui.car.systembar.CarSystemBar</item>
+        <item>com.android.systemui.car.voicerecognition.ConnectedDeviceVoiceRecognitionNotifier
+        </item>
+        <item>com.android.systemui.car.window.SystemUIOverlayWindowManager</item>
+        <item>com.android.systemui.car.toast.CarToastUI</item>
+        <item>com.android.systemui.car.volume.VolumeUI</item>
+        <item>com.android.systemui.car.cluster.ClusterDisplayController</item>
+        <item>com.android.systemui.car.displayarea.DisplayAreaComponent</item>
+    </string-array>
+
+    <string-array name="config_foregroundDAComponents" translatable="false">
+        <item>com.android.car.carlauncher/.AppGridActivity</item>
+        <item>com.android.car.notification/.CarNotificationCenterActivity</item>
+    </string-array>
+
+    <string-array name="config_ignoreOpeningForegroundDA" translatable="false">
+        <item>com.android.car.settings/.FallbackHome</item>
+        <item>android.car.usb.handler/android.car.usb.handler.UsbHostManagementActivity</item>
+        <item>com.google.android.car.setupwizard/.CarSetupWizardActivity</item>
+        <item>com.google.android.car.setupwizard/.welcome.WelcomeActivity</item>
+        <item>com.google.android.car.setupwizard/.libs.uicommon.TrampolineActivity</item>
+        <item>com.google.android.apps.maps/com.google.android.apps.gmm.car.embedded.auxiliarymap.EmbeddedClusterActivity</item>
+        <item>com.android.mtp/com.android.mtp.ReceiverActivity</item>
+    </string-array>
+
+    <string name="config_controlBarActivity" translatable="false">
+        com.android.car.carlauncher/.ControlBarActivity
+    </string>
+    <string name="config_notificationCenterActivity" translatable="false">
+        com.android.car.notification/.CarNotificationCenterActivity
+    </string>
+    <string name="config_homeActivity" translatable="false">
+        com.android.car.carlauncher/.CarLauncher
+    </string>
+    <!--  default relaunch will be the first item  -->
+    <string-array name="config_backgroundActivities" translatable="false">
+        <item>com.google.android.apps.maps/com.google.android.maps.MapsActivity</item>
+        <item>com.android.car.ui.paintbooth/.MainActivity</item>
+        <item>android.accessibilityservice.cts/android.accessibilityservice.cts.AccessibilityGestureDispatchTest$GestureDispatchActivity</item>
+    </string-array>
+</resources>

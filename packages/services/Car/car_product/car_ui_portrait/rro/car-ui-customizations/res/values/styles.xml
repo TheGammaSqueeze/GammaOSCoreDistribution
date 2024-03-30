@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2021 The Android Open Source Project
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="TextAppearance_CarUi_AlertDialog_Title" parent="android:TextAppearance.DeviceDefault">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TextAppearance_CarUi_AlertDialog_Subtitle" parent="android:TextAppearance.DeviceDefault">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextAppearance.CarUi.PreferenceCategoryTitle" parent="android:TextAppearance.DeviceDefault">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">?android:attr/colorAccent</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextAppearance.CarUi.PreferenceSummary" parent="android:TextAppearance.DeviceDefault">
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextAppearance.CarUi.PreferenceTitle" parent="android:TextAppearance.DeviceDefault">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="TextAppearance.CarUi.Widget" parent="android:TextAppearance.DeviceDefault.Widget">
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+
+    <style name="TextAppearance.CarUi.Widget.Toolbar"/>
+
+    <style name="TextAppearance.CarUi.Widget.Toolbar.Title">
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="Widget.CarUi.Toolbar.Container"/>
+    <style name="Widget.CarUi.Toolbar.NavIconContainer"/>
+    <style name="Widget.CarUi.Toolbar.ProgressBar"
+           parent="@android:style/Widget.DeviceDefault.ProgressBar.Horizontal"/>
+    <style name="Widget.CarUi.Toolbar.MenuItem.Container">
+        <item name="android:divider">@drawable/car_ui_toolbar_menu_item_divider</item>
+        <item name="android:showDividers">beginning|middle|end</item>
+    </style>
+    <style name="Widget.CarUi.Toolbar.Subtitle">
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+    <style name="Widget.CarUi.Toolbar.Title">
+        <item name="android:textAppearance">@style/TextAppearance.CarUi.Widget.Toolbar.Title</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+    <style name="Widget.CarUi.Toolbar.Logo"/>
+    <style name="Widget.CarUi.Toolbar.LogoContainer">
+        <item name="android:paddingEnd">0dp</item>
+    </style>
+    <style name="Widget.CarUi.Toolbar"/>
+    <style name="Widget.CarUi" parent="android:Widget.DeviceDefault"/>
+    <style name="Widget.CarUi.Toolbar.MenuItem"/>
+    <style name="Widget.CarUi.Toolbar.NavIcon">
+        <item name="android:tint">@color/car_ui_toolbar_nav_icon_color</item>
+        <item name="android:background">@drawable/car_ui_toolbar_menu_item_icon_ripple</item>
+    </style>
+</resources>

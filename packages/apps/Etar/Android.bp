@@ -1,0 +1,78 @@
+android_app {
+    name: "Etar",
+    overrides: ["Calendar"],
+
+    asset_dirs: ["app/src/main/assets"],
+
+    resource_dirs: ["app/src/main/res"],
+
+    srcs: [
+        "app/src/main/java/**/*.kt",
+        "app/src/main/java/**/*.java",
+        "src_aosp/**/*.java",
+        "src_aosp/**/*.kt",
+    ],
+
+    manifest: "app/src/main/AndroidManifest.xml",
+
+    product_specific: true,
+
+    static_libs: [
+        "android-common",
+        "android-opt-timezonepicker",
+        "calendar-common",
+        "colorpicker",
+        "libchips",
+        "kotlin-annotations",
+        "kotlinx-coroutines-android",
+        "kotlinx-coroutines-core",
+        "androidx-constraintlayout_constraintlayout",
+        "androidx.preference_preference",
+        "androidx.appcompat_appcompat",
+        "com.google.android.material_material",
+    ],
+
+    optimize: {
+        proguard_flags_files: ["app/proguard-rules.pro"],
+    },
+
+    sdk_version: "current",
+
+    aaptflags: [
+        "--custom-package",
+        "ws.xsoh.etar",
+    ],
+
+    kotlincflags: ["-Xjvm-default=enable"],
+
+    required: [
+        "org.lineageos.etar.allowlist"
+    ],
+}
+
+android_test {
+    name: "CalendarTests",
+
+    srcs: [
+        "app/src/test/java/**/*.kt",
+        "app/src/test/java/**/*.java",
+    ],
+
+    manifest: "app/src/test/AndroidManifest.xml",
+
+    libs: [
+        "android.test.runner",
+    ],
+
+    certificate: "platform",
+
+    instrumentation_for: "Etar",
+}
+
+prebuilt_etc {
+    name: "org.lineageos.etar.allowlist",
+    product_specific: true,
+    sub_dir: "sysconfig",
+    src: "org.lineageos.etar.allowlist.xml",
+    filename_from_src: true,
+}

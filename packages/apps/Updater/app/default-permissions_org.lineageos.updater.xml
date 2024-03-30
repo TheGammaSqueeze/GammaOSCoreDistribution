@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<!--
+     SPDX-FileCopyrightText: 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<exceptions>
+    <exception package="org.lineageos.updater">
+        <!-- Notifications -->
+        <permission name="android.permission.POST_NOTIFICATIONS" fixed="false"/>
+    </exception>
+</exceptions>

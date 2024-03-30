@@ -1,0 +1,10 @@
+{
+  "presubmit" : [
+    {
+      "name" : "libapkverify.test"
+    },
+    {
+      "name" : "libapkverify.integration_test"
+    }
+  ]
+}

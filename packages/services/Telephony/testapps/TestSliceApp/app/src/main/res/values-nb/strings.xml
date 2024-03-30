@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name" msgid="1265450418387661962">"TestSliceApp"</string>
+    <string name="hello_blank_fragment" msgid="1245093642770491175">"Hei, tomt fragment"</string>
+</resources>

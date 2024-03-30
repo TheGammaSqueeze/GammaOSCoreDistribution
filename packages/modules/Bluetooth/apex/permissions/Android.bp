@@ -1,0 +1,10 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+prebuilt_etc {
+    name: "privapp_allowlist_com.android.bluetooth.xml",
+    src: "com.android.bluetooth.xml",
+    sub_dir: "permissions",
+    installable: false,
+}

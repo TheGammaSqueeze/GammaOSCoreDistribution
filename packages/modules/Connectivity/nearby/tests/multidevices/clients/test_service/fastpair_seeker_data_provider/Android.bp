@@ -1,0 +1,48 @@
+// Copyright (C) 2022 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+android_library {
+    name: "NearbyFastPairSeekerSharedLib",
+    srcs: ["shared/**/*.kt"],
+    sdk_version: "test_current",
+    static_libs: [
+        // TODO(b/228406038): Remove "framework-nearby-static" once Fast Pair system APIs add back.
+        "framework-nearby-static",
+        "guava",
+        "gson-prebuilt-jar",
+    ],
+}
+
+android_library {
+    name: "NearbyFastPairSeekerDataProviderLib",
+    srcs: ["src/**/*.kt"],
+    sdk_version: "test_current",
+    static_libs: ["NearbyFastPairSeekerSharedLib"],
+}
+
+android_app {
+    name: "NearbyFastPairSeekerDataProvider",
+    sdk_version: "test_current",
+    certificate: "platform",
+    static_libs: ["NearbyFastPairSeekerDataProviderLib"],
+    optimize: {
+        enabled: true,
+        shrink: true,
+        proguard_flags_files: ["proguard.flags"],
+    },
+}

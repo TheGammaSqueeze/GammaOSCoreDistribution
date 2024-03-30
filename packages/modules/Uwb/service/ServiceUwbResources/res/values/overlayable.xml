@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2021 The Android Open Source Project
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!-- These values can be used to control uwb stack behavior/features on individual devices.
+     These can be overridden by OEM's by using an RRO overlay app.
+     See device/google/coral/rro_overlays/UwbOverlay/ for a sample overlay app. -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <overlayable name="UwbCustomization">
+        <!-- START VENDOR CUSTOMIZATION -->
+        <policy type="product|system|vendor">
+
+          <!-- Params from config.xml that can be overlaid -->
+            <item name="config_isMultichip" type="bool" />
+            <item name="config_multichipConfigPath" type="string" />
+          <!-- Params from config.xml that can be overlaid -->
+
+          <!-- Params from strings.xml that can be overlaid -->
+          <!-- Params from strings.xml that can be overlaid -->
+
+          <!-- Params from styles.xml that can be overlaid -->
+          <!-- Params from styles.xml that can be overlaid -->
+
+          <!-- Params from drawable/ that can be overlaid -->
+          <!-- Params from drawable/ that can be overlaid -->
+
+          <!-- Params from layout/ that can be overlaid -->
+          <!-- Params from layout/ that can be overlaid -->
+
+        </policy>
+        <!-- END VENDOR CUSTOMIZATION -->
+    </overlayable>
+</resources>

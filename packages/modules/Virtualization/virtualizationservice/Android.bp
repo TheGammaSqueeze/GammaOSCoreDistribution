@@ -1,0 +1,74 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+rust_defaults {
+    name: "virtualizationservice_defaults",
+    crate_name: "virtualizationservice",
+    srcs: ["src/main.rs"],
+    edition: "2018",
+    // Only build on targets which crosvm builds on.
+    enabled: false,
+    target: {
+        android64: {
+            compile_multilib: "64",
+            enabled: true,
+        },
+        linux_bionic_arm64: {
+            enabled: true,
+        },
+    },
+    prefer_rlib: true,
+    rustlibs: [
+        "android.system.virtualizationservice-rust",
+        "android.system.virtualmachineservice-rust",
+        "android.os.permissions_aidl-rust",
+        "libandroid_logger",
+        "libanyhow",
+        "libbinder_common",
+        "libbinder_rpc_unstable_bindgen",
+        "libbinder_rs",
+        "libcommand_fds",
+        "libdisk",
+        "libidsig",
+        "liblog_rust",
+        "libmicrodroid_metadata",
+        "libmicrodroid_payload_config",
+        "libnix",
+        "libonce_cell",
+        "libregex",
+        "librustutils",
+        "libsemver",
+        "libselinux_bindgen",
+        "libserde",
+        "libserde_json",
+        "libserde_xml_rs",
+        "libshared_child",
+        "libstatslog_virtualization_rust",
+        "libtombstoned_client_rust",
+        "libvmconfig",
+        "libzip",
+        "libvsock",
+        // TODO(b/202115393) stabilize the interface
+        "packagemanager_aidl-rust",
+    ],
+    shared_libs: [
+        "libbinder_rpc_unstable",
+        "libselinux",
+    ],
+}
+
+rust_binary {
+    name: "virtualizationservice",
+    defaults: ["virtualizationservice_defaults"],
+    apex_available: ["com.android.virt"],
+}
+
+rust_test {
+    name: "virtualizationservice_device_test",
+    defaults: ["virtualizationservice_defaults"],
+    rustlibs: [
+        "libtempfile",
+    ],
+    test_suites: ["general-tests"],
+}

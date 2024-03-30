@@ -1,0 +1,43 @@
+namespace bluetooth.common;
+
+attribute "privacy";
+
+// LINT.IfChange
+table InitFlagsData {
+    title:string (privacy:"Any");
+    // Legacy flags
+    gd_advertising_enabled:bool (privacy:"Any");
+    gd_scanning_enabled:bool (privacy:"Any");
+    gd_acl_enabled:bool (privacy:"Any");
+    gd_hci_enabled:bool (privacy:"Any");
+    gd_controller_enabled:bool (privacy:"Any");
+
+    always_send_services_if_gatt_disc_done_is_enabled:bool (private:"Any");
+    asynchronously_start_l2cap_coc_is_enabled:bool (privacy:"Any");
+    btaa_hci_is_enabled:bool (privacy:"Any");
+    bta_dm_clear_conn_id_on_client_close_is_enabled:bool (privacy:"Any");
+    btm_dm_flush_discovery_queue_on_search_cancel_is_enabled:bool (privacy:"Any");
+    clear_hidd_interrupt_cid_on_disconnect_is_enabled:bool (privacy:"Any");
+    delay_hidh_cleanup_until_hidh_ready_start_is_enabled:bool (privacy:"Any");
+    gatt_robust_caching_client_is_enabled:bool (privacy:"Any");
+    gatt_robust_caching_server_is_enabled:bool (privacy:"Any");
+    gd_core_is_enabled:bool (privacy:"Any");
+    gd_l2cap_is_enabled:bool (privacy:"Any");
+    gd_link_policy_is_enabled:bool (privacy:"Any");
+    gd_remote_name_request_is_enabled:bool (privacy:"Any");
+    gd_rust_is_enabled:bool (privacy:"Any");
+    gd_security_is_enabled:bool (privacy:"Any");
+    get_hci_adapter:int (privacy:"Any");
+    irk_rotation_is_enabled:bool (privacy:"Any");
+    // is_debug_logging_enabled_for_tag -- skipped in dumpsys
+    leaudio_targeted_announcement_reconnection_mode_is_enabled: bool (privacy:"Any");
+    logging_debug_enabled_for_all_is_enabled:bool (privacy:"Any");
+    pass_phy_update_callback_is_enabled:bool (privacy:"Any");
+    queue_l2cap_coc_while_encrypting_is_enabled:bool (privacy:"Any");
+    sdp_serialization_is_enabled:bool (privacy:"Any");
+    sdp_skip_rnr_if_known_is_enabled:bool (privacy:"Any");
+    trigger_advertising_callbacks_on_first_resume_after_pause_is_enabled:bool (privacy:"Any");
+}
+// LINT.ThenChange(/system/gd/dumpsys/init_flags.cc)
+
+root_type InitFlagsData;

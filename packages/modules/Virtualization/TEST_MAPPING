@@ -1,0 +1,44 @@
+{
+  "presubmit": [
+    {
+      "name": "MicrodroidHostTestCases"
+    },
+    {
+      "name": "ComposHostTestCases"
+    },
+    {
+      "name": "VirtualizationTestCases.64"
+    },
+    {
+      "name": "MicrodroidTestApp"
+    },
+    {
+      "name": "art_standalone_dexpreopt_tests"
+    },
+    {
+      "name": "compos_key_tests"
+    }
+  ],
+  "postsubmit": [
+    {
+      "name": "odsign_e2e_tests_full"
+    }
+  ],
+  "imports": [
+    {
+      "path": "packages/modules/Virtualization/apkdmverity"
+    },
+    {
+      "path": "packages/modules/Virtualization/virtualizationservice"
+    },
+    {
+      "path": "packages/modules/Virtualization/libs/apkverify"
+    },
+    {
+      "path": "packages/modules/Virtualization/authfs"
+    },
+    {
+      "path": "packages/modules/Virtualization/zipfuse"
+    }
+  ]
+}

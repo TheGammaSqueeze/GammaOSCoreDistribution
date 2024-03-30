@@ -1,0 +1,50 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+rust_ffi_static {
+    name: "libpvmfw",
+    crate_name: "pvmfw",
+    srcs: ["src/main.rs"],
+    edition: "2021",
+    no_stdlibs: true,
+    stdlibs: [
+        "libcompiler_builtins.rust_sysroot",
+        "libcore.rust_sysroot",
+    ],
+    rustlibs: [
+        "libspin_nostd",
+    ],
+    enabled: false,
+    target: {
+        android_arm64: {
+            enabled: true,
+        },
+    },
+    apex_available: ["com.android.virt"],
+}
+
+cc_binary {
+    name: "pvmfw",
+    srcs: [
+        "entry.S",
+        "idmap.S",
+    ],
+    static_libs: [
+        "libpvmfw",
+    ],
+    static_executable: true,
+    no_libcrt: true,
+    nocrt: true,
+    system_shared_libs: [],
+    ldflags: [
+        "-Tpackages/modules/Virtualization/pvmfw/image.ld",
+    ],
+    enabled: false,
+    target: {
+        android_arm64: {
+            enabled: true,
+        },
+    },
+    apex_available: ["com.android.virt"],
+}

@@ -1,0 +1,74 @@
+//
+// Copyright (C) 2021 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+package {
+    // See: http://go/android-license-faq
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+// Include build rules from Sources.bp
+build = ["Sources.bp"]
+
+filegroup {
+    name: "service-connectivity-tiramisu-sources",
+    srcs: [
+        "src/**/*.java",
+    ],
+    visibility: ["//visibility:private"],
+}
+// The above filegroup can be used to specify different sources depending
+// on the branch, while minimizing merge conflicts in the rest of the
+// build rules.
+
+// This builds T+ services depending on framework-connectivity-t
+// hidden symbols separately from the S+ services, to ensure that S+
+// services cannot accidentally depend on T+ hidden symbols from
+// framework-connectivity-t.
+java_library {
+    name: "service-connectivity-tiramisu-pre-jarjar",
+    sdk_version: "system_server_current",
+    // TODO(b/210962470): Bump this to at least S, and then T.
+    min_sdk_version: "30",
+    srcs: [
+        ":service-connectivity-tiramisu-sources",
+    ],
+    libs: [
+        "framework-annotations-lib",
+        "framework-connectivity-pre-jarjar",
+        "framework-connectivity-t-pre-jarjar",
+        "framework-tethering.stubs.module_lib",
+        "service-connectivity-pre-jarjar",
+        "service-nearby-pre-jarjar",
+        "ServiceConnectivityResources",
+        "unsupportedappusage",
+    ],
+    static_libs: [
+        // Do not add static_libs here if they are already included in framework-connectivity
+        // or in service-connectivity. They are not necessary (included via
+        // service-connectivity-pre-jarjar), and in the case of code that is already in
+        // framework-connectivity, the classes would be included in the apex twice.
+        "modules-utils-statemachine",
+    ],
+    apex_available: [
+        "com.android.tethering",
+    ],
+    visibility: [
+        "//frameworks/base/tests/vcn",
+        "//packages/modules/Connectivity/service",
+        "//packages/modules/Connectivity/tests:__subpackages__",
+        "//packages/modules/IPsec/tests/iketests",
+    ],
+}

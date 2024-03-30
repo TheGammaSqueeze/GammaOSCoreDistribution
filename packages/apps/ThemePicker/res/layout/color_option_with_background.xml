@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+     Copyright (C) 2023 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<!-- Content description is set programmatically on the parent FrameLayout -->
+<!-- TODO (b/272109171): Remove after clock settings is refactored to use OptionItemAdapter -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    <FrameLayout
+        android:id="@+id/icon_container"
+        android:layout_width="@dimen/option_item_size"
+        android:layout_height="@dimen/option_item_size"
+        android:importantForAccessibility="yes">
+
+        <ImageView
+            android:id="@id/selection_border"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/option_item_border"
+            android:alpha="0"
+            android:importantForAccessibility="no" />
+
+        <ImageView
+            android:id="@id/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/option_item_background"
+            android:importantForAccessibility="no" />
+
+        <ImageView
+            android:id="@+id/color_preview_0"
+            android:layout_width="@dimen/component_color_chip_small_radius_default2"
+            android:layout_height="@dimen/component_color_chip_small_radius_default2"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/color_seed_chip_margin2"
+            android:layout_marginBottom="@dimen/color_seed_chip_margin2"
+            android:src="@drawable/color_chip_seed_filled0"
+            android:importantForAccessibility="no"/>
+
+        <ImageView
+            android:id="@+id/color_preview_1"
+            android:layout_width="@dimen/component_color_chip_small_radius_default2"
+            android:layout_height="@dimen/component_color_chip_small_radius_default2"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/color_seed_chip_margin2"
+            android:layout_marginBottom="@dimen/color_seed_chip_margin2"
+            android:src="@drawable/color_chip_seed_filled2"
+            android:importantForAccessibility="no"/>
+
+        <ImageView
+            android:id="@+id/color_preview_2"
+            android:layout_width="@dimen/component_color_chip_small_radius_default2"
+            android:layout_height="@dimen/component_color_chip_small_radius_default2"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/color_seed_chip_margin2"
+            android:layout_marginTop="@dimen/color_seed_chip_margin2"
+            android:src="@drawable/color_chip_seed_filled1"
+            android:importantForAccessibility="no"/>
+
+        <ImageView
+            android:id="@+id/color_preview_3"
+            android:layout_width="@dimen/component_color_chip_small_radius_default2"
+            android:layout_height="@dimen/component_color_chip_small_radius_default2"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/color_seed_chip_margin2"
+            android:layout_marginTop="@dimen/color_seed_chip_margin2"
+            android:src="@drawable/color_chip_seed_filled3"
+            android:importantForAccessibility="no"/>
+    </FrameLayout>
+    
+    <TextView
+        android:id="@+id/option_title"
+        android:layout_width="@dimen/option_tile_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/option_bottom_margin"
+        android:textColor="@color/text_color_primary"
+        android:visibility="gone"
+        android:gravity="center" />
+</LinearLayout>

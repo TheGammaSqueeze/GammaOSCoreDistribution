@@ -1,0 +1,47 @@
+[
+  {
+    "account_key": "BPy5AaSyMfrFvMNgr6f7GA==",
+    "sha256_account_key_public_address": "jNGRz+Ni6ZuLd8hVF3lmGoJnF5byXBUyVi9CmnrF1so=",
+    "fast_pair_device_metadata": {
+      "image_url": "https:\/\/lh3.googleusercontent.com\/2PffmZiopo2AjT8sshX0Se3jV-91cp4yOCIay2bBvZqKoKGVy5B4uyzdHsde6UrUSGaoCqV-h4edd5ZljA4oSGc",
+      "intent_uri": "intent:#Intent;action=com.google.android.gms.nearby.discovery%3AACTION_MAGIC_PAIR;package=com.google.android.gms;component=com.google.android.gms\/.nearby.discovery.service.DiscoveryService;S.com.google.android.gms.nearby.discovery%3AEXTRA_COMPANION_APP=com.google.android.apps.wearables.maestro.companion;end",
+      "ble_tx_power": 0,
+      "trigger_distance": 0,
+      "device_type": 0,
+      "left_bud_url": "",
+      "right_bud_url": "",
+      "case_url": "",
+      "initial_notification_description": "Tap to pair. Earbuds will be tied to %s",
+      "initial_notification_description_no_account": "Tap to pair with this device",
+      "initial_pairing_description": "Pixel Buds A-Series will appear on devices linked with ericth.nearby.dogfood@gmail.com",
+      "connect_success_companion_app_installed": "Your device is ready to be set up",
+      "connect_success_companion_app_not_installed": "Download the device app on Google Play to see all available features",
+      "subsequent_pairing_description": "Connect %s to this phone",
+      "retroactive_pairing_description": "Save device to %s for faster pairing to your other devices",
+      "wait_launch_companion_app_description": "This will take a few moments",
+      "fail_connect_go_to_settings_description": "Try manually pairing to the device by going to Settings"
+    },
+    "fast_pair_discovery_item": {
+      "id": "",
+      "mac_address": "",
+      "action_url": "intent:#Intent;action=com.google.android.gms.nearby.discovery%3AACTION_MAGIC_PAIR;package=com.google.android.gms;component=com.google.android.gms\/.nearby.discovery.service.DiscoveryService;S.com.google.android.gms.nearby.discovery%3AEXTRA_COMPANION_APP=com.google.android.apps.wearables.maestro.companion;end",
+      "device_name": "",
+      "title": "Pixel Buds A-Series",
+      "description": "Tap to pair with this device",
+      "display_url": "",
+      "last_observation_timestamp_millis": 0,
+      "first_observation_timestamp_millis": 0,
+      "state": 1,
+      "action_url_type": 2,
+      "rssi": 0,
+      "pending_app_install_timestamp_millis": 0,
+      "tx_power": 0,
+      "app_name": "",
+      "package_name": "",
+      "trigger_id": "",
+      "icon_png": "",
+      "icon_fife_url": "https:\/\/lh3.googleusercontent.com\/2PffmZiopo2AjT8sshX0Se3jV-91cp4yOCIay2bBvZqKoKGVy5B4uyzdHsde6UrUSGaoCqV-h4edd5ZljA4oSGc",
+      "authentication_public_key_secp256r1": "z+grhW8lWVA34JUQhXOxMrk1WqVy+VpEDd2K+01ZJvS6KdV0OUg7FRMzq+ITuOqKO\/2TIRKEAEfMKdyk2Ob1Vw=="
+    }
+  }
+]

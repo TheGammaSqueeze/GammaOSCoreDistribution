@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Format for HVAC temperature in fahrenheit (No decimal place and the degree symbol) -->
+    <string name="hvac_temperature_format_fahrenheit" translatable="false">%.0f\u00B0</string>
+    <!-- Format for HVAC temperature in celsius (One decimal place and the degree symbol) -->
+    <string name="hvac_temperature_format_celsius" translatable="false">%.1f\u00B0</string>
+    <!-- Tag to use to identify the icon view within the quick controls entry point button -->
+    <string name="qc_icon_tag" translatable="false">TAG_QC_ICON</string>
+    <!-- String to represent lowest setting of an HVAC system [CHAR LIMIT=10]-->
+    <string name="hvac_min_text">Min</string>
+    <!-- String to represent the highest setting of an HVAC system [CHAR LIMIT=10]-->
+    <string name="hvac_max_text">Max</string>
+    <!-- String to represent the highest setting of fan speed [CHAR LIMIT=10]-->
+    <string name="fan_speed_max">MAX</string>
+    <!-- String to represent fan being turned off [CHAR LIMIT=10]-->
+    <string name="fan_speed_off">OFF</string>
+    <!-- String to display when no HVAC temperature is available -->
+    <string name="hvac_null_temp_text" translatable="false">--</string>
+    <!-- String to display when the HVAC temperature control is turned off [CHAR LIMIT=10]-->
+    <string name="hvac_temperature_off">OFF</string>
+    <!-- Text for voice recognition toast. [CHAR LIMIT=60] -->
+    <string name="voice_recognition_toast">Voice recognition now handled by connected Bluetooth device</string>
+    <!-- Title for button that adds a new profile. [CHAR LIMIT=30] -->
+    <string name="car_add_user">Add a profile</string>
+    <!-- Title for button that ends current user session. [CHAR LIMIT=30] -->
+    <string name="end_session">End session</string>
+    <!-- Default name of the new profile created. [CHAR LIMIT=30] -->
+    <string name="car_new_user">New Profile</string>
+    <!-- Title of the alert dialog to ask user to confirm creation of new profile. [CHAR LIMIT=30] -->
+    <string name="user_add_profile_title">"Add new profile?"</string>
+    <!-- Message to inform the profile creator that the user it's intended for should customize it for themselves. [CHAR LIMIT=100] -->
+    <string name="user_add_user_message_setup">After you create a new profile, that person should customize it for themselves.</string>
+    <!-- Message to inform user that the newly created profile will have permissions to update apps for all other profiles. [CHAR LIMIT=100] -->
+    <string name="user_add_user_message_update">Apps can be updated from any profile for use by all other profiles.</string>
+    <!-- Title for the dialog that lets users know that the maximum allowed number of profiles on the device has been reached. [CHAR LIMIT=35]-->
+    <string name="profile_limit_reached_title">Profile limit reached</string>
+    <!-- Message that tells people what's the maximum number of profiles allowed on the device. (ICU syntax) [CHAR_LIMIT=NONE]-->
+    <string name="profile_limit_reached_message">
+        {count, plural,
+            =1    {Only one profile can be created.}
+            other {You can add up to # profiles.}
+        }
+    </string>
+    <!-- Message to inform user that the new user profile is loading. [CHAR LIMIT=20] -->
+    <string name="car_loading_profile">Loading</string>
+    <!-- Message to inform user that the new user profile is loading with additional information on the previous and the next user. [CHAR LIMIT=100] -->
+    <string name="car_loading_profile_developer_message">Loading user (from <xliff:g id="from_user" example="10">%1$d</xliff:g> to <xliff:g id="to_user" example="12">%2$d</xliff:g>)</string>
+
+    <!-- Accessibility content description for microphone/camera off state of privacy chip. [CHAR LIMIT=40]-->
+    <string name="privacy_chip_off_content"><xliff:g id="sensor" example="Microphone">%1$s</xliff:g> is off.</string>
+    <!-- Message displayed near microphone/camera toggle [CHAR LIMIT=50]-->
+    <string name="privacy_chip_use_sensor">Use <xliff:g id="sensor" example="microphone">%1$s</xliff:g></string>
+    <!-- Message Subtext displayed near microphone/camera toggle [CHAR LIMIT=60]-->
+    <string name="privacy_chip_use_sensor_subtext">For apps that have permission</string>
+
+    <!-- Microphone settings button text. [CHAR LIMIT=45]-->
+    <string name="mic_privacy_chip_microphone_settings">Microphone settings</string>
+    <!-- App is using microphone suffix [CHAR LIMIT=32]-->
+    <string name="privacy_chip_app_using_sensor_suffix"><xliff:g id="app" example="Assistant">%1$s</xliff:g> is using the <xliff:g id="sensor" example="microphone">%2$s</xliff:g></string>
+    <!-- Apps are using microphone suffix [CHAR LIMIT=32]-->
+    <string name="mic_privacy_chip_apps_using_mic_suffix"><xliff:g id="app_list" example="Assistant &amp; Phone">%s</xliff:g> are using the mic</string>
+    <!-- App was using microphone suffix [CHAR LIMIT=50]-->
+    <string name="privacy_chip_app_recently_used_sensor_suffix"><xliff:g id="app" example="Assistant">%1$s</xliff:g> used the <xliff:g id="sensor" example="microphone">%2$s</xliff:g> recently</string>
+    <!-- Apps were using microphone suffix [CHAR LIMIT=60]-->
+    <string name="privacy_chip_apps_recently_used_sensor_suffix"><xliff:g id="app" example="Assistant">%1$s</xliff:g> and <xliff:g id="additional_app_count" example="2">%2$d</xliff:g> more used the <xliff:g id="sensor" example="microphone">%3$s</xliff:g> recently</string>
+    <!-- Microphone turned on toast text [CHAR LIMIT=40]-->
+    <string name="mic_privacy_chip_on_toast">Microphone turned on</string>
+    <!-- Microphone turned off toast text [CHAR LIMIT=42]-->
+    <string name="mic_privacy_chip_off_toast">Microphone turned off</string>
+    <!-- Ok button for dialog that shows which apps have recently used microphone [CHAR LIMIT=10]-->
+    <string name="mic_privacy_chip_dialog_ok">OK</string>
+    <!--- Title of dialog triggered if the microphone is disabled but an app tried to access it. [CHAR LIMIT=75] -->
+    <string name="sensor_privacy_start_use_mic_dialog_title">Turn on vehicle microphone?</string>
+    <!--- Content of dialog triggered if the microphone is disabled but an app tried to access it. [CHAR LIMIT=NONE] -->
+    <string name="sensor_privacy_start_use_mic_dialog_content">To continue, turn on the infotainment system microphone. This will turn on the microphone for all apps that have permission.</string>
+
+    <!-- Camera settings button text. [CHAR LIMIT=45]-->
+    <string name="camera_privacy_chip_camera_settings">Camera settings</string>
+    <!-- App is using camera suffix [CHAR LIMIT=32]-->
+    <string name="camera_privacy_chip_app_using_camera_suffix"><xliff:g id="app" example="Assistant">%s</xliff:g> is using the camera</string>
+    <!-- Apps are using camera suffix [CHAR LIMIT=32]-->
+    <string name="camera_privacy_chip_apps_using_camera_suffix"><xliff:g id="app_list" example="Assistant &amp; Phone">%s</xliff:g> are using the camera</string>
+    <!-- App was using camera suffix [CHAR LIMIT=50]-->
+    <string name="camera_privacy_chip_app_recently_used_camera_suffix"><xliff:g id="app" example="Assistant">%s</xliff:g> used the camera recently</string>
+    <!-- Apps were using camera suffix [CHAR LIMIT=60]-->
+    <string name="camera_privacy_chip_apps_recently_used_camera_suffix"><xliff:g id="app" example="Assistant">%1$s</xliff:g> and <xliff:g id="additional_app_count" example="2">%2$d</xliff:g> more used the camera recently</string>
+    <!-- Camera turned on toast text [CHAR LIMIT=40]-->
+    <string name="camera_privacy_chip_on_toast">Camera turned on</string>
+    <!-- Camera turned off toast text [CHAR LIMIT=42]-->
+    <string name="camera_privacy_chip_off_toast">Camera turned off</string>
+    <!-- Ok button for dialog that shows which apps have recently used camera [CHAR LIMIT=10]-->
+    <string name="camera_privacy_chip_dialog_ok">OK</string>
+    <!--- Title of dialog triggered if the camera is disabled but an app tried to access it. [CHAR LIMIT=75] -->
+    <string name="sensor_privacy_start_use_camera_dialog_title">Turn on vehicle camera?</string>
+    <!--- Content of dialog triggered if the camera is disabled but an app tried to access it. [CHAR LIMIT=NONE] -->
+    <string name="sensor_privacy_start_use_camera_dialog_content">To continue, turn on the infotainment system camera. This will turn on the camera for all apps that have permission.</string>
+
+    <!-- System bar contentDescription for home menu-->
+    <string name="system_bar_home_label">Home Screen</string>
+    <!-- System bar contentDescription for Dialer-->
+    <string name="system_bar_phone_label">Phone</string>
+    <!-- System bar contentDescription for Launcher-->
+    <string name="system_bar_applications_label">Applications</string>
+    <!-- System bar contentDescription for HVAC-->
+    <string name="system_bar_climate_control_label">Climate Control</string>
+    <!-- System bar contentDescription for Notifications-->
+    <string name="system_bar_notifications_label">Notifications</string>
+    <!-- System bar contentDescription for Maps-->
+    <string name="system_bar_maps_label">Maps</string>
+    <!-- System bar contentDescription for Media-->
+    <string name="system_bar_media_label">Media</string>
+
+    <!-- Adjust temperature view lower temperature label-->
+    <string name="hvac_decrease_button_label">Lower temperature</string>
+    <!-- Adjust temperature view raise temperature label-->
+    <string name="hvac_increase_button_label">Raise temperature</string>
+
+    <!-- Status icon for bluetooth settings in status bar-->
+    <string name="status_icon_bluetooth_disconnected">Bluetooth Setting: Disconnected</string>
+    <string name="status_icon_bluetooth_connected">Bluetooth Setting: Connected</string>
+    <string name="status_icon_bluetooth_off">Bluetooth Setting: Bluetooth off</string>
+    <!-- Status icon for signal settings in status bar-->
+    <string name="status_icon_signal_mobile">Signal Settings: Using Mobile Data</string>
+    <string name="status_icon_signal_wifi">Signal Settings: Wifi On</string>
+    <string name="status_icon_signal_hotspot">Signal Settings: Hotspot On</string>
+    <!-- Status icon for display settings in status bar-->
+    <string name="status_icon_display_status">Display Settings</string>
+
+    <!-- Blocking activity: Message to show to user when a feature of current application is not allowed. [CHAR LIMIT=120] -->
+    <string name="activity_blocked_text">You can\u2019t use this feature while driving</string>
+    <!-- Blocking activity: Text for button that closes current blocked application. [CHAR LIMIT=20] -->
+    <string name="exit_button_close_application">Close app</string>
+    <!-- Blocking activity: Text for button that closes current blocked application. [CHAR LIMIT=15] -->
+    <string name="exit_button_go_back">Back</string>
+    <!-- Blocking activity: Text for button that shows debug info in non-user build. -->
+    <string name="debug_button_text" translatable="false">Debug Info</string>
+
+    <!-- Quick Controls: Message to be displayed as the footer button to launch the settings application [CHAR LIMIT=45] -->
+    <string name="qc_footer_settings">Settings</string>
+    <!-- Quick Controls: Message to be displayed as the footer button to launch bluetooth settings [CHAR LIMIT=45] -->
+    <string name="qc_footer_bluetooth_settings">Bluetooth settings</string>
+    <!-- Quick Controls: Message to be displayed as the footer button to launch network and internet settings [CHAR LIMIT=45] -->
+    <string name="qc_footer_network_internet_settings">Network &amp; internet settings</string>
+    <!-- Quick Controls: Message to be displayed as the footer button to launch display settings [CHAR LIMIT=45] -->
+    <string name="qc_footer_display_settings">Display settings</string>
+    <!-- Quick Controls: Message to be displayed as the footer button to launch sound settings [CHAR LIMIT=45] -->
+    <string name="qc_footer_network_sound_settings">Sound settings</string>
+    <!-- Quick Controls: Message to be displayed as the footer button to launch profiles and accounts settings [CHAR LIMIT=45] -->
+    <string name="qc_footer_profiles_accounts_settings">Profiles &amp; accounts settings</string>
+
+    <!-- Message shown when the lock pattern is focused. [CHAR LIMIT=40] -->
+    <string name="lockpattern_does_not_support_rotary">Pattern does not support rotary; please use touch</string>
+</resources>

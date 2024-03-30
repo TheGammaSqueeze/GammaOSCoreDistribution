@@ -1,0 +1,10 @@
+module: "android.sysprop.bluetooth.Pan"
+owner: Platform
+
+prop {
+    api_name: "nap"
+    type: Boolean
+    scope: Internal
+    access: Readonly
+    prop_name: "bluetooth.pan.nap.enabled"
+}

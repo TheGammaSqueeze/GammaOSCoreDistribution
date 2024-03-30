@@ -1,0 +1,23 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+rust_binary {
+    name: "compos_verify",
+    srcs: ["verify.rs"],
+    edition: "2018",
+    rustlibs: [
+        "compos_aidl_interface-rust",
+        "libandroid_logger",
+        "libanyhow",
+        "libbinder_rs",
+        "libclap",
+        "libcompos_common",
+        "libcompos_verify_native_rust",
+        "liblog_rust",
+    ],
+    prefer_rlib: true,
+    apex_available: [
+        "com.android.compos",
+    ],
+}

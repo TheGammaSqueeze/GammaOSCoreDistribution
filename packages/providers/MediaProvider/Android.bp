@@ -1,0 +1,153 @@
+package {
+    // See: http://go/android-license-faq
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+android_app {
+    name: "MediaProvider",
+    manifest: "AndroidManifest.xml",
+
+    static_libs: [
+        "modules-utils-backgroundthread",
+        "androidx.appcompat_appcompat",
+        "androidx.core_core",
+        "androidx.legacy_legacy-support-core-ui",
+        "androidx.lifecycle_lifecycle-extensions",
+        "androidx.recyclerview_recyclerview",
+        "com.google.android.material_material",
+        "guava",
+        "modules-utils-build",
+        "modules-utils-uieventlogger-interface",
+        "glide-prebuilt",
+        "glide-gifdecoder-prebuilt",
+        "glide-disklrucache-prebuilt",
+        "glide-annotation-and-compiler-prebuilt",
+        "androidx.fragment_fragment",
+        "androidx.vectordrawable_vectordrawable-animated",
+        "androidx.exifinterface_exifinterface",
+        "exoplayer-mediaprovider-ui",
+    ],
+
+    libs: [
+        "unsupportedappusage",
+        "app-compat-annotations",
+        "framework-annotations-lib",
+        "framework-mediaprovider.impl",
+        "framework-media.stubs.module_lib",
+        "framework-statsd",
+    ],
+
+    jni_libs: [
+        "libfuse_jni",
+        "libfuse",
+    ],
+
+    resource_dirs: [
+        "res",
+    ],
+    srcs: [
+        ":mediaprovider-sources",
+    ],
+
+    optimize: {
+        shrink: true,
+        optimize: false,
+        obfuscate: false,
+        proguard_flags_files: ["proguard.flags"],
+    },
+
+    plugins: [
+        "java_api_finder",
+        "error_prone_mediaprovider",
+        "glide-annotation-processor",
+    ],
+    jarjar_rules: "jarjar-rules.txt",
+    sdk_version: "module_current",
+    min_sdk_version: "30",
+
+    certificate: "media",
+    privileged: true,
+
+    aaptflags: ["--custom-package com.android.providers.media"],
+
+    errorprone: {
+        javacflags: [
+            "-Xep:FallThrough:ERROR",
+            "-Xep:GuardedBy:ERROR",
+            "-Xep:StreamResourceLeak:ERROR",
+
+            // Local checkers specific to this module
+            "-Xep:MediaProviderLocaleRoot:ERROR",
+            "-Xep:MediaProviderMimeType:ERROR",
+        ],
+    },
+
+    required: [
+        "preinstalled-packages-com.android.providers.media.module.xml",
+        "privapp_allowlist_com.android.providers.media.module.xml",
+    ],
+
+    lint: {
+        strict_updatability_linting: true,
+    },
+}
+
+// Used by MediaProvider and MediaProviderTests
+filegroup {
+    name: "mediaprovider-sources",
+    srcs: [
+        "src/**/*.aidl",
+        "src/**/*.java",
+        ":statslog-mediaprovider-java-gen",
+    ],
+}
+
+// This is defined to give LegacyMediaProvider the bare minimum it needs
+// to keep the legacy database schema working while also building
+// against "system_current"
+java_library {
+    name: "mediaprovider-database",
+    srcs: [
+        "src/com/android/providers/media/DatabaseHelper.java",
+        "src/com/android/providers/media/util/DatabaseUtils.java",
+        "src/com/android/providers/media/util/FileUtils.java",
+        "src/com/android/providers/media/util/ForegroundThread.java",
+        "src/com/android/providers/media/util/Logging.java",
+        "src/com/android/providers/media/util/MimeUtils.java",
+        "src/com/android/providers/media/util/StringUtils.java",
+        "src/com/android/providers/media/playlist/*.java",
+        "src/com/android/providers/media/dao/*.java",
+    ],
+    sdk_version: "module_current",
+    min_sdk_version: "30",
+    static_libs: [
+        "modules-utils-backgroundthread",
+        "modules-utils-build",
+        "guava",
+    ],
+    libs: [
+        "androidx.annotation_annotation",
+        "framework-annotations-lib",
+        "framework-mediaprovider",
+    ],
+}
+
+platform_compat_config {
+    name: "media-provider-platform-compat-config",
+    src: ":MediaProvider",
+}
+
+genrule {
+    name: "statslog-mediaprovider-java-gen",
+    tools: ["stats-log-api-gen"],
+    cmd: "$(location stats-log-api-gen) --java $(out) --module mediaprovider" +
+        " --javaPackage com.android.providers.media --javaClass MediaProviderStatsLog" +
+        " --minApiLevel 30",
+    out: ["com/android/providers/media/MediaProviderStatsLog.java"],
+}
+
+prebuilt_etc {
+    name: "preinstalled-packages-com.android.providers.media.module.xml",
+    src: "preinstalled-packages-com.android.providers.media.module.xml",
+    sub_dir: "sysconfig",
+}

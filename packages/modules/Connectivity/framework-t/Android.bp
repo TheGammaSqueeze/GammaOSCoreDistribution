@@ -1,0 +1,143 @@
+//
+// Copyright (C) 2021 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+package {
+    // See: http://go/android-license-faq
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+// Include build rules from Sources.bp
+build = ["Sources.bp"]
+
+java_defaults {
+    name: "enable-framework-connectivity-t-targets",
+    enabled: true,
+}
+// The above defaults can be used to disable framework-connectivity t
+// targets while minimizing merge conflicts in the build rules.
+
+// SDK library for connectivity bootclasspath classes that were part of the non-updatable API before
+// T, and were moved to the module in T. Other bootclasspath classes in connectivity should go to
+// framework-connectivity.
+java_defaults {
+    name: "framework-connectivity-t-defaults",
+    sdk_version: "module_current",
+    min_sdk_version: "Tiramisu",
+    defaults: [
+        "framework-module-defaults",
+    ],
+    srcs: [
+        ":framework-connectivity-tiramisu-updatable-sources",
+        ":framework-nearby-java-sources",
+    ],
+    stub_only_libs: [
+        // Use prebuilt framework-connectivity stubs to avoid circular dependencies
+        "sdk_module-lib_current_framework-connectivity",
+    ],
+    libs: [
+        "unsupportedappusage",
+        "app-compat-annotations",
+        "sdk_module-lib_current_framework-connectivity",
+    ],
+    impl_only_libs: [
+        // The build system will use framework-bluetooth module_current stubs, because
+        // of sdk_version: "module_current" above.
+        "framework-bluetooth",
+        "framework-wifi",
+        // Compile against the entire implementation of framework-connectivity,
+        // including hidden methods. This is safe because if framework-connectivity-t is
+        // on the bootclasspath (i.e., T), then framework-connectivity is also on the
+        // bootclasspath (because it shipped in S).
+        //
+        // This compiles against the pre-jarjar target so that this code can use
+        // non-jarjard names of widely-used packages such as com.android.net.module.util.
+        "framework-connectivity-pre-jarjar",
+    ],
+    aidl: {
+        generate_get_transaction_name: true,
+        include_dirs: [
+            // For connectivity-framework classes such as Network.aidl,
+            // and connectivity-framework-t classes such as
+            // NetworkStateSnapshot.aidl
+            "packages/modules/Connectivity/framework/aidl-export",
+        ],
+    },
+    apex_available: [
+        "com.android.tethering",
+    ],
+}
+
+java_library {
+    name: "framework-connectivity-t-pre-jarjar",
+    defaults: ["framework-connectivity-t-defaults"],
+    libs: [
+        "framework-bluetooth",
+        "framework-wifi",
+        "framework-connectivity-pre-jarjar",
+    ],
+    visibility: ["//packages/modules/Connectivity:__subpackages__"],
+}
+
+// SDK library for connectivity bootclasspath classes that were part of the non-updatable API before
+// T, and were moved to the module in T. Other bootclasspath classes in connectivity should go to
+// framework-connectivity.
+java_sdk_library {
+    name: "framework-connectivity-t",
+    defaults: [
+        "framework-connectivity-t-defaults",
+        "enable-framework-connectivity-t-targets",
+    ],
+    // Do not add static_libs to this library: put them in framework-connectivity instead.
+    // The jarjar rules are only so that references to jarjared utils in
+    // framework-connectivity-pre-jarjar match at runtime.
+    jarjar_rules: ":connectivity-jarjar-rules",
+    permitted_packages: [
+        "android.app.usage",
+        "android.net",
+        "android.net.nsd",
+        "android.nearby",
+        "com.android.connectivity",
+        "com.android.nearby",
+    ],
+    impl_library_visibility: [
+        "//packages/modules/Connectivity/Tethering/apex",
+        // In preparation for future move
+        "//packages/modules/Connectivity/apex",
+        "//packages/modules/Connectivity/service-t",
+        "//packages/modules/Connectivity/nearby/service",
+        "//frameworks/base",
+
+        // Tests using hidden APIs
+        "//cts/tests/netlegacy22.api",
+        "//cts/tests/tests/app.usage", // NetworkUsageStatsTest
+        "//external/sl4a:__subpackages__",
+        "//frameworks/base/core/tests/bandwidthtests",
+        "//frameworks/base/core/tests/benchmarks",
+        "//frameworks/base/core/tests/utillib",
+        "//frameworks/base/tests/vcn",
+        "//frameworks/libs/net/common/testutils",
+        "//frameworks/libs/net/common/tests:__subpackages__",
+        "//frameworks/opt/net/ethernet/tests:__subpackages__",
+        "//frameworks/opt/telephony/tests/telephonytests",
+        "//packages/modules/CaptivePortalLogin/tests",
+        "//packages/modules/Connectivity/Tethering/tests:__subpackages__",
+        "//packages/modules/Connectivity/nearby/tests:__subpackages__",
+        "//packages/modules/Connectivity/tests:__subpackages__",
+        "//packages/modules/IPsec/tests/iketests",
+        "//packages/modules/NetworkStack/tests:__subpackages__",
+        "//packages/modules/Wifi/service/tests/wifitests",
+    ],
+}

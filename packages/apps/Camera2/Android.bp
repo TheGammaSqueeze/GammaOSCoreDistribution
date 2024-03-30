@@ -1,0 +1,73 @@
+//
+// Copyright (C) 2013 Google Inc.
+//
+
+package {
+    // See: http://go/android-license-faq
+    default_applicable_licenses: [
+        "Android-Apache-2.0",
+    ],
+}
+
+android_app {
+    name: "Camera2",
+
+    static_libs: [
+        "androidx.legacy_legacy-support-v13",
+        "androidx.legacy_legacy-support-v4",
+        "androidx.core_core",
+        "android-ex-camera2-portability",
+        "xmp_toolkit",
+        "glide",
+        "guava",
+        "jsr305",
+        "camera2-zxing-core",
+        "camera2-qreader-core",
+        "camera2-qreader-zxing",
+    ],
+
+    optional_uses_libs: ["org.apache.http.legacy"],
+
+    srcs: [
+        "src/**/*.java",
+        "src_pd/**/*.java",
+        "src_pd_gcam/**/*.java",
+        "quickReader/src/**/*.java"
+    ],
+
+    resource_dirs: [
+        "res",
+        "res_p",
+        "quickReader/res",
+    ],
+
+    aaptflags: [
+        "--auto-add-overlay",
+        "--version-name",
+        "2.0.002",
+        "--version-code",
+        "20002000",
+        "--extra-packages",
+        "me.dm7.barcodescanner.core",
+        "--extra-packages",
+        "me.dm7.barcodescanner.zxing",
+    ],
+
+    sdk_version: "system_current",
+
+    product_specific: true,
+
+    overrides: ["Aperture"],
+
+    optimize: {
+        proguard_flags_files: ["proguard.flags"],
+    },
+
+    // Guava uses deprecated org.apache.http.legacy classes.
+    libs: ["org.apache.http.legacy"],
+
+    jni_libs: [
+        "libjni_tinyplanet",
+        "libjni_jpegutil",
+    ],
+}

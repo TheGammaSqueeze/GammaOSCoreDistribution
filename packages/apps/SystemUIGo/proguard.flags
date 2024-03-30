@@ -1,0 +1,4 @@
+-keep class com.android.systemui.go.SystemUIGoInitializer
+-keep,allowoptimization,allowaccessmodification class com.android.systemui.go.DaggerSystemUIGoGlobalRootComponent$SystemUIGoComponentImpl { !synthetic *; }
+
+-include ../../../frameworks/base/packages/SystemUI/proguard.flags

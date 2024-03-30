@@ -1,0 +1,41 @@
+buildscript {
+    // 1.3.61 Android 11
+    // 1.4.30 Android 12
+    // 1.6.10 Android 13
+    // Check:
+    // https://android.googlesource.com/platform/external/kotlinc/+/refs/tags/android-13.0.0_r3/build.txt
+    ext.aosp_kotlin_version = '1.6.10'  // 1.6.10-release-923 in AOSP
+    ext.kotlin_version = '1.6.10'
+
+    repositories {
+        mavenCentral()
+        google()
+    }
+    dependencies {
+        //noinspection DifferentKotlinGradleVersion
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.17"
+        classpath 'com.android.tools.build:gradle:7.2.2'
+    }
+}
+
+ext {
+    buildToolsVersion = '33.0.0'
+    compileSdkVersion = 33
+    minSdkVersion = 32
+    targetSdkVersion = 33
+}
+
+apply from: 'gradle/dependencies.gradle'
+
+allprojects {
+    repositories {
+        mavenCentral()
+        google()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

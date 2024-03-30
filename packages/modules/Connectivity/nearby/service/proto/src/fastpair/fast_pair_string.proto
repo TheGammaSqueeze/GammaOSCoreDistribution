@@ -1,0 +1,40 @@
+syntax = "proto2";
+
+package service.proto;
+
+message FastPairStrings {
+  // Required for initial pairing, used when there is a Google account on the
+  // device
+  optional string tap_to_pair_with_account = 1;
+
+  // Required for initial pairing, used when there is no Google account on the
+  // device
+  optional string tap_to_pair_without_account = 2;
+
+  // Description for initial pairing
+  optional string initial_pairing_description = 3;
+
+  // Description after successfully paired the device with companion app
+  // installed
+  optional string pairing_finished_companion_app_installed = 4;
+
+  // Description after successfully paired the device with companion app not
+  // installed
+  optional string pairing_finished_companion_app_not_installed = 5;
+
+  // Description when phone found the device that associates with user's account
+  // before remind user to pair with new device.
+  optional string subsequent_pairing_description = 6;
+
+  // Description when fast pair finds the user paired with device manually
+  // reminds user to opt the device into cloud.
+  optional string retroactive_pairing_description = 7;
+
+  // Description when user click setup device while device is still pairing
+  optional string wait_app_launch_description = 8;
+
+  // Description when user fail to pair with device
+  optional string pairing_fail_description = 9;
+
+  reserved 10, 11, 12, 13, 14,15, 16, 17, 18;
+}

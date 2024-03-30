@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="RtlCompat, UselessParent, MergeRootFrame"
+    android:id="@+id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <LinearLayout
+      android:id="@+id/card"
+      android:orientation="vertical"
+      android:transitionName="card"
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:layout_gravity= "center|bottom"
+      android:paddingLeft="12dp"
+      android:paddingRight="12dp"
+      android:background="@drawable/half_sheet_bg"
+      android:accessibilityLiveRegion="polite"
+      android:gravity="bottom">
+
+    <RelativeLayout
+        android:id="@+id/toolbar_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+      <ImageView
+          android:layout_marginTop="9dp"
+          android:layout_marginBottom="9dp"
+          android:id="@+id/toolbar_image"
+          android:layout_width="42dp"
+          android:layout_height="42dp"
+          android:contentDescription="@null"
+          android:layout_toStartOf="@id/toolbar_title"
+          android:layout_centerHorizontal="true"
+          android:visibility="invisible"/>
+
+      <TextView
+          android:layout_marginTop="18dp"
+          android:layout_marginBottom="18dp"
+          android:layout_centerHorizontal="true"
+          android:id="@+id/toolbar_title"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:fontFamily="google-sans-medium"
+          android:textSize="24sp"
+          android:textColor="@color/fast_pair_half_sheet_text_color"
+          style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+  </LinearLayout>
+
+</FrameLayout>
+

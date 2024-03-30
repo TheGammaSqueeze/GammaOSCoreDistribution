@@ -1,0 +1,12 @@
+{
+  "presubmit" : [
+    {
+      "name" : "PermissionApexTests"
+    }
+  ],
+  "carpermission-presubmit" : [
+    {
+      "name" : "CtsPermission3TestCases"
+    }
+  ]
+}

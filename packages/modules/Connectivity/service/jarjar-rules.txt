@@ -1,0 +1,124 @@
+# Classes in framework-connectivity are restricted to the android.net package.
+# This cannot be changed because it is harcoded in ART in S.
+# Any missing jarjar rule for framework-connectivity would be caught by the
+# build as an unexpected class outside of the android.net package.
+rule com.android.net.module.util.** android.net.connectivity.@0
+rule com.android.modules.utils.** android.net.connectivity.@0
+rule android.net.NetworkFactory* android.net.connectivity.@0
+
+# From modules-utils-preconditions
+rule com.android.internal.util.Preconditions* android.net.connectivity.@0
+
+# From framework-connectivity-shared-srcs
+rule android.util.LocalLog* android.net.connectivity.@0
+rule android.util.IndentingPrintWriter* android.net.connectivity.@0
+rule com.android.internal.util.IndentingPrintWriter* android.net.connectivity.@0
+rule com.android.internal.util.MessageUtils* android.net.connectivity.@0
+rule com.android.internal.util.WakeupMessage* android.net.connectivity.@0
+rule com.android.internal.util.FileRotator* android.net.connectivity.@0
+rule com.android.internal.util.ProcFileReader* android.net.connectivity.@0
+
+# From framework-connectivity-protos
+rule com.google.protobuf.** android.net.connectivity.@0
+rule android.service.** android.net.connectivity.@0
+
+rule android.sysprop.** com.android.connectivity.@0
+
+rule com.android.internal.messages.** com.android.connectivity.@0
+
+# From dnsresolver_aidl_interface (newer AIDLs should go to android.net.resolv.aidl)
+rule android.net.resolv.aidl.** com.android.connectivity.@0
+rule android.net.IDnsResolver* com.android.connectivity.@0
+rule android.net.ResolverHostsParcel* com.android.connectivity.@0
+rule android.net.ResolverOptionsParcel* com.android.connectivity.@0
+rule android.net.ResolverParamsParcel* com.android.connectivity.@0
+rule android.net.ResolverParamsParcel* com.android.connectivity.@0
+# Also includes netd event listener AIDL, but this is handled by netd-client rules
+
+# From netd-client (newer AIDLs should go to android.net.netd.aidl)
+rule android.net.netd.aidl.** com.android.connectivity.@0
+# Avoid including android.net.INetdEventCallback, used in tests but not part of the module
+rule android.net.INetd com.android.connectivity.@0
+rule android.net.INetd$* com.android.connectivity.@0
+rule android.net.INetdUnsolicitedEventListener* com.android.connectivity.@0
+rule android.net.InterfaceConfigurationParcel* com.android.connectivity.@0
+rule android.net.MarkMaskParcel* com.android.connectivity.@0
+rule android.net.NativeNetworkConfig* com.android.connectivity.@0
+rule android.net.NativeNetworkType* com.android.connectivity.@0
+rule android.net.NativeVpnType* com.android.connectivity.@0
+rule android.net.RouteInfoParcel* com.android.connectivity.@0
+rule android.net.TetherConfigParcel* com.android.connectivity.@0
+rule android.net.TetherOffloadRuleParcel* com.android.connectivity.@0
+rule android.net.TetherStatsParcel* com.android.connectivity.@0
+rule android.net.UidRangeParcel* com.android.connectivity.@0
+rule android.net.metrics.INetdEventListener* com.android.connectivity.@0
+
+# From netlink-client
+rule android.net.netlink.** com.android.connectivity.@0
+
+# From networkstack-client (newer AIDLs should go to android.net.[networkstack|ipmemorystore].aidl)
+rule android.net.networkstack.aidl.** com.android.connectivity.@0
+rule android.net.ipmemorystore.aidl.** com.android.connectivity.@0
+rule android.net.ipmemorystore.aidl.** com.android.connectivity.@0
+rule android.net.DataStallReportParcelable* com.android.connectivity.@0
+rule android.net.DhcpResultsParcelable* com.android.connectivity.@0
+rule android.net.IIpMemoryStore* com.android.connectivity.@0
+rule android.net.INetworkMonitor* com.android.connectivity.@0
+rule android.net.INetworkStackConnector* com.android.connectivity.@0
+rule android.net.INetworkStackStatusCallback* com.android.connectivity.@0
+rule android.net.InformationElementParcelable* com.android.connectivity.@0
+rule android.net.InitialConfigurationParcelable* com.android.connectivity.@0
+rule android.net.IpMemoryStore* com.android.connectivity.@0
+rule android.net.Layer2InformationParcelable* com.android.connectivity.@0
+rule android.net.Layer2PacketParcelable* com.android.connectivity.@0
+rule android.net.NattKeepalivePacketDataParcelable* com.android.connectivity.@0
+rule android.net.NetworkMonitorManager* com.android.connectivity.@0
+rule android.net.NetworkTestResultParcelable* com.android.connectivity.@0
+rule android.net.PrivateDnsConfigParcel* com.android.connectivity.@0
+rule android.net.ProvisioningConfigurationParcelable* com.android.connectivity.@0
+rule android.net.ScanResultInfoParcelable* com.android.connectivity.@0
+rule android.net.TcpKeepalivePacketDataParcelable* com.android.connectivity.@0
+rule android.net.dhcp.DhcpLeaseParcelable* com.android.connectivity.@0
+rule android.net.dhcp.DhcpServingParamsParcel* com.android.connectivity.@0
+rule android.net.dhcp.IDhcpEventCallbacks* com.android.connectivity.@0
+rule android.net.dhcp.IDhcpServer* com.android.connectivity.@0
+rule android.net.ip.IIpClient* com.android.connectivity.@0
+rule android.net.ip.IpClientCallbacks* com.android.connectivity.@0
+rule android.net.ip.IpClientManager* com.android.connectivity.@0
+rule android.net.ip.IpClientUtil* com.android.connectivity.@0
+rule android.net.ipmemorystore.** com.android.connectivity.@0
+rule android.net.networkstack.** com.android.connectivity.@0
+rule android.net.shared.** com.android.connectivity.@0
+rule android.net.util.KeepalivePacketDataUtil* com.android.connectivity.@0
+
+# From connectivity-module-utils
+rule android.net.util.SharedLog* com.android.connectivity.@0
+rule android.net.shared.** com.android.connectivity.@0
+
+# From services-connectivity-shared-srcs
+rule android.net.util.NetworkConstants* com.android.connectivity.@0
+
+# From modules-utils-statemachine
+rule com.android.internal.util.IState* com.android.connectivity.@0
+rule com.android.internal.util.State* com.android.connectivity.@0
+
+# From the API shims
+rule com.android.networkstack.apishim.** com.android.connectivity.@0
+
+# From filegroup framework-connectivity-protos
+rule android.service.*Proto com.android.connectivity.@0
+
+# From mdns-aidl-interface
+rule android.net.mdns.aidl.** android.net.connectivity.@0
+
+# From nearby-service, including proto
+rule service.proto.** com.android.server.nearby.@0
+rule androidx.annotation.Keep* com.android.server.nearby.@0
+rule androidx.collection.** com.android.server.nearby.@0
+rule androidx.core.** com.android.server.nearby.@0
+rule androidx.versionedparcelable.** com.android.server.nearby.@0
+rule com.google.common.** com.android.server.nearby.@0
+rule android.support.v4.** com.android.server.nearby.@0
+
+# Remaining are connectivity sources in com.android.server and com.android.server.connectivity:
+# TODO: move to a subpackage of com.android.connectivity (such as com.android.connectivity.server)

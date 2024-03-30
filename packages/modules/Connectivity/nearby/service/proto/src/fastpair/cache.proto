@@ -1,0 +1,427 @@
+syntax = "proto3";
+package service.proto;
+import "src/fastpair/rpcs.proto";
+import "src/fastpair/fast_pair_string.proto";
+
+// db information for Fast Pair that gets from server.
+message ServerResponseDbItem {
+  // Device's model id.
+  string model_id = 1;
+
+  // Response was received from the server. Contains data needed to display
+  // FastPair notification such as device name, txPower of device, image used
+  // in the notification, etc.
+  GetObservedDeviceResponse get_observed_device_response = 2;
+
+  // The timestamp that make the server fetch.
+  int64 last_fetch_info_timestamp_millis = 3;
+
+  // Whether the item in the cache is expirable or not (when offline mode this
+  // will be false).
+  bool expirable = 4;
+}
+
+
+// Client side scan result.
+message StoredScanResult {
+  // REQUIRED
+  // Unique ID generated based on scan result
+  string id = 1;
+
+  // REQUIRED
+  NearbyType type = 2;
+
+  // REQUIRED
+  // The most recent all upper case mac associated with this item.
+  // (Mac-to-DiscoveryItem is a many-to-many relationship)
+  string mac_address = 4;
+
+  // Beacon's RSSI value
+  int32 rssi = 10;
+
+  // Beacon's tx power
+  int32 tx_power = 11;
+
+  // The mac address encoded in beacon advertisement. Currently only used by
+  // chromecast.
+  string device_setup_mac = 12;
+
+  // Uptime of the device in minutes. Stops incrementing at 255.
+  int32 uptime_minutes = 13;
+
+  // REQUIRED
+  // Client timestamp when the beacon was first observed in BLE scan.
+  int64 first_observation_timestamp_millis = 14;
+
+  // REQUIRED
+  // Client timestamp when the beacon was last observed in BLE scan.
+  int64 last_observation_timestamp_millis = 15;
+
+  // Deprecated fields.
+  reserved 3, 5, 6, 7, 8, 9;
+}
+
+
+// Data for a DiscoveryItem created from server response and client scan result.
+// Only caching original data from scan result, server response, timestamps
+// and user actions. Do not save generated data in this object.
+// Next ID: 50
+message StoredDiscoveryItem {
+  enum State {
+    // Default unknown state.
+    STATE_UNKNOWN = 0;
+
+    // The item is normal.
+    STATE_ENABLED = 1;
+
+    // The item has been muted by user.
+    STATE_MUTED = 2;
+
+    // The item has been disabled by us (likely temporarily).
+    STATE_DISABLED_BY_SYSTEM = 3;
+  }
+
+  // The status of the item.
+  // TODO(b/204409421) remove enum
+  enum DebugMessageCategory {
+    // Default unknown state.
+    STATUS_UNKNOWN = 0;
+
+    // The item is valid and visible in notification.
+    STATUS_VALID_NOTIFICATION = 1;
+
+    // The item made it to list but not to notification.
+    STATUS_VALID_LIST_VIEW = 2;
+
+    // The item is filtered out on client. Never made it to list view.
+    STATUS_DISABLED_BY_CLIENT = 3;
+
+    // The item is filtered out by server. Never made it to client.
+    STATUS_DISABLED_BY_SERVER = 4;
+  }
+
+  enum ExperienceType {
+    EXPERIENCE_UNKNOWN = 0;
+    EXPERIENCE_GOOD = 1;
+    EXPERIENCE_BAD = 2;
+  }
+
+  // REQUIRED
+  // Offline item: unique ID generated on client.
+  // Online item: unique ID generated on server.
+  string id = 1;
+
+  // REQUIRED
+  // The most recent all upper case mac associated with this item.
+  // (Mac-to-DiscoveryItem is a many-to-many relationship)
+  string mac_address = 4;
+
+  // REQUIRED
+  string action_url = 5;
+
+  // The bluetooth device name from advertisment
+  string device_name = 6;
+
+  // REQUIRED
+  // Item's title
+  string title = 7;
+
+  // Item's description.
+  string description = 8;
+
+  // The URL for display
+  string display_url = 9;
+
+  // REQUIRED
+  // Client timestamp when the beacon was last observed in BLE scan.
+  int64 last_observation_timestamp_millis = 10;
+
+  // REQUIRED
+  // Client timestamp when the beacon was first observed in BLE scan.
+  int64 first_observation_timestamp_millis = 11;
+
+  // REQUIRED
+  // Item's current state. e.g. if the item is blocked.
+  State state = 17;
+
+  // The resolved url type for the action_url.
+  ResolvedUrlType action_url_type = 19;
+
+  // The timestamp when the user is redirected to Play Store after clicking on
+  // the item.
+  int64 pending_app_install_timestamp_millis = 20;
+
+  // Beacon's RSSI value
+  int32 rssi = 22;
+
+  // Beacon's tx power
+  int32 tx_power = 23;
+
+  // Human readable name of the app designated to open the uri
+  // Used in the second line of the notification, "Open in {} app"
+  string app_name = 25;
+
+  // The timestamp when the attachment was created on PBS server. In case there
+  // are duplicate
+  // items with the same scanId/groupID, only show the one with the latest
+  // timestamp.
+  int64 attachment_creation_sec = 28;
+
+  // Package name of the App that owns this item.
+  string package_name = 30;
+
+  // The average star rating of the app.
+  float star_rating = 31;
+
+  // TriggerId identifies the trigger/beacon that is attached with a message.
+  // It's generated from server for online messages to synchronize formatting
+  // across client versions.
+  // Example:
+  // * BLE_UID: 3||deadbeef
+  // * BLE_URL: http://trigger.id
+  // See go/discovery-store-message-and-trigger-id for more details.
+  string trigger_id = 34;
+
+  // Bytes of item icon in PNG format displayed in Discovery item list.
+  bytes icon_png = 36;
+
+  // A FIFE URL of the item icon displayed in Discovery item list.
+  string icon_fife_url = 49;
+
+  // See equivalent field in NearbyItem.
+  bytes authentication_public_key_secp256r1 = 45;
+
+  // See equivalent field in NearbyItem.
+  FastPairInformation fast_pair_information = 46;
+
+  // Companion app detail.
+  CompanionAppDetails companion_detail = 47;
+
+  // Fast pair strings
+  FastPairStrings fast_pair_strings = 48;
+
+  // Deprecated fields.
+  reserved 2, 3, 12, 13, 14, 15, 16, 18, 21, 24, 26, 27, 29, 32, 33, 35, 37, 38, 39, 40, 41, 42, 43, 44;
+}
+enum ResolvedUrlType {
+  RESOLVED_URL_TYPE_UNKNOWN = 0;
+
+  // The url is resolved to a web page that is not a play store app.
+  // This can be considered as the default resolved type when it's
+  // not the other specific types.
+  WEBPAGE = 1;
+
+  // The url is resolved to the Google Play store app
+  // ie. play.google.com/store
+  APP = 2;
+}
+enum DiscoveryAttachmentType {
+  DISCOVERY_ATTACHMENT_TYPE_UNKNOWN = 0;
+
+  // The attachment is posted in the prod namespace (without "-debug")
+  DISCOVERY_ATTACHMENT_TYPE_NORMAL = 1;
+
+  // The attachment is posted in the debug namespace (with "-debug")
+  DISCOVERY_ATTACHMENT_TYPE_DEBUG = 2;
+}
+// Additional information relevant only for Fast Pair devices.
+message FastPairInformation {
+  // When true, Fast Pair will only create a bond with the device and not
+  // attempt to connect any profiles (for example, A2DP or HFP).
+  bool data_only_connection = 1;
+
+  // Additional images that are attached specifically for true wireless Fast
+  // Pair devices.
+  TrueWirelessHeadsetImages true_wireless_images = 3;
+
+  // When true, this device can support assistant function.
+  bool assistant_supported = 4;
+
+  // Features supported by the Fast Pair device.
+  repeated FastPairFeature features = 5;
+
+  // Optional, the name of the company producing this Fast Pair device.
+  string company_name = 6;
+
+  // Optional, the type of device.
+  DeviceType device_type = 7;
+
+  reserved 2;
+}
+
+
+enum NearbyType {
+  NEARBY_TYPE_UNKNOWN = 0;
+  // Proximity Beacon Service (PBS). This is the only type of nearbyItems which
+  // can be customized by 3p and therefore the intents passed should not be
+  // completely trusted. Deprecated already.
+  NEARBY_PROXIMITY_BEACON = 1;
+  // Physical Web URL beacon. Deprecated already.
+  NEARBY_PHYSICAL_WEB = 2;
+  // Chromecast beacon. Used on client-side only.
+  NEARBY_CHROMECAST = 3;
+  // Wear beacon. Used on client-side only.
+  NEARBY_WEAR = 4;
+  // A device (e.g. a Magic Pair device that needs to be set up). The special-
+  // case devices above (e.g. ChromeCast, Wear) might migrate to this type.
+  NEARBY_DEVICE = 6;
+  // Popular apps/urls based on user's current geo-location.
+  NEARBY_POPULAR_HERE = 7;
+
+  reserved 5;
+}
+
+// A locally cached Fast Pair device associating an account key with the
+// bluetooth address of the device.
+message StoredFastPairItem {
+  // The device's public mac address.
+  string mac_address = 1;
+
+  // The account key written to the device.
+  bytes account_key = 2;
+
+  // When user need to update provider name, enable this value to trigger
+  // writing new name to provider.
+  bool need_to_update_provider_name = 3;
+
+  // The retry times to update name into provider.
+  int32 update_name_retries = 4;
+
+  // Latest firmware version from the server.
+  string latest_firmware_version = 5;
+
+  // The firmware version that is on the device.
+  string device_firmware_version = 6;
+
+  // The timestamp from the last time we fetched the firmware version from the
+  // device.
+  int64 last_check_firmware_timestamp_millis = 7;
+
+  // The timestamp from the last time we fetched the firmware version from
+  // server.
+  int64 last_server_query_timestamp_millis = 8;
+
+  // Only allows one bloom filter check process to create gatt connection and
+  // try to read the firmware version value.
+  bool can_read_firmware = 9;
+
+  // Device's model id.
+  string model_id = 10;
+
+  // Features that this Fast Pair device supports.
+  repeated FastPairFeature features = 11;
+
+  // Keeps the stored discovery item in local cache, we can have most
+  // information of fast pair device locally without through footprints, i.e. we
+  // can have most fast pair features locally.
+  StoredDiscoveryItem discovery_item = 12;
+
+  // When true, the latest uploaded event to FMA is connected. We use
+  // it as the previous ACL state when getting the BluetoothAdapter STATE_OFF to
+  // determine if need to upload the disconnect event to FMA.
+  bool fma_state_is_connected = 13;
+
+  // Device's buffer size range.
+  repeated BufferSizeRange buffer_size_range = 18;
+
+  // The additional account key if this device could be associated with multiple
+  // accounts. Notes that for this device, the account_key field is the basic
+  // one which will not be associated with the accounts.
+  repeated bytes additional_account_key = 19;
+
+  // Deprecated fields.
+  reserved 14, 15, 16, 17;
+}
+
+// Contains information about Fast Pair devices stored through our scanner.
+// Next ID: 29
+message ScanFastPairStoreItem {
+  // Device's model id.
+  string model_id = 1;
+
+  // Device's RSSI value
+  int32 rssi = 2;
+
+  // Device's tx power
+  int32 tx_power = 3;
+
+  // Bytes of item icon in PNG format displayed in Discovery item list.
+  bytes icon_png = 4;
+
+  // A FIFE URL of the item icon displayed in Discovery item list.
+  string icon_fife_url = 28;
+
+  // Device name like "Bose QC 35".
+  string device_name = 5;
+
+  // Client timestamp when user last saw Fast Pair device.
+  int64 last_observation_timestamp_millis = 6;
+
+  // Action url after user click the notification.
+  string action_url = 7;
+
+  // Device's bluetooth address.
+  string address = 8;
+
+  // The computed threshold rssi value that would trigger FastPair notifications
+  int32 threshold_rssi = 9;
+
+  // Populated with the contents of the bloom filter in the event that
+  // the scanned device is advertising a bloom filter instead of a model id
+  bytes bloom_filter = 10;
+
+  // Device name from the BLE scan record
+  string ble_device_name = 11;
+
+  // Strings used for the FastPair UI
+  FastPairStrings fast_pair_strings = 12;
+
+  // A key used to authenticate advertising device.
+  // See NearbyItem.authentication_public_key_secp256r1 for more information.
+  bytes anti_spoofing_public_key = 13;
+
+  // When true, Fast Pair will only create a bond with the device and not
+  // attempt to connect any profiles (for example, A2DP or HFP).
+  bool data_only_connection = 14;
+
+  // The type of the manufacturer (first party, third party, etc).
+  int32 manufacturer_type_num = 15;
+
+  // Additional images that are attached specifically for true wireless Fast
+  // Pair devices.
+  TrueWirelessHeadsetImages true_wireless_images = 16;
+
+  // When true, this device can support assistant function.
+  bool assistant_supported = 17;
+
+  // Optional, the name of the company producing this Fast Pair device.
+  string company_name = 18;
+
+  // Features supported by the Fast Pair device.
+  FastPairFeature features = 19;
+
+  // The interaction type that this scan should trigger
+  InteractionType interaction_type = 20;
+
+  // The copy of the advertisement bytes, used to pass along to other
+  // apps that use Fast Pair as the discovery vehicle.
+  bytes full_ble_record = 21;
+
+  // Companion app related information
+  CompanionAppDetails companion_detail = 22;
+
+  // Client timestamp when user first saw Fast Pair device.
+  int64 first_observation_timestamp_millis = 23;
+
+  // The type of the device (wearable, headphones, etc).
+  int32 device_type_num = 24;
+
+  // The type of notification (app launch smart setup, etc).
+  NotificationType notification_type = 25;
+
+  // The customized title.
+  string customized_title = 26;
+
+  // The customized description.
+  string customized_description = 27;
+}

@@ -1,0 +1,19 @@
+# The app is debuggable.
+androidboot.microdroid.app_debuggable=1
+
+# TODO(b/203369076) This should be 0 to disable adb rooting. For now, we can't do that because
+# if this is set to 0, adbd enforces the host authentication but we don't put the adb
+# public key (which represents the owner) in the VM yet.
+androidboot.microdroid.debuggable=0
+
+# Console output is not redirect to the host-side.
+# TODO(b/219743539) This doesn't successfully disable the console
+kernel.printk.devkmsg=off
+kernel.console=null
+
+# ADB is supported but rooting is prohibited.
+androidboot.adb.enabled=1
+
+# logd is enabled
+# TODO(b/200914564) Filter only the log from the app
+androidboot.logd.enabled=1

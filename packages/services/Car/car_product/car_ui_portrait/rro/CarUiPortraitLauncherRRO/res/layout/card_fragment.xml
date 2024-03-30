@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ Copyright (C) 2021 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
+    android:background="?android:attr/colorBackgroundFloating"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:visibility="gone">
+
+    <FrameLayout
+        android:id="@+id/card_background"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <FrameLayout
+            android:id="@+id/control_bar_image_container"
+            android:layout_height="@dimen/control_bar_image_size"
+            android:layout_width="@dimen/control_bar_image_size"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/card_icon_margin_start">
+
+            <com.android.car.apps.common.CrossfadeImageView
+                android:id="@+id/card_background_image"
+                android:background="@drawable/control_bar_image_background"
+                android:clipToOutline="true"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"/>
+
+            <ImageView
+                android:id="@+id/card_icon"
+                android:layout_height="@dimen/control_bar_app_icon_size"
+                android:layout_width="@dimen/control_bar_app_icon_size"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="@dimen/control_bar_app_icon_margin"
+                android:layout_marginBottom="@dimen/control_bar_app_icon_margin"
+                android:scaleType="centerInside"/>
+        </FrameLayout>
+
+        <!-- Do not show app name -->
+        <TextView
+            android:id="@+id/card_name"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:visibility="gone"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/card_icon"/>
+
+        <FrameLayout
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_toEndOf="@id/control_bar_image_container"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/card_content_margin_start">
+
+            <ViewStub android:id="@+id/media_layout"
+                      android:inflatedId="@+id/media_layout"
+                      android:layout_height="match_parent"
+                      android:layout_width="match_parent"
+                      android:visibility="gone"
+                      android:layout="@layout/card_content_media"/>
+
+            <!-- Following ViewStubs are required by the HomeCardFragment, but are currently unused
+            as the portrait launcher only shows an audio card and the respective media layout. -->
+            <ViewStub android:id="@+id/descriptive_text_layout"
+                      android:inflatedId="@+id/descriptive_text_layout"
+                      android:layout_height="match_parent"
+                      android:layout_width="match_parent"
+                      android:visibility="gone"
+                      android:layout="@layout/card_content_descriptive_text_only"/>
+
+            <ViewStub android:id="@+id/text_block_layout"
+                      android:inflatedId="@+id/text_block_layout"
+                      android:layout_height="match_parent"
+                      android:layout_width="match_parent"
+                      android:visibility="gone"
+                      android:layout="@layout/card_content_text_block"/>
+
+            <ViewStub android:id="@+id/descriptive_text_with_controls_layout"
+                      android:inflatedId="@+id/descriptive_text_with_controls_layout"
+                      android:layout_height="match_parent"
+                      android:layout_width="match_parent"
+                      android:visibility="gone"
+                      android:layout="@layout/card_content_descriptive_text_with_controls"/>
+
+        </FrameLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

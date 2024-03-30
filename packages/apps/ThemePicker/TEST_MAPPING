@@ -1,0 +1,12 @@
+{
+  "presubmit": [
+    {
+      "name": "ThemePickerTests",
+      "options": [
+        {
+          "exclude-annotation": "org.junit.Ignore"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+package {
+    default_applicable_licenses: [
+        "packages_apps_Test_connectivity_sl4n_license",
+        "Android-Apache-2.0",
+    ],
+}
+
+ // http://go/android-license-faq
+license {
+    name: "packages_apps_Test_connectivity_sl4n_license",
+    package_name: "Scripting Layer For Native",
+    visibility: [":__subpackages__"],
+    license_kinds: [
+        "SPDX-license-identifier-BSD",
+        "SPDX-license-identifier-MIT",
+    ],
+    license_text: ["LICENSE"],
+}
+
+cc_binary {
+    name: "sl4n",
+    header_libs: [
+        "libbluetooth_headers",
+    ],
+    include_dirs: [
+        "packages/modules/Bluetooth/system",
+    ],
+    local_include_dirs: [
+        "rapidjson/include",
+        "facades",
+    ],
+    srcs: [
+        "facades/bluetooth/bt_binder_facade.cpp",
+        "facades/test/test_facade.cpp",
+        "main.cpp",
+        "utils/command_receiver.cpp",
+        "utils/common_utils.cpp",
+    ],
+    shared_libs: [
+        "libbinder",
+        "libchrome",
+        "libcutils",
+        "libutils",
+        "libwifi-system",
+        "liblog",
+    ],
+    static_libs: [
+        "libbtcore",
+        "libosi",
+        "libnl",
+        "libbluetooth-binder-common",
+        "libbluetooth-types",
+    ],
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-Wno-unused-parameter",
+        "-Wno-missing-field-initializers",
+        "-Wno-expansion-to-defined",
+    ],
+}

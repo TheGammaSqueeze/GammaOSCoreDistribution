@@ -1,0 +1,164 @@
+little_endian_packets
+
+custom_field Boolean: 8 "Boolean"
+enum Enum : 8 {
+  // Keep 0x0 as invalid value
+  ONE = 1,
+  TWO = 2,
+}
+
+struct Struct {
+  v: Enum,
+  u: 8,
+}
+
+packet TestEnum {
+  v: Enum,
+}
+
+packet TestCustomField {
+  v: Boolean,
+}
+
+packet TestArraySize {
+  _size_(array) : 8,
+  array : Struct[],
+}
+
+packet TestArrayCount {
+  _count_(array) : 8,
+  array : Struct[],
+}
+
+packet TestPayloadSize {
+  _size_(_payload_) : 8,
+  _payload_,
+}
+
+packet TestBodySize {
+  _size_(_body_) : 8,
+  _body_,
+}
+
+// Test Packets #1
+enum OpCode: 8 {
+    ADD_ERR = 0,
+    SUB_ERR = 1,
+    ADD_RES = 2,
+    SUB_RES = 3,
+    ADD = 4,
+    SUB = 5,
+}
+
+packet Command {
+  op_code : OpCode,
+  _size_(_payload_) : 8,
+  _payload_,
+}
+
+// Packets for interfaces
+
+packet ComputeCommand : Command { _payload_, }
+packet ResCommand: Command { _payload_, }
+packet ErrCommand: Command { _payload_, }
+
+
+packet AddRes: ResCommand (op_code = ADD_RES) {
+}
+
+packet SubRes: ResCommand (op_code = SUB_RES) {
+}
+
+packet AddCommand: ComputeCommand (op_code = ADD) {
+}
+
+packet SubCommand: ComputeCommand (op_code = SUB) {
+}
+
+packet AddErr: ErrCommand(op_code = ADD_ERR) {
+}
+
+packet SubErr: ErrCommand(op_code = SUB_ERR) {
+}
+
+test AddRes {
+  "\x00\x04\x04\x01\x04\x04",
+}
+
+test SubRes {
+  "\x01\x04\x04\x01\x04\x04",
+}
+
+test AddCommand {
+  "\x02\x04\x04\x01\x04\x04",
+}
+
+test SubCommand {
+  "\x03\x04\x04\x01\x04\x04",
+}
+
+test AddErr {
+  "\x04\x04\x04\x01\x04\x04",
+}
+
+test SubErr {
+  "\x05\x04\x04\x01\x04\x04",
+}
+
+
+// Test Packets #2
+enum Number : 8 {
+  ZERO = 0,
+  ONE = 1,
+  TWO = 2,
+  THREE = 3,
+  FOUR = 4,
+}
+
+packet GrandParent {
+  field_one : Number,
+  field_two : Number,
+  field_three: Number,
+  field_x: Number,
+  _payload_,
+}
+
+packet Parent : GrandParent {
+  field_four: Number,
+  field_five: Number,
+  field_y: Number,
+  _payload_,
+}
+
+
+packet ChildOneTwo: Parent (field_one = ONE, field_two = TWO) {
+}
+
+packet ChildThreeFour : Parent (field_one = THREE, field_two = FOUR) {
+}
+
+packet ChildThree: Parent(field_three = THREE) {
+  _fixed_  = 5 : 8,
+}
+
+packet GrandChildThreeFive: ChildThree(field_five = ZERO) {
+}
+
+packet GrandChildThreeY: ChildThree(field_y = FOUR) {
+}
+
+test ChildOneTwo {
+  "\x01\x02\x03\x01",
+}
+
+test ChildThreeFour {
+  "\x03\x03\x03\x01",
+}
+
+test ChildThree {
+  "\x02\x01\x04\x01",
+}
+
+test GrandChildThreeFive {
+  "\x01\x02\x03\x01",
+}

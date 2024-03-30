@@ -1,0 +1,305 @@
+// simulation library for testing virtual devices
+package {
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "system_bt_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    default_applicable_licenses: ["system_bt_license"],
+    default_visibility: [
+        "//device:__subpackages__",
+        "//packages/modules/Bluetooth:__subpackages__",
+        "//tools/netsim:__subpackages__"
+    ],
+}
+
+cc_defaults {
+    name: "rootcanal_defaults",
+    defaults: [
+        "fluoride_common_options",
+        "gd_defaults",
+        "gd_clang_tidy",
+        "gd_clang_tidy_ignore_android",
+    ],
+    cflags: [
+        "-fvisibility=hidden",
+        "-DROOTCANAL_LMP",
+    ],
+    local_include_dirs: [
+        "include",
+    ],
+    include_dirs: [
+        "packages/modules/Bluetooth/system/gd",
+    ],
+    header_libs: [
+        "libbase_headers",
+    ],
+    generated_headers: [
+        "RootCanalGeneratedPackets_h",
+        "RootCanalBrEdrBBGeneratedPackets_h",
+        "BluetoothGeneratedPackets_h",
+    ],
+}
+
+// This library should be added as `whole_static_libs`
+// as it uses static registration and all object
+// files needs to be linked
+cc_library_static {
+    name: "libbt-rootcanal",
+    defaults: ["rootcanal_defaults"],
+    host_supported: true,
+    proprietary: true,
+    srcs: [
+        "model/controller/acl_connection.cc",
+        "model/controller/acl_connection_handler.cc",
+        "model/controller/controller_properties.cc",
+        "model/controller/dual_mode_controller.cc",
+        "model/controller/isochronous_connection_handler.cc",
+        "model/controller/le_advertiser.cc",
+        "model/controller/link_layer_controller.cc",
+        "model/controller/sco_connection.cc",
+        "model/controller/security_manager.cc",
+        "model/devices/baseband_sniffer.cc",
+        "model/devices/beacon.cc",
+        "model/devices/beacon_swarm.cc",
+        "model/devices/device.cc",
+        "model/devices/hci_device.cc",
+        "model/devices/link_layer_socket_device.cc",
+        "model/devices/scripted_beacon.cc",
+        "model/devices/sniffer.cc",
+        "model/hci/h4_data_channel_packetizer.cc",
+        "model/hci/h4_packetizer.cc",
+        "model/hci/h4_parser.cc",
+        "model/hci/hci_protocol.cc",
+        "model/hci/hci_sniffer.cc",
+        "model/hci/hci_socket_transport.cc",
+        "model/setup/async_manager.cc",
+        "model/setup/device_boutique.cc",
+        "model/setup/phy_layer_factory.cc",
+        "model/setup/test_channel_transport.cc",
+        "model/setup/test_command_handler.cc",
+        "model/setup/test_model.cc",
+        "net/posix/posix_async_socket.cc",
+        "net/posix/posix_async_socket_connector.cc",
+        "net/posix/posix_async_socket_server.cc",
+        ":BluetoothPacketSources",
+        ":BluetoothHciClassSources",
+        ":BluetoothCryptoToolboxSources",
+    ],
+    export_include_dirs: [
+        "include",
+        ".",
+    ],
+    export_generated_headers: [
+        "BluetoothGeneratedPackets_h"
+    ],
+    whole_static_libs: [
+        "liblmp",
+    ],
+    shared_libs: [
+        "libbase",
+    ],
+    static_libs: [
+        "libjsoncpp",
+        "libscriptedbeaconpayload-protos-lite",
+    ],
+}
+
+cc_library_static {
+    name: "libscriptedbeaconpayload-protos-lite",
+    host_supported: true,
+    proprietary: true,
+    proto: {
+        export_proto_headers: true,
+        type: "lite",
+    },
+    srcs: ["model/devices/scripted_beacon_ble_payload.proto"],
+}
+
+cc_test_host {
+    name: "rootcanal_hci_test",
+    defaults: [
+        "clang_file_coverage",
+        "clang_coverage_bin",
+        "rootcanal_defaults",
+    ],
+    srcs: [
+        "test/controller/le/le_set_random_address_test.cc",
+        "test/controller/le/le_clear_filter_accept_list_test.cc",
+        "test/controller/le/le_add_device_to_filter_accept_list_test.cc",
+        "test/controller/le/le_remove_device_from_filter_accept_list_test.cc",
+        "test/controller/le/le_add_device_to_resolving_list_test.cc",
+        "test/controller/le/le_clear_resolving_list_test.cc",
+        "test/controller/le/le_create_connection_test.cc",
+        "test/controller/le/le_create_connection_cancel_test.cc",
+        "test/controller/le/le_extended_create_connection_test.cc",
+        "test/controller/le/le_remove_device_from_resolving_list_test.cc",
+        "test/controller/le/le_set_address_resolution_enable_test.cc",
+        "test/controller/le/le_set_advertising_parameters_test.cc",
+        "test/controller/le/le_set_advertising_enable_test.cc",
+        "test/controller/le/le_set_scan_parameters_test.cc",
+        "test/controller/le/le_set_scan_enable_test.cc",
+        "test/controller/le/le_set_extended_scan_parameters_test.cc",
+        "test/controller/le/le_set_extended_scan_enable_test.cc",
+        "test/controller/le/le_set_extended_advertising_parameters_test.cc",
+        "test/controller/le/le_set_extended_advertising_data_test.cc",
+        "test/controller/le/le_set_extended_scan_response_data_test.cc",
+        "test/controller/le/le_set_extended_advertising_enable_test.cc",
+        "test/controller/le/le_scanning_filter_duplicates_test.cc",
+    ],
+    header_libs: [
+        "libbluetooth_headers",
+    ],
+    local_include_dirs: [
+        ".",
+    ],
+    shared_libs: [
+        "libbase",
+    ],
+    static_libs: [
+        "libbt-rootcanal",
+        "libjsoncpp",
+    ],
+}
+
+// test-vendor unit tests for host
+cc_test_host {
+    name: "rootcanal_test_host",
+    defaults: [
+        "fluoride_common_options",
+        "clang_file_coverage",
+        "clang_coverage_bin",
+    ],
+    // TODO(b/231993739): Reenable isolated:true by deleting the explicit disable below
+    isolated: false,
+    srcs: [
+        "test/async_manager_unittest.cc",
+        "test/h4_parser_unittest.cc",
+        "test/posix_socket_unittest.cc",
+        "test/security_manager_unittest.cc",
+    ],
+    header_libs: [
+        "libbluetooth_headers",
+    ],
+    local_include_dirs: [
+        "include",
+    ],
+    include_dirs: [
+        "packages/modules/Bluetooth/system/gd",
+    ],
+    shared_libs: [
+        "libbase",
+    ],
+    static_libs: [
+        "libbt-rootcanal",
+    ],
+    cflags: [
+        "-fvisibility=hidden",
+        "-DLOG_NDEBUG=1",
+    ],
+    target: {
+        darwin: {
+            enabled: false,
+        },
+    },
+}
+
+// Linux RootCanal Executable
+cc_binary_host {
+    name: "root-canal",
+    defaults: ["rootcanal_defaults"],
+    srcs: [
+        "desktop/root_canal_main.cc",
+        "desktop/test_environment.cc",
+    ],
+    header_libs: [
+        "libbluetooth_headers",
+    ],
+    shared_libs: [
+        "libbase",
+        "libunwindstack",
+    ],
+    whole_static_libs: [
+        "libbt-rootcanal",
+    ],
+    static_libs: [
+        "libc++fs",
+        "libjsoncpp",
+        "libprotobuf-cpp-lite",
+        "libscriptedbeaconpayload-protos-lite",
+        "breakpad_client",
+        "libgflags",
+    ],
+    sanitize: {
+        address: true,
+        all_undefined: true,
+    },
+    target: {
+        // TODO(b/181290178) remove it when sanitize option is supported by linux_bionic as well
+        linux_bionic: {
+            sanitize: {
+                address: false,
+                cfi: false,
+                all_undefined: false,
+            },
+        },
+        darwin: {
+            enabled: false,
+        },
+    },
+}
+
+genrule {
+    name: "RootCanalGeneratedPackets_h",
+    tools: [
+        "bluetooth_packetgen",
+    ],
+    cmd: "$(location bluetooth_packetgen) --root_namespace=model --include=packages/modules/Bluetooth/tools/rootcanal --out=$(genDir) $(in)",
+    srcs: [
+        "packets/link_layer_packets.pdl",
+    ],
+    out: [
+        "packets/link_layer_packets.h",
+    ],
+}
+
+genrule {
+    name: "RootCanalBrEdrBBGeneratedPackets_h",
+    tools: [
+        "bluetooth_packetgen",
+    ],
+    cmd: "$(location bluetooth_packetgen) --root_namespace=bredr_bb --include=packages/modules/Bluetooth/tools/rootcanal/packets --out=$(genDir) $(in)",
+    srcs: [
+        "packets/bredr_bb.pdl",
+    ],
+    out: [
+        "bredr_bb.h",
+    ],
+}
+
+// bt_vhci_forwarder in cuttlefish depends on this H4Packetizer implementation.
+cc_library_static {
+    name: "h4_packetizer_lib",
+    vendor: true,
+    defaults: [
+        "gd_defaults",
+    ],
+    srcs: [
+        "model/hci/h4_packetizer.cc",
+        "model/hci/h4_parser.cc",
+        "model/hci/hci_protocol.cc",
+    ],
+    header_libs: [
+        "libbase_headers",
+    ],
+    local_include_dirs: [
+        "include",
+    ],
+    export_include_dirs: [
+        "include",
+        ".",
+    ],
+    include_dirs: [
+        "packages/modules/Bluetooth/system/gd",
+    ],
+}

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2022 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    style="@style/SafetyCenter"
+    android:background="?android:colorBackground"
+    android:id="@+id/safety_center_root">
+
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:clipChildren="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/permission_section_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/sensor_permissions_qs"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/permission_usage"/>
+
+            <TextView
+                android:id="@+id/sensor_privacy_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/privacy_controls_qs"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity = "center_horizontal"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp">
+                <include android:id="@+id/camera_toggle"
+                         layout="@layout/safety_center_toggle_button" />
+
+                <include android:id="@+id/mic_toggle"
+                         layout="@layout/safety_center_toggle_button" />
+
+                <include android:id="@+id/location_toggle"
+                         layout="@layout/safety_center_toggle_button" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/security_settings_button"
+                android:layout_marginTop="20dp"
+                android:layout_height="40dp"
+                android:layout_width="300dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/oval_outline_button"
+                style="@style/SafetyCenterLinkText"
+                android:textColor="#ffffffff"
+                android:text="@string/security_settings"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

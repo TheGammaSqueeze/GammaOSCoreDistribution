@@ -1,0 +1,207 @@
+versions {
+  version: 1
+  requirements {
+    module: ART
+    version {
+      version: 1
+    }
+  }
+  requirements {
+    module: CONSCRYPT
+    version {
+      version: 1
+    }
+  }
+  requirements {
+    module: IPSEC
+    version {
+      version: 1
+    }
+  }
+  requirements {
+    module: MEDIA
+    version {
+      version: 1
+    }
+  }
+  requirements {
+    module: MEDIA_PROVIDER
+    version {
+      version: 1
+    }
+  }
+  requirements {
+    module: PERMISSIONS
+    version {
+      version: 1
+    }
+  }
+  requirements {
+    module: SCHEDULING
+    version {
+      version: 1
+    }
+  }
+  requirements {
+    module: SDK_EXTENSIONS
+    version {
+      version: 1
+    }
+  }
+  requirements {
+    module: STATSD
+    version {
+      version: 1
+    }
+  }
+  requirements {
+    module: TETHERING
+    version {
+      version: 1
+    }
+  }
+}
+versions {
+  version: 2
+  requirements {
+    module: ART
+    version {
+      version: 1
+    }
+  }
+  requirements {
+    module: CONSCRYPT
+    version {
+      version: 1
+    }
+  }
+  requirements {
+    module: IPSEC
+    version {
+      version: 1
+    }
+  }
+  requirements {
+    module: MEDIA
+    version {
+      version: 1
+    }
+  }
+  requirements {
+    module: MEDIA_PROVIDER
+    version {
+      version: 2
+    }
+  }
+  requirements {
+    module: PERMISSIONS
+    version {
+      version: 1
+    }
+  }
+  requirements {
+    module: SCHEDULING
+    version {
+      version: 1
+    }
+  }
+  requirements {
+    module: SDK_EXTENSIONS
+    version {
+      version: 2
+    }
+  }
+  requirements {
+    module: STATSD
+    version {
+      version: 1
+    }
+  }
+  requirements {
+    module: TETHERING
+    version {
+      version: 1
+    }
+  }
+}
+versions {
+  version: 3
+  requirements {
+    module: ART
+    version {
+      version: 3
+    }
+  }
+  requirements {
+    module: CONSCRYPT
+    version {
+      version: 3
+    }
+  }
+  requirements {
+    module: IPSEC
+    version {
+      version: 3
+    }
+  }
+  requirements {
+    module: MEDIA
+    version {
+      version: 3
+    }
+  }
+  requirements {
+    module: MEDIA_PROVIDER
+    version {
+      version: 3
+    }
+  }
+  requirements {
+    module: PERMISSIONS
+    version {
+      version: 3
+    }
+  }
+  requirements {
+    module: SCHEDULING
+    version {
+      version: 3
+    }
+  }
+  requirements {
+    module: SDK_EXTENSIONS
+    version {
+      version: 3
+    }
+  }
+  requirements {
+    module: STATSD
+    version {
+      version: 3
+    }
+  }
+  requirements {
+    module: TETHERING
+    version {
+      version: 3
+    }
+  }
+  requirements {
+    module: AD_SERVICES
+    version {
+      version: 3
+    }
+  }
+  requirements {
+    module: APPSEARCH
+    version {
+      version: 3
+    }
+  }
+  requirements {
+    module: ON_DEVICE_PERSONALIZATION
+    version {
+      version: 3
+    }
+  }
+}

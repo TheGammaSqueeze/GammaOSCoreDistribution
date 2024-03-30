@@ -1,0 +1,17 @@
+# The app is not debuggable.
+androidboot.microdroid.app_debuggable=0
+
+# ro.debuggable is off
+androidboot.microdroid.debuggable=0
+
+# Console output is not redirect to the host-side.
+# TODO(b/219743539) This doesn't successfully disable the console
+kernel.printk.devkmsg=off
+# TODO(b/219743539) Setting this to null makes everything slow
+kernel.console=hvc0
+
+# ADB is not enabled.
+androidboot.adb.enabled=0
+
+# logd is not enabled
+androidboot.logd.enabled=0

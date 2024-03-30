@@ -1,0 +1,359 @@
+package {
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "system_bt_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    default_applicable_licenses: ["system_bt_license"],
+}
+
+bootstrap_go_package {
+    name: "soong-fluoride",
+    pkgPath: "android/soong/fluoride",
+    deps: [
+        "blueprint",
+        "blueprint-pathtools",
+        "soong",
+        "soong-android",
+        "soong-cc",
+    ],
+    srcs: [
+        "fluoride.go",
+    ],
+    pluginFor: ["soong_build"],
+}
+
+cc_defaults {
+    name: "fluoride_common_options",
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        // there are too many unused parameters in all the code.
+        "-Wno-unused-parameter",
+    ],
+}
+
+fluoride_defaults {
+    name: "libchrome_support_defaults",
+    defaults: ["fluoride_common_options"],
+    static_libs: [
+        "libchrome",
+        "libmodpb64",
+        "libevent",
+    ],
+    shared_libs: [
+      "libbase",
+    ],
+    target: {
+        darwin: {
+            enabled: false,
+        },
+        android: {
+            shared_libs: [
+                "libcutils",
+                "liblog",
+            ],
+        }
+    },
+}
+
+// default to be used only on platform libs that can rely on shared libchrome
+fluoride_defaults {
+    name: "libchrome_shared_support_defaults",
+    defaults: ["fluoride_common_options"],
+    shared_libs: ["libchrome"],
+    target: {
+        darwin: {
+            enabled: false,
+        },
+    },
+}
+
+
+// Fuzzable defaults are the subset of defaults that are used in fuzzing, which
+// requires no shared libraries, and no explicit sanitization.
+fluoride_defaults {
+    name: "fluoride_types_defaults_fuzzable",
+    defaults: ["fluoride_common_options"],
+    cflags: [
+        "-DEXPORT_SYMBOL=__attribute__((visibility(\"default\")))",
+        "-fvisibility=hidden",
+        // struct BT_HDR is defined as a variable-size header in a struct.
+        "-Wno-gnu-variable-sized-type-not-at-end",
+        "-DLOG_NDEBUG=1",
+    ],
+    conlyflags: [
+        "-std=c99",
+    ],
+    product_variables: {
+        debuggable: {
+            cflags: [
+                "-DBLUEDROID_DEBUG",
+            ],
+        },
+    },
+}
+
+fluoride_defaults {
+    name: "fluoride_types_defaults",
+    defaults: [
+        "fluoride_types_defaults_fuzzable",
+        "libchrome_support_defaults"
+    ],
+}
+
+fluoride_defaults {
+    name: "fluoride_defaults_fuzzable",
+    target: {
+        android: {
+            test_config_template: ":BluetoothTestConfigTemplate",
+            sanitize: {
+                misc_undefined: ["bounds"],
+            },
+        },
+        host: {
+            static_libs: [
+                "libcutils",
+            ]
+        }
+    },
+    defaults: ["fluoride_types_defaults_fuzzable"],
+    header_libs: ["libbluetooth_headers", "libbt_callbacks_cxx_headers"],
+    generated_headers: [
+        "libbt_shim_bridge_header",
+        "libbt_message_loop_thread_bridge_header",
+        "cxx-bridge-header"
+    ],
+    include_dirs: ["packages/modules/Bluetooth/system/gd/rust/shim"],
+    static_libs: [
+        "libbluetooth-types",
+        "libbt-platform-protos-lite",
+        "libbluetooth_rust_interop",
+        "libbt_callbacks_cxx",
+        "libbt_shim_bridge",
+        "libbt_shim_ffi",
+    ],
+    shared_libs: [
+        "liblog",
+    ],
+    cpp_std: "c++17",
+    min_sdk_version: "current",
+}
+
+fluoride_defaults {
+    name: "fluoride_test_prod_shared_defaults",
+    defaults: ["fluoride_defaults"],
+}
+
+fluoride_defaults {
+    name: "fluoride_test_defaults",
+    defaults: ["fluoride_test_prod_shared_defaults"],
+    host_supported: true,
+    shared_libs: [
+        "libcrypto",
+        "liblog",
+        "libprotobuf-cpp-lite",
+    ],
+    static_libs: [
+        "libbt-common",
+        "libbt-protos-lite",
+        "libosi",
+        "libosi-AlarmTestHarness",
+        "libosi-AllocationTestHarness",
+        "libcutils",
+        "libgmock",
+    ],
+    sanitize: {
+        address: true,
+        cfi: true,
+        misc_undefined: ["bounds"],
+    },
+}
+
+fluoride_defaults {
+    name: "fluoride_unit_test_defaults",
+    defaults: ["fluoride_test_defaults"],
+    test_options: {
+        unit_test: true,
+    },
+}
+
+fluoride_defaults {
+    name: "fluoride_basic_defaults",
+    defaults: ["fluoride_test_prod_shared_defaults", "libchrome_support_defaults"],
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.bluetooth",
+    ],
+    shared_libs: [
+        "libcrypto",
+        "libbase",
+        "liblog",
+        "libnativehelper",
+    ],
+    static_libs: [
+        "android.hardware.bluetooth.a2dp@1.0",
+        "libbluetooth-dumpsys",
+        "libbluetooth_gd",
+        "libbluetooth_rust_interop",
+        "libbluetooth-types",
+        "libbt_callbacks_cxx",
+        "libbt-platform-protos-lite",
+        "libbt-protos-lite",
+        "libbt-sbc-decoder",
+        "libbt-sbc-encoder",
+        "libbt_shim_bridge",
+        "libbt_shim_ffi",
+        "libflatbuffers-cpp",
+        "libFraunhoferAAC",
+        "libg722codec",
+        "liblc3",
+        "libopus",
+        "libprotobuf-cpp-lite",
+        "libstatslog_bt",
+        "libudrv-uipc",
+    ],
+    target: {
+        android: {
+            shared_libs: [
+                "android.hardware.bluetooth.audio@2.0",
+                "android.hardware.bluetooth.audio@2.1",
+                "android.hardware.bluetooth.audio-V2-ndk",
+                "android.hardware.bluetooth@1.0",
+                "android.hardware.bluetooth@1.1",
+                "android.system.suspend-V1-ndk",
+                "libaaudio",
+                "libbinder_ndk",
+                "libcutils",
+                "libhidlbase",
+                "libfmq",
+                "libprocessgroup",
+                "libtinyxml2",
+                "libutils",
+                "libz",
+            ],
+            static_libs: [
+                "android.system.suspend.control-V1-ndk",
+            ],
+        },
+        linux_glibc: {
+            shared_libs: [
+                "android.hardware.bluetooth.audio@2.0",
+                "android.hardware.bluetooth.audio@2.1",
+                "android.hardware.bluetooth@1.0",
+                "android.hardware.bluetooth@1.1",
+                "libbinder_ndk",
+                "libcutils",
+                "libhidlbase",
+                "libfmq",
+                "libprocessgroup",
+                "libtinyxml2",
+                "libutils",
+                "libz",
+            ],
+        },
+    },
+}
+
+fluoride_defaults {
+    name: "fluoride_full_defaults",
+    defaults: ["fluoride_basic_defaults"],
+    static_libs: [
+        "libbte",
+        "libbt-bta",
+        "libbt-common",
+        "libbtdevice",
+        "libbtif",
+        "libbt-hci",
+        "libbt-stack",
+        "libbt-utils",
+        "libbtcore",
+        "libosi",
+        "avrcp-target-service",
+        "lib-bt-packets",
+        "libbt-audio-hal-interface",
+        "libaudio-a2dp-hw-utils",
+        "lib-bt-packets-base",
+        "lib-bt-packets-avrcp",
+    ],
+}
+
+fluoride_defaults {
+    name: "fluoride_defaults",
+    defaults: ["fluoride_defaults_fuzzable", "fluoride_types_defaults"],
+    static_libs: [
+        "libbluetooth_gd",
+        "libbluetooth_rust_interop",
+        "libbt_shim_ffi",
+        "libbt_callbacks_cxx",
+        "libbt_shim_bridge",
+        "libbt_shim_ffi",
+        "libstatslog_bt",
+    ],
+    target: {
+        darwin: {
+            // libstatslog_bt -> libbinder doesn't build on mac
+            enabled: false,
+        },
+        linux_glibc: {
+            shared_libs: [
+                "android.hardware.bluetooth@1.0",
+                "android.hardware.bluetooth@1.1",
+                "libcutils",
+                "libhidlbase",
+                "libstatslog_bt",
+                "libutils",
+            ],
+        },
+        android: {
+            shared_libs: [
+                "android.hardware.bluetooth@1.0",
+                "android.hardware.bluetooth@1.1",
+                "libcutils",
+                "libhidlbase",
+                "libstatssocket",
+                "libutils",
+            ],
+            cflags: [
+                "-DOS_ANDROID",
+            ],
+            sanitize: {
+                misc_undefined: ["bounds"],
+            },
+        },
+    },
+}
+
+// Enables code coverage for a set of source files. Must be combined with
+// "clang_coverage_bin" in order to work. See //test/gen_coverage.py for more information
+// on generating code coverage.
+cc_defaults {
+    name: "clang_file_coverage",
+    target: {
+        host: {
+            clang_cflags: [
+                "-fprofile-instr-generate",
+                "-fcoverage-mapping",
+            ],
+        },
+    },
+}
+
+// Enabled code coverage on a binary. These flags allow libraries that were
+// compiled with "clang_file_coverage" to be properly linked together in
+// order to create a binary that will create a profraw file when ran. Note
+// these flags themselves don't enable code coverage for the source files
+// compiled in the binary. See //test/gen_coverage.py for more information
+// on generating code coverage.
+cc_defaults {
+    name: "clang_coverage_bin",
+    target: {
+        host: {
+            ldflags: [
+                "-fprofile-instr-generate",
+                "-fcoverage-mapping",
+            ],
+        },
+    },
+}

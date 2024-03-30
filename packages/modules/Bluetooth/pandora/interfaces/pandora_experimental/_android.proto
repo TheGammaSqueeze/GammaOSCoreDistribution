@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option java_outer_classname = "AndroidProto";
+
+package pandora;
+
+import "google/protobuf/empty.proto";
+
+// This file contains Android-specific protos and rpcs that should not be part
+// of the general interface. They should not be invoked from MMIs directly since
+// this will couple them too tightly with Android.
+
+// Service for Android-specific operations.
+service Android {
+  // Log text (for utility only)
+  rpc Log(LogRequest) returns (LogResponse);
+  // Set Message, PhoneBook and SIM access permission
+  rpc SetAccessPermission(SetAccessPermissionRequest) returns (google.protobuf.Empty);
+  // Send SMS
+  rpc SendSMS(google.protobuf.Empty) returns (google.protobuf.Empty);
+  // Accept incoming file
+  rpc AcceptIncomingFile(google.protobuf.Empty) returns (google.protobuf.Empty);
+}
+
+message LogRequest {
+  string text = 1;
+}
+
+message LogResponse {}
+
+enum AccessType {
+  ACCESS_MESSAGE = 0;
+  ACCESS_PHONEBOOK = 1;
+  ACCESS_SIM = 2;
+}
+
+message SetAccessPermissionRequest {
+  // Peer Bluetooth Device Address as array of 6 bytes.
+  bytes address = 1;
+  // Set AccessType to Message, PhoneBook and SIM access permission
+  AccessType access_type = 2;
+}
+
+// Internal representation of a Connection - not exposed to clients, included here
+// just for code-generation convenience. This is what we put in the Connection.cookie.
+message InternalConnectionRef {
+  bytes address = 1;
+  int32 transport = 2;
+}
