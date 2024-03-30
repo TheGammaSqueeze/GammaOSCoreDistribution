@@ -1,0 +1,48 @@
+
+package {
+    default_applicable_licenses: ["external_bpftool_license"],
+}
+
+// See: http://go/android-license-faq
+license {
+    name: "external_bpftool_license",
+    visibility: [":__subpackages__"],
+    license_kinds: [
+        "SPDX-license-identifier-BSD-2-Clause",
+        "SPDX-license-identifier-GPL-2.0-only",
+    ],
+    license_text: [
+        "LICENSE.BSD-2-Clause",
+        "LICENSE.GPL-2.0",
+    ],
+}
+
+cc_binary_host {
+    name: "bpftool",
+    srcs: [
+        "src/*.c",
+        "src/kernel/bpf/disasm.c",
+    ],
+    exclude_srcs: [
+        "src/jit_disasm.c",
+    ],
+    local_include_dirs: [
+        "include",
+        "include/uapi",
+        "src/kernel/bpf"
+    ],
+    static_libs: [
+        "libbpf",
+        "libcap",
+        "libelf",
+        "libz",
+    ],
+    cflags: [
+        "-DBPFTOOL_WITHOUT_SKELETONS",
+        "-DBPFTOOL_VERSION=\"5.16.0-c446fdacb10d\"",
+        "-DUSE_LIBCAP",
+        "-Wno-missing-field-initializers",
+        "-Wno-pointer-arith",
+        "-Wno-unused-parameter",
+    ]
+}

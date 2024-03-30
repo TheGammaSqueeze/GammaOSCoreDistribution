@@ -1,0 +1,130 @@
+#
+# Copyright © 2017 Arm Ltd and Contributors. All rights reserved.
+# SPDX-License-Identifier: MIT
+#
+
+list(APPEND armnnNeonBackendWorkloads_sources
+    NeonAbsWorkload.cpp
+    NeonAbsWorkload.hpp
+    NeonActivationWorkload.cpp
+    NeonActivationWorkload.hpp
+    NeonAdditionWorkload.cpp
+    NeonAdditionWorkload.hpp
+    NeonArgMinMaxWorkload.cpp
+    NeonArgMinMaxWorkload.hpp
+    NeonBatchNormalizationWorkload.cpp
+    NeonBatchNormalizationWorkload.hpp
+    NeonBatchToSpaceNdWorkload.cpp
+    NeonBatchToSpaceNdWorkload.hpp
+    NeonComparisonWorkload.cpp
+    NeonComparisonWorkload.hpp
+    NeonConcatWorkload.cpp
+    NeonConcatWorkload.hpp
+    NeonConstantWorkload.cpp
+    NeonConstantWorkload.hpp
+    NeonConvertBf16ToFp32Workload.cpp
+    NeonConvertBf16ToFp32Workload.hpp
+    NeonConvertFp16ToFp32Workload.cpp
+    NeonConvertFp16ToFp32Workload.hpp
+    NeonConvertFp32ToBf16Workload.cpp
+    NeonConvertFp32ToBf16Workload.hpp
+    NeonConvertFp32ToFp16Workload.cpp
+    NeonConvertFp32ToFp16Workload.hpp
+    NeonConvolution2dWorkload.cpp
+    NeonConvolution2dWorkload.hpp
+    NeonDepthToSpaceWorkload.cpp
+    NeonDepthToSpaceWorkload.hpp
+    NeonDepthwiseConvolutionWorkload.cpp
+    NeonDepthwiseConvolutionWorkload.hpp
+    NeonDequantizeWorkload.cpp
+    NeonDequantizeWorkload.hpp
+    NeonDetectionPostProcessWorkload.cpp
+    NeonDetectionPostProcessWorkload.hpp
+    NeonExpWorkload.cpp
+    NeonExpWorkload.hpp
+    NeonFillWorkload.cpp
+    NeonFillWorkload.hpp
+    NeonFloorFloatWorkload.cpp
+    NeonFloorFloatWorkload.hpp
+    NeonFullyConnectedWorkload.cpp
+    NeonFullyConnectedWorkload.hpp
+    NeonGatherWorkload.cpp
+    NeonGatherWorkload.hpp
+    NeonInstanceNormalizationWorkload.cpp
+    NeonInstanceNormalizationWorkload.hpp
+    NeonL2NormalizationFloatWorkload.cpp
+    NeonL2NormalizationFloatWorkload.hpp
+    NeonLogicalAndWorkload.cpp
+    NeonLogicalAndWorkload.hpp
+    NeonLogicalNotWorkload.cpp
+    NeonLogicalNotWorkload.hpp
+    NeonLogicalOrWorkload.cpp
+    NeonLogicalOrWorkload.hpp
+    NeonLogSoftmaxWorkload.cpp
+    NeonLogSoftmaxWorkload.hpp
+    NeonLstmFloatWorkload.cpp
+    NeonLstmFloatWorkload.hpp
+    NeonMaximumWorkload.cpp
+    NeonMaximumWorkload.hpp
+    NeonMeanWorkload.cpp
+    NeonMeanWorkload.hpp
+    NeonMinimumWorkload.cpp
+    NeonMinimumWorkload.hpp
+    NeonMultiplicationWorkload.cpp
+    NeonMultiplicationWorkload.hpp
+    NeonDivisionWorkload.cpp
+    NeonDivisionWorkload.hpp
+    NeonNegWorkload.cpp
+    NeonNegWorkload.hpp
+    NeonNormalizationFloatWorkload.cpp
+    NeonNormalizationFloatWorkload.hpp
+    NeonPadWorkload.cpp
+    NeonPadWorkload.hpp
+    NeonPermuteWorkload.cpp
+    NeonPermuteWorkload.hpp
+    NeonPooling2dWorkload.cpp
+    NeonPooling2dWorkload.hpp
+    NeonPreluWorkload.cpp
+    NeonPreluWorkload.hpp
+    NeonQLstmWorkload.cpp
+    NeonQLstmWorkload.hpp
+    NeonQuantizedLstmWorkload.cpp
+    NeonQuantizedLstmWorkload.hpp
+    NeonQuantizeWorkload.cpp
+    NeonQuantizeWorkload.hpp
+    NeonReshapeWorkload.cpp
+    NeonReshapeWorkload.hpp
+    NeonResizeWorkload.cpp
+    NeonResizeWorkload.hpp
+    NeonRsqrtWorkload.cpp
+    NeonRsqrtWorkload.hpp
+    NeonSliceWorkload.cpp
+    NeonSliceWorkload.hpp
+    NeonSoftmaxWorkload.cpp
+    NeonSoftmaxWorkload.hpp
+    NeonSpaceToBatchNdWorkload.cpp
+    NeonSpaceToBatchNdWorkload.hpp
+    NeonSpaceToDepthWorkload.cpp
+    NeonSpaceToDepthWorkload.hpp
+    NeonSplitterWorkload.cpp
+    NeonSplitterWorkload.hpp
+    NeonStackWorkload.cpp
+    NeonStackWorkload.hpp
+    NeonStridedSliceWorkload.cpp
+    NeonStridedSliceWorkload.hpp
+    NeonSubtractionWorkload.cpp
+    NeonSubtractionWorkload.hpp
+    NeonTransposeConvolution2dWorkload.cpp
+    NeonTransposeConvolution2dWorkload.hpp
+    NeonTransposeWorkload.cpp
+    NeonTransposeWorkload.hpp
+    NeonWorkloads.hpp
+    NeonWorkloadUtils.hpp
+)
+
+add_library(armnnNeonBackendWorkloads OBJECT ${armnnNeonBackendWorkloads_sources})
+target_include_directories(armnnNeonBackendWorkloads PRIVATE ${PROJECT_SOURCE_DIR}/src/armnn)
+target_include_directories(armnnNeonBackendWorkloads PRIVATE ${PROJECT_SOURCE_DIR}/src/armnnUtils)
+target_include_directories(armnnNeonBackendWorkloads PRIVATE ${PROJECT_SOURCE_DIR}/src/backends)
+target_include_directories(armnnNeonBackendWorkloads PRIVATE ${PROJECT_SOURCE_DIR}/src/profiling)
+target_include_directories(armnnNeonBackendWorkloads PRIVATE ${PROJECT_SOURCE_DIR}/profiling/common/include)

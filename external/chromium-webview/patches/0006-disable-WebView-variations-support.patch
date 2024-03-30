@@ -1,0 +1,45 @@
+From b46863d007480b39788ada31989194dd1a034da5 Mon Sep 17 00:00:00 2001
+From: Daniel Micay <danielmicay@gmail.com>
+Date: Thu, 10 Dec 2020 10:09:18 -0500
+Subject: [PATCH 06/12] disable WebView variations support
+
+---
+ .../com/android/webview/chromium/WebViewChromiumAwInit.java | 6 ------
+ .../webview/chromium/WebViewChromiumFactoryProvider.java    | 4 ----
+ 2 files changed, 10 deletions(-)
+
+diff --git a/android_webview/glue/java/src/com/android/webview/chromium/WebViewChromiumAwInit.java b/android_webview/glue/java/src/com/android/webview/chromium/WebViewChromiumAwInit.java
+index 329b295b7af4e..a06fcea986e43 100644
+--- a/android_webview/glue/java/src/com/android/webview/chromium/WebViewChromiumAwInit.java
++++ b/android_webview/glue/java/src/com/android/webview/chromium/WebViewChromiumAwInit.java
+@@ -201,12 +201,6 @@ public class WebViewChromiumAwInit {
+ 
+             AwBrowserProcess.configureChildProcessLauncher();
+ 
+-            // finishVariationsInitLocked() must precede native initialization so the seed is
+-            // available when AwFeatureListCreator::SetUpFieldTrials() runs.
+-            if (!FastVariationsSeedSafeModeAction.hasRun()) {
+-                finishVariationsInitLocked();
+-            }
+-
+             AwBrowserProcess.start();
+             AwBrowserProcess.handleMinidumpsAndSetMetricsConsent(/* updateMetricsConsent= */ true);
+ 
+diff --git a/android_webview/glue/java/src/com/android/webview/chromium/WebViewChromiumFactoryProvider.java b/android_webview/glue/java/src/com/android/webview/chromium/WebViewChromiumFactoryProvider.java
+index 67f7905b2e71d..04cce9b3985c2 100644
+--- a/android_webview/glue/java/src/com/android/webview/chromium/WebViewChromiumFactoryProvider.java
++++ b/android_webview/glue/java/src/com/android/webview/chromium/WebViewChromiumFactoryProvider.java
+@@ -465,10 +465,6 @@ public class WebViewChromiumFactoryProvider implements WebViewFactoryProvider {
+                 }
+             }
+ 
+-            if (!FastVariationsSeedSafeModeAction.hasRun()) {
+-                mAwInit.startVariationsInit();
+-            }
+-
+             mShouldDisableThreadChecking = shouldDisableThreadChecking(ctx);
+ 
+             setSingleton(this);
+-- 
+2.44.0
+

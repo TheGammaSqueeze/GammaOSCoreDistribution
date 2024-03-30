@@ -1,0 +1,36 @@
+package {
+    default_applicable_licenses: ["external_chromium-trace_license"],
+}
+
+// Added automatically by a large-scale-change
+// See: http://go/android-license-faq
+license {
+    name: "external_chromium-trace_license",
+    visibility: [":__subpackages__"],
+    license_kinds: [
+        "legacy_restricted",
+    ],
+    license_text: [
+        "NOTICE",
+    ],
+}
+
+genrule {
+    name: "systrace-sdk-zip",
+    visibility: ["//development/build"],
+    tools: ["soong_zip"],
+    // TODO: Use $(in) or similar, but bash cmdline limits are a problem
+    // (Use implement a version of $(in) that works with rspfile?)
+    cmd: "$(location soong_zip) -o $(out) -P systrace -C $$(dirname $(location systrace.py)) " +
+        "-D $$(dirname $(location systrace.py))/catapult " +
+        "-f $(location systrace.py) " +
+        "-f $(location NOTICE) " +
+        "-f $(location UPSTREAM_REVISION)",
+    srcs: [
+        "catapult/**/*",
+        "systrace.py",
+        "NOTICE",
+        "UPSTREAM_REVISION",
+    ],
+    out: ["output.zip"],
+}

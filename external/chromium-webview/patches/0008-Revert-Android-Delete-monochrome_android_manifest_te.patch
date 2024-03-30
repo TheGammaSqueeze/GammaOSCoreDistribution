@@ -1,0 +1,83 @@
+From 61df5700c6b1133ad2dc96bf6e975d665a5ba79d Mon Sep 17 00:00:00 2001
+From: "Kevin F. Haggerty" <haggertk@lineageos.org>
+Date: Sat, 2 Mar 2024 08:55:32 -0700
+Subject: [PATCH 08/12] Revert "Android: Delete
+ monochrome_android_manifest_test.py"
+
+This reverts commit a4e68f474126c906599638158f0df4ad6806ba76.
+---
+ .../monochrome_android_manifest_test.py       | 36 +++++++++++++++++++
+ .../scripts/monochrome_python_tests.py        |  1 +
+ .../scripts/monochrome_python_tests.pydeps    |  1 +
+ 3 files changed, 38 insertions(+)
+ create mode 100644 chrome/android/monochrome/scripts/monochrome_android_manifest_test.py
+
+diff --git a/chrome/android/monochrome/scripts/monochrome_android_manifest_test.py b/chrome/android/monochrome/scripts/monochrome_android_manifest_test.py
+new file mode 100644
+index 0000000000000..952bab8b37f6b
+--- /dev/null
++++ b/chrome/android/monochrome/scripts/monochrome_android_manifest_test.py
+@@ -0,0 +1,36 @@
++# Copyright 2020 The Chromium Authors
++# Use of this source code is governed by a BSD-style license that can be
++# found in the LICENSE file.
++"""Contains tests which test monochrome's AndroidManifest.xml"""
++
++from devil.android.sdk import build_tools
++from devil.utils import cmd_helper
++import re
++import typ
++
++
++class MonochromeAndroidManifestCheckerTest(typ.TestCase):
++  def testManifest(self):
++    monochrome_apk = self.context.monochrome_apk
++    cmd = [
++        build_tools.GetPath('aapt2'), 'dump', 'xmltree', monochrome_apk,
++           '--file', 'AndroidManifest.xml']
++    status, manifest = cmd_helper.GetCmdStatusAndOutput(cmd)
++    self.assertEquals(status, 0)
++
++    # android.car is an optional library used in internal Chrome code
++    # that is only executed on automotive. Strip it from the manifest
++    # before asserting there are no other uses of uses-library.
++    car_lib =  r'uses-library.*\n.*android.car'
++    stripped_manifest = re.sub(car_lib, "", manifest)
++
++    # android.ext.adservices is a library needed for
++    # androidx.privacysandbox.ads:ads-adservices to work on Android R & S.
++    # Strip it from the manifest before asserting there are no other uses of
++    # uses-library.
++    ext_adservices_lib = r'uses-library.*\n.*android.ext.adservices'
++    stripped_manifest = re.sub(ext_adservices_lib, "", stripped_manifest)
++
++    # Check that AndroidManifest.xml does not have any <uses-library> tags.
++    # crbug.com/1115604
++    self.assertNotIn('uses-library', stripped_manifest)
+diff --git a/chrome/android/monochrome/scripts/monochrome_python_tests.py b/chrome/android/monochrome/scripts/monochrome_python_tests.py
+index 55be751588f4d..ecd70fd38d465 100755
+--- a/chrome/android/monochrome/scripts/monochrome_python_tests.py
++++ b/chrome/android/monochrome/scripts/monochrome_python_tests.py
+@@ -21,6 +21,7 @@ import typ
+ # Import test files so they they are included in .pydeps.
+ import monochrome_dexdump_test
+ import monochrome_apk_checker_test
++import monochrome_android_manifest_test
+ 
+ 
+ def create_argument_parser():
+diff --git a/chrome/android/monochrome/scripts/monochrome_python_tests.pydeps b/chrome/android/monochrome/scripts/monochrome_python_tests.pydeps
+index c6a5022652cf0..8a0cd5a0be6ec 100644
+--- a/chrome/android/monochrome/scripts/monochrome_python_tests.pydeps
++++ b/chrome/android/monochrome/scripts/monochrome_python_tests.pydeps
+@@ -5,6 +5,7 @@
+ //build/android/pylib/constants/__init__.py
+ //build/android/pylib/constants/host_paths.py
+ //build/gn_helpers.py
++//chrome/android/monochrome/scripts/monochrome_android_manifest_test.py
+ //chrome/android/monochrome/scripts/monochrome_apk_checker_test.py
+ //chrome/android/monochrome/scripts/monochrome_dexdump_test.py
+ //chrome/android/monochrome/scripts/monochrome_python_tests.py
+-- 
+2.44.0
+

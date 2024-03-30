@@ -1,0 +1,13 @@
+name: "bpftool"
+description:
+    "tool for inspection and simple manipulation of eBPF programs and maps"
+
+third_party {
+  url {
+    type: GIT
+    value: "https://github.git.corp.google.com/libbpf/bpftool"
+  }
+  version: "51d4a12c69c7339f60813b04fc9d0fd6154792a6"
+  last_upgrade_date { year: 2022 month: 2 day: 10 }
+  license_type: RESTRICTED
+}
