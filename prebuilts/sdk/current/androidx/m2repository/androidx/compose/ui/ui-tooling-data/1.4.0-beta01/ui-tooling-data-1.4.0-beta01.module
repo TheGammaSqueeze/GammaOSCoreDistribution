@@ -1,0 +1,131 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.compose.ui",
+    "module": "ui-tooling-data",
+    "version": "1.4.0-beta01",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.0-rc-2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.compose.runtime",
+          "module": "runtime",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui",
+          "version": {
+            "requires": "1.4.0-beta01"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "ui-tooling-data-1.4.0-beta01.aar",
+          "url": "ui-tooling-data-1.4.0-beta01.aar",
+          "size": 38466,
+          "sha512": "a928e56132ffeac57a93e6fb74d0fffca0bda586569c8deb0c3beffc5774ec4c9c66a2ca349be3ce4018a03c0bb9b3caac9fe0a9c8b84d9f50ede477ea59bb8f",
+          "sha256": "5622b317e4c95c6484b998f73f0913812356808db57f786c0b2faca206ad5474",
+          "sha1": "c4b8629556451ef5204aa7bbe9dddbe802add68e",
+          "md5": "d3249c892e20a55d75b34ae872b0561a"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.compose.runtime",
+          "module": "runtime",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui",
+          "version": {
+            "requires": "1.4.0-beta01"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.8.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "ui-tooling-data-1.4.0-beta01.aar",
+          "url": "ui-tooling-data-1.4.0-beta01.aar",
+          "size": 38466,
+          "sha512": "a928e56132ffeac57a93e6fb74d0fffca0bda586569c8deb0c3beffc5774ec4c9c66a2ca349be3ce4018a03c0bb9b3caac9fe0a9c8b84d9f50ede477ea59bb8f",
+          "sha256": "5622b317e4c95c6484b998f73f0913812356808db57f786c0b2faca206ad5474",
+          "sha1": "c4b8629556451ef5204aa7bbe9dddbe802add68e",
+          "md5": "d3249c892e20a55d75b34ae872b0561a"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "ui-tooling-data-1.4.0-beta01-sources.jar",
+          "url": "ui-tooling-data-1.4.0-beta01-sources.jar",
+          "size": 8830,
+          "sha512": "17504a669b95bdb6ca0efd17fe850129cd47b3b95db1a5324fe797eb04460393dadddc1fd2156d6ba94a4d919d5859cbd29b1427dbc945bf01b8ea3d3efe136b",
+          "sha256": "fc49790d9f2636dcdac07455c244ab3c5adb615c8a8e6c4d759402dca8852678",
+          "sha1": "1e7f6dea55635809a6e45355e4b1bc5a373deaf9",
+          "md5": "b01a631f87075b7a7dfb058818522da0"
+        }
+      ]
+    }
+  ]
+}

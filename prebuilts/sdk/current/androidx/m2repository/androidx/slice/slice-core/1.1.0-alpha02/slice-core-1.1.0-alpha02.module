@@ -1,0 +1,110 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.slice",
+    "module": "slice-core",
+    "version": "1.1.0-alpha02",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.4"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "slice-core-1.1.0-alpha02.aar",
+          "url": "slice-core-1.1.0-alpha02.aar",
+          "size": 162240,
+          "sha512": "1e5c46b77dc516d8c6a0cc765a8895cc38d0f03812efb78e6e878e6dd3509393fc6e26361f377ae721ca09cd9a43dcb5210344826ab95e55f2e03a00fb1c5437",
+          "sha256": "534a52433831d6641a0ab4e786ae057f5b33cfdf56ae38939ec73a131ea1fe8d",
+          "sha1": "e8785c259fa0192bd78dcbb8b64dba498b3e4cc9",
+          "md5": "f441a8e1a9a1509b14c48ba4265a684a"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.appcompat",
+          "module": "appcompat",
+          "version": {
+            "requires": "1.4.0"
+          }
+        },
+        {
+          "group": "androidx.collection",
+          "module": "collection",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "slice-core-1.1.0-alpha02.aar",
+          "url": "slice-core-1.1.0-alpha02.aar",
+          "size": 162240,
+          "sha512": "1e5c46b77dc516d8c6a0cc765a8895cc38d0f03812efb78e6e878e6dd3509393fc6e26361f377ae721ca09cd9a43dcb5210344826ab95e55f2e03a00fb1c5437",
+          "sha256": "534a52433831d6641a0ab4e786ae057f5b33cfdf56ae38939ec73a131ea1fe8d",
+          "sha1": "e8785c259fa0192bd78dcbb8b64dba498b3e4cc9",
+          "md5": "f441a8e1a9a1509b14c48ba4265a684a"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "slice-core-1.1.0-alpha02-sources.jar",
+          "url": "slice-core-1.1.0-alpha02-sources.jar",
+          "size": 53360,
+          "sha512": "e49ab5efeef44c4d108da7fb2743c9b136f08a76aa6d23ee3a6be7628a5f4c0c1edfba5160c7fb273c28e87987a867bc61fa8334e8a537908136f71ca95b7f46",
+          "sha256": "ba87ac8e4eeb608c25e38ba93f346a448fda8333768be46c71549e891b6de9c2",
+          "sha1": "853a20603c168d8e5d546d7244d5ee62fda28f41",
+          "md5": "ae944fde256d15ec3c06772c7725ce43"
+        }
+      ]
+    }
+  ]
+}

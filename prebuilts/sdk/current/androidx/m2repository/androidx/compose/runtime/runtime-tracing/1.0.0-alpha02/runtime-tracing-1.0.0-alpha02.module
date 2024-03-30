@@ -1,0 +1,124 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.compose.runtime",
+    "module": "runtime-tracing",
+    "version": "1.0.0-alpha02",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.0-rc-2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.3.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "runtime-tracing-1.0.0-alpha02.aar",
+          "url": "runtime-tracing-1.0.0-alpha02.aar",
+          "size": 5020,
+          "sha512": "1a68edb7e21b123b2ce522337d974c09d43642440ec17c680d41d6cfa1d0dc6b4f1ec4091778f9969d4c6d1166548435f7c0871626c1a4f4fbdd7a6b9019abda",
+          "sha256": "7080d6557e049f0384eb11b900f25a6ccb509b4abe838ddeca273836c22d54d2",
+          "sha1": "176442759ffca976e9bf42a0c7bdf3be1bf1e34b",
+          "md5": "36268f441bfb13fc8ea1ac73e702139c"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.3.0"
+          }
+        },
+        {
+          "group": "androidx.compose.runtime",
+          "module": "runtime",
+          "version": {
+            "requires": "1.4.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.startup",
+          "module": "startup-runtime",
+          "version": {
+            "requires": "1.1.1"
+          }
+        },
+        {
+          "group": "androidx.tracing",
+          "module": "tracing-perfetto",
+          "version": {
+            "requires": "1.0.0-alpha10"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.8.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "runtime-tracing-1.0.0-alpha02.aar",
+          "url": "runtime-tracing-1.0.0-alpha02.aar",
+          "size": 5020,
+          "sha512": "1a68edb7e21b123b2ce522337d974c09d43642440ec17c680d41d6cfa1d0dc6b4f1ec4091778f9969d4c6d1166548435f7c0871626c1a4f4fbdd7a6b9019abda",
+          "sha256": "7080d6557e049f0384eb11b900f25a6ccb509b4abe838ddeca273836c22d54d2",
+          "sha1": "176442759ffca976e9bf42a0c7bdf3be1bf1e34b",
+          "md5": "36268f441bfb13fc8ea1ac73e702139c"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "runtime-tracing-1.0.0-alpha02-sources.jar",
+          "url": "runtime-tracing-1.0.0-alpha02-sources.jar",
+          "size": 1629,
+          "sha512": "8e07dcce03480677564266c7ddbdea6022b542c6872d524bd065331a401f9f7f1aeefd4334776cdbc42e6cdba2197039bd9946a263df657feddc284f4945349f",
+          "sha256": "54c5d5e77b9278980fb7631d78a6fd55608ecb322506f2be7e58ab679b039d38",
+          "sha1": "ee9f28ad170fcac1ac8acf559c7baa2bef191e62",
+          "md5": "2b31caa2df70ee24342edbff0550e274"
+        }
+      ]
+    }
+  ]
+}

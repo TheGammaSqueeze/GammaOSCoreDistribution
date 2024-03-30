@@ -1,0 +1,110 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.compose.material",
+    "module": "material-icons-extended",
+    "version": "1.4.0-beta01",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.0-rc-2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.compose.material",
+          "module": "material-icons-core",
+          "version": {
+            "requires": "1.4.0-beta01"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "material-icons-extended-1.4.0-beta01.aar",
+          "url": "material-icons-extended-1.4.0-beta01.aar",
+          "size": 33686427,
+          "sha512": "76dc42a1857d745e397233264e921024982e1ac311fbe70a16b749ffdc70d3edf0c9c5147c7763f2a4901a9ebed2cf93e1158651a5deef5f0a94f78297176eec",
+          "sha256": "5cc3b80e45b08132216bbe6ae0c6dfd5c0b397beed7e88dc77f9deed0b53af4c",
+          "sha1": "d317a49c912ca31c1574b9d6a3e240ea082e18aa",
+          "md5": "d124256d7b0a2de7417bc5510e6ee22a"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.compose.material",
+          "module": "material-icons-core",
+          "version": {
+            "requires": "1.4.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.compose.runtime",
+          "module": "runtime",
+          "version": {
+            "requires": "1.4.0-beta01"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-common",
+          "version": {
+            "requires": "1.8.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "material-icons-extended-1.4.0-beta01.aar",
+          "url": "material-icons-extended-1.4.0-beta01.aar",
+          "size": 33686427,
+          "sha512": "76dc42a1857d745e397233264e921024982e1ac311fbe70a16b749ffdc70d3edf0c9c5147c7763f2a4901a9ebed2cf93e1158651a5deef5f0a94f78297176eec",
+          "sha256": "5cc3b80e45b08132216bbe6ae0c6dfd5c0b397beed7e88dc77f9deed0b53af4c",
+          "sha1": "d317a49c912ca31c1574b9d6a3e240ea082e18aa",
+          "md5": "d124256d7b0a2de7417bc5510e6ee22a"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "material-icons-extended-1.4.0-beta01-sources.jar",
+          "url": "material-icons-extended-1.4.0-beta01-sources.jar",
+          "size": 11068129,
+          "sha512": "683e6abd28454f3fdab9650ff1c8cac4931b4df00c35b724aaa879732da0a8636bd2834e3f4bf834706b534a25abb8a602fd06a79fefd9e31a33d8344bb1e801",
+          "sha256": "98ae531cc31a3656d6df8de88b72e4f5df3e8d5650511594bd8d424e69969821",
+          "sha1": "5901cea872dbfee01f0b364a8dedccb58053889b",
+          "md5": "3be163be0184c4d0b363b336ee0bba08"
+        }
+      ]
+    }
+  ]
+}

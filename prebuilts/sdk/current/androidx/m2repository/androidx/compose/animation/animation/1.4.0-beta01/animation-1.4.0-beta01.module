@@ -1,0 +1,180 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.compose.animation",
+    "module": "animation",
+    "version": "1.4.0-beta01",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.0-rc-2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.compose.animation",
+          "module": "animation-core",
+          "version": {
+            "requires": "1.4.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.compose.foundation",
+          "module": "foundation-layout",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.runtime",
+          "module": "runtime",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui-geometry",
+          "version": {
+            "requires": "1.2.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "animation-1.4.0-beta01.aar",
+          "url": "animation-1.4.0-beta01.aar",
+          "size": 1331311,
+          "sha512": "7fef543bd88511991410b36232bf273afdafed6abdfa5ae6ffc5e9f8d8c2a2d2d9d7127f469ef74355ad1ec31885a05ad48a88371509e8e9f0df1d1f74218620",
+          "sha256": "efbc75b1f29b0f5907d788efd703c8a781f8395fdea53be95e739da20656a63c",
+          "sha1": "0274c0a93a0a7962179ee31d14f36628a61b9c69",
+          "md5": "8394539004fc4ca1e477fc1e2a988a7a"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.compose.animation",
+          "module": "animation-core",
+          "version": {
+            "requires": "1.4.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.compose.foundation",
+          "module": "foundation-layout",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.runtime",
+          "module": "runtime",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui-geometry",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui-util",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-common",
+          "version": {
+            "requires": "1.8.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "animation-1.4.0-beta01.aar",
+          "url": "animation-1.4.0-beta01.aar",
+          "size": 1331311,
+          "sha512": "7fef543bd88511991410b36232bf273afdafed6abdfa5ae6ffc5e9f8d8c2a2d2d9d7127f469ef74355ad1ec31885a05ad48a88371509e8e9f0df1d1f74218620",
+          "sha256": "efbc75b1f29b0f5907d788efd703c8a781f8395fdea53be95e739da20656a63c",
+          "sha1": "0274c0a93a0a7962179ee31d14f36628a61b9c69",
+          "md5": "8394539004fc4ca1e477fc1e2a988a7a"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "animation-1.4.0-beta01-sources.jar",
+          "url": "animation-1.4.0-beta01-sources.jar",
+          "size": 41979,
+          "sha512": "5d58811ac2e3e0374b4ccff5bce3cdcabd645e716a867b2901086488d5008fd3d034ea029b7952410fd5419c3dc74c1ca6d28e6a212b4e9616a8e6b4806ed310",
+          "sha256": "6ad0d465a64ff1c539ce8dd94f673225b80094e9f3df722c5b96937e2228729d",
+          "sha1": "2168b131524faa3e69f335558c20229c83948c9d",
+          "md5": "906b56da60a75c8018211287c075d1ae"
+        }
+      ]
+    }
+  ]
+}

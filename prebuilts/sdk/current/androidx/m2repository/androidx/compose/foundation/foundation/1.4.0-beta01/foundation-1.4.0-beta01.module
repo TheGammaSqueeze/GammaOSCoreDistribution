@@ -1,0 +1,180 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.compose.foundation",
+    "module": "foundation",
+    "version": "1.4.0-beta01",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.0-rc-2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.compose.animation",
+          "module": "animation",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.runtime",
+          "module": "runtime",
+          "version": {
+            "requires": "1.3.1"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui",
+          "version": {
+            "requires": "1.4.0-beta01"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "foundation-1.4.0-beta01.aar",
+          "url": "foundation-1.4.0-beta01.aar",
+          "size": 3410822,
+          "sha512": "727dfe9c8b22a95087c7fb48fb53d65dd14704846a53934e93a32d9d9b6b646cc427f50ebae000ba7ec8955a17f624ab902b4d50bb3542f524f1df0673b781c8",
+          "sha256": "43fcfbb0be3b19e6e47eabbf721d0fff6d604b132c6d7d478ef0bdecf2cfb3a9",
+          "sha1": "17d3c7347130afd58a1c13562394a380c43d2eb7",
+          "md5": "e49ec43b5de14a315fae7ec8de2311f3"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.compose.animation",
+          "module": "animation",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.foundation",
+          "module": "foundation-layout",
+          "version": {
+            "requires": "1.4.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.compose.runtime",
+          "module": "runtime",
+          "version": {
+            "requires": "1.3.1"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui",
+          "version": {
+            "requires": "1.4.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui-graphics",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui-text",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui-util",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.emoji2",
+          "module": "emoji2",
+          "version": {
+            "requires": "1.3.0-beta02"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-common",
+          "version": {
+            "requires": "1.8.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "foundation-1.4.0-beta01.aar",
+          "url": "foundation-1.4.0-beta01.aar",
+          "size": 3410822,
+          "sha512": "727dfe9c8b22a95087c7fb48fb53d65dd14704846a53934e93a32d9d9b6b646cc427f50ebae000ba7ec8955a17f624ab902b4d50bb3542f524f1df0673b781c8",
+          "sha256": "43fcfbb0be3b19e6e47eabbf721d0fff6d604b132c6d7d478ef0bdecf2cfb3a9",
+          "sha1": "17d3c7347130afd58a1c13562394a380c43d2eb7",
+          "md5": "e49ec43b5de14a315fae7ec8de2311f3"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "foundation-1.4.0-beta01-sources.jar",
+          "url": "foundation-1.4.0-beta01-sources.jar",
+          "size": 460859,
+          "sha512": "19d51a6a160c27a644a3ba98f993a9022b8a8a8956790afdfc875788480f505c0a1de14b76f2cfe963727236a9c438f250210e08b7096651942be66d06047cbe",
+          "sha256": "af66a93f2391bed2e2b289329c2f8e8700e3ed306e3dc54036281d6222863e3f",
+          "sha1": "8f8f74ef8c5541b27f4307f5e8cc0029fe8fd221",
+          "md5": "e8312879c11836781710ff99d978b414"
+        }
+      ]
+    }
+  ]
+}

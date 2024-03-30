@@ -1,0 +1,159 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.car.app",
+    "module": "app",
+    "version": "1.2.0-beta03",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.4"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.activity",
+          "module": "activity",
+          "version": {
+            "requires": "1.2.0"
+          }
+        },
+        {
+          "group": "androidx.lifecycle",
+          "module": "lifecycle-common-java8",
+          "version": {
+            "requires": "2.2.0"
+          }
+        },
+        {
+          "group": "androidx.annotation",
+          "module": "annotation-experimental",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.6.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "app-1.2.0-beta03.aar",
+          "url": "app-1.2.0-beta03.aar",
+          "size": 390634,
+          "sha512": "8304585ce7d5d9ed4b6ada08c9267c146a2af54aca7bd7b5d3e4eded0f029af5e47010617d29b8d82e32bc5e1483f047919d8e787ccd18d95a0dfe2c982f5c8c",
+          "sha256": "2bcf4448639d4f699aa368e98684ad34dfd15f040d85c5fbb26fe72240b9f4ca",
+          "sha1": "5f5e5888191af34b9a63b85d27cb45bc1d0b2853",
+          "md5": "1b0545a7cde3c5cb18c0443ad827bd7c"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.2.0"
+          }
+        },
+        {
+          "group": "androidx.core",
+          "module": "core",
+          "version": {
+            "requires": "1.7.0"
+          }
+        },
+        {
+          "group": "androidx.lifecycle",
+          "module": "lifecycle-viewmodel",
+          "version": {
+            "requires": "2.2.0"
+          }
+        },
+        {
+          "group": "androidx.activity",
+          "module": "activity",
+          "version": {
+            "requires": "1.2.0"
+          }
+        },
+        {
+          "group": "androidx.lifecycle",
+          "module": "lifecycle-common-java8",
+          "version": {
+            "requires": "2.2.0"
+          }
+        },
+        {
+          "group": "androidx.annotation",
+          "module": "annotation-experimental",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.6.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "app-1.2.0-beta03.aar",
+          "url": "app-1.2.0-beta03.aar",
+          "size": 390634,
+          "sha512": "8304585ce7d5d9ed4b6ada08c9267c146a2af54aca7bd7b5d3e4eded0f029af5e47010617d29b8d82e32bc5e1483f047919d8e787ccd18d95a0dfe2c982f5c8c",
+          "sha256": "2bcf4448639d4f699aa368e98684ad34dfd15f040d85c5fbb26fe72240b9f4ca",
+          "sha1": "5f5e5888191af34b9a63b85d27cb45bc1d0b2853",
+          "md5": "1b0545a7cde3c5cb18c0443ad827bd7c"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "app-1.2.0-beta03-sources.jar",
+          "url": "app-1.2.0-beta03-sources.jar",
+          "size": 307381,
+          "sha512": "47df0cb6ba747745e88c390659c5f982a177e13ecb20c7a5f42b46f059841d458cfc43241138ff721eae54ecee80ccfb60e7a39eaa6619e56eef3a2bd2b7d80c",
+          "sha256": "c2e1fbcae13ae30c8aaf75acd220437d2a4307aaea5980ae06144943b1f0c077",
+          "sha1": "1912b37e3e0a98e7ef41f8124935c603446e1604",
+          "md5": "b4f30cd5f8e8fa35f5e25c05935f94bf"
+        }
+      ]
+    }
+  ]
+}

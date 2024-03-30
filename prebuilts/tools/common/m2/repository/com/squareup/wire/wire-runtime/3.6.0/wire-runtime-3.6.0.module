@@ -1,0 +1,117 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "url": "../../wire-runtime-multiplatform/3.6.0/wire-runtime-multiplatform-3.6.0.module",
+    "group": "com.squareup.wire",
+    "module": "wire-runtime-multiplatform",
+    "version": "3.6.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.7",
+      "buildId": "zczbglipjfarxeyg6iilul26le"
+    }
+  },
+  "variants": [
+    {
+      "name": "jvm-api",
+      "attributes": {
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.4.10"
+          }
+        },
+        {
+          "group": "com.squareup.okio",
+          "module": "okio-multiplatform",
+          "version": {
+            "requires": "2.8.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-common",
+          "version": {
+            "requires": "1.4.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "wire-runtime-jvm-3.6.0.jar",
+          "url": "wire-runtime-3.6.0.jar",
+          "size": 182871,
+          "sha512": "f9bcc480f38e3cfe6c743ad44a0e78a231a1e0c50ee4a136fdb98a4631cd0d04b22cadddabe5db329b63a42275c741454be61239c6bf93d62329581dfeaf35e0",
+          "sha256": "ac41d3f9b8a88046788c6827b0519bf0c53dcc271f598f48aa666c6f5a9523d0",
+          "sha1": "0e7c4b4fd5d64ea6ae883ffd0a08eb787a8be626",
+          "md5": "17bdab737df560182fbabbcf2569fb42"
+        }
+      ]
+    },
+    {
+      "name": "jvm-runtime",
+      "attributes": {
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.4.10"
+          }
+        },
+        {
+          "group": "com.squareup.okio",
+          "module": "okio-multiplatform",
+          "version": {
+            "requires": "2.8.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-common",
+          "version": {
+            "requires": "1.4.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "wire-runtime-jvm-3.6.0.jar",
+          "url": "wire-runtime-3.6.0.jar",
+          "size": 182871,
+          "sha512": "f9bcc480f38e3cfe6c743ad44a0e78a231a1e0c50ee4a136fdb98a4631cd0d04b22cadddabe5db329b63a42275c741454be61239c6bf93d62329581dfeaf35e0",
+          "sha256": "ac41d3f9b8a88046788c6827b0519bf0c53dcc271f598f48aa666c6f5a9523d0",
+          "sha1": "0e7c4b4fd5d64ea6ae883ffd0a08eb787a8be626",
+          "md5": "17bdab737df560182fbabbcf2569fb42"
+        }
+      ]
+    },
+    {
+      "name": "metadata-api",
+      "attributes": {
+        "org.gradle.usage": "kotlin-api",
+        "org.jetbrains.kotlin.platform.type": "common"
+      },
+      "available-at": {
+        "url": "../../wire-runtime-metadata/3.6.0/wire-runtime-metadata-3.6.0.module",
+        "group": "com.squareup.wire",
+        "module": "wire-runtime-metadata",
+        "version": "3.6.0"
+      }
+    }
+  ]
+}

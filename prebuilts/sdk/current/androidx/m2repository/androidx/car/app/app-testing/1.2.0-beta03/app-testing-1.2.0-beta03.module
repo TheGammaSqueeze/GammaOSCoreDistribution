@@ -1,0 +1,131 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.car.app",
+    "module": "app-testing",
+    "version": "1.2.0-beta03",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.4"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.car.app",
+          "module": "app",
+          "version": {
+            "requires": "1.2.0-beta03"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "app-testing-1.2.0-beta03.aar",
+          "url": "app-testing-1.2.0-beta03.aar",
+          "size": 20374,
+          "sha512": "670951e605807a93811ca8c0ea6bf3fcd0cc43fc6a315665bb295999e7aa1fc5a3992a92f7e8187c711de093d5017442e03fb539a08aaafc13a65941b241dc78",
+          "sha256": "7797b2e60b3d1d5ba5e52d94e385f42a435a61855e01aba33a014958f1a6953f",
+          "sha1": "7f9aa75b6c644bfb5140ebbfaef3f575445cd609",
+          "md5": "d95ef9864af46f6f8f3400863ecdbe8f"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.lifecycle",
+          "module": "lifecycle-runtime",
+          "version": {
+            "requires": "2.2.0"
+          }
+        },
+        {
+          "group": "androidx.lifecycle",
+          "module": "lifecycle-common-java8",
+          "version": {
+            "requires": "2.2.0"
+          }
+        },
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "org.robolectric",
+          "module": "robolectric",
+          "version": {
+            "requires": "4.7.3"
+          }
+        },
+        {
+          "group": "androidx.annotation",
+          "module": "annotation-experimental",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.car.app",
+          "module": "app",
+          "version": {
+            "requires": "1.2.0-beta03"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "app-testing-1.2.0-beta03.aar",
+          "url": "app-testing-1.2.0-beta03.aar",
+          "size": 20374,
+          "sha512": "670951e605807a93811ca8c0ea6bf3fcd0cc43fc6a315665bb295999e7aa1fc5a3992a92f7e8187c711de093d5017442e03fb539a08aaafc13a65941b241dc78",
+          "sha256": "7797b2e60b3d1d5ba5e52d94e385f42a435a61855e01aba33a014958f1a6953f",
+          "sha1": "7f9aa75b6c644bfb5140ebbfaef3f575445cd609",
+          "md5": "d95ef9864af46f6f8f3400863ecdbe8f"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "app-testing-1.2.0-beta03-sources.jar",
+          "url": "app-testing-1.2.0-beta03-sources.jar",
+          "size": 15783,
+          "sha512": "c80f13d4536b984bfb48b05d25956d7405e6a699191de80ca7f5fe33c640e57d80f0852dc2505a307b6ba052e2f7e7167661f52440dfd4b3e91a83eaf23b2e5c",
+          "sha256": "ff9b6fd1f91103d4022abdcf6f6cc78e62fe4ac149e2039cb164a050763a0a8d",
+          "sha1": "186a830784e32e9fa97b51952e6d2379e2024629",
+          "md5": "6393e011c12d4cde0f6c658a9039e96b"
+        }
+      ]
+    }
+  ]
+}

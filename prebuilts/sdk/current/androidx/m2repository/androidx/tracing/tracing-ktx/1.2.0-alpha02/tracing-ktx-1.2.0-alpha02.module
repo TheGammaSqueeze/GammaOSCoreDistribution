@@ -1,0 +1,110 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.tracing",
+    "module": "tracing-ktx",
+    "version": "1.2.0-alpha02",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.0-rc-2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.tracing",
+          "module": "tracing",
+          "version": {
+            "requires": "1.2.0-alpha02"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.8.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "tracing-ktx-1.2.0-alpha02.aar",
+          "url": "tracing-ktx-1.2.0-alpha02.aar",
+          "size": 6052,
+          "sha512": "9897e118378e7213713ef357ae12afd152ace824cd2247aab69883515a84f54fca27f9fa02a21d6f71a305f5cbeb4347d21b84fdc916f7aee2712c7f75f465b5",
+          "sha256": "25e9763e6ee05de80b77eb566a29b4489a15b38b9676c42ceb7a2267f3a7ce94",
+          "sha1": "5cd0dfcbbde6cd56a1dd20c0a42c59b6f11a6efc",
+          "md5": "a5330eda4080df1bacf5b66aee01e789"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.tracing",
+          "module": "tracing",
+          "version": {
+            "requires": "1.2.0-alpha02"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.8.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "tracing-ktx-1.2.0-alpha02.aar",
+          "url": "tracing-ktx-1.2.0-alpha02.aar",
+          "size": 6052,
+          "sha512": "9897e118378e7213713ef357ae12afd152ace824cd2247aab69883515a84f54fca27f9fa02a21d6f71a305f5cbeb4347d21b84fdc916f7aee2712c7f75f465b5",
+          "sha256": "25e9763e6ee05de80b77eb566a29b4489a15b38b9676c42ceb7a2267f3a7ce94",
+          "sha1": "5cd0dfcbbde6cd56a1dd20c0a42c59b6f11a6efc",
+          "md5": "a5330eda4080df1bacf5b66aee01e789"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "tracing-ktx-1.2.0-alpha02-sources.jar",
+          "url": "tracing-ktx-1.2.0-alpha02-sources.jar",
+          "size": 1656,
+          "sha512": "59cc2848a824d4e04d07c13d02a168289928c4a4d8cdeaa4d35f54c2dd84491046627602de07383915c27b2042cc268364ed3bf2d9e155b43b3ce6d7df9faa48",
+          "sha256": "a2998626297e803d410f3b800f04bed974def11ac9936538485a46cd4ff21c6d",
+          "sha1": "30cc348deac16dc20078334cd78a8ad8e852c7dd",
+          "md5": "cd551b1fc1cab570608f52b0918d8e29"
+        }
+      ]
+    }
+  ]
+}

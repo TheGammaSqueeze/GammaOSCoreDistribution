@@ -1,0 +1,9 @@
+third_party {
+  license_note: "would be NOTICE save for GPL in:\n"
+  "   common/py3-stdlib/urllib/robotparser.py\n"
+  "   common/bison/... see:\n"
+  "     common/bison/README.md\n"
+  "     common/bison/NOTICE\n"
+  "     plus copyright headers"
+  license_type: RESTRICTED
+}

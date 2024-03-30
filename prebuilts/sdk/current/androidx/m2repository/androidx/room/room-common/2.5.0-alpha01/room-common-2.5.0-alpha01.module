@@ -1,0 +1,116 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.room",
+    "module": "room-common",
+    "version": "2.5.0-alpha01",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.4"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "room-common-2.5.0-alpha01.jar",
+          "url": "room-common-2.5.0-alpha01.jar",
+          "size": 41388,
+          "sha512": "f056295c87ed82930c62711394c8f2c2e0f12550e1d504cce26a5ba999093cf9d1170cbb8c2994168546d9068cdf0d52faceab5f4d94af518a5cec63af4c197f",
+          "sha256": "9a2292ecb2dd2025cb7b4dde9171d6eae1afc6685f16193cbbaa692bcbabecee",
+          "sha1": "c20756822255df418f65517a00e0f962e36c3f3a",
+          "md5": "0eca4f7b12f84817e994d09657ff2f3f"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.environment": "standard-jvm",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.6.10"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "room-common-2.5.0-alpha01.jar",
+          "url": "room-common-2.5.0-alpha01.jar",
+          "size": 41388,
+          "sha512": "f056295c87ed82930c62711394c8f2c2e0f12550e1d504cce26a5ba999093cf9d1170cbb8c2994168546d9068cdf0d52faceab5f4d94af518a5cec63af4c197f",
+          "sha256": "9a2292ecb2dd2025cb7b4dde9171d6eae1afc6685f16193cbbaa692bcbabecee",
+          "sha1": "c20756822255df418f65517a00e0f962e36c3f3a",
+          "md5": "0eca4f7b12f84817e994d09657ff2f3f"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "room-common-2.5.0-alpha01-sources.jar",
+          "url": "room-common-2.5.0-alpha01-sources.jar",
+          "size": 54315,
+          "sha512": "720c39fd58459c44373224d2f77502523958e14cb5b2919769eb2128059bc209547b99206120553be6d60cd0f0d855d564181952dbf4179c9bf46eb3c6c19d0e",
+          "sha256": "216be1963c53b7a184bea29d272f7728440b8fcba126bc6dfd236b30fe65588c",
+          "sha1": "d4942072b3e9c9e3a11ba79679996bb0ea041a7a",
+          "md5": "f1196079d17d56867aeade7f5af6c360"
+        }
+      ]
+    }
+  ]
+}

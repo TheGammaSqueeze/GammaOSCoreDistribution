@@ -1,0 +1,159 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.preference",
+    "module": "preference",
+    "version": "1.2.0-alpha01",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.2.0"
+          }
+        },
+        {
+          "group": "androidx.appcompat",
+          "module": "appcompat",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.core",
+          "module": "core",
+          "version": {
+            "requires": "1.6.0-rc01"
+          }
+        },
+        {
+          "group": "androidx.fragment",
+          "module": "fragment",
+          "version": {
+            "requires": "1.2.4"
+          }
+        },
+        {
+          "group": "androidx.recyclerview",
+          "module": "recyclerview",
+          "version": {
+            "requires": "1.0.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "preference-1.2.0-alpha01.aar",
+          "url": "preference-1.2.0-alpha01.aar",
+          "size": 244037,
+          "sha512": "8d96d7588be08147bb347dc347303c8b3586db68d9406e98d25b775ee9e8406ef5024ef388a0cd89a55165ff2a10d22f0dd3198b9b46ae1de3363cdb29ef9f9b",
+          "sha256": "3fa902d1ac9cc79fa09d48287710689b6e75d87e261cae71f0954fbbc1484a1f",
+          "sha1": "96d94f0b95abe4a11148b19713c4a583b62332d8",
+          "md5": "5b4f59c78eb9b234bdfdeb3401ba5353"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.2.0"
+          }
+        },
+        {
+          "group": "androidx.appcompat",
+          "module": "appcompat",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.core",
+          "module": "core",
+          "version": {
+            "requires": "1.6.0-rc01"
+          }
+        },
+        {
+          "group": "androidx.fragment",
+          "module": "fragment",
+          "version": {
+            "requires": "1.2.4"
+          }
+        },
+        {
+          "group": "androidx.recyclerview",
+          "module": "recyclerview",
+          "version": {
+            "requires": "1.0.0"
+          }
+        },
+        {
+          "group": "androidx.collection",
+          "module": "collection",
+          "version": {
+            "requires": "1.0.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "preference-1.2.0-alpha01.aar",
+          "url": "preference-1.2.0-alpha01.aar",
+          "size": 244037,
+          "sha512": "8d96d7588be08147bb347dc347303c8b3586db68d9406e98d25b775ee9e8406ef5024ef388a0cd89a55165ff2a10d22f0dd3198b9b46ae1de3363cdb29ef9f9b",
+          "sha256": "3fa902d1ac9cc79fa09d48287710689b6e75d87e261cae71f0954fbbc1484a1f",
+          "sha1": "96d94f0b95abe4a11148b19713c4a583b62332d8",
+          "md5": "5b4f59c78eb9b234bdfdeb3401ba5353"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "preference-1.2.0-alpha01-sources.jar",
+          "url": "preference-1.2.0-alpha01-sources.jar",
+          "size": 109527,
+          "sha512": "5f60bcfbdd84e529d4ef59e4b7ed77e12db26a1e3cb9fce51741854ebefbb2590f83df0364460991dcde56d00a8eaa6848893df49e18259d391b4c945daa43aa",
+          "sha256": "11d64d912d34d0e36af6e753191fd45523f8af9cdeeef7c9a02fadab3969aaa8",
+          "sha1": "808d1eabdaa86a2adfe1256e5052202598febd53",
+          "md5": "34ea6bbd5d9ecd2c1ed9aec4bc4c1a27"
+        }
+      ]
+    }
+  ]
+}

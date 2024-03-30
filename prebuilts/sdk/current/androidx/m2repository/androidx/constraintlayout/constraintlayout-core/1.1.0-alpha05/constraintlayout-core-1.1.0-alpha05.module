@@ -1,0 +1,98 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.constraintlayout",
+    "module": "constraintlayout-core",
+    "version": "1.1.0-alpha05",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.6"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.5.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "constraintlayout-core-1.1.0-alpha05.jar",
+          "url": "constraintlayout-core-1.1.0-alpha05.jar",
+          "size": 567098,
+          "sha512": "20355f065c52550f32b55355b5bfef8ad4f2db0fbdf0573fe50d0e808c12b47f542c1db3574b9f049193945408aa9f4d6abae1d2ec801c85e1d8c3b7f7fc5be3",
+          "sha256": "85ea65d67640fbc044cc0a458fa255f9f836db8b3587519325b0150ef52c9bc9",
+          "sha1": "850d107f89e8977b776086bde9006bbc15dd603e",
+          "md5": "781fde9361edbfaa979f63fdac448131"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.5.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "constraintlayout-core-1.1.0-alpha05.jar",
+          "url": "constraintlayout-core-1.1.0-alpha05.jar",
+          "size": 567098,
+          "sha512": "20355f065c52550f32b55355b5bfef8ad4f2db0fbdf0573fe50d0e808c12b47f542c1db3574b9f049193945408aa9f4d6abae1d2ec801c85e1d8c3b7f7fc5be3",
+          "sha256": "85ea65d67640fbc044cc0a458fa255f9f836db8b3587519325b0150ef52c9bc9",
+          "sha1": "850d107f89e8977b776086bde9006bbc15dd603e",
+          "md5": "781fde9361edbfaa979f63fdac448131"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "constraintlayout-core-1.1.0-alpha05-sources.jar",
+          "url": "constraintlayout-core-1.1.0-alpha05-sources.jar",
+          "size": 342389,
+          "sha512": "0df8cbb01dda1f793db1ed321467661b9a628b02712961b71c63275a2c5069891267ae9a2ee87e18def48e745cf643816b1c6b9cc5d918b1c95ec8ef3b6ee1c7",
+          "sha256": "0166ad7e86174cc2dce6de7f6c32b80eb114cb147662f814ab6cb816cf34bf88",
+          "sha1": "713a145a6885eed958c232b99e7eaa4b85eb569e",
+          "md5": "ef2afe312bd7fef3c8fde3c5a70f85cf"
+        }
+      ]
+    }
+  ]
+}

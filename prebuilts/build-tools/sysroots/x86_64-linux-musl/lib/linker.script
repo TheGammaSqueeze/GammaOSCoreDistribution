@@ -1,0 +1,17 @@
+ENTRY(__dlwrap__start)
+SECTIONS {
+  .linker_r 0x1000 : {
+    KEEP(*(.linker_r));
+  }
+  .linker_rx 0x500fc : {
+    KEEP(*(.linker_rx));
+  }
+  .linker_rw 0x11a090 : {
+    KEEP(*(.linker_rw));
+  }
+  .linker_rw2 0x11b7f0 : {
+    KEEP(*(.linker_rw2));
+  }
+  /DISCARD/ : { *(.interp) }
+}
+INSERT BEFORE .note.android.embedded_linker;

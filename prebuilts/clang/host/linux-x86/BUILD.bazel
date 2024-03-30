@@ -1,0 +1,330 @@
+# NOTE: THIS FILE IS EXPERIMENTAL FOR THE BAZEL MIGRATION AND NOT USED FOR
+# YOUR BUILDS CURRENTLY.
+#
+# It is not yet the source of truth for your build. If you're looking to modify
+# the build file, modify the Android.bp file instead. Do *not* modify this file
+# unless you have coordinated with the team managing the Soong to Bazel
+# migration.
+
+package(default_visibility = ["//visibility:public"])
+
+# Toolchain config
+filegroup(name = "empty")
+
+load(
+    ":cc_toolchain_config.bzl",
+    "android_cc_toolchain",
+    "clang_version",
+    "expand_feature_flags",
+)
+load(
+    ":cc_toolchain_constants.bzl",
+    "arch_to_variants",
+    "arches",
+    "arm_extra_ldflags",
+    "enabled_features",
+    "device_compatibility_flags_non_darwin",
+    "device_compatibility_flags_non_windows",
+    "generated_constants",
+    "variant_constraints",
+    "variant_name",
+)
+load("//build/bazel/platforms/arch/variants:constants.bzl", _arch_constants = "constants")
+
+# Different clang versions are configured here.
+clang_version(
+    name = "clang",
+    directory = generated_constants.CLANG_DEFAULT_VERSION,
+    includes = [
+        "lib64/clang/%s/include" % generated_constants.CLANG_DEFAULT_SHORT_VERSION,
+    ],
+)
+
+_LIBCLANG_RT_PREFIX = "%s/lib64/clang/%s/lib/linux" % (
+    generated_constants.CLANG_DEFAULT_VERSION,
+    generated_constants.CLANG_DEFAULT_SHORT_VERSION,
+)
+
+_LIBCLANG_RT_PREBUILT_MAP = {
+    "//build/bazel/platforms/os_arch:android_arm": _LIBCLANG_RT_PREFIX + "/libclang_rt.builtins-arm-android.a",
+    "//build/bazel/platforms/os_arch:android_arm64": _LIBCLANG_RT_PREFIX + "/libclang_rt.builtins-aarch64-android.a",
+    "//build/bazel/platforms/os_arch:android_x86": _LIBCLANG_RT_PREFIX + "/libclang_rt.builtins-i686-android.a",
+    "//build/bazel/platforms/os_arch:android_x86_64": _LIBCLANG_RT_PREFIX + "/libclang_rt.builtins-x86_64-android.a",
+    "//build/bazel/platforms/os_arch:linux_bionic_x86_64": _LIBCLANG_RT_PREFIX + "/libclang_rt.builtins-x86_64-android.a",
+    "//build/bazel/platforms/os_arch:linux_glibc_x86": _LIBCLANG_RT_PREFIX + "/libclang_rt.builtins-i386.a",
+    "//build/bazel/platforms/os_arch:linux_glibc_x86_64": _LIBCLANG_RT_PREFIX + "/libclang_rt.builtins-x86_64.a",
+    "//conditions:default": None,
+}
+
+# x86_64 toolchain definitions
+[
+    android_cc_toolchain(
+        name = "cc_toolchain_x86_64" + variant_name(variant),
+        clang_version = ":clang",
+        clang_version_directory = generated_constants.CLANG_DEFAULT_VERSION,
+        libclang_rt_builtin = _LIBCLANG_RT_PREBUILT_MAP["//build/bazel/platforms/os_arch:android_x86_64"],
+        linker_flags = generated_constants.X86_64ToolchainLdflags + generated_constants.X86_64Lldflags,
+        target_arch = arches.X86_64,
+        target_flags = generated_constants.X86_64ToolchainCflags +
+                       generated_constants.X86_64ArchVariantCflags[variant.arch_variant] +
+                       expand_feature_flags(
+                           variant.arch_variant,
+                           _arch_constants.AndroidArchToVariantToFeatures[arches.X86_64],
+                           generated_constants.X86_64ArchFeatureCflags,
+                       ) + generated_constants.X86_64Cflags,
+        target_os = "android",
+        toolchain_identifier = "x86_64-toolchain",
+    )
+    for variant in arch_to_variants[arches.X86_64]
+]
+
+# x86 toolchain definitions.
+[
+    android_cc_toolchain(
+        name = "cc_toolchain_x86" + variant_name(variant),
+        clang_version = ":clang",
+        clang_version_directory = generated_constants.CLANG_DEFAULT_VERSION,
+        libclang_rt_builtin = _LIBCLANG_RT_PREBUILT_MAP["//build/bazel/platforms/os_arch:android_x86"],
+        linker_flags = generated_constants.X86ToolchainLdflags + generated_constants.X86Lldflags,
+        target_arch = arches.X86,
+        target_flags = generated_constants.X86ToolchainCflags +
+                       generated_constants.X86ArchVariantCflags[variant.arch_variant] +
+                       expand_feature_flags(
+                           variant.arch_variant,
+                           _arch_constants.AndroidArchToVariantToFeatures[arches.X86],
+                           generated_constants.X86ArchFeatureCflags,
+                       ) + generated_constants.X86Cflags,
+        target_os = "android",
+        toolchain_identifier = "x86-toolchain",
+    )
+    for variant in arch_to_variants[arches.X86]
+]
+
+# arm64 toolchain definitions.
+[
+    android_cc_toolchain(
+        name = "cc_toolchain_arm64" + variant_name(variant),
+        clang_version = ":clang",
+        clang_version_directory = generated_constants.CLANG_DEFAULT_VERSION,
+        libclang_rt_builtin = _LIBCLANG_RT_PREBUILT_MAP["//build/bazel/platforms/os_arch:android_arm64"],
+        linker_flags = generated_constants.Arm64CpuVariantLdflags.get(
+            variant.cpu_variant,
+            [],
+        ) + generated_constants.Arm64Lldflags,
+        target_arch = arches.Arm64,
+        target_flags = generated_constants.Arm64ArchVariantCflags[variant.arch_variant] +
+                       generated_constants.Arm64CpuVariantCflags.get(
+                           variant.cpu_variant,
+                           [],
+                       ),
+        target_os = "android",
+        toolchain_identifier = "arm64-toolchain",
+    )
+    for variant in arch_to_variants[arches.Arm64]
+]
+
+# arm32 toolchain definitions.
+[
+    android_cc_toolchain(
+        name = "cc_toolchain_arm" + variant_name(variant),
+        clang_version = ":clang",
+        clang_version_directory = generated_constants.CLANG_DEFAULT_VERSION,
+        libclang_rt_builtin = _LIBCLANG_RT_PREBUILT_MAP["//build/bazel/platforms/os_arch:android_arm"],
+        linker_flags = generated_constants.ArmLldflags + arm_extra_ldflags(variant),
+        target_arch = arches.Arm,
+        target_flags = generated_constants.ArmToolchainCflags +
+                       generated_constants.ArmArchVariantCflags[variant.arch_variant] +
+                       generated_constants.ArmCpuVariantCflags.get(
+                           variant.cpu_variant,
+                           [],
+                       ),
+        target_os = "android",
+        toolchain_identifier = "arm-toolchain",
+    )
+    for variant in arch_to_variants[arches.Arm]
+]
+
+# Toolchain to compile for the linux host.
+# TODO(b/186628704): automatically generate from Soong.
+android_cc_toolchain(
+    name = "cc_toolchain_x86_64_linux_host",
+    clang_version = ":clang",
+    clang_version_directory = generated_constants.CLANG_DEFAULT_VERSION,
+    compiler_flags = generated_constants.LinuxCflags +
+                     generated_constants.LinuxGlibcCflags +
+                     generated_constants.LinuxX8664Cflags +
+    # Added by stl.go for non-bionic toolchains.
+    [
+        "-nostdinc++",
+    ],
+    crt = False,
+    gcc_toolchain = generated_constants.LinuxGccRoot,
+    libclang_rt_builtin = _LIBCLANG_RT_PREBUILT_MAP["//build/bazel/platforms/os_arch:linux_glibc_x86_64"],
+    linker_flags = generated_constants.LinuxGlibcLdflags +
+                   generated_constants.LinuxLdflags +
+                   generated_constants.LinuxX8664Ldflags +
+                   device_compatibility_flags_non_windows +
+                   device_compatibility_flags_non_darwin,
+    rtti_toggle = False,
+    target_arch = "x86_64",
+    target_flags = ["--target=x86_64-linux-gnu"],
+    target_os = "linux_glibc",
+    toolchain_identifier = "x86_64-toolchain",
+)
+
+# Toolchain to compile for the linux x86 target.
+android_cc_toolchain(
+    name = "cc_toolchain_x86_linux_host",
+    clang_version = ":clang",
+    clang_version_directory = generated_constants.CLANG_DEFAULT_VERSION,
+    compiler_flags = generated_constants.LinuxCflags +
+                     generated_constants.LinuxGlibcCflags +
+                     generated_constants.LinuxX86Cflags +
+    # Added by stl.go for non-bionic toolchains.
+    [
+        "-nostdinc++",
+    ],
+    crt = False,
+    gcc_toolchain = generated_constants.LinuxGccRoot,
+    libclang_rt_builtin = _LIBCLANG_RT_PREBUILT_MAP["//build/bazel/platforms/os_arch:linux_glibc_x86"],
+    linker_flags = generated_constants.LinuxGlibcLdflags +
+                   generated_constants.LinuxLdflags +
+                   generated_constants.LinuxX86Ldflags +
+                   device_compatibility_flags_non_windows +
+                   device_compatibility_flags_non_darwin,
+    rtti_toggle = False,
+    target_arch = "x86",
+    target_flags = ["--target=i686-linux-gnu"],
+    target_os = "linux_glibc",
+    toolchain_identifier = "x86-toolchain",
+)
+
+toolchain_type(name = "nocrt_toolchain")
+
+# Device toolchains with crt libraries
+[
+    [
+        toolchain(
+            name = "cc_toolchain_{arch}{variant}_def".format(
+                arch = arch,
+                variant = variant_name(variant),
+            ),
+            exec_compatible_with = [
+                "//build/bazel/platforms/arch:x86_64",
+                "//build/bazel/platforms/os:linux",
+            ],
+            target_compatible_with = [
+                "//build/bazel/platforms/arch:%s" % arch,
+                "//build/bazel/platforms/os:android",
+            ] + variant_constraints(
+                variant,
+                _arch_constants.AndroidArchToVariantToFeatures[arch],
+            ),
+            toolchain = ":cc_toolchain_{arch}{variant}".format(
+                arch = arch,
+                variant = variant_name(variant),
+            ),
+            toolchain_type = "@bazel_tools//tools/cpp:toolchain_type",
+        )
+        for variant in variants
+    ]
+    for arch, variants in arch_to_variants.items()
+]
+
+# Device toolchains without crt libraries
+[
+    [
+        toolchain(
+            name = "cc_toolchain_{arch}{variant}_nocrt_def".format(
+                arch = arch,
+                variant = variant_name(variant),
+            ),
+            exec_compatible_with = [
+                "//build/bazel/platforms/arch:x86_64",
+                "//build/bazel/platforms/os:linux",
+            ],
+            target_compatible_with = [
+                "//build/bazel/platforms/arch:%s" % arch,
+                "//build/bazel/platforms/os:android",
+            ] + variant_constraints(
+                variant,
+                _arch_constants.AndroidArchToVariantToFeatures[arch],
+            ),
+            toolchain = ":cc_toolchain_{arch}{variant}_nocrt".format(
+                arch = arch,
+                variant = variant_name(variant),
+            ),
+            toolchain_type = ":nocrt_toolchain",
+        )
+        for variant in variants
+    ]
+    for arch, variants in arch_to_variants.items()
+]
+
+# Toolchains for linux host (x86_64) archs
+[
+    toolchain(
+        name = "%s_def" % toolchain_name,
+        exec_compatible_with = [
+            "//build/bazel/platforms/arch:x86_64",
+            "//build/bazel/platforms/os:linux",
+        ],
+        target_compatible_with = [
+            "//build/bazel/platforms/arch:x86_64",
+            "//build/bazel/platforms/os:linux",
+        ],
+        toolchain = toolchain_name,
+        toolchain_type = toolchain_type,
+    )
+    for (toolchain_name, toolchain_type) in [
+        ("cc_toolchain_x86_64_linux_host", "@bazel_tools//tools/cpp:toolchain_type"),
+        ("cc_toolchain_x86_64_linux_host_nocrt", "nocrt_toolchain"),
+    ]
+]
+
+# Toolchains for linux target (non-host) x86 arch
+[
+    toolchain(
+        name = "%s_def" % toolchain_name,
+        exec_compatible_with = [
+            "//build/bazel/platforms/arch:x86_64",
+            "//build/bazel/platforms/os:linux",
+        ],
+        target_compatible_with = [
+            "//build/bazel/platforms/arch:x86",
+            "//build/bazel/platforms/os:linux",
+        ],
+        toolchain = toolchain_name,
+        toolchain_type = toolchain_type,
+    )
+    for (toolchain_name, toolchain_type) in [
+        ("cc_toolchain_x86_linux_host", "@bazel_tools//tools/cpp:toolchain_type"),
+        ("cc_toolchain_x86_linux_host_nocrt", "nocrt_toolchain"),
+    ]
+]
+
+cc_import(
+    name = "libclang_rt",
+    static_library = select(_LIBCLANG_RT_PREBUILT_MAP),
+)
+
+[alias(
+    name = "llvm-%s" % tool,
+    actual = generated_constants.CLANG_DEFAULT_VERSION + "/bin/llvm-%s" % tool,
+    visibility = ["//visibility:public"],
+) for tool in [
+    "ar",
+    "readelf",
+    "objcopy",
+    "strip",
+]]
+
+# Test tools used by Bazel tests.
+filegroup(
+    name = "test_tools",
+    srcs = [
+        generated_constants.CLANG_DEFAULT_VERSION + "/bin/llvm-readelf",
+        generated_constants.CLANG_DEFAULT_VERSION + "/bin/llvm-nm",
+    ],
+    visibility = ["//build/bazel/tests:__subpackages__"],
+)

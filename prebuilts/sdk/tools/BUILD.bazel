@@ -1,0 +1,23 @@
+exports_files(
+    # TODO(b/225291837): Get Bazel to build aapt2 from source instead.
+    ["linux/bin/aapt2"],
+    visibility = [
+        "//prebuilts/sdk:__pkg__",
+        "//build/bazel:__subpackages__",
+    ],
+)
+
+exports_files(
+    [
+        "linux/bin/aapt",
+        "lib/dx.jar",
+        "dx",
+        "linux/bin/aidl",
+        "linux/bin/zipalign",
+        "mainDexClasses.rules",
+        "linux/lib/apksigner.jar",
+    ],
+    visibility = [
+        "//prebuilts/sdk:__pkg__",
+    ],
+)

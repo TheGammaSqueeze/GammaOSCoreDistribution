@@ -1,0 +1,110 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.work",
+    "module": "work-testing",
+    "version": "2.8.0-alpha02",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.4"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.work",
+          "module": "work-runtime-ktx",
+          "version": {
+            "requires": "2.8.0-alpha02"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "work-testing-2.8.0-alpha02.aar",
+          "url": "work-testing-2.8.0-alpha02.aar",
+          "size": 24072,
+          "sha512": "7b832c41bec79be7f156e0e7dc62fa201cdd3be288bd060d72cfcbcc018c542962490112a7c647ffe7e4255f1bf3c16c7ccd030ee277bf63319b08b0147b125f",
+          "sha256": "4b08555cfdf4020b06dd1e9652e961d064901c902b8795931363ec34a4e4a4d6",
+          "sha1": "c29ab69acc6a50bf7204222fa071094a7a30ecbc",
+          "md5": "2a0f01dfeeb2a2955b59a302c494a945"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.work",
+          "module": "work-runtime-ktx",
+          "version": {
+            "requires": "2.8.0-alpha02"
+          }
+        },
+        {
+          "group": "androidx.lifecycle",
+          "module": "lifecycle-livedata-core",
+          "version": {
+            "requires": "2.1.0"
+          }
+        },
+        {
+          "group": "androidx.room",
+          "module": "room-runtime",
+          "version": {
+            "requires": "2.4.0-rc01"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "work-testing-2.8.0-alpha02.aar",
+          "url": "work-testing-2.8.0-alpha02.aar",
+          "size": 24072,
+          "sha512": "7b832c41bec79be7f156e0e7dc62fa201cdd3be288bd060d72cfcbcc018c542962490112a7c647ffe7e4255f1bf3c16c7ccd030ee277bf63319b08b0147b125f",
+          "sha256": "4b08555cfdf4020b06dd1e9652e961d064901c902b8795931363ec34a4e4a4d6",
+          "sha1": "c29ab69acc6a50bf7204222fa071094a7a30ecbc",
+          "md5": "2a0f01dfeeb2a2955b59a302c494a945"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "work-testing-2.8.0-alpha02-sources.jar",
+          "url": "work-testing-2.8.0-alpha02-sources.jar",
+          "size": 17712,
+          "sha512": "32273641abb9253643194eaa98475e21eb452f361f20a54968a65d625d0503a82c152a5032c24d56a9b05966769955aafc02f9c44cc70a8baeab33354eb7fde0",
+          "sha256": "b3773266f4894f3c3fae9732d741237a3f4058a478e4531b31178126c9d39660",
+          "sha1": "1add70ad5ff4bcb283258e4dcc8d42e6fbc2df2c",
+          "md5": "28ad64ece4291607a9360fba03cf8d51"
+        }
+      ]
+    }
+  ]
+}

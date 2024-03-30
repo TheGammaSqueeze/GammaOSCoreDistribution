@@ -1,0 +1,94 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.test.uiautomator",
+    "module": "uiautomator",
+    "version": "2.3.0-alpha03",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.0"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "uiautomator-2.3.0-alpha03.aar",
+          "url": "uiautomator-2.3.0-alpha03.aar",
+          "size": 117228,
+          "sha512": "77eb44e8bef9dc0157283e80670f5f33c7d2cc5d817d6273f80245666e700763c49b131ff6be304182390b0db5da473672bf67a204bd2eec63d5581b4143e149",
+          "sha256": "dbe2ba80b7bec949b9d180f69ec69c9c95b4f80a18de68ee56f53b04739c773d",
+          "sha1": "bb569e743b7b428b06aa4dc136944fdaed11b509",
+          "md5": "dd47dcadc87190d0c327cdd802de7ae1"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.4.0"
+          }
+        },
+        {
+          "group": "junit",
+          "module": "junit",
+          "version": {
+            "requires": "4.13.2"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "uiautomator-2.3.0-alpha03.aar",
+          "url": "uiautomator-2.3.0-alpha03.aar",
+          "size": 117228,
+          "sha512": "77eb44e8bef9dc0157283e80670f5f33c7d2cc5d817d6273f80245666e700763c49b131ff6be304182390b0db5da473672bf67a204bd2eec63d5581b4143e149",
+          "sha256": "dbe2ba80b7bec949b9d180f69ec69c9c95b4f80a18de68ee56f53b04739c773d",
+          "sha1": "bb569e743b7b428b06aa4dc136944fdaed11b509",
+          "md5": "dd47dcadc87190d0c327cdd802de7ae1"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "uiautomator-2.3.0-alpha03-sources.jar",
+          "url": "uiautomator-2.3.0-alpha03-sources.jar",
+          "size": 89067,
+          "sha512": "cee86c0f211b57ddab42251ee9cf7546cf48c3f6bbfbe7d5c7088a802fe3986015ff0222256fadeba5dc3ba2ae6f950d677cfb30bf376d9dd1915df442619e08",
+          "sha256": "3eca1034e789cce199d8490748a059f551d85e900a95f408874e27bb76436d4f",
+          "sha1": "7c1a8f056bee1d50173fe4742cc37dde89b4b42a",
+          "md5": "9a1c7f67012537cd7c123655e1641505"
+        }
+      ]
+    }
+  ]
+}

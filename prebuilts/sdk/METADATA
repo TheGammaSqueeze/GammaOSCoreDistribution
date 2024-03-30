@@ -1,0 +1,13 @@
+# *** THIS PACKAGE HAS SPECIAL LICENSING CONDITIONS.  PLEASE
+#     CONSULT THE OWNERS AND opensource-licensing@google.com BEFORE
+#     DEPENDING ON IT IN YOUR PROJECT. ***
+third_party {
+  license_note: "would be NOTICE save for CPL in:\n"
+  "   tools/windows/bin/NOTICE.txt\n"
+  "   tools/linux/bin/NOTICE.txt\n"
+  "   tools/darwin/bin/NOTICE.txt\n"
+  " and RECIPROCAL save for OFL in:\n"
+  "   current/androidx/m2repository/androidx/emoji/emoji/1.2.0-alpha01/emoji-1.2.0-alpha01.pom\n"
+  "   current/support/m2repository/com/android/support/support-emoji/28.0.0/support-emoji-28.0.0.pom"
+  license_type: BY_EXCEPTION_ONLY
+}

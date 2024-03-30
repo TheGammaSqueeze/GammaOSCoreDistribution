@@ -1,0 +1,24 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+java_import_host {
+    name: "manifest-merger-jars",
+    jars: [
+        "com/android/tools/build/manifest-merger/30.1.0-alpha06/manifest-merger-30.1.0-alpha06.jar",
+        "com/android/tools/common/30.1.0-alpha06/common-30.1.0-alpha06.jar",
+        "com/android/tools/sdk-common/30.1.0-alpha06/sdk-common-30.1.0-alpha06.jar",
+        "com/android/tools/sdklib/30.1.0-alpha06/sdklib-30.1.0-alpha06.jar",
+    ],
+}
+
+java_binary_host {
+    name: "manifest-merger",
+    main_class: "com.android.manifmerger.Merger",
+    static_libs: [
+        "manifest-merger-jars",
+        "guava-21.0",
+        "gson-prebuilt-jar",
+        "kotlin-stdlib",
+    ],
+}

@@ -1,0 +1,145 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.mediarouter",
+    "module": "mediarouter",
+    "version": "1.3.0-alpha02",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.4"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.media",
+          "module": "media",
+          "version": {
+            "requires": "1.4.1"
+          }
+        },
+        {
+          "group": "com.google.guava",
+          "module": "listenablefuture",
+          "version": {
+            "requires": "1.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "mediarouter-1.3.0-alpha02.aar",
+          "url": "mediarouter-1.3.0-alpha02.aar",
+          "size": 743946,
+          "sha512": "d891c087695815e9919bf48c40e66b4b10db63155b898f364aa804165a21dd78a9545abebdb3eb34d59cc7d078fa316179a301e7c279044a6e16c9a7bc6eba59",
+          "sha256": "0fac424a01b7397540f2d0aa85bba3cd8506d0a2ca4d51cfe629c1fc7e6d4366",
+          "sha1": "fe733a2f041cf07f38773c72fec112a4549a50a5",
+          "md5": "a0391de9b6e24aa148e4f0d436e37f86"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.core",
+          "module": "core",
+          "version": {
+            "requires": "1.6.0-rc01"
+          }
+        },
+        {
+          "group": "androidx.appcompat",
+          "module": "appcompat",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.palette",
+          "module": "palette",
+          "version": {
+            "requires": "1.0.0"
+          }
+        },
+        {
+          "group": "androidx.recyclerview",
+          "module": "recyclerview",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.appcompat",
+          "module": "appcompat-resources",
+          "version": {
+            "requires": "1.2.0"
+          }
+        },
+        {
+          "group": "androidx.media",
+          "module": "media",
+          "version": {
+            "requires": "1.4.1"
+          }
+        },
+        {
+          "group": "com.google.guava",
+          "module": "listenablefuture",
+          "version": {
+            "requires": "1.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "mediarouter-1.3.0-alpha02.aar",
+          "url": "mediarouter-1.3.0-alpha02.aar",
+          "size": 743946,
+          "sha512": "d891c087695815e9919bf48c40e66b4b10db63155b898f364aa804165a21dd78a9545abebdb3eb34d59cc7d078fa316179a301e7c279044a6e16c9a7bc6eba59",
+          "sha256": "0fac424a01b7397540f2d0aa85bba3cd8506d0a2ca4d51cfe629c1fc7e6d4366",
+          "sha1": "fe733a2f041cf07f38773c72fec112a4549a50a5",
+          "md5": "a0391de9b6e24aa148e4f0d436e37f86"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "mediarouter-1.3.0-alpha02-sources.jar",
+          "url": "mediarouter-1.3.0-alpha02-sources.jar",
+          "size": 197955,
+          "sha512": "12573af510610da062c538235839b9ecd676633aae191ea079bfc567e65956ce9f1cf50c5e07f52500ef5ac012c849630b3e0b77511f81e44a72bcebd659fc2c",
+          "sha256": "eac15b60ea861b425f4a45e42c514a34f04acc712ac91b4155a6d159c10d0fbd",
+          "sha1": "bb693f54430b72751345574672d62441389e1bee",
+          "md5": "15a7687f3bf1808e1def8ec236b87add"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.compose.foundation",
+    "module": "foundation-layout",
+    "version": "1.4.0-beta01",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.0-rc-2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui-unit",
+          "version": {
+            "requires": "1.2.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "foundation-layout-1.4.0-beta01.aar",
+          "url": "foundation-layout-1.4.0-beta01.aar",
+          "size": 531818,
+          "sha512": "01f1939d66a6dbc6e546b039e439c9b67452e9734f15b75add7660972198d4b38952285b731a979b36195838281a54cbfddf9fa2a9faa49c1c8ae1e50606f717",
+          "sha256": "4833b3a87a8f815ac74fff6de775c614cd56fb0b552dd4e9ec1d157cf04dba57",
+          "sha1": "34ddb516f064c0591fb79262a33d08264df2219e",
+          "md5": "5cc6555dd9acf37ed16e8d1d097c31bd"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.compose.animation",
+          "module": "animation-core",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.runtime",
+          "module": "runtime",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui-unit",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui-util",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.core",
+          "module": "core",
+          "version": {
+            "requires": "1.7.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-common",
+          "version": {
+            "requires": "1.8.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "foundation-layout-1.4.0-beta01.aar",
+          "url": "foundation-layout-1.4.0-beta01.aar",
+          "size": 531818,
+          "sha512": "01f1939d66a6dbc6e546b039e439c9b67452e9734f15b75add7660972198d4b38952285b731a979b36195838281a54cbfddf9fa2a9faa49c1c8ae1e50606f717",
+          "sha256": "4833b3a87a8f815ac74fff6de775c614cd56fb0b552dd4e9ec1d157cf04dba57",
+          "sha1": "34ddb516f064c0591fb79262a33d08264df2219e",
+          "md5": "5cc6555dd9acf37ed16e8d1d097c31bd"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "foundation-layout-1.4.0-beta01-sources.jar",
+          "url": "foundation-layout-1.4.0-beta01-sources.jar",
+          "size": 73248,
+          "sha512": "663799f66829851c1b97559409c95ffc0267569b5c8ef188ac6627a8b63102a7471369365a0b84e93698b53c827ebd294e530ad1498a846badcb7ece6821e70d",
+          "sha256": "0d7a33dac769c71b987a3f961dab18ac079b0f2dda1cd383e9ca4939e3479afd",
+          "sha1": "e875338f5c79b1c6e30c4b350542c6bc2a730b07",
+          "md5": "00b6908dbdb331947ae67abfba3fe745"
+        }
+      ]
+    }
+  ]
+}

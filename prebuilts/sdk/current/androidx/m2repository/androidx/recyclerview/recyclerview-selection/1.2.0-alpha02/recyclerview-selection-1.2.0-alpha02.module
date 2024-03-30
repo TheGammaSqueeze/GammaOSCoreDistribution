@@ -1,0 +1,131 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.recyclerview",
+    "module": "recyclerview-selection",
+    "version": "1.2.0-alpha02",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.4"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.recyclerview",
+          "module": "recyclerview",
+          "version": {
+            "requires": "1.2.0"
+          }
+        },
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.core",
+          "module": "core",
+          "version": {
+            "requires": "1.1.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "recyclerview-selection-1.2.0-alpha02.aar",
+          "url": "recyclerview-selection-1.2.0-alpha02.aar",
+          "size": 98037,
+          "sha512": "b48b65ae94fe2b3977a3cd00bef3fc3918c85c7d99f2407f622ae1c47a14b63f517c6aa8015c056bfb08cdd38485c9103b19cfbcde4c894c5f9431418c59bdd6",
+          "sha256": "3341412328f17bd95fcd22d509bc5bc5d51224d9b4f76e03917010e8e523d794",
+          "sha1": "ac686ad3f286e2b52a4c662ebfb361ded0b06286",
+          "md5": "75da9fd6f61cd218d134ba26f7776df6"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.collection",
+          "module": "collection",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.recyclerview",
+          "module": "recyclerview",
+          "version": {
+            "requires": "1.2.0"
+          }
+        },
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.core",
+          "module": "core",
+          "version": {
+            "requires": "1.1.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "recyclerview-selection-1.2.0-alpha02.aar",
+          "url": "recyclerview-selection-1.2.0-alpha02.aar",
+          "size": 98037,
+          "sha512": "b48b65ae94fe2b3977a3cd00bef3fc3918c85c7d99f2407f622ae1c47a14b63f517c6aa8015c056bfb08cdd38485c9103b19cfbcde4c894c5f9431418c59bdd6",
+          "sha256": "3341412328f17bd95fcd22d509bc5bc5d51224d9b4f76e03917010e8e523d794",
+          "sha1": "ac686ad3f286e2b52a4c662ebfb361ded0b06286",
+          "md5": "75da9fd6f61cd218d134ba26f7776df6"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "recyclerview-selection-1.2.0-alpha02-sources.jar",
+          "url": "recyclerview-selection-1.2.0-alpha02-sources.jar",
+          "size": 86635,
+          "sha512": "da5a8f6b054a5fdf77927678c6246a5c91cfb13bdff7f9170760b5dd9c89d8c4ab7df41739af74ed9cb3fa5d1281e0b6631f41e72567609d29f194e4290ad44d",
+          "sha256": "e1595ce033b7fdf4e63f4bee4fb2703c940478691279d33a2966e2cceee3e888",
+          "sha1": "3879506af2ad108716be5b36125ca683bea7bbbe",
+          "md5": "dce98ca3283bb15cef36d5cef7ea100f"
+        }
+      ]
+    }
+  ]
+}

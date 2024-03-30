@@ -1,0 +1,96 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.compose.ui",
+    "module": "ui-test-manifest",
+    "version": "1.4.0-beta01",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.0-rc-2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.activity",
+          "module": "activity",
+          "version": {
+            "requires": "1.2.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "ui-test-manifest-1.4.0-beta01.aar",
+          "url": "ui-test-manifest-1.4.0-beta01.aar",
+          "size": 9486,
+          "sha512": "aed11378254257c8cc9666973e76bea41f6eec9f4b0a6e46c82f3d0bf2abaaf75cacc50f6f066fbfd3b1663f4abf4f0fbd806c9bf6bf8eb2dae700d88230ac91",
+          "sha256": "7df803ac5b73b928f9c7aac148678144b378cc351ee6f6cf3cc5c667e096348e",
+          "sha1": "05304fe4feadb896e5e6aacf29cc1fadf71d803c",
+          "md5": "ff3663c851df560ed88597b4995db3fb"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.activity",
+          "module": "activity",
+          "version": {
+            "requires": "1.2.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "ui-test-manifest-1.4.0-beta01.aar",
+          "url": "ui-test-manifest-1.4.0-beta01.aar",
+          "size": 9486,
+          "sha512": "aed11378254257c8cc9666973e76bea41f6eec9f4b0a6e46c82f3d0bf2abaaf75cacc50f6f066fbfd3b1663f4abf4f0fbd806c9bf6bf8eb2dae700d88230ac91",
+          "sha256": "7df803ac5b73b928f9c7aac148678144b378cc351ee6f6cf3cc5c667e096348e",
+          "sha1": "05304fe4feadb896e5e6aacf29cc1fadf71d803c",
+          "md5": "ff3663c851df560ed88597b4995db3fb"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "ui-test-manifest-1.4.0-beta01-sources.jar",
+          "url": "ui-test-manifest-1.4.0-beta01-sources.jar",
+          "size": 261,
+          "sha512": "1487e5a20c9e4d74f298e07c42e96a61be11b7a768c3fbc199ee138cd68e1fc2267d1cfe3f11f288acc05df755315344d052cc5f6f751f126ab4fe1caa5125ea",
+          "sha256": "c6deada2fac53b8ea6523dbda77597b128006674616f140f04df23264c6d1aa3",
+          "sha1": "2ad14aed781c4a73ed4dbb421966d408a0a06686",
+          "md5": "f43436d6bec321290f6af228ad602604"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+# TODO: investigate using the bp2build-converted java_import_host rule defined
+# in Android.bp.
+
+java_import(
+    name = "r8_jar_import",
+    jars = ["r8.jar"],
+    visibility = ["//visibility:public"],
+)

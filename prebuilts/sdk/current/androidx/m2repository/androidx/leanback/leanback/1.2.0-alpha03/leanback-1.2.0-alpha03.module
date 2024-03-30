@@ -1,0 +1,201 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.leanback",
+    "module": "leanback",
+    "version": "1.2.0-alpha03",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.4"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.interpolator",
+          "module": "interpolator",
+          "version": {
+            "requires": "1.0.0"
+          }
+        },
+        {
+          "group": "androidx.core",
+          "module": "core",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.leanback",
+          "module": "leanback-grid",
+          "version": {
+            "requires": "1.0.0-alpha02"
+          }
+        },
+        {
+          "group": "androidx.media",
+          "module": "media",
+          "version": {
+            "requires": "1.0.0"
+          }
+        },
+        {
+          "group": "androidx.fragment",
+          "module": "fragment",
+          "version": {
+            "requires": "1.0.0"
+          }
+        },
+        {
+          "group": "androidx.recyclerview",
+          "module": "recyclerview",
+          "version": {
+            "requires": "1.2.0-rc01"
+          }
+        },
+        {
+          "group": "androidx.appcompat",
+          "module": "appcompat",
+          "version": {
+            "requires": "1.0.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "leanback-1.2.0-alpha03.aar",
+          "url": "leanback-1.2.0-alpha03.aar",
+          "size": 1275724,
+          "sha512": "d2540910fbd4c874842748f1ce99e6dba3cc5a96d59f4e7214242a2ffc59ec1bfe4a63fbee486585c230b4ac564b22ce08c0373f43a729b7b48931fd77c61742",
+          "sha256": "0d3ccbe7c314a1724b47027d2d355c1db98f2e28fcfb136b67cee52ae1b59578",
+          "sha1": "f9f052ffaf69f325fd8e1b52fa6db334e1910447",
+          "md5": "84ce1214a9abf348268e9178c1b11dee"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.vectordrawable",
+          "module": "vectordrawable-animated",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.interpolator",
+          "module": "interpolator",
+          "version": {
+            "requires": "1.0.0"
+          }
+        },
+        {
+          "group": "androidx.core",
+          "module": "core",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.leanback",
+          "module": "leanback-grid",
+          "version": {
+            "requires": "1.0.0-alpha02"
+          }
+        },
+        {
+          "group": "androidx.media",
+          "module": "media",
+          "version": {
+            "requires": "1.0.0"
+          }
+        },
+        {
+          "group": "androidx.fragment",
+          "module": "fragment",
+          "version": {
+            "requires": "1.0.0"
+          }
+        },
+        {
+          "group": "androidx.recyclerview",
+          "module": "recyclerview",
+          "version": {
+            "requires": "1.2.0-rc01"
+          }
+        },
+        {
+          "group": "androidx.appcompat",
+          "module": "appcompat",
+          "version": {
+            "requires": "1.0.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "leanback-1.2.0-alpha03.aar",
+          "url": "leanback-1.2.0-alpha03.aar",
+          "size": 1275724,
+          "sha512": "d2540910fbd4c874842748f1ce99e6dba3cc5a96d59f4e7214242a2ffc59ec1bfe4a63fbee486585c230b4ac564b22ce08c0373f43a729b7b48931fd77c61742",
+          "sha256": "0d3ccbe7c314a1724b47027d2d355c1db98f2e28fcfb136b67cee52ae1b59578",
+          "sha1": "f9f052ffaf69f325fd8e1b52fa6db334e1910447",
+          "md5": "84ce1214a9abf348268e9178c1b11dee"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "leanback-1.2.0-alpha03-sources.jar",
+          "url": "leanback-1.2.0-alpha03-sources.jar",
+          "size": 580673,
+          "sha512": "e0a84d6c1346fbef37c0e1ddc8a6a58a1edd3fb5d93b7aaea4fba1588bbc0c1161603e80b56fab0ad15ca70442cbb30e17e28f1bc137cd5fe0c1fef7f530a862",
+          "sha256": "65ebcbe2cf2d761229f57f4eb0f2a7cc1edaf1757b72fd998a4d2308f2375eb2",
+          "sha1": "4782c7c7843b3feb254e281a065e063eab38a60f",
+          "md5": "883d3574f8035747accfdb6d5a77267d"
+        }
+      ]
+    }
+  ]
+}

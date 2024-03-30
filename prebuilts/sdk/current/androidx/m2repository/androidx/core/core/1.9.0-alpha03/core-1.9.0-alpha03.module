@@ -1,0 +1,152 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.core",
+    "module": "core",
+    "version": "1.9.0-alpha03",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.5-20220421031748+0000"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.2.0"
+          }
+        },
+        {
+          "group": "androidx.annotation",
+          "module": "annotation-experimental",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.lifecycle",
+          "module": "lifecycle-runtime",
+          "version": {
+            "requires": "2.3.1"
+          }
+        },
+        {
+          "group": "androidx.versionedparcelable",
+          "module": "versionedparcelable",
+          "version": {
+            "requires": "1.1.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "core-1.9.0-alpha03.aar",
+          "url": "core-1.9.0-alpha03.aar",
+          "size": 1086769,
+          "sha512": "d58d3440d3095018ebc0161cb484adebf315a5da872ebccbab51a39b1c87be397e01c9da6146b32436a4490cfc7bef2b89300b28a34e0e86aa726c347991a5a6",
+          "sha256": "56c727219fa11b5aeb41dc660eda0ea18e12ad67ec0e961e20388f7ec781992e",
+          "sha1": "fefb7d2ba3a2943c6e1862ad7d53cff82f422ea3",
+          "md5": "c2b73eca737f78550bfbd166655f76f9"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.2.0"
+          }
+        },
+        {
+          "group": "androidx.annotation",
+          "module": "annotation-experimental",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.collection",
+          "module": "collection",
+          "version": {
+            "requires": "1.0.0"
+          }
+        },
+        {
+          "group": "androidx.concurrent",
+          "module": "concurrent-futures",
+          "version": {
+            "requires": "1.0.0"
+          }
+        },
+        {
+          "group": "androidx.lifecycle",
+          "module": "lifecycle-runtime",
+          "version": {
+            "requires": "2.3.1"
+          }
+        },
+        {
+          "group": "androidx.versionedparcelable",
+          "module": "versionedparcelable",
+          "version": {
+            "requires": "1.1.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "core-1.9.0-alpha03.aar",
+          "url": "core-1.9.0-alpha03.aar",
+          "size": 1086769,
+          "sha512": "d58d3440d3095018ebc0161cb484adebf315a5da872ebccbab51a39b1c87be397e01c9da6146b32436a4490cfc7bef2b89300b28a34e0e86aa726c347991a5a6",
+          "sha256": "56c727219fa11b5aeb41dc660eda0ea18e12ad67ec0e961e20388f7ec781992e",
+          "sha1": "fefb7d2ba3a2943c6e1862ad7d53cff82f422ea3",
+          "md5": "c2b73eca737f78550bfbd166655f76f9"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "core-1.9.0-alpha03-sources.jar",
+          "url": "core-1.9.0-alpha03-sources.jar",
+          "size": 838035,
+          "sha512": "73c7272b64038f2843f1b92de65e5872254db462f08adca61fbf9c8e97f66ae3fcd46f5b86a1c402eba24b44e0ba868569b27a68d2ea0281955f937ba3e47310",
+          "sha256": "4d01de525756f5bfce6c19b997bf88b6d41237db240aed1f55b539b2b8391ea1",
+          "sha1": "1e5883d3142ba49c459c98b99b88aa1de1847bc5",
+          "md5": "0b5d749813aa8de34bd9a16e2f01ae88"
+        }
+      ]
+    }
+  ]
+}

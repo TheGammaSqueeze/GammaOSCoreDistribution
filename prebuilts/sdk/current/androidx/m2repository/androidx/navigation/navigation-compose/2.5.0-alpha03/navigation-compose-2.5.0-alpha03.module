@@ -1,0 +1,201 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.navigation",
+    "module": "navigation-compose",
+    "version": "2.5.0-alpha03",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.4"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.activity",
+          "module": "activity-compose",
+          "version": {
+            "requires": "1.5.0-alpha03"
+          }
+        },
+        {
+          "group": "androidx.compose.animation",
+          "module": "animation",
+          "version": {
+            "requires": "1.0.1"
+          }
+        },
+        {
+          "group": "androidx.compose.runtime",
+          "module": "runtime",
+          "version": {
+            "requires": "1.0.1"
+          }
+        },
+        {
+          "group": "androidx.compose.runtime",
+          "module": "runtime-saveable",
+          "version": {
+            "requires": "1.0.1"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui",
+          "version": {
+            "requires": "1.0.1"
+          }
+        },
+        {
+          "group": "androidx.lifecycle",
+          "module": "lifecycle-viewmodel-compose",
+          "version": {
+            "requires": "2.5.0-alpha03"
+          }
+        },
+        {
+          "group": "androidx.navigation",
+          "module": "navigation-runtime-ktx",
+          "version": {
+            "requires": "2.5.0-alpha03"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "navigation-compose-2.5.0-alpha03.aar",
+          "url": "navigation-compose-2.5.0-alpha03.aar",
+          "size": 1083725,
+          "sha512": "902f57236c887d8d46a0689e06174e5e1376f9dfd5613d446e2e463a01e0be79cf430c44723b6a91baa5b1ed59e347654b666b33897546d6b96d5def7df82047",
+          "sha256": "b74a7e695cd5fda469622c330928081e7ddaf245473eb080dc225703ceeb586d",
+          "sha1": "fc9695563ae1a5579d6c2342302fe0bc6f7f6c58",
+          "md5": "ae82ce61a6cdb0e439787fdd77743142"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.activity",
+          "module": "activity-compose",
+          "version": {
+            "requires": "1.5.0-alpha03"
+          }
+        },
+        {
+          "group": "androidx.compose.animation",
+          "module": "animation",
+          "version": {
+            "requires": "1.0.1"
+          }
+        },
+        {
+          "group": "androidx.compose.runtime",
+          "module": "runtime",
+          "version": {
+            "requires": "1.0.1"
+          }
+        },
+        {
+          "group": "androidx.compose.runtime",
+          "module": "runtime-saveable",
+          "version": {
+            "requires": "1.0.1"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui",
+          "version": {
+            "requires": "1.0.1"
+          }
+        },
+        {
+          "group": "androidx.lifecycle",
+          "module": "lifecycle-viewmodel-compose",
+          "version": {
+            "requires": "2.5.0-alpha03"
+          }
+        },
+        {
+          "group": "androidx.navigation",
+          "module": "navigation-runtime-ktx",
+          "version": {
+            "requires": "2.5.0-alpha03"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.6.10"
+          }
+        },
+        {
+          "group": "androidx.compose.foundation",
+          "module": "foundation-layout",
+          "version": {
+            "requires": "1.0.1"
+          }
+        },
+        {
+          "group": "androidx.lifecycle",
+          "module": "lifecycle-common-java8",
+          "version": {
+            "requires": "2.5.0-alpha03"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "navigation-compose-2.5.0-alpha03.aar",
+          "url": "navigation-compose-2.5.0-alpha03.aar",
+          "size": 1083725,
+          "sha512": "902f57236c887d8d46a0689e06174e5e1376f9dfd5613d446e2e463a01e0be79cf430c44723b6a91baa5b1ed59e347654b666b33897546d6b96d5def7df82047",
+          "sha256": "b74a7e695cd5fda469622c330928081e7ddaf245473eb080dc225703ceeb586d",
+          "sha1": "fc9695563ae1a5579d6c2342302fe0bc6f7f6c58",
+          "md5": "ae82ce61a6cdb0e439787fdd77743142"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "navigation-compose-2.5.0-alpha03-sources.jar",
+          "url": "navigation-compose-2.5.0-alpha03-sources.jar",
+          "size": 10928,
+          "sha512": "5869f2894d7732bb8d7b402d0e60e76b915d32227965a248c0848cc31ea6a574bee5854599ba4b98fd337e36b61da0d46eeaf06e611d3c617185720699b7c358",
+          "sha256": "ca9f6cdc12a8b4d3811c7f242fd5f19439ffeb01dd3209e815a20fa695850886",
+          "sha1": "62becddcad66de8aa78af1f5872dc8a3d6ee8526",
+          "md5": "ce836fad6d37653f18ab5b41c53e0ea1"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.window",
+    "module": "window-core",
+    "version": "1.1.0-beta01",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.0"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.8.10"
+          }
+        }
+      ],
+      "dependencyConstraints": [
+        {
+          "group": "androidx.window",
+          "module": "window",
+          "version": {
+            "requires": "1.1.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.window",
+          "module": "window-samples",
+          "version": {
+            "requires": "1.1.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.window",
+          "module": "window-java",
+          "version": {
+            "requires": "1.1.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.window",
+          "module": "window-rxjava2",
+          "version": {
+            "requires": "1.1.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.window",
+          "module": "window-rxjava3",
+          "version": {
+            "requires": "1.1.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.window",
+          "module": "window-testing",
+          "version": {
+            "requires": "1.1.0-beta01"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "window-core-1.1.0-beta01.aar",
+          "url": "window-core-1.1.0-beta01.aar",
+          "size": 10309,
+          "sha512": "3d049f1f5a80f7344c6a37a1d996157361b40dc9a27508f9f21116fa1c925596a9fcfc83e0a27fabb91987b0db187a79c618928fd56ed7084afa2315aa4b4b09",
+          "sha256": "42d273a80fa6c1f4391afa5d03f71904a25e77db7285207d9aa853065d9c6022",
+          "sha1": "e7a62847390b238f0a99432a6deb4480e4282eac",
+          "md5": "12e5074b6ae037ada77f156c9bb40d59"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.8.10"
+          }
+        }
+      ],
+      "dependencyConstraints": [
+        {
+          "group": "androidx.window",
+          "module": "window",
+          "version": {
+            "requires": "1.1.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.window",
+          "module": "window-samples",
+          "version": {
+            "requires": "1.1.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.window",
+          "module": "window-java",
+          "version": {
+            "requires": "1.1.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.window",
+          "module": "window-rxjava2",
+          "version": {
+            "requires": "1.1.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.window",
+          "module": "window-rxjava3",
+          "version": {
+            "requires": "1.1.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.window",
+          "module": "window-testing",
+          "version": {
+            "requires": "1.1.0-beta01"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "window-core-1.1.0-beta01.aar",
+          "url": "window-core-1.1.0-beta01.aar",
+          "size": 10309,
+          "sha512": "3d049f1f5a80f7344c6a37a1d996157361b40dc9a27508f9f21116fa1c925596a9fcfc83e0a27fabb91987b0db187a79c618928fd56ed7084afa2315aa4b4b09",
+          "sha256": "42d273a80fa6c1f4391afa5d03f71904a25e77db7285207d9aa853065d9c6022",
+          "sha1": "e7a62847390b238f0a99432a6deb4480e4282eac",
+          "md5": "12e5074b6ae037ada77f156c9bb40d59"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencyConstraints": [
+        {
+          "group": "androidx.window",
+          "module": "window",
+          "version": {
+            "requires": "1.1.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.window",
+          "module": "window-samples",
+          "version": {
+            "requires": "1.1.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.window",
+          "module": "window-java",
+          "version": {
+            "requires": "1.1.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.window",
+          "module": "window-rxjava2",
+          "version": {
+            "requires": "1.1.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.window",
+          "module": "window-rxjava3",
+          "version": {
+            "requires": "1.1.0-beta01"
+          }
+        },
+        {
+          "group": "androidx.window",
+          "module": "window-testing",
+          "version": {
+            "requires": "1.1.0-beta01"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "window-core-1.1.0-beta01-sources.jar",
+          "url": "window-core-1.1.0-beta01-sources.jar",
+          "size": 5231,
+          "sha512": "ea4669763adcd19ee6e6938b22926b649b4b51b3758078b079aeecb8b0a799c2386de2010f1b33fb12988ae1d0429545c661db24455011a905f3c9ccb9de2955",
+          "sha256": "db6a8e01e20127cbe36ad5c69bc25dd365a6afba40479c65fd6fc827f0992757",
+          "sha1": "cbe394acbfdaa4f12448fe4e131f3721d3b2ba95",
+          "md5": "a02617147e0648e34dedb1828d4c7892"
+        }
+      ]
+    }
+  ]
+}

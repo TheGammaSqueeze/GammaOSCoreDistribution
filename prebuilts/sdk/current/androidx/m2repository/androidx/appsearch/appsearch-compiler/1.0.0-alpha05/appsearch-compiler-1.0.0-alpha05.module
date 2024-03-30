@@ -1,0 +1,140 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.appsearch",
+    "module": "appsearch-compiler",
+    "version": "1.0.0-alpha05",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.4"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "javax.annotation",
+          "module": "javax.annotation-api",
+          "version": {
+            "requires": "1.2"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "appsearch-compiler-1.0.0-alpha05.jar",
+          "url": "appsearch-compiler-1.0.0-alpha05.jar",
+          "size": 48389,
+          "sha512": "0991e9fa7530cc3a3f6a8561d74e52b6ec163c97c9929cf8a1802b994442adb54a5f9fe2f413fb07e5ed5a1a6a54f7d7a0601c96ed6992abdf913486c0ea71c9",
+          "sha256": "3a3ead2aa6c4f5cfcd77f3e30ac04ae8f6bfa25837e3e41e28341de6ce1a9012",
+          "sha1": "9b28d2ef5cc27aafc50eb319a91d149aaeaec272",
+          "md5": "712c4c17a8d0be2e86d987cbf1dfef8a"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.google.auto",
+          "module": "auto-common",
+          "version": {
+            "requires": "0.11"
+          }
+        },
+        {
+          "group": "com.google.auto.value",
+          "module": "auto-value",
+          "version": {
+            "requires": "1.6.3"
+          }
+        },
+        {
+          "group": "com.google.auto.value",
+          "module": "auto-value-annotations",
+          "version": {
+            "requires": "1.6.3"
+          }
+        },
+        {
+          "group": "com.squareup",
+          "module": "javapoet",
+          "version": {
+            "requires": "1.13.0"
+          }
+        },
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "javax.annotation",
+          "module": "javax.annotation-api",
+          "version": {
+            "requires": "1.2"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "appsearch-compiler-1.0.0-alpha05.jar",
+          "url": "appsearch-compiler-1.0.0-alpha05.jar",
+          "size": 48389,
+          "sha512": "0991e9fa7530cc3a3f6a8561d74e52b6ec163c97c9929cf8a1802b994442adb54a5f9fe2f413fb07e5ed5a1a6a54f7d7a0601c96ed6992abdf913486c0ea71c9",
+          "sha256": "3a3ead2aa6c4f5cfcd77f3e30ac04ae8f6bfa25837e3e41e28341de6ce1a9012",
+          "sha1": "9b28d2ef5cc27aafc50eb319a91d149aaeaec272",
+          "md5": "712c4c17a8d0be2e86d987cbf1dfef8a"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "appsearch-compiler-1.0.0-alpha05-sources.jar",
+          "url": "appsearch-compiler-1.0.0-alpha05-sources.jar",
+          "size": 29373,
+          "sha512": "c07f5d4dc321ba2e36460c92adc364fc8f8ff3152c3c237d5fc891c9ff5d84f6b7c89746613027641672edbd5aff9abffba1792cd78b7c5e786793d59c45fd3b",
+          "sha256": "cb3221021013a8d64ff47711373f219394692faecab9d2b7feddfb3fa71d42fe",
+          "sha1": "0f7c6fb3886e8d9582008865d3108d10eeea1e83",
+          "md5": "cb9d0f60d10b180a1c74581998a0bb1a"
+        }
+      ]
+    }
+  ]
+}

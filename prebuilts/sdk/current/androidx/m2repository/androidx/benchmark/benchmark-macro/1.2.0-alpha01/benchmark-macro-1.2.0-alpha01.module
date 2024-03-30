@@ -1,0 +1,159 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.benchmark",
+    "module": "benchmark-macro",
+    "version": "1.2.0-alpha01",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.5-20220421031748+0000"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "junit",
+          "module": "junit",
+          "version": {
+            "requires": "4.13.2"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.6.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "benchmark-macro-1.2.0-alpha01.aar",
+          "url": "benchmark-macro-1.2.0-alpha01.aar",
+          "size": 8748087,
+          "sha512": "cf1cd5eabc1281123759f9b621ece97478292a324b8528bbe64f9e5adb376f2ef1fa5afe41d94958279896b0b7339acdab22578742c4a1448c2492fc482a63d4",
+          "sha256": "0967ed3ea9f7fc40a2319bd83798f6ca06b30bf7057b4e8ff1198f9d66052200",
+          "sha1": "ec46c42f73b25b5313109c79c40938bde9b094e6",
+          "md5": "66a7e3e467789a0e7d7947d92c0f7e69"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.1.0"
+          }
+        },
+        {
+          "group": "androidx.benchmark",
+          "module": "benchmark-common",
+          "version": {
+            "requires": "1.2.0-alpha01"
+          }
+        },
+        {
+          "group": "androidx.profileinstaller",
+          "module": "profileinstaller",
+          "version": {
+            "requires": "1.0.3"
+          }
+        },
+        {
+          "group": "androidx.test",
+          "module": "core",
+          "version": {
+            "requires": "1.4.0"
+          }
+        },
+        {
+          "group": "androidx.test.uiautomator",
+          "module": "uiautomator",
+          "version": {
+            "requires": "2.2.0"
+          }
+        },
+        {
+          "group": "androidx.tracing",
+          "module": "tracing-ktx",
+          "version": {
+            "requires": "1.1.0-rc01"
+          }
+        },
+        {
+          "group": "junit",
+          "module": "junit",
+          "version": {
+            "requires": "4.13.2"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "1.6.21"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "benchmark-macro-1.2.0-alpha01.aar",
+          "url": "benchmark-macro-1.2.0-alpha01.aar",
+          "size": 8748087,
+          "sha512": "cf1cd5eabc1281123759f9b621ece97478292a324b8528bbe64f9e5adb376f2ef1fa5afe41d94958279896b0b7339acdab22578742c4a1448c2492fc482a63d4",
+          "sha256": "0967ed3ea9f7fc40a2319bd83798f6ca06b30bf7057b4e8ff1198f9d66052200",
+          "sha1": "ec46c42f73b25b5313109c79c40938bde9b094e6",
+          "md5": "66a7e3e467789a0e7d7947d92c0f7e69"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "benchmark-macro-1.2.0-alpha01-sources.jar",
+          "url": "benchmark-macro-1.2.0-alpha01-sources.jar",
+          "size": 53768,
+          "sha512": "b42301db519bb7f38a224618cdefc1305c9f7dac50d6b7e4cf035178e3e2106e75a2010f32e233d55956612b59f205bb1fafe7af957e131c91c9560a2665ca6c",
+          "sha256": "8b0251124aa557824696bd23bdebbb319c7a86c71b62506ad5cd5781dddd5c4c",
+          "sha1": "8c0eb4d8017927a1afc1c549b02b07cc49fa2d1c",
+          "md5": "d70065365a0d6f061bcde22a524991eb"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.compose.material",
+    "module": "material-ripple",
+    "version": "1.4.0-beta01",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.0-rc-2"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.compose.foundation",
+          "module": "foundation",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.runtime",
+          "module": "runtime",
+          "version": {
+            "requires": "1.2.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "material-ripple-1.4.0-beta01.aar",
+          "url": "material-ripple-1.4.0-beta01.aar",
+          "size": 76363,
+          "sha512": "618efa358bc26f9bd72fd1a2aee0b35c31ca42d02ea4a77d3675d3080ac47dbcf30e3cef04ecd16b5723b7c3957f2a6db9d43ee7fa3eef1ab119715146988a13",
+          "sha256": "10f14ba0edace34f746c513a14a91454f65293b759bc41ab84711c3226fd00dc",
+          "sha1": "e5533fb18f13447d511cfe9ac7ac306b95691633",
+          "md5": "f74387c6835890e8ea16b565f095d599"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.compose.animation",
+          "module": "animation",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.foundation",
+          "module": "foundation",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.runtime",
+          "module": "runtime",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui-util",
+          "version": {
+            "requires": "1.2.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-common",
+          "version": {
+            "requires": "1.8.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "material-ripple-1.4.0-beta01.aar",
+          "url": "material-ripple-1.4.0-beta01.aar",
+          "size": 76363,
+          "sha512": "618efa358bc26f9bd72fd1a2aee0b35c31ca42d02ea4a77d3675d3080ac47dbcf30e3cef04ecd16b5723b7c3957f2a6db9d43ee7fa3eef1ab119715146988a13",
+          "sha256": "10f14ba0edace34f746c513a14a91454f65293b759bc41ab84711c3226fd00dc",
+          "sha1": "e5533fb18f13447d511cfe9ac7ac306b95691633",
+          "md5": "f74387c6835890e8ea16b565f095d599"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "material-ripple-1.4.0-beta01-sources.jar",
+          "url": "material-ripple-1.4.0-beta01-sources.jar",
+          "size": 21715,
+          "sha512": "1c89cb8c89584ce1f77a15f6d5da3525c6782e9356afe945785379ea675718048a8aec18dc2e9f4f51fda18824208eeda690dae0668e147e63785e08ba02f8b3",
+          "sha256": "4f8d0a9cc8adffe36422e134b3d5e367098e9f3421b4437c7a8c7f222921b202",
+          "sha1": "6a8f9d01d5a09dc4d42fff0e7c711d165a88824e",
+          "md5": "a07e551bb53d9234a12d146b86aeda7f"
+        }
+      ]
+    }
+  ]
+}

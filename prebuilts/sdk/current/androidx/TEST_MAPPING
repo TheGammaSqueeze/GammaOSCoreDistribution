@@ -1,0 +1,31 @@
+{
+  "presubmit": [
+    {
+      "name": "CtsPhotoPickerTest",
+      "options": [
+        {
+          "exclude-annotation": "androidx.test.filters.LargeTest"
+        }
+      ]
+    },
+    {
+      "name": "SystemUIGoogleScreenshotTests",
+      "options": [
+        {
+          "exclude-annotation": "org.junit.Ignore"
+        },
+        {
+          "exclude-annotation": "androidx.test.filters.FlakyTest"
+        },
+        {
+          "exclude-annotation": "android.platform.test.annotations.Postsubmit"
+        }
+      ]
+    }
+  ],
+  "postsubmit": [
+    {
+      "name": "CtsPhotoPickerTest"
+    }
+  ]
+}

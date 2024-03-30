@@ -1,0 +1,87 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "androidx.exifinterface",
+    "module": "exifinterface",
+    "version": "1.4.0-alpha01",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.4"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "exifinterface-1.4.0-alpha01.aar",
+          "url": "exifinterface-1.4.0-alpha01.aar",
+          "size": 65219,
+          "sha512": "b64cef68ec8b7df8b6ddc6b375ce1b73ff9f3c7fcd5608fc924699ce6c337eb6460dee0a73dc374f6e7e24aead9b214717291b21d2361c6ff7399a8e2bb2e032",
+          "sha256": "0cacc14a04ba5b1bd8a4f9ae8598c9b2ab2a6e2284e3b2c8b9ddbc6d7fc41e23",
+          "sha1": "79f469f9fc3359a63c249edd29b50bc3687874ab",
+          "md5": "94e3df7bc19d55a75678451324c6a0e5"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.2.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "exifinterface-1.4.0-alpha01.aar",
+          "url": "exifinterface-1.4.0-alpha01.aar",
+          "size": 65219,
+          "sha512": "b64cef68ec8b7df8b6ddc6b375ce1b73ff9f3c7fcd5608fc924699ce6c337eb6460dee0a73dc374f6e7e24aead9b214717291b21d2361c6ff7399a8e2bb2e032",
+          "sha256": "0cacc14a04ba5b1bd8a4f9ae8598c9b2ab2a6e2284e3b2c8b9ddbc6d7fc41e23",
+          "sha1": "79f469f9fc3359a63c249edd29b50bc3687874ab",
+          "md5": "94e3df7bc19d55a75678451324c6a0e5"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "exifinterface-1.4.0-alpha01-sources.jar",
+          "url": "exifinterface-1.4.0-alpha01-sources.jar",
+          "size": 64999,
+          "sha512": "c06424356f24084dba9c6c105a5fcef90cf08410c7dbada42f85ab2c10cabdbdbea9e7ab6e317f0e3e3628e9ec0d8ef3428eddb4a395639578f5b02caed32c09",
+          "sha256": "cab4343f733e1e492d7906f41809365200955be98241d5e726436b739c34c65e",
+          "sha1": "55a6869802791b79abf44b0ae3a7efb8145dc2bd",
+          "md5": "0de37a633d2159ee49d793739d8764fb"
+        }
+      ]
+    }
+  ]
+}
