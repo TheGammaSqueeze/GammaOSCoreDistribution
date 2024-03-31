@@ -65,7 +65,6 @@ PRODUCT_PACKAGES += \
     libstagefrighthw \
     libstagefright_goldfish_vpxdec \
     libstagefright_goldfish_avcdec \
-    MultiDisplayProvider \
     libGoldfishProfiler \
     dlkm_loader
 

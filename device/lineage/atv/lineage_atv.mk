@@ -74,8 +74,9 @@ PRODUCT_PACKAGES += \
 
 # TVLauncher
 PRODUCT_PACKAGES += \
-    TVLauncherNoGMS \
-    TVRecommendationsNoGMS
+    TVLauncherNoGMS
+
+#    TVRecommendationsNoGMS
 
 # priv-app permissions
 PRODUCT_COPY_FILES +=\
