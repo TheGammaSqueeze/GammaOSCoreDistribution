@@ -39,7 +39,7 @@ PRODUCT_PACKAGES += \
 # permission should be installed.
 #
 # Defaults to true to mimic legacy behaviour.
-PRODUCT_SUPPORTS_TUNER ?= true
+PRODUCT_SUPPORTS_TUNER ?= false
 ifeq ($(PRODUCT_SUPPORTS_TUNER),true)
     PRODUCT_PACKAGES += libmedia_tv_tuner
 endif
@@ -75,7 +75,7 @@ PRODUCT_PACKAGES += \
 # external webcams to work, see "External USB Cameras" documentation.
 #
 # Defaults to true to mimic legacy behaviour.
-PRODUCT_SUPPORTS_CAMERA ?= true
+PRODUCT_SUPPORTS_CAMERA ?= false
 ifeq ($(PRODUCT_SUPPORTS_CAMERA),true)
     PRODUCT_PACKAGES += cameraserver
 else
@@ -86,7 +86,7 @@ endif
 
 # Enable frame-exact AV sync
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.media.avsync=true
+    persist.sys.media.avsync=false
 
 # Update Display.getDeviceProductInfo() on hotplug
 PRODUCT_PROPERTY_OVERRIDES += \

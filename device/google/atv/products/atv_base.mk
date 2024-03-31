@@ -19,4 +19,4 @@ $(call inherit-product, device/google/atv/products/atv_system.mk)
 $(call inherit-product, device/google/atv/products/atv_system_ext.mk)
 $(call inherit-product, device/google/atv/products/atv_product.mk)
 $(call inherit-product, device/google/atv/products/atv_vendor.mk)
-
+$(call inherit-product, device/google/atv/products/atv_lowram_defaults.mk)
