@@ -75,7 +75,7 @@ PRODUCT_PACKAGES += \
 # external webcams to work, see "External USB Cameras" documentation.
 #
 # Defaults to true to mimic legacy behaviour.
-PRODUCT_SUPPORTS_CAMERA ?= false
+PRODUCT_SUPPORTS_CAMERA ?= true
 ifeq ($(PRODUCT_SUPPORTS_CAMERA),true)
     PRODUCT_PACKAGES += cameraserver
 else
