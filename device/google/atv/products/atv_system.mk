@@ -61,6 +61,7 @@ PRODUCT_PACKAGES += \
     screenrecord \
     UserDictionaryProvider \
     VpnDialogs \
+    DocumentsUI \
     com.android.media.tv.remoteprovider
 
 # Device owner provisioning for devices defining device_admin
@@ -85,7 +86,7 @@ endif
 
 # Enable frame-exact AV sync
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.media.avsync=false
+    persist.sys.media.avsync=true
 
 # Update Display.getDeviceProductInfo() on hotplug
 PRODUCT_PROPERTY_OVERRIDES += \
