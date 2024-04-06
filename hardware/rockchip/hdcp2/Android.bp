@@ -1,0 +1,10 @@
+cc_prebuilt_binary {
+    name: "hdcp2_tx_rx",
+    srcs: ["hdcp2_tx_rx"],
+    init_rc: ["init.hdcp2-host.rc"],
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    vendor: true,
+}

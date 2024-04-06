@@ -1,0 +1,8 @@
+package rockchip.hardware.hdmi@1.0;
+
+import rockchip.hardware.hdmi@1.0::types;
+
+interface IHdmiRxStatusCallback
+{
+	getHdmiRxStatus() generates (HdmiStatus status);
+};

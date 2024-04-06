@@ -1,0 +1,21 @@
+cc_prebuilt_binary {
+    name: "rockchip_rkp_factory_extraction_tool",
+    init_rc: ["init.rockchip_rkp_factory_service.rc"],
+    vendor: true,
+    compile_multilib: "first",
+    shared_libs: [
+        "libbase",
+        "liblog",
+        "libutils",
+        "libcutils",
+    ],
+    arch: {
+        arm64: {
+            srcs: ["bin/arm64/rockchip_rkp_factory_extraction_tool"],
+        },
+        arm: {
+            srcs: ["bin/arm/rockchip_rkp_factory_extraction_tool"],
+        },
+    },
+    check_elf_files: false,
+}

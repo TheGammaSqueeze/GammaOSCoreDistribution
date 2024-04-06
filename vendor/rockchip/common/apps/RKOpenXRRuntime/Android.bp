@@ -1,0 +1,41 @@
+//##############################################################################
+// RKOpenXRRuntime
+
+cc_prebuilt_library_shared {
+    name: "libopenxr_monado.openxr",
+    allow_undefined_symbols: true,
+    shared_libs: [
+        "libc++_shared",
+    ],
+    compile_multilib: "both",
+    check_elf_files: false,
+    multilib: {
+        lib64: {
+            srcs: ["lib/arm/libopenxr_monado.openxr.so"],
+        },
+        lib32: {
+            srcs: ["lib/arm64/libopenxr_monado.openxr.so"],
+        }
+    },
+}
+
+cc_prebuilt_library_shared {
+    name: "libc++_shared",
+    allow_undefined_symbols: true,
+    check_elf_files: false,
+    compile_multilib: "both",
+    arch: {
+        arm: {
+            srcs: ["lib/arm/libc++_shared.so"],
+        },
+        arm64: {
+            srcs: ["lib/arm64/libc++_shared.so"],
+        }
+    },
+}
+
+prebuilt_etc {
+    name: "public.libraries-openxr",
+    src: "public.libraries-openxr.txt",
+    filename_from_src: true,
+}

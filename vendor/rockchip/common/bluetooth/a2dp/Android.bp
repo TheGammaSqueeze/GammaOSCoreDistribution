@@ -1,0 +1,18 @@
+cc_prebuilt_library {
+    name: "audio.a2dp.rk30board",
+    compile_multilib: "both",
+    multilib: {
+        lib64: {
+            srcs: ["lib64/audio.a2dp.rk30board.so"],
+        },
+        lib32: {
+            srcs: ["lib/audio.a2dp.rk30board.so"],
+        },
+    },
+    relative_install_path: "hw",
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    vendor: true,
+}

@@ -1,0 +1,15 @@
+cc_library_shared {
+    name: "tv_input.rockchip",
+    relative_install_path: "hw",
+    proprietary: true,
+    header_libs: [
+        "libhardware_headers",
+        "libhardware_rockchip_headers",
+    ],
+    shared_libs: [
+        "libcutils",
+        "liblog",
+    ],
+    srcs: ["tv_input.cpp"],
+    cflags: ["-Wall", "-Werror"],
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<PreferenceScreen
+        android:title="@string/SYS_LED_white"
+        android:iconSpaceReserved="false">
+        <intent
+            android:targetClass="com.khadas.ksettings.SYS_LEDs_Preference"
+            android:targetPackage="com.khadas.ksettings" />
+    </PreferenceScreen>
+
+	<PreferenceScreen
+        android:title="@string/MCU_LED_white"
+        android:iconSpaceReserved="false">
+        <intent
+            android:targetClass="com.khadas.ksettings.MCU_LEDs_Preference"
+            android:targetPackage="com.khadas.ksettings" />
+    </PreferenceScreen>
+	
+</PreferenceScreen>

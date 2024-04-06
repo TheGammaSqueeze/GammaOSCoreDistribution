@@ -1,0 +1,8 @@
+service rockchip_udc_detector /system/bin/recovery_udc_detector
+    group system
+    oneshot
+    seclabel u:r:recovery:s0
+    disabled
+
+on early-fs
+    start rockchip_udc_detector

@@ -1,0 +1,53 @@
+From 5ce77f7fc5a62e60292ad8fda77f0628b7433ae5 Mon Sep 17 00:00:00 2001
+From: Paul Lawrence <paullawrence@google.com>
+Date: Wed, 21 Apr 2021 11:28:56 -0700
+Subject: [PATCH 26/31] ANDROID: Incremental fs: Fix INCFS_MAGIC_NUMBER casts
+
+Sparse complains about casting a five byte number to a ulong on 32-bit
+platorms. Fix by anding the constant with ULONG_MAX
+
+Bug: 186015158
+Test: incfs_test passes, sparse reports no warnings on 32 & 64 bit builds
+Signed-off-by: Paul Lawrence <paullawrence@google.com>
+Change-Id: Ic83e03626b7f290370d75b3aaba187b8392fb344
+---
+ fs/incfs/data_mgmt.h               | 2 +-
+ include/uapi/linux/incrementalfs.h | 9 ++++++++-
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/fs/incfs/data_mgmt.h b/fs/incfs/data_mgmt.h
+index 010bf4ec90da..32bb280bd662 100644
+--- a/fs/incfs/data_mgmt.h
++++ b/fs/incfs/data_mgmt.h
+@@ -424,7 +424,7 @@ static inline struct inode_info *get_incfs_node(struct inode *inode)
+ 	if (!inode)
+ 		return NULL;
+ 
+-	if (inode->i_sb->s_magic != (long) INCFS_MAGIC_NUMBER) {
++	if (inode->i_sb->s_magic != INCFS_MAGIC_NUMBER) {
+ 		/* This inode doesn't belong to us. */
+ 		pr_warn_once("incfs: %s on an alien inode.", __func__);
+ 		return NULL;
+diff --git a/include/uapi/linux/incrementalfs.h b/include/uapi/linux/incrementalfs.h
+index 4140c1db4db7..e22094b3ce85 100644
+--- a/include/uapi/linux/incrementalfs.h
++++ b/include/uapi/linux/incrementalfs.h
+@@ -18,7 +18,14 @@
+ 
+ /* ===== constants ===== */
+ #define INCFS_NAME "incremental-fs"
+-#define INCFS_MAGIC_NUMBER (0x5346434e49ul)
++
++/*
++ * Magic number used in file header and in memory superblock
++ * Note that it is a 5 byte unsigned long. Thus on 32 bit kernels, it is
++ * truncated to a 4 byte number
++ */
++#define INCFS_MAGIC_NUMBER (0x5346434e49ul & ULONG_MAX)
++
+ #define INCFS_DATA_FILE_BLOCK_SIZE 4096
+ #define INCFS_HEADER_VER 1
+ 
+-- 
+2.17.1
+

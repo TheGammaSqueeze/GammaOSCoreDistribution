@@ -1,0 +1,60 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.rockchip.wfd"
+    android:versionCode="1"
+    android:versionName="1.2.0.140115"
+    android:sharedUserId="android.uid.system">
+    
+	<uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+        <uses-permission android:name="android.permission.CONFIGURE_WIFI_DISPLAY" />
+
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="15" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".WifiDisplayActivity"
+            android:configChanges="orientation"
+            android:windowSoftInputMode="stateUnspecified|adjustNothing"
+            android:label="@string/title_activity_wifi_display" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <!-- activity
+            android:name="com.rockchip.p2p.WifiP2pSettings"
+            android:theme="@android:style/Theme.Holo"
+            android:label="@string/title_activity_wifi_display" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-->
+        
+        <service android:name=".WifiDisplayService" android:exported="false">
+            <intent-filter>
+                <action android:name="com.rockchip.wfd.service" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </service>
+        
+        <!-- receiver android:name=".WifiDisplayBootReceiver">
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED"/>
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</receiver-->
+    </application>
+
+</manifest>

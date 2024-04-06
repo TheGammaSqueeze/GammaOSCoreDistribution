@@ -1,0 +1,172 @@
+From aebbbd9a62b93d34e3b12bc7f759b8e3b2d465fb Mon Sep 17 00:00:00 2001
+From: Paul Lawrence <paullawrence@google.com>
+Date: Mon, 19 Apr 2021 14:09:01 -0700
+Subject: [PATCH 27/31] ANDROID: Incremental fs: Add
+ INCFS_IOC_GET_LAST_READ_ERROR
+
+Bug: 184291759
+Test: incfs_test passes
+Signed-off-by: Paul Lawrence <paullawrence@google.com>
+Change-Id: If46e91f9c992337d53970573c238be965187761e
+---
+ fs/incfs/data_mgmt.c               | 24 ++++++++++++++++++++++++
+ fs/incfs/data_mgmt.h               |  7 +++++++
+ fs/incfs/pseudo_files.c            | 24 ++++++++++++++++++++++++
+ include/uapi/linux/incrementalfs.h | 26 ++++++++++++++++++++++++++
+ 4 files changed, 81 insertions(+)
+
+diff --git a/fs/incfs/data_mgmt.c b/fs/incfs/data_mgmt.c
+index 8a4d87c79d56..73aada330b84 100644
+--- a/fs/incfs/data_mgmt.c
++++ b/fs/incfs/data_mgmt.c
+@@ -73,6 +73,7 @@ struct mount_info *incfs_alloc_mount_info(struct super_block *sb,
+ 	spin_lock_init(&mi->mi_per_uid_read_timeouts_lock);
+ 	mutex_init(&mi->mi_zstd_workspace_mutex);
+ 	INIT_DELAYED_WORK(&mi->mi_zstd_cleanup_work, zstd_free_workspace);
++	mutex_init(&mi->mi_le_mutex);
+ 
+ 	node = incfs_add_sysfs_node(options->sysfs_name);
+ 	if (IS_ERR(node)) {
+@@ -1246,6 +1247,27 @@ static int wait_for_data_block(struct data_file *df, int block_index,
+ 	return 0;
+ }
+ 
++static int incfs_update_sysfs_error(struct file *file, int index, int result,
++				struct mount_info *mi, struct data_file *df)
++{
++	int error;
++
++	if (result >= 0)
++		return 0;
++
++	error = mutex_lock_interruptible(&mi->mi_le_mutex);
++	if (error)
++		return error;
++
++	mi->mi_le_file_id = df->df_id;
++	mi->mi_le_time_us = ktime_to_us(ktime_get());
++	mi->mi_le_page = index;
++	mi->mi_le_errno = result;
++	mutex_unlock(&mi->mi_le_mutex);
++
++	return 0;
++}
++
+ ssize_t incfs_read_data_file_block(struct mem_range dst, struct file *f,
+ 			int index, struct mem_range tmp,
+ 			struct incfs_read_data_file_timeouts *timeouts)
+@@ -1317,6 +1339,8 @@ ssize_t incfs_read_data_file_block(struct mem_range dst, struct file *f,
+ 			mi->mi_sysfs_node->isn_reads_failed_hash_verification++;
+ 		else if (result < 0)
+ 			mi->mi_sysfs_node->isn_reads_failed_other++;
++
++		incfs_update_sysfs_error(f, index, result, mi, df);
+ 	}
+ 
+ 	return result;
+diff --git a/fs/incfs/data_mgmt.h b/fs/incfs/data_mgmt.h
+index 32bb280bd662..4716c41b8647 100644
+--- a/fs/incfs/data_mgmt.h
++++ b/fs/incfs/data_mgmt.h
+@@ -192,6 +192,13 @@ struct mount_info {
+ 
+ 	/* sysfs node */
+ 	struct incfs_sysfs_node *mi_sysfs_node;
++
++	/* Last error information */
++	struct mutex	mi_le_mutex;
++	incfs_uuid_t	mi_le_file_id;
++	u64		mi_le_time_us;
++	u32		mi_le_page;
++	u32		mi_le_errno;
+ };
+ 
+ struct data_file_block {
+diff --git a/fs/incfs/pseudo_files.c b/fs/incfs/pseudo_files.c
+index 3c683c4cac12..4e35f1f81f92 100644
+--- a/fs/incfs/pseudo_files.c
++++ b/fs/incfs/pseudo_files.c
+@@ -991,6 +991,28 @@ static long ioctl_set_read_timeouts(struct mount_info *mi, void __user *arg)
+ 	return error;
+ }
+ 
++static long ioctl_get_last_read_error(struct mount_info *mi, void __user *arg)
++{
++	struct incfs_get_last_read_error_args __user *args_usr_ptr = arg;
++	struct incfs_get_last_read_error_args args = {};
++	int error;
++
++	error = mutex_lock_interruptible(&mi->mi_le_mutex);
++	if (error)
++		return error;
++
++	args.file_id_out = mi->mi_le_file_id;
++	args.time_us_out = mi->mi_le_time_us;
++	args.page_out = mi->mi_le_page;
++	args.errno_out = mi->mi_le_errno;
++
++	mutex_unlock(&mi->mi_le_mutex);
++	if (copy_to_user(args_usr_ptr, &args, sizeof(args)) > 0)
++		error = -EFAULT;
++
++	return error;
++}
++
+ static long pending_reads_dispatch_ioctl(struct file *f, unsigned int req,
+ 					unsigned long arg)
+ {
+@@ -1007,6 +1029,8 @@ static long pending_reads_dispatch_ioctl(struct file *f, unsigned int req,
+ 		return ioctl_get_read_timeouts(mi, (void __user *)arg);
+ 	case INCFS_IOC_SET_READ_TIMEOUTS:
+ 		return ioctl_set_read_timeouts(mi, (void __user *)arg);
++	case INCFS_IOC_GET_LAST_READ_ERROR:
++		return ioctl_get_last_read_error(mi, (void __user *)arg);
+ 	default:
+ 		return -EINVAL;
+ 	}
+diff --git a/include/uapi/linux/incrementalfs.h b/include/uapi/linux/incrementalfs.h
+index e22094b3ce85..f1a6199da850 100644
+--- a/include/uapi/linux/incrementalfs.h
++++ b/include/uapi/linux/incrementalfs.h
+@@ -134,6 +134,13 @@
+ #define INCFS_IOC_SET_READ_TIMEOUTS \
+ 	_IOW(INCFS_IOCTL_BASE_CODE, 38, struct incfs_set_read_timeouts_args)
+ 
++/*
++ * Get last read error
++ * May only be called on .pending_reads file
++ */
++#define INCFS_IOC_GET_LAST_READ_ERROR \
++	_IOW(INCFS_IOCTL_BASE_CODE, 39, struct incfs_get_last_read_error_args)
++
+ /* ===== sysfs feature flags ===== */
+ /*
+  * Each flag is represented by a file in /sys/fs/incremental-fs/features
+@@ -556,5 +563,24 @@ struct incfs_set_read_timeouts_args {
+ 	__u32 timeouts_array_size;
+ };
+ 
++/*
++ * Get last read error struct
++ * Arguments for INCFS_IOC_GET_LAST_READ_ERROR
++ */
++struct incfs_get_last_read_error_args {
++	/* File id of last file that had a read error */
++	incfs_uuid_t	file_id_out;
++
++	/* Time of last read error, in us, from CLOCK_MONOTONIC */
++	__u64	time_us_out;
++
++	/* Index of page that was being read at last read error */
++	__u32	page_out;
++
++	/* errno of last read error */
++	__u32	errno_out;
++
++	__u64	reserved;
++};
+ 
+ #endif /* _UAPI_LINUX_INCREMENTALFS_H */
+-- 
+2.17.1
+

@@ -1,0 +1,286 @@
+From 40e5fb52adfdc504793a9a71e76194f4460ce206 Mon Sep 17 00:00:00 2001
+From: Paul Lawrence <paullawrence@google.com>
+Date: Mon, 10 May 2021 10:53:59 -0700
+Subject: [PATCH 30/31] ANDROID: Incremental fs: Make sysfs_name changeable on
+ remount
+
+Bug: 187829246
+Test: incfs_test passes
+Signed-off-by: Paul Lawrence <paullawrence@google.com>
+Change-Id: I1762f170c8a8a2fb7672f65c402e82ab95aeef8a
+---
+ fs/incfs/data_mgmt.c | 55 +++++++++++++++++++++++++-------------------
+ fs/incfs/data_mgmt.h | 31 +++++++++++++++++++++++++
+ fs/incfs/sysfs.c     | 14 +++++++----
+ fs/incfs/sysfs.h     | 34 ++++-----------------------
+ fs/incfs/vfs.c       |  5 ++++
+ 5 files changed, 81 insertions(+), 58 deletions(-)
+
+diff --git a/fs/incfs/data_mgmt.c b/fs/incfs/data_mgmt.c
+index 15344dd7d379..44b56a3a05e7 100644
+--- a/fs/incfs/data_mgmt.c
++++ b/fs/incfs/data_mgmt.c
+@@ -75,7 +75,7 @@ struct mount_info *incfs_alloc_mount_info(struct super_block *sb,
+ 	INIT_DELAYED_WORK(&mi->mi_zstd_cleanup_work, zstd_free_workspace);
+ 	mutex_init(&mi->mi_le_mutex);
+ 
+-	node = incfs_add_sysfs_node(options->sysfs_name);
++	node = incfs_add_sysfs_node(options->sysfs_name, mi);
+ 	if (IS_ERR(node)) {
+ 		error = PTR_ERR(node);
+ 		goto err;
+@@ -130,13 +130,25 @@ int incfs_realloc_mount_info(struct mount_info *mi,
+ 		kfree(old_buffer);
+ 	}
+ 
+-	if ((options->sysfs_name && !mi->mi_sysfs_node) ||
+-	    (!options->sysfs_name && mi->mi_sysfs_node) ||
+-	    (options->sysfs_name &&
++	if (options->sysfs_name && !mi->mi_sysfs_node)
++		mi->mi_sysfs_node = incfs_add_sysfs_node(options->sysfs_name,
++							 mi);
++	else if (!options->sysfs_name && mi->mi_sysfs_node) {
++		incfs_free_sysfs_node(mi->mi_sysfs_node);
++		mi->mi_sysfs_node = NULL;
++	} else if (options->sysfs_name &&
+ 		strcmp(options->sysfs_name,
+-		       kobject_name(&mi->mi_sysfs_node->isn_sysfs_node)))) {
+-		pr_err("incfs: Can't change sysfs_name mount option on remount\n");
+-		return -EOPNOTSUPP;
++		       kobject_name(&mi->mi_sysfs_node->isn_sysfs_node))) {
++		incfs_free_sysfs_node(mi->mi_sysfs_node);
++		mi->mi_sysfs_node = incfs_add_sysfs_node(options->sysfs_name,
++							 mi);
++	}
++
++	if (IS_ERR(mi->mi_sysfs_node)) {
++		int err = PTR_ERR(mi->mi_sysfs_node);
++
++		mi->mi_sysfs_node = NULL;
++		return err;
+ 	}
+ 
+ 	mi->mi_options = *options;
+@@ -1232,18 +1244,15 @@ static int wait_for_data_block(struct data_file *df, int block_index,
+ 	if (error)
+ 		return error;
+ 
+-	if (!mi->mi_sysfs_node)
+-		return 0;
+-
+ 	if (delayed_pending) {
+-		mi->mi_sysfs_node->isn_reads_delayed_pending++;
+-		mi->mi_sysfs_node->isn_reads_delayed_pending_us +=
++		mi->mi_reads_delayed_pending++;
++		mi->mi_reads_delayed_pending_us +=
+ 			delayed_pending_us;
+ 	}
+ 
+ 	if (delayed_min_us) {
+-		mi->mi_sysfs_node->isn_reads_delayed_min++;
+-		mi->mi_sysfs_node->isn_reads_delayed_min_us += delayed_min_us;
++		mi->mi_reads_delayed_min++;
++		mi->mi_reads_delayed_min_us += delayed_min_us;
+ 	}
+ 
+ 	return 0;
+@@ -1334,16 +1343,14 @@ ssize_t incfs_read_data_file_block(struct mem_range dst, struct file *f,
+ 		log_block_read(mi, &df->df_id, index);
+ 
+ out:
+-	if (mi->mi_sysfs_node) {
+-		if (result == -ETIME)
+-			mi->mi_sysfs_node->isn_reads_failed_timed_out++;
+-		else if (result == -EBADMSG)
+-			mi->mi_sysfs_node->isn_reads_failed_hash_verification++;
+-		else if (result < 0)
+-			mi->mi_sysfs_node->isn_reads_failed_other++;
+-
+-		incfs_update_sysfs_error(f, index, result, mi, df);
+-	}
++	if (result == -ETIME)
++		mi->mi_reads_failed_timed_out++;
++	else if (result == -EBADMSG)
++		mi->mi_reads_failed_hash_verification++;
++	else if (result < 0)
++		mi->mi_reads_failed_other++;
++
++	incfs_update_sysfs_error(f, index, result, mi, df);
+ 
+ 	return result;
+ }
+diff --git a/fs/incfs/data_mgmt.h b/fs/incfs/data_mgmt.h
+index 4716c41b8647..9eeb60d70601 100644
+--- a/fs/incfs/data_mgmt.h
++++ b/fs/incfs/data_mgmt.h
+@@ -199,6 +199,37 @@ struct mount_info {
+ 	u64		mi_le_time_us;
+ 	u32		mi_le_page;
+ 	u32		mi_le_errno;
++
++	/* Number of reads timed out */
++	u32 mi_reads_failed_timed_out;
++
++	/* Number of reads failed because hash verification failed */
++	u32 mi_reads_failed_hash_verification;
++
++	/* Number of reads failed for another reason */
++	u32 mi_reads_failed_other;
++
++	/* Number of reads delayed because page had to be fetched */
++	u32 mi_reads_delayed_pending;
++
++	/* Total time waiting for pages to be fetched */
++	u64 mi_reads_delayed_pending_us;
++
++	/*
++	 * Number of reads delayed because of per-uid min_time_us or
++	 * min_pending_time_us settings
++	 */
++	u32 mi_reads_delayed_min;
++
++	/* Total time waiting because of per-uid min_time_us or
++	 * min_pending_time_us settings.
++	 *
++	 * Note that if a read is initially delayed because we have to wait for
++	 * the page, then further delayed because of min_pending_time_us
++	 * setting, this counter gets incremented by only the further delay
++	 * time.
++	 */
++	u64 mi_reads_delayed_min_us;
+ };
+ 
+ struct data_file_block {
+diff --git a/fs/incfs/sysfs.c b/fs/incfs/sysfs.c
+index 27aee9ed4341..360f03ca9b63 100644
+--- a/fs/incfs/sysfs.c
++++ b/fs/incfs/sysfs.c
+@@ -100,7 +100,7 @@ static ssize_t name##_show(struct kobject *kobj,			\
+ 	struct incfs_sysfs_node *node = container_of(kobj,		\
+ 			struct incfs_sysfs_node, isn_sysfs_node);	\
+ 									\
+-	return sysfs_emit(buff, "%d\n", node->isn_##name);		\
++	return sysfs_emit(buff, "%d\n", node->isn_mi->mi_##name);	\
+ }									\
+ 									\
+ static struct kobj_attribute name##_attr = __ATTR_RO(name)
+@@ -112,7 +112,7 @@ static ssize_t name##_show(struct kobject *kobj,			\
+ 	struct incfs_sysfs_node *node = container_of(kobj,		\
+ 			struct incfs_sysfs_node, isn_sysfs_node);	\
+ 									\
+-	return sysfs_emit(buff, "%lld\n", node->isn_##name);		\
++	return sysfs_emit(buff, "%lld\n", node->isn_mi->mi_##name);	\
+ }									\
+ 									\
+ static struct kobj_attribute name##_attr = __ATTR_RO(name)
+@@ -141,7 +141,7 @@ static void incfs_sysfs_release(struct kobject *kobj)
+ 	struct incfs_sysfs_node *node = container_of(kobj,
+ 				struct incfs_sysfs_node, isn_sysfs_node);
+ 
+-	kfree(node);
++	complete(&node->isn_completion);
+ }
+ 
+ static const struct attribute_group mount_attr_group = {
+@@ -153,7 +153,8 @@ static struct kobj_type incfs_kobj_node_ktype = {
+ 	.release	= &incfs_sysfs_release,
+ };
+ 
+-struct incfs_sysfs_node *incfs_add_sysfs_node(const char *name)
++struct incfs_sysfs_node *incfs_add_sysfs_node(const char *name,
++					      struct mount_info *mi)
+ {
+ 	struct incfs_sysfs_node *node = NULL;
+ 	int error;
+@@ -165,6 +166,9 @@ struct incfs_sysfs_node *incfs_add_sysfs_node(const char *name)
+ 	if (!node)
+ 		return ERR_PTR(-ENOMEM);
+ 
++	node->isn_mi = mi;
++
++	init_completion(&node->isn_completion);
+ 	kobject_init(&node->isn_sysfs_node, &incfs_kobj_node_ktype);
+ 	error = kobject_add(&node->isn_sysfs_node, instances_node, "%s", name);
+ 	if (error)
+@@ -192,4 +196,6 @@ void incfs_free_sysfs_node(struct incfs_sysfs_node *node)
+ 
+ 	sysfs_remove_group(&node->isn_sysfs_node, &mount_attr_group);
+ 	kobject_put(&node->isn_sysfs_node);
++	wait_for_completion_interruptible(&node->isn_completion);
++	kfree(node);
+ }
+diff --git a/fs/incfs/sysfs.h b/fs/incfs/sysfs.h
+index 446813fac205..65bf55463738 100644
+--- a/fs/incfs/sysfs.h
++++ b/fs/incfs/sysfs.h
+@@ -8,41 +8,15 @@
+ struct incfs_sysfs_node {
+ 	struct kobject isn_sysfs_node;
+ 
+-	/* Number of reads timed out */
+-	u32 isn_reads_failed_timed_out;
++	struct completion isn_completion;
+ 
+-	/* Number of reads failed because hash verification failed */
+-	u32 isn_reads_failed_hash_verification;
+-
+-	/* Number of reads failed for another reason */
+-	u32 isn_reads_failed_other;
+-
+-	/* Number of reads delayed because page had to be fetched */
+-	u32 isn_reads_delayed_pending;
+-
+-	/* Total time waiting for pages to be fetched */
+-	u64 isn_reads_delayed_pending_us;
+-
+-	/*
+-	 * Number of reads delayed because of per-uid min_time_us or
+-	 * min_pending_time_us settings
+-	 */
+-	u32 isn_reads_delayed_min;
+-
+-	/* Total time waiting because of per-uid min_time_us or
+-	 * min_pending_time_us settings.
+-	 *
+-	 * Note that if a read is initially delayed because we have to wait for
+-	 * the page, then further delayed because of min_pending_time_us
+-	 * setting, this counter gets incremented by only the further delay
+-	 * time.
+-	 */
+-	u64 isn_reads_delayed_min_us;
++	struct mount_info *isn_mi;
+ };
+ 
+ int incfs_init_sysfs(void);
+ void incfs_cleanup_sysfs(void);
+-struct incfs_sysfs_node *incfs_add_sysfs_node(const char *name);
++struct incfs_sysfs_node *incfs_add_sysfs_node(const char *name,
++					      struct mount_info *mi);
+ void incfs_free_sysfs_node(struct incfs_sysfs_node *node);
+ 
+ #endif
+diff --git a/fs/incfs/vfs.c b/fs/incfs/vfs.c
+index 0d5cb86f89ef..0db2eb97e7e8 100644
+--- a/fs/incfs/vfs.c
++++ b/fs/incfs/vfs.c
+@@ -22,6 +22,7 @@
+ #include "format.h"
+ #include "internal.h"
+ #include "pseudo_files.h"
++#include "sysfs.h"
+ #include "verity.h"
+ 
+ static int incfs_remount_fs(struct super_block *sb, int *flags, char *data);
+@@ -1890,5 +1891,9 @@ static int show_options(struct seq_file *m, struct dentry *root)
+ 	}
+ 	if (mi->mi_options.report_uid)
+ 		seq_puts(m, ",report_uid");
++
++	if (mi->mi_sysfs_node)
++		seq_printf(m, ",sysfs_name=%s",
++			   kobject_name(&mi->mi_sysfs_node->isn_sysfs_node));
+ 	return 0;
+ }
+-- 
+2.17.1
+

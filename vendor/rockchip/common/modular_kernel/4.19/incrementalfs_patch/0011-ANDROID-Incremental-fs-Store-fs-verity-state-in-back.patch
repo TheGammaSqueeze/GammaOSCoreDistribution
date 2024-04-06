@@ -1,0 +1,569 @@
+From 43932eeb9abef71016b24ea63aaf84570779aebb Mon Sep 17 00:00:00 2001
+From: Paul Lawrence <paullawrence@google.com>
+Date: Wed, 12 Aug 2020 15:12:47 -0700
+Subject: [PATCH 11/31] ANDROID: Incremental fs: Store fs-verity state in
+ backing file
+
+Now fsverity state is preserved across inode eviction.
+
+Added incfs.verity xattr to track when a file is fs-verity enabled.
+
+Bug: 160634504
+Test: incfs_test passes
+Signed-off-by: Paul Lawrence <paullawrence@google.com>
+Change-Id: I908a80dc9d956d0fbaa59b40c249de850e887820
+---
+ fs/incfs/data_mgmt.c               |  28 ++++++
+ fs/incfs/data_mgmt.h               |   2 +
+ fs/incfs/format.c                  |  51 +++++++++-
+ fs/incfs/format.h                  |  39 +++++++-
+ fs/incfs/verity.c                  | 150 ++++++++++++++++++++++++++++-
+ fs/incfs/verity.h                  |  11 +++
+ fs/incfs/vfs.c                     |  17 ++++
+ include/uapi/linux/incrementalfs.h |   1 +
+ 8 files changed, 292 insertions(+), 7 deletions(-)
+
+diff --git a/fs/incfs/data_mgmt.c b/fs/incfs/data_mgmt.c
+index 21c4b54c172c..84aef37d33bf 100644
+--- a/fs/incfs/data_mgmt.c
++++ b/fs/incfs/data_mgmt.c
+@@ -5,6 +5,7 @@
+ #include <linux/crc32.h>
+ #include <linux/delay.h>
+ #include <linux/file.h>
++#include <linux/fsverity.h>
+ #include <linux/gfp.h>
+ #include <linux/ktime.h>
+ #include <linux/lz4.h>
+@@ -18,6 +19,7 @@
+ #include "data_mgmt.h"
+ #include "format.h"
+ #include "integrity.h"
++#include "verity.h"
+ 
+ static int incfs_scan_metadata_chain(struct data_file *df);
+ 
+@@ -332,6 +334,7 @@ void incfs_free_data_file(struct data_file *df)
+ 	incfs_free_bfc(df->df_backing_file_context);
+ 	kfree(df->df_signature);
+ 	kfree(df->df_verity_file_digest.data);
++	kfree(df->df_verity_signature);
+ 	mutex_destroy(&df->df_enable_verity);
+ 	kfree(df);
+ }
+@@ -1456,7 +1459,31 @@ static int process_status_md(struct incfs_status *is,
+ 		   df->df_initial_hash_blocks_written);
+ 
+ 	df->df_status_offset = handler->md_record_offset;
++	return 0;
++}
++
++static int process_file_verity_signature_md(
++		struct incfs_file_verity_signature *vs,
++		struct metadata_handler *handler)
++{
++	struct data_file *df = handler->context;
++	struct incfs_df_verity_signature *verity_signature;
++
++	if (!df)
++		return -EFAULT;
++
++	verity_signature = kzalloc(sizeof(*verity_signature), GFP_NOFS);
++	if (!verity_signature)
++		return -ENOMEM;
++
++	verity_signature->offset = le64_to_cpu(vs->vs_offset);
++	verity_signature->size = le32_to_cpu(vs->vs_size);
++	if (verity_signature->size > FS_VERITY_MAX_SIGNATURE_SIZE) {
++		kfree(verity_signature);
++		return -EFAULT;
++	}
+ 
++	df->df_verity_signature = verity_signature;
+ 	return 0;
+ }
+ 
+@@ -1482,6 +1509,7 @@ static int incfs_scan_metadata_chain(struct data_file *df)
+ 	handler->handle_blockmap = process_blockmap_md;
+ 	handler->handle_signature = process_file_signature_md;
+ 	handler->handle_status = process_status_md;
++	handler->handle_verity_signature = process_file_verity_signature_md;
+ 
+ 	while (handler->md_record_offset > 0) {
+ 		error = incfs_read_next_metadata_record(bfc, handler);
+diff --git a/fs/incfs/data_mgmt.h b/fs/incfs/data_mgmt.h
+index 01ec0320b5db..8cbe479ae23e 100644
+--- a/fs/incfs/data_mgmt.h
++++ b/fs/incfs/data_mgmt.h
+@@ -297,6 +297,8 @@ struct data_file {
+ 	 * been opened
+ 	 */
+ 	struct mem_range df_verity_file_digest;
++
++	struct incfs_df_verity_signature *df_verity_signature;
+ };
+ 
+ struct dir_file {
+diff --git a/fs/incfs/format.c b/fs/incfs/format.c
+index fb7417c4dee8..2223facc555c 100644
+--- a/fs/incfs/format.c
++++ b/fs/incfs/format.c
+@@ -322,9 +322,6 @@ static int write_new_status_to_backing_file(struct backing_file_context *bfc,
+ 		.is_hash_blocks_written = cpu_to_le32(hash_blocks_written),
+ 	};
+ 
+-	if (!bfc)
+-		return -EFAULT;
+-
+ 	LOCK_REQUIRED(bfc->bc_mutex);
+ 	rollback_pos = incfs_get_end_offset(bfc->bc_file);
+ 	result = append_md_to_backing_file(bfc, &is.is_header);
+@@ -342,6 +339,9 @@ int incfs_write_status_to_backing_file(struct backing_file_context *bfc,
+ 	struct incfs_status is;
+ 	int result;
+ 
++	if (!bfc)
++		return -EFAULT;
++
+ 	if (status_offset == 0)
+ 		return write_new_status_to_backing_file(bfc,
+ 				data_blocks_written, hash_blocks_written);
+@@ -359,6 +359,46 @@ int incfs_write_status_to_backing_file(struct backing_file_context *bfc,
+ 	return 0;
+ }
+ 
++int incfs_write_verity_signature_to_backing_file(
++		struct backing_file_context *bfc, struct mem_range signature,
++		loff_t *offset)
++{
++	struct incfs_file_verity_signature vs = {};
++	int result;
++	loff_t pos;
++
++	/* No verity signature section is equivalent to an empty section */
++	if (signature.data == NULL || signature.len == 0)
++		return 0;
++
++	pos = incfs_get_end_offset(bfc->bc_file);
++
++	vs = (struct incfs_file_verity_signature) {
++		.vs_header = (struct incfs_md_header) {
++			.h_md_entry_type = INCFS_MD_VERITY_SIGNATURE,
++			.h_record_size = cpu_to_le16(sizeof(vs)),
++			.h_next_md_offset = cpu_to_le64(0),
++		},
++		.vs_size = cpu_to_le32(signature.len),
++		.vs_offset = cpu_to_le64(pos),
++	};
++
++	result = write_to_bf(bfc, signature.data, signature.len, pos);
++	if (result)
++		goto err;
++
++	result = append_md_to_backing_file(bfc, &vs.vs_header);
++	if (result)
++		goto err;
++
++	*offset = pos;
++err:
++	if (result)
++		/* Error, rollback file changes */
++		truncate_backing_file(bfc, pos);
++	return result;
++}
++
+ /*
+  * Write a backing file header
+  * It should always be called only on empty file.
+@@ -659,6 +699,11 @@ int incfs_read_next_metadata_record(struct backing_file_context *bfc,
+ 			res = handler->handle_status(
+ 				&handler->md_buffer.status, handler);
+ 		break;
++	case INCFS_MD_VERITY_SIGNATURE:
++		if (handler->handle_verity_signature)
++			res = handler->handle_verity_signature(
++				&handler->md_buffer.verity_signature, handler);
++		break;
+ 	default:
+ 		res = -ENOTSUPP;
+ 		break;
+diff --git a/fs/incfs/format.h b/fs/incfs/format.h
+index 87d10157dfe1..c95732d53377 100644
+--- a/fs/incfs/format.h
++++ b/fs/incfs/format.h
+@@ -120,6 +120,7 @@ enum incfs_metadata_type {
+ 	INCFS_MD_FILE_ATTR = 2,
+ 	INCFS_MD_SIGNATURE = 3,
+ 	INCFS_MD_STATUS = 4,
++	INCFS_MD_VERITY_SIGNATURE = 5,
+ };
+ 
+ enum incfs_file_header_flags {
+@@ -228,7 +229,14 @@ struct incfs_blockmap {
+ 	__le32 m_block_count;
+ } __packed;
+ 
+-/* Metadata record for file signature. Type = INCFS_MD_SIGNATURE */
++/*
++ * Metadata record for file signature. Type = INCFS_MD_SIGNATURE
++ *
++ * The signature stored here is the APK V4 signature data blob. See the
++ * definition of incfs_new_file_args::signature_info for an explanation of this
++ * blob. Specifically, it contains the root hash, but it does *not* contain
++ * anything that the kernel treats as a signature.
++ */
+ struct incfs_file_signature {
+ 	struct incfs_md_header sg_header;
+ 
+@@ -259,6 +267,29 @@ struct incfs_status {
+ 	__le32 is_dummy[6]; /* Spare fields */
+ } __packed;
+ 
++/*
++ * Metadata record for verity signature. Type = INCFS_MD_VERITY_SIGNATURE
++ *
++ * This record will only exist for verity-enabled files with signatures. Verity
++ * enabled files without signatures do not have this record. This signature is
++ * checked by fs-verity identically to any other fs-verity signature.
++ */
++struct incfs_file_verity_signature {
++	struct incfs_md_header vs_header;
++
++	 /* The size of the signature */
++	__le32 vs_size;
++
++	 /* Signature's offset in the backing file */
++	__le64 vs_offset;
++} __packed;
++
++/* In memory version of above */
++struct incfs_df_verity_signature {
++	u32 size;
++	u64 offset;
++};
++
+ /* State of the backing file. */
+ struct backing_file_context {
+ 	/* Protects writes to bc_file */
+@@ -284,6 +315,7 @@ struct metadata_handler {
+ 		struct incfs_blockmap blockmap;
+ 		struct incfs_file_signature signature;
+ 		struct incfs_status status;
++		struct incfs_file_verity_signature verity_signature;
+ 	} md_buffer;
+ 
+ 	int (*handle_blockmap)(struct incfs_blockmap *bm,
+@@ -292,6 +324,8 @@ struct metadata_handler {
+ 				 struct metadata_handler *handler);
+ 	int (*handle_status)(struct incfs_status *sig,
+ 				 struct metadata_handler *handler);
++	int (*handle_verity_signature)(struct incfs_file_verity_signature *s,
++					struct metadata_handler *handler);
+ };
+ #define INCFS_MAX_METADATA_RECORD_SIZE \
+ 	FIELD_SIZEOF(struct metadata_handler, md_buffer)
+@@ -330,6 +364,9 @@ int incfs_write_status_to_backing_file(struct backing_file_context *bfc,
+ 				       loff_t status_offset,
+ 				       u32 data_blocks_written,
+ 				       u32 hash_blocks_written);
++int incfs_write_verity_signature_to_backing_file(
++		struct backing_file_context *bfc, struct mem_range signature,
++		loff_t *offset);
+ 
+ /* Reading stuff */
+ int incfs_read_file_header(struct backing_file_context *bfc,
+diff --git a/fs/incfs/verity.c b/fs/incfs/verity.c
+index 8c50e4813f4b..54930c78a2f1 100644
+--- a/fs/incfs/verity.c
++++ b/fs/incfs/verity.c
+@@ -49,6 +49,7 @@
+ #include "verity.h"
+ 
+ #include "data_mgmt.h"
++#include "format.h"
+ #include "integrity.h"
+ #include "vfs.h"
+ 
+@@ -67,12 +68,59 @@ static int incfs_get_root_hash(struct file *filp, u8 *root_hash)
+ 	return 0;
+ }
+ 
+-static int incfs_end_enable_verity(struct file *filp)
++static int incfs_end_enable_verity(struct file *filp, u8 *sig, size_t sig_size)
+ {
+ 	struct inode *inode = file_inode(filp);
++	struct mem_range signature = {
++		.data = sig,
++		.len = sig_size,
++	};
++	struct data_file *df = get_incfs_data_file(filp);
++	struct backing_file_context *bfc;
++	int error;
++	struct incfs_df_verity_signature *vs;
++	loff_t offset;
++
++	if (!df || !df->df_backing_file_context)
++		return -EFSCORRUPTED;
++
++	vs = kzalloc(sizeof(*vs), GFP_NOFS);
++	if (!vs)
++		return -ENOMEM;
++
++	bfc = df->df_backing_file_context;
++	error = mutex_lock_interruptible(&bfc->bc_mutex);
++	if (error)
++		goto out;
++
++	error = incfs_write_verity_signature_to_backing_file(bfc, signature,
++							     &offset);
++	mutex_unlock(&bfc->bc_mutex);
++	if (error)
++		goto out;
++
++	/*
++	 * Set verity xattr so we can set S_VERITY without opening backing file
++	 */
++	error = vfs_setxattr(bfc->bc_file->f_path.dentry,
++			     INCFS_XATTR_VERITY_NAME, NULL, 0, XATTR_CREATE);
++	if (error) {
++		pr_warn("incfs: error setting verity xattr: %d\n", error);
++		goto out;
++	}
++
++	*vs = (struct incfs_df_verity_signature) {
++		.size = signature.len,
++		.offset = offset,
++	};
+ 
++	df->df_verity_signature = vs;
++	vs = NULL;
+ 	inode_set_flags(inode, S_VERITY, S_VERITY);
+-	return 0;
++
++out:
++	kfree(vs);
++	return error;
+ }
+ 
+ static int incfs_compute_file_digest(struct incfs_hash_alg *alg,
+@@ -246,6 +294,11 @@ static int incfs_enable_verity(struct file *filp,
+ 	if (err)
+ 		return err;
+ 
++	if (IS_VERITY(inode)) {
++		err = -EEXIST;
++		goto out;
++	}
++
+ 	/* Get the signature if the user provided one */
+ 	if (arg->sig_size) {
+ 		signature = memdup_user(u64_to_user_ptr(arg->sig_ptr),
+@@ -265,7 +318,7 @@ static int incfs_enable_verity(struct file *filp,
+ 		goto out;
+ 	}
+ 
+-	err = incfs_end_enable_verity(filp);
++	err = incfs_end_enable_verity(filp, signature, arg->sig_size);
+ 	if (err)
+ 		goto out;
+ 
+@@ -316,3 +369,94 @@ int incfs_ioctl_enable_verity(struct file *filp, const void __user *uarg)
+ 
+ 	return incfs_enable_verity(filp, &arg);
+ }
++
++static u8 *incfs_get_verity_signature(struct file *filp, size_t *sig_size)
++{
++	struct data_file *df = get_incfs_data_file(filp);
++	struct incfs_df_verity_signature *vs;
++	u8 *signature;
++	int res;
++
++	if (!df || !df->df_backing_file_context)
++		return ERR_PTR(-EFSCORRUPTED);
++
++	vs = df->df_verity_signature;
++	if (!vs) {
++		*sig_size = 0;
++		return NULL;
++	}
++
++	signature = kzalloc(vs->size, GFP_KERNEL);
++	if (!signature)
++		return ERR_PTR(-ENOMEM);
++
++	res = incfs_kread(df->df_backing_file_context,
++			  signature, vs->size, vs->offset);
++
++	if (res < 0)
++		goto err_out;
++
++	if (res != vs->size) {
++		res = -EINVAL;
++		goto err_out;
++	}
++
++	*sig_size = vs->size;
++	return signature;
++
++err_out:
++	kfree(signature);
++	return ERR_PTR(res);
++}
++
++/* Ensure data_file->df_verity_file_digest is populated */
++static int ensure_verity_info(struct inode *inode, struct file *filp)
++{
++	struct mem_range verity_file_digest;
++	u8 *signature = NULL;
++	size_t sig_size;
++	int err = 0;
++
++	/* See if this file's verity file digest is already cached */
++	verity_file_digest = incfs_get_verity_digest(inode);
++	if (verity_file_digest.data)
++		return 0;
++
++	signature = incfs_get_verity_signature(filp, &sig_size);
++	if (IS_ERR(signature))
++		return PTR_ERR(signature);
++
++	verity_file_digest = incfs_calc_verity_digest(inode, filp, signature,
++						     sig_size,
++						     FS_VERITY_HASH_ALG_SHA256);
++	if (IS_ERR(verity_file_digest.data)) {
++		err = PTR_ERR(verity_file_digest.data);
++		goto out;
++	}
++
++	incfs_set_verity_digest(inode, verity_file_digest);
++
++out:
++	kfree(signature);
++	return err;
++}
++
++/**
++ * incfs_fsverity_file_open() - prepare to open a file that may be
++ * verity-enabled
++ * @inode: the inode being opened
++ * @filp: the struct file being set up
++ *
++ * When opening a verity file, set up data_file->df_verity_file_digest if not
++ * already done. Note that incfs does not allow opening for writing, so there is
++ * no need for that check.
++ *
++ * Return: 0 on success, -errno on failure
++ */
++int incfs_fsverity_file_open(struct inode *inode, struct file *filp)
++{
++	if (IS_VERITY(inode))
++		return ensure_verity_info(inode, filp);
++
++	return 0;
++}
+diff --git a/fs/incfs/verity.h b/fs/incfs/verity.h
+index 8902d1489f00..b569ff424841 100644
+--- a/fs/incfs/verity.h
++++ b/fs/incfs/verity.h
+@@ -6,10 +6,15 @@
+ #ifndef _INCFS_VERITY_H
+ #define _INCFS_VERITY_H
+ 
++/* Arbitrary limit to bound the kmalloc() size.  Can be changed. */
++#define FS_VERITY_MAX_SIGNATURE_SIZE	16128
++
+ #ifdef CONFIG_FS_VERITY
+ 
+ int incfs_ioctl_enable_verity(struct file *filp, const void __user *uarg);
+ 
++int incfs_fsverity_file_open(struct inode *inode, struct file *filp);
++
+ #else /* !CONFIG_FS_VERITY */
+ 
+ static inline int incfs_ioctl_enable_verity(struct file *filp,
+@@ -18,6 +23,12 @@ static inline int incfs_ioctl_enable_verity(struct file *filp,
+ 	return -EOPNOTSUPP;
+ }
+ 
++static inline int incfs_fsverity_file_open(struct inode *inode,
++					   struct file *filp)
++{
++	return -EOPNOTSUPP;
++}
++
+ #endif /* !CONFIG_FS_VERITY */
+ 
+ #endif
+diff --git a/fs/incfs/vfs.c b/fs/incfs/vfs.c
+index 4240f0756d93..e09e30b367d6 100644
+--- a/fs/incfs/vfs.c
++++ b/fs/incfs/vfs.c
+@@ -158,6 +158,8 @@ struct inode_search {
+ 	struct dentry *backing_dentry;
+ 
+ 	size_t size;
++
++	bool verity;
+ };
+ 
+ enum parse_parameter {
+@@ -252,6 +254,13 @@ static u64 read_size_attr(struct dentry *backing_dentry)
+ 	return le64_to_cpu(attr_value);
+ }
+ 
++/* Read verity flag from the attribute. Quicker than reading the header */
++static bool read_verity_attr(struct dentry *backing_dentry)
++{
++	return vfs_getxattr(backing_dentry, INCFS_XATTR_VERITY_NAME, NULL, 0)
++		>= 0;
++}
++
+ static int inode_test(struct inode *inode, void *opaque)
+ {
+ 	struct inode_search *search = opaque;
+@@ -282,6 +291,8 @@ static int inode_set(struct inode *inode, void *opaque)
+ 		inode->i_op = &incfs_file_inode_ops;
+ 		inode->i_fop = &incfs_file_ops;
+ 		inode->i_mode &= ~0222;
++		if (search->verity)
++			inode_set_flags(inode, S_VERITY, S_VERITY);
+ 	} else if (S_ISDIR(inode->i_mode)) {
+ 		inode->i_size = 0;
+ 		inode->i_blocks = 1;
+@@ -316,6 +327,7 @@ static struct inode *fetch_regular_inode(struct super_block *sb,
+ 		.ino = backing_inode->i_ino,
+ 		.backing_dentry = backing_dentry,
+ 		.size = read_size_attr(backing_dentry),
++		.verity = read_verity_attr(backing_dentry),
+ 	};
+ 	struct inode *inode = iget5_locked(sb, search.ino, inode_test,
+ 				inode_set, &search);
+@@ -1362,7 +1374,12 @@ static int file_open(struct inode *inode, struct file *file)
+ 		file->private_data = fd;
+ 
+ 		err = make_inode_ready_for_data_ops(mi, inode, backing_file);
++		if (err)
++			goto out;
+ 
++		err = incfs_fsverity_file_open(inode, file);
++		if (err)
++			goto out;
+ 	} else if (S_ISDIR(inode->i_mode)) {
+ 		struct dir_file *dir = NULL;
+ 
+diff --git a/include/uapi/linux/incrementalfs.h b/include/uapi/linux/incrementalfs.h
+index 83fd521369ed..dae528d9d0c0 100644
+--- a/include/uapi/linux/incrementalfs.h
++++ b/include/uapi/linux/incrementalfs.h
+@@ -36,6 +36,7 @@
+ #define INCFS_XATTR_ID_NAME (XATTR_USER_PREFIX "incfs.id")
+ #define INCFS_XATTR_SIZE_NAME (XATTR_USER_PREFIX "incfs.size")
+ #define INCFS_XATTR_METADATA_NAME (XATTR_USER_PREFIX "incfs.metadata")
++#define INCFS_XATTR_VERITY_NAME (XATTR_USER_PREFIX "incfs.verity")
+ 
+ #define INCFS_MAX_SIGNATURE_SIZE 8096
+ #define INCFS_SIGNATURE_VERSION 2
+-- 
+2.17.1
+

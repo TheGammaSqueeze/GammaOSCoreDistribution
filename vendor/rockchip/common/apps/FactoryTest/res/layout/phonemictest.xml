@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  android:id="@+id/layout1"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+>
+	<LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom= "60dip"    
+    	> 
+    
+    	<TextView
+		    android:id="@+id/textTitle"
+			android:visibility="visible"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true"
+			android:gravity="center_horizontal"
+			android:textSize="24sp"
+			android:paddingTop="20px"
+			android:text="@string/PhoneMictTitle"
+			/>
+    	<TextView
+		 	android:id="@+id/textSubTitle"
+			android:visibility="visible"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true"
+			android:gravity="center_horizontal"
+			android:paddingTop="20px"
+			android:textSize="20sp"
+			android:text="@string/PhoneMicSubTitle"
+			/>
+    	<TextView
+		    android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true"
+			android:gravity="center_horizontal"
+			android:paddingTop="20px"
+			android:textSize="18sp"
+			android:visibility="visible" android:id="@+id/phoneresultText"/>
+			
+		<RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            
+            <cn.com.factorytest.helper.VUMeter android:id="@+id/uvMeter"
+            	android:background="@drawable/vumeter"
+                android:layout_width="150px"
+                android:layout_height="60px"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>		
+    		
+    	 <Button android:id="@+id/btn_retest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnRetest"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textSize="22sp"
+            android:textStyle="bold"
+        />
+			
+
+  </LinearLayout>
+
+       
+      <include layout="@xml/control_buttons" android:id="@+id/level_buttons"/>
+    
+</RelativeLayout>

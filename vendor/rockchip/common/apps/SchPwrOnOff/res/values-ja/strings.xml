@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">    
+    <string name="schedule_power_on_off_settings_title">スケジュールに沿って電源ON／OFF</string>
+    <string name="schedule_power_on_off_time">"時間"</string>
+    <string name="schedule_power_on_off_repeat">"繰り返し"</string>
+    <string name="schedule_power_on_off_set">電源ON／OFFのスケジュール設定</string>
+    <string name="schedule_power_on_set">電源ONのスケジュール設定</string>
+    <string name="schedule_power_off_set">電源OFFのスケジュール設定</string>
+    <string name="enable_schpwr">"有効にする"</string>
+    <string name="disable_schpwr">"無効にする"</string>
+    <string-array name="alarm_set">
+        <item>電源ONは今から1分以内に設定されています。</item>
+        <item>電源ONは<xliff:g id="DAYS" example="2days">%1$s</xliff:g>後に設定されています。</item>
+        <item>電源ONは<xliff:g id="HOURS" example="2hours">%2$s</xliff:g>後に設定されています。</item>
+        <item>電源ONは<xliff:g id="DAYS" example="2days">%1$s</xliff:g>と<xliff:g id="HOURS" example="2hours">%2$s</xliff:g>後に設定されています。</item>
+        <item>電源ONは <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g>後に設定されています。</item>
+        <item>電源ONは<xliff:g id="DAYS" example="2days">%1$s</xliff:g>と<xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g>後に設定されています。</item>
+        <item>電源ONは<xliff:g id="HOURS" example="2hours">%2$s</xliff:g>と<xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g>後に設定されています。</item>
+        <item>電源ONは<xliff:g id="DAYS" example="2days">%1$s</xliff:g>と<xliff:g id="HOURS" example="2hours">%2$s</xliff:g>と<xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g>後に設定されています</item>
+        <item>電源OFFは今から1分以内に設定されています。</item>
+        <item>電源OFFは<xliff:g id="DAYS" example="2days">%1$s</xliff:g>後に設定されています。</item>
+        <item>電源OFFは<xliff:g id="HOURS" example="2hours">%2$s</xliff:g>後に設定されています。</item>
+        <item>電源OFFは<xliff:g id="DAYS" example="2days">%1$s</xliff:g>と<xliff:g id="HOURS" example="2hours">%2$s</xliff:g>後に設定されています。</item>
+        <item>電源OFFは <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g>後に設定されています。</item>
+        <item>電源OFFは<xliff:g id="DAYS" example="2days">%1$s</xliff:g>と<xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g>後に設定されています。</item>
+        <item>電源OFFは<xliff:g id="HOURS" example="2hours">%2$s</xliff:g>と<xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g>後に設定されています。</item>
+        <item>電源OFFは<xliff:g id="DAYS" example="2days">%1$s</xliff:g>と<xliff:g id="HOURS" example="2hours">%2$s</xliff:g>と<xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g>後に設定されています</item>
+    </string-array>
+    <string name="day">"1日"</string>
+    <string name="days">"<xliff:g id="DAYS">%s</xliff:g>日"</string>
+    <string name="hour">"1時間"</string>
+    <string name="hours"><xliff:g id="hours">%s</xliff:g>時間</string>
+    <string name="minute">"1分"</string>
+    <string name="minutes">"<xliff:g id="minutes">%s</xliff:g>分"</string>
+    <string name="every_day">"毎日"</string>
+    <string name="never">"自動確認しない"</string>
+    <string name="done">"完了"</string>
+    <string name="revert">元に戻す</string>
+    <string name="schpwr_shutdown_message">"お使いのデバイスは<xliff:g id="seconds">%s</xliff:g>秒後にシャットダウンします"</string>
+    <string name="schpwr_shutdown_message_second">"お使いのデバイスは<xliff:g id="seconds">%s</xliff:g>秒後にシャットダウンします"</string>
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">    
+    <string name="schedule_power_on_off_settings_title">Закажи укључивање и искључивање</string>
+    <string name="schedule_power_on_off_time">"Време"</string>
+    <string name="schedule_power_on_off_repeat">"Понављање"</string>
+    <string name="schedule_power_on_off_set">Подеси заказано укључивање и искључивање</string>
+    <string name="schedule_power_on_set">Подеси заказано укључивање </string>
+    <string name="schedule_power_off_set">Подеси заказано искључивање</string>
+    <string name="enable_schpwr">"Омогући"</string>
+    <string name="disable_schpwr">"Онемогући"</string>
+    <string-array name="alarm_set">
+        <item>Ово укључивање је подешено за мање од 1 минут.</item>
+        <item>Ово укључивање је подешено за <xliff:g id="DAYS" example="2days">%1$s</xliff:g>.</item>
+        <item>Ово укључивање је подешено за <xliff:g id="HOURS" example="2hours">%2$s</xliff:g>.</item>
+        <item>Ово укључивање је подешено за <xliff:g id="DAYS" example="2days">%1$s</xliff:g> и <xliff:g id="HOURS" example="2hours">%2$s</xliff:g>.</item>
+        <item>Ово укључивање је подешено за <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g>.</item>
+        <item>Ово укључивање је подешено за <xliff:g id="DAYS" example="2days">%1$s</xliff:g> и <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g>.</item>
+        <item>Ово укључивање је подешено за <xliff:g id="HOURS" example="2hours">%2$s</xliff:g> и <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g>.</item>
+        <item>Ово укључивање је подешено за <xliff:g id="DAYS" example="2days">%1$s</xliff:g>, <xliff:g id="HOURS" example="2hours">%2$s</xliff:g> и <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g>.</item>
+        <item>Ово искључивање је подешено за мање од 1 минут.</item>
+        <item>Ово искључивање је подешено за <xliff:g id="DAYS" example="2days">%1$s</xliff:g>.</item>
+        <item>Ово искључивање је подешено за <xliff:g id="HOURS" example="2hours">%2$s</xliff:g>.</item>
+        <item>Ово искључивање је подешено за <xliff:g id="DAYS" example="2days">%1$s</xliff:g> и <xliff:g id="HOURS" example="2hours">%2$s</xliff:g>.</item>
+        <item>Ово искључивање је подешено за <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g>.</item>
+        <item>Ово искључивање је подешено за <xliff:g id="DAYS" example="2days">%1$s</xliff:g> и <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g>.</item>
+        <item>Ово искључивање је подешено за <xliff:g id="HOURS" example="2hours">%2$s</xliff:g> и <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g>.</item>
+        <item>Ово искључивање је подешено за <xliff:g id="DAYS" example="2days">%1$s</xliff:g>, <xliff:g id="HOURS" example="2hours">%2$s</xliff:g> и <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g>.</item>
+    </string-array>
+    <string name="day">"1 дан"</string>
+    <string name="days">"<xliff:g id="DAYS">%s</xliff:g> дана"</string>
+    <string name="hour">"1 сат"</string>
+    <string name="hours"><xliff:g id="hours">%s</xliff:g> сати</string>
+    <string name="minute">"1 минут"</string>
+    <string name="minutes">"<xliff:g id="minutes">%s</xliff:g> минута"</string>
+    <string name="every_day">"Сваког дана"</string>
+    <string name="never">"Никад"</string>
+    <string name="done">"Готово"</string>
+    <string name="revert">Врати</string>
+    <string name="schpwr_shutdown_message">"Ваш уређај ће бити искључен за <xliff:g id="seconds">%s</xliff:g> секунде(и)"</string>
+    <string name="schpwr_shutdown_message_second">"Ваш уређај ће бити искључен за <xliff:g id="seconds">%s</xliff:g> секунде(и)"</string>
+</resources>

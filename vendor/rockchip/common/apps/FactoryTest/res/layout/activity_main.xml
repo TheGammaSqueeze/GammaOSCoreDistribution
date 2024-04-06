@@ -1,0 +1,605 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@android:color/black"
+    tools:context=".MainActivity">
+    
+    <TextView
+        android:id="@+id/TextView_Led"
+        android:layout_width="350dip"
+        android:layout_height="100dip"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dip"
+        android:text="@string/Led_Test"
+        android:textColor="#FF5555FF"
+        android:textSize="35dip" >
+    </TextView>
+    
+    <TextView
+        android:id="@+id/TextView_Time"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:textSize="22sp"
+        android:gravity="right"
+        android:textColor="@android:color/white"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/Layout_Left"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/TextView_TF"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/TF_Test"
+            android:textSize="20sp"
+            android:textColor="#FF5555FF">
+        </TextView>
+
+        <TextView
+            android:id="@+id/TextView_SPIFLASH"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/SPIFLASH_Test"
+            android:textSize="20sp"
+            android:textColor="#FF5555FF">
+        </TextView>
+	
+        <TextView
+            android:id="@+id/TextView_USB1"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#FF5555FF"
+            android:text="@string/USB1_Test"
+            android:textSize="20sp" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/TextView_USB2"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/USB2_Test"
+            android:textSize="20sp"
+            android:textColor="#FF5555FF" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/TextView_Lan"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/Lan_Test"
+            android:textSize="20sp"
+            android:textColor="#FF5555FF">
+        </TextView>
+
+        <TextView
+            android:id="@+id/TextView_Gigabit_network"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/Gigabit_network_Test"
+            android:textSize="20sp"
+            android:textColor="#FF5555FF">
+        </TextView>
+
+        <TextView
+            android:id="@+id/TextView_BT"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#FF5555FF"
+            android:text="@string/BT_Test"
+            android:textSize="20sp" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/TextView_Wifi"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#FF5555FF"
+            android:text="@string/Wifi_Test"
+            android:textSize="20sp" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/TextView_MCU"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/MCU_Test"
+            android:textSize="20sp"
+            android:textColor="#FF5555FF">
+        </TextView>
+		
+        <TextView
+            android:id="@+id/TextView_HDMI"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#FF5555FF"
+            android:text="@string/HDMI_Test"
+            android:textSize="20sp" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/TextView_PD12"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#FF5555FF"
+            android:text="@string/PD12_Test"
+            android:textSize="20sp" >
+        </TextView>
+						
+	
+        <TextView
+            android:id="@+id/TextView_Gsensor"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#FF5555FF"
+            android:text="@string/Gsensor_Test"
+            android:textSize="20sp" >
+        </TextView>
+        <TextView
+            android:id="@+id/TextView_Gyro"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#FF5555FF"
+            android:text="@string/Gyro_Test"
+            android:textSize="20sp" >
+        </TextView>
+        <TextView
+            android:id="@+id/TextView_Gesture"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#FF5555FF"
+            android:text="@string/Gesture_Test"
+            android:textSize="20sp" >
+        </TextView>
+        <TextView
+            android:id="@+id/TextView_Pcie"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#FF5555FF"
+            android:text="@string/Pcie_Test"
+            android:textSize="20sp" >
+        </TextView>
+	
+        <TextView
+            android:id="@+id/TextView_Charge"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#FF5555FF"
+            android:text="@string/Charge_Test"
+            android:textSize="20sp" >
+        </TextView>
+		
+        <TextView
+            android:id="@+id/TextView_Rtc"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#FF5555FF"
+            android:text="@string/Rtc_Test"
+            android:textSize="20sp" >
+        </TextView>
+        <TextView
+            android:id="@+id/TextView_AGEING"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#FF5555FF"
+            android:text="@string/AGEING_Test"
+            android:textSize="20sp" >
+        </TextView>	
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/MacTitle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textColor="@android:color/white"
+            android:text="@string/mac_check"
+            android:textSize="20sp" >
+        </TextView>
+
+        <EditText
+            android:visibility="gone"
+            android:id="@+id/EditTextMac"
+            android:layout_width="197dp"
+            android:layout_height="50dp"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" >
+        </EditText>
+
+        <Button
+            android:visibility="gone"
+            android:onClick="NetLed_Test"
+            android:id="@+id/Button_NetLed"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:textColor="@android:color/white"
+            android:text="@string/Led_Test"
+            android:textSize="20sp" >
+        </Button>
+
+        <Button
+            android:onClick="PowerLed_Test"
+            android:id="@+id/Button_PowerLed"
+            android:paddingLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/PowerKey_Test"
+            android:textSize="20sp"
+            android:textColor="@android:color/white" >
+        </Button>
+        
+        <Button
+            android:onClick="IRKeyTest"
+            android:id="@+id/IRKeyTest"
+            android:visibility="gone"
+            android:paddingLeft="1dp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:text="@string/IRKeyTest"
+		    android:minHeight="0dp"
+		    android:minWidth="0dp"	    
+            android:textSize="10sp"
+            android:textColor="@android:color/white" >
+        </Button>
+
+        <Button
+            android:onClick="speaker_MIC"
+            android:id="@+id/speaker_MIC"
+            android:paddingLeft="1dp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:text="@string/speaker_MIC"
+		    android:minHeight="0dp"
+		    android:minWidth="0dp"	    
+            android:textSize="10sp"
+            android:textColor="@android:color/white" >
+        </Button>
+		
+	<Button
+            android:onClick="KeyTest"
+            android:id="@+id/KeyTest"
+            android:paddingLeft="1dp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:text="@string/KeyTest"
+		    android:minHeight="0dp"
+		    android:minWidth="0dp"	    
+            android:textSize="10sp"
+            android:textColor="@android:color/white" >
+        </Button>
+	
+        <Button
+            android:onClick="EnableWol"
+            android:id="@+id/EnableWol"
+            android:paddingLeft="1dp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:text="@string/EnableWol"
+		    android:minHeight="0dp"
+		    android:minWidth="0dp"	    
+            android:textSize="10sp"
+            android:textColor="@android:color/white" >
+        </Button>
+
+        <Button
+            android:onClick="Write_mac_usid"
+            android:id="@+id/Button_Writemac"
+            android:paddingLeft="1dp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:text="@string/WriteMac"
+		    android:minHeight="0dp"
+		    android:minWidth="0dp"	    
+            android:textSize="10sp"
+            android:textColor="@android:color/white" >
+        </Button>
+        
+        <Button
+            android:onClick="Restore_MCU_settings"
+            android:id="@+id/Restore_MCU_settings"
+            android:paddingLeft="1dp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:text="@string/Restore_MCU_settings"
+		    android:minHeight="0dp"
+		    android:minWidth="0dp"	    
+            android:textSize="10sp"
+            android:textColor="@android:color/white" >
+        </Button>
+		
+        <Button
+            android:onClick="DisableWol"
+            android:visibility="gone"
+            android:id="@+id/DisableWol"
+            android:paddingLeft="20dp"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/DisableWol"
+            android:textSize="20sp"
+            android:textColor="@android:color/white" >
+        </Button>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        >
+        <fragment
+            android:id="@+id/fragment_video"
+            android:name="cn.com.factorytest.VideoFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom" />
+    </LinearLayout>
+    </LinearLayout>
+    
+    
+    <LinearLayout
+        android:id="@+id/Layout_Bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center_vertical">
+      
+        <TextView
+            android:id="@+id/mac_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/showmac"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"/>
+
+        <TextView
+            android:id="@+id/mac_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:textColor="@color/red"
+            android:textSize="23sp"/>
+		
+                <TextView
+            android:id="@+id/ip_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/showip"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"/>
+
+        <TextView
+            android:id="@+id/ip_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:textColor="@android:color/white"
+            android:textSize="23sp"/>
+    </LinearLayout>
+    
+      <LinearLayout
+        android:id="@+id/Layout_Bottom3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center_vertical">
+      
+        <TextView
+            android:id="@+id/wifi_mac_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/showwifimac"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"/>
+
+        <TextView
+            android:id="@+id/wifi_mac_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:textColor="@android:color/white"
+            android:textSize="23sp"/>
+
+        <TextView
+            android:id="@+id/wifi_ip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/showwifiip"
+            android:layout_marginLeft="20dp"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"/>
+
+        <TextView
+            android:id="@+id/wifi_ip_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:textColor="@android:color/white"
+            android:textSize="23sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Layout_Bottom2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="90dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center_vertical">
+      
+        <TextView
+            android:id="@+id/firmware_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/firmware_version"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"/>
+
+        <TextView
+            android:id="@+id/firmware_version_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:textColor="@color/red"
+            android:textSize="23sp"/>
+
+        <TextView
+            android:id="@+id/device_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/device_type"
+            android:layout_marginLeft="20dp"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"/>
+
+        <TextView
+            android:id="@+id/device_type_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:textColor="@color/red"
+            android:textSize="23sp"/>
+        
+    </LinearLayout>
+    
+        <LinearLayout
+        android:id="@+id/Layout_Bottom4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="120dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center_vertical">
+      
+        <TextView
+            android:id="@+id/ddr_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ddr_size"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"/>
+
+        <TextView
+            android:id="@+id/ddr_size_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:textColor="@color/red"
+            android:textSize="23sp"/>
+
+        <TextView
+            android:id="@+id/nand_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nand_size"
+            android:layout_marginLeft="20dp"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"/>
+
+        <TextView
+            android:id="@+id/nand_size_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:textColor="@color/red"
+            android:textSize="23sp"/>
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/Layout_Bottom5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="150dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center_vertical">
+      
+        <TextView
+            android:id="@+id/device_id"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/showdeivceid"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"/>
+
+        <TextView
+            android:id="@+id/device_id_value"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:textColor="@android:color/white"
+            android:textSize="23sp"/>
+
+         <TextView
+            android:id="@+id/sn_label"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/showsn"
+            android:layout_marginLeft="20dp"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"/>
+
+        <TextView
+            android:id="@+id/sn_value"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:textColor="@android:color/white"
+            android:textSize="23sp"/>
+    </LinearLayout>
+    
+      
+
+</RelativeLayout>

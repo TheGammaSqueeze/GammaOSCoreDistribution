@@ -1,0 +1,16 @@
+//##############################################################################
+// RKDeviceTest
+
+cc_prebuilt_library_shared {
+    name: "libstlport",
+    shared_libs: ["libstdc++"],
+    allow_undefined_symbols: true,
+    arch: {
+        arm: {
+            srcs: ["lib/arm/libstlport.so"],
+        },
+        arm64: {
+            srcs: ["lib/arm64/libstlport.so"],
+        }
+    },
+}

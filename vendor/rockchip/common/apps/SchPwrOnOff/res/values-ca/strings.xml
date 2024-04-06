@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">    
+    <string name="schedule_power_on_off_settings_title">Activació i desactivació programades</string>
+    <string name="schedule_power_on_off_time">"Hora"</string>
+    <string name="schedule_power_on_off_repeat">"Repeteix"</string>
+    <string name="schedule_power_on_off_set">Estableix activació i desactivació programades</string>
+    <string name="schedule_power_on_set">Estableix activació programada</string>
+    <string name="schedule_power_off_set">Estableix desactivació programada</string>
+    <string name="enable_schpwr">"Activa"</string>
+    <string name="disable_schpwr">"Desactiva"</string>
+    <string-array name="alarm_set">
+        <item>Activació establerta durant menys d’1 minut a partir d’aquest moment.</item>
+        <item>Activació establerta durant <xliff:g id="DAYS" example="2days">%1$s</xliff:g> a partir d’aquest moment.</item>
+        <item>Activació establerta durant <xliff:g id="HOURS" example="2hours">%2$s</xliff:g> a partir d’aquest moment.</item>
+        <item>Activació establerta durant <xliff:g id="DAYS" example="2days">%1$s</xliff:g> i <xliff:g id="HOURS" example="2hours">%2$s</xliff:g> a partir d’aquest moment.</item>
+        <item>Activació establerta durant <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g> a partir d’aquest moment.</item>
+        <item>Activació establerta durant <xliff:g id="DAYS" example="2days">%1$s</xliff:g> i <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g> a partir d’aquest moment.</item>
+        <item>Activació establerta durant <xliff:g id="HOURS" example="2hours">%2$s</xliff:g> i <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g> a partir d’aquest moment.</item>
+        <item>Activació establerta durant <xliff:g id="DAYS" example="2days">%1$s</xliff:g>, <xliff:g id="HOURS" example="2hours">%2$s</xliff:g> i <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g> a partir d’aquest moment.</item>
+        <item>Desactivació establerta durant menys d’1 minut a partir d’aquest moment.</item>
+        <item>Desactivació establerta durant <xliff:g id="DAYS" example="2days">%1$s</xliff:g> a partir d’aquest moment.</item>
+        <item>Desactivació establerta durant <xliff:g id="HOURS" example="2hours">%2$s</xliff:g> a partir d’aquest moment.</item>
+        <item>Desactivació establerta durant <xliff:g id="DAYS" example="2days">%1$s</xliff:g> i <xliff:g id="HOURS" example="2hours">%2$s</xliff:g> a partir d’aquest moment.</item>
+        <item>Desactivació establerta durant <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g> a partir d’aquest moment.</item>
+        <item>Desactivació establerta durant <xliff:g id="DAYS" example="2days">%1$s</xliff:g> i <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g> a partir d’aquest moment.</item>
+        <item>Desactivació establerta durant <xliff:g id="HOURS" example="2hours">%2$s</xliff:g> i <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g> a partir d’aquest moment.</item>
+        <item>Desactivació establerta durant <xliff:g id="DAYS" example="2days">%1$s</xliff:g>, <xliff:g id="HOURS" example="2hours">%2$s</xliff:g> i <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g> a partir d’aquest moment.</item>
+    </string-array>
+    <string name="day">"1 dia"</string>
+    <string name="days">"<xliff:g id="DAYS">%s</xliff:g> dies"</string>
+    <string name="hour">"1 hora"</string>
+    <string name="hours"><xliff:g id="hours">%s</xliff:g> hores</string>
+    <string name="minute">"1 minut"</string>
+    <string name="minutes">"<xliff:g id="minutes">%s</xliff:g> minuts"</string>
+    <string name="every_day">"Cada dia"</string>
+    <string name="never">"Mai"</string>
+    <string name="done">"Fet"</string>
+    <string name="revert">Torna enrere</string>
+    <string name="schpwr_shutdown_message">"El dispositiu s’apagarà en <xliff:g id="seconds">%s</xliff:g> segons"</string>
+    <string name="schpwr_shutdown_message_second">"El dispositiu s’apagarà en <xliff:g id="seconds">%s</xliff:g> segons"</string>
+</resources>

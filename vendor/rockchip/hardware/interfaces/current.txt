@@ -1,0 +1,18 @@
+fc83f14d9b3c8f00df324de2a58f447855fa1ccec78d6c13e956ee7a9451d584 rockchip.hardware.outputmanager@1.0::types
+4fc466ed72ffd31b1fc2364d7198a76bacce257cd6eedfa7df20fbffcf1920a1 rockchip.hardware.outputmanager@1.0::IRkOutputManager
+
+# hash for rockit hw
+fb75b0c9ae635e5bb9b58e90fbf23e5bc7f31ddd1a8244e768013cea511b7691 rockchip.hardware.rockit.hw@1.0::types
+d7ee7fadb16fdf521d533482de1b0d3ae25e4eec5cf765a35ddda1721a5134b3 rockchip.hardware.rockit.hw@1.0::IRockitHwInterface
+59ce21677e19ce15eb87e2a6f44a49bfbce8d123b050622c40407794a6ccabe1 rockchip.hardware.rockit.hw@1.0::IRockitHwService
+
+# hash for rknn
+cc4d1a2ef6082b65a5ac31f7a06f50e06981cd7d39500be30d7720d134a18371 rockchip.hardware.neuralnetworks@1.0::types
+628dd5baadd079ff0a71fe6b67da615a1d49d97198fcafe91ba24623c374cad4 rockchip.hardware.neuralnetworks@1.0::IGetResultCallback
+8b1d7cd5c0924d0f2029873d9bbe94fd0b8b130b0fc789e1189b7a73eee61a68 rockchip.hardware.neuralnetworks@1.0::ILoadModelCallback
+f273ebf239d6d960221761a6e22b55f2feed23116917b80a20d610eb434817b7 rockchip.hardware.neuralnetworks@1.0::IRKNeuralnetworks
+
+# hash for TvInput
+0f79dcf435b2d761c5c8c7126790f45dba70e3288bf3aa99dbd0ace16e32e78e rockchip.hardware.tv.input@1.0::ITvInput
+5b4bbb435f03d42be5895622ad0e3d50bfee519af28a9bc73b3aa15e7da7227a rockchip.hardware.tv.input@1.0::types
+14ebbae1281ca167e9150cc1bc004042c6b2a0896d0d342f6a14f72b6f981e31 rockchip.hardware.tv.input@1.0::ITvInputCallback

@@ -1,0 +1,122 @@
+<resources>
+    <string name="app_name">Khadas設定</string>
+    <string name="HDMI_IN">HDMI輸入</string>
+    <string name="Ethernet">有線網路</string>
+    <string name="Hotspot">熱點源</string>
+    <string name="Display_Setting">顯示</string>
+    <string name="PowerKey">電源按鍵定義</string>
+    <string name="FunctionKey">功能按鍵定義</string>
+    <string name="LEDs">LED燈控制</string>
+    <string name="Cooling_fan">風扇控制</string>
+    <string name="WOL">WOL</string>
+    <string name="Status_bar_control">狀態列控制</string>
+    <string name="Logo_LED_control">Logo LED燈控制</string>
+    <string name="Timer">計时器</string>
+    <string name="USB_PCIE">Toggle USB-3.0/PCI-E</string>
+    <string name="USB_PCIE_Dialog_title">Effective after restart</string>
+    <string name="USB_PCIE_default">USB-3.0 Mode</string>
+    <string name="Gsensor">重力感測器數據</string>
+
+    <string name="WOL_summary">網路喚醒</string>
+
+    <string name="Hotspot_summary">WLAN/RSDB</string>
+
+    <string name="Status_bar_control_bottom">顯示頂部狀態列</string>
+    <string name="Status_bar_control_upper">顯示底部巡覽列</string>
+
+    <string name="Eth_Proxy_settings">代理服務設定</string>
+    <string name="Eth_IP_settings">IP地址設定</string>
+
+    <string name="Eth_Status_n">未連接</string>
+    <string name="Eth_Status_y">已連接</string>
+    <string name="Eth_Port">有線網埠</string>
+    <string name="Eth_Port_summary">Active:M2X（重啓生效）</string>
+
+    <string name="FunctionKey_dialog">請輸入鍵值</string>
+
+    <string name="More_DisplaySound_Setting">更多顯示和聲音設定</string>
+    <string name="Display_screen_rotation">荧幕方向</string>
+    <string name="Display_screen_density">荧幕密度</string>
+
+    <string name="Force_land_for_app">強制橫屏</string>
+
+    <string name="Screen_density_default">240</string>
+    <string-array name="Screen_density_array">
+        <item>120</item>
+        <item>160</item>
+        <item>200</item>
+        <item>240</item>
+        <item>280</item>
+        <item>320</item>
+        <item>480</item>
+    </string-array>
+    <string-array name="Screen_density_array_value">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
+    <string name="Screen_rotation_default">0</string>
+    <string-array name="Screen_rotation_array">
+        <item>0</item>
+        <item>90</item>
+        <item>180</item>
+        <item>270</item>
+    </string-array>
+    <string-array name="Screen_rotation_array_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="USB_PCIE_array">
+        <item>USB-3.0 Mode</item>
+        <item>PCI-E Mode</item>
+    </string-array>
+    <string-array name="USB_PCIE_array_value">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string name="PowerKey_suspend">休眠</string>
+    <string-array name="PowerKey_array">
+        <item>休眠</item>
+        <item>關機</item>
+        <item>重啓</item>
+    </string-array>
+    <string-array name="PowerKey_array_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string name="LED_white">白色LED燈</string>
+
+    <string name="FAN_default">關閉</string>
+    <string-array name="FAN_array">
+        <item>關閉</item>
+        <item>自動調節（根據溫度）</item>
+        <item>等級 1</item>
+        <item>等級 2</item>
+        <item>等級 3</item>
+        <item>等級 4</item>
+    </string-array>
+    <string-array name="FAN_array_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string name="mipi_Brightness_title">MIPI 背光調節</string>
+    <string name="vbo_Brightness_title">VBO 背光調節</string>
+    <string name="logoled_Brightness_title">Logo LED 背光調節</string>
+
+</resources>

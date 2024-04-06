@@ -1,0 +1,59 @@
+From 1a67b8a3c28b3404ee175824728bb9c680cd9be6 Mon Sep 17 00:00:00 2001
+From: Paul Lawrence <paullawrence@google.com>
+Date: Wed, 10 Mar 2021 08:40:53 -0800
+Subject: [PATCH 17/31] ANDROID: Incremental fs: Fix mlock to fail gracefully
+ on corrupt files
+
+Test: incfs_test passes
+Bug: 174875107
+Signed-off-by: Paul Lawrence <paullawrence@google.com>
+Change-Id: Ie2fcf8164e8247f1190e26984344915c5050752e
+---
+ fs/incfs/vfs.c | 27 ++++++++++++++++++++++++++-
+ 1 file changed, 26 insertions(+), 1 deletion(-)
+
+diff --git a/fs/incfs/vfs.c b/fs/incfs/vfs.c
+index 358be2189cff..4e2ef07ec617 100644
+--- a/fs/incfs/vfs.c
++++ b/fs/incfs/vfs.c
+@@ -110,11 +110,36 @@ static const struct address_space_operations incfs_address_space_ops = {
+ 	/* .readpages = readpages */
+ };
+ 
++static vm_fault_t incfs_fault(struct vm_fault *vmf)
++{
++	vmf->flags &= ~FAULT_FLAG_ALLOW_RETRY;
++	return filemap_fault(vmf);
++}
++
++static const struct vm_operations_struct incfs_file_vm_ops = {
++	.fault		= incfs_fault,
++	.map_pages	= filemap_map_pages,
++	.page_mkwrite	= filemap_page_mkwrite,
++};
++
++/* This is used for a general mmap of a disk file */
++
++static int incfs_file_mmap(struct file *file, struct vm_area_struct *vma)
++{
++	struct address_space *mapping = file->f_mapping;
++
++	if (!mapping->a_ops->readpage)
++		return -ENOEXEC;
++	file_accessed(file);
++	vma->vm_ops = &incfs_file_vm_ops;
++	return 0;
++}
++
+ const struct file_operations incfs_file_ops = {
+ 	.open = file_open,
+ 	.release = file_release,
+ 	.read_iter = generic_file_read_iter,
+-	.mmap = generic_file_mmap,
++	.mmap = incfs_file_mmap,
+ 	.splice_read = generic_file_splice_read,
+ 	.llseek = generic_file_llseek,
+ 	.unlocked_ioctl = dispatch_ioctl,
+-- 
+2.17.1
+

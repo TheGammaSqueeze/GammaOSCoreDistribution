@@ -1,0 +1,31 @@
+cc_defaults {
+    name: "rockchip_udc_detector_defaults",
+    srcs: [
+        "main.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "liblog",
+    ],
+}
+
+cc_binary {
+    name: "rockchip_udc_detector",
+    defaults: ["rockchip_udc_detector_defaults"],
+    vendor: true,
+    init_rc: [
+        "init.rockchip_udc_detector.rc",
+    ],
+}
+
+cc_binary {
+    name: "recovery_udc_detector",
+    recovery: true,
+    defaults: ["rockchip_udc_detector_defaults"],
+    cflags: [
+        "-DRECOVERY_PROP",
+    ],
+    init_rc: [
+        "init.recovery.udc.rc",
+    ],
+}

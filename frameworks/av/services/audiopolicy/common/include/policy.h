@@ -235,6 +235,8 @@ static inline audio_devices_t apm_extract_one_audio_device(
             return AUDIO_DEVICE_OUT_AUX_LINE;
         } else if (deviceTypes.count(AUDIO_DEVICE_OUT_SPDIF) != 0) {
             return AUDIO_DEVICE_OUT_SPDIF;
+        } else if (deviceTypes.count(AUDIO_DEVICE_OUT_HDMI) != 0) {
+            return AUDIO_DEVICE_OUT_HDMI;
         } else {
             std::vector<audio_devices_t> a2dpDevices = android::Intersection(
                     deviceTypes, android::getAudioDeviceOutAllA2dpSet());

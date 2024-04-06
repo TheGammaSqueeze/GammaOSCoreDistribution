@@ -108,9 +108,17 @@ void PolicyAudioPort::pickSamplingRate(uint32_t &pickedRate,
         // and we return the first (and hence most preferred) match?  This is of concern if
         // we want to choose 96kHz over 192kHz for USB driver stability or resource constraints.
         for (const auto rate : samplingRates) {
-            if ((rate > pickedRate) && (rate <= maxRate)) {
-                pickedRate = rate;
-            }
+			if(rate==44100||rate==48000)
+			{
+				pickedRate = rate;
+				//ALOGV("hlm pickSamplingRate");
+				return;
+			}else
+			{
+				if ((rate > pickedRate) && (rate <= maxRate)) {
+					pickedRate = rate;
+				}
+			}
         }
     }
 }

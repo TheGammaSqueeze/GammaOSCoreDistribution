@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array translatable="false" name="config_networkSupportedKeepaliveCount">
+        <item>0,0</item>
+    </string-array>
+</resources>

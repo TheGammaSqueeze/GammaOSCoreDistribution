@@ -1,0 +1,11 @@
+#on early-boot
+on post-fs-data
+    start pq-init
+
+
+service pq-init /vendor/bin/pq_init
+    class hal
+    user system
+    group system
+    oneshot
+    disabled

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="text_normal_color">#8A98A9</color>
+    <color name="text_highlight_color">#B6B9BE</color>
+    <color name="bg_color">#385271</color>
+    <color name="wifilist_bg_color">#384D68</color>
+    <color name="bluetooth_device_bg_color">#3C4A5B</color>
+    <color name="bluetooth_connect_bg_color">#3C455A</color>
+    <color name="transparent">#00000000</color>
+    <color name="tran_dark_white">#66ffffff</color>
+    <color name="tran_light_white">#ffffffff</color>
+    
+    <color name="white">#ffffffff</color>
+    <color name="black">#000</color>
+    <color name="red">#F00</color>
+    <color name="grey6_color">#772f2f2f</color>
+    <color name="grey5_color">#575757</color>
+    <color name="grey3_color">#ff3c3c3c</color>
+</resources>

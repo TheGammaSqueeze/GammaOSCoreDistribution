@@ -61,21 +61,27 @@ status_t SpdifStreamOut::open(
         case AUDIO_FORMAT_E_AC3:
         case AUDIO_FORMAT_E_AC3_JOC:
             mRateMultiplier = 4;
+            customConfig.sample_rate = config->sample_rate * mRateMultiplier;
+            customConfig.channel_mask = AUDIO_CHANNEL_OUT_STEREO;
             break;
         case AUDIO_FORMAT_AC3:
         case AUDIO_FORMAT_DTS:
+            mRateMultiplier = 1;
+            customConfig.sample_rate = config->sample_rate;
+            customConfig.channel_mask = AUDIO_CHANNEL_OUT_STEREO;
+            break;
+
         case AUDIO_FORMAT_DTS_HD:
             mRateMultiplier = 1;
+            customConfig.sample_rate = 192000;
+            customConfig.channel_mask = AUDIO_CHANNEL_OUT_7POINT1;
             break;
         default:
             ALOGE("ERROR SpdifStreamOut::open() unrecognized format 0x%08X\n",
                 config->format);
             return BAD_VALUE;
     }
-    customConfig.sample_rate = config->sample_rate * mRateMultiplier;
-
-    customConfig.format = AUDIO_FORMAT_PCM_16_BIT;
-    customConfig.channel_mask = AUDIO_CHANNEL_OUT_STEREO;
+    customConfig.format = AUDIO_FORMAT_IEC61937;
 
     // Always print this because otherwise it could be very confusing if the
     // HAL and AudioFlinger are using different formats.
@@ -116,13 +122,55 @@ int SpdifStreamOut::standby()
 
 ssize_t SpdifStreamOut::writeDataBurst(const void* buffer, size_t bytes)
 {
-    return AudioStreamOut::write(buffer, bytes);
+    size_t size   = 0;
+    size_t totalBytes = 0;
+    size_t writeBytes = 0;
+    size_t leftBytes  = bytes;
+    char *input = (char *)buffer;
+    int    maxCount = 10;
+
+    do {
+        writeBytes = (leftBytes > mHalBufferSize) ? mHalBufferSize : leftBytes;
+        if (writeBytes <= 0)
+            break;
+
+        /*
+         * For avoid take a long when write too much data one time.
+         * There is a lock in out_write.
+         */
+        size = AudioStreamOut::write((void *)(&input[totalBytes]), writeBytes);
+        if (size < 0) {
+            break;
+        } else {
+            totalBytes += size;
+            leftBytes -= size;
+        }
+
+        maxCount--;
+    } while(maxCount > 0 && leftBytes > 0);
+
+    return totalBytes;
 }
 
 ssize_t SpdifStreamOut::write(const void* buffer, size_t numBytes)
 {
     // Write to SPDIF wrapper. It will call back to writeDataBurst().
     return mSpdifEncoder.write(buffer, numBytes);
+}
+
+/*
+ * For Exoplayer get the samplerate to calc the play duration by call getTimestamp in Audiotrack.
+ * The function getPresentationPosition in AudioStreamOut will return the frames corresponding to
+ * the mApplicationSampleRate, so in getAudioProperties also return the getAudioProperties.
+ */
+audio_config_base_t SpdifStreamOut::getAudioProperties() const
+{
+    audio_config_base_t result = AUDIO_CONFIG_BASE_INITIALIZER;
+    result.sample_rate = mApplicationSampleRate;
+    result.channel_mask = mApplicationChannelMask;
+    result.format = mApplicationFormat;
+
+    return result;
 }
 
 } // namespace android

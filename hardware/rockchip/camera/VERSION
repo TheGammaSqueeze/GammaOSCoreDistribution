@@ -1,0 +1,127 @@
+V0.0.1
+    - release the initial RK Camera Hal3 version
+    - inital version supports following features:
+        - preview, recording, snapshot(HW jpeg encoder)
+        - digital zoom(by RGA)
+        - Support up to 4 streams, including one input/bidrection stream.
+          And these 4 streams can have different size.
+        - AE and AWB
+    - TODOS:
+        - AF
+        - manual 3A controls
+V1.0.1
+    - move all 3A control logics to camera engine(also called control loop)
+      project, the project path is :
+      ssh://<user name>@10.10.10.58:29418/camera_engine_rkisp
+    - support AF
+    - have been roughly tested by quality department
+V1.1.0
+    - support YUV/IMP reprocess streams
+    - support RAW sensor, verified raw sensor list is as follow:
+    - support Android 7.x/8.x/9.x
+      - ov13850
+      - ov5695
+    - speed up still picture taken for API 1.0 and video start/stop
+    - new camera engine project git repsitory:
+      ssh://<user name>@10.10.10.29:29418/linux/external/camera_engine_rkisp
+    - fix a lot of CTS issues for RAW and SoC sensor
+V1.2.0
+    - support Android 9.x + RK1608
+    - support hw jpeg encode
+    - support get HalVersion by Cmd: $ adb shell getprop |grep "vendor.cam.hal3.ver"
+    - fix compile error for rk3368 Android9.x
+    - fix video issue: HAL runs lower and lower after long time video recording running
+    - fix videoSnapshot issue
+V1.9.0
+    - support pipeline auto select, don't need graph_settings_xx.xml anymore
+    - support raw data dump
+    - support several sensor configs in camera3_profiles.xml and iqfiles auto match
+    - support reconfig pipeline in hal3 when capture need switch resolution
+    - support rk3368 platform gralloc
+    - support ov13850 full resolution
+    - add android performance trace for KPI case debugging
+    - add pre-allocate gralloc buffer to speed up capture
+    - fix some issue, refer to gitlog for detail
+    matched librkisp version:
+      v1.9.0
+    matched rkisp1 driver version:
+      v0.1.1
+V1.9.1
+	- support flashlight
+	matched librkisp version:
+	  v2.0.1
+	matched rkisp1 driver version:
+	  v0.1.3
+V2.0.0
+	- support flashlight fully, HAL3 API2.4 torch interface
+	- support IQ tool tuning online for rk3326, notice that
+	  rk3399,rk3288 are not ready
+	- optimize still picture performance
+	- support mirror for front camera(disabled by default)
+	matched librkisp version:
+		V2.2.0
+	matched rkisp1 driver version:
+		v0.1.5
+V2.1.0
+    - construct sensor's some static metadatas before ctrloop starting.
+    - add forceAutoGenAndroidMetas in camera3_profiles.xml.
+V3.0.0
+    - fix mFlashNum always zero issue for camera module with led flashs.
+    - fix soc camera video Snapshot issues.
+    - add rkisp2 for support rk356x.
+    - adapt rkaiq interface.
+    - support parse normal or hdr mode from xml.
+    - add rk356x configs support.
+    - add gralloc4 support for camerahal3.
+    - Implement RK_GRALLOC_USAGE_SPECIFY_STRIDE for NV12.
+    - update pipeline node.
+    - add v4l2-ctl & media-ctl tools.
+    - support 3dnr vendor tag.
+    - fix gc2145 following cts failed.
+    - rk356x add eptz feature.
+    - rkisp2: support aiq control vendor tags.
+    - add fecunit for rk356x.
+    - rk356x add camera occlusion detection.
+    - support dual camera.
+    - Add rk628 configuration for each platform.
+    - add flash support.
+    - fix cts testFlashTurnOff[1] fail issue.
+    - fix cts testFlashControl[1] fail issue.
+    - fix cts flashlight failed issues.
+    - fix dual camera commit issue.
+    - 356x eptz, change rockx lic from /sdcard/key.lic to /vendor/etc/key.lic.
+    - copy iqfile/isp21 to /vendor/etc/camera/rkisp2.
+    - Support Android 12 compile.
+    - fix dual camera deinit aiq issue.
+    - support interlaced selfpath.
+    - use new interface of libhwjpeg for jpeg encoding.
+    - Fixed libhwjpeg related compilation errors.
+    - add rk3588 support.
+    - prebuild binary tools in Android.bp.
+    - align video select format parameters.
+    - add rga3 parameters.
+    - fix 8K take picture zoom issue.
+    - reduce numberOfCameras funciont call times.
+    - rkisp2: PSLConfParser: optimize getSensorMediaDevicePath.
+    - common: platformdata: fix wrong setFormat cause recording stuck issue.
+    - psl: fix wrong SP_MAX_HEIGHT.
+    - common: platformdata: restore to original format.
+V3.0.1
+    - etc: camera_etc.mk: not copy isp21 iqfiles for rk3588.
+    - Android.mk: fix RK_HW_JPEG_ENCODE not set issue.
+    - common: jpegEnc: use q_factor for more accurate quality control.
+    - start version control again.
+V3.0.2
+	- rkisp2: support xml config multi camera mode.
+	- rkisp2: fix rk356x double camera link issue.
+V3.0.3
+    - rkisp2: add rk3562 support.
+    - rkisp2: add rkisp_iqtool link for rk3588 rk3562.
+
+V3.1.0
+    - rkisp2: fix change resolution take pic error.
+    - rkisp2: remove flush timeout.
+    - fix one request been multi pushed to mPendingRequests.
+    - rkisp2: qbuf before stream on.
+    - rkisp2: frameworker qbuf after request done.
+    - rkisp2: fix low resolution take pic abnormal.

@@ -1,3 +1,24 @@
+bootstrap_go_package {
+    name: "soong-managerdefault",
+    pkgPath: "android/soong/managerdefault",
+    deps: [
+        "blueprint",
+        "blueprint-pathtools",
+        "soong",
+        "soong-android",
+        "soong-cc",
+        "soong-genrule",
+    ],
+    srcs: [
+          "Android.go",
+    ],
+    pluginFor: ["soong_build"],
+}
+
+cc_managerdefault {
+   name: "cc_managerdefault_defaults",
+}
+
 package {
     // See: http://go/android-license-faq
     // A large-scale-change added 'default_applicable_licenses' to import
@@ -9,7 +30,7 @@ package {
 
 cc_library_shared {
     name: "libaudiopolicymanagerdefault",
-
+    defaults: ["cc_managerdefault_defaults"],
     srcs: [
         "AudioPolicyManager.cpp",
         "EngineLibrary.cpp",

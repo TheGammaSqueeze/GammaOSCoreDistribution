@@ -1,0 +1,13 @@
+commit d3b8915e6f1000cebd0ec67c0a45b59f60174482
+Author: Paul Lawrence <paullawrence@google.com>
+Date:   Wed Feb 3 10:33:05 2021 -0800
+
+    ANDROID: Incremental fs: Set credentials before reading/writing
+    
+    Use same selinux scheme as incfs v2
+    Fix memory leak
+    
+    Bug: 174692664
+    Test: incfs_test passes
+    Signed-off-by: Paul Lawrence <paullawrence@google.com>
+    Change-Id: I6058ddad9d43ba01b2eabd7d3c576f2cc9b42292

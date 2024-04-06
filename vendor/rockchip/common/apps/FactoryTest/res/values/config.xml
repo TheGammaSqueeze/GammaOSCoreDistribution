@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<integer name="config_mac_length">12</integer>
+	<integer name="config_mac_length2">17</integer>
+	<integer name="config_sn_length">-1</integer>
+	<integer name="config_usid_length">32</integer>
+	<integer name="config_deviceid_length">15</integer>
+	<bool name="config_showsn">false</bool>
+	 <string name="config_ap_ssid">Khadas</string>
+	 <string name="versionfile">/system/etc/version.ini</string>
+	 <string name="lssue_ver">disk_num</string>
+	 <string name="client_ver">customer_version</string>
+	<bool name="config_write_mac_in_otp">true</bool>
+	  
+</resources>

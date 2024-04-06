@@ -1,0 +1,12 @@
+type vendor-udc-detector, domain;
+type vendor-udc-detector_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(vendor-udc-detector)
+
+allow vendor-udc-detector sysfs_udc:dir r_dir_perms;
+set_prop(vendor-udc-detector, vendor_usb_prop)
+get_prop(vendor_init, vendor_usb_prop)
+
+recovery_only(`
+    allow recovery sysfs_udc:dir r_dir_perms;
+')

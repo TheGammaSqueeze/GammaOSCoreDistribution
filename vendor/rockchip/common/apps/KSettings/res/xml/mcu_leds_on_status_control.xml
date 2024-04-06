@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+	<!-- SYSTEM ON -->
+	<ListPreference
+		android:key="MCU_LEDS_ON_MODE_KEY"
+		android:title="@string/MCU_LEDS_mode"
+		android:summary="@string/MCU_LEDS_on_mode_default"
+		android:defaultValue="0"
+		android:dialogTitle="@string/MCU_LEDS_mode"
+		android:entries="@array/MCU_LEDs_array"
+		android:entryValues="@array/MCU_LEDs_array_value">
+	</ListPreference>
+
+	<com.khadas.ksettings.MCURedOnStatusSeekBarPreference
+        android:dialogTitle="@string/MCU_RED_LED_ON_Brightness_title"
+        android:title="@string/MCU_RED_LED_ON_Brightness_title"
+        android:summary="255"
+        android:key="MCU_RED_LED_ON_BL_KEY"
+        android:dialogLayout="@layout/brightness_prefs" />
+	<com.khadas.ksettings.MCUGreenOnStatusSeekBarPreference
+        android:dialogTitle="@string/MCU_GREEN_LED_ON_Brightness_title"
+        android:title="@string/MCU_GREEN_LED_ON_Brightness_title"
+        android:summary="255"
+        android:key="MCU_GREEN_LED_ON_BL_KEY"
+        android:dialogLayout="@layout/brightness_prefs" />
+	<com.khadas.ksettings.MCUBlueOnStatusSeekBarPreference
+        android:dialogTitle="@string/MCU_BLUE_LED_ON_Brightness_title"
+        android:title="@string/MCU_BLUE_LED_ON_Brightness_title"
+        android:summary="255"
+        android:key="MCU_BLUE_LED_ON_BL_KEY"
+        android:dialogLayout="@layout/brightness_prefs" />
+
+
+</PreferenceScreen>

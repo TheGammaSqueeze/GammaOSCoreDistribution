@@ -1,0 +1,29 @@
+From ab96fda577d522248e8000156239564861ac52ac Mon Sep 17 00:00:00 2001
+From: Paul Lawrence <paullawrence@google.com>
+Date: Wed, 3 Feb 2021 10:33:05 -0800
+Subject: [PATCH 08/31] ANDROID: Incremental fs: Fix memory leak on closing
+ file
+
+Bug: 179271514
+Test: incfs_test passes
+Signed-off-by: Paul Lawrence <paullawrence@google.com>
+Change-Id: I08f27032664db605e364f8d7a50956c43060058e
+---
+ fs/incfs/data_mgmt.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/fs/incfs/data_mgmt.c b/fs/incfs/data_mgmt.c
+index 55c1213716e3..337d1c34dd24 100644
+--- a/fs/incfs/data_mgmt.c
++++ b/fs/incfs/data_mgmt.c
+@@ -328,6 +328,7 @@ void incfs_free_data_file(struct data_file *df)
+ 
+ 	incfs_free_mtree(df->df_hash_tree);
+ 	incfs_free_bfc(df->df_backing_file_context);
++	kfree(df->df_signature);
+ 	kfree(df);
+ }
+ 
+-- 
+2.17.1
+

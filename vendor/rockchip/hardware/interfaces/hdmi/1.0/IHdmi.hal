@@ -1,0 +1,33 @@
+package rockchip.hardware.hdmi@1.0;
+
+import IHdmiCallback;
+import IHdmiRxStatusCallback;
+import IHdmiAudioCallback;
+import IFrameWarpper;
+
+interface IHdmi
+{
+	foundHdmiDevice(string deviceId,IHdmiRxStatusCallback cb);
+
+	getHdmiDeviceId() generates (string deviceId);
+
+	getMipiStatus() generates (HdmiStatus status);
+
+	getHdmiRxStatus() generates (HdmiStatus status);
+
+	onStatusChange(uint32_t status);
+
+	registerListener(IHdmiCallback cb);
+
+	unregisterListener(IHdmiCallback cb);
+
+	addAudioListener(IHdmiAudioCallback cb);
+
+	removeAudioListener(IHdmiAudioCallback cb);
+
+	onAudioChange(HdmiAudioStatus status);
+
+	setFrameDecorator(IFrameWarpper frameWarpper);
+
+	decoratorFrame(FrameInfo frameInfo) generates (FrameInfo status);
+};

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:key="DISPLAY_ROTATION_KEY"
+        android:title="@string/Display_screen_rotation"
+        android:summary="@string/Screen_rotation_default"
+        android:defaultValue="0"
+        android:dialogTitle="@string/Display_screen_rotation"
+        android:entries="@array/Screen_rotation_array"
+        android:entryValues="@array/Screen_rotation_array_value">
+    </ListPreference>
+
+    <ListPreference
+        android:key="DISPLAY_DENSITY_KEY"
+        android:title="@string/Display_screen_density"
+        android:summary="@string/Screen_density_default"
+        android:defaultValue="4"
+        android:dialogTitle="@string/Display_screen_density"
+        android:entries="@array/Screen_density_array"
+        android:entryValues="@array/Screen_density_array_value">
+    </ListPreference>
+
+</PreferenceScreen>

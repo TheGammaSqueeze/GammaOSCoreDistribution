@@ -1,0 +1,20 @@
+cc_prebuilt_library_shared {
+    name: "libffmpeg_58",
+    compile_multilib: "both",
+    multilib: {
+        lib64: {
+            srcs: ["arm64/libffmpeg_58.so"],
+        },
+        lib32: {
+            srcs: ["arm/libffmpeg_58.so"],
+        },
+    },
+    strip: {
+        none: true,
+    },
+    shared_libs: [
+        "libcrypto",
+        "libssl",
+    ],
+    check_elf_files: false,
+}

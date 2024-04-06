@@ -1,0 +1,73 @@
+// Signature format: 2.0
+package capabilities_type {
+
+  public class Capabilities {
+    ctor public Capabilities();
+    method public java.util.List<capabilities_type.IpCapabilities> getIp_capabilities();
+    method public String getVersion();
+    method public void setVersion(String);
+  }
+
+  public class Feature {
+    ctor public Feature();
+    method public capabilities_type.Name getName();
+    method public capabilities_type.Permission getPermission();
+    method public void setName(capabilities_type.Name);
+    method public void setPermission(capabilities_type.Permission);
+  }
+
+  public enum Ip {
+    method public String getRawName();
+    enum_constant public static final capabilities_type.Ip CAM;
+    enum_constant public static final capabilities_type.Ip DPU;
+    enum_constant public static final capabilities_type.Ip DPU_AEU;
+    enum_constant public static final capabilities_type.Ip GPU;
+    enum_constant public static final capabilities_type.Ip VPU;
+  }
+
+  public class IpCapabilities {
+    ctor public IpCapabilities();
+    method public java.util.List<capabilities_type.Feature> getFeature();
+    method public capabilities_type.Ip getIp();
+    method public void setIp(capabilities_type.Ip);
+  }
+
+  public enum Name {
+    method public String getRawName();
+    enum_constant public static final capabilities_type.Name AFBC_16X16;
+    enum_constant public static final capabilities_type.Name AFBC_32X8;
+    enum_constant public static final capabilities_type.Name AFBC_64X4;
+    enum_constant public static final capabilities_type.Name AFBC_BLOCK_SPLIT;
+    enum_constant public static final capabilities_type.Name AFBC_DOUBLE_BODY;
+    enum_constant public static final capabilities_type.Name AFBC_FORMAT_R16G16B16A16_FLOAT;
+    enum_constant public static final capabilities_type.Name AFBC_TILED_HEADERS;
+    enum_constant public static final capabilities_type.Name AFBC_WRITE_NON_SPARSE;
+    enum_constant public static final capabilities_type.Name AFBC_YUV;
+    enum_constant public static final capabilities_type.Name AFRC_ROT_LAYOUT;
+    enum_constant public static final capabilities_type.Name AFRC_SCAN_LAYOUT;
+    enum_constant public static final capabilities_type.Name DISABLED;
+    enum_constant public static final capabilities_type.Name FORMAT_R10G10B10A2;
+    enum_constant public static final capabilities_type.Name FORMAT_R16G16B16A16_FLOAT;
+    enum_constant public static final capabilities_type.Name YUV_BL_10;
+    enum_constant public static final capabilities_type.Name YUV_BL_8;
+  }
+
+  public enum Permission {
+    method public String getRawName();
+    enum_constant public static final capabilities_type.Permission NO;
+    enum_constant public static final capabilities_type.Permission RO;
+    enum_constant public static final capabilities_type.Permission RW;
+    enum_constant public static final capabilities_type.Permission WO;
+  }
+
+  public class XmlParser {
+    ctor public XmlParser();
+    method public static capabilities_type.Capabilities readCapabilities(java.io.InputStream) throws javax.xml.datatype.DatatypeConfigurationException, java.io.IOException, org.xmlpull.v1.XmlPullParserException;
+    method public static capabilities_type.Feature readFeature(java.io.InputStream) throws javax.xml.datatype.DatatypeConfigurationException, java.io.IOException, org.xmlpull.v1.XmlPullParserException;
+    method public static capabilities_type.IpCapabilities readIpCapabilities(java.io.InputStream) throws javax.xml.datatype.DatatypeConfigurationException, java.io.IOException, org.xmlpull.v1.XmlPullParserException;
+    method public static String readText(org.xmlpull.v1.XmlPullParser) throws java.io.IOException, org.xmlpull.v1.XmlPullParserException;
+    method public static void skip(org.xmlpull.v1.XmlPullParser) throws java.io.IOException, org.xmlpull.v1.XmlPullParserException;
+  }
+
+}
+

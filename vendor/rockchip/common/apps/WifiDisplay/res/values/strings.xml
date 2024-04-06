@@ -1,0 +1,57 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="app_name">WifiDisplay</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_wifi_display">WifiDisplay</string>
+    <!-- Manage applications, individual application screen, confirmation dialog button. Displays when user selects to "Clear data". Goes through with the clearing of the data. -->
+    <string name="dlg_ok">OK</string>
+    <!-- Manage applications, individual application screen, confirmation dialog button. Displays when user selects to "Clear data". -->
+    <string name="dlg_cancel">Cancel</string>
+    <string name="dlg_prompt">Prompting</string>
+    <string name="dlg_msg_wlan">Start WFD need to open WLAN, confirm to open?</string>
+    
+    <string name="wfd_device_name">Device Name</string>
+    
+    <!-- Wi-Fi p2p / Wi-Fi Direct settings -->
+    <!-- Used in the 1st-level settings screen to launch Wi-fi Direct settings [CHAR LIMIT=25] -->
+    <string name="wifi_p2p_settings_title">Wi-Fi Direct</string>
+    <string name="wifi_p2p_device_info">Device information</string>
+    <string name="wifi_p2p_persist_network">Remember this connection</string>
+    <!-- Menu option to discover peers-->
+    <string name="wifi_p2p_menu_search">Search for devices</string>
+    <!-- Menu option when discovery is in progress [CHAR LIMIT=25] -->
+    <string name="wifi_p2p_menu_searching">Searching\u2026</string>
+    <!-- Menu option to Rename-->
+    <string name="wifi_p2p_menu_rename">Rename device</string>
+    <!-- Title for available p2p devices -->
+    <string name="wifi_p2p_peer_devices">Source devices</string>
+    <!-- Title for remembered p2p groups -->
+    <string name="wifi_p2p_remembered_groups">Paired groups</string>
+    <!-- Toast text for a failed connection initiation -->
+    <string name="wifi_p2p_failed_connect_message">Couldn\'t connect.</string>
+    <!-- Message text for failure to rename -->
+    <string name="wifi_p2p_failed_rename_message">Failed to rename device.</string>
+    <!-- Title for disconnect dialog -->
+    <string name="wifi_p2p_disconnect_title">Disconnect?</string>
+    <!-- Message text for disconnection from one device-->
+    <string name="wifi_p2p_disconnect_message">If you disconnect, your connection with <xliff:g id="peer_name">%1$s</xliff:g> will end.</string>
+    <!-- Message text for disconnection from multiple devices-->
+    <string name="wifi_p2p_disconnect_multiple_message">If you disconnect, your connection with <xliff:g id="peer_name">%1$s</xliff:g> and <xliff:g id="peer_count">%2$s</xliff:g> other devices will end.</string>
+    <!-- Title for cancel connect dialog -->
+    <string name="wifi_p2p_cancel_connect_title">Cancel invitation?</string>
+    <!-- Message text for disconnection from one device-->
+    <string name="wifi_p2p_cancel_connect_message">Do you want to cancel invitation to connect with <xliff:g id="peer_name">%1$s</xliff:g>?</string>
+    <!-- Message text for remembered group deletion-->
+    <string name="wifi_p2p_delete_group_message">Forget this group?</string>
+    <string name="wifi_p2p_failed_initname_message">Failed to init the name of device.</string>
+    
+    <!-- WFD -->
+    <string name="wfd_search">Search</string>
+    <string name="wfd_setting">Setting</string>
+    <string name="wfd_searching">Searching&#8230;</string>
+    <string name="wfd_status_waiting">Waiting for connection&#8230;</string>
+    <string name="wfd_status_connecting">Connecting&#8230;</string>
+    <string name="wfd_status_connected">Connected&#8230;</string>
+
+</resources>

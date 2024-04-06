@@ -1,0 +1,226 @@
+<resources>
+    <string name="app_name">Khadas settings</string>
+    <string name="HDMI_IN">HDMI IN</string>
+    <string name="Ethernet">Ethernet</string>
+    <string name="Hotspot">Hotspot Source</string>
+    <string name="Display_Setting">Display</string>
+    <string name="PowerKey">PowerKey definition</string>
+    <string name="FunctionKey">FunctionKey definition</string>
+    <string name="LEDs">LEDs control</string>
+    <string name="SYS_LEDs" translatable="false">SYS LEDs control</string>
+    <string name="MCU_LEDs" translatable="false">MCU LEDs control</string>
+    <string name="MCU_System_ON_Status" translatable="false">MCU LEDs System On control</string>
+    <string name="MCU_System_OFF_Status" translatable="false">MCU LEDs System Shutdown control</string>
+    <string name="Cooling_fan">Cooling fan</string>
+    <string name="WOL">WOL</string>
+    <string name="Status_bar_control">Status bar control</string>
+    <string name="Logo_LED_control">Logo LED control</string>
+    <string name="Timer">Timer</string>
+    <string name="USB_PCIE">Toggle USB-3.0/PCI-E</string>
+    <string name="USB_PCIE_Dialog_title">Effective after restart</string>
+    <string name="USB_PCIE_default">USB-3.0 Mode</string>
+
+    <string name="Gsensor">G-Sensor data</string>
+    <string name="Updater" translatable="false">Updater</string>
+
+
+    <string name="WOL_summary">Wake on LAN</string>
+
+    <string name="Hotspot_summary">WLAN/RSDB</string>
+
+    <string name="Status_bar_control_bottom">Show the bottom status bar</string>
+    <string name="Status_bar_control_upper">Show the upper status bar</string>
+
+    <string name="Eth_Proxy_settings">Proxy Settings</string>
+    <string name="Eth_IP_settings">IP Settings</string>
+
+    <string name="Eth_Status_n">Not connected</string>
+    <string name="Eth_Status_y">Connected</string>
+    <string name="Eth_Port">Ethernet Port</string>
+    <string name="Eth_Port_summary">Active:M2X(Reboot for changes to take effect)</string>
+
+    <string name="FunctionKey_dialog">Please enter the key value</string>
+
+    <string name="More_DisplaySound_Setting">More display &amp; sound settings</string>
+    <string name="Display_screen_rotation">Screen rotation</string>
+    <string name="Display_screen_density">Screen density</string>
+
+    <string name="Force_land_for_app">Force land for application</string>
+
+    <string name="Screen_density_default">240</string>
+    <string-array name="Screen_density_array">
+        <item>120</item>
+        <item>160</item>
+        <item>200</item>
+        <item>240</item>
+        <item>280</item>
+        <item>320</item>
+        <item>480</item>
+    </string-array>
+    <string-array name="Screen_density_array_value">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
+    <string name="Screen_rotation_default">0</string>
+    <string-array name="Screen_rotation_array">
+        <item>0</item>
+        <item>90</item>
+        <item>180</item>
+        <item>270</item>
+    </string-array>
+    <string-array name="Screen_rotation_array_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="USB_PCIE_array">
+        <item>USB-3.0 Mode</item>
+        <item>PCI-E Mode</item>
+    </string-array>
+    <string-array name="USB_PCIE_array_value">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string name="PowerKey_suspend">suspend</string>
+    <string-array name="PowerKey_array">
+        <item>suspend</item>
+        <item>shutdown</item>
+        <item>restart</item>
+    </string-array>
+    <string-array name="PowerKey_array_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string name="LED_red" translatable="false">Sys Red LED</string>
+    <string name="LED_green" translatable="false">Sys Green LED</string>
+    <string name="LED_blue" translatable="false">Sys Blue LED</string>
+
+    <string name="LED_red_default" translatable="false">Heartbeat mode</string>
+    <string name="LED_green_default" translatable="false">Heartbeat mode</string>
+    <string name="LED_blue_default" translatable="false">Heartbeat mode</string>
+    <string-array name="Red_LEDs_array">
+        <item>Always off</item>
+        <item>Always on</item>
+        <item>Time mode</item>
+        <item>Heartbeat mode</item>
+    </string-array>
+    <string-array name="Red_LEDs_array_value">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="Green_LEDs_array">
+        <item>Always off</item>
+        <item>Always on</item>
+        <item>Time mode</item>
+        <item>Heartbeat mode</item>
+    </string-array>
+    <string-array name="Green_LEDs_array_value">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="Blue_LEDs_array">
+        <item>Always off</item>
+        <item>Always on</item>
+        <item>Time mode</item>
+        <item>Heartbeat mode</item>
+    </string-array>
+    <string-array name="Blue_LEDs_array_value">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string name="MCU_LED_white" translatable="false">MCU LEDs</string>
+    <string name="SYS_LED_white" translatable="false">SYS LEDs</string>
+
+    <string name="LED_white">White LEDs</string>
+
+    <string name="MCU_LED_on_status" translatable="false">System On status</string>
+    <string name="MCU_LED_off_status" translatable="false">System Shutdown status</string>
+    <string name="MCU_LEDS_mode" translatable="false">MCU LEDS mode</string>
+    <string name="MCU_LEDS_on_mode_default" translatable="false">RGB off</string>
+    <string name="MCU_LEDS_off_mode_default" translatable="false">RGB on</string>
+    <string-array name="MCU_LEDs_array">
+        <item>RGB off</item>
+        <item>RGB on</item>
+        <item>R--breath mode</item>
+	<item>G--breath mode</item>
+	<item>B--breath mode</item>
+	<item>RG--breath mode</item>
+	<item>RB--breath mode</item>
+	<item>GB--breath mode</item>
+	<item>RGB--breath mode</item>
+        <item>R--heartbeat mode</item>
+	<item>G--heartbeat mode</item>
+	<item>B--heartbeat mode</item>
+	<item>RG--heartbeat mode</item>
+	<item>RB--heartbeat mode</item>
+	<item>GB--heartbeat mode</item>
+	<item>RGB--heartbeat mode</item>
+    </string-array>
+    <string-array name="MCU_LEDs_array_value">
+    	<item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    	<item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    	<item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+    	<item>15</item>	
+    </string-array>
+    <string name="FAN_default">Automatic speed control(temperature dependent)</string>
+    <string-array name="FAN_array">
+        <item>Off</item>
+        <item>Automatic speed control(temperature dependent)</item>
+        <item>Level 1</item>
+        <item>Level 2</item>
+        <item>Level 3</item>
+        <item>Level 4</item>
+    </string-array>
+    <string-array name="FAN_array_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string name="MCU_RED_LED_ON_Brightness_title" translatable="false">Red LED Brightness</string>
+    <string name="MCU_RED_LED_OFF_Brightness_title" translatable="false">Red LED Brightness</string>
+    <string name="MCU_GREEN_LED_ON_Brightness_title" translatable="false">Green LED Brightness</string>
+    <string name="MCU_GRREN_LED_OFF_Brightness_title" translatable="false">Green LED Brightness</string>
+    <string name="MCU_BLUE_LED_ON_Brightness_title" translatable="false">Blue LED Brightness</string>
+    <string name="MCU_BLUE_LED_OFF_Brightness_title" translatable="false">Blue LED Brightness</string>
+
+    <string name="mipi_Brightness_title">MIPI Brightness level</string>
+    <string name="vbo_Brightness_title">VBO Brightness level</string>
+    <string name="logoled_Brightness_title">Logo LED Brightness level</string>
+    <string name="textview" translatable="false">TextView</string>
+
+</resources>

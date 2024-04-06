@@ -1,0 +1,75 @@
+cc_library_shared {
+    name: "librkvt",
+    vendor_available: true,
+
+    srcs: [
+        "video_tunnel.c",
+    ],
+
+    shared_libs: [
+        "liblog",
+        "libutils",
+        "libcutils",
+    ],
+
+    local_include_dirs: ["include"],
+
+    cflags:[
+        "-Wno-unused-parameter",
+        "-Wno-unused-variable",
+    ],
+}
+
+bootstrap_go_package {
+    name: "soong-librkvt_win",
+    pkgPath: "android/soong/librkvt_win",
+    deps:[
+        "blueprint",
+        "blueprint-pathtools",
+        "soong",
+        "soong-android",
+        "soong-cc",
+        "soong-genrule",
+    ],
+    srcs:[
+        "Android.go",
+    ],
+    pluginFor: ["soong_build"],
+}
+cc_librkvt_win {
+    name: "cc_librkvt_win_defaults"
+}
+
+cc_library_shared {
+    name: "librkvt_win",
+    defaults:[
+        "cc_librkvt_win_defaults"
+    ],
+
+    srcs: [
+        "video_tunnel_win.cpp",
+        "RTSidebandWindow.cpp",
+    ],
+
+    shared_libs: [
+        "liblog",
+        "libutils",
+        "libcutils",
+        "libui",
+        "libgui",
+        "librkvt",
+    ],
+
+    local_include_dirs: [
+        "include",
+        "include/mpp",
+        "common",
+        ],
+
+    cflags:[
+        "-Wno-unused-parameter",
+        "-Wno-unused-variable",
+    ],
+}
+
+

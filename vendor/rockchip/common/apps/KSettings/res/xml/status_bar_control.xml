@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:key="Status_bar_bottom_key"
+        android:title="@string/Status_bar_control_bottom" />
+    <SwitchPreference
+        android:key="Status_bar_upper_key"
+        android:title="@string/Status_bar_control_upper" />
+
+</PreferenceScreen>

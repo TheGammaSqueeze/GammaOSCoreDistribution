@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="drawable" name="key_default">#ffff0000</item>
+    <item type="drawable" name="key_down">#ff00ff00</item>
+    <item type="drawable" name="key_up">#ff0000ff</item>
+</resources>

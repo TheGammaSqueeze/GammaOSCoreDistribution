@@ -1,0 +1,40 @@
+cc_library_static {
+    name: "libvibrator_rockchip-impl",
+    vendor: true,
+    shared_libs: [
+        "libbase",
+        "libutils",
+        "liblog",
+        "libbinder_ndk",
+        "android.hardware.vibrator-V1-ndk",
+        "libhardware",
+        "libhardware_legacy",
+    ],
+    export_include_dirs: ["include"],
+    srcs: ["Vibrator.cpp"],
+    visibility: [
+        ":__subpackages__",
+        "//hardware/interfaces/tests/extension/vibrator:__subpackages__",
+    ],
+}
+
+cc_binary {
+    name: "android.hardware.vibrator-service.rockchip",
+    relative_install_path: "hw",
+    init_rc: ["vibrator-rockchip.rc"],
+    vintf_fragments: ["vibrator-rockchip.xml"],
+    vendor: true,
+    shared_libs: [
+        "libbase",
+        "libutils",
+        "liblog",
+        "libbinder_ndk",
+        "android.hardware.vibrator-V1-ndk",
+        "libhardware",
+        "libhardware_legacy",
+    ],
+    static_libs: [
+        "libvibrator_rockchip-impl",
+    ],
+    srcs: ["main.cpp"],
+}

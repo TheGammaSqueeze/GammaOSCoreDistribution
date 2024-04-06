@@ -1,0 +1,6 @@
+# CLIENT ID, MUST set it with your own MADA ID!
+ro.com.google.clientidbase=android-rockchip
+
+# Express tag, DO NOT MODIFIED IT!
+# Imporve the tracking of GMS Express base build.
+ro.base_build=noah

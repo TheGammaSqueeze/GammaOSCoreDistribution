@@ -1,0 +1,31 @@
+From 6878ae58408837b82078c02c25141953732bc8b8 Mon Sep 17 00:00:00 2001
+From: Paul Lawrence <paullawrence@google.com>
+Date: Tue, 12 Jan 2021 11:01:42 -0800
+Subject: [PATCH 04/31] ANDROID: Incremental fs: Free mount info after files
+ are flushed
+
+Bug: 177280103
+Test: incfs_test passes
+Signed-off-by: Paul Lawrence <paullawrence@google.com>
+Change-Id: I5bb83b92be2203115e235bc7b30e8ad8a62b35e1
+---
+ fs/incfs/vfs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fs/incfs/vfs.c b/fs/incfs/vfs.c
+index 1af051378a17..097f334d3658 100644
+--- a/fs/incfs/vfs.c
++++ b/fs/incfs/vfs.c
+@@ -1648,8 +1648,8 @@ void incfs_kill_sb(struct super_block *sb)
+ 	struct mount_info *mi = sb->s_fs_info;
+ 
+ 	pr_debug("incfs: unmount\n");
+-	incfs_free_mount_info(mi);
+ 	generic_shutdown_super(sb);
++	incfs_free_mount_info(mi);
+ }
+ 
+ static int show_options(struct seq_file *m, struct dentry *root)
+-- 
+2.17.1
+

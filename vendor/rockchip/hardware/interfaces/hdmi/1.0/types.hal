@@ -1,0 +1,23 @@
+package rockchip.hardware.hdmi@1.0;
+struct HdmiStatus {
+    uint64_t status;
+    uint64_t width;
+    uint64_t height;
+    double fps;
+};
+
+struct HdmiAudioStatus {
+    uint64_t status;
+    string deviceId;
+};
+
+struct FrameInfo {
+    uint64_t frameId;
+    string deviceId;
+    handle buffer;
+    uint64_t bufferSize;
+    uint32_t stride;
+    uint64_t usage;
+    uint32_t width;
+    uint32_t height;
+};

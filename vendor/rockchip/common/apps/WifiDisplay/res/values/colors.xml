@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="wfd_device_name_color">#FF8E9D0E</color>
+    <color name="wfd_grid_item_state_color">#FF0098E3</color>
+    <color name="wfd_search_summary_color">#FF0098E3</color>
+    
+    <color name="wfd_txt_color">#FF8A8A8A</color>
+    <color name="wfd_txt_press_color">#FF8E9D0E</color>
+    <color name="wfd_txt_select_color">#FF0098E3</color>
+</resources>

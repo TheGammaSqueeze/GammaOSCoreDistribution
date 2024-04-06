@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/settime_dialog_margin">
+
+   <RelativeLayout
+    android:id="@+id/numberpicker_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+   <com.khadas.schpwronoff.CustomNumberPicker
+        android:id="@+id/hour"
+        android:layout_width="@dimen/settime_numberpicker_width"
+        android:layout_height="wrap_content"
+        android:background="@drawable/numberpicker_seletor"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        />
+   <com.khadas.schpwronoff.CustomNumberPicker
+        android:id="@+id/minute"
+        android:layout_alignParentRight="true"
+        android:layout_width="@dimen/settime_numberpicker_width"
+        android:layout_height="wrap_content"
+        android:background="@drawable/numberpicker_seletor"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        />
+
+   </RelativeLayout>
+   <RelativeLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/numberpicker_layout"
+       >
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/settime_button_ok_style"
+        android:id="@+id/btn_ok"
+        android:text="@string/settime_button_ok"
+        android:textColor="@color/settime_ok_cancel_text_color"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"  />
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/btn_ok"
+        android:background="@drawable/settime_button_canel_style"
+        android:id="@+id/btn_cancel"
+        android:text="@string/settime_button_canel"
+        android:textColor="@color/settime_ok_cancel_text_color"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"  />
+
+   </RelativeLayout>
+</RelativeLayout>
