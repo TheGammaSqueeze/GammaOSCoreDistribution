@@ -47,7 +47,6 @@ endif
 # From build/target/product/core.mk
 PRODUCT_PACKAGES += \
     BasicDreams \
-    CalendarProvider \
     CaptivePortalLogin \
     CertInstaller \
     ExternalStorageProvider \
@@ -63,10 +62,6 @@ PRODUCT_PACKAGES += \
     VpnDialogs \
     DocumentsUI \
     com.android.media.tv.remoteprovider
-
-# Device owner provisioning for devices defining device_admin
-PRODUCT_PACKAGES += \
-    ManagedProvisioning
 
 
 # PRODUCT_SUPPORTS_CAMERA: Whether the product supports cameras at all
@@ -101,3 +96,4 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libeffects/data/audio_effects.conf:system/etc/audio_effects.conf
+
