@@ -1,0 +1,8 @@
+package rockchip.hardware.tv.input@1.0;
+
+import android.hardware.tv.input@1.0::ITvInputCallback;
+import rockchip.hardware.tv.input@1.0::TvInputEventExt;
+
+interface ITvInputCallback extends android.hardware.tv.input@1.0::ITvInputCallback {
+    notify_ext(TvInputEventExt event);
+};

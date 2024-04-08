@@ -1,0 +1,81 @@
+cc_defaults {
+    name: "libcodec2_rk-defaults",
+    defaults: ["libcodec2-impl-defaults"],
+    export_shared_lib_headers: [
+        "libsfplugin_ccodec_utils",
+    ],
+
+    shared_libs: [
+        "libcutils", // for properties
+        "liblog", // for ALOG
+        "libsfplugin_ccodec_utils", // for ImageCopy
+        "libstagefright_foundation", // for ColorUtils and MIME
+    ],
+
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+
+    ldflags: ["-Wl,-Bsymbolic"],
+}
+
+cc_defaults {
+    name: "libcodec2_rk_sanitize_all-defaults",
+
+    sanitize: {
+        misc_undefined: [
+            "unsigned-integer-overflow",
+            "signed-integer-overflow",
+        ],
+        cfi: true,
+    },
+}
+
+cc_defaults {
+    name: "libcodec2_rk_sanitize_signed-defaults",
+
+    sanitize: {
+        misc_undefined: [
+            "signed-integer-overflow",
+        ],
+        cfi: true,
+    },
+}
+
+cc_library_static {
+    name: "libcodec2_rk_base",
+    vendor: true,
+    defaults: [
+        "libcodec2_rk-defaults",
+        "libcodec2_rk_sanitize_signed-defaults",
+   ],
+
+    srcs: [
+        "C2RKComponent.cpp",
+        "C2RKInterface.cpp",
+    ],
+
+    include_dirs: [
+        "vendor/rockchip/hardware/interfaces/codec2/component/include",
+        "vendor/rockchip/hardware/interfaces/codec2/osal/include",
+    ],
+
+    export_shared_lib_headers: [
+        "libsfplugin_ccodec_utils",
+    ],
+
+    header_libs: [
+        "libhardware_rockchip_headers",
+    ],
+
+    sanitize: {
+        misc_undefined: [
+            "unsigned-integer-overflow",
+            "signed-integer-overflow",
+        ],
+        cfi: true,
+    },
+
+    ldflags: ["-Wl,-Bsymbolic"],
+}

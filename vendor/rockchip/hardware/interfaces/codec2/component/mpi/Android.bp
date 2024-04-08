@@ -1,0 +1,54 @@
+cc_library_static {
+    name: "libcodec2_rk_mpi",
+    vendor: true,
+    generated_headers: ["c2_version"],
+    defaults: [
+        "libcodec2_rk-defaults",
+        "libcodec2_rk_sanitize_signed-defaults",
+    ],
+
+    srcs: [
+        "C2RKMpiDec.cpp",
+        "C2RKMpiEnc.cpp",
+        "C2RKExtendParam.cpp",
+        "C2RKCodecMapper.cpp",
+        "C2RKMlvecLegacy.cpp",
+    ],
+
+    shared_libs: [
+        "libmpp",
+        "librga",
+        "libui",
+    ],
+
+    static_libs: [
+        "libcodec2_rk_osal",
+    ],
+
+    header_libs: [
+        "libhardware_rockchip_headers",
+        "libui_headers",
+    ],
+
+    include_dirs: [
+        "vendor/rockchip/hardware/interfaces/codec2/component/include",
+        "vendor/rockchip/hardware/interfaces/codec2/osal/include",
+        "hardware/rockchip/librkvpu/omx_get_gralloc_private",
+        "hardware/rockchip/librga/include",
+        "frameworks/av/media/libstagefright/include",
+    ],
+
+    export_shared_lib_headers: [
+        "libsfplugin_ccodec_utils",
+    ],
+
+    sanitize: {
+        misc_undefined: [
+            "unsigned-integer-overflow",
+            "signed-integer-overflow",
+        ],
+        cfi: true,
+    },
+
+    ldflags: ["-Wl,-Bsymbolic"],
+}

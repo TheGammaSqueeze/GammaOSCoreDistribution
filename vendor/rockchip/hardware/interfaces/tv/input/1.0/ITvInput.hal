@@ -1,0 +1,49 @@
+package rockchip.hardware.tv.input@1.0;
+
+import android.hardware.tv.input@1.0::ITvInput;
+import android.hardware.tv.input@1.0::Result;
+import rockchip.hardware.tv.input@1.0::PrivAppCmdInfo;
+import rockchip.hardware.tv.input@1.0::PreviewBuffer;
+import rockchip.hardware.tv.input@1.0::TvStreamConfig;
+import rockchip.hardware.tv.input@1.0::ITvInputCallback;
+
+interface ITvInput extends android.hardware.tv.input@1.0::ITvInput {
+    @entry
+    @exit
+    @callflow(next={"getStreamConfigurations", "getStreamConfigurations_ext"})
+    setExtCallback(ITvInputCallback callback);
+
+    privCmdFromApp(PrivAppCmdInfo cmdInfo) generates (Result result);
+    /**
+     * set display buffer to tvhal
+     */
+    requestCapture(int32_t deviceId, int32_t streamId, uint64_t buffId,
+            handle buffer, int32_t seq)
+            generates (Result result);
+
+    /**
+     * cancel tvhal capture
+     */
+    cancelCapture(int32_t deviceId, int32_t streamId, int32_t seq);
+
+    /**
+     * set preview info
+     */
+    @callflow(next={"setSinglePreviewBuffer"})
+    setPreviewInfo(int32_t deviceId, int32_t streamId,
+            int32_t top, int32_t left, int32_t width, int32_t height,
+            int32_t extInfo) generates (Result result);
+
+    /**
+     *  set one preview buffer
+     */
+    setSinglePreviewBuffer(PreviewBuffer buff);
+
+    @callflow(next={"openStream_ext", "getStreamConfigurations_ext", "closeStream"})
+    getStreamConfigurations_ext(int32_t deviceId)
+            generates (Result result, vec<TvStreamConfig> configurations);
+
+    @callflow(next={"closeStream", "getStreamConfigurations_ext", "openStream_ext"})
+    openStream_ext(int32_t deviceId, int32_t streamId, int32_t streamType)
+            generates (Result result, handle sidebandStream, handle sidebandCancelStream);
+};

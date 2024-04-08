@@ -1,0 +1,101 @@
+package rockchip.hardware.tv.input@1.0;
+
+import android.hardware.tv.input@1.0::TvStreamConfig;
+import android.hardware.tv.input@1.0::TvInputDeviceInfo;
+import android.hardware.tv.input@1.0::TvInputEvent;
+import android.hardware.tv.input@1.0::TvInputEventType;
+
+@export(name="", value_prefix="EVENT_")
+enum TvInputEventType : android.hardware.tv.input@1.0::TvInputEventType {
+    /*
+     * Hardware is done with capture request with the buffer. Client can assume
+     * ownership of the buffer again.
+     *
+     * HAL implementation should generate this event after request_capture() if
+     * it succeeded. The event shall have the buffer with the captured image.
+     */
+    STREAM_CAPTURE_SUCCEEDED = 4,
+
+    /*
+     * Hardware met a failure while processing a capture request or client
+     * canceled the request. Client can assume ownership of the buffer again.
+     *
+     * The event is similar to TV_INPUT_EVENT_CAPTURE_SUCCEEDED, but HAL
+     * implementation generates this event upon a failure to process
+     * request_capture(), or a request cancellation.
+     */
+    STREAM_CAPTURE_FAILED = 5,
+
+    PRIV_CMD_TO_APP = 6,
+};
+
+struct PreviewBuffer {
+    uint64_t bufferId;
+    handle buffer;
+};
+
+struct PrivAppCmdBundle {
+    string key;
+    string value;
+};
+
+struct PrivAppCmdInfo {
+    string action;
+    vec<PrivAppCmdBundle> data;
+};
+
+struct PreviewRequest {
+    int32_t deviceId;
+    int32_t streamId;
+    int32_t top;
+    int32_t left;
+    int32_t width;
+    int32_t height;
+    vec<PreviewBuffer> inputBuffers;
+};
+
+struct PreviewResult {
+    int32_t deviceId;
+    int32_t streamId;
+    vec<PreviewBuffer> outputBuffers;
+};
+
+struct TvInputCaptureResult {
+    uint64_t buffId;
+    int32_t buffSeq;
+    /*
+     * The buffer passed to hardware in request_capture(). The content of
+     * buffer is undefined (although buffer itself is valid) for
+     * TV_INPUT_CAPTURE_FAILED event.
+     */
+    handle buffer;
+
+    /*
+     * Error code for the request. -ECANCELED if request is cancelled; other
+     * error codes are unknown errors.
+     */
+    int32_t error_code;
+};
+
+struct TvStreamConfig {
+    android.hardware.tv.input@1.0::TvStreamConfig base;
+    int32_t deviceId;
+    uint32_t format;
+    uint64_t usage;
+    uint32_t width;
+    uint32_t height;
+    uint32_t buffCount;
+};
+
+struct TvInputDeviceInfo {
+    android.hardware.tv.input@1.0::TvInputDeviceInfo base;
+    int32_t streamId;
+    int32_t buffSeq;
+};
+
+struct TvInputEventExt {
+    TvInputEventType type;
+    TvInputDeviceInfo deviceInfo;
+    TvInputCaptureResult capture_result;
+    PrivAppCmdInfo priv_app_cmd;
+};

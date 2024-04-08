@@ -1,0 +1,42 @@
+cc_defaults {
+    name: "rockchip.hardware.tv.input_defaults",
+    relative_install_path: "hw",
+    vendor: true,
+    srcs: [
+        "TvInput.cpp",
+        "TvInputExt.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "libcutils",
+        "libdl",
+        "liblog",
+        "libhardware",
+        "libhardware_legacy",
+        "libhidlbase",
+        "libutils",
+        "android.hardware.audio.common@2.0",
+        "android.hardware.tv.input@1.0",
+        "rockchip.hardware.tv.input@1.0",
+    ],
+}
+
+cc_library_shared {
+    name: "rockchip.hardware.tv.input@1.0-impl",
+    defaults: [
+        "hidl_defaults",
+        "rockchip.hardware.tv.input_defaults",
+    ],
+    srcs: ["impl.cpp"],
+}
+
+cc_binary {
+    name: "rockchip.hardware.tv.input@1.0-service",
+    defaults: [
+        "hidl_defaults",
+        "rockchip.hardware.tv.input_defaults",
+    ],
+    init_rc: ["rockchip.hardware.tv.input@1.0-service.rc"],
+    vintf_fragments: ["rockchip.hardware.tv.input@1.0-service.xml"],
+    srcs: ["service.cpp"],
+}

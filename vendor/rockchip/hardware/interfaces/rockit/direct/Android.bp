@@ -1,0 +1,76 @@
+cc_library_shared {
+
+    srcs: [
+        "RockitPlayer.cpp",
+        "RockitPlayerInterface.cpp",
+        "RockitPlayerManager.cpp",
+        "RTSurfaceCallback.cpp",
+        "RTMsgCallback.cpp",
+        "RTAudioSinkCallback.cpp",
+        "RTGraphicWindowApi.cpp",
+        "RTSubtitleSink.cpp",
+        "RTChips.cpp",
+        "RTMetadataRetrieverCallback.cpp",
+        "RockitMetadataRetriever.cpp",
+        "RTVdecExtendFeature.cpp",
+        "RockitExtCodecRegister.cpp",
+    ],
+
+    shared_libs: [
+        "libbase",
+        "libutils",
+        "libcutils",
+        "libEGL",
+        "libGLESv1_CM",
+        "libui",
+        "libgui",
+        "liblog",
+        "libmedia",
+        "libgralloc_priv",
+        "libaudioclient",
+        "libdrm",
+        "libbinder",
+        "libhardware",
+        "librkvt_win",
+   //     "librockit_ext_codec",
+    ],
+
+    header_libs: [
+        "libmediametrics_headers",
+        "libhardware_rockchip_headers",
+        "libhardware_headers",
+    ],
+
+    static_libs: [
+        "libyuv_static",
+        "libstagefright_color_conversion",
+    ],
+
+    include_dirs: [
+        "frameworks/av/include",
+        "system/media/audio/include",
+        "hardware/rockchip/librkvpu/omx_get_gralloc_private",
+        "vendor/rockchip/hardware/interfaces/rockit/include",
+        "vendor/rockchip/hardware/interfaces/rockit/include/rt_base",
+        "vendor/rockchip/hardware/interfaces/rockit/include/rt_media",
+        "vendor/rockchip/hardware/interfaces/rockit/include/rt_player",
+        "vendor/rockchip/hardware/interfaces/vtunnel/include",
+        "vendor/rockchip/hardware/interfaces/rockit/direct/codec",
+    ],
+
+    local_include_dirs: ["include"],
+
+    export_shared_lib_headers: [
+        "libui",
+    ],
+
+    cflags: [
+        "-Werror",
+        "-Wno-error=deprecated-declarations",
+        "-Wall",
+    ],
+
+    name: "librockit_interface",
+
+}
+

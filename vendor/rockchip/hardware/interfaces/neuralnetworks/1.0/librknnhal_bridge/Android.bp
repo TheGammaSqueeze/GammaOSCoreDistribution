@@ -1,0 +1,34 @@
+cc_library_shared {
+    name: "librknnhal_bridge.rockchip",
+    srcs: ["**/*.cpp"],
+    vendor_available: true,
+//    vendor: true,
+    shared_libs: [
+        "rockchip.hardware.neuralnetworks@1.0",
+        "android.hidl.allocator@1.0",
+        "android.hidl.memory@1.0",
+        "libutils",
+        "libcutils",
+        "libhidlbase",
+        "libhidlmemory",
+        "liblog",
+    ],
+    include_dirs: [
+        "hardware/rockchip/rknpu2/runtime/RK3588/Android/librknn_api/include/",
+    ],
+    cppflags: [
+        "-Wno-error",
+    ],
+}
+
+ndk_library {
+    name: "librknnhal_bridge.rockchip",
+    symbol_file: "librknnhal_bridge.map.txt",
+    first_version: "27",
+}
+
+prebuilt_etc {
+    name: "public.libraries-rockchip",
+    src: "public.libraries-rockchip.txt",
+    filename_from_src: true,
+}
