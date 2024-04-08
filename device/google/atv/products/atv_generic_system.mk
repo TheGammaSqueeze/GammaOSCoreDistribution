@@ -80,6 +80,41 @@ PRODUCT_COPY_FILES += \
     system/core/rootdir/init.zygote64.rc:system/etc/init/hw/init.zygote64.rc \
     system/core/rootdir/init.zygote64_32.rc:system/etc/init/hw/init.zygote64_32.rc
 
+
+# GammaOS Customizations
+
+PRODUCT_COPY_FILES += \
+    device/google/atv/rgp2xbox/rgp2xbox:system/bin/rgp2xbox \
+    device/google/atv/rgp2xbox/rgp2xbox.sh:system/bin/rgp2xbox.sh \
+    device/google/atv/rgp2xbox/setabxyvalue_default.sh:system/bin/setabxyvalue_default.sh \
+    device/google/atv/rgp2xbox/setabxyvalue_swapped.sh:system/bin/setabxyvalue_swapped.sh \
+    device/google/atv/rgp2xbox/setanalogaxisvalue_default.sh:system/bin/setanalogaxisvalue_default.sh \
+    device/google/atv/rgp2xbox/setanalogaxisvalue_swapped.sh:system/bin/setanalogaxisvalue_swapped.sh \
+    device/google/atv/rgp2xbox/setanalogsensitivity_15.sh:system/bin/setanalogsensitivity_15.sh \
+    device/google/atv/rgp2xbox/setanalogsensitivity_25.sh:system/bin/setanalogsensitivity_25.sh \
+    device/google/atv/rgp2xbox/setanalogsensitivity_50.sh:system/bin/setanalogsensitivity_50.sh \
+    device/google/atv/rgp2xbox/setanalogsensitivity_custom.sh:system/bin/setanalogsensitivity_custom.sh \
+    device/google/atv/rgp2xbox/setanalogsensitivity_default.sh:system/bin/setanalogsensitivity_default.sh \
+    device/google/atv/rgp2xbox/setclock_max.sh:system/bin/setclock_max.sh \
+    device/google/atv/rgp2xbox/setclock_powersave.sh:system/bin/setclock_powersave.sh \
+    device/google/atv/rgp2xbox/setclock_stock.sh:system/bin/setclock_stock.sh \
+    device/google/atv/rgp2xbox/setclockvalue_max.sh:system/bin/setclockvalue_max.sh \
+    device/google/atv/rgp2xbox/setclockvalue_powersave.sh:system/bin/setclockvalue_powersave.sh \
+    device/google/atv/rgp2xbox/setclockvalue_stock.sh:system/bin/setclockvalue_stock.sh \
+    device/google/atv/rgp2xbox/setdpadanalogtoggle_off.sh:system/bin/setdpadanalogtoggle_off.sh \
+    device/google/atv/rgp2xbox/setdpadanalogtoggle_on.sh:system/bin/setdpadanalogtoggle_on.sh \
+    device/google/atv/rgp2xbox/setfan_auto.sh:system/bin/setfan_auto.sh \
+    device/google/atv/rgp2xbox/setfan_cool.sh:system/bin/setfan_cool.sh \
+    device/google/atv/rgp2xbox/setfan_max.sh:system/bin/setfan_max.sh \
+    device/google/atv/rgp2xbox/setfan_off.sh:system/bin/setfan_off.sh \
+    device/google/atv/rgp2xbox/setfanvalue_auto.sh:system/bin/setfanvalue_auto.sh \
+    device/google/atv/rgp2xbox/setfanvalue_cool.sh:system/bin/setfanvalue_cool.sh \
+    device/google/atv/rgp2xbox/setfanvalue_max.sh:system/bin/setfanvalue_max.sh \
+    device/google/atv/rgp2xbox/setfanvalue_off.sh:system/bin/setfanvalue_off.sh \
+    device/google/atv/rgp2xbox/setrightanalogaxisvalue_default.sh:system/bin/setrightanalogaxisvalue_default.sh \
+    device/google/atv/rgp2xbox/setrightanalogaxisvalue_swapped.sh:system/bin/setrightanalogaxisvalue_swapped.sh \
+
+
 # Enable dynamic partition size
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
 
