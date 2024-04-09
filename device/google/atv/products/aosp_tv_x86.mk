@@ -50,8 +50,7 @@ PRODUCT_PACKAGES += \
 $(call inherit-product, device/google/atv/products/atv_product.mk)
 # Packages required for ATV GSI
 PRODUCT_PACKAGES += \
-    LeanbackIME \
-    TvSampleLeanbackLauncher
+    LeanbackIME
 
 #
 # All components inherited here go to vendor image

@@ -30,8 +30,8 @@ $(call inherit-product-if-exists, frameworks/webview/chromium/chromium.mk)
 
 PRODUCT_IS_ATV := true
 
-PRODUCT_PACKAGES += \
-    TvProvider
+#PRODUCT_PACKAGES += \
+#    TvProvider
 
 # PRODUCT_SUPPORTS_TUNER: Whether the product hardware tuner. When 'false',
 # we drop mediatuner, which saves ~4 MiB of RAM. When 'true', the tuner HAL

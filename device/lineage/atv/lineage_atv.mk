@@ -73,8 +73,8 @@ PRODUCT_PACKAGES += \
     TvSettingsTwoPanel
 
 # TVLauncher
-PRODUCT_PACKAGES += \
-    TVLauncherNoGMS
+#PRODUCT_PACKAGES += \
+#    TVLauncherNoGMS
 
 #    TVRecommendationsNoGMS
 

@@ -43,8 +43,7 @@ PRODUCT_PACKAGES += system_ext_userdebug_plat_sepolicy.cil
 $(call inherit-product, device/google/atv/products/atv_product.mk)
 # Packages required for ATV GSI
 PRODUCT_PACKAGES += \
-    LeanbackIME \
-    TvSampleLeanbackLauncher
+    LeanbackIME
 
 #
 # Special settings for GSI releasing
