@@ -99,8 +99,8 @@ public class ConfirmFragment extends DialogFragment {
                 break;
 
         }
-        builder.setNegativeButton(android.R.string.cancel,
-                (DialogInterface dialog, int id) -> pickResult.increaseActionCount());
+//        builder.setNegativeButton(android.R.string.cancel,
+//                (DialogInterface dialog, int id) -> pickResult.increaseActionCount());
 
         return builder.create();
     }

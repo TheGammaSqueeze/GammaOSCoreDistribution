@@ -26,6 +26,7 @@ import com.android.documentsui.base.Events;
 import com.android.documentsui.base.Features;
 import com.android.documentsui.base.Procedure;
 import com.android.documentsui.dirlist.FocusHandler;
+import java.io.IOException;
 
 /**
  * Handle common input events.
@@ -59,6 +60,17 @@ public class SharedInputHandler {
         mSearchExecutor = searchExcutor;
     }
 
+
+public void sendTabKeyEvent() {
+    try {
+        // Execute the shell command to send the TAB key event
+        Runtime.getRuntime().exec("input keyevent 61");
+    } catch (IOException e) {
+        // Handle exceptions if the command fails
+        e.printStackTrace();
+    }
+}
+
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
 
@@ -85,14 +97,14 @@ public class SharedInputHandler {
                 return true;
 
             case KeyEvent.KEYCODE_BUTTON_R1:
-                mFocusManager.focusDirectoryList();
-                return true;
-
-            case KeyEvent.KEYCODE_BUTTON_Y:
-                mSearchExecutor.run();
+		sendTabKeyEvent();
                 return true;
 
             case KeyEvent.KEYCODE_BUTTON_X:
+                mSearchExecutor.run();
+                return true;
+
+            case KeyEvent.KEYCODE_BUTTON_Y:
                 return onTab();
 
             case KeyEvent.KEYCODE_SEARCH:

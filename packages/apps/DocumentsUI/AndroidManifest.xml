@@ -20,7 +20,7 @@
         package="com.android.documentsui">
 
     <uses-sdk android:minSdkVersion="29" android:targetSdkVersion="30"/>
-
+    <uses-permission android:name="android.permission.INJECT_EVENTS"/>
     <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
     <uses-permission android:name="android.permission.REMOVE_TASKS" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
