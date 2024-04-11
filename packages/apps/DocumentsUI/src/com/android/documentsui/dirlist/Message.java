@@ -147,30 +147,22 @@ abstract class Message {
             super(env, callback);
         }
 
-        @Override
-        void update(Update event) {
-            reset();
-            // Error gets first dibs ... for now
-            // TODO: These should be different Message objects getting updated instead of
-            // overwriting.
-            if (event.hasAuthenticationException()) {
-                updateToAuthenticationExceptionHeader(event);
-            } else if (mEnv.getModel().error != null) {
-                update(null, mEnv.getModel().error, null,
-                        mEnv.getContext().getDrawable(R.drawable.ic_dialog_alert));
-            } else if (mEnv.getModel().info != null) {
-                update(null, mEnv.getModel().info, null,
-                        mEnv.getContext().getDrawable(R.drawable.ic_dialog_info));
-            } else if (mEnv.getDisplayState().action == State.ACTION_OPEN_TREE
-                    && mEnv.getDisplayState().stack.peek() != null
-                    && mEnv.getDisplayState().stack.peek().isBlockedFromTree()
-                    && mEnv.getDisplayState().restrictScopeStorage) {
-                updateBlockFromTreeMessage();
-                mCallback = () -> {
-                    mEnv.getActionHandler().showCreateDirectoryDialog();
-                };
-            }
-        }
+@Override
+void update(Update event) {
+    reset();
+    // Error gets first dibs ... for now
+    // TODO: These should be different Message objects getting updated instead of
+    // overwriting.
+    if (event.hasAuthenticationException()) {
+        updateToAuthenticationExceptionHeader(event);
+    } else if (mEnv.getModel().error != null) {
+        update(null, mEnv.getModel().error, null,
+               mEnv.getContext().getDrawable(R.drawable.ic_dialog_alert));
+    } else if (mEnv.getModel().info != null) {
+        update(null, mEnv.getModel().info, null,
+               mEnv.getContext().getDrawable(R.drawable.ic_dialog_info));
+    } // Removed the block related to tree message and condition
+}
 
         private void updateToAuthenticationExceptionHeader(Update event) {
             assert(mEnv.getFeatures().isRemoteActionsEnabled());

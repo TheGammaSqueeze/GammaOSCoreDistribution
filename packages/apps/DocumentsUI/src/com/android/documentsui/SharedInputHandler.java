@@ -61,10 +61,10 @@ public class SharedInputHandler {
     }
 
 
-public void sendTabKeyEvent() {
+public void sendKeyEvent(String cmd) {
     try {
         // Execute the shell command to send the TAB key event
-        Runtime.getRuntime().exec("input keyevent 61");
+        Runtime.getRuntime().exec(cmd);
     } catch (IOException e) {
         // Handle exceptions if the command fails
         e.printStackTrace();
@@ -72,7 +72,6 @@ public void sendTabKeyEvent() {
 }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-
 
 	Log.w(TAG, "keyCode: " + keyCode);
 
@@ -97,7 +96,15 @@ public void sendTabKeyEvent() {
                 return true;
 
             case KeyEvent.KEYCODE_BUTTON_R1:
-		sendTabKeyEvent();
+		sendKeyEvent("input keyevent 61");
+                return true;
+
+            case KeyEvent.KEYCODE_BUTTON_L2:
+                sendKeyEvent("input keyevent 92");
+                return true;
+
+            case KeyEvent.KEYCODE_BUTTON_R2:
+                sendKeyEvent("input keyevent 93");
                 return true;
 
             case KeyEvent.KEYCODE_BUTTON_X:

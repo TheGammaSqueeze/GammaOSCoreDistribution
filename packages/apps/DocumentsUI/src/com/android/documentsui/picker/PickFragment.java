@@ -178,15 +178,16 @@ public class PickFragment extends Fragment {
 
         switch (mAction) {
             case State.ACTION_OPEN_TREE:
-                mPick.setText(getString(R.string.open_tree_button));
-                mPick.setWidth(Integer.MAX_VALUE);
-                mCancel.setVisibility(View.GONE);
-                mPick.setEnabled(!(mPickTarget.isBlockedFromTree() && mRestrictScopeStorage));
-                mPickOverlay.setVisibility(
-                        mPickTarget.isBlockedFromTree() && mRestrictScopeStorage
-                                ? View.VISIBLE
-                                : View.GONE);
-                break;
+        	mPick.setText(getString(R.string.open_tree_button));
+        	mPick.setWidth(Integer.MAX_VALUE);
+        	mCancel.setVisibility(View.GONE);
+
+        	// Ensure the button is always enabled
+        	mPick.setEnabled(true);
+
+        	// Always hide the overlay, implying no restrictions
+        	mPickOverlay.setVisibility(View.GONE);
+        break;
             case State.ACTION_PICK_COPY_DESTINATION:
                 int titleId;
                 switch (mCopyOperationSubType) {
