@@ -60,6 +60,10 @@ public class SharedInputHandler {
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+
+	Log.w(TAG, "keyCode: " + keyCode);
+
         switch (keyCode) {
             // Unhandled ESC keys end up being rethrown back at us as BACK keys. So by returning
             // true, we make sure it always does no-op.
@@ -74,6 +78,21 @@ public class SharedInputHandler {
                 return onBack();
 
             case KeyEvent.KEYCODE_TAB:
+                return onTab();
+
+            case KeyEvent.KEYCODE_BUTTON_L1:
+                mFocusManager.advanceFocusArea();
+                return true;
+
+            case KeyEvent.KEYCODE_BUTTON_R1:
+                mFocusManager.focusDirectoryList();
+                return true;
+
+            case KeyEvent.KEYCODE_BUTTON_Y:
+                mSearchExecutor.run();
+                return true;
+
+            case KeyEvent.KEYCODE_BUTTON_X:
                 return onTab();
 
             case KeyEvent.KEYCODE_SEARCH:
