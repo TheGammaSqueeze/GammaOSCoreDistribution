@@ -55,16 +55,6 @@
         <intent android:action="com.google.android.tvlauncher.SETTINGS"/>
     </Preference>
     <Preference
-        android:fragment="com.android.tv.settings.device.display.daydream.DaydreamFragment"
-        android:icon="@drawable/ic_settings_system_daydream"
-        android:key="daydream"
-        android:title="@string/device_daydream"/>
-    <Preference
-        android:fragment="com.android.tv.settings.device.display.daydream.EnergySaverFragment"
-        android:icon="@drawable/ic_settings_energy_saver"
-        android:key="energysaver"
-        android:title="@string/device_energy_saver"/>
-    <Preference
         android:fragment="com.android.tv.settings.system.development.DevelopmentFragment"
         android:icon="@drawable/ic_developer_mode"
         android:key="developer"
@@ -74,11 +64,6 @@
         android:icon="@drawable/ic_accessibility_new"
         android:key="accessibility"
         android:title="@string/system_accessibility"/>
-    <Preference
-        android:fragment="com.android.tv.settings.system.InputsFragment"
-        android:icon="@drawable/ic_input"
-        android:key="inputs"
-        android:title="@string/system_inputs" />
     <com.android.tv.twopanelsettings.slices.SlicePreference
         android:icon="@drawable/ic_internal_settings"
         android:key="overlay_internal"

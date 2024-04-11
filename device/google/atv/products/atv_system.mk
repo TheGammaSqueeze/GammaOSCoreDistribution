@@ -63,6 +63,7 @@ PRODUCT_PACKAGES += \
     DocumentsUI \
     com.android.media.tv.remoteprovider
 
+#     DocumentsUI \
 
 # PRODUCT_SUPPORTS_CAMERA: Whether the product supports cameras at all
 # (built-in or external USB camera). When 'false', we drop cameraserver, which

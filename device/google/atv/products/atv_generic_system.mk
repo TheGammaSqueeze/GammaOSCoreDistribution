@@ -114,7 +114,6 @@ PRODUCT_COPY_FILES += \
     device/google/atv/gammaos/rgp2xbox/setrightanalogaxisvalue_default.sh:system/bin/setrightanalogaxisvalue_default.sh \
     device/google/atv/gammaos/rgp2xbox/setrightanalogaxisvalue_swapped.sh:system/bin/setrightanalogaxisvalue_swapped.sh \
     device/google/atv/gammaos/customization.sh:system/bin/customization.sh \
-    device/google/atv/gammaos/launcher/molla.apk:system/etc/molla.apk \
     device/google/atv/gammaos/magisk/magisk.apk:system/etc/magisk.apk \
     device/google/atv/gammaos/retroarch/RetroArch_aarch64.apk:system/etc/RetroArch_aarch64.apk \
     device/google/atv/gammaos/retroarch/retroarch64.tar.gz:system/etc/retroarch64.tar.gz \
@@ -122,8 +121,7 @@ PRODUCT_COPY_FILES += \
     device/google/atv/gammaos/retroarch/retroarch64sdcard1-arc.tar.gz:system/etc/retroarch64sdcard1-arc.tar.gz \
     device/google/atv/gammaos/retroarch/retroarch64sdcard2.tar.gz:system/etc/retroarch64sdcard2.tar.gz \
     device/google/atv/gammaos/retroarch/roms.tar.gz:system/etc/roms.tar.gz \
-    device/google/atv/gammaos/daijisho/launcherconfig.tar.gz:system/etc/launcherconfig.tar.gz \
-    device/google/atv/gammaos/daijisho/399.apk:system/etc/399.apk \
+    device/google/atv/gammaos/launcher/PlainLauncher.apk:system/etc/PlainLauncher.apk \
 
 # Enable dynamic partition size
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
