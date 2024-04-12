@@ -43,6 +43,8 @@ import com.android.documentsui.services.FileOperationService.OpType;
 import com.android.documentsui.ui.Snackbars;
 
 import com.google.android.material.snackbar.Snackbar;
+import android.view.KeyEvent;
+import android.util.Log;
 
 /**
  * Display pick confirmation bar, usually for selecting a directory.
@@ -105,22 +107,45 @@ public class PickFragment extends Fragment {
         return (PickFragment) fm.findFragmentByTag(TAG);
     }
 
-    @Override
-    public View onCreateView(
-            LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mContainer = inflater.inflate(R.layout.fragment_pick, container, false);
+@Override
+public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    mContainer = inflater.inflate(R.layout.fragment_pick, container, false);
 
-        mPick = (Button) mContainer.findViewById(android.R.id.button1);
-        mPickOverlay = mContainer.findViewById((R.id.pick_button_overlay));
-        mPickOverlay.setOnClickListener(mPickListener);
-        mPick.setOnClickListener(mPickListener);
+    // Find the 'Pick' button and set the onClick listener.
+    mPick = (Button) mContainer.findViewById(android.R.id.button1);
+    mPick.setOnClickListener(mPickListener);
 
-        mCancel = (Button) mContainer.findViewById(android.R.id.button2);
-        mCancel.setOnClickListener(mCancelListener);
+    // Find the overlay and set the onClick listener.
+    mPickOverlay = mContainer.findViewById(R.id.pick_button_overlay);
+    mPickOverlay.setOnClickListener(mPickListener);
 
-        updateView();
-        return mContainer;
-    }
+    // Find the 'Cancel' button and set the onClick listener.
+    mCancel = (Button) mContainer.findViewById(android.R.id.button2);
+    mCancel.setOnClickListener(mCancelListener);
+
+    // Set the container view to be focusable and request focus to handle key events.
+    mContainer.setFocusableInTouchMode(true);
+    mContainer.requestFocus();
+
+    // Set up the key listener to handle the 'Start' button key event.
+    mContainer.setOnKeyListener(new View.OnKeyListener() {
+        @Override
+        public boolean onKey(View v, int keyCode, KeyEvent event) {
+            // Check if the key event is a down press of the 'Start' button.
+            if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_BUTTON_START) {
+                if (mPick != null) {
+                    mPick.performClick();
+                    return true; // Indicate that the key event was handled.
+                }
+            }
+            return false; // Indicate that the key event was not handled.
+        }
+    });
+
+    updateView();
+    return mContainer;
+}
+
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -187,6 +212,8 @@ public class PickFragment extends Fragment {
 
         	// Always hide the overlay, implying no restrictions
         	mPickOverlay.setVisibility(View.GONE);
+		mPick.requestFocus();
+
         break;
             case State.ACTION_PICK_COPY_DESTINATION:
                 int titleId;

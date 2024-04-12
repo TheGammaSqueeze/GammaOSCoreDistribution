@@ -71,6 +71,7 @@ public void sendKeyEvent(String cmd) {
     }
 }
 
+
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
 	Log.w(TAG, "keyCode: " + keyCode);
@@ -112,7 +113,8 @@ public void sendKeyEvent(String cmd) {
                 return true;
 
             case KeyEvent.KEYCODE_BUTTON_Y:
-                return onTab();
+                //triggerCreateFolder();
+                return true;
 
             case KeyEvent.KEYCODE_SEARCH:
                 mSearchExecutor.run();

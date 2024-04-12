@@ -137,6 +137,7 @@ public class CreateDirectoryFragment extends DialogFragment {
         }
     }
 
+
     private class CreateDirectoryTask extends AsyncTask<Void, Void, DocumentInfo> {
         private final BaseActivity mActivity;
         private final DocumentInfo mCwd;
