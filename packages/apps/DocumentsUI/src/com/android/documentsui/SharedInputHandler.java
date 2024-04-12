@@ -26,15 +26,16 @@ import com.android.documentsui.base.Events;
 import com.android.documentsui.base.Features;
 import com.android.documentsui.base.Procedure;
 import com.android.documentsui.dirlist.FocusHandler;
+import com.android.documentsui.BaseActivity;
 import java.io.IOException;
 
 /**
  * Handle common input events.
  */
 public class SharedInputHandler {
-
     private static final String TAG = "SharedInputHandler";
 
+    private BaseActivity baseActivity;
     private final FocusHandler mFocusManager;
     private final Procedure mSearchCanceler;
     private final Procedure mDirPopper;
@@ -50,7 +51,8 @@ public class SharedInputHandler {
             Procedure dirPopper,
             Features features,
             DrawerController drawer,
-            Runnable searchExcutor) {
+            Runnable searchExcutor,
+            BaseActivity baseActivity) {
         mFocusManager = focusHandler;
         mSearchCanceler = searchCanceler;
         mSelectionMgr = selectionMgr;
@@ -58,6 +60,7 @@ public class SharedInputHandler {
         mFeatures = features;
         mDrawer = drawer;
         mSearchExecutor = searchExcutor;
+        this.baseActivity = baseActivity;
     }
 
 
@@ -113,8 +116,7 @@ public void sendKeyEvent(String cmd) {
                 return true;
 
             case KeyEvent.KEYCODE_BUTTON_Y:
-                //triggerCreateFolder();
-                return true;
+                 baseActivity.NewFolder();
 
             case KeyEvent.KEYCODE_SEARCH:
                 mSearchExecutor.run();

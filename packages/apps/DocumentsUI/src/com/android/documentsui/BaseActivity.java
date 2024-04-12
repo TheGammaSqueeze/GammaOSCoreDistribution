@@ -129,6 +129,10 @@ public abstract class BaseActivity
 
     public abstract Injector<?> getInjector();
 
+    public void NewFolder() {
+            getInjector().actions.showCreateDirectoryDialog();
+}
+
     @CallSuper
     @Override
     public void onCreate(Bundle savedInstanceState) {
