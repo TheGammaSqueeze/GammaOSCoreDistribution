@@ -94,6 +94,7 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
     private static final String GLOBAL_ACTION_KEY_VOICEASSIST = "voiceassist";
     private static final String GLOBAL_ACTION_KEY_ASSIST = "assist";
     private static final String GLOBAL_ACTION_KEY_RESTART = "restart";
+    private static final String GLOBAL_ACTION_KEY_HOME = "home";
 
     private final Context mContext;
     private final WindowManagerFuncs mWindowManagerFuncs;
@@ -315,6 +316,9 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
             mItems.add(getEmergencyAction());
         }
 
+	// GammaOS - Add home option for PK devices with no dedicated home button
+	mItems.add(getHomeAction());
+
         mAdapter = new ActionsAdapter(mContext, mItems,
                 () -> mDeviceProvisioned, () -> mKeyguardShowing);
 
@@ -421,6 +425,30 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
             @Override
             public void onPress() {
                 Intent intent = new Intent(Settings.ACTION_SETTINGS);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                mContext.startActivity(intent);
+            }
+
+            @Override
+            public boolean showDuringKeyguard() {
+                return true;
+            }
+
+            @Override
+            public boolean showBeforeProvisioning() {
+                return true;
+            }
+        };
+    }
+
+    private Action getHomeAction() {
+        return new SinglePressAction(com.android.internal.R.drawable.ic_menu,
+                R.string.accessibility_system_action_home_label) {
+
+            @Override
+            public void onPress() {
+    		Intent intent = new Intent(Intent.ACTION_MAIN);
+    		intent.addCategory(Intent.CATEGORY_HOME);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 mContext.startActivity(intent);
             }
