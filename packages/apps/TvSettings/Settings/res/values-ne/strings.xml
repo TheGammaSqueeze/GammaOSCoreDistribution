@@ -51,7 +51,7 @@
     <string name="sound_category_title" msgid="7899816751041939518">"ध्वनि"</string>
     <string name="applications_category_title" msgid="7112019490898586223">"एपहरू"</string>
     <string name="device_pref_category_title" msgid="8292572846154873762">"डिभाइसका प्राथमिकताहरू"</string>
-    <string name="remotes_and_accessories_category_title" msgid="4795119810430255047">"रिमोट तथा सहायक उपकरणहरू"</string>
+    <string name="remotes_and_accessories_category_title" msgid="4795119810430255047">"Bluetooth and accessories"</string>
     <string name="display_and_sound_category_title" msgid="9203309625380755860">"डिस्प्ले तथा ध्वनि"</string>
     <string name="help_and_feedback_category_title" msgid="7036505833991003031">"मद्दत र प्रतिक्रिया"</string>
     <string name="privacy_category_title" msgid="8552430590908463601">"गोपनीयता"</string>
@@ -218,10 +218,10 @@
     <string name="bluetooth_cancel" msgid="4415185529332987034">"रद्द गर्नुहोस्"</string>
     <string name="bluetooth_device_connected_toast" msgid="1896195197089204806">"%1$s मा कनेक्ट गरियो"</string>
     <string name="bluetooth_device_disconnected_toast" msgid="7459239447363156499">"%1$s डिस्कनेक्ट गरियो"</string>
-    <string name="connected_devices_slice_pref_title" msgid="6761921505544005991">"रिमोट तथा सहायक उपकरणहरू"</string>
+    <string name="connected_devices_slice_pref_title" msgid="6761921505544005991">"Bluetooth and accessories"</string>
     <string name="bluetooth_toggle_title" msgid="3808904783456336104">"ब्लुटुथ"</string>
     <string name="bluetooth_toggle_confirmation_dialog_title" msgid="3906746631391295717">"ब्लुटुथ अफ गर्नुहोस्"</string>
-    <string name="bluetooth_toggle_confirmation_dialog_summary" msgid="9017044450625172698">"ब्लुटुथ अफ हुँदा तपाईं आफ्नो रिमोटमार्फत Google सहायक प्रयोग गर्न सक्नु हुने छैन।"</string>
+    <string name="bluetooth_toggle_confirmation_dialog_summary" msgid="9017044450625172698">"Are you sure you want to turn Bluetooth off?"</string>
     <string name="bluetooth_pair_accessory" msgid="5508750142754420984">"सहायक उपकरणमा कनेक्ट गर्नुहोस्"</string>
     <string name="bluetooth_known_devices_category" msgid="6895470515631452961">"सहायक उपकरणहरू"</string>
     <string name="bluetooth_official_remote_category" msgid="5817814488268307170">"रिमोट कन्ट्रोल"</string>

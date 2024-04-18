@@ -51,7 +51,7 @@
     <string name="sound_category_title" msgid="7899816751041939518">"ಧ್ವನಿ"</string>
     <string name="applications_category_title" msgid="7112019490898586223">"ಅಪ್ಲಿಕೇಶನ್‌ಗಳು"</string>
     <string name="device_pref_category_title" msgid="8292572846154873762">"ಸಾಧನದ ಪ್ರಾಶಸ್ತ್ಯಗಳು"</string>
-    <string name="remotes_and_accessories_category_title" msgid="4795119810430255047">"ರಿಮೋಟ್‌ಗಳು ಮತ್ತು ಪರಿಕರಗಳು"</string>
+    <string name="remotes_and_accessories_category_title" msgid="4795119810430255047">"Bluetooth and accessories"</string>
     <string name="display_and_sound_category_title" msgid="9203309625380755860">"ಡಿಸ್‌ಪ್ಲೇ ಮತ್ತು ಧ್ವನಿ"</string>
     <string name="help_and_feedback_category_title" msgid="7036505833991003031">"ಸಹಾಯ ಮತ್ತು ಪ್ರತಿಕ್ರಿಯೆ"</string>
     <string name="privacy_category_title" msgid="8552430590908463601">"ಗೌಪ್ಯತೆ"</string>
@@ -218,10 +218,10 @@
     <string name="bluetooth_cancel" msgid="4415185529332987034">"ರದ್ದುಮಾಡಿ"</string>
     <string name="bluetooth_device_connected_toast" msgid="1896195197089204806">"%1$s ಅನ್ನು ಕನೆಕ್ಟ್ ಮಾಡಲಾಗಿದೆ"</string>
     <string name="bluetooth_device_disconnected_toast" msgid="7459239447363156499">"%1$s ಅನ್ನು ಡಿಸ್‌ಕನೆಕ್ಟ್ ಮಾಡಲಾಗಿದೆ"</string>
-    <string name="connected_devices_slice_pref_title" msgid="6761921505544005991">"ರಿಮೋಟ್‌ಗಳು ಮತ್ತು ಪರಿಕರಗಳು"</string>
+    <string name="connected_devices_slice_pref_title" msgid="6761921505544005991">"Bluetooth and accessories"</string>
     <string name="bluetooth_toggle_title" msgid="3808904783456336104">"ಬ್ಲೂಟೂತ್"</string>
     <string name="bluetooth_toggle_confirmation_dialog_title" msgid="3906746631391295717">"ಬ್ಲೂಟೂತ್ ಆಫ್ ಮಾಡಿ"</string>
-    <string name="bluetooth_toggle_confirmation_dialog_summary" msgid="9017044450625172698">"ಬ್ಲೂಟೂತ್ ಆಫ್ ಆಗಿರುವಾಗ, ನಿಮ್ಮ ರಿಮೋಟ್‌ನಿಂದ Google Assistant ಅನ್ನು ಪ್ರವೇಶಿಸಲು ನಿಮಗೆ ಸಾಧ್ಯವಾಗುವುದಿಲ್ಲ."</string>
+    <string name="bluetooth_toggle_confirmation_dialog_summary" msgid="9017044450625172698">"Are you sure you want to turn Bluetooth off?"</string>
     <string name="bluetooth_pair_accessory" msgid="5508750142754420984">"ಪರಿಕರವನ್ನು ಜೋಡಿಸಿ"</string>
     <string name="bluetooth_known_devices_category" msgid="6895470515631452961">"ಪರಿಕರಗಳು"</string>
     <string name="bluetooth_official_remote_category" msgid="5817814488268307170">"ರಿಮೋಟ್ ನಿಯಂತ್ರಣ"</string>

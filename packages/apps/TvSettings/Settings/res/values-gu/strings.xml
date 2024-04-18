@@ -51,7 +51,7 @@
     <string name="sound_category_title" msgid="7899816751041939518">"સાઉન્ડ"</string>
     <string name="applications_category_title" msgid="7112019490898586223">"ઍપ"</string>
     <string name="device_pref_category_title" msgid="8292572846154873762">"ડિવાઇસની પસંદગીઓ"</string>
-    <string name="remotes_and_accessories_category_title" msgid="4795119810430255047">"રિમોટ અને ઍક્સેસરી"</string>
+    <string name="remotes_and_accessories_category_title" msgid="4795119810430255047">"Bluetooth and accessories"</string>
     <string name="display_and_sound_category_title" msgid="9203309625380755860">"ડિસ્પ્લે અને સાઉન્ડ"</string>
     <string name="help_and_feedback_category_title" msgid="7036505833991003031">"સહાય અને પ્રતિસાદ"</string>
     <string name="privacy_category_title" msgid="8552430590908463601">"પ્રાઇવસી"</string>
@@ -218,10 +218,10 @@
     <string name="bluetooth_cancel" msgid="4415185529332987034">"રદ કરો"</string>
     <string name="bluetooth_device_connected_toast" msgid="1896195197089204806">"%1$s કનેક્ટ કર્યું"</string>
     <string name="bluetooth_device_disconnected_toast" msgid="7459239447363156499">"%1$s ડિસ્કનેક્ટ કર્યું"</string>
-    <string name="connected_devices_slice_pref_title" msgid="6761921505544005991">"રિમોટ અને ઍક્સેસરી"</string>
+    <string name="connected_devices_slice_pref_title" msgid="6761921505544005991">"Bluetooth and accessories"</string>
     <string name="bluetooth_toggle_title" msgid="3808904783456336104">"બ્લૂટૂથ"</string>
     <string name="bluetooth_toggle_confirmation_dialog_title" msgid="3906746631391295717">"બ્લૂટૂથ બંધ કરો"</string>
-    <string name="bluetooth_toggle_confirmation_dialog_summary" msgid="9017044450625172698">"જ્યાં સુધી બ્લૂટૂથ બંધ હશે ત્યાં સુધી તમે તમારા રિમોટથી Google Assistant ઍક્સેસ કરી શકશો નહીં."</string>
+    <string name="bluetooth_toggle_confirmation_dialog_summary" msgid="9017044450625172698">"Are you sure you want to turn Bluetooth off?"</string>
     <string name="bluetooth_pair_accessory" msgid="5508750142754420984">"ઍક્સેસરીનું જોડાણ બનાવો"</string>
     <string name="bluetooth_known_devices_category" msgid="6895470515631452961">"ઍક્સેસરી"</string>
     <string name="bluetooth_official_remote_category" msgid="5817814488268307170">"રિમોટ કન્ટ્રોલ"</string>
