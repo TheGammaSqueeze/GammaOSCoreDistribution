@@ -23,11 +23,8 @@ $(call inherit-product-if-exists, vendor/google/security/adb/vendor_key.mk)
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
-# OTA support
-#PRODUCT_PACKAGES += \
-#    recovery-refresh \
-#    update_engine \
-#    update_verifier \
+PRODUCT_PACKAGES += \
+    DocumentsUI \
 
 # Wrapped net utils for /vendor access.
 PRODUCT_PACKAGES += netutils-wrapper-1.0
@@ -121,7 +118,7 @@ PRODUCT_COPY_FILES += \
     device/google/atv/gammaos/retroarch/retroarch64sdcard1-arc.tar.gz:system/etc/retroarch64sdcard1-arc.tar.gz \
     device/google/atv/gammaos/retroarch/retroarch64sdcard2.tar.gz:system/etc/retroarch64sdcard2.tar.gz \
     device/google/atv/gammaos/retroarch/roms.tar.gz:system/etc/roms.tar.gz \
-    device/google/atv/gammaos/launcher/PlainLauncher.apk:system/etc/PlainLauncher.apk \
+    device/google/atv/gammaos/launcher/projectivylauncher_4.36.apk:system/etc/projectivylauncher_4.36.apk \
 
 # Enable dynamic partition size
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true

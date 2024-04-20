@@ -2,13 +2,18 @@
 
 if [ ! -d /data/setupcompleted ] && [ -z $(getprop persist.sys.device_provisioned) ]
 then
-
+	wm density 135
+	am broadcast -a android.bluetooth.adapter.action.REQUEST_DISABLE
+	am broadcast -a android.bluetooth.adapter.action.REQUEST_DISABLE
 	settings put system screen_off_timeout 1800000
 	setenforce 0
 	setprop service.bootanim.exit 0
 	setprop service.bootanim.progress 0
 	start bootanim
-
+	setprop ctl.stop "tee-supplicant"
+        [ ! -f /cache/swap ] && dd if=/dev/zero of=/cache/swap bs=1M count=300 && mkswap /cache/swap
+        swapon -p -5 /cache/swap
+        swapon /cache/swap
 	settings put system screen_brightness 255
 
 	#input keyevent 26
@@ -23,7 +28,8 @@ then
 	/system/bin/mkdir /data/tmpsetup
 
 	/system/bin/pm install /system/etc/magisk.apk
-        /system/bin/pm install /system/etc/PlainLauncher.apk
+        #/system/bin/pm install /system/etc/PlainLauncher.apk
+        /system/bin/pm install /system/etc/projectivylauncher_4.36.apk
 	/system/bin/pm install /system/etc/RetroArch_aarch64.apk
 
 	appops set --uid org.plain.launcher MANAGE_EXTERNAL_STORAGE allow
@@ -36,7 +42,7 @@ then
 	#/system/bin/rm -rf /data/tmpsetup/data/data/com.magneticchen.daijishou/code_cache
 	#/system/bin/cp -pdrav /data/tmpsetup/data/data/com.magneticchen.daijishou /data/data/
 	#/system/bin/rm -rf /data/tmpsetup/*
-	#/system/bin/tar -xvf /system/etc/roms.tar.gz -C /
+	/system/bin/tar -xvf /system/etc/roms.tar.gz -C /
 
 	/system/bin/tar -xvf /system/etc/retroarch64sdcard.tar.gz -C /
 	launcheruser=$( stat -c "%U" /data/data/com.retroarch.aarch64)
@@ -46,6 +52,12 @@ then
 	launcheruser=$( stat -c "%U" /data/data/com.retroarch.aarch64)
 	/system/bin/chown -R $launcheruser:ext_data_rw /sdcard/Android/data/com.retroarch.aarch64
 
+	isarc=$(cat /proc/device-tree/model)
+	if [[ "$isarc" == *"Anbernic RG403H"* ]]; then
+	/system/bin/tar -xvf /system/etc/retroarch64sdcard1-arc.tar.gz -C /
+	launcheruser=$( stat -c "%U" /data/data/com.retroarch.aarch64)
+	/system/bin/chown -R $launcheruser:media_rw /sdcard/RetroArch
+	fi
 
 	/system/bin/pm grant com.retroarch.aarch64 android.permission.WRITE_EXTERNAL_STORAGE
 	/system/bin/pm grant com.retroarch.aarch64 android.permission.READ_EXTERNAL_STORAGE
@@ -68,7 +80,11 @@ then
 	settings put system screen_off_timeout 120000
 else
 	setenforce 0
+	setprop ctl.stop "tee-supplicant"
 
+	[ ! -f /cache/swap ] && dd if=/dev/zero of=/cache/swap bs=1M count=300 && mkswap /cache/swap
+	swapon -p -5 /cache/swap
+        swapon /cache/swap
 	#input keyevent 26
 	#sleep 1
 	#input keyevent 26

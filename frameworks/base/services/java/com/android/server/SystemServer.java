@@ -2046,6 +2046,15 @@ public final class SystemServer implements Dumpable {
             }
             t.traceEnd();
 
+                Slog.i(TAG, "addService drm_device_management");
+                try {
+                    ServiceManager.addService("drm_device_management",
+                            new RkDisplayDeviceManagementService(context));
+                } catch (Throwable e) {
+                    Slog.e(TAG, "Failure starting kDisplayDeviceManagement Service", e);
+                }
+
+
                 Slog.i(TAG, "addService rockchip_audio_setting");
                 try {
                     ServiceManager.addService("rockchip_audio_setting",

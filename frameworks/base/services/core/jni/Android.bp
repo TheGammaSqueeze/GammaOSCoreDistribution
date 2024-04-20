@@ -66,6 +66,7 @@ cc_library_static {
         "com_android_server_PersistentDataBlockService.cpp",
         "com_android_server_am_LowMemDetector.cpp",
         "com_android_server_pm_ComputerEngine.cpp",
+	"com_android_server_rkdisplay_RkDisplayModes.cpp",
 	"com_android_server_audio_RkAudioSetting.cpp",
         "com_android_server_pm_PackageManagerShellCommandDataLoader.cpp",
         "com_android_server_sensor_SensorService.cpp",
