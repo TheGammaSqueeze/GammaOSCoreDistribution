@@ -25,6 +25,8 @@
 
 #include <cutils/properties.h>
 
+bool property_contains_hdmi(const char* key);
+
 namespace android {
 
 // Returns a vector of paths where audio configuration files
@@ -62,6 +64,7 @@ static inline std::string audio_find_readable_configuration_file(const char* fil
  * 6) LE Audio offload disabled is possible with A2DP offload NOT disabled
  */
 static inline std::string audio_get_audio_policy_config_file() {
+
     static constexpr const char *apmXmlConfigFileName = "audio_policy_configuration.xml";
     static constexpr const char *apmA2dpOffloadDisabledXmlConfigFileName =
             "audio_policy_configuration_a2dp_offload_disabled.xml";
@@ -94,6 +97,12 @@ static inline std::string audio_get_audio_policy_config_file() {
         audioPolicyXmlConfigFile = audio_find_readable_configuration_file(
                 apmBluetoothLegacyHalXmlConfigFileName);
     }
+
+    if (property_contains_hdmi("vendor.hwc.device.display-0")) {
+
+    return audioPolicyXmlConfigFile.empty() ?
+            audio_find_readable_configuration_file("audio_policy_configuration_hdmi.xml") : audioPolicyXmlConfigFile; }
+
     return audioPolicyXmlConfigFile.empty() ?
             audio_find_readable_configuration_file(apmXmlConfigFileName) : audioPolicyXmlConfigFile;
 }
