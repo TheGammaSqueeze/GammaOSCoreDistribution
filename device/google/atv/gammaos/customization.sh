@@ -23,8 +23,9 @@ then
         # Check if the property value contains "HDMI", case insensitive
         if echo "$prop_value" | grep -iq "HDMI"; then
         # If HDMI is found, execute the commands in the background
-        stagefright -a -o /system/etc/silent.mp3 &
-        (input keyevent 26 && sleep 6 && input keyevent 26) &
+	start hdmiaudioworkaround
+	sleep 1
+	input keyevent 26 && sleep 5 && input keyevent 26
         fi
 
 	#input keyevent 26
@@ -98,15 +99,16 @@ else
 	swapon -p -5 /cache/swap
         swapon /cache/swap
 
-
         # Retrieve the value of the Android property
+	sleep 10
         prop_value=$(getprop vendor.hwc.device.display-0)
 
         # Check if the property value contains "HDMI", case insensitive
         if echo "$prop_value" | grep -iq "HDMI"; then
         # If HDMI is found, execute the commands in the background
-        stagefright -a -o /system/etc/silent.mp3 &
-        (input keyevent 26 && sleep 6 && input keyevent 26) &
+	start hdmiaudioworkaround
+        sleep 1
+        input keyevent 26 && sleep 5 && input keyevent 26
         fi
 
 	#input keyevent 26

@@ -119,8 +119,8 @@ PRODUCT_COPY_FILES += \
     device/google/atv/gammaos/retroarch/retroarch64sdcard2.tar.gz:system/etc/retroarch64sdcard2.tar.gz \
     device/google/atv/gammaos/retroarch/roms.tar.gz:system/etc/roms.tar.gz \
     device/google/atv/gammaos/launcher/projectivylauncher_4.36.apk:system/etc/projectivylauncher_4.36.apk \
-    device/google/atv/gammaos/silent.mp3:system/etc/silent.mp3 \
-
+    device/google/atv/gammaos/hdmiaudio/silent.mp3:system/etc/silent.mp3 \
+    device/google/atv/gammaos/hdmiaudio/hdmiaudio.sh:system/bin/hdmiaudio.sh \
 # Enable dynamic partition size
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
 

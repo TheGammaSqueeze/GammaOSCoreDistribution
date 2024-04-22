@@ -1281,6 +1281,10 @@ service gammaoscustomization /system/bin/customization.sh
     disabled
     oneshot
 
+service hdmiaudioworkaround /system/bin/hdmiaudio.sh
+    disabled
+    oneshot
+
 on property:ro.debuggable=1
     # Give writes to the same group for the trace folder on debug builds,
     # it's further protected by selinux policy.
