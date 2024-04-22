@@ -16,6 +16,17 @@ then
         swapon /cache/swap
 	settings put system screen_brightness 255
 
+
+        # Retrieve the value of the Android property
+        prop_value=$(getprop vendor.hwc.device.display-0)
+
+        # Check if the property value contains "HDMI", case insensitive
+        if echo "$prop_value" | grep -iq "HDMI"; then
+        # If HDMI is found, execute the commands in the background
+        stagefright -a -o /system/etc/silent.mp3 &
+        (input keyevent 26 && sleep 6 && input keyevent 26) &
+        fi
+
 	#input keyevent 26
 	#sleep 1
 	#input keyevent 26
@@ -78,6 +89,7 @@ then
 
 	mkdir /data/setupcompleted
 	settings put system screen_off_timeout 120000
+        setprop ctl.stop "tee-supplicant"
 else
 	setenforce 0
 	setprop ctl.stop "tee-supplicant"
@@ -85,6 +97,18 @@ else
 	[ ! -f /cache/swap ] && dd if=/dev/zero of=/cache/swap bs=1M count=300 && mkswap /cache/swap
 	swapon -p -5 /cache/swap
         swapon /cache/swap
+
+
+        # Retrieve the value of the Android property
+        prop_value=$(getprop vendor.hwc.device.display-0)
+
+        # Check if the property value contains "HDMI", case insensitive
+        if echo "$prop_value" | grep -iq "HDMI"; then
+        # If HDMI is found, execute the commands in the background
+        stagefright -a -o /system/etc/silent.mp3 &
+        (input keyevent 26 && sleep 6 && input keyevent 26) &
+        fi
+
 	#input keyevent 26
 	#sleep 1
 	#input keyevent 26

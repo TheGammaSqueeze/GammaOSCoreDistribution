@@ -996,35 +996,54 @@ int DrmConnector::GetFramebufferInfo(int display_id, uint32_t *w, uint32_t *h, u
   char framebuffer_property[PROPERTY_VALUE_MAX]={0};
   uint32_t width=0, height=0, vrefresh=0;
 
-  snprintf(framebuffer_property,PROPERTY_VALUE_MAX,"persist.vendor.framebuffer.%s",cUniqueName_);
-  property_get(framebuffer_property, framebuffer_value, "Unkonw");
+  snprintf(framebuffer_property, PROPERTY_VALUE_MAX, "persist.vendor.framebuffer.%s", cUniqueName_);
+  property_get(framebuffer_property, framebuffer_value, "Unknown");
 
-  ALOGI("%s,line=%d, display=%d %s=%s",__FUNCTION__,__LINE__,display_id,framebuffer_property,framebuffer_value);
+  ALOGI("%s,line=%d, display=%d %s=%s", __FUNCTION__, __LINE__, display_id, framebuffer_property, framebuffer_value);
 
-  if(!strcmp(framebuffer_value,"Unkonw")){
-    if(display_id == HWC_DISPLAY_PRIMARY){
-      property_get("persist.vendor.framebuffer.main", framebuffer_value, "Unkonw");
-    }else{
-      property_get("persist.vendor.framebuffer.aux", framebuffer_value, "Unkonw");
+  // Check if HDMI is connected and being used
+  if (type_ == DRM_MODE_CONNECTOR_HDMIA) {
+    char hdmi_framebuffer_value[PROPERTY_VALUE_MAX]={0};
+    property_get("persist.vendor.framebuffer.hdmi", hdmi_framebuffer_value, "Unknown");
+
+    if (strcmp(hdmi_framebuffer_value, "Unknown") != 0) {
+      sscanf(hdmi_framebuffer_value, "%dx%d@%d", &width, &height, &vrefresh);
+      *w = width;
+      *h = height;
+      *fps = vrefresh;
+    } else {
+      // Default HDMI resolution and refresh rate if specific property is not set
+      *w = 1920;
+      *h = 1080;
+      *fps = 60; // Assuming a refresh rate of 60Hz for simplicity
     }
-    ALOGI("%s,line=%d, display=%d persist.vendor.framebuffer.%s=%s",__FUNCTION__,__LINE__,display_id,
-          display_id == HWC_DISPLAY_PRIMARY ? "main" : "aux",framebuffer_value);
+    return 0;
   }
 
-  if(!strcmp(framebuffer_value,"Unkonw")){
-    if(baseparameter_ready_){
+  if (!strcmp(framebuffer_value, "Unknown")) {
+    if (display_id == HWC_DISPLAY_PRIMARY) {
+      property_get("persist.vendor.framebuffer.main", framebuffer_value, "Unknown");
+    } else {
+      property_get("persist.vendor.framebuffer.aux", framebuffer_value, "Unknown");
+    }
+    ALOGI("%s, line=%d, display=%d persist.vendor.framebuffer.%s=%s", __FUNCTION__, __LINE__, display_id,
+          display_id == HWC_DISPLAY_PRIMARY ? "main" : "aux", framebuffer_value);
+  }
+
+  if (!strcmp(framebuffer_value, "Unknown")) {
+    if (baseparameter_ready_) {
       *w = baseparameter_.framebuffer_info.framebuffer_width;
-      *h   = baseparameter_.framebuffer_info.framebuffer_height;
+      *h = baseparameter_.framebuffer_info.framebuffer_height;
       *fps = baseparameter_.framebuffer_info.fps;
-    }else{
+    } else {
       *w = 0;
       *h = 0;
       *fps = 0;
     }
-  }else{
+  } else {
     sscanf(framebuffer_value, "%dx%d@%d", &width, &height, &vrefresh);
     *w = width;
-    *h   = height;
+    *h = height;
     *fps = vrefresh;
   }
   return 0;
