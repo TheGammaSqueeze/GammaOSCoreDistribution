@@ -4919,4 +4919,5 @@
 
   <java-symbol type="string" name="gammaos_performance_mode" />
   <java-symbol type="string" name="gammaos_brightness_settings" />
+  <java-symbol type="string" name="gammaos_kill_app" />
 </resources>

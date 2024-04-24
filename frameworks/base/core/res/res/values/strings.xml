@@ -6368,4 +6368,7 @@ ul.</string>
 
     <!-- Title for preference of the GammaOS Brightness Settings. [CHAR LIMIT=50]-->
     <string name="gammaos_brightness_settings">Screen Brightness</string>
+
+    <!-- Title for preference of the GammaOS force close app. [CHAR LIMIT=50]-->
+    <string name="gammaos_kill_app">Kill foreground app</string> 
 </resources>

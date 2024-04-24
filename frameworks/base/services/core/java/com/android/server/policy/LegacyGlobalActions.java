@@ -73,6 +73,7 @@ import java.util.List;
 import android.app.AlertDialog;
 import android.os.Looper;
 import android.app.Activity;
+import android.widget.Toast;
 
 /**
  * Helper to show the global actions dialog.  Each item is an {@link Action} that
@@ -322,6 +323,7 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
 	mItems.add(getBrightnessOptionsAction());
 	mItems.add(getHomeAction());
         mItems.add(getPerformanceOptionsAction());
+	mItems.add(getKillForegroundAppAction());
 
         mAdapter = new ActionsAdapter(mContext, mItems,
                 () -> mDeviceProvisioned, () -> mKeyguardShowing);
@@ -539,6 +541,42 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
             @Override
             public boolean showDuringKeyguard() {
                 return true;
+            }
+
+            @Override
+            public boolean showBeforeProvisioning() {
+                return true;
+            }
+        };
+    }
+
+    private Action getKillForegroundAppAction() {
+        return new SinglePressAction(R.drawable.ic_menu, R.string.gammaos_kill_app) {
+
+            @Override
+            public void onPress() {
+                ActivityManager am = (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
+                List<ActivityManager.RunningAppProcessInfo> appProcesses = am.getRunningAppProcesses();
+                if (appProcesses != null && !appProcesses.isEmpty()) {
+                    String foregroundProcess = appProcesses.get(0).processName;
+                    try {
+                        am.forceStopPackage(foregroundProcess);
+                        Toast.makeText(mContext, "Foreground app killed: " + foregroundProcess, Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        Toast.makeText(mContext, "Failed to kill app due to: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(mContext, "No foreground app found", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            public boolean onLongPress() {
+                return false;
+            }
+
+            @Override
+            public boolean showDuringKeyguard() {
+               return true;
             }
 
             @Override
