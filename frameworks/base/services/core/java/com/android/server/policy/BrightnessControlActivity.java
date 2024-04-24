@@ -13,7 +13,7 @@ import android.view.WindowManager.LayoutParams;
 
 public class BrightnessControlActivity extends Activity {
     private static final int SEEKBAR_WIDTH = 630;  // Width in pixels
-    private static final int SEEKBAR_HEIGHT = 100;  // Height in pixels
+    private static final int SEEKBAR_HEIGHT = 50;  // Height in pixels
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
