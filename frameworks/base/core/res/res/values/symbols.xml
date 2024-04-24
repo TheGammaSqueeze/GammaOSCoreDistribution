@@ -4918,4 +4918,5 @@
   <java-symbol type="bool" name="config_lockscreenWeatherEnabledByDefault" />
 
   <java-symbol type="string" name="gammaos_performance_mode" />
+  <java-symbol type="string" name="gammaos_brightness_settings" />
 </resources>

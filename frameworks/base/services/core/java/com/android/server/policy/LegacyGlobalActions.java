@@ -319,6 +319,7 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
         }
 
 	// GammaOS - Add our own shortcuts
+	mItems.add(getBrightnessOptionsAction());
 	mItems.add(getHomeAction());
         mItems.add(getPerformanceOptionsAction());
 
@@ -508,6 +509,44 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
         };
     }
 
+
+    private Action getBrightnessOptionsAction() {
+        return new SinglePressAction(R.drawable.ic_menu, // Use an appropriate icon for brightness
+                R.string.gammaos_brightness_settings) { // Define this string in your resources
+
+            public void onPress() {
+                Intent intent = new Intent(mContext, BrightnessControlActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+                // Dismiss the dialog completely before launching the new activity
+                if (mDialog != null && mDialog.isShowing()) {
+                    mDialog.dismiss();
+                    mDialog = null; // Clear the reference to help garbage collection
+                }
+
+                mContext.startActivity(intent);
+
+                // Check if mContext is an instance of Activity and then call finish()
+                if (mContext instanceof Activity) {
+                    ((Activity) mContext).finish();
+                }
+            }
+
+            public boolean onLongPress() {
+                return false;
+            }
+
+            @Override
+            public boolean showDuringKeyguard() {
+                return true;
+            }
+
+            @Override
+            public boolean showBeforeProvisioning() {
+                return true;
+            }
+        };
+    }
 
 
     private Action getEmergencyAction() {
