@@ -10,8 +10,10 @@ echo "dmc_ondemand" > /sys/class/devfreq/dmc/governor
 echo "324000000" > /sys/class/devfreq/dmc/min_freq
 echo "780000000" > /sys/class/devfreq/dmc/max_freq
 
-echo "255" > /sys/class/leds/battery_full/brightness
-echo "255" > /sys/class/leds/battery_charging/brightness
-echo "255" > /sys/class/leds/low_power/brightness
+su -lp 2000 -c "am start -a android.intent.action.MAIN -e toasttext 'Power Saving Mode Activated' -n bellavita.toast/.MainActivity"
 
-sh -c '( sleep 5s; echo "0" > /sys/class/leds/battery_full/brightness; echo "0" > /sys/class/leds/battery_charging/brightness; echo "0" > /sys/class/leds/low_power/brightness ) & echo "Done"' &
+#echo "255" > /sys/class/leds/battery_full/brightness
+#echo "255" > /sys/class/leds/battery_charging/brightness
+#echo "255" > /sys/class/leds/low_power/brightness
+
+#sh -c '( sleep 5s; echo "0" > /sys/class/leds/battery_full/brightness; echo "0" > /sys/class/leds/battery_charging/brightness; echo "0" > /sys/class/leds/low_power/brightness ) & echo "Done"' &

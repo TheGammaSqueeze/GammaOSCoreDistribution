@@ -6362,4 +6362,8 @@ ul.</string>
 
     <!-- Title for preference of the system default locale. [CHAR LIMIT=50]-->
     <string name="system_locale_title">System default</string>
+
+    <!-- Title for preference of the GammaOS Performance Mode. [CHAR LIMIT=50]-->
+    <string name="gammaos_performance_mode">Performance Mode</string>
+
 </resources>

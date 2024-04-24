@@ -10,6 +10,9 @@ echo "performance" > /sys/class/devfreq/dmc/governor
 echo "1056000000" > /sys/class/devfreq/dmc/min_freq
 echo "1056000000" > /sys/class/devfreq/dmc/max_freq
 
+
+su -lp 2000 -c "am start -a android.intent.action.MAIN -e toasttext 'Max Performance Mode Activated' -n bellavita.toast/.MainActivity"
+
 #echo "0" > /sys/class/leds/battery_full/brightness
 #echo "0" > /sys/class/leds/battery_charging/brightness
 #echo "255" > /sys/class/leds/low_power/brightness

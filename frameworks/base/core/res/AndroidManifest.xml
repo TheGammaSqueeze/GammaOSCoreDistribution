@@ -6846,6 +6846,13 @@
                   android:theme="@style/Theme.GameSessionTrampoline">
         </activity>
 
+
+	<activity android:name="com.android.server.policy.PerformanceOptionsActivity"
+	          android:excludeFromRecents="true"
+	          android:theme="@android:style/Theme.DeviceDefault.Dialog.Alert">
+	</activity>
+
+
         <receiver android:name="com.android.server.BootReceiver"
                 android:exported="true"
                 android:systemUserOnly="true">

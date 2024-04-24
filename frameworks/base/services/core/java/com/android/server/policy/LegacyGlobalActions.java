@@ -70,6 +70,9 @@ import com.android.server.policy.WindowManagerPolicy.WindowManagerFuncs;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.app.AlertDialog;
+import android.os.Looper;
+import android.app.Activity;
 
 /**
  * Helper to show the global actions dialog.  Each item is an {@link Action} that
@@ -94,7 +97,6 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
     private static final String GLOBAL_ACTION_KEY_VOICEASSIST = "voiceassist";
     private static final String GLOBAL_ACTION_KEY_ASSIST = "assist";
     private static final String GLOBAL_ACTION_KEY_RESTART = "restart";
-    private static final String GLOBAL_ACTION_KEY_HOME = "home";
 
     private final Context mContext;
     private final WindowManagerFuncs mWindowManagerFuncs;
@@ -316,8 +318,9 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
             mItems.add(getEmergencyAction());
         }
 
-	// GammaOS - Add home option for PK devices with no dedicated home button
+	// GammaOS - Add our own shortcuts
 	mItems.add(getHomeAction());
+        mItems.add(getPerformanceOptionsAction());
 
         mAdapter = new ActionsAdapter(mContext, mItems,
                 () -> mDeviceProvisioned, () -> mKeyguardShowing);
@@ -464,6 +467,48 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
             }
         };
     }
+
+
+    private Action getPerformanceOptionsAction() {
+        return new SinglePressAction(R.drawable.ic_menu,
+                R.string.gammaos_performance_mode) {
+
+            public void onPress() {
+                Intent intent = new Intent(mContext, PerformanceOptionsActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+                // Dismiss the dialog completely before launching the new activity
+                if (mDialog != null && mDialog.isShowing()) {
+                    mDialog.dismiss();
+                    mDialog = null; // Clear the reference to help garbage collection
+                }
+
+                mContext.startActivity(intent);
+
+                // Check if mContext is an instance of Activity and then call finish()
+                if (mContext instanceof Activity) {
+                    ((Activity) mContext).finish();
+                }
+            }
+
+            public boolean onLongPress() {
+                return false;
+            }
+
+            @Override
+            public boolean showDuringKeyguard() {
+                return true;
+            }
+
+            @Override
+            public boolean showBeforeProvisioning() {
+                return true;
+            }
+
+        };
+    }
+
+
 
     private Action getEmergencyAction() {
         return new SinglePressAction(com.android.internal.R.drawable.emergency_icon,
