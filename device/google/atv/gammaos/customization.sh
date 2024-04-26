@@ -2,7 +2,7 @@
 
 if [ ! -d /data/setupcompleted ] && [ -z $(getprop persist.sys.device_provisioned) ]
 then
-	wm density 135
+	wm density 137
 	am broadcast -a android.bluetooth.adapter.action.REQUEST_DISABLE
 	am broadcast -a android.bluetooth.adapter.action.REQUEST_DISABLE
 	settings put system screen_off_timeout 1800000
@@ -10,6 +10,18 @@ then
 	setprop service.bootanim.exit 0
 	setprop service.bootanim.progress 0
 	start bootanim
+
+	# Need to switch to new boot image for RGB30 v2
+        isrgb30=$(cat /proc/device-tree/model)
+        if [[ "$isrgb30" == *"Powkiddy RGB30"* ]]; then
+		if [ ! -f "/sys/devices/system/cpu/cpufreq/policy0/scaling_governor" ]; then
+                        unzip /system/etc/rgb30_v2_boot.zip -d /sdcard/
+                        dd if=/sdcard/boot.img of=/dev/block/by-name/boot bs=512
+			rm /sdcard/boot.img
+			reboot
+                fi
+        fi
+
 	setprop ctl.stop "tee-supplicant"
         [ ! -f /cache/swap ] && dd if=/dev/zero of=/cache/swap bs=1M count=300 && mkswap /cache/swap
         swapon -p -5 /cache/swap

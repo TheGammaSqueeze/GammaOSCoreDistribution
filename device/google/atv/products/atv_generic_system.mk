@@ -122,6 +122,7 @@ PRODUCT_COPY_FILES += \
     device/google/atv/gammaos/hdmiaudio/silent.mp3:system/etc/silent.mp3 \
     device/google/atv/gammaos/hdmiaudio/hdmiaudio.sh:system/bin/hdmiaudio.sh \
     device/google/atv/gammaos/toast/Toast.apk:system/priv-app/toast/Toast.apk \
+    device/google/atv/gammaos/rgb30/rgb30_v2_boot.zip:system/etc/rgb30_v2_boot.zip \
 
 # Enable dynamic partition size
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
