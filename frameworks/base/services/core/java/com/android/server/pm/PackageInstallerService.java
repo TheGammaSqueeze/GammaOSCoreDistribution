@@ -122,6 +122,9 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.function.IntPredicate;
 import java.util.function.Supplier;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
 
 /** The service responsible for installing packages. */
 public class PackageInstallerService extends IPackageInstaller.Stub implements
@@ -1709,39 +1712,45 @@ public class PackageInstallerService extends IPackageInstaller.Stub implements
             }
         }
 
-        public void onSessionFinished(final PackageInstallerSession session, boolean success) {
-            mCallbacks.notifySessionFinished(session.sessionId, session.userId, success);
+	public void onSessionFinished(final PackageInstallerSession session, boolean success) {
+		mCallbacks.notifySessionFinished(session.sessionId, session.userId, success);
 
-            mInstallHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    if (session.isStaged() && !success) {
-                        mStagingManager.abortSession(session.mStagedSession);
-                    }
-                    synchronized (mSessions) {
-                        // Child sessions will be removed along with its parent as a whole
-                        if (!session.hasParentSessionId()) {
-                            // Retain policy:
-                            // 1. Don't keep non-staged sessions
-                            // 2. Don't keep explicitly abandoned sessions
-                            // 3. Don't keep sessions that fail validation (isCommitted() is false)
-                            boolean shouldRemove = !session.isStaged() || session.isDestroyed()
-                                    || !session.isCommitted();
-                            if (shouldRemove) {
-                                removeActiveSession(session);
-                            }
-                        }
+		mInstallHandler.post(new Runnable() {
+			@Override
+			public void run() {
+				if (session.isStaged() && !success) {
+					mStagingManager.abortSession(session.mStagedSession);
+				}
+				synchronized (mSessions) {
+					if (success) {
+						// Assume packageName is correctly set in session params
+						String packageName = session.params.appPackageName;
+						try {
+							// Each command ends with ' &' to run in the background
+							Runtime.getRuntime().exec("pm grant " + packageName + " android.permission.WRITE_EXTERNAL_STORAGE &");
+							Runtime.getRuntime().exec("pm grant " + packageName + " android.permission.READ_EXTERNAL_STORAGE &");
+							Runtime.getRuntime().exec("pm grant " + packageName + " android.permission.READ_MEDIA_AUDIO &");
+							Runtime.getRuntime().exec("pm grant " + packageName + " android.permission.READ_MEDIA_VIDEO &");
+							Runtime.getRuntime().exec("pm grant " + packageName + " android.permission.ACCESS_MEDIA_LOCATION &");
+							Runtime.getRuntime().exec("pm grant " + packageName + " android.permission.READ_MEDIA_IMAGES &");
+							Runtime.getRuntime().exec("appops set --uid " + packageName + " MANAGE_EXTERNAL_STORAGE allow &");
+						} catch (IOException e) {
+							Log.e(TAG, "Error executing shell commands to grant permissions: " + e.getMessage());
+						}
+					}
 
-                        final File appIconFile = buildAppIconFile(session.sessionId);
-                        if (appIconFile.exists()) {
-                            appIconFile.delete();
-                        }
+					// Existing code to handle session finalization
+					final File appIconFile = buildAppIconFile(session.sessionId);
+					if (appIconFile.exists()) {
+						appIconFile.delete();
+					}
 
-                        mSettingsWriteRequest.runNow();
-                    }
-                }
-            });
-        }
+					mSettingsWriteRequest.runNow();
+				}
+			}
+		});
+	}
+
 
         public void onSessionPrepared(PackageInstallerSession session) {
             // We prepared the destination to write into; we want to persist
