@@ -10,7 +10,7 @@ echo "dmc_ondemand" > /sys/class/devfreq/dmc/governor
 echo "324000000" > /sys/class/devfreq/dmc/min_freq
 echo "780000000" > /sys/class/devfreq/dmc/max_freq
 
-su -lp 2000 -c "am start -a android.intent.action.MAIN -e toasttext 'Power Saving Mode Activated' -n bellavita.toast/.MainActivity"
+#su -lp 2000 -c "am start -a android.intent.action.MAIN -e toasttext 'Power Saving Mode Activated' -n bellavita.toast/.MainActivity"
 
 #echo "255" > /sys/class/leds/battery_full/brightness
 #echo "255" > /sys/class/leds/battery_charging/brightness

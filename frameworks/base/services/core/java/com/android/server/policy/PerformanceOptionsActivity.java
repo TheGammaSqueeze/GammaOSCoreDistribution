@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Window;
+import android.widget.Toast;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -29,7 +30,10 @@ public class PerformanceOptionsActivity extends Activity {
         builder.setTitle("Select Performance Mode");
         builder.setItems(items, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                executeShellCommand(getCommand(which));
+                String command = getCommand(which);
+                executeShellCommand(command);
+                // Show a toast message confirming the user's selection
+                Toast.makeText(PerformanceOptionsActivity.this, "Selected: " + items[which], Toast.LENGTH_LONG).show();
                 dialog.dismiss();
                 finish();  // Finish the activity after the selection is made
             }
@@ -55,44 +59,39 @@ public class PerformanceOptionsActivity extends Activity {
         }
     }
 
-private void executeShellCommand(String command) {
-    try {
-        // Executes the command
-        Process process = Runtime.getRuntime().exec(command);
+    private void executeShellCommand(String command) {
+        try {
+            // Executes the command
+            Process process = Runtime.getRuntime().exec(command);
+            // Wait for the command to complete
+            process.waitFor();
 
-        // You might want to handle the output or wait for the process to finish
-        process.waitFor();  // Waits for the command to complete
-
-        // Optionally handle the input and error streams
-        // For example, reading the output from the command
-        InputStream inputStream = process.getInputStream();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        String line;
-        while ((line = reader.readLine()) != null) {
-            Log.d("Output", line);
-        }
-
-        inputStream.close();
-        reader.close();
-
-        // Checking the exit value
-        if (process.exitValue() != 0) {
-            BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-            StringBuilder error = new StringBuilder();
-            String errorLine;
-            while ((errorLine = errorReader.readLine()) != null) {
-                error.append(errorLine).append("\n");
+            // Optionally handle the input and error streams
+            InputStream inputStream = process.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                Log.d("Output", line);
             }
-            Log.e("ShellCommandError", "Error executing shell command: " + error.toString());
-            errorReader.close();
+            inputStream.close();
+            reader.close();
+
+            // Check for errors
+            if (process.exitValue() != 0) {
+                BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+                StringBuilder error = new StringBuilder();
+                String errorLine;
+                while ((errorLine = errorReader.readLine()) != null) {
+                    error.append(errorLine).append("\n");
+                }
+                Log.e("ShellCommandError", "Error executing shell command: " + error.toString());
+                errorReader.close();
+            }
+        } catch (IOException e) {
+            Log.e("ShellCommandError", "Error executing shell command", e);
+        } catch (InterruptedException e) {
+            Log.e("ShellCommandError", "Interrupted while waiting for shell command to finish", e);
+            Thread.currentThread().interrupt();  // Restore the interrupted status
         }
-    } catch (IOException e) {
-        Log.e("ShellCommandError", "Error executing shell command", e);
-    } catch (InterruptedException e) {
-        Log.e("ShellCommandError", "Interrupted while waiting for shell command to finish", e);
-        Thread.currentThread().interrupt();  // Restore the interrupted status
     }
-}
-
-
 }
