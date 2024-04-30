@@ -21,20 +21,25 @@ public class LineageSettingsActivity extends BaseSetupWizardActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setup_lineage_settings);
 
+        // Apply the enter animation when the activity is created
+        overridePendingTransition(R.anim.translucent_enter, R.anim.translucent_exit);
+
         outputTextView = findViewById(R.id.script_output_text_view);
-        new ExecuteShellCommand().execute("for i in $(seq 1 10); do echo $i; sleep 1; done; whoami; cat /system/bin/customization.sh; mkdir /data/test; touch /data/test/ididit");
+        new ExecuteShellCommand().execute("/system/bin/setup.sh");
     }
 
     private class ExecuteShellCommand extends AsyncTask<String, String, Void> {
         @Override
         protected Void doInBackground(String... scripts) {
             try {
-                Process process = Runtime.getRuntime().exec(new String[]{"sh", "-c", scripts[0]});
+                // Using 'su' to execute commands as root
+                Process process = Runtime.getRuntime().exec(new String[]{"su", "-c", scripts[0]});
                 BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
                 String line;
                 while ((line = reader.readLine()) != null) {
                     publishProgress(line + "\n");
                 }
+                reader.close();
                 process.waitFor();
             } catch (Exception e) {
                 publishProgress("Error executing script: " + e.getMessage());
@@ -48,13 +53,11 @@ public class LineageSettingsActivity extends BaseSetupWizardActivity {
             scrollToBottom();  // Scroll to the bottom after each update
         }
 
-	@Override
-	protected void onPostExecute(Void result) {
-	    outputTextView.append("Script execution completed.\n");
-	    // Correctly reference the outer class's method
-	    outputTextView.postDelayed(LineageSettingsActivity.this::proceedToNextActivity, 5000); // 5 seconds delay
-	}
-
+        @Override
+        protected void onPostExecute(Void result) {
+            outputTextView.append("Script execution completed.\n");
+            outputTextView.postDelayed(LineageSettingsActivity.this::proceedToNextActivity, 5000); // 5 seconds delay
+        }
     }
 
     private void scrollToBottom() {
@@ -66,6 +69,13 @@ public class LineageSettingsActivity extends BaseSetupWizardActivity {
         Intent intent = WizardManagerHelper.getNextIntent(getIntent(), Activity.RESULT_OK);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        // Apply the exit animation when the activity finishes
+        overridePendingTransition(R.anim.translucent_enter, R.anim.translucent_exit);
     }
 
     @Override

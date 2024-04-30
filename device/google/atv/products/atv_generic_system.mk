@@ -112,6 +112,7 @@ PRODUCT_COPY_FILES += \
     device/google/atv/gammaos/rgp2xbox/setrightanalogaxisvalue_swapped.sh:system/bin/setrightanalogaxisvalue_swapped.sh \
     device/google/atv/gammaos/customization.sh:system/bin/customization.sh \
     device/google/atv/gammaos/magisk/magisk.apk:system/etc/magisk.apk \
+    device/google/atv/gammaos/magisk/magisk.tar.gz:system/etc/magisk.tar.gz \
     device/google/atv/gammaos/retroarch/RetroArch_aarch64.apk:system/etc/RetroArch_aarch64.apk \
     device/google/atv/gammaos/retroarch/retroarch64.tar.gz:system/etc/retroarch64.tar.gz \
     device/google/atv/gammaos/retroarch/retroarch64sdcard.tar.gz:system/etc/retroarch64sdcard.tar.gz \
@@ -122,6 +123,7 @@ PRODUCT_COPY_FILES += \
     device/google/atv/gammaos/hdmiaudio/silent.mp3:system/etc/silent.mp3 \
     device/google/atv/gammaos/hdmiaudio/hdmiaudio.sh:system/bin/hdmiaudio.sh \
     device/google/atv/gammaos/rgb30/rgb30_v2_boot.zip:system/etc/rgb30_v2_boot.zip \
+    device/google/atv/gammaos/setup.sh:system/bin/setup.sh \
 
 # Enable dynamic partition size
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
