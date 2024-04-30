@@ -1,0 +1,11 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:key="screen_off_timeout"
+        android:title="Screen Timeout"
+        android:summary="Select the time before the screen turns off"
+        android:dialogTitle="Set Screen Timeout"
+        android:entries="@array/screen_off_timeout_entries"
+        android:entryValues="@array/screen_off_timeout_values"
+        android:defaultValue="120000"
+        android:persistent="false"/>
+</PreferenceScreen>

@@ -35,7 +35,7 @@
     <Preference
         android:fragment="com.android.tv.settings.device.displaysound.MatchContentFrameRateFragment"
         android:key="match_content_frame_rate"
-        android:title="@string/match_content_frame_rate_title"/>
+        android:title="@string/screen_timeout_title"/>
     <Preference
         android:fragment="com.android.tv.settings.device.displaysound.ResolutionSelectionFragment"
         android:key="resolution_selection"

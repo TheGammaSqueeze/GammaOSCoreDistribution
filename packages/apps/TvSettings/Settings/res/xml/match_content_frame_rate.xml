@@ -15,26 +15,59 @@
   -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:title="@string/match_content_frame_rate_title">
+                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                  android:title="@string/screen_timeout_title">
 
-    <!-- TODO(b/172050661): add the sidebar help text. -->
     <PreferenceCategory
-        android:key="match_content_frame_rate_option">
+        android:key="screen_timeout_category"
+        android:title="@string/screen_timeout_title">
         <com.android.tv.settings.RadioPreference
-            android:key="match_content_frame_rate_seamless"
+            android:key="timeout_30_seconds"
             android:persistent="true"
-            app:radioGroup="match_content_frame_rate_option"
-            android:title="@string/match_content_frame_rate_seamless"/>
+            app:radioGroup="screen_timeout_option"
+            android:title="@string/timeout_30_seconds"
+            android:summary="@string/timeout_30_seconds_summary"/>
+
         <com.android.tv.settings.RadioPreference
-            android:key="match_content_frame_rate_non_seamless"
+            android:key="timeout_1_minute"
             android:persistent="true"
-            app:radioGroup="match_content_frame_rate_option"
-            android:title="@string/match_content_frame_rate_non_seamless"/>
+            app:radioGroup="screen_timeout_option"
+            android:title="@string/timeout_1_minute"
+            android:summary="@string/timeout_1_minute_summary"/>
+
         <com.android.tv.settings.RadioPreference
-            android:key="match_content_frame_rate_never"
+            android:key="timeout_5_minutes"
             android:persistent="true"
-            app:radioGroup="match_content_frame_rate_option"
-            android:title="@string/match_content_frame_rate_never"/>
+            app:radioGroup="screen_timeout_option"
+            android:title="@string/timeout_5_minutes"
+            android:summary="@string/timeout_5_minutes_summary"/>
+
+        <com.android.tv.settings.RadioPreference
+            android:key="timeout_15_minutes"
+            android:persistent="true"
+            app:radioGroup="screen_timeout_option"
+            android:title="@string/timeout_15_minutes"
+            android:summary="@string/timeout_15_minutes_summary"/>
+
+        <com.android.tv.settings.RadioPreference
+            android:key="timeout_30_minutes"
+            android:persistent="true"
+            app:radioGroup="screen_timeout_option"
+            android:title="@string/timeout_30_minutes"
+            android:summary="@string/timeout_30_minutes_summary"/>
+
+        <com.android.tv.settings.RadioPreference
+            android:key="timeout_1_hour"
+            android:persistent="true"
+            app:radioGroup="screen_timeout_option"
+            android:title="@string/timeout_1_hour"
+            android:summary="@string/timeout_1_hour_summary"/>
+
+        <com.android.tv.settings.RadioPreference
+            android:key="timeout_2_hours"
+            android:persistent="true"
+            app:radioGroup="screen_timeout_option"
+            android:title="@string/timeout_2_hours"
+            android:summary="@string/timeout_2_hours_summary"/>
     </PreferenceCategory>
 </PreferenceScreen>
