@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Қосымша дыбыс параметрлері"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Ойын режиміне рұқсат ету"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Контенттің кадр жиілігін сәйкестендіру"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Үздіксіз"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Теледидарыңыз үздіксіз тасымалдай алған жағдайда ҒАНА, қолданба сұраған кезде, құрылғыңыз өзінің шығыс кадр жиілігін көріп жатқан мазмұныңыздың түпнұсқа кадр жиілігіне сәйкестендіреді."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Кідіріспен"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Қолданба сұраған жағдайда, құрылғыңыз өзінің шығыс кадр жиілігін көріп жатқан мазмұныңыздың түпнұсқа кадр жиілігіне сәйкестендіреді. Мұндайда бейнені ойнату режимінен шығу немесе оған кіру кезінде экраныңыз бір сәтке өшіп қалуы мүмкін."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Ешқашан"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Тіпті қолданба сұраған жағдайда да, құрылғыңыз ешқашан өзінің шығыс кадр жиілігін көріп жатқан мазмұныңыздың түпнұсқа кадр жиілігіне сәйкестендіруге талпынбайды."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Үздіксіз"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Теледидарыңыз үздіксіз тасымалдай алған жағдайда ҒАНА, қолданба сұраған кезде, құрылғыңыз өзінің шығыс кадр жиілігін көріп жатқан мазмұныңыздың түпнұсқа кадр жиілігіне сәйкестендіреді."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Кідіріспен"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Қолданба сұраған жағдайда, құрылғыңыз өзінің шығыс кадр жиілігін көріп жатқан мазмұныңыздың түпнұсқа кадр жиілігіне сәйкестендіреді. Мұндайда бейнені ойнату режимінен шығу немесе оған кіру кезінде экраныңыз бір сәтке өшіп қалуы мүмкін."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Ешқашан"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Тіпті қолданба сұраған жағдайда да, құрылғыңыз ешқашан өзінің шығыс кадр жиілігін көріп жатқан мазмұныңыздың түпнұсқа кадр жиілігіне сәйкестендіруге талпынбайды."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Мәтінді масштабтау"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Масштаб: <xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Мәтін үлгісі"</string>

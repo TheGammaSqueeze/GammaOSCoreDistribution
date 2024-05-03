@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Erweiterte Toneinstellungen"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Spielmodus zulassen"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"An Framerate des Inhalts anpassen"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Nahtlos"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Wenn die App es anfordert, wird die Ausgabe deines Geräts an die Original-Framerate des aktuellen Inhalts angepasst. Das gilt allerdings NUR, wenn dein Fernseher einen nahtlosen Wechsel unterstützt."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Nicht nahtlos"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Wenn die App es anfordert, wird die Ausgabe deines Geräts an die Original-Framerate des aktuellen Inhalts angepasst. Das kann dazu führen, dass der Bildschirm beim Beenden oder Starten einer Videowiedergabe vorübergehend schwarz wird."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Nie"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Selbst wenn die App es anfordert, wird die Ausgabe deines Geräts nie an die Original-Framerate des aktuellen Inhalts angepasst."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Nahtlos"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Wenn die App es anfordert, wird die Ausgabe deines Geräts an die Original-Framerate des aktuellen Inhalts angepasst. Das gilt allerdings NUR, wenn dein Fernseher einen nahtlosen Wechsel unterstützt."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Nicht nahtlos"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Wenn die App es anfordert, wird die Ausgabe deines Geräts an die Original-Framerate des aktuellen Inhalts angepasst. Das kann dazu führen, dass der Bildschirm beim Beenden oder Starten einer Videowiedergabe vorübergehend schwarz wird."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Nie"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Selbst wenn die App es anfordert, wird die Ausgabe deines Geräts nie an die Original-Framerate des aktuellen Inhalts angepasst."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Textskalierung"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Auf <xliff:g id="SCALE">%1$d</xliff:g> %% skalieren"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Beispieltext"</string>

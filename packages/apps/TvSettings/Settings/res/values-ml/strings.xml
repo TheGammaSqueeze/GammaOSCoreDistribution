@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"വിപുലമായ ശബ്‌ദ ക്രമീകരണം"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"ഗെയിം മോഡ് അനുവദിക്കുക"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"ഉള്ളടക്കത്തിന്റെ ഫ്രെയിം എണ്ണം പൊരുത്തപ്പെടുത്തുക"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"സുഗമമായത്"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"ആപ്പ് അത് അഭ്യർത്ഥിച്ചാൽ, നിങ്ങളുടെ ഉപകരണം അതിന്റെ ഔട്ട്പുട്ടിനെ നിങ്ങൾ കാണുന്ന ഉള്ളടക്കത്തിന്റെ ഒറിജിനൽ ഫ്രെയിം എണ്ണവുമായി പൊരുത്തപ്പെടുത്തും, ടിവിക്ക് സുഗമമായൊരു കൈമാറ്റം നടത്താനാകുമെങ്കിൽ മാത്രം."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"സുഗമമല്ലാത്തത്"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"ആപ്പ് അത് അഭ്യർത്ഥിച്ചാൽ, നിങ്ങളുടെ ഉപകരണം അതിന്റെ ഔട്ട്പുട്ടിനെ നിങ്ങൾ കാണുന്ന ഉള്ളടക്കത്തിന്റെ ഒറിജിനൽ ഫ്രെയിം എണ്ണവുമായി പൊരുത്തപ്പെടുത്തും. ഇത് ഒരു വീഡിയോ പ്ലേ ബാക്കിലേക്ക് പ്രവേശിക്കുമ്പോഴും പുറത്തുകടക്കുമ്പോഴും ഒരു നിമിഷം നിങ്ങളുടെ സ്ക്രീൻ ശൂന്യമാകാൻ കാരണമായേക്കാം."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"ഒരിക്കലും വേണ്ട"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"ആപ്പ് അത് അഭ്യർത്ഥിച്ചാൽ പോലും, നിങ്ങളുടെ ഉപകരണം ഒരിക്കലും അതിന്റെ ഔട്ട്പുട്ടിനെ നിങ്ങൾ കാണുന്ന ഉള്ളടക്കത്തിന്റെ ഒറിജിനൽ ഫ്രെയിം എണ്ണവുമായി പൊരുത്തപ്പെടുത്താൻ ശ്രമിക്കില്ല."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"സുഗമമായത്"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"ആപ്പ് അത് അഭ്യർത്ഥിച്ചാൽ, നിങ്ങളുടെ ഉപകരണം അതിന്റെ ഔട്ട്പുട്ടിനെ നിങ്ങൾ കാണുന്ന ഉള്ളടക്കത്തിന്റെ ഒറിജിനൽ ഫ്രെയിം എണ്ണവുമായി പൊരുത്തപ്പെടുത്തും, ടിവിക്ക് സുഗമമായൊരു കൈമാറ്റം നടത്താനാകുമെങ്കിൽ മാത്രം."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"സുഗമമല്ലാത്തത്"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"ആപ്പ് അത് അഭ്യർത്ഥിച്ചാൽ, നിങ്ങളുടെ ഉപകരണം അതിന്റെ ഔട്ട്പുട്ടിനെ നിങ്ങൾ കാണുന്ന ഉള്ളടക്കത്തിന്റെ ഒറിജിനൽ ഫ്രെയിം എണ്ണവുമായി പൊരുത്തപ്പെടുത്തും. ഇത് ഒരു വീഡിയോ പ്ലേ ബാക്കിലേക്ക് പ്രവേശിക്കുമ്പോഴും പുറത്തുകടക്കുമ്പോഴും ഒരു നിമിഷം നിങ്ങളുടെ സ്ക്രീൻ ശൂന്യമാകാൻ കാരണമായേക്കാം."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"ഒരിക്കലും വേണ്ട"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"ആപ്പ് അത് അഭ്യർത്ഥിച്ചാൽ പോലും, നിങ്ങളുടെ ഉപകരണം ഒരിക്കലും അതിന്റെ ഔട്ട്പുട്ടിനെ നിങ്ങൾ കാണുന്ന ഉള്ളടക്കത്തിന്റെ ഒറിജിനൽ ഫ്രെയിം എണ്ണവുമായി പൊരുത്തപ്പെടുത്താൻ ശ്രമിക്കില്ല."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"ടെക്‌സ്‌റ്റ് സ്കെയിൽ ചെയ്യൽ"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"<xliff:g id="SCALE">%1$d</xliff:g>%% ആയി സ്കെയിൽ ചെയ്യുക"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"സാമ്പിൾ ടെക്‌സ്‌റ്റ്"</string>

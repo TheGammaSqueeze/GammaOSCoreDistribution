@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Speciális hangbeállítások"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Játékmód engedélyezése"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Tartalom képkocka-sebességének egyeztetése"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Zökkenőmentes"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Ha az alkalmazás engedélyt kér rá, az eszköze az éppen nézett tartalom eredeti képkockasebességéhez igazítja a kimenetet, de CSAK akkor, ha a tévéje képes a zökkenőmentes átmenetre."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Nem zökkenőmentes"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Ha az alkalmazás engedélyt kér rá, az eszköze az éppen nézett tartalom eredeti képkockasebességéhez igazítja a kimenetet. Ennek következtében előfordulhat, hogy képernyője egy másodpercre elsötétül, amikor elindul vagy véget ér a videólejátszás."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Soha"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Még ha az alkalmazás engedélyt kér is rá, az eszköze akkor sem fogja megpróbálni az éppen nézett tartalom eredeti képkockasebességéhez igazítani a kimenetet."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Zökkenőmentes"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Ha az alkalmazás engedélyt kér rá, az eszköze az éppen nézett tartalom eredeti képkockasebességéhez igazítja a kimenetet, de CSAK akkor, ha a tévéje képes a zökkenőmentes átmenetre."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Nem zökkenőmentes"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Ha az alkalmazás engedélyt kér rá, az eszköze az éppen nézett tartalom eredeti képkockasebességéhez igazítja a kimenetet. Ennek következtében előfordulhat, hogy képernyője egy másodpercre elsötétül, amikor elindul vagy véget ér a videólejátszás."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Soha"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Még ha az alkalmazás engedélyt kér is rá, az eszköze akkor sem fogja megpróbálni az éppen nézett tartalom eredeti képkockasebességéhez igazítani a kimenetet."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Szöveg nagyítása"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Szövegméretezés: <xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Mintaszöveg"</string>

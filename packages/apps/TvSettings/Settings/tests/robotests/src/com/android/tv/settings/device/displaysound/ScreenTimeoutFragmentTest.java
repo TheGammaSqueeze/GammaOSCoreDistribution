@@ -38,9 +38,9 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.shadows.androidx.fragment.FragmentController;
 
 @RunWith(RobolectricTestRunner.class)
-public class MatchContentFrameRateFragmentTest {
+public class ScreenTimeoutFragmentTest {
     @Spy
-    private MatchContentFrameRateFragment mMatchContentFrameRateFragment;
+    private ScreenTimeoutFragment mScreenTimeoutFragment;
 
     @Mock
     private PreferenceGroup mPreferenceGroup;
@@ -52,67 +52,67 @@ public class MatchContentFrameRateFragmentTest {
     private RadioPreference mAlwaysPreference;
 
     private static final String KEY_MATCH_CONTENT_FRAME_RATE_SEAMLESS =
-            "match_content_frame_rate_seamless";
+            "screen_timeout_seamless";
     private static final String KEY_MATCH_CONTENT_FRAME_RATE_NON_SEAMLESS =
-            "match_content_frame_rate_non_seamless";
+            "screen_timeout_non_seamless";
     private static final String KEY_MATCH_CONTENT_FRAME_RATE_NEVER =
-            "match_content_frame_rate_never";
+            "screen_timeout_never";
 
     private static final int BAD_MATCH_CONTENT_FRAME_RATE_VALUE = -1;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        doReturn(RuntimeEnvironment.application).when(mMatchContentFrameRateFragment).getContext();
-        mMatchContentFrameRateFragment.onAttach(RuntimeEnvironment.application);
+        doReturn(RuntimeEnvironment.application).when(mScreenTimeoutFragment).getContext();
+        mScreenTimeoutFragment.onAttach(RuntimeEnvironment.application);
 
-        doReturn(mPreferenceGroup).when(mMatchContentFrameRateFragment).getPreferenceGroup();
+        doReturn(mPreferenceGroup).when(mScreenTimeoutFragment).getPreferenceGroup();
 
-        mAutoPreference = new RadioPreference(mMatchContentFrameRateFragment.getContext());
+        mAutoPreference = new RadioPreference(mScreenTimeoutFragment.getContext());
         mAutoPreference.setKey(KEY_MATCH_CONTENT_FRAME_RATE_SEAMLESS);
         mPreferenceGroup.addPreference(mAutoPreference);
-        doReturn(mAutoPreference).when(mMatchContentFrameRateFragment)
+        doReturn(mAutoPreference).when(mScreenTimeoutFragment)
                 .getRadioPreference(eq(KEY_MATCH_CONTENT_FRAME_RATE_SEAMLESS));
-        mNeverPreference = new RadioPreference(mMatchContentFrameRateFragment.getContext());
+        mNeverPreference = new RadioPreference(mScreenTimeoutFragment.getContext());
         mNeverPreference.setKey(KEY_MATCH_CONTENT_FRAME_RATE_NEVER);
         mPreferenceGroup.addPreference(mNeverPreference);
-        doReturn(mNeverPreference).when(mMatchContentFrameRateFragment)
+        doReturn(mNeverPreference).when(mScreenTimeoutFragment)
                 .getRadioPreference(eq(KEY_MATCH_CONTENT_FRAME_RATE_NEVER));
-        mAlwaysPreference = new RadioPreference(mMatchContentFrameRateFragment.getContext());
+        mAlwaysPreference = new RadioPreference(mScreenTimeoutFragment.getContext());
         mAlwaysPreference.setKey(KEY_MATCH_CONTENT_FRAME_RATE_NON_SEAMLESS);
         mPreferenceGroup.addPreference(mAlwaysPreference);
-        doReturn(mAlwaysPreference).when(mMatchContentFrameRateFragment)
+        doReturn(mAlwaysPreference).when(mScreenTimeoutFragment)
                 .getRadioPreference(eq(KEY_MATCH_CONTENT_FRAME_RATE_NON_SEAMLESS));
     }
 
     @Test
     public void testOnPreferenceTreeClick_autoSelected_otherRadioButtonsDisabled() {
-        mMatchContentFrameRateFragment.onPreferenceTreeClick(mAutoPreference);
+        mScreenTimeoutFragment.onPreferenceTreeClick(mAutoPreference);
         assertThat(mNeverPreference.isChecked()).isFalse();
         assertThat(mAlwaysPreference.isChecked()).isFalse();
     }
 
     @Test
     public void testOnPreferenceTreeClick_noneSelected_otherRadioButtonsDisabled() {
-        mMatchContentFrameRateFragment.onPreferenceTreeClick(mNeverPreference);
+        mScreenTimeoutFragment.onPreferenceTreeClick(mNeverPreference);
         assertThat(mAutoPreference.isChecked()).isFalse();
         assertThat(mAlwaysPreference.isChecked()).isFalse();
     }
 
     @Test
     public void testOnPreferenceTreeClick_alwaysSelected_otherRadioButtonsDisabled() {
-        mMatchContentFrameRateFragment.onPreferenceTreeClick(mAlwaysPreference);
+        mScreenTimeoutFragment.onPreferenceTreeClick(mAlwaysPreference);
         assertThat(mAutoPreference.isChecked()).isFalse();
         assertThat(mNeverPreference.isChecked()).isFalse();
     }
 
     @Test
     public void testOnPreferenceTreeClick_autoSelected_settingModified() {
-        mMatchContentFrameRateFragment.onPreferenceTreeClick(mAutoPreference);
+        mScreenTimeoutFragment.onPreferenceTreeClick(mAutoPreference);
         // Since Settings.Secure.MATCH_CONTENT_FRAMERATE_SEAMLESSS_ONLY is the default value,
         // this action will not do anything
         assertThat(Settings.Secure.getInt(
-                mMatchContentFrameRateFragment.getContext().getContentResolver(),
+                mScreenTimeoutFragment.getContext().getContentResolver(),
                 Settings.Secure.MATCH_CONTENT_FRAME_RATE,
                 BAD_MATCH_CONTENT_FRAME_RATE_VALUE)).isEqualTo(
                         BAD_MATCH_CONTENT_FRAME_RATE_VALUE);
@@ -120,9 +120,9 @@ public class MatchContentFrameRateFragmentTest {
 
     @Test
     public void testOnPreferenceTreeClick_neverSelected_settingModified() {
-        mMatchContentFrameRateFragment.onPreferenceTreeClick(mNeverPreference);
+        mScreenTimeoutFragment.onPreferenceTreeClick(mNeverPreference);
         assertThat(Settings.Secure.getInt(
-                mMatchContentFrameRateFragment.getContext().getContentResolver(),
+                mScreenTimeoutFragment.getContext().getContentResolver(),
                 Settings.Secure.MATCH_CONTENT_FRAME_RATE,
                 BAD_MATCH_CONTENT_FRAME_RATE_VALUE)).isEqualTo(
                         Settings.Secure.MATCH_CONTENT_FRAMERATE_NEVER);
@@ -130,9 +130,9 @@ public class MatchContentFrameRateFragmentTest {
 
     @Test
     public void testOnPreferenceTreeClick_alwaysSelected_settingModified() {
-        mMatchContentFrameRateFragment.onPreferenceTreeClick(mAlwaysPreference);
+        mScreenTimeoutFragment.onPreferenceTreeClick(mAlwaysPreference);
         assertThat(Settings.Secure.getInt(
-                mMatchContentFrameRateFragment.getContext().getContentResolver(),
+                mScreenTimeoutFragment.getContext().getContentResolver(),
                 Settings.Secure.MATCH_CONTENT_FRAME_RATE,
                 BAD_MATCH_CONTENT_FRAME_RATE_VALUE)).isEqualTo(
                     Settings.Secure.MATCH_CONTENT_FRAMERATE_ALWAYS);
@@ -140,10 +140,10 @@ public class MatchContentFrameRateFragmentTest {
 
     @Test
     public void testOnPreferenceTreeClick_neverSelected_then_autoSelected_settingModified() {
-        mMatchContentFrameRateFragment.onPreferenceTreeClick(mNeverPreference);
-        mMatchContentFrameRateFragment.onPreferenceTreeClick(mAutoPreference);
+        mScreenTimeoutFragment.onPreferenceTreeClick(mNeverPreference);
+        mScreenTimeoutFragment.onPreferenceTreeClick(mAutoPreference);
         assertThat(Settings.Secure.getInt(
-                mMatchContentFrameRateFragment.getContext().getContentResolver(),
+                mScreenTimeoutFragment.getContext().getContentResolver(),
                 Settings.Secure.MATCH_CONTENT_FRAME_RATE,
                 BAD_MATCH_CONTENT_FRAME_RATE_VALUE)).isEqualTo(
                     Settings.Secure.MATCH_CONTENT_FRAMERATE_SEAMLESSS_ONLY);
@@ -151,7 +151,7 @@ public class MatchContentFrameRateFragmentTest {
 
     @Test
     public void testDefaultPreference() {
-        FragmentController.of(mMatchContentFrameRateFragment)
+        FragmentController.of(mScreenTimeoutFragment)
             .create();
         assertThat(mAutoPreference.isChecked()).isTrue();
         assertThat(mNeverPreference.isChecked()).isFalse();

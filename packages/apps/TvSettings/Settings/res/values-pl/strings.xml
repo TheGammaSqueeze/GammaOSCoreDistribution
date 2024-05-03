@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Zaawansowane ustawienia dźwięku"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Zezwalaj na tryb gry"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Dostosuj do liczby klatek oglądanych treści"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Płynnie"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Jeśli aplikacja o to poprosi, urządzenie będzie dopasowywać sygnał wyjściowy do pierwotnej liczby klatek oglądanych treści, TYLKO jeśli telewizor może to zrobić płynnie."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Niepłynnie"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Jeśli aplikacja o to poprosi, urządzenie będzie dopasowywać sygnał wyjściowy do pierwotnej liczby klatek oglądanych treści. Może to spowodować, że gdy włączysz lub wyłączysz odtwarzanie, obraz na sekundę zniknie."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Nigdy"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Nawet jeśli aplikacja o to poprosi, urządzenie nigdy nie będzie próbowało dopasować sygnału wyjściowego do pierwotnej liczby klatek oglądanych treści."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Płynnie"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Jeśli aplikacja o to poprosi, urządzenie będzie dopasowywać sygnał wyjściowy do pierwotnej liczby klatek oglądanych treści, TYLKO jeśli telewizor może to zrobić płynnie."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Niepłynnie"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Jeśli aplikacja o to poprosi, urządzenie będzie dopasowywać sygnał wyjściowy do pierwotnej liczby klatek oglądanych treści. Może to spowodować, że gdy włączysz lub wyłączysz odtwarzanie, obraz na sekundę zniknie."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Nigdy"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Nawet jeśli aplikacja o to poprosi, urządzenie nigdy nie będzie próbowało dopasować sygnału wyjściowego do pierwotnej liczby klatek oglądanych treści."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Skalowanie tekstu"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Skaluj do <xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Przykładowy tekst"</string>

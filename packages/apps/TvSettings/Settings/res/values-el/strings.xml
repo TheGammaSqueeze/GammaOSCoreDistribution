@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Σύνθετες ρυθμίσεις ήχου"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Να επιτρέπεται η λειτουργία παιχνιδιού"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Αντιστοίχιση με ρυθμό καρέ περιεχομένου"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Απρόσκοπτη λειτουργία"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Εάν το ζητήσει η εφαρμογή, η συσκευή σας θα αντιστοιχίσει την έξοδό της με τον αρχικό ρυθμό καρέ του περιεχομένου που παρακολουθείτε, ΜΟΝΟ εάν η τηλεόρασή σας μπορεί να εκτελέσει την απρόσκοπτη μετάβαση."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Μη απρόσκοπτη λειτουργία"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Εάν το ζητήσει η εφαρμογή, η συσκευή σας θα αντιστοιχίσει την έξοδό της με τον αρχικό ρυθμό καρέ του περιεχομένου που παρακολουθείτε. Η οθόνη σας μπορεί να σβήσει για ένα δευτερόλεπτο κατά την έξοδο ή την είσοδο στην αναπαραγωγή βίντεο."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Ποτέ"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Ακόμα κι αν το ζητήσει η εφαρμογή, η συσκευή σας δεν θα προσπαθήσει ποτέ να αντιστοιχίσει την έξοδό της με τον αρχικό ρυθμό καρέ του περιεχομένου που παρακολουθείτε."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Απρόσκοπτη λειτουργία"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Εάν το ζητήσει η εφαρμογή, η συσκευή σας θα αντιστοιχίσει την έξοδό της με τον αρχικό ρυθμό καρέ του περιεχομένου που παρακολουθείτε, ΜΟΝΟ εάν η τηλεόρασή σας μπορεί να εκτελέσει την απρόσκοπτη μετάβαση."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Μη απρόσκοπτη λειτουργία"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Εάν το ζητήσει η εφαρμογή, η συσκευή σας θα αντιστοιχίσει την έξοδό της με τον αρχικό ρυθμό καρέ του περιεχομένου που παρακολουθείτε. Η οθόνη σας μπορεί να σβήσει για ένα δευτερόλεπτο κατά την έξοδο ή την είσοδο στην αναπαραγωγή βίντεο."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Ποτέ"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Ακόμα κι αν το ζητήσει η εφαρμογή, η συσκευή σας δεν θα προσπαθήσει ποτέ να αντιστοιχίσει την έξοδό της με τον αρχικό ρυθμό καρέ του περιεχομένου που παρακολουθείτε."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Κλιμάκωση κειμένου"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Προσαρμογή σε <xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Δείγμα κειμένου"</string>

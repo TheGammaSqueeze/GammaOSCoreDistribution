@@ -28,7 +28,7 @@ import com.android.tv.settings.library.ManagerUtil;
  * the display frame rate to to the frame rate of a video being played.
  */
 @Keep
-public class MatchContentRateFragmentCompat extends RadioPreferencesFragmentCompat {
+public class ScreenTimeoutCompat extends RadioPreferencesFragmentCompat {
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {

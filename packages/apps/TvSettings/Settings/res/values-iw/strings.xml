@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"הגדרות צליל מתקדמות"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"הרשאה למצב משחק"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"התאמת התוכן לקצב הפריימים"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"שינוי חלק של קצב הפריימים"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"המכשיר ישנה את קצב הפריימים של המסך בהתאם לקצב הפריימים המקורי של התוכן בעקבות בקשה של האפליקציה רק אם הטלוויזיה יכולה לבצע את השינוי בצורה חלקה."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"שינוי לא-חלק של קצב הפריימים"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"המכשיר ישנה את קצב הפריימים של המסך בהתאם לקצב הפריימים המקורי של התוכן אם האפליקציה תבקש זאת. במקרה כזה, ייתכן שהמסך יואפל לרגע לפני תחילת הסרטון ובסופו."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"אף פעם"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"המכשיר אף פעם לא ינסה לשנות את קצב הפריימים של המסך כדי להתאים אותו לקצב הפריימים המקורי של התוכן, גם אם האפליקציה תבקש זאת."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"שינוי חלק של קצב הפריימים"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"המכשיר ישנה את קצב הפריימים של המסך בהתאם לקצב הפריימים המקורי של התוכן בעקבות בקשה של האפליקציה רק אם הטלוויזיה יכולה לבצע את השינוי בצורה חלקה."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"שינוי לא-חלק של קצב הפריימים"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"המכשיר ישנה את קצב הפריימים של המסך בהתאם לקצב הפריימים המקורי של התוכן אם האפליקציה תבקש זאת. במקרה כזה, ייתכן שהמסך יואפל לרגע לפני תחילת הסרטון ובסופו."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"אף פעם"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"המכשיר אף פעם לא ינסה לשנות את קצב הפריימים של המסך כדי להתאים אותו לקצב הפריימים המקורי של התוכן, גם אם האפליקציה תבקש זאת."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"שינוי גודל הטקסט"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"התאמה ל-‎%%<xliff:g id="SCALE">%1$d</xliff:g>‎"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"טקסט לדוגמה"</string>

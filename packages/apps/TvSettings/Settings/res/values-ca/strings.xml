@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Configuració avançada del so"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Permet el mode de joc"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Fes coincidir amb els FPS del contingut"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Transició continua"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Si l\'aplicació ho sol·licita, el dispositiu mostrarà el contingut que estàs mirant amb els fotogrames per segon del vídeo original, NOMÉS si el televisor pot efectuar una transició continua."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Transició no continua"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Si l\'aplicació ho sol·licita, el dispositiu farà coincidir la sortida amb els fotogrames per segon originals del contingut que estàs mirant. Això pot provocar que la pantalla es quedi en blanc un segon en entrar a la reproducció d\'un vídeo o sortir-ne."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Mai"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Encara que l\'aplicació ho sol·liciti, el dispositiu mai no provarà de mostrar el contingut que estàs mirant amb els fotogrames per segon del vídeo original."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Transició continua"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Si l\'aplicació ho sol·licita, el dispositiu mostrarà el contingut que estàs mirant amb els fotogrames per segon del vídeo original, NOMÉS si el televisor pot efectuar una transició continua."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Transició no continua"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Si l\'aplicació ho sol·licita, el dispositiu farà coincidir la sortida amb els fotogrames per segon originals del contingut que estàs mirant. Això pot provocar que la pantalla es quedi en blanc un segon en entrar a la reproducció d\'un vídeo o sortir-ne."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Mai"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Encara que l\'aplicació ho sol·liciti, el dispositiu mai no provarà de mostrar el contingut que estàs mirant amb els fotogrames per segon del vídeo original."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Ajust del text"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Ajusta al <xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Text de mostra"</string>

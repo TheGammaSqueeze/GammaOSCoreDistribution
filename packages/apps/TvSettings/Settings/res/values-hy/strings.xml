@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Ձայնի լրացուցիչ կարգավորումներ"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Թույլատրեք խաղային ռեժիմը"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Համապատասխանեցնել բովանդակության կադրերի հաճախականությունը"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Սահուն"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Երբ հավելվածը պահանջում է, սարքը կհամապատասխանեցնի իր հաճախականությունը նվագարկվող տեսանյութի կադրերի հաճախականությանը ՄԻԱՅՆ ԱՅՆ ԴԵՊՔՈՒՄ, եթե ձեր հեռուստացույցն աջակցում է սահուն անցում։"</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Ոչ սահուն"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Երբ հավելվածը պահանջում է, սարքը կհամապատասխանեցնի իր հաճախականությունը նվագարկվող տեսանյութի կադրերի հաճախականությանը։ Տեսանյութի նվագարկման սկզբում և վերջում էկրանը մի պահ կարող է սպիտակել։"</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Երբեք"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Նույնիսկ երբ հավելվածը պահանջում է, սարքը չի համապատասխանեցնի իր հաճախականությունը նվագարկվող տեսանյութի կադրերի հաճախականությանը։"</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Սահուն"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Երբ հավելվածը պահանջում է, սարքը կհամապատասխանեցնի իր հաճախականությունը նվագարկվող տեսանյութի կադրերի հաճախականությանը ՄԻԱՅՆ ԱՅՆ ԴԵՊՔՈՒՄ, եթե ձեր հեռուստացույցն աջակցում է սահուն անցում։"</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Ոչ սահուն"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Երբ հավելվածը պահանջում է, սարքը կհամապատասխանեցնի իր հաճախականությունը նվագարկվող տեսանյութի կադրերի հաճախականությանը։ Տեսանյութի նվագարկման սկզբում և վերջում էկրանը մի պահ կարող է սպիտակել։"</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Երբեք"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Նույնիսկ երբ հավելվածը պահանջում է, սարքը չի համապատասխանեցնի իր հաճախականությունը նվագարկվող տեսանյութի կադրերի հաճախականությանը։"</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Տեքստի մասշտաբավորում"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Մասշտաբը դարձնել <xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Տեքստի նմուշ"</string>

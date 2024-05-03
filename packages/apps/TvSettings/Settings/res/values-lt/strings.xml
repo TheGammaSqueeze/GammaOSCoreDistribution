@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Išplėstiniai garso nustatymai"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Leisti žaidimo režimą"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Ieškoti turinio kadrų dažnio atitikties"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Sklandus"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Jei bus pateikta programos užklausa, jūsų įrenginys pritaikys išvestį pagal pradinį žiūrimo turinio kadrų dažnį, TIK jei jūsų TV galima atlikti sklandų perėjimą."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Nesklandus"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Jūsų įrenginys pritaikys išvestį pagal pradinį žiūrimo turinio kadrų dažnį, jei bus pateikta programos užklausa. Dėl to išjungiant ar įjungiant vaizdo įrašo atkūrimą ekranas akimirką gali būti tuščias."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Niekada"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Jūsų įrenginys niekada nebandys pritaikyti išvesties pagal pradinį žiūrimo turinio kadrų dažnį, net jei bus pateikta programos užklausa."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Sklandus"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Jei bus pateikta programos užklausa, jūsų įrenginys pritaikys išvestį pagal pradinį žiūrimo turinio kadrų dažnį, TIK jei jūsų TV galima atlikti sklandų perėjimą."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Nesklandus"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Jūsų įrenginys pritaikys išvestį pagal pradinį žiūrimo turinio kadrų dažnį, jei bus pateikta programos užklausa. Dėl to išjungiant ar įjungiant vaizdo įrašo atkūrimą ekranas akimirką gali būti tuščias."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Niekada"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Jūsų įrenginys niekada nebandys pritaikyti išvesties pagal pradinį žiūrimo turinio kadrų dažnį, net jei bus pateikta programos užklausa."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Teksto mastelio keitimas"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Keisti mastelį į <xliff:g id="SCALE">%1$d</xliff:g> %%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Pavyzdinis tekstas"</string>

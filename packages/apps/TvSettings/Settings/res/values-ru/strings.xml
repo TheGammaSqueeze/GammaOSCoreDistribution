@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Расширенные настройки звука"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Разрешить игровой режим"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Использовать частоту кадров контента"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Только с плавным переходом"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Устройство переключит формат вывода изображения в соответствии с исходной частотой кадров воспроизводимого видео, если поступит соответствующий запрос от приложения, но ТОЛЬКО при условии, что телевизор может осуществить плавный переход."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Даже без плавного перехода"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Если поступит запрос от приложения, устройство установит для экрана частоту обновления, соответствующую исходной частоте кадров в контенте, который вы смотрите. Из-за этого в начале и в конце воспроизведения видео экран может на секунду погаснуть."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Никогда"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Устройство не будет переключать формат вывода изображения в соответствии с исходной частотой кадров воспроизводимого видео, даже если поступит соответствующий запрос от приложения."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Только с плавным переходом"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Устройство переключит формат вывода изображения в соответствии с исходной частотой кадров воспроизводимого видео, если поступит соответствующий запрос от приложения, но ТОЛЬКО при условии, что телевизор может осуществить плавный переход."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Даже без плавного перехода"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Если поступит запрос от приложения, устройство установит для экрана частоту обновления, соответствующую исходной частоте кадров в контенте, который вы смотрите. Из-за этого в начале и в конце воспроизведения видео экран может на секунду погаснуть."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Никогда"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Устройство не будет переключать формат вывода изображения в соответствии с исходной частотой кадров воспроизводимого видео, даже если поступит соответствующий запрос от приложения."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Масштабирование текста"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Масштаб <xliff:g id="SCALE">%1$d</xliff:g> %%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Пример текста"</string>

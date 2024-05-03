@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Напредни поставки за звук"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Дозволете режим на игри"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Усогласи со стапка на слики за содржини"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Со беспрекорно"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Ако апликацијата го побара тоа, вашиот уред ќе го усогласи својот излез со оригиналната стапка на слики на содржините што ги гледате, САМО ако вашиот ТВ може да изврши беспрекорен премин."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Без беспрекорно"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Ако апликацијата го побара тоа, вашиот уред ќе го усогласи својот излез со оригиналната стапка на слики на содржините што ги гледате. Ова може да предизвика затемнување на екранот за миг при излегувањето или влегувањето во видеорепродукцијата."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Никогаш"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Дури и ако апликацијата го побара тоа, вашиот уред никогаш нема да се обиде да го усогласи својот излез со оригиналната стапка на слики на содржините што ги гледате."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Со беспрекорно"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Ако апликацијата го побара тоа, вашиот уред ќе го усогласи својот излез со оригиналната стапка на слики на содржините што ги гледате, САМО ако вашиот ТВ може да изврши беспрекорен премин."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Без беспрекорно"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Ако апликацијата го побара тоа, вашиот уред ќе го усогласи својот излез со оригиналната стапка на слики на содржините што ги гледате. Ова може да предизвика затемнување на екранот за миг при излегувањето или влегувањето во видеорепродукцијата."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Никогаш"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Дури и ако апликацијата го побара тоа, вашиот уред никогаш нема да се обиде да го усогласи својот излез со оригиналната стапка на слики на содржините што ги гледате."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Скалирање текст"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Скалирај на <xliff:g id="SCALE">%1$d</xliff:g> %%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Пример за текст"</string>

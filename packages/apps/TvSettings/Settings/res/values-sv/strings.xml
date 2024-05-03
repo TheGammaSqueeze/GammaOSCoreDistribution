@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Avancerade ljudinställningar"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Tillåt spelläge"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Matcha innehållets bildfrekvens"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Sömlöst"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Om appen begär det matchar enheten utdatan med den ursprungliga bildfrekvensen av det du tittar på, ENDAST om tv:n har stöd för sömlös övergång."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Inte sömlöst"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Om appen begär det matchar enheten utdatan med den ursprungliga bildfrekvensen av det du tittar på. Detta kan leda till att skärmen blir svart i någon sekund när du avslutar eller startar videouppspelning."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Aldrig"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Enheten försöker aldrig matcha utdatan med den ursprungliga bildfrekvensen av det du tittar på, även om appen begär det."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Sömlöst"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Om appen begär det matchar enheten utdatan med den ursprungliga bildfrekvensen av det du tittar på, ENDAST om tv:n har stöd för sömlös övergång."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Inte sömlöst"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Om appen begär det matchar enheten utdatan med den ursprungliga bildfrekvensen av det du tittar på. Detta kan leda till att skärmen blir svart i någon sekund när du avslutar eller startar videouppspelning."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Aldrig"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Enheten försöker aldrig matcha utdatan med den ursprungliga bildfrekvensen av det du tittar på, även om appen begär det."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Textskalning"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Justera till <xliff:g id="SCALE">%1$d</xliff:g> %%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Exempeltext"</string>

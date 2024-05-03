@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"प्रगत आवाज सेटिंग्ज"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"गेम मोडला अनुमती द्या"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"आशय फ्रेम दर जुळवा"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"अखंड असलेला"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"ॲपने याची विनंती केल्यास, तुमचा टीव्ही सहजपणे बदल करू शकत असेल तरच तुमचे डिव्हाइस त्याच्या आउटपुटशी तुम्ही पाहत असलेल्या आशयाचा मूळ फ्रेम दर जुळवेल."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"अखंड नसलेला"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"ॲपने याची विनंती केल्यास, तुमचे डिव्हाइस त्याच्या आउटपुटशी तुम्ही पाहत असलेल्या आशयाचा मूळ फ्रेम दर जुळवेल. यामुळे व्हिडिओ प्लेबॅकमधून बाहेर पडताना किंवा त्यामध्ये शिरताना तुमची स्क्रीन काही सेकंदांसाठी कोरी दिसू शकते."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"कधीही नाही"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"ॲपने याची विनंती केली तरीही, तुमचे डिव्हाइस त्याच्या आउटपुटशी तुम्ही पाहत असलेल्या आशयाचा मूळ फ्रेम दर जुळवण्याचा प्रयत्न करणार नाही."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"अखंड असलेला"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"ॲपने याची विनंती केल्यास, तुमचा टीव्ही सहजपणे बदल करू शकत असेल तरच तुमचे डिव्हाइस त्याच्या आउटपुटशी तुम्ही पाहत असलेल्या आशयाचा मूळ फ्रेम दर जुळवेल."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"अखंड नसलेला"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"ॲपने याची विनंती केल्यास, तुमचे डिव्हाइस त्याच्या आउटपुटशी तुम्ही पाहत असलेल्या आशयाचा मूळ फ्रेम दर जुळवेल. यामुळे व्हिडिओ प्लेबॅकमधून बाहेर पडताना किंवा त्यामध्ये शिरताना तुमची स्क्रीन काही सेकंदांसाठी कोरी दिसू शकते."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"कधीही नाही"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"ॲपने याची विनंती केली तरीही, तुमचे डिव्हाइस त्याच्या आउटपुटशी तुम्ही पाहत असलेल्या आशयाचा मूळ फ्रेम दर जुळवण्याचा प्रयत्न करणार नाही."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"मजकुराचे स्केलिंग"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"<xliff:g id="SCALE">%1$d</xliff:g>%% वर स्केल करा"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"नमुन्याचा मजकूर"</string>

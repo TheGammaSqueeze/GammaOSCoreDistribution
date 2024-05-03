@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Napredne postavke zvuka"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Dozvolite način rada za igre"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Podudaranje s brojem slika u sekundi sadržaja"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Bez prekida"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Ako to aplikacija bude zahtijevala, vaš uređaj će prilagoditi izlaz originalnom broju slika u sekundi za sadržaj koji gledate SAMO ako vaš TV može izvršiti prijelaz bez prekida."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"S prekidima"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Ako to aplikacija bude zahtijevala, vaš uređaj će prilagoditi izlaz originalnom broju slika u sekundi za sadržaj koji gledate. Zbog toga se vaš ekran može isključiti na sekundu prilikom izlaza ili pristupanja reprodukciji videozapisa."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Nikada"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Čak i ako aplikacija to bude zahtijevala, uređaj nikad neće pokušati prilagoditi izlaz originalnom broju slika u sekundi za sadržaj koji gledate."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Bez prekida"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Ako to aplikacija bude zahtijevala, vaš uređaj će prilagoditi izlaz originalnom broju slika u sekundi za sadržaj koji gledate SAMO ako vaš TV može izvršiti prijelaz bez prekida."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"S prekidima"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Ako to aplikacija bude zahtijevala, vaš uređaj će prilagoditi izlaz originalnom broju slika u sekundi za sadržaj koji gledate. Zbog toga se vaš ekran može isključiti na sekundu prilikom izlaza ili pristupanja reprodukciji videozapisa."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Nikada"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Čak i ako aplikacija to bude zahtijevala, uređaj nikad neće pokušati prilagoditi izlaz originalnom broju slika u sekundi za sadržaj koji gledate."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Prilagođavanje veličine teksta"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Prilagodi na <xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Uzorak teksta"</string>

@@ -34,14 +34,14 @@ import java.util.List;
  * State to provide data for rendering match content frame rate screen.
  */
 public class MatchContentFrameRateState extends PreferenceControllerState {
-    private static final String KEY_MATCH_CONTENT_FRAME_RATE = "match_content_frame_rate_option";
+    private static final String KEY_MATCH_CONTENT_FRAME_RATE = "screen_timeout_option";
 
     private static final String KEY_MATCH_CONTENT_FRAME_RATE_SEAMLESS =
-            "match_content_frame_rate_seamless";
+            "screen_timeout_seamless";
     private static final String KEY_MATCH_CONTENT_FRAME_RATE_NON_SEAMLESS =
-            "match_content_frame_rate_non_seamless";
+            "screen_timeout_non_seamless";
     private static final String KEY_MATCH_CONTENT_FRAME_RATE_NEVER =
-            "match_content_frame_rate_never";
+            "screen_timeout_never";
     private PreferenceCompat mPrefGroup;
     private PreferenceCompat mCurrentPreference;
     private PreferenceCompat mNeverPref;
@@ -121,7 +121,7 @@ public class MatchContentFrameRateState extends PreferenceControllerState {
                 new String[]{KEY_MATCH_CONTENT_FRAME_RATE, KEY_MATCH_CONTENT_FRAME_RATE_SEAMLESS});
         mSeamlessPref.setType(PreferenceCompat.TYPE_RADIO);
         mSeamlessPref.setTitle(
-                ResourcesUtil.getString(mContext, "match_content_frame_rate_seamless"));
+                ResourcesUtil.getString(mContext, "screen_timeout_seamless"));
         mSeamlessPref.setRadioGroup(KEY_MATCH_CONTENT_FRAME_RATE);
 
         mNonSeamlessPref = mPreferenceCompatManager.getOrCreatePrefCompat(
@@ -129,13 +129,13 @@ public class MatchContentFrameRateState extends PreferenceControllerState {
                         KEY_MATCH_CONTENT_FRAME_RATE_NON_SEAMLESS});
         mNonSeamlessPref.setType(PreferenceCompat.TYPE_RADIO);
         mNonSeamlessPref.setTitle(ResourcesUtil.getString(mContext,
-                "match_content_frame_rate_non_seamless"));
+                "screen_timeout_non_seamless"));
         mNonSeamlessPref.setRadioGroup(KEY_MATCH_CONTENT_FRAME_RATE);
 
         mNeverPref = mPreferenceCompatManager.getOrCreatePrefCompat(
                 new String[]{KEY_MATCH_CONTENT_FRAME_RATE, KEY_MATCH_CONTENT_FRAME_RATE_NEVER});
         mNeverPref.setType(PreferenceCompat.TYPE_RADIO);
-        mNeverPref.setTitle(ResourcesUtil.getString(mContext, "match_content_frame_rate_never"));
+        mNeverPref.setTitle(ResourcesUtil.getString(mContext, "screen_timeout_never"));
         mNeverPref.setRadioGroup(KEY_MATCH_CONTENT_FRAME_RATE);
 
         mPrefGroup.addChildPrefCompat(mSeamlessPref);

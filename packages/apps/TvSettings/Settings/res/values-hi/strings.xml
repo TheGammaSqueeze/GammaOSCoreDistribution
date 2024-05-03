@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"आवाज़ की बेहतर सेटिंग"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"गेम मोड की अनुमति दें"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"डिसप्ले और कॉन्टेंट की फ़्रेम रेट एक बराबर सेट करें"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"ऐसे बदलाव जो डिसप्ले में आसानी से किए जा सकते हैं"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"अगर ऐप्लिकेशन ऐसा करने का अनुरोध करता है, तो आपका डिवाइस उस कॉन्टेंट के मूल फ़्रेम रेट के बराबर आउटपुट देगा जो आप देख रहे हैं. ऐसा तब होगा, जब आपका टीवी बिना किसी रुकावट के फ़्रेम रेट में बदलाव कर सकता हो."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"ऐसे बदलाव जो डिसप्ले में आसानी से नहीं किए जा सकते हैं"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"अगर ऐप्लिकेशन ऐसा करने का अनुरोध करता है, तो आपका डिवाइस उस कॉन्टेंट के मूल फ़्रेम रेट के बराबर आउटपुट देगा जिसे फिलहाल देखा जा रहा है. वीडियो देखने के दौरान या वीडियो देखना शुरू करते समय, हो सकता है कि डिवाइस की स्क्रीन पर कुछ सेकंड तक कुछ न दिखे."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"कभी नहीं"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"भले ही, ऐप्लिकेशन ने ऐसा करने का अनुरोध किया हो, लेकिन आपका डिवाइस उस कॉन्टेंट के मूल फ़्रेम रेट के बराबर आउटपुट देने की कोशिश कभी नहीं करेगा जो आप देख रहे हैं."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"ऐसे बदलाव जो डिसप्ले में आसानी से किए जा सकते हैं"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"अगर ऐप्लिकेशन ऐसा करने का अनुरोध करता है, तो आपका डिवाइस उस कॉन्टेंट के मूल फ़्रेम रेट के बराबर आउटपुट देगा जो आप देख रहे हैं. ऐसा तब होगा, जब आपका टीवी बिना किसी रुकावट के फ़्रेम रेट में बदलाव कर सकता हो."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"ऐसे बदलाव जो डिसप्ले में आसानी से नहीं किए जा सकते हैं"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"अगर ऐप्लिकेशन ऐसा करने का अनुरोध करता है, तो आपका डिवाइस उस कॉन्टेंट के मूल फ़्रेम रेट के बराबर आउटपुट देगा जिसे फिलहाल देखा जा रहा है. वीडियो देखने के दौरान या वीडियो देखना शुरू करते समय, हो सकता है कि डिवाइस की स्क्रीन पर कुछ सेकंड तक कुछ न दिखे."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"कभी नहीं"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"भले ही, ऐप्लिकेशन ने ऐसा करने का अनुरोध किया हो, लेकिन आपका डिवाइस उस कॉन्टेंट के मूल फ़्रेम रेट के बराबर आउटपुट देने की कोशिश कभी नहीं करेगा जो आप देख रहे हैं."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"टेक्स्ट स्केलिंग"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"<xliff:g id="SCALE">%1$d</xliff:g>%% तक स्केल करें"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"सैंपल टेक्स्ट"</string>

@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"উন্নত সাউন্ড সেটিংস"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"গেম মোডে অনুমতি দিন"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"মিলে যাওয়া কন্টেন্টের ফ্রেম রেট"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"নিরবচ্ছিন্ন"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"অ্যাপ অনুরোধ করলে, আপনি যে কন্টেন্ট দেখছেন তার প্রকৃত ফ্রেম রেটের সঙ্গে এর আউটপুট মেলানোর চেষ্টা ডিভাইস করবে, শুধুমাত্র যদি আপনার টিভি নিরবচ্ছিন্ন ট্রানজ্যাকশন করতে পারে।"</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"নিরবচ্ছিন্ন নয়"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"অ্যাপ অনুরোধ করলে, আপনি যে কন্টেন্ট দেখছেন তার প্রকৃত ফ্রেম রেটের সঙ্গে এর আউটপুট মেলানোর চেষ্টা ডিভাইস করবে। এর ফলে চালু বা কোনও ভিডিও প্লেব্যাকে ঢুকলে আপনার স্ক্রিন এক সেকেন্ডের জন্য ফাঁকা হয়ে যেতে পারে।"</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"কখনই নয়"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"এমনকি অ্যাপও যদি অনুরোধ করে তাও, আপনি যে কন্টেন্ট দেখছেন কখনও তার প্রকৃত ফ্রেম রেটের সঙ্গে এর আউটপুট মেলানোর চেষ্টা ডিভাইস করবে না।"</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"নিরবচ্ছিন্ন"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"অ্যাপ অনুরোধ করলে, আপনি যে কন্টেন্ট দেখছেন তার প্রকৃত ফ্রেম রেটের সঙ্গে এর আউটপুট মেলানোর চেষ্টা ডিভাইস করবে, শুধুমাত্র যদি আপনার টিভি নিরবচ্ছিন্ন ট্রানজ্যাকশন করতে পারে।"</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"নিরবচ্ছিন্ন নয়"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"অ্যাপ অনুরোধ করলে, আপনি যে কন্টেন্ট দেখছেন তার প্রকৃত ফ্রেম রেটের সঙ্গে এর আউটপুট মেলানোর চেষ্টা ডিভাইস করবে। এর ফলে চালু বা কোনও ভিডিও প্লেব্যাকে ঢুকলে আপনার স্ক্রিন এক সেকেন্ডের জন্য ফাঁকা হয়ে যেতে পারে।"</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"কখনই নয়"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"এমনকি অ্যাপও যদি অনুরোধ করে তাও, আপনি যে কন্টেন্ট দেখছেন কখনও তার প্রকৃত ফ্রেম রেটের সঙ্গে এর আউটপুট মেলানোর চেষ্টা ডিভাইস করবে না।"</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"টেক্সট স্কেলিং"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"<xliff:g id="SCALE">%1$d</xliff:g>%% পর্যন্ত স্কেল করুন"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"স্যাম্পেল টেক্সট"</string>

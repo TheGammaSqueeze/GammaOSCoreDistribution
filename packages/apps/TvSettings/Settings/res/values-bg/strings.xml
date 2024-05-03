@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"CEC за HDMI"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Разширени настройки за звука"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Разрешаване на режима на игра"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Съответствие със скоростта на кадрите на съдържанието"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Плавно"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Ако приложението поиска това, устройството ви ще намери съответствие между изхода си и оригиналната скорост на кадрите на съдържанието, което гледате, САМО ако телевизорът ви може да извърши безпроблемен преход."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Неплавно"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Ако прилож. поиска това, у-вото ви ще намери съответствие между изходните си данни и оригиналната скорост на кадрите на съдърж., което гледате. Екранът може да остане празен за секунда при приключ./стартиране на възпроизвеждането на видеосъдържание."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Никога"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Дори ако приложението поиска това, устройството ви никога няма да опита да намери съответствие между изхода си и оригиналната скорост на кадрите на съдържанието, което гледате."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Плавно"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Ако приложението поиска това, устройството ви ще намери съответствие между изхода си и оригиналната скорост на кадрите на съдържанието, което гледате, САМО ако телевизорът ви може да извърши безпроблемен преход."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Неплавно"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Ако прилож. поиска това, у-вото ви ще намери съответствие между изходните си данни и оригиналната скорост на кадрите на съдърж., което гледате. Екранът може да остане празен за секунда при приключ./стартиране на възпроизвеждането на видеосъдържание."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Никога"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Дори ако приложението поиска това, устройството ви никога няма да опита да намери съответствие между изхода си и оригиналната скорост на кадрите на съдържанието, което гледате."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Промяна на мащаба на текста"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Мащабиране до <xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Примерен текст"</string>

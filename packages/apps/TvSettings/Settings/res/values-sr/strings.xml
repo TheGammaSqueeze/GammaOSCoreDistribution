@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Напредна подешавања звука"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Дозволи режим за игре"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Користи брзину кадрова садржаја"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Без прекида"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Ако апликација то тражи, уређај ће усклађивати брзину кадрова садржаја који приказује са оригиналном брзином кадрова садржаја који гледате САМО под условом да ТВ може да обави неприметан прелаз."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"С прекидима"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Ако апликација то тражи, уређај ће усклађивати брзину кадрова садржаја који приказује са оригиналном брзином кадрова садржаја који гледате. Због тога ће екран можда накратко бити празан када заустављате или почињете репродукцију видеа."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Никад"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Чак и ако апликација то тражи, уређај никада неће покушавати да усклади брзину кадрова садржаја који приказује са оригиналном брзином кадрова садржаја који гледате."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Без прекида"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Ако апликација то тражи, уређај ће усклађивати брзину кадрова садржаја који приказује са оригиналном брзином кадрова садржаја који гледате САМО под условом да ТВ може да обави неприметан прелаз."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"С прекидима"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Ако апликација то тражи, уређај ће усклађивати брзину кадрова садржаја који приказује са оригиналном брзином кадрова садржаја који гледате. Због тога ће екран можда накратко бити празан када заустављате или почињете репродукцију видеа."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Никад"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Чак и ако апликација то тражи, уређај никада неће покушавати да усклади брзину кадрова садржаја који приказује са оригиналном брзином кадрова садржаја који гледате."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Прилагођавање величине текста"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Прилагоди на <xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Пример текста"</string>

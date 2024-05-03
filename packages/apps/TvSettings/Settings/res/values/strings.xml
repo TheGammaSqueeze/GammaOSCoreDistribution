@@ -352,26 +352,23 @@
     <string name="advanced_sound_settings_title">Advanced sound settings</string>
     <!-- Title for preference to allow game mode for display. [CHAR LIMIT=50] -->
     <string name="game_mode_title">Allow game mode</string>
-    <!-- Title for preference for forcing a display's frame
-    rate to match the content's frame rate. [CHAR LIMIT=60] -->
-    <string name="match_content_frame_rate_title">Match content frame rate</string>
     <!-- Default preference for a display's frame rate to match the content's frame rate. [CHAR LIMIT=80] -->
-    <string name="match_content_frame_rate_seamless">Seamless</string>
+    <string name="screen_timeout_seamless">Seamless</string>
     <!-- Summary for default preference for a display's frame rate to match the content's frame rate. [CHAR LIMIT=250] -->
-    <string name="match_content_frame_rate_seamless_summary">If the app requests it, your device
+    <string name="screen_timeout_seamless_summary">If the app requests it, your device
         will match its output to the original frame rate of the content you’re watching,
         ONLY if your TV can perform a seamless transition.  </string>
     <!-- Preference to force a display's frame rate to always match the content's frame rate. [CHAR LIMIT=80] -->
-    <string name="match_content_frame_rate_non_seamless">Non-seamless</string>
+    <string name="screen_timeout_non_seamless">Non-seamless</string>
     <!-- Summary for preference to force a display's frame rate to always match the content's frame rate. [CHAR LIMIT=250] -->
-    <string name="match_content_frame_rate_non_seamless_summary">If the app requests it, your
+    <string name="screen_timeout_non_seamless_summary">If the app requests it, your
         device will match its output to the original frame rate of the content you’re watching.
         This may cause your screen to go blank for a second when exiting or entering a video
         playback.</string>
     <!-- Preference to force a display's frame rate to never match the content's frame rate. [CHAR LIMIT=50] -->
-    <string name="match_content_frame_rate_never">Never</string>
+    <string name="screen_timeout_never">Never</string>
     <!-- Summary for preference to force a display's frame rate to never match the content's frame rate. [CHAR LIMIT=250] -->
-    <string name="match_content_frame_rate_never_summary">Even if the app requests it, your device
+    <string name="screen_timeout_never_summary">Even if the app requests it, your device
         will never try to match its output to the original frame rate of the content you’re
         watching.</string>
     <!-- Title for preference which when clicked lets the user configure text scaling. [CHAR LIMIT=50] -->

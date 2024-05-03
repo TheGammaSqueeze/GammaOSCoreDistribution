@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Gevorderde klankinstellings"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Laat speletjiemodus toe"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Ewenaar inhoudraamtempo"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Soomloos"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Wanneer die app dit versoek, sal jou toestel sy uitset laat pas by die oorspronklike raamtempo van die inhoud wat jy kyk, NET as jou TV \'n soomlose oorgang kan uitvoer."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Nie-soomloos"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"As die app dit versoek, sal jou toestel sy uitset laat pas by die oorspronklike raamtempo van die inhoud wat jy kyk. Dit kan veroorsaak dat jou skerm vir \'n oomblik donker raak wanneer dit by \'n videoterugspeel uit- of ingaan."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Nooit"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Selfs wanneer die app dit versoek, sal jou toestel nooit probeer om sy uitset te laat pas by die oorspronklike raamtempo van die inhoud wat jy kyk nie."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Soomloos"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Wanneer die app dit versoek, sal jou toestel sy uitset laat pas by die oorspronklike raamtempo van die inhoud wat jy kyk, NET as jou TV \'n soomlose oorgang kan uitvoer."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Nie-soomloos"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"As die app dit versoek, sal jou toestel sy uitset laat pas by die oorspronklike raamtempo van die inhoud wat jy kyk. Dit kan veroorsaak dat jou skerm vir \'n oomblik donker raak wanneer dit by \'n videoterugspeel uit- of ingaan."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Nooit"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Selfs wanneer die app dit versoek, sal jou toestel nooit probeer om sy uitset te laat pas by die oorspronklike raamtempo van die inhoud wat jy kyk nie."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Teksskalering"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Skaleer na <xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Voorbeeldteks"</string>

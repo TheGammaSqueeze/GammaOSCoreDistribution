@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Impostazioni audio avanzate"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Consenti modalità di gioco"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Adatta alla frequenza fotogrammi dei contenuti"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Fluida"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Se l\'app lo richiede, l\'output del dispositivo corrisponderà alla frequenza fotogrammi originale dei contenuti che stai guardando, SOLTANTO se la TV può effettuare una transizione fluida."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Non fluida"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Se l\'app lo richiede, l\'output del dispositivo corrisponderà alla frequenza fotogrammi originale dei contenuti che stai guardando. Lo schermo potrebbe oscurarsi per un secondo quando attivi o disattivi la riproduzione di un video."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Mai"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Anche se l\'app lo richiede, l\'output del dispositivo non potrà mai corrispondere alla frequenza fotogrammi originale dei contenuti che stai guardando."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Fluida"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Se l\'app lo richiede, l\'output del dispositivo corrisponderà alla frequenza fotogrammi originale dei contenuti che stai guardando, SOLTANTO se la TV può effettuare una transizione fluida."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Non fluida"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Se l\'app lo richiede, l\'output del dispositivo corrisponderà alla frequenza fotogrammi originale dei contenuti che stai guardando. Lo schermo potrebbe oscurarsi per un secondo quando attivi o disattivi la riproduzione di un video."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Mai"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Anche se l\'app lo richiede, l\'output del dispositivo non potrà mai corrispondere alla frequenza fotogrammi originale dei contenuti che stai guardando."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Ridimensionamento testo"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Ridimensiona a <xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Testo di esempio"</string>

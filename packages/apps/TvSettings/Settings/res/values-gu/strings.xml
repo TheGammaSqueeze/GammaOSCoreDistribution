@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"વિગતવાર સાઉન્ડ સેટિંગ"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"ગેમ મોડની મંજૂરી આપો"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"કન્ટેન્ટની ફ્રેમ રેટ સાથે મેળ કરો"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"ખામીરહિત"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"જો ઍપ તેની વિનંતી કરે, તો તમારું ડિવાઇસ તમે જોઈ રહ્યાં છો તે કન્ટેન્ટના ઑરિજિનલ ફ્રેમ રેટ સાથે, જો તમારું ટીવી ખામીરહિત સંચાર કરી શકે તો જ તેના આઉટપુટનો મેળ કરશે."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"બિન-ખામીરહિત"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"જો ઍપ તેની વિનંતી કરે, તો તમારું ડિવાઇસ તમે જોઈ રહ્યાં છો તે કન્ટેન્ટના ઑરિજિનલ ફ્રેમ રેટ સાથે તેના આઉટપુટનો મેળ કરશે. આના લીધે, જ્યારે તમે વીડિયો પ્લેબૅક ચાલુ અથવા બંધ કરો, ત્યારે તમારી સ્ક્રીન પર થોડી સેકન્ડ માટે કંઈપણ ન દેખાય તેવું બની શકે છે."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"ક્યારેય નહીં"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"જો ઍપ તેની વિનંતી કરે, તો પણ તમારું ડિવાઇસ તમે જોઈ રહ્યાં છો તે કન્ટેન્ટના ઑરિજિનલ ફ્રેમ રેટ સાથે તેના આઉટપુટનો મેળ કરવાનો ક્યારેય પ્રયાસ કરશે નહીં."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"ખામીરહિત"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"જો ઍપ તેની વિનંતી કરે, તો તમારું ડિવાઇસ તમે જોઈ રહ્યાં છો તે કન્ટેન્ટના ઑરિજિનલ ફ્રેમ રેટ સાથે, જો તમારું ટીવી ખામીરહિત સંચાર કરી શકે તો જ તેના આઉટપુટનો મેળ કરશે."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"બિન-ખામીરહિત"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"જો ઍપ તેની વિનંતી કરે, તો તમારું ડિવાઇસ તમે જોઈ રહ્યાં છો તે કન્ટેન્ટના ઑરિજિનલ ફ્રેમ રેટ સાથે તેના આઉટપુટનો મેળ કરશે. આના લીધે, જ્યારે તમે વીડિયો પ્લેબૅક ચાલુ અથવા બંધ કરો, ત્યારે તમારી સ્ક્રીન પર થોડી સેકન્ડ માટે કંઈપણ ન દેખાય તેવું બની શકે છે."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"ક્યારેય નહીં"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"જો ઍપ તેની વિનંતી કરે, તો પણ તમારું ડિવાઇસ તમે જોઈ રહ્યાં છો તે કન્ટેન્ટના ઑરિજિનલ ફ્રેમ રેટ સાથે તેના આઉટપુટનો મેળ કરવાનો ક્યારેય પ્રયાસ કરશે નહીં."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"ટેક્સ્ટ સ્કેલિંગ"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"<xliff:g id="SCALE">%1$d</xliff:g>%% સુધી સ્કેલ કરો"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"ટેક્સ્ટના કદનો નમૂનો"</string>

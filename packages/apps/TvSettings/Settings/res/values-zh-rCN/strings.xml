@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"高级声音设置"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"允许游戏模式"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"匹配内容的帧速率"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"流畅"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"如果应用要求，您的设备会将输出的帧速率调整为您所观看内容的原始帧速率，前提是您的电视可以执行流畅转换。"</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"非流畅"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"如果应用要求，您的设备会将输出的帧速率调整为您所观看内容的原始帧速率。这样一来，当视频开始播放或结束播放时，屏幕可能会短暂出现空白画面。"</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"永不"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"即使应用要求，您的设备也绝不会尝试将输出的帧速率调整为您所观看内容的原始帧速率。"</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"流畅"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"如果应用要求，您的设备会将输出的帧速率调整为您所观看内容的原始帧速率，前提是您的电视可以执行流畅转换。"</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"非流畅"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"如果应用要求，您的设备会将输出的帧速率调整为您所观看内容的原始帧速率。这样一来，当视频开始播放或结束播放时，屏幕可能会短暂出现空白画面。"</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"永不"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"即使应用要求，您的设备也绝不会尝试将输出的帧速率调整为您所观看内容的原始帧速率。"</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"文字缩放"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"缩放到 <xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"示例文本"</string>

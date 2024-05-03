@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"ਉੱਨਤ ਧੁਨੀ ਸੈਟਿੰਗਾਂ"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"ਗੇਮ ਮੋਡ ਨੂੰ ਇਜਾਜ਼ਤ ਦਿਓ"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"ਸਮੱਗਰੀ ਦੇ ਫ੍ਰੇਮ ਰੇਟ ਦਾ ਮਿਲਾਨ ਕਰੋ"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"ਸਹਿਜ"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"ਜੇ ਐਪ ਵੱਲੋਂ ਇਸਦੀ ਬੇਨਤੀ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਤਾਂ ਤੁਹਾਡਾ ਡੀਵਾਈਸ ਤੁਹਾਡੇ ਵੱਲੋਂ ਦੇਖੀ ਜਾ ਰਹੀ ਸਮੱਗਰੀ ਦੇ ਮੂਲ ਫ੍ਰੇਮ ਰੇਟ ਦਾ ਇਸਦੇ ਆਊਟਪੁੱਟ ਨਾਲ ਮਿਲਾਨ ਕਰੇਗਾ, ਸਿਰਫ਼ ਉਦੋਂ ਜੇ ਤੁਹਾਡਾ ਟੀਵੀ ਸਹਿਜ ਤਬਦੀਲੀ ਕਰ ਸਕਦਾ ਹੈ।"</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"ਸਹਿਜ ਨਹੀਂ"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"ਜੇ ਐਪ ਵੱਲੋਂ ਇਸਦੀ ਬੇਨਤੀ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਤਾਂ ਤੁਹਾਡਾ ਡੀਵਾਈਸ ਤੁਹਾਡੇ ਵੱਲੋਂ ਦੇਖੀ ਜਾ ਰਹੀ ਸਮੱਗਰੀ ਦੇ ਮੂਲ ਫ੍ਰੇਮ ਰੇਟ ਦਾ ਇਸਦੇ ਆਊਟਪੁੱਟ ਨਾਲ ਮਿਲਾਨ ਕਰੇਗਾ। ਅਜਿਹਾ ਕਰਨ ਨਾਲ ਵੀਡੀਓ ਪਲੇਬੈਕ ਤੋਂ ਬਾਹਰ ਨਿਕਲਣ ਅਤੇ ਦਾਖਲ ਹੋਣ ਵੇਲੇ ਤੁਹਾਡੀ ਸਕ੍ਰੀਨ ਇੱਕ ਸਕਿੰਟ ਲਈ ਕਾਲੀ ਹੋ ਜਾਵੇਗੀ।"</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"ਕਦੇ ਵੀ ਨਹੀਂ"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"ਐਪ ਵੱਲੋਂ ਇਸਦੀ ਬੇਨਤੀ ਕਰਨ \'ਤੇ ਵੀ, ਤੁਹਾਡਾ ਡੀਵਾਈਸ ਤੁਹਾਡੇ ਵੱਲੋਂ ਦੇਖੀ ਜਾ ਰਹੀ ਸਮੱਗਰੀ ਦੇ ਮੂਲ ਫ੍ਰੇਮ ਰੇਟ ਦਾ ਇਸਦੇ ਆਊਟਪੁੱਟ ਨਾਲ ਮਿਲਾਨ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਦੇ ਵੀ ਨਹੀਂ ਕਰੇਗਾ।"</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"ਸਹਿਜ"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"ਜੇ ਐਪ ਵੱਲੋਂ ਇਸਦੀ ਬੇਨਤੀ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਤਾਂ ਤੁਹਾਡਾ ਡੀਵਾਈਸ ਤੁਹਾਡੇ ਵੱਲੋਂ ਦੇਖੀ ਜਾ ਰਹੀ ਸਮੱਗਰੀ ਦੇ ਮੂਲ ਫ੍ਰੇਮ ਰੇਟ ਦਾ ਇਸਦੇ ਆਊਟਪੁੱਟ ਨਾਲ ਮਿਲਾਨ ਕਰੇਗਾ, ਸਿਰਫ਼ ਉਦੋਂ ਜੇ ਤੁਹਾਡਾ ਟੀਵੀ ਸਹਿਜ ਤਬਦੀਲੀ ਕਰ ਸਕਦਾ ਹੈ।"</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"ਸਹਿਜ ਨਹੀਂ"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"ਜੇ ਐਪ ਵੱਲੋਂ ਇਸਦੀ ਬੇਨਤੀ ਕੀਤੀ ਜਾਂਦੀ ਹੈ, ਤਾਂ ਤੁਹਾਡਾ ਡੀਵਾਈਸ ਤੁਹਾਡੇ ਵੱਲੋਂ ਦੇਖੀ ਜਾ ਰਹੀ ਸਮੱਗਰੀ ਦੇ ਮੂਲ ਫ੍ਰੇਮ ਰੇਟ ਦਾ ਇਸਦੇ ਆਊਟਪੁੱਟ ਨਾਲ ਮਿਲਾਨ ਕਰੇਗਾ। ਅਜਿਹਾ ਕਰਨ ਨਾਲ ਵੀਡੀਓ ਪਲੇਬੈਕ ਤੋਂ ਬਾਹਰ ਨਿਕਲਣ ਅਤੇ ਦਾਖਲ ਹੋਣ ਵੇਲੇ ਤੁਹਾਡੀ ਸਕ੍ਰੀਨ ਇੱਕ ਸਕਿੰਟ ਲਈ ਕਾਲੀ ਹੋ ਜਾਵੇਗੀ।"</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"ਕਦੇ ਵੀ ਨਹੀਂ"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"ਐਪ ਵੱਲੋਂ ਇਸਦੀ ਬੇਨਤੀ ਕਰਨ \'ਤੇ ਵੀ, ਤੁਹਾਡਾ ਡੀਵਾਈਸ ਤੁਹਾਡੇ ਵੱਲੋਂ ਦੇਖੀ ਜਾ ਰਹੀ ਸਮੱਗਰੀ ਦੇ ਮੂਲ ਫ੍ਰੇਮ ਰੇਟ ਦਾ ਇਸਦੇ ਆਊਟਪੁੱਟ ਨਾਲ ਮਿਲਾਨ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਦੇ ਵੀ ਨਹੀਂ ਕਰੇਗਾ।"</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"ਲਿਖਤ ਸਕੇਲਿੰਗ"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"<xliff:g id="SCALE">%1$d</xliff:g>%% ਤੱਕ ਸਕੇਲ ਕਰੋ"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"ਨਮੂਨਾ ਲਿਖਤ"</string>

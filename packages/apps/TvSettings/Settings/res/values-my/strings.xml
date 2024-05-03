@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"အဆင့်မြင့် အသံ ဆက်တင်များ"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"ဂိမ်းမုဒ် ခွင့်ပြုခြင်း"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"အကြောင်းအရာ၏ ဖရိန်ပြနှုန်းကို တူညီအောင်ညှိခြင်း"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"တစ်ဆက်တည်း"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"အက်ပ်က ၎င်းကို တောင်းဆိုပါက သင်၏ TV သည် တစ်ဆက်တည်း ကူးပြောင်းခြင်းကို လုပ်ဆောင်နိုင်မှသာ သင့်စက်သည် ၎င်း၏ရုပ်ထွက်ကို သင်ကြည့်နေသည့် အကြောင်းအရာ၏ မူရင်းဖရိမ်ပြနှုန်းနှင့် ကိုက်ညီအောင် လုပ်ပါမည်။"</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"တစ်ဆက်တည်း မဟုတ်သော"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"အက်ပ်က ၎င်းကို တောင်းဆိုပါက သင့်စက်သည် ၎င်း၏ရုပ်ထွက်ကို သင်ကြည့်နေသည့် အကြောင်းအရာ၏ မူရင်းဖရိမ်ပြနှုန်းနှင့် ကိုက်ညီအောင် လုပ်ပါမည်။ ပြန်ဖွင့်နေသော ဗီဒီယိုမှ ထွက် (သို့) ဝင်သောအခါ သင့်ဖန်သားပြင်သည် တစ်စက္ကန့်ခန့် ဗလာဖြစ်သွားနိုင်သည်။"</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"မည်သည့်အခါမှ"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"အက်ပ်က ၎င်းကို တောင်းဆိုသော်လည်း သင့်စက်သည် ၎င်း၏ရုပ်ထွက်ကို သင်ကြည့်နေသည့် အကြောင်းအရာ၏ မူရင်းဖရိမ်ပြနှုန်းနှင့် ကိုက်ညီအောင် မည်သည့်အခါမျှ လုပ်မည်မဟုတ်ပါ။"</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"တစ်ဆက်တည်း"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"အက်ပ်က ၎င်းကို တောင်းဆိုပါက သင်၏ TV သည် တစ်ဆက်တည်း ကူးပြောင်းခြင်းကို လုပ်ဆောင်နိုင်မှသာ သင့်စက်သည် ၎င်း၏ရုပ်ထွက်ကို သင်ကြည့်နေသည့် အကြောင်းအရာ၏ မူရင်းဖရိမ်ပြနှုန်းနှင့် ကိုက်ညီအောင် လုပ်ပါမည်။"</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"တစ်ဆက်တည်း မဟုတ်သော"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"အက်ပ်က ၎င်းကို တောင်းဆိုပါက သင့်စက်သည် ၎င်း၏ရုပ်ထွက်ကို သင်ကြည့်နေသည့် အကြောင်းအရာ၏ မူရင်းဖရိမ်ပြနှုန်းနှင့် ကိုက်ညီအောင် လုပ်ပါမည်။ ပြန်ဖွင့်နေသော ဗီဒီယိုမှ ထွက် (သို့) ဝင်သောအခါ သင့်ဖန်သားပြင်သည် တစ်စက္ကန့်ခန့် ဗလာဖြစ်သွားနိုင်သည်။"</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"မည်သည့်အခါမှ"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"အက်ပ်က ၎င်းကို တောင်းဆိုသော်လည်း သင့်စက်သည် ၎င်း၏ရုပ်ထွက်ကို သင်ကြည့်နေသည့် အကြောင်းအရာ၏ မူရင်းဖရိမ်ပြနှုန်းနှင့် ကိုက်ညီအောင် မည်သည့်အခါမျှ လုပ်မည်မဟုတ်ပါ။"</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"စာသား အရွယ်ချိန်ညှိခြင်း"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"<xliff:g id="SCALE">%1$d</xliff:g>%% အထိ ချိန်ညှိချက်"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"နမူနာ စာသား"</string>

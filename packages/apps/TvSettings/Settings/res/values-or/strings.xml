@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"ଉନ୍ନତ ସାଉଣ୍ଡ ସେଟିଂସ"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"ଗେମ୍ ମୋଡକୁ ଅନୁମତି ଦିଅନ୍ତୁ"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"ବିଷୟବସ୍ତୁ ଫ୍ରେମ ରେଟ ମେଳ କରନ୍ତୁ"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"ବାଧାହୀନ"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"ଯଦି ଆପଟି ଏଥିପାଇଁ ଅନୁରୋଧ କରେ, ତେବେ ଆପଣଙ୍କ ଟିଭି ବାଧାହୀନ ଟ୍ରାଞ୍ଜିସନ୍ ସମ୍ପାଦନ କରିପାରିଲେ ହିଁ କେବଳ ଆପଣଙ୍କ ଡିଭାଇସ୍ ଆପଣ ଦେଖୁଥିବା ବିଷୟବସ୍ତୁର ମୂଳ ଫ୍ରେମ୍ ରେଟ୍ ସହ ତାହାର ଆଉଟପୁଟକୁ ମେଳ କରିବ।"</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"ନନ-ସିମଲେସ"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"ଯଦି ଆପଟି ଏଥିପାଇଁ ଅନୁରୋଧ କରେ, ତେବେ ଆପଣଙ୍କ ଡିଭାଇସ ଆପଣ ଦେଖୁଥିବା ବିଷୟବସ୍ତୁର ମୂଳ ଫ୍ରେମ ରେଟ ସହ ତାହାର ଆଉଟପୁଟକୁ ମେଳ କରିବ। ଏହା ଫଳରେ ଏକ ଭିଡିଓ ପ୍ଲେବ୍ୟାକ ମୋଡ ଚାଲୁ କିମ୍ବା ବନ୍ଦ କରିବା ସମୟରେ ଏକ ସେକେଣ୍ଡ ପାଇଁ ଆପଣଙ୍କ ସ୍କ୍ରିନରେ କିଛି ଦେଖାଯାଇନପାରେ।"</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"କେବେ ବି ନୁହେଁ"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"ଆପଟି ଏଥିପାଇଁ ଅନୁରୋଧ କଲେ ମଧ୍ୟ, ଆପଣଙ୍କ ଡିଭାଇସ୍ ଆପଣ ଦେଖୁଥିବା ବିଷୟବସ୍ତୁର ମୂଳ ଫ୍ରେମ୍ ରେଟ୍ ସହ ତାହାର ଆଉଟପୁଟକୁ କେବେ ବି ମେଳ କରିବାକୁ ଚେଷ୍ଟା କରିବ ନାହିଁ।"</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"ବାଧାହୀନ"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"ଯଦି ଆପଟି ଏଥିପାଇଁ ଅନୁରୋଧ କରେ, ତେବେ ଆପଣଙ୍କ ଟିଭି ବାଧାହୀନ ଟ୍ରାଞ୍ଜିସନ୍ ସମ୍ପାଦନ କରିପାରିଲେ ହିଁ କେବଳ ଆପଣଙ୍କ ଡିଭାଇସ୍ ଆପଣ ଦେଖୁଥିବା ବିଷୟବସ୍ତୁର ମୂଳ ଫ୍ରେମ୍ ରେଟ୍ ସହ ତାହାର ଆଉଟପୁଟକୁ ମେଳ କରିବ।"</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"ନନ-ସିମଲେସ"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"ଯଦି ଆପଟି ଏଥିପାଇଁ ଅନୁରୋଧ କରେ, ତେବେ ଆପଣଙ୍କ ଡିଭାଇସ ଆପଣ ଦେଖୁଥିବା ବିଷୟବସ୍ତୁର ମୂଳ ଫ୍ରେମ ରେଟ ସହ ତାହାର ଆଉଟପୁଟକୁ ମେଳ କରିବ। ଏହା ଫଳରେ ଏକ ଭିଡିଓ ପ୍ଲେବ୍ୟାକ ମୋଡ ଚାଲୁ କିମ୍ବା ବନ୍ଦ କରିବା ସମୟରେ ଏକ ସେକେଣ୍ଡ ପାଇଁ ଆପଣଙ୍କ ସ୍କ୍ରିନରେ କିଛି ଦେଖାଯାଇନପାରେ।"</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"କେବେ ବି ନୁହେଁ"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"ଆପଟି ଏଥିପାଇଁ ଅନୁରୋଧ କଲେ ମଧ୍ୟ, ଆପଣଙ୍କ ଡିଭାଇସ୍ ଆପଣ ଦେଖୁଥିବା ବିଷୟବସ୍ତୁର ମୂଳ ଫ୍ରେମ୍ ରେଟ୍ ସହ ତାହାର ଆଉଟପୁଟକୁ କେବେ ବି ମେଳ କରିବାକୁ ଚେଷ୍ଟା କରିବ ନାହିଁ।"</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"ଟେକ୍ସଟ୍ ସ୍କେଲିଂ"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"<xliff:g id="SCALE">%1$d</xliff:g>%% ପର୍ଯ୍ୟନ୍ତ ସ୍କେଲ୍ କରନ୍ତୁ"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"ସାମ୍ପଲ୍ ଟେକ୍ସଟ୍"</string>

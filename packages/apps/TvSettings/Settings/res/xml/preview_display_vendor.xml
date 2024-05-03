@@ -25,8 +25,8 @@
         android:title="@string/font_scale_settings_title"
         android:fragment="com.android.tv.settings.device.displaysound.FontScalePreferenceFragment" />
     <Preference
-        android:fragment="com.android.tv.settings.device.displaysound.MatchContentFrameRateFragment"
-        android:key="match_content_frame_rate"
+        android:fragment="com.android.tv.settings.device.displaysound.ScreenTimeoutFragment"
+        android:key="screen_timeout"
         android:title="@string/screen_timeout_title"/>
     <Preference
         android:fragment="com.android.tv.settings.device.displaysound.ResolutionSelectionFragment"

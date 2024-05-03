@@ -384,8 +384,8 @@ enum ItemId {
     // Dolby TrueHD (toggle)
     DISPLAY_SOUND_ADVANCED_SOUNDS_DTHD = 0x15390000;
 
-    // TvSettings > Display & Sound > Match content frame rate
-    DISPLAY_SOUND_MATCH_CONTENT_FRAMERATE = 0x15500000;
+    // TvSettings > Display & Sound > Screen Timeout
+    DISPLAY_SOUND_SCREEN_TIMEOUT = 0x15500000;
 
     // TvSettings > Display & Sound > Match content frame rate >
     // Seamless (toggle)

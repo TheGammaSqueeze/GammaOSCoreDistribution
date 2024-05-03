@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"উন্নত ধ্বনি ছেটিংসমূহ"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"গে’ম ম’ডৰ অনুমতি দিয়ক"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"সমলৰ ফ্ৰে\'মৰ হাৰ মিলাওক"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"বাধাহীন"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"এপ্‌টোৱে ইয়াৰ বাবে অনুৰোধ কৰিলে, আপোনাৰ ডিভাইচটোৱে আপুনি চাই থকা সমলৰ মূল ফ্ৰে’মৰ হাৰৰ সৈতে ইয়াৰ আউটপুট মিলাব, এনে তেতিয়াহে হ’ব যেতিয়া আপোনাৰ টিভিটোৱে এটা বাধাহীন পৰিৱৰ্তন সম্পাদন কৰিব পাৰিব।"</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"বাধাহীন নহয়"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"এপ্‌টোৱে ইয়াৰ বাবে অনুৰোধ কৰিলে, আপোনাৰ ডিভাইচটোৱে আপুনি চাই থকা সমলৰ মূল ফ্ৰে’মৰ হাৰৰ সৈতে ইয়াৰ আউটপুট মিলাব। ইয়াৰ ফলত এটা ভিডিঅ’ প্লে’বেক আৰম্ভ কৰোঁতে অথবা তাৰপৰা বাহিৰ হওঁতে এক ছেকেণ্ডৰ বাবে আপোনাৰ স্ক্ৰীনখনত একো নোহোৱা হৈ পৰিব পাৰে।"</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"কেতিয়াও নহয়"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"এপ্‌টোৱে ইয়াৰ বাবে অনুৰোধ কৰিলেও আপোনাৰ ডিভাইচটোৱে কেতিয়াও আপুনি চাই থকা সমলৰ মূল ফ্ৰে’মৰ হাৰৰ সৈতে ইয়াৰ আউটপুট মিলাবলৈ চেষ্টা নকৰে।"</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"বাধাহীন"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"এপ্‌টোৱে ইয়াৰ বাবে অনুৰোধ কৰিলে, আপোনাৰ ডিভাইচটোৱে আপুনি চাই থকা সমলৰ মূল ফ্ৰে’মৰ হাৰৰ সৈতে ইয়াৰ আউটপুট মিলাব, এনে তেতিয়াহে হ’ব যেতিয়া আপোনাৰ টিভিটোৱে এটা বাধাহীন পৰিৱৰ্তন সম্পাদন কৰিব পাৰিব।"</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"বাধাহীন নহয়"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"এপ্‌টোৱে ইয়াৰ বাবে অনুৰোধ কৰিলে, আপোনাৰ ডিভাইচটোৱে আপুনি চাই থকা সমলৰ মূল ফ্ৰে’মৰ হাৰৰ সৈতে ইয়াৰ আউটপুট মিলাব। ইয়াৰ ফলত এটা ভিডিঅ’ প্লে’বেক আৰম্ভ কৰোঁতে অথবা তাৰপৰা বাহিৰ হওঁতে এক ছেকেণ্ডৰ বাবে আপোনাৰ স্ক্ৰীনখনত একো নোহোৱা হৈ পৰিব পাৰে।"</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"কেতিয়াও নহয়"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"এপ্‌টোৱে ইয়াৰ বাবে অনুৰোধ কৰিলেও আপোনাৰ ডিভাইচটোৱে কেতিয়াও আপুনি চাই থকা সমলৰ মূল ফ্ৰে’মৰ হাৰৰ সৈতে ইয়াৰ আউটপুট মিলাবলৈ চেষ্টা নকৰে।"</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"পাঠৰ স্কে’লিং"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"<xliff:g id="SCALE">%1$d</xliff:g>%%লৈ স্কে’ল কৰক"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"পাঠৰ নমুনা"</string>

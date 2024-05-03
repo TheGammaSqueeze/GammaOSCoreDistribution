@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"I-HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Amasethingi womsindo athuthukisiwe"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Vumela imodi yegeyimu"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Fanisa isilinganiso sikazimele wokuqukethwe"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Okungenazihibe"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Uma uhlelo lwakho lokusebenza likucela, idivayisi yakho izofanisa okukhishwayo kwayo nezinga lozimele lokwangempela lokuqukethwe okubukayo, KUPHELA uma i-TV yakho ikwazi ukwenza ukuguqulwa okungenazihibe."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Akukhona okungenazihibe"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Uma uhlelo lokusebenza likucela, idivayisi yakho izofanisa okukhiswayo kwakho nezinga lozimele lokwangempela lokuqukethwe okubukayo. Lokhu kungase kubangele ukuthi isikrini singabi nalutho okwesikhashana nje lapho uphuma noma ungena kukudlala kwevidiyo."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Soze"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Ngisho noma uhlelo lokusebenza likucela, idivayisi yakho ayisoze yazama ukufanisa okukhiswayo kwakho nezinga lozimele lokwangempela lokuqukethwe okubukayo."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Okungenazihibe"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Uma uhlelo lwakho lokusebenza likucela, idivayisi yakho izofanisa okukhishwayo kwayo nezinga lozimele lokwangempela lokuqukethwe okubukayo, KUPHELA uma i-TV yakho ikwazi ukwenza ukuguqulwa okungenazihibe."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Akukhona okungenazihibe"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Uma uhlelo lokusebenza likucela, idivayisi yakho izofanisa okukhiswayo kwakho nezinga lozimele lokwangempela lokuqukethwe okubukayo. Lokhu kungase kubangele ukuthi isikrini singabi nalutho okwesikhashana nje lapho uphuma noma ungena kukudlala kwevidiyo."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Soze"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Ngisho noma uhlelo lokusebenza likucela, idivayisi yakho ayisoze yazama ukufanisa okukhiswayo kwakho nezinga lozimele lokwangempela lokuqukethwe okubukayo."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Ukukalwa kombhalo"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Linganisela ku-<xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Isampuli yombhalo"</string>

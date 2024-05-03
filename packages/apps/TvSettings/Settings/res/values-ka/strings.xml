@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"ხმის გაფართოებული პარამეტრები"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"თამაშის რეჟიმის დაშვება"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"კონტენტის კადრების სიჩქარესთან შესაბამისობა"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"დაუბრკოლებელი"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"თუ აპი ამას მოითხოვს, თქვენი მოწყობილობა დაამთხვევს თავის გამოსავალს იმ კონტენტის კადრების ორიგინალურ სიჩქარეს, რომელსაც უყურებთ, მხოლოდ იმ შემთხვევაში, თუ თქვენს ტელევიზორს დაუბრკოლებლად გადასვლა შეუძლია."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"არადაუბრკოლებელი"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"თუ აპი ამას მოითხოვს, თქვენი მოწყობილობა დაამთხვევს თავის გამოსავალს იმ კონტენტის კადრების ორიგინალურ სიჩქარეს, რომელსაც უყურებთ. ამის გამო, შეიძლება, ვიდეოს დაკვრის დაწყებისას ან გათიშვისას ეკრანზე ერთი წამით ყველაფერი გაქრეს."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"არასოდეს"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"თუნდაც აპი ითხოვდეს ამას, თქვენი მოწყობილობა არასოდეს შეეცდება თავისი გამოსავლის დამთხვევას იმ კონტენტის კადრების ორიგინალურ სიჩქარესთან, რომელსაც უყურებთ."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"დაუბრკოლებელი"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"თუ აპი ამას მოითხოვს, თქვენი მოწყობილობა დაამთხვევს თავის გამოსავალს იმ კონტენტის კადრების ორიგინალურ სიჩქარეს, რომელსაც უყურებთ, მხოლოდ იმ შემთხვევაში, თუ თქვენს ტელევიზორს დაუბრკოლებლად გადასვლა შეუძლია."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"არადაუბრკოლებელი"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"თუ აპი ამას მოითხოვს, თქვენი მოწყობილობა დაამთხვევს თავის გამოსავალს იმ კონტენტის კადრების ორიგინალურ სიჩქარეს, რომელსაც უყურებთ. ამის გამო, შეიძლება, ვიდეოს დაკვრის დაწყებისას ან გათიშვისას ეკრანზე ერთი წამით ყველაფერი გაქრეს."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"არასოდეს"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"თუნდაც აპი ითხოვდეს ამას, თქვენი მოწყობილობა არასოდეს შეეცდება თავისი გამოსავლის დამთხვევას იმ კონტენტის კადრების ორიგინალურ სიჩქარესთან, რომელსაც უყურებთ."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"ტექსტის მასშტაბირება"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"მასშტაბირება <xliff:g id="SCALE">%1$d</xliff:g>%%-მდე"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"ტექსტის ნიმუში"</string>

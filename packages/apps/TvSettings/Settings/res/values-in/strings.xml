@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Setelan suara lanjutan"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Izinkan mode game"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Sesuaikan kecepatan frame konten"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Lancar"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Jika aplikasi memintanya, perangkat akan mencocokkan outputnya ke kecepatan frame asli konten yang sedang Anda tonton, HANYA jika TV dapat melakukan transisi yang lancar."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Tidak lancar"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Jika aplikasi memintanya, perangkat akan menyesuaikan outputnya agar cocok dengan kecepatan frame asli dari konten yang sedang Anda tonton. Hal ini dapat membuat layar kosong sebentar saat Anda keluar dari atau masuk ke pemutaran video."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Jangan pernah"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Meskipun aplikasi memintanya, perangkat tidak akan mencoba mencocokkan outputnya ke kecepatan frame asli konten yang sedang Anda tonton."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Lancar"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Jika aplikasi memintanya, perangkat akan mencocokkan outputnya ke kecepatan frame asli konten yang sedang Anda tonton, HANYA jika TV dapat melakukan transisi yang lancar."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Tidak lancar"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Jika aplikasi memintanya, perangkat akan menyesuaikan outputnya agar cocok dengan kecepatan frame asli dari konten yang sedang Anda tonton. Hal ini dapat membuat layar kosong sebentar saat Anda keluar dari atau masuk ke pemutaran video."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Jangan pernah"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Meskipun aplikasi memintanya, perangkat tidak akan mencoba mencocokkan outputnya ke kecepatan frame asli konten yang sedang Anda tonton."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Penskalaan teks"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Skalakan ke <xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Teks contoh"</string>

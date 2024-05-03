@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Advanced sound settings"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Allow game mode"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Match content frame rate"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Seamless"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"If the app requests it, your device will match its output to the original frame rate of the content you’re watching, ONLY if your TV can perform a seamless transition."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Non-seamless"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"If the app requests it, your device will match its output to the original frame rate of the content you’re watching. This may cause your screen to go blank for a second when exiting or entering a video playback."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Never"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Even if the app requests it, your device will never try to match its output to the original frame rate of the content you’re watching."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Seamless"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"If the app requests it, your device will match its output to the original frame rate of the content you’re watching, ONLY if your TV can perform a seamless transition."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Non-seamless"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"If the app requests it, your device will match its output to the original frame rate of the content you’re watching. This may cause your screen to go blank for a second when exiting or entering a video playback."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Never"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Even if the app requests it, your device will never try to match its output to the original frame rate of the content you’re watching."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Text scaling"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Scale to <xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Sample text"</string>

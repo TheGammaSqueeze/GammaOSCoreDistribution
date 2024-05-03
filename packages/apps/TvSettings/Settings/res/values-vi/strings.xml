@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Cài đặt âm thanh nâng cao"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Cho phép chế độ trò chơi"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"So khớp tốc độ khung hình của nội dung"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Liền mạch"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Nếu ứng dụng yêu cầu, thiết bị của bạn sẽ khớp đầu ra của màn hình với tốc độ khung hình gốc của nội dung bạn đang xem, CHỈ khi TV có thể thực hiện một lần chuyển đổi liền mạch."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Không liền mạch"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Nếu ứng dụng yêu cầu, thiết bị của bạn sẽ khớp đầu ra của màn hình với tốc độ khung hình gốc của nội dung bạn đang xem. Việc này có thể khiến màn hình không hiển thị nội dung trong giây lát khi bạn thoát hoặc vào chế độ phát video."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Không bao giờ"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Ngay cả khi ứng dụng yêu cầu, thiết bị của bạn sẽ không bao giờ tìm cách khớp đầu ra của màn hình với tốc độ khung hình gốc của nội dung bạn đang xem."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Liền mạch"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Nếu ứng dụng yêu cầu, thiết bị của bạn sẽ khớp đầu ra của màn hình với tốc độ khung hình gốc của nội dung bạn đang xem, CHỈ khi TV có thể thực hiện một lần chuyển đổi liền mạch."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Không liền mạch"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Nếu ứng dụng yêu cầu, thiết bị của bạn sẽ khớp đầu ra của màn hình với tốc độ khung hình gốc của nội dung bạn đang xem. Việc này có thể khiến màn hình không hiển thị nội dung trong giây lát khi bạn thoát hoặc vào chế độ phát video."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Không bao giờ"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Ngay cả khi ứng dụng yêu cầu, thiết bị của bạn sẽ không bao giờ tìm cách khớp đầu ra của màn hình với tốc độ khung hình gốc của nội dung bạn đang xem."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Chuyển tỷ lệ chữ"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Chuyển tỷ lệ thành <xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Văn bản mẫu"</string>

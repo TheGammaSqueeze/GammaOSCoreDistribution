@@ -43,8 +43,8 @@
         custom:uri="@string/hdr_and_color_format_slice_uri"
         custom:isPreferenceVisible="false" />
     <Preference
-        android:fragment="com.android.tv.settings.device.displaysound.MatchContentFrameRateFragment"
-        android:key="match_content_frame_rate"
+        android:fragment="com.android.tv.settings.device.displaysound.ScreenTimeoutFragment"
+        android:key="screen_timeout"
         android:title="@string/screen_timeout_title"/>
     <Preference
         android:fragment="com.android.tv.settings.device.displaysound.ResolutionSelectionFragment"

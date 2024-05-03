@@ -29,16 +29,16 @@ import com.android.tv.twopanelsettings.slices.InfoFragment;
 
 /**
  * A class that hosts {@link InfoFragment}s for preferences in
- * {@link MatchContentFrameRateFragment}.
+ * {@link ScreenTimeoutFragment}.
  */
 @Keep
-public class MatchContentFrameRateInfo {
+public class ScreenTimeoutInfo {
     /** A class that hosts {@link InfoFragment} for seamless match content frame rate
      * preference. */
     public static class SeamlessInfoFragment extends BaseInfoFragment {
         @Override
         protected int getSummaryResId() {
-            return R.string.match_content_frame_rate_seamless_summary;
+            return R.string.screen_timeout_seamless_summary;
         }
     }
 
@@ -47,7 +47,7 @@ public class MatchContentFrameRateInfo {
     public static class NonSeamlessInfoFragment extends BaseInfoFragment {
         @Override
         protected int getSummaryResId() {
-            return R.string.match_content_frame_rate_non_seamless_summary;
+            return R.string.screen_timeout_non_seamless_summary;
         }
     }
 
@@ -56,7 +56,7 @@ public class MatchContentFrameRateInfo {
     public static class NeverInfoFragment extends BaseInfoFragment {
         @Override
         protected int getSummaryResId() {
-            return R.string.match_content_frame_rate_never_summary;
+            return R.string.screen_timeout_never_summary;
         }
     }
 

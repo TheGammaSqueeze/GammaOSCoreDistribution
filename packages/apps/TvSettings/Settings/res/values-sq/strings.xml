@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Cilësimet e përparuara të tingullit"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Lejo modalitetin e lojës"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Përshtat shpejtësinë e kuadrove të përmbajtjes"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"I thjeshtuar"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Nëse aplikacioni e kërkon, pajisja jote do ta përshtatë daljen e saj me shpejtësinë origjinale të kuadrove që shikon, VETËM nëse televizori mund të kryejë një kalim të thjeshtuar."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Jo i thjeshtuar"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Nëse aplikacioni e kërkon, pajisja jote do ta përshtatë daljen e saj me shpejtësinë origjinale të kuadrove që shikon. Kjo mund të bëjë që ekrani të jetë bosh për një sekondë kur del ose hyn në luajtjen e një videoje."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Asnjëherë"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Edhe nëse aplikacioni e kërkon, pajisja jote asnjëherë nuk do të përpiqet ta përshtatë daljen e saj me shpejtësinë origjinale të kuadrove që shikon."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"I thjeshtuar"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Nëse aplikacioni e kërkon, pajisja jote do ta përshtatë daljen e saj me shpejtësinë origjinale të kuadrove që shikon, VETËM nëse televizori mund të kryejë një kalim të thjeshtuar."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Jo i thjeshtuar"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Nëse aplikacioni e kërkon, pajisja jote do ta përshtatë daljen e saj me shpejtësinë origjinale të kuadrove që shikon. Kjo mund të bëjë që ekrani të jetë bosh për një sekondë kur del ose hyn në luajtjen e një videoje."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Asnjëherë"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Edhe nëse aplikacioni e kërkon, pajisja jote asnjëherë nuk do të përpiqet ta përshtatë daljen e saj me shpejtësinë origjinale të kuadrove që shikon."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Shkallëzimi i tekstit"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Shkalla në <xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Teksti shembull"</string>

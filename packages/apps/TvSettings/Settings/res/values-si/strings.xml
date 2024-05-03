@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"උසස් ශබ්ද සැකසීම්"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"ක්‍රීඩා ප්‍රකාරයට ඉඩ දෙන්න"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"අන්තර්ගත රාමු අනුපාතය ගළපන්න"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"සුමට"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"යෙදුම එය ඉල්ලුවහොත්, ඔබගේ උපාංගය එහි ප්‍රතිදානය ඔබ නරඹන අන්තර්ගතයේ මුල් රාමු අනුපාතයට, ඔබගේ TV හට සුමට සංක්‍රමනයක් සිදු කළ හැකි නම් පමණක් ගළපනු ඇත."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"සුමට නොවන"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"යෙදුම එය ඉල්ලුවහොත්, ඔබගේ උපාංගය එහි ප්‍රතිදානය ඔබ නරඹන අන්තර්ගතයේ මුල් රාමු අනුපාතයට ගළපනු ඇත. වීඩියෝ පසුධාවනයකින් පිටවන විට හෝ ඇතුළු වන විට තත්පරයකට ඔබගේ තිරය හිස් වීමට මෙය හේතු විය හැකිය."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"කවදාවත් නෑ"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"යෙදුම එය ඉල්ලුවහොත් පවා, ඔබගේ උපාංගය කිසි විටක එහි ප්‍රතිදානය ඔබ නරඹන අන්තර්ගතයේ මුල් රාමු අනුපාතයට ගැළපීමට උත්සාහ නොකරනු ඇත."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"සුමට"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"යෙදුම එය ඉල්ලුවහොත්, ඔබගේ උපාංගය එහි ප්‍රතිදානය ඔබ නරඹන අන්තර්ගතයේ මුල් රාමු අනුපාතයට, ඔබගේ TV හට සුමට සංක්‍රමනයක් සිදු කළ හැකි නම් පමණක් ගළපනු ඇත."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"සුමට නොවන"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"යෙදුම එය ඉල්ලුවහොත්, ඔබගේ උපාංගය එහි ප්‍රතිදානය ඔබ නරඹන අන්තර්ගතයේ මුල් රාමු අනුපාතයට ගළපනු ඇත. වීඩියෝ පසුධාවනයකින් පිටවන විට හෝ ඇතුළු වන විට තත්පරයකට ඔබගේ තිරය හිස් වීමට මෙය හේතු විය හැකිය."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"කවදාවත් නෑ"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"යෙදුම එය ඉල්ලුවහොත් පවා, ඔබගේ උපාංගය කිසි විටක එහි ප්‍රතිදානය ඔබ නරඹන අන්තර්ගතයේ මුල් රාමු අනුපාතයට ගැළපීමට උත්සාහ නොකරනු ඇත."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"පෙළ පරිමාණ කිරීම"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"<xliff:g id="SCALE">%1$d</xliff:g>%% වෙත පරිමාණ කරන්න"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"ආදර්ශ පෙළ"</string>

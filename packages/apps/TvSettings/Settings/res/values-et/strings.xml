@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Täpsemad heliseaded"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Luba mängurežiim"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Vastenda sisu kaadrisagedusega"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Sujuv"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Kui rakendus seda taotleb, vastendab teie seade väljundi vaadatava sisu algse kaadrisagedusega AINULT siis, kui teie teler on sujuvaks üleviimiseks suuteline."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Mittesujuv"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Kui rakendus seda taotleb, vastendab teie seade väljundi vaadatava sisu algse kaadrisagedusega. Seetõttu võib ekraanikuva video taasesitusest väljumisel või sellele lülitumisel hetkeks tühi olla."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Mitte kunagi"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Isegi kui rakendus seda taotleb, ei ürita teie seade mitte kunagi väljundit vaadatava sisu algse kaadrisagedusega vastendada."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Sujuv"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Kui rakendus seda taotleb, vastendab teie seade väljundi vaadatava sisu algse kaadrisagedusega AINULT siis, kui teie teler on sujuvaks üleviimiseks suuteline."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Mittesujuv"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Kui rakendus seda taotleb, vastendab teie seade väljundi vaadatava sisu algse kaadrisagedusega. Seetõttu võib ekraanikuva video taasesitusest väljumisel või sellele lülitumisel hetkeks tühi olla."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Mitte kunagi"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Isegi kui rakendus seda taotleb, ei ürita teie seade mitte kunagi väljundit vaadatava sisu algse kaadrisagedusega vastendada."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Teksti skaleerimine"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Kasuta <xliff:g id="SCALE">%1$d</xliff:g>%% mastaapi"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Näidistekst"</string>

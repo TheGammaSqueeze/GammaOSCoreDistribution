@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Rozšířená nastavení zvuku"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Povolit herní režim"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Sladit snímkovou frekvenci obsahu"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Synchronizované"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Zařízení se pokusí srovnat svůj výstup s původní snímkovou frekvencí sledovaného obsahu (pokud o to aplikace požádá a POUZE v případě, že vaše televize podporuje plynulý přechod na synchronizované zobrazení)."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Nesynchronizované"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Zařízení se pokusí srovnat svůj výstup s původní snímkovou frekvencí sledovaného obsahu (pokud o to aplikace požádá). V důsledku toho se může obrazovka při zahájení nebo ukončení přehrávání videa na chviličku vypnout."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Nikdy"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Zařízení se nikdy nebude pokoušet srovnat svůj výstup s původní snímkovou frekvencí sledovaného obsahu (ani pokud o to aplikace požádá)."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Synchronizované"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Zařízení se pokusí srovnat svůj výstup s původní snímkovou frekvencí sledovaného obsahu (pokud o to aplikace požádá a POUZE v případě, že vaše televize podporuje plynulý přechod na synchronizované zobrazení)."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Nesynchronizované"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Zařízení se pokusí srovnat svůj výstup s původní snímkovou frekvencí sledovaného obsahu (pokud o to aplikace požádá). V důsledku toho se může obrazovka při zahájení nebo ukončení přehrávání videa na chviličku vypnout."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Nikdy"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Zařízení se nikdy nebude pokoušet srovnat svůj výstup s původní snímkovou frekvencí sledovaného obsahu (ani pokud o to aplikace požádá)."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Zvětšení/zmenšení textu"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Přizpůsobit velikost na <xliff:g id="SCALE">%1$d</xliff:g> %%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Ukázkový text"</string>

@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"إعدادات الصوت المتقدمة"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"السماح بوضع الألعاب"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"مطابقة عدد اللقطات في الثانية للمحتوى"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"انتقال سلس"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"بناءً على طلب التطبيق وشريطة توفّر إمكانية الانتقال السلس في التلفزيون الخاص بك، ستتطابق مخرجات جهازك مع العدد الأصلي للقطات في الثانية الذي يظهر به ما تشاهده من محتوى."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"انتقال غير سلس"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"ستتطابق مخرجات جهازك مع العدد الأصلي للقطات في الثانية الذي يظهر به ما تشاهده من محتوى إذا طلب التطبيق ذلك. وقد يؤدي ذلك إلى ظهور شاشة فارغة لفترة قصيرة عند الدخول إلى وضع تشغيل فيديو أو الخروج منه."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"أبدًا"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"لن تتطابق مخرجات جهازك أبدًا مع العدد الأصلي للقطات في الثانية الذي يظهر به ما تشاهده من محتوى حتى إذا طلب التطبيق ذلك."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"انتقال سلس"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"بناءً على طلب التطبيق وشريطة توفّر إمكانية الانتقال السلس في التلفزيون الخاص بك، ستتطابق مخرجات جهازك مع العدد الأصلي للقطات في الثانية الذي يظهر به ما تشاهده من محتوى."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"انتقال غير سلس"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"ستتطابق مخرجات جهازك مع العدد الأصلي للقطات في الثانية الذي يظهر به ما تشاهده من محتوى إذا طلب التطبيق ذلك. وقد يؤدي ذلك إلى ظهور شاشة فارغة لفترة قصيرة عند الدخول إلى وضع تشغيل فيديو أو الخروج منه."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"أبدًا"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"لن تتطابق مخرجات جهازك أبدًا مع العدد الأصلي للقطات في الثانية الذي يظهر به ما تشاهده من محتوى حتى إذا طلب التطبيق ذلك."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"تغيير حجم النص"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"تغيير حجم الخط إلى <xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"نموذج نص"</string>

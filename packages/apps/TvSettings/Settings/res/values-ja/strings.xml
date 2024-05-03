@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"音の詳細設定"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"ゲームモードを有効にする"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"コンテンツのフレームレートを合わせる"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"シームレス"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"視聴中のテレビでシームレスな移行が可能である場合に限り、アプリからリクエストがあった場合、デバイスは、再生しているコンテンツのオリジナルのフレームレートに出力を合わせます。"</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"非シームレス"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"アプリからリクエストがあった場合、デバイスは、再生しているコンテンツのオリジナルのフレームレートに出力を合わせます。そのため、動画再生の開始時または終了時に画面が一瞬空白になる場合があります。"</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"なし"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"アプリからリクエストがあっても、デバイスでは、再生しているコンテンツのオリジナルのフレームレートに出力を合わせることはありません。"</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"シームレス"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"視聴中のテレビでシームレスな移行が可能である場合に限り、アプリからリクエストがあった場合、デバイスは、再生しているコンテンツのオリジナルのフレームレートに出力を合わせます。"</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"非シームレス"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"アプリからリクエストがあった場合、デバイスは、再生しているコンテンツのオリジナルのフレームレートに出力を合わせます。そのため、動画再生の開始時または終了時に画面が一瞬空白になる場合があります。"</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"なし"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"アプリからリクエストがあっても、デバイスでは、再生しているコンテンツのオリジナルのフレームレートに出力を合わせることはありません。"</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"テキストの拡大縮小"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"<xliff:g id="SCALE">%1$d</xliff:g>%% に適用"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"サンプル テキスト"</string>

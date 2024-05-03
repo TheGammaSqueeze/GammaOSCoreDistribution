@@ -20,11 +20,11 @@ import com.android.tv.settings.library.overlay.FlavorUtils;
  * This Fragment is responsible for allowing the user to set screen timeout preferences.
  */
 @Keep
-public class MatchContentFrameRateFragment extends SettingsPreferenceFragment {
+public class ScreenTimeoutFragment extends SettingsPreferenceFragment {
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        setPreferencesFromResource(R.xml.match_content_frame_rate, rootKey);
+        setPreferencesFromResource(R.xml.screen_timeout, rootKey);
 
         int currentTimeout = Settings.System.getInt(
             getContext().getContentResolver(),
@@ -76,6 +76,6 @@ public class MatchContentFrameRateFragment extends SettingsPreferenceFragment {
 
     @Override
     public int getPageId() {
-        return TvSettingsEnums.DISPLAY_SOUND_MATCH_CONTENT_FRAMERATE;
+        return TvSettingsEnums.DISPLAY_SOUND_SCREEN_TIMEOUT;
     }
 }
