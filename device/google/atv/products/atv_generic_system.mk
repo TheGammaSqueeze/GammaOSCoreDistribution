@@ -25,6 +25,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 PRODUCT_PACKAGES += \
     DocumentsUI \
+    com.android.mtp \
 
 # Wrapped net utils for /vendor access.
 PRODUCT_PACKAGES += netutils-wrapper-1.0
@@ -76,7 +77,6 @@ PRODUCT_COPY_FILES += \
     system/core/rootdir/init.zygote32.rc:system/etc/init/hw/init.zygote32.rc \
     system/core/rootdir/init.zygote64.rc:system/etc/init/hw/init.zygote64.rc \
     system/core/rootdir/init.zygote64_32.rc:system/etc/init/hw/init.zygote64_32.rc
-
 
 # GammaOS Customizations
 

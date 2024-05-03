@@ -29,6 +29,10 @@
         android:key="screen_timeout"
         android:title="@string/screen_timeout_title"/>
     <Preference
+        android:fragment="com.android.tv.settings.device.displaysound.RK_HDMI_ResolutionFragment"
+        android:key="rk_hdmi_resolution"
+        android:title="@string/rk_hdmi_resolution_title"/>
+    <Preference
         android:fragment="com.android.tv.settings.device.displaysound.ResolutionSelectionFragment"
         android:key="resolution_selection"
         android:persistent="true"

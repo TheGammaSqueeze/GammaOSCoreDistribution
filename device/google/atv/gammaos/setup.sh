@@ -21,6 +21,10 @@ fi
 
 setprop ctl.stop "tee-supplicant"
 
+echo "Set HDMI defaults"
+setprop persist.vendor.resolution.HDMI-A-0 1920x1200@60
+setprop persist.vendor.framebuffer.hdmi 1280x720
+
 echo "Setting up swap space."
 [ ! -f /cache/swap ] && dd if=/dev/zero of=/cache/swap bs=1M count=300 && mkswap /cache/swap
 swapon /cache/swap
