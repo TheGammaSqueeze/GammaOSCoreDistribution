@@ -414,6 +414,9 @@ enum ItemId {
     // TvSettings > Display & Sound > Text scaling > Largest (entry)
     DISPLAY_SOUND_TEXT_SCALING_LARGEST = 0x15640000;
 
+    // TvSettings > Display & Sound > HDMI Resolution
+    DISPLAY_SOUND_RK_HDMI_RESOLUTION = 0x15700000;
+
     // TvSettings > Apps
     APPS = 0x16000000;
 

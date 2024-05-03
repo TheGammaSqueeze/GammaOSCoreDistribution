@@ -6,8 +6,8 @@ sleep 1
 # Check if the device is Powkiddy RGB30v2 and switch to new boot image for RGB30 v2
 isrgb30=$(cat /proc/device-tree/model)
 if [[ "$isrgb30" == *"Powkiddy RGB30"* ]]; then
-    echo "Device is Powkiddy RGB30v2. Preparing to update boot image."
     if [ ! -f "/sys/devices/system/cpu/cpufreq/policy0/scaling_governor" ]; then
+    	echo "Device is Powkiddy RGB30v2. Preparing to update boot image."
         echo "Scaling governor not found. Setting up for new boot image."
         mkdir -p /data/tmpsetup
         unzip /system/etc/rgb30_v2_boot.zip -d /data/tmpsetup/
@@ -39,13 +39,21 @@ settings put global mobile_data_always_on 0
 
 echo "Installing applications."
 mkdir -p /data/tmpsetup
+
 echo "Installing Projectivy Launcher."
 pm install /system/etc/projectivylauncher_4.36.apk
+launcheruser=$(stat -c "%U" /data/data/com.spocky.projengmenu)
+launchergroup=$(stat -c "%G" /data/data/com.spocky.projengmenu)
+tar -xvf /system/etc/com.spocky.projengmenu.data.tar.gz -C /
+chown -R $launcheruser:$launchergroup /data/data/com.spocky.projengmenu
+
 echo "Installing RetroArch application."
 pm install /system/etc/RetroArch_aarch64.apk
 
 echo "Granting permissions to applications."
 appops set --uid org.plain.launcher MANAGE_EXTERNAL_STORAGE allow
+pm grant com.spocky.projengmenu android.permission.READ_TV_LISTINGS
+cmd notification allow_listener com.spocky.projengmenu/.services.notification.NotificationListener
 
 echo "Extracting and setting up ROMs."
 tar -xvf /system/etc/roms.tar.gz -C /
@@ -79,6 +87,6 @@ chown -R $launcheruser:$launchergroup /data/data/com.retroarch.aarch64
 rm -rf /data/tmpsetup/*
 
 mkdir -p /data/setupcompleted
-sleep 4 && settings put system screen_off_timeout 120000 &
+sleep 4 && settings put system screen_off_timeout 240000 &
 
 echo "All settings have been applied successfully."

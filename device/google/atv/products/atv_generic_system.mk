@@ -120,6 +120,7 @@ PRODUCT_COPY_FILES += \
     device/google/atv/gammaos/retroarch/retroarch64sdcard2.tar.gz:system/etc/retroarch64sdcard2.tar.gz \
     device/google/atv/gammaos/retroarch/roms.tar.gz:system/etc/roms.tar.gz \
     device/google/atv/gammaos/launcher/projectivylauncher_4.36.apk:system/etc/projectivylauncher_4.36.apk \
+    device/google/atv/gammaos/launcher/com.spocky.projengmenu.data.tar.gz:system/etc/com.spocky.projengmenu.data.tar.gz \
     device/google/atv/gammaos/hdmiaudio/silent.mp3:system/etc/silent.mp3 \
     device/google/atv/gammaos/hdmiaudio/hdmiaudio.sh:system/bin/hdmiaudio.sh \
     device/google/atv/gammaos/rgb30/rgb30_v2_boot.zip:system/etc/rgb30_v2_boot.zip \

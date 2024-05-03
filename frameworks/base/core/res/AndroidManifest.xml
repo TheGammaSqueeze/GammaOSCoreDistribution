@@ -6568,6 +6568,10 @@
     <permission android:name="android.permission.MAKE_UID_VISIBLE"
                 android:protectionLevel="signature" />
 
+    <!-- Dummy permission to allow reading of TV listings, does nothing -->
+    <permission android:name="android.permission.READ_TV_LISTINGS"
+                android:protectionLevel="dangerous"/>
+
     <!-- Attribution for Geofencing service. -->
     <attribution android:tag="GeofencingService" android:label="@string/geofencing_service"/>
     <!-- Attribution for Country Detector. -->
