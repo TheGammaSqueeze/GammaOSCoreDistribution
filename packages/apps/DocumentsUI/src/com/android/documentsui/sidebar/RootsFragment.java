@@ -54,7 +54,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.app.LoaderManager.LoaderCallbacks;
 import androidx.loader.content.Loader;
-
+import android.view.KeyEvent;
 import com.android.documentsui.ActionHandler;
 import com.android.documentsui.BaseActivity;
 import com.android.documentsui.DocumentsApplication;
@@ -103,6 +103,8 @@ public class RootsFragment extends Fragment {
             final Item item = mAdapter.getItem(position);
             item.open();
 
+            // Set the selected position in the ListView
+            mList.setItemChecked(position, true);
             getBaseActivity().setRootsDrawerOpen(false);
         }
     };
@@ -184,11 +186,30 @@ public class RootsFragment extends Fragment {
                             });
                         }
                         return false;
-            }
-        });
+                    }
+                });
+        mList.setFocusable(true);
+        mList.setFocusableInTouchMode(true);
         mList.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         mList.setSelector(new ColorDrawable(Color.TRANSPARENT));
+
+        // Listen for selection changes
+        mList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // Update the selected position in the adapter
+                mAdapter.setSelectedPosition(position);
+                mAdapter.notifyDataSetChanged(); // Refresh adapter
+             }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Handle no selection state
+            }
+        });
+
         return view;
+
     }
 
     private boolean onRightClick(View v, int x, int y, Runnable callback) {
@@ -611,26 +632,30 @@ public class RootsFragment extends Fragment {
             return false;
         }
         final RootItem rootItem = (RootItem) mAdapter.getItem(adapterMenuInfo.position);
-        switch (item.getItemId()) {
-            case R.id.root_menu_eject_root:
-                final View ejectIcon = adapterMenuInfo.targetView.findViewById(R.id.action_icon);
-                ejectClicked(ejectIcon, rootItem.root, mActionHandler);
-                return true;
-            case R.id.root_menu_open_in_new_window:
-                mActionHandler.openInNewWindow(new DocumentStack(rootItem.root));
-                return true;
-            case R.id.root_menu_paste_into_folder:
-                mActionHandler.pasteIntoFolder(rootItem.root);
-                return true;
-            case R.id.root_menu_settings:
-                mActionHandler.openSettings(rootItem.root);
-                return true;
-            default:
-                if (DEBUG) {
-                    Log.d(TAG, "Unhandled menu item selected: " + item);
-                }
-                return false;
+switch (item.getItemId()) {
+    case R.id.root_menu_eject_root:
+        final View ejectIcon = adapterMenuInfo.targetView.findViewById(R.id.action_icon);
+        ejectClicked(ejectIcon, rootItem.root, mActionHandler);
+        return true;
+
+    case R.id.root_menu_open_in_new_window: // Correct this label
+        mActionHandler.openInNewWindow(new DocumentStack(rootItem.root));
+        return true;
+
+    case R.id.root_menu_paste_into_folder:
+        mActionHandler.pasteIntoFolder(rootItem.root);
+        return true;
+
+    case R.id.root_menu_settings:
+        mActionHandler.openSettings(rootItem.root);
+        return true;
+
+    default:
+        if (DEBUG) {
+            Log.d(TAG, "Unhandled menu item selected: " + item);
         }
+        return false;
+}
     }
 
     private void getRootDocument(RootItem rootItem, RootUpdater updater) {
@@ -730,3 +755,4 @@ public class RootsFragment extends Fragment {
         void updateDocInfoForRoot(DocumentInfo doc);
     }
 }
+

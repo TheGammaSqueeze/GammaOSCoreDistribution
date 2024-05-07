@@ -17,6 +17,7 @@
 package com.android.documentsui.sidebar;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Looper;
 import android.view.View;
 import android.view.View.OnDragListener;
@@ -44,14 +45,15 @@ class RootsAdapter extends ArrayAdapter<Item> {
     private static long sNextAvailableId;
 
     private final OnDragListener mDragListener;
+    private int selectedPosition = -1; // Track the currently selected position
 
-    public RootsAdapter(
-            Activity activity,
-            List<Item> items,
-            OnDragListener dragListener) {
+    public RootsAdapter(Activity activity, List<Item> items, OnDragListener dragListener) {
         super(activity, 0, items);
-
         mDragListener = dragListener;
+    }
+
+    public void setSelectedPosition(int position) {
+        selectedPosition = position;
     }
 
     @Override
@@ -63,7 +65,7 @@ class RootsAdapter extends ArrayAdapter<Item> {
     public long getItemId(int position) {
         // Ensure this method is only called in main thread because we don't have any
         // concurrency protection.
-        assert(Looper.myLooper() == Looper.getMainLooper());
+        assert (Looper.myLooper() == Looper.getMainLooper());
 
         String stringId = getItem(position).stringId;
 
@@ -86,10 +88,18 @@ class RootsAdapter extends ArrayAdapter<Item> {
         if (item.isRoot()) {
             view.setTag(R.id.item_position_tag, position);
             view.setOnDragListener(mDragListener);
+
+            // Highlight the selected item using the selectedPosition
+            if (position == selectedPosition) {
+                view.setBackgroundColor(Color.parseColor("#777777")); // Highlight color
+            } else {
+                view.setBackgroundColor(Color.TRANSPARENT); // Default background
+            }
         } else {
             view.setTag(R.id.item_position_tag, null);
             view.setOnDragListener(null);
         }
+
         return view;
     }
 
