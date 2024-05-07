@@ -33,6 +33,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.DragEvent;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -54,7 +55,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.app.LoaderManager.LoaderCallbacks;
 import androidx.loader.content.Loader;
-import android.view.KeyEvent;
+
 import com.android.documentsui.ActionHandler;
 import com.android.documentsui.BaseActivity;
 import com.android.documentsui.DocumentsApplication;
@@ -166,12 +167,6 @@ public class RootsFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_roots, container, false);
         mList = (ListView) view.findViewById(R.id.roots_list);
         mList.setOnItemClickListener(mItemListener);
-        // ListView does not have right-click specific listeners, so we will have a
-        // GenericMotionListener to listen for it.
-        // Currently, right click is viewed the same as long press, so we will have to quickly
-        // register for context menu when we receive a right click event, and quickly unregister
-        // it afterwards to prevent context menus popping up upon long presses.
-        // All other motion events will then get passed to OnItemClickListener.
         mList.setOnGenericMotionListener(
                 new OnGenericMotionListener() {
                     @Override
@@ -193,6 +188,28 @@ public class RootsFragment extends Fragment {
         mList.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         mList.setSelector(new ColorDrawable(Color.TRANSPARENT));
 
+        // Add the key listener to prevent navigation away from the list
+        mList.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // Check if the key event is a key-down event on the dpad
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    int selectedPosition = mList.getSelectedItemPosition();
+
+                    if (keyCode == KeyEvent.KEYCODE_DPAD_UP && selectedPosition == 0) {
+                        // The first item is selected, and the UP button is pressed.
+                        // Stay focused on the first item.
+                        return true; // Consume the event and prevent default behavior
+                    } else if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN && selectedPosition == mAdapter.getCount() - 1) {
+                        // The last item is selected, and the DOWN button is pressed.
+                        // Stay focused on the last item.
+                        return true; // Consume the event and prevent default behavior
+                    }
+                }
+                return false; // Let other key events be handled normally
+            }
+        });
+
         // Listen for selection changes
         mList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -209,7 +226,6 @@ public class RootsFragment extends Fragment {
         });
 
         return view;
-
     }
 
     private boolean onRightClick(View v, int x, int y, Runnable callback) {
@@ -755,4 +771,3 @@ switch (item.getItemId()) {
         void updateDocInfoForRoot(DocumentInfo doc);
     }
 }
-
