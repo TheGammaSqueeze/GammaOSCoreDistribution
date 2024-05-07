@@ -290,7 +290,7 @@
     <string name="preview_work_file" msgid="4495643735563487273">"Obtén una vista previa del archivo de trabajo <xliff:g id="FILENAME">%1$s</xliff:g>"</string>
     <string name="apps_row_title" msgid="3340490016663092925">"Explorar archivos en otras apps"</string>
     <string name="anonymous_application" msgid="7633027057951625862">"Anónimo"</string>
-    <string name="open_tree_button" msgid="6402871398424497776">"Usar esta carpeta"</string>
+    <string name="open_tree_button">Press L1 to switch storage. Press Start to confirm folder selection.</string>
     <string name="open_tree_dialog_title" msgid="6339509533852318569">"¿Deseas brindarle a <xliff:g id="APPNAME">%1$s</xliff:g> acceso a los archivos almacenados en <xliff:g id="DIRECTORY">%2$s</xliff:g>?"</string>
     <string name="open_tree_dialog_message" msgid="4120695398430659628">"Se le brindará a <xliff:g id="APPNAME">%1$s</xliff:g> acceso al contenido actual y futuro almacenado en <xliff:g id="DIRECTORY">%2$s</xliff:g>."</string>
     <string name="directory_blocked_header_title" msgid="1164584889578740066">"No se puede usar esta carpeta"</string>

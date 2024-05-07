@@ -268,7 +268,7 @@
     <string name="preview_work_file" msgid="4495643735563487273">"କାର୍ଯ୍ୟସ୍ଥଳୀ ଫାଇଲ୍ <xliff:g id="FILENAME">%1$s</xliff:g>ର ପ୍ରିଭ୍ୟୁ କରନ୍ତୁ"</string>
     <string name="apps_row_title" msgid="3340490016663092925">"ଅନ୍ୟ ଆପ୍ସରେ ଫାଇଲ୍‍ ବ୍ରାଉଜ୍‍ କରନ୍ତୁ"</string>
     <string name="anonymous_application" msgid="7633027057951625862">"ବେନାମୀ"</string>
-    <string name="open_tree_button" msgid="6402871398424497776">"ଏହି ଫୋଲ୍ଡର୍ ବ୍ୟବହାର କରନ୍ତୁ"</string>
+    <string name="open_tree_button">Press L1 to switch storage. Press Start to confirm folder selection.</string>
     <string name="open_tree_dialog_title" msgid="6339509533852318569">"<xliff:g id="DIRECTORY">%2$s</xliff:g>ରେ ଫାଇଲ୍‍ଗୁଡ଼ିକୁ ଆକ୍ସେସ୍ କରିବାକୁ <xliff:g id="APPNAME">%1$s</xliff:g>କୁ ଅନୁମତି ଦେବେ?"</string>
     <string name="open_tree_dialog_message" msgid="4120695398430659628">"ଏହା <xliff:g id="DIRECTORY">%2$s</xliff:g>ରେ ଷ୍ଟୋର୍ କରଯାଇଥିବା ବର୍ତ୍ତମାନ ଏବଂ ଭବିଷ୍ୟତର ବିଷୟବସ୍ତୁ <xliff:g id="APPNAME">%1$s</xliff:g> ଆକ୍ସେସ୍ କରିବାକୁ ଦେବ।"</string>
     <string name="directory_blocked_header_title" msgid="1164584889578740066">"ଏହି ଫୋଲ୍ଡରକୁ ବ୍ୟବହାର କରାଯାଇପାରିବ ନାହିଁ"</string>

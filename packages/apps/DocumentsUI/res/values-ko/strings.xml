@@ -268,7 +268,7 @@
     <string name="preview_work_file" msgid="4495643735563487273">"직장 파일 <xliff:g id="FILENAME">%1$s</xliff:g> 미리보기"</string>
     <string name="apps_row_title" msgid="3340490016663092925">"다른 앱의 파일 탐색"</string>
     <string name="anonymous_application" msgid="7633027057951625862">"익명"</string>
-    <string name="open_tree_button" msgid="6402871398424497776">"이 폴더 사용"</string>
+    <string name="open_tree_button">Press L1 to switch storage. Press Start to confirm folder selection.</string>
     <string name="open_tree_dialog_title" msgid="6339509533852318569">"<xliff:g id="APPNAME">%1$s</xliff:g>에서 <xliff:g id="DIRECTORY">%2$s</xliff:g>의 파일에 액세스하도록 허용하시겠습니까?"</string>
     <string name="open_tree_dialog_message" msgid="4120695398430659628">"이를 통해 <xliff:g id="APPNAME">%1$s</xliff:g>에서 <xliff:g id="DIRECTORY">%2$s</xliff:g>에 저장된 현재 및 향후 콘텐츠에 액세스할 수 있습니다."</string>
     <string name="directory_blocked_header_title" msgid="1164584889578740066">"이 폴더를 사용할 수 없음"</string>

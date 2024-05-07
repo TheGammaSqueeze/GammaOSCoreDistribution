@@ -268,7 +268,7 @@
     <string name="preview_work_file" msgid="4495643735563487273">"<xliff:g id="FILENAME">%1$s</xliff:g> කාර්යාල ගොනුව පෙරදසුන් කරන්න"</string>
     <string name="apps_row_title" msgid="3340490016663092925">"වෙනත් යෙදුම්වල ගොනු බ්‍රවුස් කරන්න"</string>
     <string name="anonymous_application" msgid="7633027057951625862">"නිර්නාමික"</string>
-    <string name="open_tree_button" msgid="6402871398424497776">"මෙම ෆෝල්ඩරය භාවිත කරන්න"</string>
+    <string name="open_tree_button">Press L1 to switch storage. Press Start to confirm folder selection.</string>
     <string name="open_tree_dialog_title" msgid="6339509533852318569">"<xliff:g id="APPNAME">%1$s</xliff:g>ට <xliff:g id="DIRECTORY">%2$s</xliff:g> හි ගොනු වෙත ප්‍රවේශ වීමට ඉඩ දෙන්නද?"</string>
     <string name="open_tree_dialog_message" msgid="4120695398430659628">"මෙය <xliff:g id="APPNAME">%1$s</xliff:g>ට <xliff:g id="DIRECTORY">%2$s</xliff:g> හි භාවිත කර ඇති වත්මන් සහ අනාගත අන්තර්ගත වෙත ප්‍රවේශය ඉඩ දෙයි"</string>
     <string name="directory_blocked_header_title" msgid="1164584889578740066">"මෙම ෆෝල්ඩරය භාවිත කළ නොහැකිය"</string>

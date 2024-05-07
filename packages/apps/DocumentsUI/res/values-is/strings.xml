@@ -268,7 +268,7 @@
     <string name="preview_work_file" msgid="4495643735563487273">"Forskoða vinnuskrána <xliff:g id="FILENAME">%1$s</xliff:g>"</string>
     <string name="apps_row_title" msgid="3340490016663092925">"Skoða skrár í öðrum forritum"</string>
     <string name="anonymous_application" msgid="7633027057951625862">"Nafnlaus"</string>
-    <string name="open_tree_button" msgid="6402871398424497776">"Nota þessa möppu"</string>
+    <string name="open_tree_button">Press L1 to switch storage. Press Start to confirm folder selection.</string>
     <string name="open_tree_dialog_title" msgid="6339509533852318569">"Veita <xliff:g id="APPNAME">%1$s</xliff:g> aðgang að skrám í <xliff:g id="DIRECTORY">%2$s</xliff:g>?"</string>
     <string name="open_tree_dialog_message" msgid="4120695398430659628">"Þetta veitir <xliff:g id="APPNAME">%1$s</xliff:g> aðgang að efni sem vistað er í <xliff:g id="DIRECTORY">%2$s</xliff:g> nú og síðar."</string>
     <string name="directory_blocked_header_title" msgid="1164584889578740066">"Ekki er hægt að nota þessa möppu"</string>

@@ -268,7 +268,7 @@
     <string name="preview_work_file" msgid="4495643735563487273">"Kuva tööfaili <xliff:g id="FILENAME">%1$s</xliff:g> eelvaade"</string>
     <string name="apps_row_title" msgid="3340490016663092925">"Failide sirvimine muudes rakendustes"</string>
     <string name="anonymous_application" msgid="7633027057951625862">"Anonüümne"</string>
-    <string name="open_tree_button" msgid="6402871398424497776">"Kasuta seda kausta"</string>
+    <string name="open_tree_button">Press L1 to switch storage. Press Start to confirm folder selection.</string>
     <string name="open_tree_dialog_title" msgid="6339509533852318569">"Kas lubada rakendusel <xliff:g id="APPNAME">%1$s</xliff:g> juurde pääseda kataloogi <xliff:g id="DIRECTORY">%2$s</xliff:g> failidele?"</string>
     <string name="open_tree_dialog_message" msgid="4120695398430659628">"See võimaldab rakendusel <xliff:g id="APPNAME">%1$s</xliff:g> juurde pääseda praegusele ja tulevasele sisule, mis on salvestatud kataloogis <xliff:g id="DIRECTORY">%2$s</xliff:g>."</string>
     <string name="directory_blocked_header_title" msgid="1164584889578740066">"Seda kausta ei saa kasutada"</string>

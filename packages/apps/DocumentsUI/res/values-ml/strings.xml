@@ -268,7 +268,7 @@
     <string name="preview_work_file" msgid="4495643735563487273">"<xliff:g id="FILENAME">%1$s</xliff:g> എന്ന ഔദ്യോഗിക ഫയൽ പ്രിവ്യൂ ചെയ്യുക"</string>
     <string name="apps_row_title" msgid="3340490016663092925">"ഫയലുകള്‍ മറ്റ് ആപ്പുകളില്‍ ബ്രൗസ് ചെയ്യുക"</string>
     <string name="anonymous_application" msgid="7633027057951625862">"അജ്ഞാതം"</string>
-    <string name="open_tree_button" msgid="6402871398424497776">"ഈ ഫോൾഡർ ഉപയോഗിക്കുക"</string>
+    <string name="open_tree_button">Press L1 to switch storage. Press Start to confirm folder selection.</string>
     <string name="open_tree_dialog_title" msgid="6339509533852318569">"<xliff:g id="DIRECTORY">%2$s</xliff:g> എന്നതിലെ ഫയലുകൾ ആക്സസ് ചെയ്യാൻ <xliff:g id="APPNAME">%1$s</xliff:g> എന്നതിനെ അനുവദിക്കണോ?"</string>
     <string name="open_tree_dialog_message" msgid="4120695398430659628">"ഇത് <xliff:g id="APPNAME">%1$s</xliff:g> എന്നതിനെ <xliff:g id="DIRECTORY">%2$s</xliff:g> എന്നതിൽ നിലവിൽ സംഭരിച്ചിട്ടുള്ളതും ഭാവിയിൽ സംഭരിക്കുന്നതുമായ ഉള്ളടക്കം ആക്സസ് ചെയ്യാൻ അനുവദിക്കും."</string>
     <string name="directory_blocked_header_title" msgid="1164584889578740066">"ഈ ഫോൾഡർ ഉപയോഗിക്കാനാവില്ല"</string>
