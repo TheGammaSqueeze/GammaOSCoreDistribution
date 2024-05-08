@@ -878,8 +878,7 @@ public class VolumeDialogImpl implements VolumeDialog, Dumpable,
     }
 
     private boolean isLandscape() {
-        return mContext.getResources().getConfiguration().orientation ==
-                Configuration.ORIENTATION_LANDSCAPE;
+        return true;
     }
 
     private boolean isRtl() {
