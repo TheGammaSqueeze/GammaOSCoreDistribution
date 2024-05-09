@@ -58,7 +58,8 @@ public class DisplaySoundFragment extends SettingsPreferenceFragment implements
     private static final String KEY_CEC = "cec";
     private static final String KEY_DEFAULT_AUDIO_OUTPUT_SETTINGS_SLICE =
             "default_audio_output_settings";
-    private static final String KEY_FRAMERATE = "match_content_frame_rate";
+    private static final String KEY_FRAMERATE = "screen_timeout";
+    private static final String KEY_RK_HDMI = "rk_hdmi_resolution";
     private static final String KEY_RESOLUTION_TITLE = "resolution_selection";
 
     private AudioManager mAudioManager;
@@ -222,6 +223,13 @@ public class DisplaySoundFragment extends SettingsPreferenceFragment implements
         Preference frameratePreference = findPreference(KEY_FRAMERATE);
         if (frameratePreference != null) {
             getPreferenceScreen().removePreference(frameratePreference);
+        }
+    }
+
+    private void removeRKHDMIPreference() {
+        Preference rkhdmiPreference = findPreference(KEY_RK_HDMI);
+        if (rkhdmiPreference != null) {
+            getPreferenceScreen().removePreference(rkhdmiPreference);
         }
     }
 }

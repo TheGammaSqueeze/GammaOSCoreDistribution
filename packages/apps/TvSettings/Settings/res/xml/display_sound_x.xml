@@ -43,9 +43,13 @@
         custom:uri="@string/hdr_and_color_format_slice_uri"
         custom:isPreferenceVisible="false" />
     <Preference
-        android:fragment="com.android.tv.settings.device.displaysound.MatchContentFrameRateFragment"
-        android:key="match_content_frame_rate"
-        android:title="@string/match_content_frame_rate_title"/>
+        android:fragment="com.android.tv.settings.device.displaysound.ScreenTimeoutFragment"
+        android:key="screen_timeout"
+        android:title="@string/screen_timeout_title"/>
+    <Preference
+        android:fragment="com.android.tv.settings.device.displaysound.RK_HDMI_ResolutionFragment"
+        android:key="rk_hdmi_resolution"
+        android:title="@string/rk_hdmi_resolution_title"/>
     <Preference
         android:fragment="com.android.tv.settings.device.displaysound.ResolutionSelectionFragment"
         android:key="resolution_selection"

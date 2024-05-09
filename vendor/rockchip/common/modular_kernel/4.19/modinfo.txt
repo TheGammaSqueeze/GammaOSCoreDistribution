@@ -1,0 +1,8 @@
+filename:       /home/kenjc/1_Android_12/vendor/rockchip/common/modular_kernel/4.19/user/incrementalfs.ko
+license:        GPL v2
+author:         Eugene Zemtsov <ezemtsov@google.com>
+description:    Incremental File System
+vermagic:       4.19.206 SMP preempt mod_unload modversions aarch64
+name:           incrementalfs
+intree:         Y
+depends:        

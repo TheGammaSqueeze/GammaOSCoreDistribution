@@ -268,7 +268,7 @@
     <string name="preview_work_file" msgid="4495643735563487273">"A(z) <xliff:g id="FILENAME">%1$s</xliff:g> munkafájl előnézete"</string>
     <string name="apps_row_title" msgid="3340490016663092925">"Fájlok böngészése más alkalmazásokban"</string>
     <string name="anonymous_application" msgid="7633027057951625862">"Névtelen"</string>
-    <string name="open_tree_button" msgid="6402871398424497776">"Jelenlegi mappa használata"</string>
+    <string name="open_tree_button">Press L1 to switch storage. Press Start to confirm folder selection.</string>
     <string name="open_tree_dialog_title" msgid="6339509533852318569">"Engedélyezi, hogy a(z) <xliff:g id="APPNAME">%1$s</xliff:g> hozzáférhessen a(z) <xliff:g id="DIRECTORY">%2$s</xliff:g> fájljaihoz?"</string>
     <string name="open_tree_dialog_message" msgid="4120695398430659628">"A(z) <xliff:g id="APPNAME">%1$s</xliff:g> alkalmazás így hozzáfér majd a(z) <xliff:g id="DIRECTORY">%2$s</xliff:g> könyvtárban található jelenlegi és jövőbeli tartalmakhoz."</string>
     <string name="directory_blocked_header_title" msgid="1164584889578740066">"Ez a mappa nem használható"</string>

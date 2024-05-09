@@ -1,0 +1,59 @@
+bootstrap_go_package {
+    name: "soong-libeptz",
+    pkgPath: "android/soong/libeptz",
+    deps: [
+        "blueprint",
+        "blueprint-pathtools",
+        "soong",
+        "soong-android",
+        "soong-cc",
+        "soong-genrule",
+    ],
+    srcs: [
+          "eptz.go",
+    ],
+    pluginFor: ["soong_build"],
+}
+
+cc_libeptz_prebuilt_library_shared {
+    name: "libeptz",
+    compile_multilib: "both",
+
+    // some prop generate by Android.go
+
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    vendor: true,
+}
+
+bootstrap_go_package {
+    name: "soong-librockx",
+    pkgPath: "android/soong/librockx",
+    deps: [
+        "blueprint",
+        "blueprint-pathtools",
+        "soong",
+        "soong-android",
+        "soong-cc",
+        "soong-genrule",
+    ],
+    srcs: [
+          "rockx.go",
+    ],
+    pluginFor: ["soong_build"],
+}
+
+cc_librockx_prebuilt_library_shared {
+    name: "librockx",
+    compile_multilib: "both",
+
+    // some prop generate by Android.go
+
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    vendor: true,
+}

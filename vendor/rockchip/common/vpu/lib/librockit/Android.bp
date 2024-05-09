@@ -1,0 +1,16 @@
+cc_prebuilt_library {
+    name: "librockit",
+    compile_multilib: "both",
+    multilib: {
+        lib64: {
+            srcs: ["arm64/librockit.so"],
+        },
+        lib32: {
+            srcs: ["arm/librockit.so"],
+        },
+    },
+    strip: {
+      none: true,
+    },
+    check_elf_files: false,
+}

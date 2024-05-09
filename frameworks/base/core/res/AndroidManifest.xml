@@ -6568,6 +6568,10 @@
     <permission android:name="android.permission.MAKE_UID_VISIBLE"
                 android:protectionLevel="signature" />
 
+    <!-- Dummy permission to allow reading of TV listings, does nothing -->
+    <permission android:name="android.permission.READ_TV_LISTINGS"
+                android:protectionLevel="dangerous"/>
+
     <!-- Attribution for Geofencing service. -->
     <attribution android:tag="GeofencingService" android:label="@string/geofencing_service"/>
     <!-- Attribution for Country Detector. -->
@@ -6845,6 +6849,17 @@
                   android:permission="android.permission.MANAGE_GAME_ACTIVITY"
                   android:theme="@style/Theme.GameSessionTrampoline">
         </activity>
+
+
+	<activity android:name="com.android.server.policy.PerformanceOptionsActivity"
+	          android:excludeFromRecents="true"
+	          android:theme="@android:style/Theme.DeviceDefault.Dialog.Alert">
+	</activity>
+
+	<activity android:name="com.android.server.policy.BrightnessControlActivity"
+        	  android:theme="@android:style/Theme.DeviceDefault.Dialog.NoActionBar"
+        	  android:excludeFromRecents="true">
+	</activity>
 
         <receiver android:name="com.android.server.BootReceiver"
                 android:exported="true"
@@ -7139,6 +7154,14 @@
             android:singleUser="true"
             android:enabled="true"
             android:exported="true">
+        </provider>
+
+        <provider
+            android:name="com.android.server.tvproviderstub.StubTvProvider"
+            android:authorities="android.media.tv"
+            android:exported="false"
+            android:enabled="true"
+            android:permission="android.permission.MANAGE_TV_INPUTS">
         </provider>
 
     </application>

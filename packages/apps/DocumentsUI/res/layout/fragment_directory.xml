@@ -14,15 +14,20 @@
      limitations under the License.
 -->
 
-<com.android.documentsui.dirlist.AnimationView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:attr/colorBackground"
-    android:outlineProvider="bounds"
-    android:elevation="4dp"
-    android:orientation="vertical">
+    android:elevation="4dp">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
 
     <ProgressBar
         android:id="@+id/progressbar"
@@ -30,13 +35,16 @@
         android:layout_height="@dimen/progress_bar_height"
         android:indeterminate="true"
         style="@style/TrimmedHorizontalProgressBar"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.android.documentsui.dirlist.DocumentsSwipeRefreshLayout
         android:id="@+id/refresh_layout"
         android:background="@android:color/transparent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/progressbar"
+        app:layout_constraintBottom_toTopOf="@id/guideline">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/dir_list"
@@ -53,4 +61,4 @@
 
     </com.android.documentsui.dirlist.DocumentsSwipeRefreshLayout>
 
-</com.android.documentsui.dirlist.AnimationView>
+</androidx.constraintlayout.widget.ConstraintLayout>

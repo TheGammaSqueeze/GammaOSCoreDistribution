@@ -51,7 +51,7 @@
     <string name="sound_category_title" msgid="7899816751041939518">"Tovush"</string>
     <string name="applications_category_title" msgid="7112019490898586223">"Ilovalar"</string>
     <string name="device_pref_category_title" msgid="8292572846154873762">"Qurilma parametrlari"</string>
-    <string name="remotes_and_accessories_category_title" msgid="4795119810430255047">"Pultlar va aksessuarlar"</string>
+    <string name="remotes_and_accessories_category_title" msgid="4795119810430255047">"Bluetooth and accessories"</string>
     <string name="display_and_sound_category_title" msgid="9203309625380755860">"Displey va tovush"</string>
     <string name="help_and_feedback_category_title" msgid="7036505833991003031">"Yordam/fikr-mulohaza"</string>
     <string name="privacy_category_title" msgid="8552430590908463601">"Maxfiylik"</string>
@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Kengaytirilgan tovush sozlamalari"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Oʻyin rejimiga ruxsat berish"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Kontent kadr almashish tezligini moslash"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Kadr almashish tezligiga rozilik bildirish"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Ilova talab qilsa, ijrodagi kontent kadr almashish tezligi formatini qurilmaning oʻzi avtomatik sozlaydi. Faqat televizoringiz ravon oʻtishni taʼminlay olsa."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"Kadr almashish tezligiga rozi emasman"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Ilova talab qilsa, ijrodagi kontent kadr almashish tezligi formatini qurilmaning oʻzi avtomatik sozlaydi. Bunday holda video ijrosi boshida yoki tomoshadan keyin ekran qisqa vaqt oʻchishi mumkin."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Hech qachon"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Ilova talab qilsa ham, ijrodagi kontent kadr almashish tezligi formatini qurilmaning oʻzi avtomatik sozlaydi."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Kadr almashish tezligiga rozilik bildirish"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Ilova talab qilsa, ijrodagi kontent kadr almashish tezligi formatini qurilmaning oʻzi avtomatik sozlaydi. Faqat televizoringiz ravon oʻtishni taʼminlay olsa."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"Kadr almashish tezligiga rozi emasman"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Ilova talab qilsa, ijrodagi kontent kadr almashish tezligi formatini qurilmaning oʻzi avtomatik sozlaydi. Bunday holda video ijrosi boshida yoki tomoshadan keyin ekran qisqa vaqt oʻchishi mumkin."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Hech qachon"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Ilova talab qilsa ham, ijrodagi kontent kadr almashish tezligi formatini qurilmaning oʻzi avtomatik sozlaydi."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Matn hajmi"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Masshtab: <xliff:g id="SCALE">%1$d</xliff:g>%% gacha"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Namunaviy matn"</string>
@@ -218,10 +217,10 @@
     <string name="bluetooth_cancel" msgid="4415185529332987034">"Bekor qilish"</string>
     <string name="bluetooth_device_connected_toast" msgid="1896195197089204806">"%1$s ulandi"</string>
     <string name="bluetooth_device_disconnected_toast" msgid="7459239447363156499">"%1$s uzildi"</string>
-    <string name="connected_devices_slice_pref_title" msgid="6761921505544005991">"Pultlar va aksessuarlar"</string>
+    <string name="connected_devices_slice_pref_title" msgid="6761921505544005991">"Bluetooth and accessories"</string>
     <string name="bluetooth_toggle_title" msgid="3808904783456336104">"Bluetooth"</string>
     <string name="bluetooth_toggle_confirmation_dialog_title" msgid="3906746631391295717">"Bluetoothni oʻchirish"</string>
-    <string name="bluetooth_toggle_confirmation_dialog_summary" msgid="9017044450625172698">"Bluetooth yoqilmagan holda pult orqali Google Assistentdan foydalana olmaysiz."</string>
+    <string name="bluetooth_toggle_confirmation_dialog_summary" msgid="9017044450625172698">"Are you sure you want to turn Bluetooth off?"</string>
     <string name="bluetooth_pair_accessory" msgid="5508750142754420984">"Aksessuarni ulash"</string>
     <string name="bluetooth_known_devices_category" msgid="6895470515631452961">"Aksessuarlar"</string>
     <string name="bluetooth_official_remote_category" msgid="5817814488268307170">"Masofaviy boshqaruv"</string>

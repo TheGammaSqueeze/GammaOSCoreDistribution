@@ -1,0 +1,131 @@
+From 9d97d518dcb8857a0e6ed4426603334775a47d23 Mon Sep 17 00:00:00 2001
+From: Paul Lawrence <paullawrence@google.com>
+Date: Fri, 8 Jan 2021 13:00:43 -0800
+Subject: [PATCH 03/31] ANDROID: Incremental fs: Fix selinux issues
+
+Bug: 177075428
+Test: incfs_test passes
+      atest GtsIncrementalInstallTestCases has only 8 failures
+Signed-off-by: Paul Lawrence <paullawrence@google.com>
+Change-Id: Ibdf7746de08819b2f3e59103e5cecb39ad1ae2d8
+---
+ fs/incfs/data_mgmt.c    |  7 ++++++-
+ fs/incfs/pseudo_files.c |  7 ++++---
+ fs/incfs/vfs.c          | 16 +++++++++++-----
+ 3 files changed, 21 insertions(+), 9 deletions(-)
+
+diff --git a/fs/incfs/data_mgmt.c b/fs/incfs/data_mgmt.c
+index 93bb1bdaa351..d55995b5ffe0 100644
+--- a/fs/incfs/data_mgmt.c
++++ b/fs/incfs/data_mgmt.c
+@@ -190,6 +190,7 @@ static struct data_file *handle_mapped_file(struct mount_info *mi,
+ 	struct path path;
+ 	struct file *bf;
+ 	struct data_file *result = NULL;
++	const struct cred *old_cred;
+ 
+ 	file_id_str = file_id_to_str(df->df_id);
+ 	if (!file_id_str)
+@@ -212,7 +213,11 @@ static struct data_file *handle_mapped_file(struct mount_info *mi,
+ 		.dentry = index_file_dentry
+ 	};
+ 
+-	bf = dentry_open(&path, O_RDWR | O_NOATIME | O_LARGEFILE, mi->mi_owner);
++	old_cred = override_creds(mi->mi_owner);
++	bf = dentry_open(&path, O_RDWR | O_NOATIME | O_LARGEFILE,
++			 current_cred());
++	revert_creds(old_cred);
++
+ 	if (IS_ERR(bf)) {
+ 		result = (struct data_file *)bf;
+ 		goto out;
+diff --git a/fs/incfs/pseudo_files.c b/fs/incfs/pseudo_files.c
+index 235b6b327ddf..c97df5a84695 100644
+--- a/fs/incfs/pseudo_files.c
++++ b/fs/incfs/pseudo_files.c
+@@ -240,7 +240,7 @@ static int dir_relative_path_resolve(
+ 	if (dir_fd < 0)
+ 		return dir_fd;
+ 
+-	dir_f = dentry_open(base_path, O_RDONLY | O_NOATIME, mi->mi_owner);
++	dir_f = dentry_open(base_path, O_RDONLY | O_NOATIME, current_cred());
+ 
+ 	if (IS_ERR(dir_f)) {
+ 		error = PTR_ERR(dir_f);
+@@ -308,8 +308,9 @@ static int init_new_file(struct mount_info *mi, struct dentry *dentry,
+ 		.mnt = mi->mi_backing_dir_path.mnt,
+ 		.dentry = dentry
+ 	};
++
+ 	new_file = dentry_open(&path, O_RDWR | O_NOATIME | O_LARGEFILE,
+-			       mi->mi_owner);
++			       current_cred());
+ 
+ 	if (IS_ERR(new_file)) {
+ 		error = PTR_ERR(new_file);
+@@ -628,7 +629,7 @@ static int init_new_mapped_file(struct mount_info *mi, struct dentry *dentry,
+ 		.dentry = dentry
+ 	};
+ 	new_file = dentry_open(&path, O_RDWR | O_NOATIME | O_LARGEFILE,
+-			       mi->mi_owner);
++			       current_cred());
+ 
+ 	if (IS_ERR(new_file)) {
+ 		error = PTR_ERR(new_file);
+diff --git a/fs/incfs/vfs.c b/fs/incfs/vfs.c
+index 8b968a3933d3..1af051378a17 100644
+--- a/fs/incfs/vfs.c
++++ b/fs/incfs/vfs.c
+@@ -539,16 +539,18 @@ static int incfs_rmdir(struct dentry *dentry)
+ 
+ static void maybe_delete_incomplete_file(struct data_file *df)
+ {
+-	char *file_id_str;
+-	struct dentry *incomplete_file_dentry;
++	struct mount_info *mi = df->df_mount_info;
++	char *file_id_str = NULL;
++	struct dentry *incomplete_file_dentry = NULL;
++	const struct cred *old_cred = override_creds(mi->mi_owner);
+ 
+ 	if (atomic_read(&df->df_data_blocks_written) < df->df_data_block_count)
+-		return;
++		goto out;
+ 
+ 	/* This is best effort - there is no useful action to take on failure */
+ 	file_id_str = file_id_to_str(df->df_id);
+ 	if (!file_id_str)
+-		return;
++		goto out;
+ 
+ 	incomplete_file_dentry = incfs_lookup_dentry(
+ 					df->df_mount_info->mi_incomplete_dir,
+@@ -567,6 +569,7 @@ static void maybe_delete_incomplete_file(struct data_file *df)
+ out:
+ 	dput(incomplete_file_dentry);
+ 	kfree(file_id_str);
++	revert_creds(old_cred);
+ }
+ 
+ static long ioctl_fill_blocks(struct file *f, void __user *arg)
+@@ -1221,6 +1224,7 @@ static int file_open(struct inode *inode, struct file *file)
+ 	int err = 0;
+ 	int flags = O_NOATIME | O_LARGEFILE |
+ 		(S_ISDIR(inode->i_mode) ? O_RDONLY : O_RDWR);
++	const struct cred *old_cred;
+ 
+ 	WARN_ON(file->private_data);
+ 
+@@ -1231,7 +1235,9 @@ static int file_open(struct inode *inode, struct file *file)
+ 	if (!backing_path.dentry)
+ 		return -EBADF;
+ 
+-	backing_file = dentry_open(&backing_path, flags, mi->mi_owner);
++	old_cred = override_creds(mi->mi_owner);
++	backing_file = dentry_open(&backing_path, flags, current_cred());
++	revert_creds(old_cred);
+ 	path_put(&backing_path);
+ 
+ 	if (IS_ERR(backing_file)) {
+-- 
+2.17.1
+

@@ -30,8 +30,8 @@ $(call inherit-product-if-exists, frameworks/webview/chromium/chromium.mk)
 
 PRODUCT_IS_ATV := true
 
-PRODUCT_PACKAGES += \
-    TvProvider
+#PRODUCT_PACKAGES += \
+#    TvProvider
 
 # PRODUCT_SUPPORTS_TUNER: Whether the product hardware tuner. When 'false',
 # we drop mediatuner, which saves ~4 MiB of RAM. When 'true', the tuner HAL
@@ -39,7 +39,7 @@ PRODUCT_PACKAGES += \
 # permission should be installed.
 #
 # Defaults to true to mimic legacy behaviour.
-PRODUCT_SUPPORTS_TUNER ?= true
+PRODUCT_SUPPORTS_TUNER ?= false
 ifeq ($(PRODUCT_SUPPORTS_TUNER),true)
     PRODUCT_PACKAGES += libmedia_tv_tuner
 endif
@@ -47,7 +47,6 @@ endif
 # From build/target/product/core.mk
 PRODUCT_PACKAGES += \
     BasicDreams \
-    CalendarProvider \
     CaptivePortalLogin \
     CertInstaller \
     ExternalStorageProvider \
@@ -56,18 +55,15 @@ PRODUCT_PACKAGES += \
     KeyChain \
     librs_jni \
     PacProcessor \
-    PrintSpooler \
     ProxyHandler \
     SharedStorageBackup \
     screenrecord \
     UserDictionaryProvider \
     VpnDialogs \
+    DocumentsUI \
     com.android.media.tv.remoteprovider
 
-# Device owner provisioning for devices defining device_admin
-PRODUCT_PACKAGES += \
-    ManagedProvisioning
-
+#     DocumentsUI \
 
 # PRODUCT_SUPPORTS_CAMERA: Whether the product supports cameras at all
 # (built-in or external USB camera). When 'false', we drop cameraserver, which
@@ -101,3 +97,4 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libeffects/data/audio_effects.conf:system/etc/audio_effects.conf
+

@@ -70,6 +70,15 @@ import com.android.server.policy.WindowManagerPolicy.WindowManagerFuncs;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.app.AlertDialog;
+import android.os.Looper;
+import android.app.Activity;
+import android.widget.Toast;
+import android.os.BatteryManager;
+import android.widget.TextView;
+import android.view.LayoutInflater;
+import android.view.View;
+
 
 /**
  * Helper to show the global actions dialog.  Each item is an {@link Action} that
@@ -117,6 +126,8 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
     private boolean mHasVibrator;
     private final boolean mShowSilentToggle;
     private final EmergencyAffordanceManager mEmergencyAffordanceManager;
+
+    private View headerView; // Member variable to hold the header view
 
     /**
      * @param context everything needs a context :(
@@ -216,6 +227,11 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
      * @return A new dialog.
      */
     private ActionsDialog createDialog() {
+
+        LayoutInflater inflater = LayoutInflater.from(mContext);
+        headerView = inflater.inflate(R.layout.header_battery_status, null, false);
+        updateBatteryStatus(); // Initial update
+
         // Simple toggle style if there's no vibrator, otherwise use a tri-state
         if (!mHasVibrator) {
             mSilentModeAction = new SilentModeToggleAction();
@@ -315,6 +331,12 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
             mItems.add(getEmergencyAction());
         }
 
+	// GammaOS - Add our own shortcuts
+	mItems.add(getBrightnessOptionsAction());
+	mItems.add(getHomeAction());
+        mItems.add(getPerformanceOptionsAction());
+	mItems.add(getKillForegroundAppAction());
+
         mAdapter = new ActionsAdapter(mContext, mItems,
                 () -> mDeviceProvisioned, () -> mKeyguardShowing);
 
@@ -322,6 +344,7 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
         params.mAdapter = mAdapter;
         params.mOnClickListener = this;
         params.mForceInverseBackground = true;
+	params.mCustomTitleView = headerView; // Set custom header
 
         ActionsDialog dialog = new ActionsDialog(mContext, params);
         dialog.setCanceledOnTouchOutside(false); // Handled by the custom class.
@@ -436,6 +459,146 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
             }
         };
     }
+
+    private Action getHomeAction() {
+        return new SinglePressAction(com.android.internal.R.drawable.ic_menu,
+                R.string.accessibility_system_action_home_label) {
+
+            @Override
+            public void onPress() {
+    		Intent intent = new Intent(Intent.ACTION_MAIN);
+    		intent.addCategory(Intent.CATEGORY_HOME);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                mContext.startActivity(intent);
+            }
+
+            @Override
+            public boolean showDuringKeyguard() {
+                return true;
+            }
+
+            @Override
+            public boolean showBeforeProvisioning() {
+                return true;
+            }
+        };
+    }
+
+
+    private Action getPerformanceOptionsAction() {
+        return new SinglePressAction(R.drawable.ic_menu,
+                R.string.gammaos_performance_mode) {
+
+            public void onPress() {
+                Intent intent = new Intent(mContext, PerformanceOptionsActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+                // Dismiss the dialog completely before launching the new activity
+                if (mDialog != null && mDialog.isShowing()) {
+                    mDialog.dismiss();
+                    mDialog = null; // Clear the reference to help garbage collection
+                }
+
+                mContext.startActivity(intent);
+
+                // Check if mContext is an instance of Activity and then call finish()
+                if (mContext instanceof Activity) {
+                    ((Activity) mContext).finish();
+                }
+            }
+
+            public boolean onLongPress() {
+                return false;
+            }
+
+            @Override
+            public boolean showDuringKeyguard() {
+                return true;
+            }
+
+            @Override
+            public boolean showBeforeProvisioning() {
+                return true;
+            }
+
+        };
+    }
+
+
+    private Action getBrightnessOptionsAction() {
+        return new SinglePressAction(R.drawable.ic_menu, // Use an appropriate icon for brightness
+                R.string.gammaos_brightness_settings) { // Define this string in your resources
+
+            public void onPress() {
+                Intent intent = new Intent(mContext, BrightnessControlActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+                // Dismiss the dialog completely before launching the new activity
+                if (mDialog != null && mDialog.isShowing()) {
+                    mDialog.dismiss();
+                    mDialog = null; // Clear the reference to help garbage collection
+                }
+
+                mContext.startActivity(intent);
+
+                // Check if mContext is an instance of Activity and then call finish()
+                if (mContext instanceof Activity) {
+                    ((Activity) mContext).finish();
+                }
+            }
+
+            public boolean onLongPress() {
+                return false;
+            }
+
+            @Override
+            public boolean showDuringKeyguard() {
+                return true;
+            }
+
+            @Override
+            public boolean showBeforeProvisioning() {
+                return true;
+            }
+        };
+    }
+
+    private Action getKillForegroundAppAction() {
+        return new SinglePressAction(R.drawable.ic_menu, R.string.gammaos_kill_app) {
+
+            @Override
+            public void onPress() {
+                ActivityManager am = (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
+                List<ActivityManager.RunningAppProcessInfo> appProcesses = am.getRunningAppProcesses();
+                if (appProcesses != null && !appProcesses.isEmpty()) {
+                    String foregroundProcess = appProcesses.get(0).processName;
+                    try {
+                        am.forceStopPackage(foregroundProcess);
+                        Toast.makeText(mContext, "Foreground app killed: " + foregroundProcess, Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        Toast.makeText(mContext, "Failed to kill app due to: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(mContext, "No foreground app found", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            public boolean onLongPress() {
+                return false;
+            }
+
+            @Override
+            public boolean showDuringKeyguard() {
+               return true;
+            }
+
+            @Override
+            public boolean showBeforeProvisioning() {
+                return true;
+            }
+        };
+    }
+
 
     private Action getEmergencyAction() {
         return new SinglePressAction(com.android.internal.R.drawable.emergency_icon,
@@ -600,21 +763,27 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
         }
     }
 
-    /** {@inheritDoc} */
-    @Override
-    public void onDismiss(DialogInterface dialog) {
-        if (mOnDismiss != null) {
-            mOnDismiss.run();
-        }
-        if (mShowSilentToggle) {
-            try {
-                mContext.unregisterReceiver(mRingerModeReceiver);
-            } catch (IllegalArgumentException ie) {
-                // ignore this
-                Log.w(TAG, ie);
-            }
+/** {@inheritDoc} */
+@Override
+public void onDismiss(DialogInterface dialog) {
+    if (mOnDismiss != null) {
+        mOnDismiss.run();
+    }
+    if (mShowSilentToggle) {
+        try {
+            mContext.unregisterReceiver(mRingerModeReceiver);
+        } catch (IllegalArgumentException ie) {
+            // This will catch the exception if the receiver was already unregistered or not registered.
+            Log.w(TAG, "Attempted to unregister the ringer mode receiver that was not registered", ie);
         }
     }
+    try {
+        mContext.unregisterReceiver(batteryInfoReceiver); // Unregister the battery info receiver
+    } catch (IllegalArgumentException ie) {
+        // This will catch the exception if the receiver was already unregistered or not registered.
+        Log.w(TAG, "Attempted to unregister the battery info receiver that was not registered", ie);
+    }
+}
 
     /** {@inheritDoc} */
     @Override
@@ -840,4 +1009,41 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
             mAirplaneState = on ? ToggleAction.State.On : ToggleAction.State.Off;
         }
     }
+
+
+    private void updateBatteryStatus() {
+        IntentFilter filter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        // Log to confirm registration is happening
+        Log.d(TAG, "Registering battery status receiver");
+        mContext.registerReceiver(batteryInfoReceiver, filter);
+    }
+
+
+    private BroadcastReceiver batteryInfoReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            final int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+            final int scale = intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
+            final int batteryPct = (level >= 0 && scale > 0) ? (int) ((level / (float) scale) * 100) : -1;
+
+            if (batteryPct >= 0) {
+                // Post task to Handler to ensure it runs on the main thread
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        TextView batteryText = headerView.findViewById(R.id.battery_percentage);
+                        if (batteryText != null) {
+                            batteryText.setText(batteryPct + "%");
+                        } else {
+                            Log.e(TAG, "Battery TextView not found");
+                        }
+                    }
+                });
+            } else {
+                Log.e(TAG, "Invalid battery level or scale");
+            }
+        }
+    };
+
+
 }

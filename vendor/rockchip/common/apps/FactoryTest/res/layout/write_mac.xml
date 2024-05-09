@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FF000000"
+    android:alwaysDrawnWithCache="true">
+    
+ <LinearLayout 
+     android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/layout_v_margin"
+    android:layout_marginBottom="@dimen/layout_v_margin"
+    android:layout_marginLeft="@dimen/layout_h_margin"
+    android:layout_marginRight="@dimen/layout_h_margin"> 
+    
+		<LinearLayout 
+		    android:layout_width="match_parent"
+			android:layout_height="match_parent" 
+			android:layout_weight="1"
+			android:orientation="vertical"
+			>
+			
+	<TextView
+	    android:id="@+id/TextView_mac_title"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/showmac"
+	    android:textColor="#FF888888"
+	    android:textSize="25sp" >
+		</TextView>
+
+			 <TextView
+			    android:id="@+id/TextView_mac"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:text="@string/showmac"
+			    android:textColor="#FFFFFFFF"
+			    android:textSize="25sp" >
+			</TextView>
+			
+	<TextView
+	    android:id="@+id/TextView_sn_title"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/SnAddr"
+	    android:textColor="#FF888888"
+	    android:textSize="25sp"
+	    android:visibility="gone" >
+		</TextView>
+			
+			 <TextView
+			    android:id="@+id/TextView_sn"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:text="@string/SnAddr"
+			    android:textColor="#FFFFFFFF"
+			    android:textSize="25sp"
+			    android:visibility="gone" >
+			</TextView>
+			
+	<TextView
+	    android:id="@+id/TextView_usid_title"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/showusid"
+	    android:textColor="#FF888888"
+	    android:textSize="25sp" >
+		</TextView>
+			
+			<TextView
+			    android:id="@+id/TextView_usid"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:text="@string/UsidAddr"
+			    android:textColor="#FFFFFFFF"
+			    android:textSize="25sp" >
+			</TextView>
+			
+	  <TextView
+	    android:id="@+id/TextView_deviceid_title"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/showdeivceid"
+	    android:textColor="#FF888888"
+	    android:textSize="25sp" >
+		</TextView>
+			
+			<TextView
+			    android:id="@+id/TextView_deviceid"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:text="@string/DeviceidAddr"
+			    android:textColor="#FFFFFFFF"
+			    android:textSize="25sp" >
+			</TextView>
+			
+									
+		</LinearLayout>
+		
+		<LinearLayout 
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_weight="1"	 
+		android:orientation="vertical"
+		>
+			<TextView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginTop="100dp"
+			    android:text="@string/ScanText"
+			    android:textColor="#FF888888"
+			    android:textSize="25sp" >
+			</TextView>
+			
+			<EditText
+			    android:id="@+id/EditTextMac"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginTop="50dp"
+			    android:textSize="25sp" 
+			    android:textColor="#FFFFFFFF"
+			    />
+
+			</LinearLayout>
+		
+		</LinearLayout>	
+		
+</LinearLayout>

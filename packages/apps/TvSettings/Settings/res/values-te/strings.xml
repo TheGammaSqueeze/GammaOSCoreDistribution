@@ -51,7 +51,7 @@
     <string name="sound_category_title" msgid="7899816751041939518">"ధ్వని"</string>
     <string name="applications_category_title" msgid="7112019490898586223">"యాప్‌లు"</string>
     <string name="device_pref_category_title" msgid="8292572846154873762">"పరికర ప్రాధాన్యతలు"</string>
-    <string name="remotes_and_accessories_category_title" msgid="4795119810430255047">"రిమోట్‌లు &amp; ఉపకరణాలు"</string>
+    <string name="remotes_and_accessories_category_title" msgid="4795119810430255047">"Bluetooth and accessories"</string>
     <string name="display_and_sound_category_title" msgid="9203309625380755860">"డిస్‌ప్లే &amp; సౌండ్"</string>
     <string name="help_and_feedback_category_title" msgid="7036505833991003031">"సహాయం &amp; ఫీడ్‌బ్యాక్"</string>
     <string name="privacy_category_title" msgid="8552430590908463601">"గోప్యత"</string>
@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"అధునాతన సౌండ్ సెట్టింగ్‌లు"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"గేమ్ మోడ్‌ను అనుమతించండి"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"కంటెంట్ ఫ్రేమ్ రేట్‌‌ను మ్యాచ్ చేయడం"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"సీమ్‌లెస్"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"యాప్ ఒకవేళ దాని కోసం రిక్వెస్ట్ చేసినా, మీ టీవీ సీమ్‌లెస్ ట్రాన్సిషన్‌ను అమలు చేయగలిగినప్పుడు మాత్రమే, మీరు చూస్తున్న కంటెంట్ యొక్క ఒరిజినల్ ఫ్రేమ్ రేట్‌తో మీ పరికరం దాని అవుట్‌పుట్‌ను మ్యాచ్ చేస్తుంది."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"నాన్-ఆటోమేటిక్"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"యాప్ దానిని రిక్వెస్ట్ చేస్తే, మీ పరికరం దాని అవుట్‌పుట్‌ను మీరు చూస్తున్న కంటెంట్‌కు సంబంధించిన ఒరిజినల్ ఫ్రేమ్ రేట్‌తో మ్యాచ్ చేస్తుంది. వీడియో ప్లేబ్యాక్ నుండి నిష్క్రమించేటప్పుడు లేదా ప్రవేశించేటప్పుడు మీ స్క్రీన్ ఒక సెకను బ్లాంక్ కావచ్చు."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"ఎప్పుడూ వద్దు"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"యాప్ దానిని రిక్వెస్ట్ చేసినప్పటికీ, మీ పరికరం దాని అవుట్‌పుట్‌ను మీరు చూస్తున్న కంటెంట్‌కు సంబంధించిన ఒరిజినల్ ఫ్రేమ్ రేట్‌తో మ్యాచ్ చేయడానికి ట్రై చేయదు."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"సీమ్‌లెస్"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"యాప్ ఒకవేళ దాని కోసం రిక్వెస్ట్ చేసినా, మీ టీవీ సీమ్‌లెస్ ట్రాన్సిషన్‌ను అమలు చేయగలిగినప్పుడు మాత్రమే, మీరు చూస్తున్న కంటెంట్ యొక్క ఒరిజినల్ ఫ్రేమ్ రేట్‌తో మీ పరికరం దాని అవుట్‌పుట్‌ను మ్యాచ్ చేస్తుంది."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"నాన్-ఆటోమేటిక్"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"యాప్ దానిని రిక్వెస్ట్ చేస్తే, మీ పరికరం దాని అవుట్‌పుట్‌ను మీరు చూస్తున్న కంటెంట్‌కు సంబంధించిన ఒరిజినల్ ఫ్రేమ్ రేట్‌తో మ్యాచ్ చేస్తుంది. వీడియో ప్లేబ్యాక్ నుండి నిష్క్రమించేటప్పుడు లేదా ప్రవేశించేటప్పుడు మీ స్క్రీన్ ఒక సెకను బ్లాంక్ కావచ్చు."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"ఎప్పుడూ వద్దు"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"యాప్ దానిని రిక్వెస్ట్ చేసినప్పటికీ, మీ పరికరం దాని అవుట్‌పుట్‌ను మీరు చూస్తున్న కంటెంట్‌కు సంబంధించిన ఒరిజినల్ ఫ్రేమ్ రేట్‌తో మ్యాచ్ చేయడానికి ట్రై చేయదు."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"టెక్స్ట్ స్కేలింగ్"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"<xliff:g id="SCALE">%1$d</xliff:g>%% వరకు స్కేల్ చేయండి"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"శాంపిల్ టెక్స్ట్"</string>
@@ -218,10 +217,10 @@
     <string name="bluetooth_cancel" msgid="4415185529332987034">"రద్దు చేయండి"</string>
     <string name="bluetooth_device_connected_toast" msgid="1896195197089204806">"%1$s కనెక్ట్ చేయబడింది"</string>
     <string name="bluetooth_device_disconnected_toast" msgid="7459239447363156499">"%1$s డిస్‌కనెక్ట్ చేయబడింది"</string>
-    <string name="connected_devices_slice_pref_title" msgid="6761921505544005991">"రిమోట్‌లు &amp; యాక్సెసరీలు"</string>
+    <string name="connected_devices_slice_pref_title" msgid="6761921505544005991">"Bluetooth and accessories"</string>
     <string name="bluetooth_toggle_title" msgid="3808904783456336104">"బ్లూటూత్"</string>
     <string name="bluetooth_toggle_confirmation_dialog_title" msgid="3906746631391295717">"బ్లూటూత్‌ను ఆఫ్ చేయండి"</string>
-    <string name="bluetooth_toggle_confirmation_dialog_summary" msgid="9017044450625172698">"బ్లూటూత్ ఆఫ్ చేయబడి ఉన్నప్పుడు మీరు మీ రిమోట్ నుండి Google Assistantను యాక్సెస్ చేయలేరు."</string>
+    <string name="bluetooth_toggle_confirmation_dialog_summary" msgid="9017044450625172698">"Are you sure you want to turn Bluetooth off?"</string>
     <string name="bluetooth_pair_accessory" msgid="5508750142754420984">"యాక్సెసరీని పెయిర్ చేయండి"</string>
     <string name="bluetooth_known_devices_category" msgid="6895470515631452961">"యాక్సెసరీలు"</string>
     <string name="bluetooth_official_remote_category" msgid="5817814488268307170">"రిమోట్ కంట్రోల్"</string>

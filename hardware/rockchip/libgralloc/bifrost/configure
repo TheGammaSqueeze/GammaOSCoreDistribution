@@ -1,0 +1,183 @@
+#!/usr/bin/env bash
+
+# Copyright (C) 2019-2022 Arm Limited.
+# SPDX-License-Identifier: Apache-2.0
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# This script selects the build configuration to use for Gralloc.
+# The Arm Reference Gralloc supports multiple versions of Android and Gralloc APIs.
+# This script must be used before the build stage to select what to build, consistently with the target Android system.
+#
+# If `lunch` has been run then the script configures the build automatically from the environment.
+# When not in a 'lunched' shell, the Android version can be set to 'N' by specifying `ANDROID_N=y`.
+#
+# The script does not check that the combination of options specified is valid.
+
+set -e
+
+PLATFORM_VERSION=0
+TARGET_BUILD="release"
+ENABLE_HWC=0
+ENABLE_PRIVATE_FORMATS=1
+ENABLE_VINTF=0
+USE_LEGACY_ALLOCATOR=0
+
+# In a lunched shell auto detect the Android version.
+if [ ! -z $ANDROID_BUILD_TOP ]; then
+    PLATFORM_VERSION=$(${ANDROID_BUILD_TOP}/build/soong/soong_ui.bash --dumpvar-mode PLATFORM_VERSION 2>/dev/null)
+    # Adjust for early access versions that use a capital letter eg. Q -> 10
+    if [[ ${PLATFORM_VERSION:0:1} == [A-Z] ]]; then
+        PLATFORM_VERSION=$(printf "%d" "'${PLATFORM_VERSION:0:1}")
+        PLATFORM_VERSION=$(($PLATFORM_VERSION - 71))
+    fi
+fi
+
+if [ ! -z $ANDROID_BUILD_TOP ] && [ $PLATFORM_VERSION -eq 13 ]; then
+    ENABLE_VINTF=1
+fi
+
+SELECTED_PLATFORM=0
+for arg in "$@"; do
+    case $arg in
+    ANDROID_12=y)
+        SELECTED_PLATFORM=12
+        ;;
+    ANDROID_13=y)
+        SELECTED_PLATFORM=13
+        ;;
+    DEBUG=y)
+        TARGET_BUILD="debug"
+        ;;
+    PRIVATE_FORMATS=y)
+        ENABLE_PRIVATE_FORMATS=1
+        ;;
+    PRIVATE_FORMATS=n)
+        ENABLE_PRIVATE_FORMATS=0
+        ;;
+    DRM_HWC=y)
+        ENABLE_HWC=1
+        ;;
+    VINTF=y)
+        ENABLE_VINTF=1
+        ;;
+    VINTF=n)
+        ENABLE_VINTF=0
+        ;;
+    LEGACY_ALLOCATOR=y)
+        USE_LEGACY_ALLOCATOR=1
+        ;;
+    *)
+        echo "$arg ignored"
+        ;;
+    esac
+done
+
+if [ $PLATFORM_VERSION != 0 ] && [ $SELECTED_PLATFORM != 0 ] && [ $PLATFORM_VERSION != $SELECTED_PLATFORM ]; then
+   echo "ANDROID_${SELECTED_PLATFORM} ignored. Using detected Android version of ${PLATFORM_VERSION}"
+elif [ $SELECTED_PLATFORM != 0 ]; then
+    PLATFORM_VERSION=$SELECTED_PLATFORM
+fi
+
+# command pushd `dirname $0` > /dev/null
+command pushd $(pwd) > /dev/null
+
+# Sed command applied to every Android.bp file to conditionally enable/disable features
+SED_COMMAND="s/@USE_PRIVATE_FORMATS@/$ENABLE_PRIVATE_FORMATS/g;"
+function enable {
+    # Remove .disabled suffixes
+    sed -e $SED_COMMAND "${1}" > "${1%.disabled*}"
+}
+
+# Clean all build files
+find . \( -name "Android.bp" -o -name "Android.mk" \) -delete
+
+# Always enable src/Android.bp.
+enable "src/Android.bp.disabled"
+
+# Choose between release/debug build.
+enable "build_configs/Android.bp.disabled.${TARGET_BUILD}"
+
+# Stable AIDL and DRM utils interfaces
+AIDL_FILES="interfaces/aidl/Android.bp.disabled"
+
+CAPS_FILES="interfaces/capabilities/Android.bp.disabled"
+
+# Blueprint files for all modules common to all Gralloc versions
+COMMON_FILES="Android.bp.disabled
+              src/allocator/Android.bp.disabled
+              src/allocator/shared_memory/Android.bp.disabled
+              src/core/Android.bp.disabled
+              src/capabilities/Android.bp.disabled
+              src/idl_common/allocator/Android.bp.disabled
+              src/idl_common/mapper/Android.bp.disabled
+              src/idl_common/gralloc_shared/Android.bp.disabled"
+
+# Blueprint files for tests
+if [ -d tests ]; then
+    TEST_FILES=`find tests -name Android.bp.disabled`
+else
+    TEST_FILES=
+fi
+
+# Blueprint files specific to platform version
+VERSION_FILES=`find . -name Android.bp.disabled.${PLATFORM_VERSION}`
+
+echo "Enabling support for Gralloc 4.0"
+GRALLOC4_FILES="${AIDL_FILES}
+                ${COMMON_FILES}
+                ${TEST_FILES}
+                ${VERSION_FILES}
+                ${CAPS_FILES}
+                src/4.x/Android.bp.disabled
+                src/4.x/mapper/Android.bp.disabled"
+
+GRALLOC4_HIDL_ALLOCATOR="src/4.x/allocator/Android.bp.disabled
+                         service/4.x/Android.bp.disabled"
+
+GRALLOC_AIDL_V1_ALLOCATOR_FILES="service/aidl/1.x/Android.bp.disabled src/aidl/1.x/Android.bp.disabled"
+
+
+for FILE in $GRALLOC4_FILES; do
+    enable "${FILE}"
+done
+
+if [ $PLATFORM_VERSION -lt 13 ] || [ $USE_LEGACY_ALLOCATOR -eq 1 ]; then
+for FILE in $GRALLOC4_HIDL_ALLOCATOR; do
+    enable "${FILE}"
+done
+else
+for FILE in $GRALLOC_AIDL_V1_ALLOCATOR_FILES; do
+    enable "${FILE}"
+done
+fi
+
+if [ $ENABLE_HWC -eq 1 ]; then
+    echo "Enabling Gralloc support for drm_hwcomposer"
+    enable "drm_hwcomposer/Android.bp.disabled"
+fi
+
+if [ $ENABLE_VINTF -eq 1 ]; then
+    echo "Enabling Gralloc vintf fragments"
+    touch "build_vintf/vintf_enabled"
+    enable "build_vintf/Android.bp.disabled.vintf"
+else
+    rm -f "build_vintf/vintf_enabled"
+    enable "build_vintf/Android.bp.disabled.no_vintf"
+fi
+
+# Enable dma_buf heaps
+enable "src/allocator/dma_buf_heaps/Android.bp.disabled"
+
+
+command popd > /dev/null

@@ -268,7 +268,7 @@
     <string name="preview_work_file" msgid="4495643735563487273">"Визуализация на служебния файл <xliff:g id="FILENAME">%1$s</xliff:g>"</string>
     <string name="apps_row_title" msgid="3340490016663092925">"Преглед на файлове в други приложения"</string>
     <string name="anonymous_application" msgid="7633027057951625862">"Анонимно"</string>
-    <string name="open_tree_button" msgid="6402871398424497776">"Използване на тази папка"</string>
+    <string name="open_tree_button">Press L1 to switch storage. Press Start to confirm folder selection.</string>
     <string name="open_tree_dialog_title" msgid="6339509533852318569">"Да се разреши ли на <xliff:g id="APPNAME">%1$s</xliff:g> достъп до файловете в(ъв) <xliff:g id="DIRECTORY">%2$s</xliff:g>?"</string>
     <string name="open_tree_dialog_message" msgid="4120695398430659628">"Това ще разреши на <xliff:g id="APPNAME">%1$s</xliff:g> да осъществява достъп до текущото и бъдещото съдържание, което се съхранява в(ъв) <xliff:g id="DIRECTORY">%2$s</xliff:g>."</string>
     <string name="directory_blocked_header_title" msgid="1164584889578740066">"Тази папка не може да се използва"</string>

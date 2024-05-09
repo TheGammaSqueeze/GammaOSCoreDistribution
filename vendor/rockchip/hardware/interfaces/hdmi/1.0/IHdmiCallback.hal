@@ -1,0 +1,10 @@
+package rockchip.hardware.hdmi@1.0;
+
+import rockchip.hardware.hdmi@1.0::types;
+
+interface IHdmiCallback
+{
+	onConnect(string deviceId);
+	onFormatChange(string deviceId,uint32_t width,uint32_t height);
+	onDisconnect(string deviceId);
+};

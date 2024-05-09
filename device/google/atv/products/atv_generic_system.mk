@@ -23,19 +23,18 @@ $(call inherit-product-if-exists, vendor/google/security/adb/vendor_key.mk)
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
-# OTA support
 PRODUCT_PACKAGES += \
-    recovery-refresh \
-    update_engine \
-    update_verifier \
+    DocumentsUI \
+    com.android.mtp \
+    android.server.tvproviderstub \
 
 # Wrapped net utils for /vendor access.
 PRODUCT_PACKAGES += netutils-wrapper-1.0
 
 # system_other support
-PRODUCT_PACKAGES += \
-    cppreopts.sh \
-    otapreopt_script
+#PRODUCT_PACKAGES += \
+#    cppreopts.sh \
+#    otapreopt_script
 
 # System libraries commonly depended on by things on the system_ext or product partitions.
 # These lists will be pruned periodically.
@@ -79,6 +78,54 @@ PRODUCT_COPY_FILES += \
     system/core/rootdir/init.zygote32.rc:system/etc/init/hw/init.zygote32.rc \
     system/core/rootdir/init.zygote64.rc:system/etc/init/hw/init.zygote64.rc \
     system/core/rootdir/init.zygote64_32.rc:system/etc/init/hw/init.zygote64_32.rc
+
+# GammaOS Customizations
+
+PRODUCT_COPY_FILES += \
+    device/google/atv/gammaos/rgp2xbox/rgp2xbox:system/bin/rgp2xbox \
+    device/google/atv/gammaos/rgp2xbox/rgp2xbox.sh:system/bin/rgp2xbox.sh \
+    device/google/atv/gammaos/rgp2xbox/setabxyvalue_default.sh:system/bin/setabxyvalue_default.sh \
+    device/google/atv/gammaos/rgp2xbox/setabxyvalue_swapped.sh:system/bin/setabxyvalue_swapped.sh \
+    device/google/atv/gammaos/rgp2xbox/setanalogaxisvalue_default.sh:system/bin/setanalogaxisvalue_default.sh \
+    device/google/atv/gammaos/rgp2xbox/setanalogaxisvalue_swapped.sh:system/bin/setanalogaxisvalue_swapped.sh \
+    device/google/atv/gammaos/rgp2xbox/setanalogsensitivity_15.sh:system/bin/setanalogsensitivity_15.sh \
+    device/google/atv/gammaos/rgp2xbox/setanalogsensitivity_25.sh:system/bin/setanalogsensitivity_25.sh \
+    device/google/atv/gammaos/rgp2xbox/setanalogsensitivity_50.sh:system/bin/setanalogsensitivity_50.sh \
+    device/google/atv/gammaos/rgp2xbox/setanalogsensitivity_custom.sh:system/bin/setanalogsensitivity_custom.sh \
+    device/google/atv/gammaos/rgp2xbox/setanalogsensitivity_default.sh:system/bin/setanalogsensitivity_default.sh \
+    device/google/atv/gammaos/rgp2xbox/setclock_max.sh:system/bin/setclock_max.sh \
+    device/google/atv/gammaos/rgp2xbox/setclock_powersave.sh:system/bin/setclock_powersave.sh \
+    device/google/atv/gammaos/rgp2xbox/setclock_stock.sh:system/bin/setclock_stock.sh \
+    device/google/atv/gammaos/rgp2xbox/setclockvalue_max.sh:system/bin/setclockvalue_max.sh \
+    device/google/atv/gammaos/rgp2xbox/setclockvalue_powersave.sh:system/bin/setclockvalue_powersave.sh \
+    device/google/atv/gammaos/rgp2xbox/setclockvalue_stock.sh:system/bin/setclockvalue_stock.sh \
+    device/google/atv/gammaos/rgp2xbox/setdpadanalogtoggle_off.sh:system/bin/setdpadanalogtoggle_off.sh \
+    device/google/atv/gammaos/rgp2xbox/setdpadanalogtoggle_on.sh:system/bin/setdpadanalogtoggle_on.sh \
+    device/google/atv/gammaos/rgp2xbox/setfan_auto.sh:system/bin/setfan_auto.sh \
+    device/google/atv/gammaos/rgp2xbox/setfan_cool.sh:system/bin/setfan_cool.sh \
+    device/google/atv/gammaos/rgp2xbox/setfan_max.sh:system/bin/setfan_max.sh \
+    device/google/atv/gammaos/rgp2xbox/setfan_off.sh:system/bin/setfan_off.sh \
+    device/google/atv/gammaos/rgp2xbox/setfanvalue_auto.sh:system/bin/setfanvalue_auto.sh \
+    device/google/atv/gammaos/rgp2xbox/setfanvalue_cool.sh:system/bin/setfanvalue_cool.sh \
+    device/google/atv/gammaos/rgp2xbox/setfanvalue_max.sh:system/bin/setfanvalue_max.sh \
+    device/google/atv/gammaos/rgp2xbox/setfanvalue_off.sh:system/bin/setfanvalue_off.sh \
+    device/google/atv/gammaos/rgp2xbox/setrightanalogaxisvalue_default.sh:system/bin/setrightanalogaxisvalue_default.sh \
+    device/google/atv/gammaos/rgp2xbox/setrightanalogaxisvalue_swapped.sh:system/bin/setrightanalogaxisvalue_swapped.sh \
+    device/google/atv/gammaos/customization.sh:system/bin/customization.sh \
+    device/google/atv/gammaos/magisk/magisk.apk:system/etc/magisk.apk \
+    device/google/atv/gammaos/magisk/magisk.tar.gz:system/etc/magisk.tar.gz \
+    device/google/atv/gammaos/retroarch/RetroArch_aarch64.apk:system/etc/RetroArch_aarch64.apk \
+    device/google/atv/gammaos/retroarch/retroarch64.tar.gz:system/etc/retroarch64.tar.gz \
+    device/google/atv/gammaos/retroarch/retroarch64sdcard.tar.gz:system/etc/retroarch64sdcard.tar.gz \
+    device/google/atv/gammaos/retroarch/retroarch64sdcard1-arc.tar.gz:system/etc/retroarch64sdcard1-arc.tar.gz \
+    device/google/atv/gammaos/retroarch/retroarch64sdcard2.tar.gz:system/etc/retroarch64sdcard2.tar.gz \
+    device/google/atv/gammaos/retroarch/roms.tar.gz:system/etc/roms.tar.gz \
+    device/google/atv/gammaos/launcher/projectivylauncher_4.36.apk:system/etc/projectivylauncher_4.36.apk \
+    device/google/atv/gammaos/launcher/com.spocky.projengmenu.data.tar.gz:system/etc/com.spocky.projengmenu.data.tar.gz \
+    device/google/atv/gammaos/hdmiaudio/silent.mp3:system/etc/silent.mp3 \
+    device/google/atv/gammaos/hdmiaudio/hdmiaudio.sh:system/bin/hdmiaudio.sh \
+    device/google/atv/gammaos/rgb30/rgb30_v2_boot.zip:system/etc/rgb30_v2_boot.zip \
+    device/google/atv/gammaos/setup.sh:system/bin/setup.sh \
 
 # Enable dynamic partition size
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true

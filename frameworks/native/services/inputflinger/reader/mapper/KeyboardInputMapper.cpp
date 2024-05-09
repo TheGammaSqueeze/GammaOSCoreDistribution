@@ -359,10 +359,10 @@ void KeyboardInputMapper::processKey(nsecs_t when, nsecs_t readTime, bool down, 
     // prevented (e.g. TV remotes), the key layout file should specify the policy flags for each
     // wake key individually.
     // TODO: Use the input device configuration to control this behavior more finely.
-    if (down && getDeviceContext().isExternal() && !mParameters.doNotWakeByDefault &&
-        !isMediaKey(keyCode)) {
-        policyFlags |= POLICY_FLAG_WAKE;
-    }
+    //if (down && getDeviceContext().isExternal() && !mParameters.doNotWakeByDefault &&
+    //    !isMediaKey(keyCode)) {
+    //    policyFlags |= POLICY_FLAG_WAKE;
+    //}
 
     if (mParameters.handlesKeyRepeat) {
         policyFlags |= POLICY_FLAG_DISABLE_KEY_REPEAT;

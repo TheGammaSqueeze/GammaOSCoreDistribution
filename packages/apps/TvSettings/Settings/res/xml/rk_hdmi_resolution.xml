@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2020 The Android Open Source Project
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                  android:title="HDMI Resolutions">
+
+    <Preference
+        android:key="hdmi_settings_heading"
+        android:title="Changes the HDMI output settings, applies on reboot. Ensure HDMI is connected during reboot to ensure that the proper resolution is selected."
+        android:selectable="false" />
+
+    <PreferenceCategory>
+        <com.android.tv.settings.RadioPreference
+            android:key="default_resolution"
+            android:title="Default" />
+
+        <com.android.tv.settings.RadioPreference
+            android:key="resolution_1080p60"
+            android:title="1920x1080@60hz" />
+
+        <com.android.tv.settings.RadioPreference
+            android:key="resolution_720p60"
+            android:title="1280x720@60hz" />
+
+        <!-- Additional Modes -->
+        <com.android.tv.settings.RadioPreference
+            android:key="resolution_1440p60"
+            android:title="2560x1440@60hz (EXPERIMENTAL: MAY NOT WORK)" />
+
+        <com.android.tv.settings.RadioPreference
+            android:key="resolution_1200_1080p60"
+            android:title="1920x1200@60hz (1080P FrameBuffer)" />
+
+        <com.android.tv.settings.RadioPreference
+            android:key="resolution_1200_720p60"
+            android:title="1920x1200@60hz (720P FrameBuffer)" />
+
+        <com.android.tv.settings.RadioPreference
+            android:key="resolution_1024x768p60"
+            android:title="1024x768@60hz" />
+
+        <com.android.tv.settings.RadioPreference
+            android:key="resolution_800x600p60"
+            android:title="800x600@60hz" />
+
+        <com.android.tv.settings.RadioPreference
+            android:key="resolution_720x480p60"
+            android:title="720x480@60hz" />
+
+        <com.android.tv.settings.RadioPreference
+            android:key="resolution_640x480p60"
+            android:title="640x480@60hz" />
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -1,0 +1,73 @@
+From f52ce1a3a740b83742aee44ad47a7513f51bd679 Mon Sep 17 00:00:00 2001
+From: Paul Lawrence <paullawrence@google.com>
+Date: Mon, 3 May 2021 08:46:52 -0700
+Subject: [PATCH 31/31] ANDROID: Incremental fs: Add uid to
+ INCFS_IOC_GET_LAST_READ_ERROR
+
+Bug: 186796876
+Test: incfs_test passes
+Signed-off-by: Paul Lawrence <paullawrence@google.com>
+Change-Id: I552cae5e87b004202364ba5c9c5f9febb9e106f2
+---
+ fs/incfs/data_mgmt.c               | 1 +
+ fs/incfs/data_mgmt.h               | 1 +
+ fs/incfs/pseudo_files.c            | 1 +
+ include/uapi/linux/incrementalfs.h | 6 +++++-
+ 4 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/fs/incfs/data_mgmt.c b/fs/incfs/data_mgmt.c
+index 44b56a3a05e7..c325faf76fee 100644
+--- a/fs/incfs/data_mgmt.c
++++ b/fs/incfs/data_mgmt.c
+@@ -1274,6 +1274,7 @@ static int incfs_update_sysfs_error(struct file *file, int index, int result,
+ 	mi->mi_le_time_us = ktime_to_us(ktime_get());
+ 	mi->mi_le_page = index;
+ 	mi->mi_le_errno = result;
++	mi->mi_le_uid = current_uid().val;
+ 	mutex_unlock(&mi->mi_le_mutex);
+ 
+ 	return 0;
+diff --git a/fs/incfs/data_mgmt.h b/fs/incfs/data_mgmt.h
+index 9eeb60d70601..50324f448250 100644
+--- a/fs/incfs/data_mgmt.h
++++ b/fs/incfs/data_mgmt.h
+@@ -199,6 +199,7 @@ struct mount_info {
+ 	u64		mi_le_time_us;
+ 	u32		mi_le_page;
+ 	u32		mi_le_errno;
++	uid_t		mi_le_uid;
+ 
+ 	/* Number of reads timed out */
+ 	u32 mi_reads_failed_timed_out;
+diff --git a/fs/incfs/pseudo_files.c b/fs/incfs/pseudo_files.c
+index 4e35f1f81f92..1a664f1478d5 100644
+--- a/fs/incfs/pseudo_files.c
++++ b/fs/incfs/pseudo_files.c
+@@ -1005,6 +1005,7 @@ static long ioctl_get_last_read_error(struct mount_info *mi, void __user *arg)
+ 	args.time_us_out = mi->mi_le_time_us;
+ 	args.page_out = mi->mi_le_page;
+ 	args.errno_out = mi->mi_le_errno;
++	args.uid_out = mi->mi_le_uid;
+ 
+ 	mutex_unlock(&mi->mi_le_mutex);
+ 	if (copy_to_user(args_usr_ptr, &args, sizeof(args)) > 0)
+diff --git a/include/uapi/linux/incrementalfs.h b/include/uapi/linux/incrementalfs.h
+index f1a6199da850..f8338aff82f5 100644
+--- a/include/uapi/linux/incrementalfs.h
++++ b/include/uapi/linux/incrementalfs.h
+@@ -580,7 +580,11 @@ struct incfs_get_last_read_error_args {
+ 	/* errno of last read error */
+ 	__u32	errno_out;
+ 
+-	__u64	reserved;
++	/* uid of last read error */
++	__u32	uid_out;
++
++	__u32	reserved1;
++	__u64	reserved2;
+ };
+ 
+ #endif /* _UAPI_LINUX_INCREMENTALFS_H */
+-- 
+2.17.1
+

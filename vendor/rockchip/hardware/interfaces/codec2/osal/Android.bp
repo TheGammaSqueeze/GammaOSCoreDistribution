@@ -1,0 +1,55 @@
+cc_library_static {
+    name: "libcodec2_rk_osal",
+    vendor: true,
+
+    srcs: [
+        "C2RKChips.cpp",
+        "C2RKLog.cpp",
+        "C2RKBitRead.cpp",
+        "C2RKDump.cpp",
+        "C2RKEnv.cpp",
+        "C2RKChipFeaturesDef.cpp",
+        "C2RKRgaDef.cpp",
+        "C2RKMediaUtils.cpp",
+        "C2RKGrallocDef.cpp",
+        "C2RKNalParser.cpp",
+        "C2VdecExtendFeature.cpp",
+    ],
+
+    shared_libs: [
+        "liblog",
+        "libui",
+        "libutils",
+        "libhardware",
+        "libstagefright_foundation",
+        "libsfplugin_ccodec_utils",
+        "librga",
+        "libmpp",
+    ],
+
+    include_dirs: [
+        "vendor/rockchip/hardware/interfaces/codec2/osal/include",
+        "hardware/rockchip/librga/include",
+        "hardware/rockchip/librga/im2d_api",
+    ],
+
+    export_shared_lib_headers: [
+        "libui",
+    ],
+
+    header_libs: [
+        "libhardware_rockchip_headers",
+        "libhardware_headers",
+        "libcodec2_headers",
+    ],
+
+    sanitize: {
+        misc_undefined: [
+            "unsigned-integer-overflow",
+            "signed-integer-overflow",
+        ],
+        cfi: true,
+    },
+
+    ldflags: ["-Wl,-Bsymbolic"],
+}

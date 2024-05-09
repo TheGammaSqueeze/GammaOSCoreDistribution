@@ -1,0 +1,39 @@
+From 463bb9e6819946c7540db0ceeb9ce146271d934e Mon Sep 17 00:00:00 2001
+From: Yurii Zubrytskyi <zyy@google.com>
+Date: Thu, 18 Feb 2021 09:22:52 -0800
+Subject: [PATCH 14/31] ANDROID: Incremental fs: set the correct access to
+ mapped files
+
+Backing file needs to have write permissions for all users
+even though the mounted view doesn't - otherwise incfs can't
+change the internal file data.
+
+Bug: 180535478
+Test: adb install <apk>
+Signed-off-by: Yurii Zubrytskyi <zyy@google.com>
+Signed-off-by: Paul Lawrence <paullawrence@google.com>
+Change-Id: Ie25ff62b5b78a2f1f52de68d9b39c3a9825af82b
+---
+ fs/incfs/pseudo_files.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/fs/incfs/pseudo_files.c b/fs/incfs/pseudo_files.c
+index ad39ba5698be..a804436c6bcf 100644
+--- a/fs/incfs/pseudo_files.c
++++ b/fs/incfs/pseudo_files.c
+@@ -863,6 +863,12 @@ static long ioctl_create_mapped_file(struct file *file, void __user *arg)
+ 	if (error)
+ 		goto out;
+ 
++	error = chmod(file_dentry, args.mode | 0222);
++	if (error) {
++		pr_debug("incfs: chmod err: %d\n", error);
++		goto delete_file;
++	}
++
+ 	/* Save the file's size as an xattr for easy fetching in future. */
+ 	size_attr_value = cpu_to_le64(args.size);
+ 	error = vfs_setxattr(file_dentry, INCFS_XATTR_SIZE_NAME,
+-- 
+2.17.1
+

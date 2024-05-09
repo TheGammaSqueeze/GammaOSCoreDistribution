@@ -367,7 +367,7 @@ public class DisplayRotation {
 
     void configure(int width, int height) {
         final Resources res = mContext.getResources();
-        if (width > height) {
+        if (width >= height) {
             mLandscapeRotation = Surface.ROTATION_0;
             mSeascapeRotation = Surface.ROTATION_180;
             if (res.getBoolean(R.bool.config_reverseDefaultRotation)) {

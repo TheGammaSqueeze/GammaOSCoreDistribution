@@ -51,7 +51,7 @@
     <string name="sound_category_title" msgid="7899816751041939518">"صدا"</string>
     <string name="applications_category_title" msgid="7112019490898586223">"برنامه‌ها"</string>
     <string name="device_pref_category_title" msgid="8292572846154873762">"اولویت‌های دستگاه"</string>
-    <string name="remotes_and_accessories_category_title" msgid="4795119810430255047">"کنترل از راه دور و لوازم جانبی"</string>
+    <string name="remotes_and_accessories_category_title" msgid="4795119810430255047">"Bluetooth and accessories"</string>
     <string name="display_and_sound_category_title" msgid="9203309625380755860">"نمایش و صدا"</string>
     <string name="help_and_feedback_category_title" msgid="7036505833991003031">"راهنمایی و بازخورد"</string>
     <string name="privacy_category_title" msgid="8552430590908463601">"حریم خصوصی"</string>
@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"تنظیمات پیشرفته صدا"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"مجاز کردن حالت بازی"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"مطابقت دادن نرخ فریم محتوا"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"یکپارچه"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"اگر برنامه درخواست کند، تنها درصورتی‌که تلویزیونتان بتواند انتقال یکپارچه را اجرا کند، دستگاهتان خروجی‌اش را با نرخ فریم اصلی محتوایی که تماشا می‌کنید هماهنگ خواهد کرد."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"غیریکپارچه"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"اگر برنامه درخواست کند، دستگاهتان خروجی‌اش را با نرخ فریم اصلی محتوایی که تماشا می‌کنید هماهنگ خواهد کرد. در چنین شرایطی، وقتی از بازپخش ویدیو خارج می‌شوید یا به آن وارد می‌شود، ممکن است صفحه‌تان لحظه‌ای خالی شود."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"هرگز"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"حتی اگر برنامه درخواست کند، دستگاهتان هیچ‌گاه خروجی‌اش را با نرخ فریم اصلی محتوایی که تماشا می‌کنید هماهنگ نخواهد کرد."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"یکپارچه"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"اگر برنامه درخواست کند، تنها درصورتی‌که تلویزیونتان بتواند انتقال یکپارچه را اجرا کند، دستگاهتان خروجی‌اش را با نرخ فریم اصلی محتوایی که تماشا می‌کنید هماهنگ خواهد کرد."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"غیریکپارچه"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"اگر برنامه درخواست کند، دستگاهتان خروجی‌اش را با نرخ فریم اصلی محتوایی که تماشا می‌کنید هماهنگ خواهد کرد. در چنین شرایطی، وقتی از بازپخش ویدیو خارج می‌شوید یا به آن وارد می‌شود، ممکن است صفحه‌تان لحظه‌ای خالی شود."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"هرگز"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"حتی اگر برنامه درخواست کند، دستگاهتان هیچ‌گاه خروجی‌اش را با نرخ فریم اصلی محتوایی که تماشا می‌کنید هماهنگ نخواهد کرد."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"مقیاس‌گذاری نوشتار"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"مقیاس‌گذاری به <xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"نوشتار نمونه"</string>
@@ -218,10 +217,10 @@
     <string name="bluetooth_cancel" msgid="4415185529332987034">"لغو"</string>
     <string name="bluetooth_device_connected_toast" msgid="1896195197089204806">"%1$s متصل شد"</string>
     <string name="bluetooth_device_disconnected_toast" msgid="7459239447363156499">"اتصال %1$s قطع شد"</string>
-    <string name="connected_devices_slice_pref_title" msgid="6761921505544005991">"کنترل ازراه‌دور و لوازم جانبی"</string>
+    <string name="connected_devices_slice_pref_title" msgid="6761921505544005991">"Bluetooth and accessories"</string>
     <string name="bluetooth_toggle_title" msgid="3808904783456336104">"بلوتوث"</string>
     <string name="bluetooth_toggle_confirmation_dialog_title" msgid="3906746631391295717">"خاموش کردن بلوتوث"</string>
-    <string name="bluetooth_toggle_confirmation_dialog_summary" msgid="9017044450625172698">"وقتی بلوتوث خاموش است، نمی‌توانید از کنترل ازراه‌دور به «دستیار Google» دسترسی پیدا کنید."</string>
+    <string name="bluetooth_toggle_confirmation_dialog_summary" msgid="9017044450625172698">"Are you sure you want to turn Bluetooth off?"</string>
     <string name="bluetooth_pair_accessory" msgid="5508750142754420984">"مرتبط‌سازی وسیله جانبی"</string>
     <string name="bluetooth_known_devices_category" msgid="6895470515631452961">"لوازم جانبی"</string>
     <string name="bluetooth_official_remote_category" msgid="5817814488268307170">"کنترل ازراه‌دور"</string>

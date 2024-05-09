@@ -24,6 +24,7 @@ import static com.android.documentsui.services.FileOperationService.OPERATION_MO
 import static com.android.documentsui.services.FileOperationService.OPERATION_UNKNOWN;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,12 +44,11 @@ import com.android.documentsui.services.FileOperationService.OpType;
 import com.android.documentsui.ui.Snackbars;
 
 import com.google.android.material.snackbar.Snackbar;
+import android.view.KeyEvent;
 
-/**
- * Display pick confirmation bar, usually for selecting a directory.
- */
 public class PickFragment extends Fragment {
     public static final String TAG = "PickFragment";
+    private static final String LOG_TAG = "PickFragment";
 
     private static final String ACTION_KEY = "action";
     private static final String COPY_OPERATION_SUBTYPE_KEY = "copyOperationSubType";
@@ -58,9 +58,12 @@ public class PickFragment extends Fragment {
     private final View.OnClickListener mPickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            Log.d(LOG_TAG, "Pick button clicked");
             if (mPick.isEnabled()) {
+                Log.d(LOG_TAG, "Picking document");
                 mInjector.actions.pickDocument(getChildFragmentManager(), mPickTarget);
             } else {
+                Log.d(LOG_TAG, "Pick button is disabled");
                 String msg = getResources().getString(R.string.directory_blocked_header_subtitle);
                 Snackbars.makeSnackbar(getActivity(), msg, Snackbar.LENGTH_LONG).show();
             }
@@ -70,6 +73,7 @@ public class PickFragment extends Fragment {
     private final View.OnClickListener mCancelListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            Log.d(LOG_TAG, "Cancel button clicked");
             mInjector.pickResult.increaseActionCount();
             final BaseActivity activity = BaseActivity.get(PickFragment.this);
             activity.setResult(FragmentActivity.RESULT_CANCELED);
@@ -80,8 +84,6 @@ public class PickFragment extends Fragment {
     private Injector<ActionHandler<PickActivity>> mInjector;
     private int mAction;
     private boolean mRestrictScopeStorage;
-    // Only legal values are OPERATION_COPY, OPERATION_COMPRESS, OPERATION_EXTRACT,
-    // OPERATION_MOVE, and unset (OPERATION_UNKNOWN).
     private @OpType int mCopyOperationSubType = OPERATION_UNKNOWN;
     private DocumentInfo mPickTarget;
     private View mContainer;
@@ -106,17 +108,46 @@ public class PickFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(
-            LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.d(LOG_TAG, "onCreateView: Creating view");
         mContainer = inflater.inflate(R.layout.fragment_pick, container, false);
 
-        mPick = (Button) mContainer.findViewById(android.R.id.button1);
-        mPickOverlay = mContainer.findViewById((R.id.pick_button_overlay));
-        mPickOverlay.setOnClickListener(mPickListener);
+        // Find the 'Pick' button and set the onClick listener.
+        mPick = mContainer.findViewById(android.R.id.button1);
         mPick.setOnClickListener(mPickListener);
 
-        mCancel = (Button) mContainer.findViewById(android.R.id.button2);
+        // Find the overlay and set the onClick listener.
+        mPickOverlay = mContainer.findViewById(R.id.pick_button_overlay);
+        mPickOverlay.setOnClickListener(mPickListener);
+
+        // Find the 'Cancel' button and set the onClick listener.
+        mCancel = mContainer.findViewById(android.R.id.button2);
         mCancel.setOnClickListener(mCancelListener);
+
+        // Set the container view to be focusable and request focus to handle key events.
+        mContainer.setFocusableInTouchMode(true);
+        mContainer.requestFocus();
+
+        // Set up the key listener to handle the 'Start' button key event.
+        mContainer.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                Log.d(LOG_TAG, "onKey: KeyCode " + keyCode + ", Action " + event.getAction());
+                // Check if the key event is a down press of the 'Start' button.
+                if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_BUTTON_START) {
+                    Log.d(LOG_TAG, "Start button pressed");
+                    if (mPick != null && mPick.isEnabled()) {
+                        Log.d(LOG_TAG, "Pick button enabled, triggering click");
+                        mPick.requestFocus();
+                        mPick.performClick(); // Invoke the "Use this folder" action
+                        return true; // Indicate that the key event was handled
+                    } else {
+                        Log.d(LOG_TAG, "Pick button is null or disabled");
+                    }
+                }
+                return false; // Indicate that the key event was not handled
+            }
+        });
 
         updateView();
         return mContainer;
@@ -125,11 +156,11 @@ public class PickFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        Log.d(LOG_TAG, "onActivityCreated: Activity created");
         if (savedInstanceState != null) {
             // Restore status
             mAction = savedInstanceState.getInt(ACTION_KEY);
-            mCopyOperationSubType =
-                    savedInstanceState.getInt(COPY_OPERATION_SUBTYPE_KEY);
+            mCopyOperationSubType = savedInstanceState.getInt(COPY_OPERATION_SUBTYPE_KEY);
             mPickTarget = savedInstanceState.getParcelable(PICK_TARGET_KEY);
             mRestrictScopeStorage = savedInstanceState.getBoolean(RESTRICT_SCOPE_STORAGE_KEY);
             updateView();
@@ -141,17 +172,16 @@ public class PickFragment extends Fragment {
     @Override
     public void onSaveInstanceState(final Bundle outState) {
         super.onSaveInstanceState(outState);
+        Log.d(LOG_TAG, "onSaveInstanceState: Saving instance state");
         outState.putInt(ACTION_KEY, mAction);
         outState.putInt(COPY_OPERATION_SUBTYPE_KEY, mCopyOperationSubType);
         outState.putParcelable(PICK_TARGET_KEY, mPickTarget);
         outState.putBoolean(RESTRICT_SCOPE_STORAGE_KEY, mRestrictScopeStorage);
     }
 
-    /**
-     * @param action Which action defined in State is the picker shown for.
-     */
     public void setPickTarget(int action, @OpType int copyOperationSubType,
-            boolean restrictScopeStorage, DocumentInfo pickTarget) {
+                              boolean restrictScopeStorage, DocumentInfo pickTarget) {
+        Log.d(LOG_TAG, "setPickTarget: Setting pick target");
         assert(copyOperationSubType != OPERATION_DELETE);
 
         mAction = action;
@@ -167,6 +197,7 @@ public class PickFragment extends Fragment {
      * Applies the state of fragment to the view components.
      */
     private void updateView() {
+        Log.d(LOG_TAG, "updateView: Updating view with action: " + mAction);
         if (mPickTarget != null && (
                 mAction == State.ACTION_OPEN_TREE ||
                         mPickTarget.isCreateSupported())) {
@@ -181,11 +212,12 @@ public class PickFragment extends Fragment {
                 mPick.setText(getString(R.string.open_tree_button));
                 mPick.setWidth(Integer.MAX_VALUE);
                 mCancel.setVisibility(View.GONE);
-                mPick.setEnabled(!(mPickTarget.isBlockedFromTree() && mRestrictScopeStorage));
-                mPickOverlay.setVisibility(
-                        mPickTarget.isBlockedFromTree() && mRestrictScopeStorage
-                                ? View.VISIBLE
-                                : View.GONE);
+
+                // Ensure the button is always enabled
+                mPick.setEnabled(true);
+
+                // Always hide the overlay, implying no restrictions
+                mPickOverlay.setVisibility(View.GONE);
                 break;
             case State.ACTION_PICK_COPY_DESTINATION:
                 int titleId;
@@ -212,5 +244,9 @@ public class PickFragment extends Fragment {
                 mContainer.setVisibility(View.GONE);
                 return;
         }
+    }
+
+    public Button getPickButton() {
+        return mPick;
     }
 }

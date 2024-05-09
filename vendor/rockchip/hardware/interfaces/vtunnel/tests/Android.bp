@@ -1,0 +1,36 @@
+cc_binary {
+    name: "vt_consumer_test",
+
+    srcs: [
+        "vt_consumer_test.cpp",
+    ],
+    shared_libs: [
+        "libutils",
+        "liblog",
+        "librkvt",
+    ],
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-Wextern-c-compat",
+    ],
+}
+
+cc_binary {
+    name: "vt_producer_test",
+
+    srcs: [
+        "vt_producer_test.cpp",
+    ],
+    shared_libs: [
+        "libutils",
+        "liblog",
+        "librkvt_win",
+        "libcutils",
+    ],
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-Wextern-c-compat",
+    ],
+}

@@ -268,7 +268,7 @@
     <string name="preview_work_file" msgid="4495643735563487273">"სამუშაო ფაილის გადახედვა: <xliff:g id="FILENAME">%1$s</xliff:g>"</string>
     <string name="apps_row_title" msgid="3340490016663092925">"ფაილების დათვალიერება სხვა აპებში"</string>
     <string name="anonymous_application" msgid="7633027057951625862">"ანონიმური"</string>
-    <string name="open_tree_button" msgid="6402871398424497776">"ამ საქაღალდის გამოყენება"</string>
+    <string name="open_tree_button">Press L1 to switch storage. Press Start to confirm folder selection.</string>
     <string name="open_tree_dialog_title" msgid="6339509533852318569">"გსურთ, <xliff:g id="APPNAME">%1$s</xliff:g>-ს ჰქონდეს წვდომა ფაილებზე <xliff:g id="DIRECTORY">%2$s</xliff:g>-ში?"</string>
     <string name="open_tree_dialog_message" msgid="4120695398430659628">"ამით <xliff:g id="APPNAME">%1$s</xliff:g> მიიღებს წვდომას <xliff:g id="DIRECTORY">%2$s</xliff:g>-ში შენახულ ამჟამინდელ თუ მომავალ კონტენტზე."</string>
     <string name="directory_blocked_header_title" msgid="1164584889578740066">"ამ საქაღალდეს ვერ გამოიყენებთ"</string>

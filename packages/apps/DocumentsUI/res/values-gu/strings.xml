@@ -268,7 +268,7 @@
     <string name="preview_work_file" msgid="4495643735563487273">"ઑફિસની ફાઇલ <xliff:g id="FILENAME">%1$s</xliff:g>ને પ્રીવ્યૂ કરો"</string>
     <string name="apps_row_title" msgid="3340490016663092925">"અન્ય ઍપમાં ફાઇલો બ્રાઉઝ કરો"</string>
     <string name="anonymous_application" msgid="7633027057951625862">"અજ્ઞાત"</string>
-    <string name="open_tree_button" msgid="6402871398424497776">"આ ફોલ્ડરનો ઉપયોગ કરો"</string>
+    <string name="open_tree_button">Press L1 to switch storage. Press Start to confirm folder selection.</string>
     <string name="open_tree_dialog_title" msgid="6339509533852318569">"શું <xliff:g id="APPNAME">%1$s</xliff:g>ને <xliff:g id="DIRECTORY">%2$s</xliff:g>માંની ફાઇલો ઍક્સેસ કરવાની મંજૂરી આપીએ?"</string>
     <string name="open_tree_dialog_message" msgid="4120695398430659628">"આનાથી <xliff:g id="APPNAME">%1$s</xliff:g> <xliff:g id="DIRECTORY">%2$s</xliff:g>માં સ્ટોર કરેલું હાલનું અને ભાવિ કન્ટેન્ટ ઍક્સેસ કરી શકશે."</string>
     <string name="directory_blocked_header_title" msgid="1164584889578740066">"આ ફોલ્ડરનો ઉપયોગ કરી શકાતો નથી"</string>

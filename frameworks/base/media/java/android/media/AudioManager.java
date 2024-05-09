@@ -5562,6 +5562,10 @@ public class AudioManager {
     @UnsupportedAppUsage
     public static final int DEVICE_OUT_HDMI = AudioSystem.DEVICE_OUT_HDMI;
     /** @hide
+     * The audio output device code for another HDMI */
+    @UnsupportedAppUsage
+    public static final int DEVICE_OUT_HDMI_1 = AudioSystem.DEVICE_OUT_HDMI_1;
+    /** @hide
      * The audio output device code for an analog wired headset attached via a
      *  docking station
      */
@@ -5608,6 +5612,10 @@ public class AudioManager {
      */
     public static final int DEVICE_OUT_SPDIF = AudioSystem.DEVICE_OUT_SPDIF;
     /** @hide
+     * The audio output device code for another S/PDIF digital connection.
+     */
+    public static final int DEVICE_OUT_SPDIF_1 = AudioSystem.DEVICE_OUT_SPDIF_1;
+    /** @hide
      * The audio output device code for built-in FM transmitter.
      */
     public static final int DEVICE_OUT_FM = AudioSystem.DEVICE_OUT_FM;
@@ -5653,6 +5661,11 @@ public class AudioManager {
      */
     public static final int DEVICE_IN_HDMI =
                                     AudioSystem.DEVICE_IN_HDMI;
+    /** @hide
+     * The audio input device code for another HDMI
+     */
+    public static final int DEVICE_IN_HDMI_1 =
+                                    AudioSystem.DEVICE_IN_HDMI_1;
     /** @hide
      * The audio input device code for HDMI ARC
      */

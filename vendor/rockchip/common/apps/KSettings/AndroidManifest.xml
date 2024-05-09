@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    android:sharedUserId="android.uid.system"
+	android:versionCode="2"
+	android:versionName="2.0"
+    package="com.khadas.ksettings"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="29" />
+    <!--android:sharedUserId="android.uid.system"-->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:defaultToDeviceProtectedStorage="true"
+        android:directBootAware="true"
+        android:theme="@style/Theme.SettingsBase">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Status_bar_Preference"
+            android:label="@string/Status_bar_control">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LEDs_Preference"
+            android:label="@string/LEDs">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Display_Preference"
+            android:label="@string/Display_Setting">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SYS_LEDs_Preference"
+	    android:label="@string/SYS_LEDs">
+	    <intent-filter>
+		    <action android:name="android.intent.action.MAIN" />
+	    </intent-filter>
+    </activity>
+        <activity
+            android:name=".MCU_LEDs_Preference"
+	    android:label="@string/MCU_LEDs">
+	    <intent-filter>
+		    <action android:name="android.intent.action.MAIN" />
+	    </intent-filter>
+    </activity>
+	<activity
+            android:name=".MCU_LEDs_On_Status_Preference"
+	    android:label="@string/MCU_System_ON_Status">
+	    <intent-filter>
+		    <action android:name="android.intent.action.MAIN" />
+	    </intent-filter>
+    </activity>
+	<activity
+            android:name=".MCU_LEDs_Off_Status_Preference"
+	    android:label="@string/MCU_System_OFF_Status">
+	    <intent-filter>
+		    <action android:name="android.intent.action.MAIN" />
+	    </intent-filter>
+    </activity>
+    <receiver android:name=".BootReceiver">
+        <intent-filter android:priority="2147483647">
+            <action android:name="android.intent.action.BOOT_COMPLETED"/>
+        </intent-filter>
+    </receiver>
+
+    </application>
+
+</manifest>

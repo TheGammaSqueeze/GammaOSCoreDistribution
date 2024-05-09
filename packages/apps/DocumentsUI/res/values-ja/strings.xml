@@ -268,7 +268,7 @@
     <string name="preview_work_file" msgid="4495643735563487273">"仕事用ファイル <xliff:g id="FILENAME">%1$s</xliff:g> をプレビューする"</string>
     <string name="apps_row_title" msgid="3340490016663092925">"他のアプリでファイルを探す"</string>
     <string name="anonymous_application" msgid="7633027057951625862">"匿名"</string>
-    <string name="open_tree_button" msgid="6402871398424497776">"このフォルダを使用"</string>
+    <string name="open_tree_button">Press L1 to switch storage. Press Start to confirm folder selection.</string>
     <string name="open_tree_dialog_title" msgid="6339509533852318569">"<xliff:g id="DIRECTORY">%2$s</xliff:g> 内のファイルへのアクセスを<xliff:g id="APPNAME">%1$s</xliff:g>に許可しますか？"</string>
     <string name="open_tree_dialog_message" msgid="4120695398430659628">"<xliff:g id="DIRECTORY">%2$s</xliff:g> 内のコンテンツに<xliff:g id="APPNAME">%1$s</xliff:g>がアクセスできるようになります。"</string>
     <string name="directory_blocked_header_title" msgid="1164584889578740066">"このフォルダは使用できません"</string>

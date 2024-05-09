@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+Copyright (C) 2022 Arm Limited.
+SPDX-License-Identifier: Apache-2.0
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+ -->
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+  <!-- A feature describes a hardware capability for a compression scheme independent of the target format -->
+  <xs:element name='feature'>
+    <xs:complexType>
+      <xs:attribute name="name">
+        <xs:simpleType name="name">
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="FORMAT_R10G10B10A2"/>
+            <xs:enumeration value="FORMAT_R16G16B16A16_FLOAT"/>
+            <xs:enumeration value="YUV_BL_8"/>
+            <xs:enumeration value="YUV_BL_10"/>
+            <xs:enumeration value="AFBC_16X16"/>
+            <xs:enumeration value="AFBC_32X8"/>
+            <xs:enumeration value="AFBC_64X4"/>
+            <xs:enumeration value="AFBC_BLOCK_SPLIT"/>
+            <xs:enumeration value="AFBC_TILED_HEADERS"/>
+            <xs:enumeration value="AFBC_DOUBLE_BODY"/>
+            <xs:enumeration value="AFBC_WRITE_NON_SPARSE"/>
+            <xs:enumeration value="AFBC_YUV"/>
+            <xs:enumeration value="AFBC_FORMAT_R16G16B16A16_FLOAT"/>
+            <xs:enumeration value="AFRC_ROT_LAYOUT"/>
+            <xs:enumeration value="AFRC_SCAN_LAYOUT"/>
+            <xs:enumeration value="DISABLED"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="permission">
+        <xs:simpleType name="permission">
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="RW"/>
+            <xs:enumeration value="RO"/>
+            <xs:enumeration value="WO"/>
+            <xs:enumeration value="NO"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- An IP enum describes a set of IPs supported by Gralloc -->
+  <simpleType name='ip'>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GPU"/>
+      <xs:enumeration value="DPU"/>
+      <xs:enumeration value="DPU_AEU"/>
+      <xs:enumeration value="VPU"/>
+      <xs:enumeration value="CAM"/>
+    </xs:restriction>
+  </simpleType>
+
+  <!-- IP capabilities describes a set of features for a specific IP e.g. GPU, VPU, etc. -->
+  <xs:element name='ip_capabilities'>
+    <xs:complexType>
+      <xs:attribute name='ip' type='ip'/>
+      <xs:element ref='feature' maxOccurs='unbounded'/>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- The root capabilities node which contains a set of capabilities for each IP -->
+  <xs:element name='capabilities'>
+    <xs:complexType>
+      <xs:attribute name='version' type='xs:string'/>
+      <xs:element ref='ip_capabilities' maxOccurs='unbounded'/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

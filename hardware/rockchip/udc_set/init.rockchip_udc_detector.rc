@@ -1,0 +1,12 @@
+service rockchip_udc_detector /vendor/bin/rockchip_udc_detector
+    class core
+    user root
+    group system
+    oneshot
+    disabled
+
+on early-fs
+    start rockchip_udc_detector
+
+on property:vendor.usb.controller=*
+    setprop sys.usb.controller ${vendor.usb.controller}

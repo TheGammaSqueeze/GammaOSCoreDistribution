@@ -1,0 +1,13 @@
+hidl_interface {
+    name: "rockchip.hardware.tv.input@1.0",
+    root: "rockchip.hardware",
+    srcs: [
+        "types.hal",
+        "ITvInputCallback.hal",
+        "ITvInput.hal",
+    ],
+    interfaces: [
+        "android.hardware.tv.input@1.0",
+        "android.hidl.base@1.0",
+    ],
+}

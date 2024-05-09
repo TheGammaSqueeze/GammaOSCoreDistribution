@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Svep xml -->
+<HwcSvepEnv Version="1.1.1" >
+  <!--
+    Blacklist, 黑名单，所有写入该条目下的 BlackKeywords 均无法开启SVEP模式
+    BlackKeywords 具体字符串的值可从 dumpsys SurfaceFlinger 中 Layer Name属性获得,如下：
+        1. 需要将 RockVideoPlayer 应用加入黑名单，使无法开启SVEP模式
+        2. 到目标场景抓打印 dumpsys SurfaceFlinger , 找到如下日志：
+        DisplayId=1, Connector 411, Type = HDMI-A-1, Connector state = DRM_MODE_CONNECTED
+        NumHwLayers=1, activeModeId=3, 1920x1080p60.00, colorMode = 0, bStandardSwitchResolution=0
+        - - - +- - -+- - - - - -+- - - - - -+- - - - - - - - - - +- - - - - - -+- - - - - - +- - - - - - - - - - - - - - - - +- - - - - - - - - - - - +- - - - - - +- - - - +- - - - - -
+          id  |  z  |  sf-type  |  hwc-type |       handle       |  transform  |    blnd    |     source crop (l,t,r,b)      |          frame         | dataspace  |  mFps  | name
+        - - - +- - -+- - - - - -+- - - - - -+- - - - - - - - - - +- - - - - - -+- - - - - - +- - - - - - - - - - - - - - - - +- - - - - - - - - - - - +- - - - - - +- - - - +- - - - - -
+        0015 | 000 |    Device |    Device | 00b4000079b828ea70 | None        | None       |    0.0,    0.0,  852.0,  480.0 |  656,    0, 1263, 1080 |          2 | 30.0    | SurfaceView[android.rk.RockVideoPlayer/android.rk.RockVideoPlayer.VideoPlayActivity]#2(BLAST Consumer)2 | 0x19800000fc1
+        - - - +- - -+- - - - - -+- - - - - -+- - - - - - - - - - +- - - - - - -+- - - - - - +- - - - - - - - - - - - - - - - +- - - - - - - - - - - - +- - - - - - +- - - -
+        3. 找到目标图层  SurfaceView[android.rk.RockVideoPlayer/android.rk.RockVideoPlayer.VideoPlayActivity]
+        4. 将该字段加入黑名单即可.
+        5. 该xml支持模糊配置，如果需要过滤所有的 RockVideoPlayer 应用，也可仅配置 RockVideoPlayer 实现过滤，即配置完整 LayerName的子集即可
+  -->
+
+  <Blacklist>
+<!-- eg： 以下三种方式配置均可实现对  RockVideoPlayer 应用的过滤，字符串长度越完整，越不容易误判
+
+    <BlackKeywords>SurfaceView[android.rk.RockVideoPlayer/android.rk.RockVideoPlayer.VideoPlayActivity]</BlackKeywords>
+
+    <BlackKeywords>RockVideoPlayer</BlackKeywords>
+
+    <BlackKeywords>android.rk.RockVideoPlayer.VideoPlayActivity</BlackKeywords>
+-->
+
+  </Blacklist>
+  <Whitelist>
+    <!-- 爱奇艺：标准、Lite、巴布版本适用如下白名单 -->
+    <WhiteKeywords>SurfaceView[com.qiyi.video</WhiteKeywords>
+    <!-- 抖音 -->
+    <WhiteKeywords>SurfaceView[com.ss.android.ugc</WhiteKeywords>
+    <!-- 优酷视频 -->
+    <WhiteKeywords>SurfaceView[com.youku.phone/</WhiteKeywords>
+    <!-- 哔哩哔哩 -->
+    <WhiteKeywords>SurfaceView[tv.danmaku.bili</WhiteKeywords>
+    <!-- 虎牙直播 -->
+    <WhiteKeywords>SurfaceView[com.duowan.kiwi</WhiteKeywords>
+    <!-- 腾讯课堂 -->
+    <WhiteKeywords>ViewRootImpl[RecruitAvActivity]</WhiteKeywords>
+    <WhiteKeywords>ViewRootImpl[FCourseDetailActivity]</WhiteKeywords>
+    <WhiteKeywords>ViewRootImpl[WebOpenUrlActivity]</WhiteKeywords>
+    <!-- 掌门一对一辅导 -->
+    <WhiteKeywords>ViewRootImpl[RecordedLessonDetailActivity]</WhiteKeywords>
+    <!-- 腾讯会议 -->
+    <WhiteKeywords>ViewRootImpl[InMeetingActivity]</WhiteKeywords>
+
+<!--
+    <WhiteKeywords>SurfaceView[android.rk.RockVideoPlayer/android.rk.RockVideoPlayer.VideoPlayActivity]</WhiteKeywords>
+-->
+  </Whitelist>
+</HwcSvepEnv>

@@ -1,0 +1,21 @@
+cc_prebuilt_binary {
+    name: "iwconfig",
+    vendor_available: true,
+    recovery_available: true,
+    srcs: ["iwconfig"],
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+}
+
+cc_prebuilt_binary {
+    name: "iwlist",
+    vendor_available: true,
+    recovery_available: true,
+    srcs: ["iwlist"],
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+}

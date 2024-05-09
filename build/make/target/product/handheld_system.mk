@@ -37,7 +37,6 @@ PRODUCT_PACKAGES += \
     BluetoothMidiService \
     BookmarkProvider \
     BuiltInPrintService \
-    CalendarProvider \
     cameraserver \
     CameraExtensionsProxy \
     CaptivePortalLogin \
@@ -50,7 +49,6 @@ PRODUCT_PACKAGES += \
     InputDevices \
     KeyChain \
     librs_jni \
-    ManagedProvisioning \
     MmsService \
     MtpService \
     MusicFX \

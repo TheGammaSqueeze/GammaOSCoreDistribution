@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<!-- SYSTEM OFF -->
+	<ListPreference
+		android:key="MCU_LEDS_OFF_MODE_KEY"
+		android:title="@string/MCU_LEDS_mode"
+		android:summary="@string/MCU_LEDS_off_mode_default"
+		android:defaultValue="1"
+		android:dialogTitle="@string/MCU_LEDS_mode"
+		android:entries="@array/MCU_LEDs_array"
+		android:entryValues="@array/MCU_LEDs_array_value">
+	</ListPreference>
+
+	<com.khadas.ksettings.MCURedOffStatusSeekBarPreference
+        android:dialogTitle="@string/MCU_RED_LED_OFF_Brightness_title"
+        android:title="@string/MCU_RED_LED_OFF_Brightness_title"
+        android:summary="255"
+        android:key="MCU_RED_LED_OFF_BL_KEY"
+        android:dialogLayout="@layout/brightness_prefs" />
+	<com.khadas.ksettings.MCUGreenOffStatusSeekBarPreference
+        android:dialogTitle="@string/MCU_GRREN_LED_OFF_Brightness_title"
+        android:title="@string/MCU_GRREN_LED_OFF_Brightness_title"
+        android:summary="0"
+        android:key="MCU_GREEN_LED_OFF_BL_KEY"
+        android:dialogLayout="@layout/brightness_prefs" />
+	<com.khadas.ksettings.MCUBlueOffStatusSeekBarPreference
+        android:dialogTitle="@string/MCU_BLUE_LED_OFF_Brightness_title"
+        android:title="@string/MCU_BLUE_LED_OFF_Brightness_title"
+        android:summary="0"
+        android:key="MCU_BLUE_LED_OFF_BL_KEY"
+        android:dialogLayout="@layout/brightness_prefs" />
+
+
+</PreferenceScreen>

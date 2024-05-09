@@ -1,0 +1,17 @@
+cc_prebuilt_library {
+    name: "libiep",
+    compile_multilib: "both",
+    multilib: {
+        lib64: {
+            srcs: ["lib/arm64/libiep.so"],
+        },
+        lib32: {
+            srcs: ["lib/arm/libiep.so"],
+        },
+    },
+    strip: {
+        none: true,
+    },
+    check_elf_files: false,
+    vendor: true,
+}

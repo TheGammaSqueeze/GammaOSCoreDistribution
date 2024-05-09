@@ -1,0 +1,12 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="@android:style/Theme.Holo">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    
+    <style name="key_button_style">
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:background">@drawable/key_default</item>
+    </style>
+</resources>

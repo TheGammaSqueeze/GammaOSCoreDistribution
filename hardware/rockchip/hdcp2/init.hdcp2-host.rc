@@ -1,0 +1,11 @@
+#on early-boot
+on post-fs
+    start hdcp2_hdmi
+
+
+service hdcp2_hdmi /vendor/bin/hdcp2_tx_rx 1
+    class core
+    oneshot
+    disabled
+    group root system net_admin net_bt
+    capabilities DAC_OVERRIDE

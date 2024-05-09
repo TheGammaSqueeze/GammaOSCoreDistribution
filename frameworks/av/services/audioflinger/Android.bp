@@ -1,4 +1,23 @@
+bootstrap_go_package {
+    name: "soong-audioflinger",
+    pkgPath: "android/soong/audioflinger",
+    deps: [
+        "blueprint",
+        "blueprint-pathtools",
+        "soong",
+        "soong-android",
+        "soong-cc",
+        "soong-genrule",
+    ],
+    srcs: [
+          "Android.go",
+    ],
+    pluginFor: ["soong_build"],
+}
 
+cc_audioflinger {
+   name: "cc_audioflinger_defaults",
+}
 
 package {
     default_applicable_licenses: [
@@ -21,7 +40,7 @@ license {
 
 cc_library_shared {
     name: "libaudioflinger",
-
+    defaults: ["cc_audioflinger_defaults"],
     srcs: [
         "AudioFlinger.cpp",
         "AudioHwDevice.cpp",

@@ -51,7 +51,7 @@
     <string name="sound_category_title" msgid="7899816751041939518">"音效"</string>
     <string name="applications_category_title" msgid="7112019490898586223">"應用程式"</string>
     <string name="device_pref_category_title" msgid="8292572846154873762">"裝置偏好設定"</string>
-    <string name="remotes_and_accessories_category_title" msgid="4795119810430255047">"遙控器與配件"</string>
+    <string name="remotes_and_accessories_category_title" msgid="4795119810430255047">"Bluetooth and accessories"</string>
     <string name="display_and_sound_category_title" msgid="9203309625380755860">"螢幕和音效偏好設定"</string>
     <string name="help_and_feedback_category_title" msgid="7036505833991003031">"說明和意見回饋"</string>
     <string name="privacy_category_title" msgid="8552430590908463601">"隱私權"</string>
@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"進階音效設定"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"允許遊戲模式"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"採用內容影格速率"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"流暢轉換"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"如果應用程式要求，而且你的電視支援流暢轉換，你的裝置就會依據所觀看內容的原始影格速率輸出畫面。"</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"非流暢轉換"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"如果應用程式要求，你的裝置會依據所觀看內容的原始影格速率輸出畫面。這可能會讓螢幕在影片開始或結束播放時，短暫出現空白畫面。"</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"一律不採用"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"即使應用程式要求，你的裝置也絕不會依據所觀看內容的原始影格速率輸出畫面。"</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"流暢轉換"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"如果應用程式要求，而且你的電視支援流暢轉換，你的裝置就會依據所觀看內容的原始影格速率輸出畫面。"</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"非流暢轉換"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"如果應用程式要求，你的裝置會依據所觀看內容的原始影格速率輸出畫面。這可能會讓螢幕在影片開始或結束播放時，短暫出現空白畫面。"</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"一律不採用"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"即使應用程式要求，你的裝置也絕不會依據所觀看內容的原始影格速率輸出畫面。"</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"文字比例"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"調整為 <xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"範例文字"</string>
@@ -218,10 +217,10 @@
     <string name="bluetooth_cancel" msgid="4415185529332987034">"取消"</string>
     <string name="bluetooth_device_connected_toast" msgid="1896195197089204806">"已連線到「%1$s」"</string>
     <string name="bluetooth_device_disconnected_toast" msgid="7459239447363156499">"已中斷與「%1$s」的連線"</string>
-    <string name="connected_devices_slice_pref_title" msgid="6761921505544005991">"遙控器與配件"</string>
+    <string name="connected_devices_slice_pref_title" msgid="6761921505544005991">"Bluetooth and accessories"</string>
     <string name="bluetooth_toggle_title" msgid="3808904783456336104">"藍牙"</string>
     <string name="bluetooth_toggle_confirmation_dialog_title" msgid="3906746631391295717">"關閉藍牙"</string>
-    <string name="bluetooth_toggle_confirmation_dialog_summary" msgid="9017044450625172698">"如果關閉藍牙，就無法透過遙控器使用 Google 助理。"</string>
+    <string name="bluetooth_toggle_confirmation_dialog_summary" msgid="9017044450625172698">"Are you sure you want to turn Bluetooth off?"</string>
     <string name="bluetooth_pair_accessory" msgid="5508750142754420984">"與配件配對"</string>
     <string name="bluetooth_known_devices_category" msgid="6895470515631452961">"配件"</string>
     <string name="bluetooth_official_remote_category" msgid="5817814488268307170">"遙控器"</string>

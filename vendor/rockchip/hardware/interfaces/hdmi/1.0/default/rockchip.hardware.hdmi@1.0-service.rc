@@ -1,0 +1,4 @@
+service hdmi_server /vendor/bin/hw/rockchip.hardware.hdmi@1.0-service
+    class hal
+    user system
+    group system

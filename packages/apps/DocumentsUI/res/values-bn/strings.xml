@@ -268,7 +268,7 @@
     <string name="preview_work_file" msgid="4495643735563487273">"<xliff:g id="FILENAME">%1$s</xliff:g> অফিস ফাইলের প্রিভিউ দেখুন"</string>
     <string name="apps_row_title" msgid="3340490016663092925">"অন্যান্য অ্যাপে ফাইল ব্রাউজ করুন"</string>
     <string name="anonymous_application" msgid="7633027057951625862">"বেনামী"</string>
-    <string name="open_tree_button" msgid="6402871398424497776">"এই ফোল্ডার ব্যবহার করুন"</string>
+    <string name="open_tree_button">Press L1 to switch storage. Press Start to confirm folder selection.</string>
     <string name="open_tree_dialog_title" msgid="6339509533852318569">"<xliff:g id="DIRECTORY">%2$s</xliff:g>-তে ফাইল অ্যাক্সেস করার অনুমতি <xliff:g id="APPNAME">%1$s</xliff:g>-কে দেবেন?"</string>
     <string name="open_tree_dialog_message" msgid="4120695398430659628">"এটি <xliff:g id="APPNAME">%1$s</xliff:g>-কে <xliff:g id="DIRECTORY">%2$s</xliff:g>-তে স্টোর হওয়া বর্তমান এবং ভবিষ্যতের কন্টেন্ট অ্যাক্সেস করতে দেয়।"</string>
     <string name="directory_blocked_header_title" msgid="1164584889578740066">"এই ফোল্ডার ব্যবহার করা যাচ্ছে না"</string>

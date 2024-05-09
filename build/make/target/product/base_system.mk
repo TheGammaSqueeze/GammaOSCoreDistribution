@@ -34,7 +34,6 @@ PRODUCT_PACKAGES += \
     appwidget \
     atrace \
     audioserver \
-    BackupRestoreConfirmation \
     bcc \
     blank_screen \
     blkid \
@@ -86,7 +85,6 @@ PRODUCT_PACKAGES += \
     dump.erofs \
     dumpstate \
     dumpsys \
-    DynamicSystemInstallationService \
     e2fsck \
     ExtShared \
     flags_health_check \

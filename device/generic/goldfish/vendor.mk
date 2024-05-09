@@ -65,15 +65,9 @@ PRODUCT_PACKAGES += \
     libstagefrighthw \
     libstagefright_goldfish_vpxdec \
     libstagefright_goldfish_avcdec \
-    MultiDisplayProvider \
     libGoldfishProfiler \
     dlkm_loader
 
-ifneq ($(EMULATOR_VENDOR_NO_FINGERPRINT), true)
-    PRODUCT_PACKAGES += \
-        fingerprint.ranchu \
-        android.hardware.biometrics.fingerprint@2.1-service
-endif
 
 ifneq ($(BUILD_EMULATOR_OPENGL),false)
 PRODUCT_PACKAGES += \
@@ -108,12 +102,6 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
     android.hardware.health.storage@1.0-service \
 
-PRODUCT_PACKAGES += \
-    android.hardware.neuralnetworks@1.3-service-sample-all \
-    android.hardware.neuralnetworks@1.3-service-sample-limited
-
-PRODUCT_PACKAGES += \
-    android.hardware.security.keymint-service
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.keystore.app_attest_key.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.keystore.app_attest_key.xml
 
@@ -137,10 +125,6 @@ PRODUCT_PACKAGES += \
     SystemUIEmulationPixel3aXLOverlay \
     EmulationPixel2XLOverlay \
     NavigationBarMode2ButtonOverlay \
-
-ifneq ($(EMULATOR_VENDOR_NO_GNSS),true)
-    PRODUCT_PACKAGES += android.hardware.gnss@2.0-service.ranchu
-endif
 
 ifneq ($(EMULATOR_VENDOR_NO_SENSORS),true)
 PRODUCT_PACKAGES += \

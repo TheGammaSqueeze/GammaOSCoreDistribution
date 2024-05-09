@@ -26,14 +26,16 @@ import com.android.documentsui.base.Events;
 import com.android.documentsui.base.Features;
 import com.android.documentsui.base.Procedure;
 import com.android.documentsui.dirlist.FocusHandler;
+import com.android.documentsui.BaseActivity;
+import java.io.IOException;
 
 /**
  * Handle common input events.
  */
 public class SharedInputHandler {
-
     private static final String TAG = "SharedInputHandler";
 
+    private BaseActivity baseActivity;
     private final FocusHandler mFocusManager;
     private final Procedure mSearchCanceler;
     private final Procedure mDirPopper;
@@ -49,7 +51,8 @@ public class SharedInputHandler {
             Procedure dirPopper,
             Features features,
             DrawerController drawer,
-            Runnable searchExcutor) {
+            Runnable searchExcutor,
+            BaseActivity baseActivity) {
         mFocusManager = focusHandler;
         mSearchCanceler = searchCanceler;
         mSelectionMgr = selectionMgr;
@@ -57,9 +60,25 @@ public class SharedInputHandler {
         mFeatures = features;
         mDrawer = drawer;
         mSearchExecutor = searchExcutor;
+        this.baseActivity = baseActivity;
     }
 
+
+public void sendKeyEvent(String cmd) {
+    try {
+        // Execute the shell command to send the TAB key event
+        Runtime.getRuntime().exec(cmd);
+    } catch (IOException e) {
+        // Handle exceptions if the command fails
+        e.printStackTrace();
+    }
+}
+
+
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+	Log.w(TAG, "keyCode: " + keyCode);
+
         switch (keyCode) {
             // Unhandled ESC keys end up being rethrown back at us as BACK keys. So by returning
             // true, we make sure it always does no-op.
@@ -75,6 +94,29 @@ public class SharedInputHandler {
 
             case KeyEvent.KEYCODE_TAB:
                 return onTab();
+
+            case KeyEvent.KEYCODE_BUTTON_L1:
+                mFocusManager.advanceFocusArea();
+                return true;
+
+            case KeyEvent.KEYCODE_BUTTON_R1:
+		sendKeyEvent("input keyevent 61");
+                return true;
+
+            case KeyEvent.KEYCODE_BUTTON_L2:
+                sendKeyEvent("input keyevent 92");
+                return true;
+
+            case KeyEvent.KEYCODE_BUTTON_R2:
+                sendKeyEvent("input keyevent 93");
+                return true;
+
+            case KeyEvent.KEYCODE_BUTTON_X:
+                mSearchExecutor.run();
+                return true;
+
+            case KeyEvent.KEYCODE_BUTTON_Y:
+                 baseActivity.NewFolder();
 
             case KeyEvent.KEYCODE_SEARCH:
                 mSearchExecutor.run();

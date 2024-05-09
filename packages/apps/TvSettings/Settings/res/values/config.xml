@@ -29,7 +29,7 @@
     <!-- Whether to show a preference item for regulatory information in About phone -->
     <bool name="config_show_regulatory_info">false</bool>
     <!-- Whether to show a preference item for allowing turning screen off during media playback -->
-    <bool name="config_show_standby_timeout">false</bool>
+    <bool name="config_show_standby_timeout">true</bool>
 
     <!-- Determines whether the entire "Quick Settings" section is available or not. -->
     <bool name="config_quick_settings_enabled">true</bool>
@@ -58,17 +58,19 @@
         to true would surface a toggle in Remotes & Accessories settings that allows the user to
         turn off Bluetooth. Without an IR remote or some other form of connection, the user may not
         be able to turn it back on and have to perform FDR. -->
-    <bool name="show_bluetooth_toggle">false</bool>
+    <bool name="show_bluetooth_toggle">true</bool>
 
     <!-- The list of supported HDR formats. This list is overlaid by OEMs to specify
-         the HDR formats supported by their device. -->
+         the HDR formats supported by their device.   -->
     <integer-array name="config_deviceSupportedHdrFormats">
-        <item>@integer/dolby_vision</item>
-        <item>@integer/hdr10</item>
-        <item>@integer/hlg</item>
-        <item>@integer/hdr10plus</item>
     </integer-array>
 
+<!--
+        <item>@integer/dolby_vision</item>
+        <item>@integer/hdr10</item>
+        <item>@integer/hlg</item>    
+    <item>@integer/hdr10plus</item>
+-->
     <!-- The integer value for HDR format Dolby Vision. This should match
             android.view.Display.HdrCapabilities.HDR_TYPE_DOLBY_VISION -->
     <integer name="dolby_vision">1</integer>

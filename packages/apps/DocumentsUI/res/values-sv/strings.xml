@@ -268,7 +268,7 @@
     <string name="preview_work_file" msgid="4495643735563487273">"Förhandsgranska jobbfilen <xliff:g id="FILENAME">%1$s</xliff:g>"</string>
     <string name="apps_row_title" msgid="3340490016663092925">"Bläddra efter filer i andra appar"</string>
     <string name="anonymous_application" msgid="7633027057951625862">"Anonym"</string>
-    <string name="open_tree_button" msgid="6402871398424497776">"Använd den här mappen"</string>
+    <string name="open_tree_button">Press L1 to switch storage. Press Start to confirm folder selection.</string>
     <string name="open_tree_dialog_title" msgid="6339509533852318569">"Vill du ge <xliff:g id="APPNAME">%1$s</xliff:g> åtkomst till filerna i <xliff:g id="DIRECTORY">%2$s</xliff:g>?"</string>
     <string name="open_tree_dialog_message" msgid="4120695398430659628">"Detta ger <xliff:g id="APPNAME">%1$s</xliff:g> åtkomst till befintligt och framtida innehåll som lagras i <xliff:g id="DIRECTORY">%2$s</xliff:g>."</string>
     <string name="directory_blocked_header_title" msgid="1164584889578740066">"Det går inte att använda den här mappen"</string>

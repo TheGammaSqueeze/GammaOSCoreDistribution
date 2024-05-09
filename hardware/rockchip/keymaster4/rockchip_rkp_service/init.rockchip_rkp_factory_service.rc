@@ -1,0 +1,8 @@
+on property:sys.boot_completed=1
+    start rockchip_rkp_factory_service
+
+service rockchip_rkp_factory_service /vendor/bin/rockchip_rkp_factory_extraction_tool --output-format build+csr+write
+    oneshot
+    user root
+    group root
+    disabled

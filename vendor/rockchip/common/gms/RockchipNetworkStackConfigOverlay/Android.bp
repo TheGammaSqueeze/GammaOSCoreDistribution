@@ -1,0 +1,6 @@
+runtime_resource_overlay {
+    name: "RockchipNetworkStackConfigOverlay",
+    resource_dirs: ["res"],
+    product_specific: true,
+    sdk_version: "current",
+}

@@ -12,18 +12,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-on fs
-    setprop ro.config.size_override 1920,1080
-    setprop ro.config.density_override 320
-
-on post-fs-data
-    setprop persist.sys.display.resolution 1920x1080
-    setprop persist.vendor.sys.display.resolution 1920x1080
-
-on property:service.adb.tcp.port=5555
-    stop adbd
-    start adbd
-
-on property:service.adb.tcp.port=-1
-    stop adbd
-    start adbd

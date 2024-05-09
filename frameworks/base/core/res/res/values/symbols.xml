@@ -4916,4 +4916,11 @@
 
   <!-- Whether to show weather on the lockscreen by default. -->
   <java-symbol type="bool" name="config_lockscreenWeatherEnabledByDefault" />
+
+  <java-symbol type="string" name="gammaos_performance_mode" />
+  <java-symbol type="string" name="gammaos_brightness_settings" />
+  <java-symbol type="string" name="gammaos_kill_app" />
+  <java-symbol type="layout" name="header_battery_status" />
+  <java-symbol type="id" name="battery_percentage" />
+  <java-symbol type="id" name="battery_icon" />
 </resources>

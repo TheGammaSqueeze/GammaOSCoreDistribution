@@ -1,0 +1,110 @@
+From 6141498d5394bf0cb6e919c082c3144e45247b35 Mon Sep 17 00:00:00 2001
+From: Paul Lawrence <paullawrence@google.com>
+Date: Thu, 17 Dec 2020 11:28:02 -0800
+Subject: [PATCH 12/31] ANDROID: Incremental fs: Add FS_IOC_MEASURE_VERITY
+
+Add ioctl to return the verity file digest, compatible with the identical
+ioctl in fs/verity/.
+
+Bug: 160634504
+Test: incfs_test passes
+Signed-off-by: Paul Lawrence <paullawrence@google.com>
+Change-Id: Ieb97582de717fafb8878027dde86fe5b427532bf
+---
+ fs/incfs/verity.c | 35 +++++++++++++++++++++++++++++++++++
+ fs/incfs/verity.h |  7 +++++++
+ fs/incfs/vfs.c    |  3 +++
+ 3 files changed, 45 insertions(+)
+
+diff --git a/fs/incfs/verity.c b/fs/incfs/verity.c
+index 54930c78a2f1..3d801ee4a516 100644
+--- a/fs/incfs/verity.c
++++ b/fs/incfs/verity.c
+@@ -460,3 +460,38 @@ int incfs_fsverity_file_open(struct inode *inode, struct file *filp)
+ 
+ 	return 0;
+ }
++
++int incfs_ioctl_measure_verity(struct file *filp, void __user *_uarg)
++{
++	struct inode *inode = file_inode(filp);
++	struct mem_range verity_file_digest = incfs_get_verity_digest(inode);
++	struct fsverity_digest __user *uarg = _uarg;
++	struct fsverity_digest arg;
++
++	if (!verity_file_digest.data || !verity_file_digest.len)
++		return -ENODATA; /* not a verity file */
++
++	/*
++	 * The user specifies the digest_size their buffer has space for; we can
++	 * return the digest if it fits in the available space.  We write back
++	 * the actual size, which may be shorter than the user-specified size.
++	 */
++
++	if (get_user(arg.digest_size, &uarg->digest_size))
++		return -EFAULT;
++	if (arg.digest_size < verity_file_digest.len)
++		return -EOVERFLOW;
++
++	memset(&arg, 0, sizeof(arg));
++	arg.digest_algorithm = FS_VERITY_HASH_ALG_SHA256;
++	arg.digest_size = verity_file_digest.len;
++
++	if (copy_to_user(uarg, &arg, sizeof(arg)))
++		return -EFAULT;
++
++	if (copy_to_user(uarg->digest, verity_file_digest.data,
++			 verity_file_digest.len))
++		return -EFAULT;
++
++	return 0;
++}
+diff --git a/fs/incfs/verity.h b/fs/incfs/verity.h
+index b569ff424841..3ba2306002f4 100644
+--- a/fs/incfs/verity.h
++++ b/fs/incfs/verity.h
+@@ -12,6 +12,7 @@
+ #ifdef CONFIG_FS_VERITY
+ 
+ int incfs_ioctl_enable_verity(struct file *filp, const void __user *uarg);
++int incfs_ioctl_measure_verity(struct file *filp, void __user *_uarg);
+ 
+ int incfs_fsverity_file_open(struct inode *inode, struct file *filp);
+ 
+@@ -23,6 +24,12 @@ static inline int incfs_ioctl_enable_verity(struct file *filp,
+ 	return -EOPNOTSUPP;
+ }
+ 
++static inline int incfs_ioctl_measure_verity(struct file *filp,
++					     void __user *_uarg)
++{
++	return -EOPNOTSUPP;
++}
++
+ static inline int incfs_fsverity_file_open(struct inode *inode,
+ 					   struct file *filp)
+ {
+diff --git a/fs/incfs/vfs.c b/fs/incfs/vfs.c
+index e09e30b367d6..d28d4b7b669b 100644
+--- a/fs/incfs/vfs.c
++++ b/fs/incfs/vfs.c
+@@ -840,6 +840,8 @@ static long dispatch_ioctl(struct file *f, unsigned int req, unsigned long arg)
+ 		return incfs_ioctl_enable_verity(f, (const void __user *)arg);
+ 	case FS_IOC_GETFLAGS:
+ 		return incfs_ioctl_get_flags(f, (void __user *) arg);
++	case FS_IOC_MEASURE_VERITY:
++		return incfs_ioctl_measure_verity(f, (void __user *)arg);
+ 	default:
+ 		return -EINVAL;
+ 	}
+@@ -858,6 +860,7 @@ static long incfs_compat_ioctl(struct file *file, unsigned int cmd,
+ 	case INCFS_IOC_GET_FILLED_BLOCKS:
+ 	case INCFS_IOC_GET_BLOCK_COUNT:
+ 	case FS_IOC_ENABLE_VERITY:
++	case FS_IOC_MEASURE_VERITY:
+ 		break;
+ 	default:
+ 		return -ENOIOCTLCMD;
+-- 
+2.17.1
+

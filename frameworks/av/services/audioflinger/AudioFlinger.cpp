@@ -709,6 +709,12 @@ status_t AudioFlinger::removeEffectFromHal(audio_port_handle_t deviceId,
 
 static const char * const audio_interfaces[] = {
     AUDIO_HARDWARE_MODULE_ID_PRIMARY,
+#if SUPPORT_MULTIAUDIO
+    AUDIO_HARDWARE_MODULE_ID_EXT_1,
+    AUDIO_HARDWARE_MODULE_ID_EXT_2,
+    AUDIO_HARDWARE_MODULE_ID_EXT_3,
+    AUDIO_HARDWARE_MODULE_ID_EXT_4,
+#endif
     AUDIO_HARDWARE_MODULE_ID_A2DP,
     AUDIO_HARDWARE_MODULE_ID_USB,
 };
@@ -1063,7 +1069,8 @@ status_t AudioFlinger::createTrack(const media::CreateTrackRequest& _input,
     audio_stream_type_t streamType;
     audio_port_handle_t portId = AUDIO_PORT_HANDLE_NONE;
     std::vector<audio_io_handle_t> secondaryOutputs;
-    bool isSpatialized = false;;
+    bool isSpatialized = false;
+    int retryCount = 5;
 
     // TODO b/182392553: refactor or make clearer
     pid_t clientPid =
@@ -1107,12 +1114,26 @@ status_t AudioFlinger::createTrack(const media::CreateTrackRequest& _input,
     output.sessionId = sessionId;
     output.outputId = AUDIO_IO_HANDLE_NONE;
     output.selectedDeviceId = input.selectedDeviceId;
+
+    /*
+     * Wait a moment and try again if getOutputForAttr fail.
+     * If there is an audiotrack for bitstream not destory yet, the getOutputForAttr
+     * will return fail, so here wait and retry again.
+     */
+RETRY:
     lStatus = AudioSystem::getOutputForAttr(&localAttr, &output.outputId, sessionId, &streamType,
                                             adjAttributionSource, &input.config, input.flags,
                                             &output.selectedDeviceId, &portId, &secondaryOutputs,
                                             &isSpatialized);
 
     if (lStatus != NO_ERROR || output.outputId == AUDIO_IO_HANDLE_NONE) {
+        if (retryCount > 0 && input.flags & AUDIO_OUTPUT_FLAG_DIRECT) {
+            usleep(20000);
+            ALOGD("%s fail retry", __FUNCTION__);
+            retryCount--;
+            goto RETRY;
+        }
+
         ALOGE("createTrack() getOutputForAttr() return error %d or invalid output handle", lStatus);
         goto Exit;
     }
@@ -3185,9 +3206,24 @@ sp<AudioFlinger::ThreadBase> AudioFlinger::openInput_l(audio_module_handle_t mod
     audio_config_t halconfig = *config;
     sp<DeviceHalInterface> inHwHal = inHwDev->hwDevice();
     sp<StreamInHalInterface> inStream;
-    status_t status = inHwHal->openInputStream(
+    status_t status = 0;
+    int retryCount = 3;
+
+    /*
+     * some hotplug device like usb may open fail when receive the insert msg right now,
+     * maybe the reason is the device is not compelte init before send msg.
+     * So here try to open it again if open fail
+     */
+RETRY:
+    status = inHwHal->openInputStream(
             *input, devices, &halconfig, flags, address, source,
             outputDevice, outputDeviceAddress, &inStream);
+    if (status != NO_ERROR && retryCount >= 0) {
+        usleep(10000);
+        retryCount--;
+        goto RETRY;
+    }
+
     ALOGV("openInput_l() openInputStream returned input %p, devices %#x, SamplingRate %d"
            ", Format %#x, Channels %#x, flags %#x, status %d addr %s",
             inStream.get(),

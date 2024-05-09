@@ -268,7 +268,7 @@
     <string name="preview_work_file" msgid="4495643735563487273">"I-preview ang file sa trabaho na <xliff:g id="FILENAME">%1$s</xliff:g>"</string>
     <string name="apps_row_title" msgid="3340490016663092925">"I-browse ang mga file sa iba pang app"</string>
     <string name="anonymous_application" msgid="7633027057951625862">"Anonymous"</string>
-    <string name="open_tree_button" msgid="6402871398424497776">"Gamitin ang folder na ito"</string>
+    <string name="open_tree_button">Press L1 to switch storage. Press Start to confirm folder selection.</string>
     <string name="open_tree_dialog_title" msgid="6339509533852318569">"Pahintulutan ang <xliff:g id="APPNAME">%1$s</xliff:g> na i-access ang mga file sa <xliff:g id="DIRECTORY">%2$s</xliff:g>?"</string>
     <string name="open_tree_dialog_message" msgid="4120695398430659628">"Bibigyang-daan nito ang <xliff:g id="APPNAME">%1$s</xliff:g> na i-access ang content sa kasalukuyan at hinaharap na naka-store sa <xliff:g id="DIRECTORY">%2$s</xliff:g>."</string>
     <string name="directory_blocked_header_title" msgid="1164584889578740066">"Hindi magagamit ang folder na ito"</string>

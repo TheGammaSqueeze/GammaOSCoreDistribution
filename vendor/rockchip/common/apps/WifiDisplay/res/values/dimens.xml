@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="wfd_grid_item_width">130dip</dimen>
+    <dimen name="wfd_grid_item_spacing">10dip</dimen>
+    
+    <!-- Font -->
+    <dimen name="wfd_device_name_size">26sp</dimen>
+    <dimen name="wfd_device_status_size">18sp</dimen>
+    <dimen name="wfd_btn_title_size">34sp</dimen>
+    <dimen name="wfd_btn_title_summary_size">14sp</dimen>
+    <dimen name="wfd_type_title_size">22sp</dimen>
+    <dimen name="wfd_grid_item_state_size">13sp</dimen>
+    <dimen name="wfd_grid_item_title_size">16sp</dimen>
+</resources>

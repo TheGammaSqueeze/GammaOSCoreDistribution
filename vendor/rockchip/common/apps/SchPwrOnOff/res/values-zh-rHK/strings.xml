@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">    
+    <string name="schedule_power_on_off_settings_title">定時開關機設定</string>
+    <string name="schedule_power_on_off_time">"時間"</string>
+    <string name="schedule_power_on_off_repeat">"重複"</string>
+    <string name="schedule_power_on_off_set">設定行程開啟與關閉</string>
+    <string name="schedule_power_on_set">設定開機排程</string>
+    <string name="schedule_power_off_set">設定關機排程</string>
+    <string name="enable_schpwr">"啟用"</string>
+    <string name="disable_schpwr">"停用"</string>
+    <string-array name="alarm_set">
+        <item>設定成從現在開始的一分鐘以內開機。</item>
+        <item>已設定於 <xliff:g id="DAYS" example="2days">%1$s</xliff:g> 後將此開機。</item>
+        <item>已設定於 <xliff:g id="HOURS" example="2hours">%2$s</xliff:g> 後將此開機。</item>
+        <item>已設定於 <xliff:g id="DAYS" example="2days">%1$s</xliff:g> <xliff:g id="HOURS" example="2hours">%2$s</xliff:g> 後將此開機。</item>
+        <item>已設定於 <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g> 後將此開機。</item>
+        <item>已設定於 <xliff:g id="DAYS" example="2days">%1$s</xliff:g> <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g> 後將此開機。</item>
+        <item>已設定於 <xliff:g id="HOURS" example="2hours">%2$s</xliff:g> <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g> 後將此開機。</item>
+        <item>已設定於 <xliff:g id="DAYS" example="2days">%1$s</xliff:g> <xliff:g id="HOURS" example="2hours">%2$s</xliff:g> <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g> 後將此開機。</item>
+        <item>設定成從現在開始的一分鐘以內關機。</item>
+        <item>已設定於 <xliff:g id="DAYS" example="2days">%1$s</xliff:g> 後將此關機。</item>
+        <item>已設定於 <xliff:g id="HOURS" example="2hours">%2$s</xliff:g>後將此關機。</item>
+        <item>已設定於 <xliff:g id="DAYS" example="2days">%1$s</xliff:g><xliff:g id="HOURS" example="2hours">%2$s</xliff:g> 後將此關機。</item>
+        <item>已設定於 <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g> 後將此關機。</item>
+        <item>已設定於 <xliff:g id="DAYS" example="2days">%1$s</xliff:g> <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g> 後將此關機。</item>
+        <item>已設定於 <xliff:g id="HOURS" example="2hours">%2$s</xliff:g> <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g> 後將此關機。</item>
+        <item>已設定於 <xliff:g id="DAYS" example="2days">%1$s</xliff:g> <xliff:g id="HOURS" example="2hours">%2$s</xliff:g> <xliff:g id="MINUTES" example="2minutes">%3$s</xliff:g> 後將此關機。</item>
+    </string-array>
+    <string name="day">"1 天"</string>
+    <string name="days">"<xliff:g id="DAYS">%s</xliff:g> 天"</string>
+    <string name="hour">"1 小時"</string>
+    <string name="hours"><xliff:g id="hours">%s</xliff:g> 小時</string>
+    <string name="minute">"一分鐘"</string>
+    <string name="minutes">"<xliff:g id="minutes">%s</xliff:g> 分鐘"</string>
+    <string name="every_day">"每天"</string>
+    <string name="never">永不</string>
+    <string name="done">"完成"</string>
+    <string name="revert">"復原"</string>
+    <string name="schpwr_shutdown_message">"你的裝置將關閉於 <xliff:g id="seconds">%s</xliff:g> 秒"</string>
+    <string name="schpwr_shutdown_message_second">"你的裝置將關閉於 <xliff:g id="seconds">%s</xliff:g> 秒"</string>
+</resources>

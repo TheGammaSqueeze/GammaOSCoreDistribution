@@ -108,7 +108,7 @@
     <!-- Title for main screen preference for device [CHAR_LIMIT_50] -->
     <string name="device_pref_category_title">Device Preferences</string>
     <!-- Title for main screen preference for remote and accessories [CHAR_LIMIT_50] -->
-    <string name="remotes_and_accessories_category_title">Remotes &amp; accessories</string>
+    <string name="remotes_and_accessories_category_title">Bluetooth &amp; accessories</string>
     <!-- Title for main screen preference for display & sound [CHAR LIMIT=50] -->
     <string name="display_and_sound_category_title">Display &amp; Sound</string>
     <!-- Title for main screen preference for help and feedback [CHAR LIMIT=50] -->
@@ -352,26 +352,23 @@
     <string name="advanced_sound_settings_title">Advanced sound settings</string>
     <!-- Title for preference to allow game mode for display. [CHAR LIMIT=50] -->
     <string name="game_mode_title">Allow game mode</string>
-    <!-- Title for preference for forcing a display's frame
-    rate to match the content's frame rate. [CHAR LIMIT=60] -->
-    <string name="match_content_frame_rate_title">Match content frame rate</string>
     <!-- Default preference for a display's frame rate to match the content's frame rate. [CHAR LIMIT=80] -->
-    <string name="match_content_frame_rate_seamless">Seamless</string>
+    <string name="screen_timeout_seamless">Seamless</string>
     <!-- Summary for default preference for a display's frame rate to match the content's frame rate. [CHAR LIMIT=250] -->
-    <string name="match_content_frame_rate_seamless_summary">If the app requests it, your device
+    <string name="screen_timeout_seamless_summary">If the app requests it, your device
         will match its output to the original frame rate of the content you’re watching,
         ONLY if your TV can perform a seamless transition.  </string>
     <!-- Preference to force a display's frame rate to always match the content's frame rate. [CHAR LIMIT=80] -->
-    <string name="match_content_frame_rate_non_seamless">Non-seamless</string>
+    <string name="screen_timeout_non_seamless">Non-seamless</string>
     <!-- Summary for preference to force a display's frame rate to always match the content's frame rate. [CHAR LIMIT=250] -->
-    <string name="match_content_frame_rate_non_seamless_summary">If the app requests it, your
+    <string name="screen_timeout_non_seamless_summary">If the app requests it, your
         device will match its output to the original frame rate of the content you’re watching.
         This may cause your screen to go blank for a second when exiting or entering a video
         playback.</string>
     <!-- Preference to force a display's frame rate to never match the content's frame rate. [CHAR LIMIT=50] -->
-    <string name="match_content_frame_rate_never">Never</string>
+    <string name="screen_timeout_never">Never</string>
     <!-- Summary for preference to force a display's frame rate to never match the content's frame rate. [CHAR LIMIT=250] -->
-    <string name="match_content_frame_rate_never_summary">Even if the app requests it, your device
+    <string name="screen_timeout_never_summary">Even if the app requests it, your device
         will never try to match its output to the original frame rate of the content you’re
         watching.</string>
     <!-- Title for preference which when clicked lets the user configure text scaling. [CHAR LIMIT=50] -->
@@ -552,7 +549,7 @@
     <string name="bluetooth_device_disconnected_toast">%1$s disconnected</string>
 
     <!-- The title for "Remotes & Accessories" Slice [CHAR LIMIT = 50]-->
-    <string name="connected_devices_slice_pref_title">Remotes &amp; Accessories</string>
+    <string name="connected_devices_slice_pref_title">Bluetooth &amp; Accessories</string>
     <!-- The title for the Bluetooth toggle [CHAR LIMIT=20] -->
     <string name="bluetooth_toggle_title">Bluetooth</string>
     <!-- The title for the confirmation dialog when users try to turn off bluetooth.
@@ -560,8 +557,7 @@
     <string name="bluetooth_toggle_confirmation_dialog_title">Turn off Bluetooth</string>
     <!-- The summary for the confirmation dialog when users try to turn off bluetooth.
         [CHAR LIMIT=240]-->
-    <string name="bluetooth_toggle_confirmation_dialog_summary">You will not be able to
-        access Google Assistant from your remote while Bluetooth is off.</string>
+    <string name="bluetooth_toggle_confirmation_dialog_summary">Are you sure you want to turn Bluetooth off?</string>
     <!-- The title on button that starts pairing flow. [CHAR LIMIT=40] -->
     <string name="bluetooth_pair_accessory">Pair accessory</string>
     <!-- The category title for connected/paired accessories. [CHAR LIMIT=30] -->
@@ -2588,4 +2584,27 @@
 
     <!-- Adb wireless pairing device dialog ethernet pairing code label [CHAR LIMIT=60] -->
     <string name="adb_pairing_device_dialog_ethernet_pairing_code_label">Ethernet pairing code</string>
+
+    <string name="screen_timeout_title">Screen Timeout</string>
+    <string name="timeout_30_seconds">30 seconds</string>
+    <string name="timeout_1_minute">1 minute</string>
+    <string name="timeout_5_minutes">5 minutes</string>
+    <string name="timeout_15_minutes">15 minutes</string>
+    <string name="timeout_30_minutes">30 minutes</string>
+    <string name="timeout_1_hour">1 hour</string>
+    <string name="timeout_2_hours">2 hours</string>
+    <string name="timeout_30_seconds_summary">Set screen timeout to 30 seconds.</string>
+    <string name="timeout_1_minute_summary">Set screen timeout to 1 minute.</string>
+    <string name="timeout_5_minutes_summary">Set screen timeout to 5 minutes.</string>
+    <string name="timeout_15_minutes_summary">Set screen timeout to 15 minutes.</string>
+    <string name="timeout_30_minutes_summary">Set screen timeout to 30 minutes.</string>
+    <string name="timeout_1_hour_summary">Set screen timeout to 1 hour.</string>
+    <string name="timeout_2_hours_summary">Set screen timeout to 2 hours.</string>
+
+    <string name="rk_hdmi_resolution_title">HDMI Resolution Settings</string>
+    <string name="rk_hdmi_resolution_category">Select HDMI Resolution</string>
+    <string name="rk_hdmi_resolution_default">Default</string>
+    <string name="rk_hdmi_resolution_1080p60">1920x1080@60hz</string>
+    <string name="rk_hdmi_resolution_720p60">1280x720@60hz</string>
+
 </resources>

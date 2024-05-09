@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">工厂测试</string>
+    <string name="FactoryTest">硬件测试</string>
+    <string name="LongTest">老化测试</string>
+    <string name="WriteMac">写MAC/SN/USID</string>
+    <string name="HandWriteMac">手工写MAC/SN/USID</string>
+    <string name="FactoryReset">恢复出厂</string>
+    <string name="btnScan">重新扫描</string>
+    <string name="btnWriteMac">写入MAC</string>
+    <string name="btnWriteSn">写入SN</string>
+    <string name="btnWriteUsid">写入USID</string>
+    <string name="SnAddr">SN号:</string>
+    <string name="UsidAddr">USID号:</string>
+    <string name="TF_Test">TF测试</string>
+    <string name="USB1_Test">USB1测试</string>
+    <string name="USB2_Test">USB2测试</string>
+    <string name="Test_Fail">失败</string>
+    <string name="Test_Ok">通过</string>
+    <string name="btnCvbsVideo">AV接口</string>
+    <string name="Cvbs_Video">AV接口</string>
+    <string name="Lan_Test">以太网测试</string>
+    <string name="Wifi_Test">Wifi测试</string>
+    <string name="Hdmi_Test">HDMI接口</string>
+    <string name="Led_Test">网络灯测试</string>
+     <string name="Led_TestIng">请注意网络指示灯闪烁</string>
+    <string name="PowerKey_Test">电源灯测试</string>
+    <string name="PowerKey_TestIng">请注意电源指示灯闪烁</string>
+    <string name="btnHdmi">HDMI接口</string>
+    <string name="btnLed">指示灯</string>
+    <string name="btnPowerKey">电源键</string>
+    <string name="btnSave">保存测试结果</string>
+     <string name="LongTestFinish">结束老化测试</string>
+     <string name="TestResult">上次测试结果</string> 
+     <string name="TestResultValue">空</string>
+     <string name="SaveResult">保存测试结果成功!</string>
+     
+     <string name="showmac">以太网MAC地址 : </string>
+     <string name="showip">以太网IP地址 : </string>
+     <string name="showwifimac">Wifi MAC地址 : </string>
+     <string name="showwifiip">Wifi IP地址 : </string>
+     <string name="showsoftware">软件版本 : </string>
+     <string name="lssue_version">软件发行编号 : </string>
+     <string name="client_version">客户软件版本 : </string>
+     <string name="firmware_version">固件版本号 : </string>
+	 <string name="device_type">设备型号 : </string>
+     <string name="showusid">USID号 : </string> 
+     <string name="btnEnd">结束</string>
+     <string name="ScanText">扫描输入 : </string>
+     <string name="rebootsystem">重启系统</string>
+     <string name="ScanError">扫描串长度错误 ! ! ! </string>
+     <string name="showsn">SN号 : </string>
+     <string name="TestNotcompleted">请先完成硬件测试</string>
+     <string name="TestError">硬件测试有未通过项</string>
+     <string name="showLength">位</string>
+          
+     <string name="hardware_test_help">通过请按 [OK] 键，失败请按 [静音] 键</string>
+     <string name="long_test_finish">老化测试结束</string>
+     <string name="check_sdcard_wifi_config">请检查USB1是否存在wifi配置文件</string>
+     <string name="noexist">不存在</string>
+	<string name="exit">请按OK键退出</string>
+    <string name="mac_check">mac地址校验</string>
+    <string name="invalid_mac">  mac地址无效</string>
+    <string name="testled">现在信号灯测试，请注意观 察！</string>
+    <string name="the_same_mac"> mac地址一致！</string>
+   	<string name="the_diff_mac"> mac地址不一致！</string>
+    <string name="write_mac_usid"> Mac地址烧录</string>
+    <string name="ddr_size"> 内存大小:</string>
+    <string name="nand_size"> 存储容量:</string>
+    <string name="KeyTest">按键测试</string>
+   	
+    <string name="l1">L1</string>
+    <string name="l2">L2</string>
+    <string name="r1">R1</string>
+    <string name="r2">R2</string>
+    <string name="x">x=</string>
+    <string name="y">y=</string>
+    <string name="left_default">请转动左摇杆</string>
+    <string name="right_default">请转动右摇杆</string>
+    <string name="down">DPAD_DOWN</string>
+    <string name="up">DPAD_UP</string>
+    <string name="left">DPAD_LEFT</string>
+    <string name="right">DPAD_RIGHT</string>
+    <string name="button_a">BUTTON_A</string>
+    <string name="button_b">BUTTON_B</string>
+    <string name="button_x">BUTTON_X</string>
+    <string name="button_y">BUTTON_Y</string>
+    <string name="button_select">选择</string>
+    <string name="button_start">开始</string>
+    <string name="va">声音加</string>
+    <string name="vs">声音减</string>
+    <string name="f12">按键映射</string>
+    <string name="back">返回</string>
+    <string name="menu">菜单</string>
+    <string name="mute">静音</string>
+    <string name="n0">0</string>
+    <string name="n1">1</string>
+    <string name="n2">2</string>
+    <string name="n3">3</string>
+    <string name="n4">4</string>
+    <string name="n5">5</string>
+    <string name="n6">6</string>
+    <string name="n7">7</string>
+    <string name="n8">8</string>
+    <string name="n9">9</string>
+
+</resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceScreen
+        android:title="@string/MCU_LED_on_status"
+        android:iconSpaceReserved="false">
+        <intent
+            android:targetClass="com.khadas.ksettings.MCU_LEDs_On_Status_Preference"
+            android:targetPackage="com.khadas.ksettings" />
+    </PreferenceScreen>
+
+	<PreferenceScreen
+        android:title="@string/MCU_LED_off_status"
+        android:iconSpaceReserved="false">
+        <intent
+            android:targetClass="com.khadas.ksettings.MCU_LEDs_Off_Status_Preference"
+            android:targetPackage="com.khadas.ksettings" />
+    </PreferenceScreen>
+
+</PreferenceScreen>

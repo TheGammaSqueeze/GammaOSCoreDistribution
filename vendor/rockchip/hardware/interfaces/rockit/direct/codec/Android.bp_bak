@@ -1,0 +1,22 @@
+cc_library {
+    name: "librockit_ext_codec",
+    srcs: [
+        "DummyDec.cpp",
+        "RTCodecProfiles.cpp",
+    ],
+
+    shared_libs: [
+        "libbase",
+        "libutils",
+        "libcutils",
+        "liblog",
+    ],
+
+    include_dirs: [
+        "vendor/rockchip/hardware/interfaces/rockit/include",
+        "vendor/rockchip/hardware/interfaces/rockit/direct/include",
+        "vendor/rockchip/hardware/interfaces/rockit/include/rt_base",
+        "vendor/rockchip/hardware/interfaces/rockit/include/rt_media",
+        "vendor/rockchip/hardware/interfaces/rockit/include/rt_player",
+    ],
+}

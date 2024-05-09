@@ -25,6 +25,8 @@
 
 #include <cutils/properties.h>
 
+bool property_contains_hdmi(const char* key);
+
 namespace android {
 
 // Returns a vector of paths where audio configuration files
@@ -32,22 +34,13 @@ namespace android {
 static inline std::vector<std::string> audio_get_configuration_paths() {
     static const std::vector<std::string> paths = []() {
         char value[PROPERTY_VALUE_MAX] = {};
-        bool va_aosp = property_get_bool("ro.vendor.qti.va_aosp.support", false);
-        std::vector<std::string> ret;
         if (property_get("ro.boot.product.vendor.sku", value, "") <= 0) {
-            ret = std::vector<std::string>({"/odm/etc", "/vendor/etc", "/system/etc"});
+            return std::vector<std::string>({"/odm/etc", "/vendor/etc", "/system/etc"});
         } else {
-            ret = std::vector<std::string>({
-                    "/odm/etc",
-                    std::string("/vendor/etc/audio/sku_") + value +
-                           (va_aosp ? "_qssi" : ""),
-                    std::string("/vendor/etc/audio/sku_") + value,
+            return std::vector<std::string>({
+                    "/odm/etc", std::string("/vendor/etc/audio/sku_") + value,
                     "/vendor/etc", "/system/etc"});
         }
-        if (va_aosp) {
-            ret.insert(ret.end() - 2, "/vendor/etc/audio");
-        }
-        return ret;
     }();
     return paths;
 }
@@ -71,6 +64,7 @@ static inline std::string audio_find_readable_configuration_file(const char* fil
  * 6) LE Audio offload disabled is possible with A2DP offload NOT disabled
  */
 static inline std::string audio_get_audio_policy_config_file() {
+
     static constexpr const char *apmXmlConfigFileName = "audio_policy_configuration.xml";
     static constexpr const char *apmA2dpOffloadDisabledXmlConfigFileName =
             "audio_policy_configuration_a2dp_offload_disabled.xml";
@@ -103,6 +97,12 @@ static inline std::string audio_get_audio_policy_config_file() {
         audioPolicyXmlConfigFile = audio_find_readable_configuration_file(
                 apmBluetoothLegacyHalXmlConfigFileName);
     }
+
+    if (property_contains_hdmi("vendor.hwc.device.display-0")) {
+
+    return audioPolicyXmlConfigFile.empty() ?
+            audio_find_readable_configuration_file("audio_policy_configuration_hdmi.xml") : audioPolicyXmlConfigFile; }
+
     return audioPolicyXmlConfigFile.empty() ?
             audio_find_readable_configuration_file(apmXmlConfigFileName) : audioPolicyXmlConfigFile;
 }

@@ -1,0 +1,7 @@
+#ifndef _RK_C2_LIB_VERSION_H_
+#define _RK_C2_LIB_VERSION_H_
+
+#define C2_GIT_BUILD_VERSION "$GIT_BUILD_VERSION"
+
+
+#endif /* #ifndef _RK_C2_LIB_VERSION_H_ */

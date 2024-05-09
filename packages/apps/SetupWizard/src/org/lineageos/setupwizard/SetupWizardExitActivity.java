@@ -16,14 +16,14 @@
 
 package org.lineageos.setupwizard;
 
-import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK;
-import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-
 import static org.lineageos.setupwizard.SetupWizardApp.LOGV;
 
 import android.annotation.Nullable;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PowerManager;
+import android.provider.Settings;
 import android.util.Log;
 
 import org.lineageos.setupwizard.util.PhoneMonitor;
@@ -44,7 +44,8 @@ public class SetupWizardExitActivity extends BaseSetupWizardActivity {
         }
         PhoneMonitor.onSetupFinished();
         if (!SetupWizardUtils.isManagedProfile(this)) {
-            launchHome();
+            markSetupAsCompleted();
+            rebootDevice();
         }
         finish();
         applyForwardTransition(TRANSITION_ID_FADE);
@@ -53,10 +54,13 @@ public class SetupWizardExitActivity extends BaseSetupWizardActivity {
         startService(i);
     }
 
-    private void launchHome() {
-        startActivity(new Intent("android.intent.action.MAIN")
-                .addCategory("android.intent.category.HOME")
-                .addFlags(FLAG_ACTIVITY_NEW_TASK | FLAG_ACTIVITY_CLEAR_TASK));
+    private void markSetupAsCompleted() {
+        Settings.Global.putInt(getContentResolver(), Settings.Global.DEVICE_PROVISIONED, 1);
+        Settings.Secure.putInt(getContentResolver(), "user_setup_complete", 1);
     }
 
+    private void rebootDevice() {
+        PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        powerManager.reboot(null);
+    }
 }

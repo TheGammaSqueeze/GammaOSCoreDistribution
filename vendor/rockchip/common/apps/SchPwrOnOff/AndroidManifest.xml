@@ -1,0 +1,72 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.khadas.schpwronoff"
+		android:sharedUserId="android.uid.system">
+    <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="29" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    
+
+       <application android:label="@string/schedule_power_on_off_settings_title"
+            android:taskAffinity=""
+	    android:theme="@android:style/Theme.Material.Settings"
+            android:uiOptions="splitActionBarWhenNarrow"
+            android:supportsRtl="true">
+
+        <activity android:name="com.khadas.schpwronoff.AlarmClock"
+                android:label="@string/schedule_power_on_off_settings_title"
+                android:configChanges="orientation|keyboardHidden|keyboard|navigation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.khadas.schpwronoff.SCHEDULE_POWER_ON_OFF_SETTING" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.khadas.schpwronoff.SetAlarm"
+                android:label="@string/schedule_power_on_off_set"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:clearTaskOnLaunch="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.SET_ALARM" />
+                <category android:name="android.intent.category.VOICE_LAUNCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <provider android:name="com.khadas.schpwronoff.AlarmProvider" 
+                  android:authorities="com.khadas.schpwronoff" />
+
+        <receiver android:name="com.khadas.schpwronoff.SchPwrOnReceiver">
+            <intent-filter>
+               <action android:name="com.khadas.schpwronoff.PWR_ON_ALERT" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="com.khadas.schpwronoff.SchPwrOffReceiver">
+            <intent-filter>
+               <action android:name="com.schpwronoff.PWR_OFF_ALERT" />
+               <action android:name="android.intent.action.ACTION_SHUTDOWN_IPO" />
+               <action android:name="android.intent.action.ACTION_SHUTDOWN" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.khadas.schpwronoff.AlarmReceiverService"/>
+        <receiver android:name="com.khadas.schpwronoff.AlarmInitReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LAUNCH_POWEROFF_ALARM" />
+            </intent-filter>
+        </receiver>
+        <activity android:name="com.khadas.schpwronoff.ShutdownActivity"
+                  android:configChanges="orientation|keyboardHidden|screenSize">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

@@ -1,0 +1,69 @@
+From ac827a33044917077ed78bf249615ca3b807ec9b Mon Sep 17 00:00:00 2001
+From: Paul Lawrence <paullawrence@google.com>
+Date: Mon, 8 Mar 2021 09:32:40 -0800
+Subject: [PATCH 15/31] ANDROID: Incremental fs: Support STATX_ATTR_VERITY
+
+Bug: 181242243
+Test: incfs_test passes
+Signed-off-by: Paul Lawrence <paullawrence@google.com>
+Change-Id: I0b905e6d740634568f15320a607a62b901fa1431
+---
+ fs/incfs/vfs.c | 28 +++++++++++++++++++++++++++-
+ 1 file changed, 27 insertions(+), 1 deletion(-)
+
+diff --git a/fs/incfs/vfs.c b/fs/incfs/vfs.c
+index d28d4b7b669b..358be2189cff 100644
+--- a/fs/incfs/vfs.c
++++ b/fs/incfs/vfs.c
+@@ -55,6 +55,9 @@ static void free_inode(struct inode *inode);
+ static void evict_inode(struct inode *inode);
+ 
+ static int incfs_setattr(struct dentry *dentry, struct iattr *ia);
++static int incfs_getattr(const struct path *path,
++			 struct kstat *stat, u32 request_mask,
++			 unsigned int query_flags);
+ static ssize_t incfs_getxattr(struct dentry *d, const char *name,
+ 			void *value, size_t size);
+ static ssize_t incfs_setxattr(struct dentry *d, const char *name,
+@@ -122,7 +125,7 @@ const struct file_operations incfs_file_ops = {
+ 
+ const struct inode_operations incfs_file_inode_ops = {
+ 	.setattr = incfs_setattr,
+-	.getattr = simple_getattr,
++	.getattr = incfs_getattr,
+ 	.listxattr = incfs_listxattr
+ };
+ 
+@@ -1547,6 +1550,29 @@ static int incfs_setattr(struct dentry *dentry, struct iattr *ia)
+ 	return simple_setattr(dentry, ia);
+ }
+ 
++
++static int incfs_getattr(const struct path *path,
++			 struct kstat *stat, u32 request_mask,
++			 unsigned int query_flags)
++{
++	struct inode *inode = d_inode(path->dentry);
++
++	if (IS_VERITY(inode))
++		stat->attributes |= STATX_ATTR_VERITY;
++	stat->attributes_mask |= STATX_ATTR_VERITY;
++	generic_fillattr(inode, stat);
++
++	/*
++	 * TODO: stat->blocks is wrong at this point. It should be number of
++	 * blocks in the backing file. But that information is not (necessarily)
++	 * available yet - incfs_open_dir_file may not have been called.
++	 * Solution is probably to store the backing file block count in an
++	 * xattr whenever it's changed.
++	 */
++
++	return 0;
++}
++
+ static ssize_t incfs_getxattr(struct dentry *d, const char *name,
+ 			void *value, size_t size)
+ {
+-- 
+2.17.1
+

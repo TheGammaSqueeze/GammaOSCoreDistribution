@@ -51,7 +51,7 @@
     <string name="sound_category_title" msgid="7899816751041939518">"સાઉન્ડ"</string>
     <string name="applications_category_title" msgid="7112019490898586223">"ઍપ"</string>
     <string name="device_pref_category_title" msgid="8292572846154873762">"ડિવાઇસની પસંદગીઓ"</string>
-    <string name="remotes_and_accessories_category_title" msgid="4795119810430255047">"રિમોટ અને ઍક્સેસરી"</string>
+    <string name="remotes_and_accessories_category_title" msgid="4795119810430255047">"Bluetooth and accessories"</string>
     <string name="display_and_sound_category_title" msgid="9203309625380755860">"ડિસ્પ્લે અને સાઉન્ડ"</string>
     <string name="help_and_feedback_category_title" msgid="7036505833991003031">"સહાય અને પ્રતિસાદ"</string>
     <string name="privacy_category_title" msgid="8552430590908463601">"પ્રાઇવસી"</string>
@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"વિગતવાર સાઉન્ડ સેટિંગ"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"ગેમ મોડની મંજૂરી આપો"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"કન્ટેન્ટની ફ્રેમ રેટ સાથે મેળ કરો"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"ખામીરહિત"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"જો ઍપ તેની વિનંતી કરે, તો તમારું ડિવાઇસ તમે જોઈ રહ્યાં છો તે કન્ટેન્ટના ઑરિજિનલ ફ્રેમ રેટ સાથે, જો તમારું ટીવી ખામીરહિત સંચાર કરી શકે તો જ તેના આઉટપુટનો મેળ કરશે."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"બિન-ખામીરહિત"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"જો ઍપ તેની વિનંતી કરે, તો તમારું ડિવાઇસ તમે જોઈ રહ્યાં છો તે કન્ટેન્ટના ઑરિજિનલ ફ્રેમ રેટ સાથે તેના આઉટપુટનો મેળ કરશે. આના લીધે, જ્યારે તમે વીડિયો પ્લેબૅક ચાલુ અથવા બંધ કરો, ત્યારે તમારી સ્ક્રીન પર થોડી સેકન્ડ માટે કંઈપણ ન દેખાય તેવું બની શકે છે."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"ક્યારેય નહીં"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"જો ઍપ તેની વિનંતી કરે, તો પણ તમારું ડિવાઇસ તમે જોઈ રહ્યાં છો તે કન્ટેન્ટના ઑરિજિનલ ફ્રેમ રેટ સાથે તેના આઉટપુટનો મેળ કરવાનો ક્યારેય પ્રયાસ કરશે નહીં."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"ખામીરહિત"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"જો ઍપ તેની વિનંતી કરે, તો તમારું ડિવાઇસ તમે જોઈ રહ્યાં છો તે કન્ટેન્ટના ઑરિજિનલ ફ્રેમ રેટ સાથે, જો તમારું ટીવી ખામીરહિત સંચાર કરી શકે તો જ તેના આઉટપુટનો મેળ કરશે."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"બિન-ખામીરહિત"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"જો ઍપ તેની વિનંતી કરે, તો તમારું ડિવાઇસ તમે જોઈ રહ્યાં છો તે કન્ટેન્ટના ઑરિજિનલ ફ્રેમ રેટ સાથે તેના આઉટપુટનો મેળ કરશે. આના લીધે, જ્યારે તમે વીડિયો પ્લેબૅક ચાલુ અથવા બંધ કરો, ત્યારે તમારી સ્ક્રીન પર થોડી સેકન્ડ માટે કંઈપણ ન દેખાય તેવું બની શકે છે."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"ક્યારેય નહીં"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"જો ઍપ તેની વિનંતી કરે, તો પણ તમારું ડિવાઇસ તમે જોઈ રહ્યાં છો તે કન્ટેન્ટના ઑરિજિનલ ફ્રેમ રેટ સાથે તેના આઉટપુટનો મેળ કરવાનો ક્યારેય પ્રયાસ કરશે નહીં."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"ટેક્સ્ટ સ્કેલિંગ"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"<xliff:g id="SCALE">%1$d</xliff:g>%% સુધી સ્કેલ કરો"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"ટેક્સ્ટના કદનો નમૂનો"</string>
@@ -218,10 +217,10 @@
     <string name="bluetooth_cancel" msgid="4415185529332987034">"રદ કરો"</string>
     <string name="bluetooth_device_connected_toast" msgid="1896195197089204806">"%1$s કનેક્ટ કર્યું"</string>
     <string name="bluetooth_device_disconnected_toast" msgid="7459239447363156499">"%1$s ડિસ્કનેક્ટ કર્યું"</string>
-    <string name="connected_devices_slice_pref_title" msgid="6761921505544005991">"રિમોટ અને ઍક્સેસરી"</string>
+    <string name="connected_devices_slice_pref_title" msgid="6761921505544005991">"Bluetooth and accessories"</string>
     <string name="bluetooth_toggle_title" msgid="3808904783456336104">"બ્લૂટૂથ"</string>
     <string name="bluetooth_toggle_confirmation_dialog_title" msgid="3906746631391295717">"બ્લૂટૂથ બંધ કરો"</string>
-    <string name="bluetooth_toggle_confirmation_dialog_summary" msgid="9017044450625172698">"જ્યાં સુધી બ્લૂટૂથ બંધ હશે ત્યાં સુધી તમે તમારા રિમોટથી Google Assistant ઍક્સેસ કરી શકશો નહીં."</string>
+    <string name="bluetooth_toggle_confirmation_dialog_summary" msgid="9017044450625172698">"Are you sure you want to turn Bluetooth off?"</string>
     <string name="bluetooth_pair_accessory" msgid="5508750142754420984">"ઍક્સેસરીનું જોડાણ બનાવો"</string>
     <string name="bluetooth_known_devices_category" msgid="6895470515631452961">"ઍક્સેસરી"</string>
     <string name="bluetooth_official_remote_category" msgid="5817814488268307170">"રિમોટ કન્ટ્રોલ"</string>

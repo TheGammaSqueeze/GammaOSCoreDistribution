@@ -1,0 +1,985 @@
+From 69023079aedd93721f3ef4abcae080998830703c Mon Sep 17 00:00:00 2001
+From: Paul Lawrence <paullawrence@google.com>
+Date: Tue, 23 Mar 2021 13:45:30 -0700
+Subject: [PATCH 25/31] ANDROID: Incremental fs: Add status to sysfs
+
+Adding seven sysfs entries per mount:
+
+reads_failed_timed_out
+reads_failed_hash_verification
+reads_failed_other
+reads_delayed_pending
+reads_delayed_pending_us
+reads_delayed_min
+reads_delayed_min_us
+
+to allow for status monitoring from userland
+
+Change-Id: I50677511c2af4778ba0c574bb80323f31425b4d0
+Test: incfs_test passes
+Bug: 160634343
+Bug: 184291759
+Signed-off-by: Paul Lawrence <paullawrence@google.com>
+---
+ Documentation/ABI/testing/sysfs-fs-incfs |  64 ++++++++
+ Documentation/filesystems/incfs.rst      |  82 ++++++++++
+ fs/incfs/Makefile                        |   1 +
+ fs/incfs/data_mgmt.c                     | 110 +++++++++----
+ fs/incfs/data_mgmt.h                     |  15 +-
+ fs/incfs/main.c                          |  76 +--------
+ fs/incfs/sysfs.c                         | 195 +++++++++++++++++++++++
+ fs/incfs/sysfs.h                         |  48 ++++++
+ fs/incfs/verity.c                        |   2 +-
+ fs/incfs/vfs.c                           |  46 ++++--
+ 10 files changed, 518 insertions(+), 121 deletions(-)
+ create mode 100644 Documentation/ABI/testing/sysfs-fs-incfs
+ create mode 100644 Documentation/filesystems/incfs.rst
+ create mode 100644 fs/incfs/sysfs.c
+ create mode 100644 fs/incfs/sysfs.h
+
+diff --git a/Documentation/ABI/testing/sysfs-fs-incfs b/Documentation/ABI/testing/sysfs-fs-incfs
+new file mode 100644
+index 000000000000..690c687c67ab
+--- /dev/null
++++ b/Documentation/ABI/testing/sysfs-fs-incfs
+@@ -0,0 +1,64 @@
++What:		/sys/fs/incremental-fs/features/corefs
++Date:		2019
++Contact:	Paul Lawrence <paullawrence@google.com>
++Description:	Reads 'supported'. Always present.
++
++What:		/sys/fs/incremental-fs/features/v2
++Date:		April 2021
++Contact:	Paul Lawrence <paullawrence@google.com>
++Description:	Reads 'supported'. Present if all v2 features of incfs are
++		supported.
++
++What:		/sys/fs/incremental-fs/features/zstd
++Date:		April 2021
++Contact:	Paul Lawrence <paullawrence@google.com>
++Description:	Reads 'supported'. Present if zstd compression is supported
++		for data blocks.
++
++What:		/sys/fs/incremental-fs/instances/[name]
++Date:		April 2021
++Contact:	Paul Lawrence <paullawrence@google.com>
++Description:	Folder created when incfs is mounted with the sysfs_name=[name]
++		option. If this option is used, the following values are created
++		in this folder.
++
++What:		/sys/fs/incremental-fs/instances/[name]/reads_delayed_min
++Date:		April 2021
++Contact:	Paul Lawrence <paullawrence@google.com>
++Description:	Returns a count of the number of reads that were delayed as a
++		result of the per UID read timeouts min time setting.
++
++What:		/sys/fs/incremental-fs/instances/[name]/reads_delayed_min_us
++Date:		April 2021
++Contact:	Paul Lawrence <paullawrence@google.com>
++Description:	Returns total delay time for all files since first mount as a
++		result of the per UID read timeouts min time setting.
++
++What:		/sys/fs/incremental-fs/instances/[name]/reads_delayed_pending
++Date:		April 2021
++Contact:	Paul Lawrence <paullawrence@google.com>
++Description:	Returns a count of the number of reads that were delayed as a
++		result of waiting for a pending read.
++
++What:		/sys/fs/incremental-fs/instances/[name]/reads_delayed_pending_us
++Date:		April 2021
++Contact:	Paul Lawrence <paullawrence@google.com>
++Description:	Returns total delay time for all files since first mount as a
++		result of waiting for a pending read.
++
++What:		/sys/fs/incremental-fs/instances/[name]/reads_failed_hash_verification
++Date:		April 2021
++Contact:	Paul Lawrence <paullawrence@google.com>
++Description:	Returns number of reads that failed because of hash verification
++		failures.
++
++What:		/sys/fs/incremental-fs/instances/[name]/reads_failed_other
++Date:		April 2021
++Contact:	Paul Lawrence <paullawrence@google.com>
++Description:	Returns number of reads that failed for reasons other than
++		timing out or hash failures.
++
++What:		/sys/fs/incremental-fs/instances/[name]/reads_failed_timed_out
++Date:		April 2021
++Contact:	Paul Lawrence <paullawrence@google.com>
++Description:	Returns number of reads that timed out.
+diff --git a/Documentation/filesystems/incfs.rst b/Documentation/filesystems/incfs.rst
+new file mode 100644
+index 000000000000..03ae39ec72dc
+--- /dev/null
++++ b/Documentation/filesystems/incfs.rst
+@@ -0,0 +1,82 @@
++.. SPDX-License-Identifier: GPL-2.0
++
++=================================================
++incfs: A stacked incremental filesystem for Linux
++=================================================
++
++/sys/fs interface
++=================
++
++Please update Documentation/ABI/testing/sys-fs-incfs if you update this
++section.
++
++incfs creates the following files in /sys/fs.
++
++Features
++--------
++
++/sys/fs/incremental-fs/features/corefs
++  Reads 'supported'. Always present.
++
++/sys/fs/incremental-fs/features/v2
++  Reads 'supported'. Present if all v2 features of incfs are supported. These
++  are:
++    fs-verity support
++    inotify support
++    ioclts:
++      INCFS_IOC_SET_READ_TIMEOUTS
++      INCFS_IOC_GET_READ_TIMEOUTS
++      INCFS_IOC_GET_BLOCK_COUNT
++      INCFS_IOC_CREATE_MAPPED_FILE
++    .incomplete folder
++    .blocks_written pseudo file
++    report_uid mount option
++
++/sys/fs/incremental-fs/features/zstd
++  Reads 'supported'. Present if zstd compression is supported for data blocks.
++
++Optional per mount
++------------------
++
++For each incfs mount, the mount option sysfs_name=[name] creates a /sys/fs
++node called:
++
++/sys/fs/incremental-fs/instances/[name]
++
++This will contain the following files:
++
++/sys/fs/incremental-fs/instances/[name]/reads_delayed_min
++  Returns a count of the number of reads that were delayed as a result of the
++  per UID read timeouts min time setting.
++
++/sys/fs/incremental-fs/instances/[name]/reads_delayed_min_us
++  Returns total delay time for all files since first mount as a result of the
++  per UID read timeouts min time setting.
++
++/sys/fs/incremental-fs/instances/[name]/reads_delayed_pending
++  Returns a count of the number of reads that were delayed as a result of
++  waiting for a pending read.
++
++/sys/fs/incremental-fs/instances/[name]/reads_delayed_pending_us
++  Returns total delay time for all files since first mount as a result of
++  waiting for a pending read.
++
++/sys/fs/incremental-fs/instances/[name]/reads_failed_hash_verification
++  Returns number of reads that failed because of hash verification failures.
++
++/sys/fs/incremental-fs/instances/[name]/reads_failed_other
++  Returns number of reads that failed for reasons other than timing out or
++  hash failures.
++
++/sys/fs/incremental-fs/instances/[name]/reads_failed_timed_out
++  Returns number of reads that timed out.
++
++For reads_delayed_*** settings, note that a file can count for both
++reads_delayed_min and reads_delayed_pending if incfs first waits for a pending
++read then has to wait further for the min time. In that case, the time spent
++waiting is split between reads_delayed_pending_us, which is increased by the
++time spent waiting for the pending read, and reads_delayed_min_us, which is
++increased by the remainder of the time spent waiting.
++
++Reads that timed out are not added to the reads_delayed_pending or the
++reads_delayed_pending_us counters.
+diff --git a/fs/incfs/Makefile b/fs/incfs/Makefile
+index 3503eda7a6e6..05795d12c874 100644
+--- a/fs/incfs/Makefile
++++ b/fs/incfs/Makefile
+@@ -7,6 +7,7 @@ incrementalfs-y := \
+ 	integrity.o \
+ 	main.o \
+ 	pseudo_files.o \
++	sysfs.o \
+ 	vfs.o
+ 
+ incrementalfs-$(CONFIG_FS_VERITY) += verity.o
+diff --git a/fs/incfs/data_mgmt.c b/fs/incfs/data_mgmt.c
+index b7727e3a8e43..8a4d87c79d56 100644
+--- a/fs/incfs/data_mgmt.c
++++ b/fs/incfs/data_mgmt.c
+@@ -7,6 +7,7 @@
+ #include <linux/file.h>
+ #include <linux/fsverity.h>
+ #include <linux/gfp.h>
++#include <linux/kobject.h>
+ #include <linux/ktime.h>
+ #include <linux/lz4.h>
+ #include <linux/mm.h>
+@@ -19,6 +20,7 @@
+ #include "data_mgmt.h"
+ #include "format.h"
+ #include "integrity.h"
++#include "sysfs.h"
+ #include "verity.h"
+ 
+ static int incfs_scan_metadata_chain(struct data_file *df);
+@@ -49,6 +51,7 @@ struct mount_info *incfs_alloc_mount_info(struct super_block *sb,
+ {
+ 	struct mount_info *mi = NULL;
+ 	int error = 0;
++	struct incfs_sysfs_node *node;
+ 
+ 	mi = kzalloc(sizeof(*mi), GFP_NOFS);
+ 	if (!mi)
+@@ -71,6 +74,13 @@ struct mount_info *incfs_alloc_mount_info(struct super_block *sb,
+ 	mutex_init(&mi->mi_zstd_workspace_mutex);
+ 	INIT_DELAYED_WORK(&mi->mi_zstd_cleanup_work, zstd_free_workspace);
+ 
++	node = incfs_add_sysfs_node(options->sysfs_name);
++	if (IS_ERR(node)) {
++		error = PTR_ERR(node);
++		goto err;
++	}
++	mi->mi_sysfs_node = node;
++
+ 	error = incfs_realloc_mount_info(mi, options);
+ 	if (error)
+ 		goto err;
+@@ -119,6 +129,15 @@ int incfs_realloc_mount_info(struct mount_info *mi,
+ 		kfree(old_buffer);
+ 	}
+ 
++	if ((options->sysfs_name && !mi->mi_sysfs_node) ||
++	    (!options->sysfs_name && mi->mi_sysfs_node) ||
++	    (options->sysfs_name &&
++		strcmp(options->sysfs_name,
++		       kobject_name(&mi->mi_sysfs_node->isn_sysfs_node)))) {
++		pr_err("incfs: Can't change sysfs_name mount option on remount\n");
++		return -EOPNOTSUPP;
++	}
++
+ 	mi->mi_options = *options;
+ 	return 0;
+ }
+@@ -142,6 +161,7 @@ void incfs_free_mount_info(struct mount_info *mi)
+ 	for (i = 0; i < ARRAY_SIZE(mi->pseudo_file_xattr); ++i)
+ 		kfree(mi->pseudo_file_xattr[i].data);
+ 	kfree(mi->mi_per_uid_read_timeouts);
++	incfs_free_sysfs_node(mi->mi_sysfs_node);
+ 	kfree(mi);
+ }
+ 
+@@ -1088,17 +1108,16 @@ static int usleep_interruptible(u32 us)
+ }
+ 
+ static int wait_for_data_block(struct data_file *df, int block_index,
+-			       u32 min_time_us, u32 min_pending_time_us,
+-			       u32 max_pending_time_us,
+-			       struct data_file_block *res_block)
++			       struct data_file_block *res_block,
++			       struct incfs_read_data_file_timeouts *timeouts)
+ {
+ 	struct data_file_block block = {};
+ 	struct data_file_segment *segment = NULL;
+ 	struct pending_read *read = NULL;
+ 	struct mount_info *mi = NULL;
+-	int error = 0;
++	int error;
+ 	int wait_res = 0;
+-	u64 time;
++	unsigned int delayed_pending_us = 0, delayed_min_us = 0;
+ 
+ 	if (!df || !res_block)
+ 		return -EFAULT;
+@@ -1126,13 +1145,16 @@ static int wait_for_data_block(struct data_file *df, int block_index,
+ 
+ 	/* If the block was found, just return it. No need to wait. */
+ 	if (is_data_block_present(&block)) {
+-		if (min_time_us)
+-			error = usleep_interruptible(min_time_us);
+ 		*res_block = block;
+-		return error;
++		if (timeouts && timeouts->min_time_us) {
++			delayed_min_us = timeouts->min_time_us;
++			error = usleep_interruptible(delayed_min_us);
++			goto out;
++		}
++		return 0;
+ 	} else {
+ 		/* If it's not found, create a pending read */
+-		if (max_pending_time_us != 0) {
++		if (timeouts && timeouts->max_pending_time_us) {
+ 			read = add_pending_read(df, block_index);
+ 			if (!read)
+ 				return -ENOMEM;
+@@ -1142,14 +1164,17 @@ static int wait_for_data_block(struct data_file *df, int block_index,
+ 		}
+ 	}
+ 
+-	if (min_pending_time_us)
+-		time = ktime_get_ns();
++	/* Rest of function only applies if timeouts != NULL */
++	if (!timeouts) {
++		pr_warn("incfs: timeouts unexpectedly NULL\n");
++		return -EFSCORRUPTED;
++	}
+ 
+ 	/* Wait for notifications about block's arrival */
+ 	wait_res =
+ 		wait_event_interruptible_timeout(segment->new_data_arrival_wq,
+-					(is_read_done(read)),
+-					usecs_to_jiffies(max_pending_time_us));
++			(is_read_done(read)),
++			usecs_to_jiffies(timeouts->max_pending_time_us));
+ 
+ 	/* Woke up, the pending read is no longer needed. */
+ 	remove_pending_read(df, read);
+@@ -1167,14 +1192,14 @@ static int wait_for_data_block(struct data_file *df, int block_index,
+ 		return wait_res;
+ 	}
+ 
+-	if (min_pending_time_us) {
+-		time = div_u64(ktime_get_ns() - time, 1000);
+-		if (min_pending_time_us > time) {
+-			error = usleep_interruptible(
+-						min_pending_time_us - time);
+-			if (error)
+-				return error;
+-		}
++	delayed_pending_us = timeouts->max_pending_time_us -
++				jiffies_to_usecs(wait_res);
++	if (timeouts->min_pending_time_us > delayed_pending_us) {
++		delayed_min_us = timeouts->min_pending_time_us -
++					     delayed_pending_us;
++		error = usleep_interruptible(delayed_min_us);
++		if (error)
++			return error;
+ 	}
+ 
+ 	error = down_read_killable(&segment->rwsem);
+@@ -1182,7 +1207,7 @@ static int wait_for_data_block(struct data_file *df, int block_index,
+ 		return error;
+ 
+ 	/*
+-	 * Re-read block's info now, it has just arrived and
++	 * Re-read blocks info now, it has just arrived and
+ 	 * should be available.
+ 	 */
+ 	error = get_data_file_block(df, block_index, &block);
+@@ -1191,22 +1216,39 @@ static int wait_for_data_block(struct data_file *df, int block_index,
+ 			*res_block = block;
+ 		else {
+ 			/*
+-			 * Somehow wait finished successfully bug block still
++			 * Somehow wait finished successfully but block still
+ 			 * can't be found. It's not normal.
+ 			 */
+ 			pr_warn("incfs: Wait succeeded but block not found.\n");
+ 			error = -ENODATA;
+ 		}
+ 	}
+-
+ 	up_read(&segment->rwsem);
+-	return error;
++
++out:
++	if (error)
++		return error;
++
++	if (!mi->mi_sysfs_node)
++		return 0;
++
++	if (delayed_pending_us) {
++		mi->mi_sysfs_node->isn_reads_delayed_pending++;
++		mi->mi_sysfs_node->isn_reads_delayed_pending_us +=
++			delayed_pending_us;
++	}
++
++	if (delayed_min_us) {
++		mi->mi_sysfs_node->isn_reads_delayed_min++;
++		mi->mi_sysfs_node->isn_reads_delayed_min_us += delayed_min_us;
++	}
++
++	return 0;
+ }
+ 
+ ssize_t incfs_read_data_file_block(struct mem_range dst, struct file *f,
+-			int index, u32 min_time_us,
+-			u32 min_pending_time_us, u32 max_pending_time_us,
+-			struct mem_range tmp)
++			int index, struct mem_range tmp,
++			struct incfs_read_data_file_timeouts *timeouts)
+ {
+ 	loff_t pos;
+ 	ssize_t result;
+@@ -1225,8 +1267,7 @@ ssize_t incfs_read_data_file_block(struct mem_range dst, struct file *f,
+ 	mi = df->df_mount_info;
+ 	bfc = df->df_backing_file_context;
+ 
+-	result = wait_for_data_block(df, index, min_time_us,
+-			min_pending_time_us, max_pending_time_us, &block);
++	result = wait_for_data_block(df, index, &block, timeouts);
+ 	if (result < 0)
+ 		goto out;
+ 
+@@ -1269,6 +1310,15 @@ ssize_t incfs_read_data_file_block(struct mem_range dst, struct file *f,
+ 		log_block_read(mi, &df->df_id, index);
+ 
+ out:
++	if (mi->mi_sysfs_node) {
++		if (result == -ETIME)
++			mi->mi_sysfs_node->isn_reads_failed_timed_out++;
++		else if (result == -EBADMSG)
++			mi->mi_sysfs_node->isn_reads_failed_hash_verification++;
++		else if (result < 0)
++			mi->mi_sysfs_node->isn_reads_failed_other++;
++	}
++
+ 	return result;
+ }
+ 
+diff --git a/fs/incfs/data_mgmt.h b/fs/incfs/data_mgmt.h
+index 516e2e0dd5da..010bf4ec90da 100644
+--- a/fs/incfs/data_mgmt.h
++++ b/fs/incfs/data_mgmt.h
+@@ -122,6 +122,7 @@ struct mount_options {
+ 	unsigned int read_log_pages;
+ 	unsigned int read_log_wakeup_count;
+ 	bool report_uid;
++	char *sysfs_name;
+ };
+ 
+ struct mount_info {
+@@ -188,6 +189,9 @@ struct mount_info {
+ 	void *mi_zstd_workspace;
+ 	ZSTD_DStream *mi_zstd_stream;
+ 	struct delayed_work mi_zstd_cleanup_work;
++
++	/* sysfs node */
++	struct incfs_sysfs_node *mi_sysfs_node;
+ };
+ 
+ struct data_file_block {
+@@ -372,10 +376,15 @@ void incfs_free_data_file(struct data_file *df);
+ struct dir_file *incfs_open_dir_file(struct mount_info *mi, struct file *bf);
+ void incfs_free_dir_file(struct dir_file *dir);
+ 
++struct incfs_read_data_file_timeouts {
++	u32 min_time_us;
++	u32 min_pending_time_us;
++	u32 max_pending_time_us;
++};
++
+ ssize_t incfs_read_data_file_block(struct mem_range dst, struct file *f,
+-			int index, u32 min_time_us,
+-			u32 min_pending_time_us, u32 max_pending_time_us,
+-			struct mem_range tmp);
++			int index, struct mem_range tmp,
++			struct incfs_read_data_file_timeouts *timeouts);
+ 
+ int incfs_get_filled_blocks(struct data_file *df,
+ 			    struct incfs_file_data *fd,
+diff --git a/fs/incfs/main.c b/fs/incfs/main.c
+index 23cf3fefac97..23347acac8bf 100644
+--- a/fs/incfs/main.c
++++ b/fs/incfs/main.c
+@@ -8,10 +8,9 @@
+ 
+ #include <uapi/linux/incrementalfs.h>
+ 
++#include "sysfs.h"
+ #include "vfs.h"
+ 
+-#define INCFS_NODE_FEATURES "features"
+-
+ static struct file_system_type incfs_fs_type = {
+ 	.owner = THIS_MODULE,
+ 	.name = INCFS_NAME,
+@@ -20,91 +19,24 @@ static struct file_system_type incfs_fs_type = {
+ 	.fs_flags = 0
+ };
+ 
+-static struct kobject *sysfs_root, *featurefs_root;
+-
+-static ssize_t supported(struct kobject *kobj,
+-			 struct kobj_attribute *attr, char *buff)
+-{
+-	return snprintf(buff, PAGE_SIZE, "supported\n");
+-}
+-
+-typedef ssize_t (*const attr_show)(struct kobject *kobj,
+-				   struct kobj_attribute *attr, char *buff);
+-
+-#define _DECLARE_FEATURE_FLAG(name)					\
+-	static attr_show name##_show = supported;			\
+-	static struct kobj_attribute name##_attr = __ATTR_RO(name)
+-
+-#define DECLARE_FEATURE_FLAG(name) _DECLARE_FEATURE_FLAG(name)
+-
+-DECLARE_FEATURE_FLAG(corefs);
+-DECLARE_FEATURE_FLAG(zstd);
+-DECLARE_FEATURE_FLAG(v2);
+-
+-static struct attribute *attributes[] = {
+-	&corefs_attr.attr,
+-	&zstd_attr.attr,
+-	&v2_attr.attr,
+-	NULL,
+-};
+-
+-static const struct attribute_group attr_group = {
+-	.attrs = attributes,
+-};
+-
+-static int __init init_sysfs(void)
+-{
+-	int res = 0;
+-
+-	sysfs_root = kobject_create_and_add(INCFS_NAME, fs_kobj);
+-	if (!sysfs_root)
+-		return -ENOMEM;
+-
+-	featurefs_root = kobject_create_and_add(INCFS_NODE_FEATURES,
+-						sysfs_root);
+-	if (!featurefs_root)
+-		return -ENOMEM;
+-
+-	res = sysfs_create_group(featurefs_root, &attr_group);
+-	if (res) {
+-		kobject_put(sysfs_root);
+-		sysfs_root = NULL;
+-	}
+-	return res;
+-}
+-
+-static void cleanup_sysfs(void)
+-{
+-	if (featurefs_root) {
+-		sysfs_remove_group(featurefs_root, &attr_group);
+-		kobject_put(featurefs_root);
+-		featurefs_root = NULL;
+-	}
+-
+-	if (sysfs_root) {
+-		kobject_put(sysfs_root);
+-		sysfs_root = NULL;
+-	}
+-}
+-
+ static int __init init_incfs_module(void)
+ {
+ 	int err = 0;
+ 
+-	err = init_sysfs();
++	err = incfs_init_sysfs();
+ 	if (err)
+ 		return err;
+ 
+ 	err = register_filesystem(&incfs_fs_type);
+ 	if (err)
+-		cleanup_sysfs();
++		incfs_cleanup_sysfs();
+ 
+ 	return err;
+ }
+ 
+ static void __exit cleanup_incfs_module(void)
+ {
+-	cleanup_sysfs();
++	incfs_cleanup_sysfs();
+ 	unregister_filesystem(&incfs_fs_type);
+ }
+ 
+diff --git a/fs/incfs/sysfs.c b/fs/incfs/sysfs.c
+new file mode 100644
+index 000000000000..27aee9ed4341
+--- /dev/null
++++ b/fs/incfs/sysfs.c
+@@ -0,0 +1,195 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright 2021 Google LLC
++ */
++#include <linux/fs.h>
++#include <linux/kobject.h>
++
++#include <uapi/linux/incrementalfs.h>
++
++#include "sysfs.h"
++#include "data_mgmt.h"
++#include "vfs.h"
++
++/******************************************************************************
++ * Define sys/fs/incrementalfs & sys/fs/incrementalfs/features
++ *****************************************************************************/
++#define INCFS_NODE_FEATURES "features"
++#define INCFS_NODE_INSTANCES "instances"
++
++static struct kobject *sysfs_root;
++static struct kobject *features_node;
++static struct kobject *instances_node;
++
++#define DECLARE_FEATURE_FLAG(name)					\
++	static ssize_t name##_show(struct kobject *kobj,		\
++			 struct kobj_attribute *attr, char *buff)	\
++{									\
++	return sysfs_emit(buff, "supported\n");				\
++}									\
++									\
++static struct kobj_attribute name##_attr = __ATTR_RO(name)
++
++DECLARE_FEATURE_FLAG(corefs);
++DECLARE_FEATURE_FLAG(zstd);
++DECLARE_FEATURE_FLAG(v2);
++
++static struct attribute *attributes[] = {
++	&corefs_attr.attr,
++	&zstd_attr.attr,
++	&v2_attr.attr,
++	NULL,
++};
++
++static const struct attribute_group attr_group = {
++	.attrs = attributes,
++};
++
++int __init incfs_init_sysfs(void)
++{
++	int res = -ENOMEM;
++
++	sysfs_root = kobject_create_and_add(INCFS_NAME, fs_kobj);
++	if (!sysfs_root)
++		return -ENOMEM;
++
++	instances_node = kobject_create_and_add(INCFS_NODE_INSTANCES,
++						sysfs_root);
++	if (!instances_node)
++		goto err_put_root;
++
++	features_node = kobject_create_and_add(INCFS_NODE_FEATURES,
++						sysfs_root);
++	if (!features_node)
++		goto err_put_instances;
++
++	res = sysfs_create_group(features_node, &attr_group);
++	if (res)
++		goto err_put_features;
++
++	return 0;
++
++err_put_features:
++	kobject_put(features_node);
++err_put_instances:
++	kobject_put(instances_node);
++err_put_root:
++	kobject_put(sysfs_root);
++
++	return res;
++}
++
++void incfs_cleanup_sysfs(void)
++{
++	if (features_node) {
++		sysfs_remove_group(features_node, &attr_group);
++		kobject_put(features_node);
++	}
++
++	kobject_put(instances_node);
++	kobject_put(sysfs_root);
++}
++
++/******************************************************************************
++ * Define sys/fs/incrementalfs/instances/<name>/
++ *****************************************************************************/
++#define __DECLARE_STATUS_FLAG(name)					\
++static ssize_t name##_show(struct kobject *kobj,			\
++			 struct kobj_attribute *attr, char *buff)	\
++{									\
++	struct incfs_sysfs_node *node = container_of(kobj,		\
++			struct incfs_sysfs_node, isn_sysfs_node);	\
++									\
++	return sysfs_emit(buff, "%d\n", node->isn_##name);		\
++}									\
++									\
++static struct kobj_attribute name##_attr = __ATTR_RO(name)
++
++#define __DECLARE_STATUS_FLAG64(name)					\
++static ssize_t name##_show(struct kobject *kobj,			\
++			 struct kobj_attribute *attr, char *buff)	\
++{									\
++	struct incfs_sysfs_node *node = container_of(kobj,		\
++			struct incfs_sysfs_node, isn_sysfs_node);	\
++									\
++	return sysfs_emit(buff, "%lld\n", node->isn_##name);		\
++}									\
++									\
++static struct kobj_attribute name##_attr = __ATTR_RO(name)
++
++__DECLARE_STATUS_FLAG(reads_failed_timed_out);
++__DECLARE_STATUS_FLAG(reads_failed_hash_verification);
++__DECLARE_STATUS_FLAG(reads_failed_other);
++__DECLARE_STATUS_FLAG(reads_delayed_pending);
++__DECLARE_STATUS_FLAG64(reads_delayed_pending_us);
++__DECLARE_STATUS_FLAG(reads_delayed_min);
++__DECLARE_STATUS_FLAG64(reads_delayed_min_us);
++
++static struct attribute *mount_attributes[] = {
++	&reads_failed_timed_out_attr.attr,
++	&reads_failed_hash_verification_attr.attr,
++	&reads_failed_other_attr.attr,
++	&reads_delayed_pending_attr.attr,
++	&reads_delayed_pending_us_attr.attr,
++	&reads_delayed_min_attr.attr,
++	&reads_delayed_min_us_attr.attr,
++	NULL,
++};
++
++static void incfs_sysfs_release(struct kobject *kobj)
++{
++	struct incfs_sysfs_node *node = container_of(kobj,
++				struct incfs_sysfs_node, isn_sysfs_node);
++
++	kfree(node);
++}
++
++static const struct attribute_group mount_attr_group = {
++	.attrs = mount_attributes,
++};
++
++static struct kobj_type incfs_kobj_node_ktype = {
++	.sysfs_ops	= &kobj_sysfs_ops,
++	.release	= &incfs_sysfs_release,
++};
++
++struct incfs_sysfs_node *incfs_add_sysfs_node(const char *name)
++{
++	struct incfs_sysfs_node *node = NULL;
++	int error;
++
++	if (!name)
++		return NULL;
++
++	node = kzalloc(sizeof(*node), GFP_NOFS);
++	if (!node)
++		return ERR_PTR(-ENOMEM);
++
++	kobject_init(&node->isn_sysfs_node, &incfs_kobj_node_ktype);
++	error = kobject_add(&node->isn_sysfs_node, instances_node, "%s", name);
++	if (error)
++		goto err;
++
++	error = sysfs_create_group(&node->isn_sysfs_node, &mount_attr_group);
++	if (error)
++		goto err;
++
++	return node;
++
++err:
++	/*
++	 * Note kobject_put always calls release, so incfs_sysfs_release will
++	 * free node
++	 */
++	kobject_put(&node->isn_sysfs_node);
++	return ERR_PTR(error);
++}
++
++void incfs_free_sysfs_node(struct incfs_sysfs_node *node)
++{
++	if (!node)
++		return;
++
++	sysfs_remove_group(&node->isn_sysfs_node, &mount_attr_group);
++	kobject_put(&node->isn_sysfs_node);
++}
+diff --git a/fs/incfs/sysfs.h b/fs/incfs/sysfs.h
+new file mode 100644
+index 000000000000..446813fac205
+--- /dev/null
++++ b/fs/incfs/sysfs.h
+@@ -0,0 +1,48 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright 2021 Google LLC
++ */
++#ifndef _INCFS_SYSFS_H
++#define _INCFS_SYSFS_H
++
++struct incfs_sysfs_node {
++	struct kobject isn_sysfs_node;
++
++	/* Number of reads timed out */
++	u32 isn_reads_failed_timed_out;
++
++	/* Number of reads failed because hash verification failed */
++	u32 isn_reads_failed_hash_verification;
++
++	/* Number of reads failed for another reason */
++	u32 isn_reads_failed_other;
++
++	/* Number of reads delayed because page had to be fetched */
++	u32 isn_reads_delayed_pending;
++
++	/* Total time waiting for pages to be fetched */
++	u64 isn_reads_delayed_pending_us;
++
++	/*
++	 * Number of reads delayed because of per-uid min_time_us or
++	 * min_pending_time_us settings
++	 */
++	u32 isn_reads_delayed_min;
++
++	/* Total time waiting because of per-uid min_time_us or
++	 * min_pending_time_us settings.
++	 *
++	 * Note that if a read is initially delayed because we have to wait for
++	 * the page, then further delayed because of min_pending_time_us
++	 * setting, this counter gets incremented by only the further delay
++	 * time.
++	 */
++	u64 isn_reads_delayed_min_us;
++};
++
++int incfs_init_sysfs(void);
++void incfs_cleanup_sysfs(void);
++struct incfs_sysfs_node *incfs_add_sysfs_node(const char *name);
++void incfs_free_sysfs_node(struct incfs_sysfs_node *node);
++
++#endif
+diff --git a/fs/incfs/verity.c b/fs/incfs/verity.c
+index 1131aa8f2373..313440f787d9 100644
+--- a/fs/incfs/verity.c
++++ b/fs/incfs/verity.c
+@@ -308,7 +308,7 @@ static int incfs_build_merkle_tree(struct file *f, struct data_file *df,
+ 
+ 			if (lvl == 0)
+ 				result = incfs_read_data_file_block(partial_buf,
+-							f, i, 0, 0, 0, tmp);
++						f, i, tmp, NULL);
+ 			else {
+ 				hash_level_offset = hash_offset +
+ 				       hash_tree->hash_level_suboffset[lvl - 1];
+diff --git a/fs/incfs/vfs.c b/fs/incfs/vfs.c
+index 46dfabfebd52..9531f20b300f 100644
+--- a/fs/incfs/vfs.c
++++ b/fs/incfs/vfs.c
+@@ -196,6 +196,7 @@ enum parse_parameter {
+ 	Opt_rlog_pages,
+ 	Opt_rlog_wakeup_cnt,
+ 	Opt_report_uid,
++	Opt_sysfs_name,
+ 	Opt_err
+ };
+ 
+@@ -205,9 +206,16 @@ static const match_table_t option_tokens = {
+ 	{ Opt_rlog_pages, "rlog_pages=%u" },
+ 	{ Opt_rlog_wakeup_cnt, "rlog_wakeup_cnt=%u" },
+ 	{ Opt_report_uid, "report_uid" },
++	{ Opt_sysfs_name, "sysfs_name=%s" },
+ 	{ Opt_err, NULL }
+ };
+ 
++static void free_options(struct mount_options *opts)
++{
++	kfree(opts->sysfs_name);
++	opts->sysfs_name = NULL;
++}
++
+ static int parse_options(struct mount_options *opts, char *str)
+ {
+ 	substring_t args[MAX_OPT_ARGS];
+@@ -261,7 +269,11 @@ static int parse_options(struct mount_options *opts, char *str)
+ 		case Opt_report_uid:
+ 			opts->report_uid = true;
+ 			break;
++		case Opt_sysfs_name:
++			opts->sysfs_name = match_strdup(&args[0]);
++			break;
+ 		default:
++			free_options(opts);
+ 			return -EINVAL;
+ 		}
+ 	}
+@@ -460,9 +472,9 @@ static int read_single_page_timeouts(struct data_file *df, struct file *f,
+ 				     struct mem_range tmp)
+ {
+ 	struct mount_info *mi = df->df_mount_info;
+-	u32 min_time_us = 0;
+-	u32 min_pending_time_us = 0;
+-	u32 max_pending_time_us = U32_MAX;
++	struct incfs_read_data_file_timeouts timeouts = {
++		.max_pending_time_us = U32_MAX,
++	};
+ 	int uid = current_uid().val;
+ 	int i;
+ 
+@@ -473,24 +485,23 @@ static int read_single_page_timeouts(struct data_file *df, struct file *f,
+ 			&mi->mi_per_uid_read_timeouts[i];
+ 
+ 		if(t->uid == uid) {
+-			min_time_us = t->min_time_us;
+-			min_pending_time_us = t->min_pending_time_us;
+-			max_pending_time_us = t->max_pending_time_us;
++			timeouts.min_time_us = t->min_time_us;
++			timeouts.min_pending_time_us = t->min_pending_time_us;
++			timeouts.max_pending_time_us = t->max_pending_time_us;
+ 			break;
+ 		}
+ 	}
+ 	spin_unlock(&mi->mi_per_uid_read_timeouts_lock);
+-	if (max_pending_time_us == U32_MAX) {
++	if (timeouts.max_pending_time_us == U32_MAX) {
+ 		u64 read_timeout_us = (u64)mi->mi_options.read_timeout_ms *
+ 					1000;
+ 
+-		max_pending_time_us = read_timeout_us <= U32_MAX ?
+-					read_timeout_us : U32_MAX;
++		timeouts.max_pending_time_us = read_timeout_us <= U32_MAX ?
++					       read_timeout_us : U32_MAX;
+ 	}
+ 
+-	return incfs_read_data_file_block(range, f, block_index,
+-		min_time_us, min_pending_time_us, max_pending_time_us,
+-		tmp);
++	return incfs_read_data_file_block(range, f, block_index, tmp,
++					  &timeouts);
+ }
+ 
+ static int read_single_page(struct file *f, struct page *page)
+@@ -1822,6 +1833,7 @@ struct dentry *incfs_mount_fs(struct file_system_type *type, int flags,
+ 	path_put(&backing_dir_path);
+ 	incfs_free_mount_info(mi);
+ 	deactivate_locked_super(sb);
++	free_options(&options);
+ 	return ERR_PTR(error);
+ }
+ 
+@@ -1838,15 +1850,19 @@ static int incfs_remount_fs(struct super_block *sb, int *flags, char *data)
+ 
+ 	if (options.report_uid != mi->mi_options.report_uid) {
+ 		pr_err("incfs: Can't change report_uid mount option on remount\n");
+-		return -EOPNOTSUPP;
++		err = -EOPNOTSUPP;
++		goto out;
+ 	}
+ 
+ 	err = incfs_realloc_mount_info(mi, &options);
+ 	if (err)
+-		return err;
++		goto out;
+ 
+ 	pr_debug("incfs: remount\n");
+-	return 0;
++
++out:
++	free_options(&options);
++	return err;
+ }
+ 
+ void incfs_kill_sb(struct super_block *sb)
+-- 
+2.17.1
+

@@ -111,6 +111,7 @@ import com.android.server.art.ArtManagerLocal;
 import com.android.server.attention.AttentionManagerService;
 import com.android.server.audio.AudioService;
 import com.android.server.biometrics.AuthService;
+import com.android.server.audio.RkAudioSettingService;
 import com.android.server.biometrics.BiometricService;
 import com.android.server.biometrics.sensors.face.FaceService;
 import com.android.server.biometrics.sensors.fingerprint.FingerprintService;
@@ -2044,6 +2045,23 @@ public final class SystemServer implements Dumpable {
                 reportWtf("starting UpdateLockService", e);
             }
             t.traceEnd();
+
+                Slog.i(TAG, "addService drm_device_management");
+                try {
+                    ServiceManager.addService("drm_device_management",
+                            new RkDisplayDeviceManagementService(context));
+                } catch (Throwable e) {
+                    Slog.e(TAG, "Failure starting kDisplayDeviceManagement Service", e);
+                }
+
+
+                Slog.i(TAG, "addService rockchip_audio_setting");
+                try {
+                    ServiceManager.addService("rockchip_audio_setting",
+                            new RkAudioSettingService(context));
+                } catch (Throwable e) {
+                    Slog.e(TAG, "Failure starting RkAudioSettingManager Service", e);
+                }
 
             t.traceBegin("StartNotificationManager");
             mSystemServiceManager.startService(NotificationManagerService.class);

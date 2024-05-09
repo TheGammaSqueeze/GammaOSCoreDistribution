@@ -268,7 +268,7 @@
     <string name="preview_work_file" msgid="4495643735563487273">"कामासंबंधित फाइल <xliff:g id="FILENAME">%1$s</xliff:g> चे पूर्वावलोकन करा"</string>
     <string name="apps_row_title" msgid="3340490016663092925">"इतर अ‍ॅप्समधील फाइल ब्राउझ करा"</string>
     <string name="anonymous_application" msgid="7633027057951625862">"अनामित"</string>
-    <string name="open_tree_button" msgid="6402871398424497776">"हे फोल्डर वापरा"</string>
+    <string name="open_tree_button">Press L1 to switch storage. Press Start to confirm folder selection.</string>
     <string name="open_tree_dialog_title" msgid="6339509533852318569">"<xliff:g id="DIRECTORY">%2$s</xliff:g> मधील फाइल ॲक्सेस करण्यासाठी <xliff:g id="APPNAME">%1$s</xliff:g> ला अनुमती द्यायची आहे का?"</string>
     <string name="open_tree_dialog_message" msgid="4120695398430659628">"असे केल्याने, <xliff:g id="DIRECTORY">%2$s</xliff:g> मधील सध्याचा आणि भविष्यातील आशय ॲक्सेस करण्याची <xliff:g id="APPNAME">%1$s</xliff:g> ला अनुमती देते."</string>
     <string name="directory_blocked_header_title" msgid="1164584889578740066">"हे फोल्डर वापरू शकत नाही"</string>

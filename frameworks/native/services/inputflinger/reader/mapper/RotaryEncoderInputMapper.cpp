@@ -108,9 +108,9 @@ void RotaryEncoderInputMapper::sync(nsecs_t when, nsecs_t readTime) {
 
     // Moving the rotary encoder should wake the device (if specified).
     uint32_t policyFlags = 0;
-    if (scrolled && getDeviceContext().isExternal()) {
-        policyFlags |= POLICY_FLAG_WAKE;
-    }
+    //if (scrolled && getDeviceContext().isExternal()) {
+    //    policyFlags |= POLICY_FLAG_WAKE;
+    //}
 
     if (mOrientation == DISPLAY_ORIENTATION_180) {
         scroll = -scroll;

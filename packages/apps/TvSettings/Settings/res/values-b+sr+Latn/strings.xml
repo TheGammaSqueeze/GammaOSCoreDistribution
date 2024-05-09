@@ -51,7 +51,7 @@
     <string name="sound_category_title" msgid="7899816751041939518">"Zvuk"</string>
     <string name="applications_category_title" msgid="7112019490898586223">"Aplikacije"</string>
     <string name="device_pref_category_title" msgid="8292572846154873762">"Podešavanja uređaja"</string>
-    <string name="remotes_and_accessories_category_title" msgid="4795119810430255047">"Daljinski upravljači i dodatna oprema"</string>
+    <string name="remotes_and_accessories_category_title" msgid="4795119810430255047">"Bluetooth and accessories"</string>
     <string name="display_and_sound_category_title" msgid="9203309625380755860">"Prikaz i zvuk"</string>
     <string name="help_and_feedback_category_title" msgid="7036505833991003031">"Pomoć i povratne informacije"</string>
     <string name="privacy_category_title" msgid="8552430590908463601">"Privatnost"</string>
@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"Napredna podešavanja zvuka"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"Dozvoli režim za igre"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"Koristi brzinu kadrova sadržaja"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"Bez prekida"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"Ako aplikacija to traži, uređaj će usklađivati brzinu kadrova sadržaja koji prikazuje sa originalnom brzinom kadrova sadržaja koji gledate SAMO pod uslovom da TV može da obavi neprimetan prelaz."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"S prekidima"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"Ako aplikacija to traži, uređaj će usklađivati brzinu kadrova sadržaja koji prikazuje sa originalnom brzinom kadrova sadržaja koji gledate. Zbog toga će ekran možda nakratko biti prazan kada zaustavljate ili počinjete reprodukciju videa."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"Nikad"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"Čak i ako aplikacija to traži, uređaj nikada neće pokušavati da uskladi brzinu kadrova sadržaja koji prikazuje sa originalnom brzinom kadrova sadržaja koji gledate."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"Bez prekida"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"Ako aplikacija to traži, uređaj će usklađivati brzinu kadrova sadržaja koji prikazuje sa originalnom brzinom kadrova sadržaja koji gledate SAMO pod uslovom da TV može da obavi neprimetan prelaz."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"S prekidima"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"Ako aplikacija to traži, uređaj će usklađivati brzinu kadrova sadržaja koji prikazuje sa originalnom brzinom kadrova sadržaja koji gledate. Zbog toga će ekran možda nakratko biti prazan kada zaustavljate ili počinjete reprodukciju videa."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"Nikad"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"Čak i ako aplikacija to traži, uređaj nikada neće pokušavati da uskladi brzinu kadrova sadržaja koji prikazuje sa originalnom brzinom kadrova sadržaja koji gledate."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"Prilagođavanje veličine teksta"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"Prilagodi na <xliff:g id="SCALE">%1$d</xliff:g>%%"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"Primer teksta"</string>
@@ -218,10 +217,10 @@
     <string name="bluetooth_cancel" msgid="4415185529332987034">"Otkaži"</string>
     <string name="bluetooth_device_connected_toast" msgid="1896195197089204806">"Povezano: %1$s"</string>
     <string name="bluetooth_device_disconnected_toast" msgid="7459239447363156499">"Prekinuta je veza: %1$s"</string>
-    <string name="connected_devices_slice_pref_title" msgid="6761921505544005991">"Daljinski upravljači i dodatna oprema"</string>
+    <string name="connected_devices_slice_pref_title" msgid="6761921505544005991">"Bluetooth and accessories"</string>
     <string name="bluetooth_toggle_title" msgid="3808904783456336104">"Bluetooth"</string>
     <string name="bluetooth_toggle_confirmation_dialog_title" msgid="3906746631391295717">"Isključite Bluetooth"</string>
-    <string name="bluetooth_toggle_confirmation_dialog_summary" msgid="9017044450625172698">"Nećete moći da pristupate Google pomoćniku sa daljinskog upravljača dok je Bluetooth isključen."</string>
+    <string name="bluetooth_toggle_confirmation_dialog_summary" msgid="9017044450625172698">"Are you sure you want to turn Bluetooth off?"</string>
     <string name="bluetooth_pair_accessory" msgid="5508750142754420984">"Upari dodatnu opremu"</string>
     <string name="bluetooth_known_devices_category" msgid="6895470515631452961">"Dodaci"</string>
     <string name="bluetooth_official_remote_category" msgid="5817814488268307170">"Daljinski upravljač"</string>

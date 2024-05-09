@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="dlg_ok" msgid="2402639055725653590">"确定"</string>
+    <string name="dlg_cancel" msgid="1674753358972975911">"取消"</string>
+    <string name="dlg_prompt">"提示"</string>
+    <string name="dlg_msg_wlan">"开启WFD功能需要打开WIFI，确定打开?"</string>
+    <string name="wfd_device_name">设备名称</string>
+    
+    <string name="wifi_p2p_settings_title" msgid="400503541488064638">"Wi-Fi Direct"</string>
+    <string name="wifi_p2p_device_info" msgid="3191876744469364173">"设备信息"</string>
+    <string name="wifi_p2p_persist_network" msgid="1646424791818168590">"记住该连接"</string>
+    <string name="wifi_p2p_menu_search" msgid="3436429984738771974">"搜索设备"</string>
+    <string name="wifi_p2p_menu_searching" msgid="2396704492143633876">"正在搜索…"</string>
+    <string name="wifi_p2p_menu_rename" msgid="8448896306960060415">"重命名设备"</string>
+    <string name="wifi_p2p_peer_devices" msgid="299526878463303432">"源端设备"</string>
+    <string name="wifi_p2p_remembered_groups" msgid="3847022927914068230">"已匹配的群组"</string>
+    <string name="wifi_p2p_failed_connect_message" msgid="8921447388048243547">"无法连接。"</string>
+    <string name="wifi_p2p_failed_rename_message" msgid="2562182284946936380">"无法重命名设备。"</string>
+    <string name="wifi_p2p_disconnect_title" msgid="3216846049677448420">"断开连接？"</string>
+    <string name="wifi_p2p_disconnect_message" msgid="8227342771610125771">"如果断开连接，您与<xliff:g id="PEER_NAME">%1$s</xliff:g>的连接将中断。"</string>
+    <string name="wifi_p2p_disconnect_multiple_message" msgid="3283805371034883105">"如果断开连接，您与<xliff:g id="PEER_NAME">%1$s</xliff:g>和另外 <xliff:g id="PEER_COUNT">%2$s</xliff:g> 台设备的连接将中断。"</string>
+    <string name="wifi_p2p_cancel_connect_title" msgid="255267538099324413">"取消邀请？"</string>
+    <string name="wifi_p2p_cancel_connect_message" msgid="7477756213423749402">"要取消连接<xliff:g id="PEER_NAME">%1$s</xliff:g>的邀请吗？"</string>
+    <string name="wifi_p2p_delete_group_message" msgid="834559380069647086">"取消保存此群组？"</string>
+    <string name="wifi_p2p_failed_initname_message">"无法初始化设备名称。"</string>
+    
+    <!-- WFD -->
+    <string name="wfd_search">搜索</string>
+    <string name="wfd_setting">设置</string>
+    <string name="wfd_searching">正在搜索&#8230;</string>
+    <string name="wfd_status_waiting">等待连接&#8230;</string>
+    <string name="wfd_status_connecting">正在连接&#8230;</string>
+    <string name="wfd_status_connected">已连接&#8230;</string>
+</resources>

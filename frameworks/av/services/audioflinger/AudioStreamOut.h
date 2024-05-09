@@ -108,6 +108,8 @@ protected:
     bool                 mHalFormatHasProportionalFrames;
     size_t               mHalFrameSize;
     bool                 mExpectRetrograde; // see presentationComplete
+    size_t               mHalBufferSize;
+    audio_format_t       mConfigFormat;
 };
 
 } // namespace android

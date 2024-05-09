@@ -73,9 +73,10 @@ PRODUCT_PACKAGES += \
     TvSettingsTwoPanel
 
 # TVLauncher
-PRODUCT_PACKAGES += \
-    TVLauncherNoGMS \
-    TVRecommendationsNoGMS
+#PRODUCT_PACKAGES += \
+#    TVLauncherNoGMS
+
+#    TVRecommendationsNoGMS
 
 # priv-app permissions
 PRODUCT_COPY_FILES +=\

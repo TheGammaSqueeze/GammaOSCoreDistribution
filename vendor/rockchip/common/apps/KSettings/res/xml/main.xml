@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceScreen
+        android:title="@string/Display_Setting"
+        android:iconSpaceReserved="false">
+        <intent
+            android:targetClass="com.khadas.ksettings.Display_Preference"
+            android:targetPackage="com.khadas.ksettings" />
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:title="@string/LEDs"
+        android:iconSpaceReserved="false">
+        <intent
+            android:targetClass="com.khadas.ksettings.LEDs_Preference"
+            android:targetPackage="com.khadas.ksettings" />
+    </PreferenceScreen>
+
+    <ListPreference
+        android:key="FAN_KEY"
+        android:iconSpaceReserved="false"
+        android:title="@string/Cooling_fan"
+        android:summary="@string/FAN_default"
+        android:defaultValue="1"
+        android:dialogTitle="@string/Cooling_fan"
+        android:entries="@array/FAN_array"
+        android:entryValues="@array/FAN_array_value">
+    </ListPreference>
+
+    <PreferenceScreen
+        android:title="@string/Status_bar_control"
+        android:iconSpaceReserved="false">
+        <intent
+            android:targetClass="com.khadas.ksettings.Status_bar_Preference"
+            android:targetPackage="com.khadas.ksettings" />
+    </PreferenceScreen>
+
+    <PreferenceScreen
+        android:title="@string/Timer"
+        android:iconSpaceReserved="false">
+        <intent
+            android:targetClass="com.khadas.schpwronoff.AlarmClock"
+            android:targetPackage="com.khadas.schpwronoff" />
+    </PreferenceScreen>
+
+</PreferenceScreen>

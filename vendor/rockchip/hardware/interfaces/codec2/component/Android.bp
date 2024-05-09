@@ -1,0 +1,55 @@
+filegroup {
+    name: "codec2_rk_exports",
+    srcs: [ "exports.lds" ],
+}
+
+cc_library_shared {
+    name: "libcodec2_rk_component",
+    vendor: true,
+    version_script: ":codec2_rk_exports",
+    generated_headers: ["c2_version"],
+    defaults: [
+        "libcodec2_rk-defaults",
+        "libcodec2_rk_sanitize_signed-defaults",
+    ],
+
+    srcs: [
+        "C2RKComponentFactory.cpp",
+    ],
+
+    static_libs: [
+        "libcodec2_rk_base",
+        "libcodec2_rk_mpi",
+        "libcodec2_rk_osal",
+    ],
+
+    shared_libs: [
+        "libmpp",
+        "librga",
+        "libui",
+        "libgralloc_priv",
+        "libhardware",
+    ],
+
+    export_include_dirs: [
+        "include",
+    ],
+
+    export_shared_lib_headers: [
+        "libsfplugin_ccodec_utils",
+    ],
+
+    include_dirs: [
+        "vendor/rockchip/hardware/interfaces/codec2/osal/include",
+    ],
+
+    sanitize: {
+        misc_undefined: [
+            "unsigned-integer-overflow",
+            "signed-integer-overflow",
+        ],
+        cfi: true,
+    },
+
+    ldflags: ["-Wl,-Bsymbolic"],
+}

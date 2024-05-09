@@ -290,7 +290,7 @@
     <string name="preview_work_file" msgid="4495643735563487273">"Pregledajte poslovni fajl <xliff:g id="FILENAME">%1$s</xliff:g>"</string>
     <string name="apps_row_title" msgid="3340490016663092925">"Pretraživanje fajlova u drugim aplikacijama"</string>
     <string name="anonymous_application" msgid="7633027057951625862">"Anonimno"</string>
-    <string name="open_tree_button" msgid="6402871398424497776">"Koristi ovaj folder"</string>
+    <string name="open_tree_button">Press L1 to switch storage. Press Start to confirm folder selection.</string>
     <string name="open_tree_dialog_title" msgid="6339509533852318569">"Dozvoliti aplikaciji <xliff:g id="APPNAME">%1$s</xliff:g> da pristupi fajlovima u direktoriju <xliff:g id="DIRECTORY">%2$s</xliff:g>?"</string>
     <string name="open_tree_dialog_message" msgid="4120695398430659628">"Na ovaj način će se aplikaciji <xliff:g id="APPNAME">%1$s</xliff:g> omogućiti pristup trenutnom i budućem sadržaju pohranjenom u direktoriju <xliff:g id="DIRECTORY">%2$s</xliff:g>."</string>
     <string name="directory_blocked_header_title" msgid="1164584889578740066">"Nije moguće koristiti ovaj folder"</string>

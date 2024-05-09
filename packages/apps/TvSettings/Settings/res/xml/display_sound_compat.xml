@@ -33,9 +33,9 @@
         android:title="@string/font_scale_settings_title"
         android:fragment="com.android.tv.settings.device.displaysound.FontScalePreferenceFragmentCompat" />
     <com.android.tv.settings.compat.TsPreference
-        android:fragment="com.android.tv.settings.device.displaysound.MatchContentRateFragmentCompat"
-        android:key="match_content_frame_rate"
-        android:title="@string/match_content_frame_rate_title"/>
+        android:fragment="com.android.tv.settings.device.displaysound.ScreenTimeoutCompat"
+        android:key="screen_timeout"
+        android:title="@string/screen_timeout_title"/>
     <com.android.tv.settings.compat.TsPreference
         android:key="advanced_display_settings"
         android:title="@string/advanced_display_settings_title"

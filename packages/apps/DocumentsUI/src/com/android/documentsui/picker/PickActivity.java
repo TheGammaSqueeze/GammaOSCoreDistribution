@@ -34,6 +34,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.CallSuper;
 import androidx.fragment.app.Fragment;
@@ -157,7 +158,8 @@ public class PickActivity extends BaseActivity implements ActionHandler.Addons {
                         this::popDir,
                         mInjector.features,
                         mDrawer,
-                        mInjector.searchManager::onSearchBarClicked);
+                        mInjector.searchManager::onSearchBarClicked,
+			this);
         setupLayout(intent);
         mInjector.actions.initLocation(intent);
         Metrics.logPickerLaunchedFrom(Shared.getCallingPackageName(this));
@@ -435,6 +437,30 @@ public class PickActivity extends BaseActivity implements ActionHandler.Addons {
     @CallSuper
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        Log.d(TAG, "onKeyDown: KeyCode " + keyCode + ", Action " + event.getAction());
+        if (keyCode == KeyEvent.KEYCODE_BUTTON_START) {
+            Log.d(TAG, "onKeyDown: Start button pressed");
+
+            // Get the PickFragment instance
+            PickFragment pickFragment = (PickFragment) getSupportFragmentManager().findFragmentByTag(PickFragment.TAG);
+
+            // Check if the PickFragment and pick button are available
+            if (pickFragment != null && pickFragment.getPickButton() != null) {
+                Button pickButton = pickFragment.getPickButton();
+
+                // Trigger the pick button click
+                if (pickButton.isEnabled()) {
+                    Log.d(TAG, "onKeyDown: Triggering pick button click");
+                    pickButton.performClick();
+                    return true; // Indicate that the event was handled
+                } else {
+                    Log.d(TAG, "onKeyDown: Pick button is disabled");
+                }
+            } else {
+                Log.d(TAG, "onKeyDown: PickFragment or pick button is null");
+            }
+        }
+
         return mSharedInputHandler.onKeyDown(keyCode, event)
                 || super.onKeyDown(keyCode, event);
     }

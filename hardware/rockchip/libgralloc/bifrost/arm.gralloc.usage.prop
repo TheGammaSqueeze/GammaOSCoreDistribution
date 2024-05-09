@@ -1,0 +1,35 @@
+# Copyright (C) 2021 Arm Limited.
+# SPDX-License-Identifier: Apache-2.0
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+#
+# Usage properties for Gralloc
+#
+# No AFBC Vendor usage bit
+ro.vendor.arm.gralloc.no_afbc_usage_flags=0x20000000
+ro.vendor.arm.gralloc.no_afbc_usage_mask=0x60000000
+# Force Back Buffer Vendor usage bit
+ro.vendor.arm.gralloc.force_back_buffer_usage_flags=0x40000000000000
+ro.vendor.arm.gralloc.force_back_buffer_usage_mask=0x40000000000000
+# Shared Access Vendor usage bit
+ro.vendor.arm.gralloc.shared_access_usage_flags=0x10000000
+ro.vendor.arm.gralloc.shared_access_usage_mask=0x50000000
+# RGBA AFRC Vendor usage bits               16B        24B        32B
+ro.vendor.arm.gralloc.afrc_rgba_usage_flags=0x50000000,0x60000000,0x40000000
+ro.vendor.arm.gralloc.afrc_rgba_usage_mask=0x70000000
+# YUV AFRC Vendor usage bits                16B        24B        32B
+ro.vendor.arm.gralloc.afrc_luma_usage_flags=0x50000000,0x60000000,0x40000000
+ro.vendor.arm.gralloc.afrc_luma_usage_mask=0x70000000
+ro.vendor.arm.gralloc.afrc_chroma_usage_flags=0x100000000000000,0x80000000000000,0x180000000000000
+ro.vendor.arm.gralloc.afrc_chroma_usage_mask=0x180000000000000

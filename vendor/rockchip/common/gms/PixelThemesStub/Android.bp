@@ -1,0 +1,6 @@
+android_app {
+    name: "PixelThemesStub",
+    resource_dirs: ["res"],
+    product_specific: true,
+    sdk_version: "current",
+}

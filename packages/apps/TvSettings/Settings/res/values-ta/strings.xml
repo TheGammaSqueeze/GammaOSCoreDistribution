@@ -51,7 +51,7 @@
     <string name="sound_category_title" msgid="7899816751041939518">"ஒலி"</string>
     <string name="applications_category_title" msgid="7112019490898586223">"ஆப்ஸ்"</string>
     <string name="device_pref_category_title" msgid="8292572846154873762">"சாதன விருப்பத்தேர்வுகள்"</string>
-    <string name="remotes_and_accessories_category_title" msgid="4795119810430255047">"ரிமோட்கள் &amp; துணைக்கருவிகள்"</string>
+    <string name="remotes_and_accessories_category_title" msgid="4795119810430255047">"Bluetooth and accessories"</string>
     <string name="display_and_sound_category_title" msgid="9203309625380755860">"டிஸ்ப்ளேவும் சத்தமும்"</string>
     <string name="help_and_feedback_category_title" msgid="7036505833991003031">"உதவி &amp; கருத்து"</string>
     <string name="privacy_category_title" msgid="8552430590908463601">"தனியுரிமை"</string>
@@ -147,13 +147,12 @@
     <string name="hdmi_cec_settings_title" msgid="7120729705063868627">"HDMI-CEC"</string>
     <string name="advanced_sound_settings_title" msgid="319921303039469139">"மேம்பட்ட ஒலி அமைப்புகள்"</string>
     <string name="game_mode_title" msgid="7280816243531315755">"கேம் பயன்முறையை அனுமதி"</string>
-    <string name="match_content_frame_rate_title" msgid="153291168560947689">"வீடியோவின் ஃபிரேம் வீதத்துடன் பொருத்துதல்"</string>
-    <string name="match_content_frame_rate_seamless" msgid="5900012519258795448">"தடையற்ற ஒளிபரப்பு"</string>
-    <string name="match_content_frame_rate_seamless_summary" msgid="2737466163964133210">"ஆப்ஸ் கோரினால், டிவியில் தடையற்ற ஒளிபரப்புக்கான வசதி இருந்தால் மட்டுமே நீங்கள் பார்த்துக் கொண்டிருக்கும் வீடியோவின் அசல் ஃபிரேம் வீதத்துடன் திரையின் ஃபிரேமை உங்கள் சாதனம் பொருத்தும்."</string>
-    <string name="match_content_frame_rate_non_seamless" msgid="1534300397118594640">"தடங்கலுடன்"</string>
-    <string name="match_content_frame_rate_non_seamless_summary" msgid="6831699459487130055">"ஆப்ஸ் கோரினால், நீங்கள் பார்த்துக் கொண்டிருக்கும் வீடியோவின் அசல் ஃபிரேம் வீதத்துடன் திரையின் ஃபிரேமை உங்கள் சாதனம் பொருத்தும். இதனால், வீடியோவின் இயக்கத்திலிருந்து வெளியேறும்போதோ உள்நுழையும்போதோ திரை ஒரு நொடி மறைந்து தெரியக்கூடும்."</string>
-    <string name="match_content_frame_rate_never" msgid="1678354793095148423">"ஒருபோதும் வேண்டாம்"</string>
-    <string name="match_content_frame_rate_never_summary" msgid="742977618080396095">"நீங்கள் பார்த்துக் கொண்டிருக்கும் வீடியோவின் அசல் ஃபிரேம் வீதத்துடன் திரையின் ஃபிரேமைப் பொருத்துவதற்கு ஆப்ஸே கோரினாலும் அதை உங்கள் சாதனம் ஒருபோதும் முயற்சிக்காது."</string>
+    <string name="screen_timeout_seamless" msgid="5900012519258795448">"தடையற்ற ஒளிபரப்பு"</string>
+    <string name="screen_timeout_seamless_summary" msgid="2737466163964133210">"ஆப்ஸ் கோரினால், டிவியில் தடையற்ற ஒளிபரப்புக்கான வசதி இருந்தால் மட்டுமே நீங்கள் பார்த்துக் கொண்டிருக்கும் வீடியோவின் அசல் ஃபிரேம் வீதத்துடன் திரையின் ஃபிரேமை உங்கள் சாதனம் பொருத்தும்."</string>
+    <string name="screen_timeout_non_seamless" msgid="1534300397118594640">"தடங்கலுடன்"</string>
+    <string name="screen_timeout_non_seamless_summary" msgid="6831699459487130055">"ஆப்ஸ் கோரினால், நீங்கள் பார்த்துக் கொண்டிருக்கும் வீடியோவின் அசல் ஃபிரேம் வீதத்துடன் திரையின் ஃபிரேமை உங்கள் சாதனம் பொருத்தும். இதனால், வீடியோவின் இயக்கத்திலிருந்து வெளியேறும்போதோ உள்நுழையும்போதோ திரை ஒரு நொடி மறைந்து தெரியக்கூடும்."</string>
+    <string name="screen_timeout_never" msgid="1678354793095148423">"ஒருபோதும் வேண்டாம்"</string>
+    <string name="screen_timeout_never_summary" msgid="742977618080396095">"நீங்கள் பார்த்துக் கொண்டிருக்கும் வீடியோவின் அசல் ஃபிரேம் வீதத்துடன் திரையின் ஃபிரேமைப் பொருத்துவதற்கு ஆப்ஸே கோரினாலும் அதை உங்கள் சாதனம் ஒருபோதும் முயற்சிக்காது."</string>
     <string name="font_scale_settings_title" msgid="4114019544800225980">"எழுத்து அளவு"</string>
     <string name="font_scale_item_detail" msgid="1558315053348778805">"<xliff:g id="SCALE">%1$d</xliff:g>%% அளவில் பொருத்துதல்"</string>
     <string name="font_scale_sample_text_title" msgid="5239266611413037261">"மாதிரி உரை"</string>
@@ -218,10 +217,10 @@
     <string name="bluetooth_cancel" msgid="4415185529332987034">"ரத்துசெய்"</string>
     <string name="bluetooth_device_connected_toast" msgid="1896195197089204806">"%1$s இணைக்கப்பட்டது"</string>
     <string name="bluetooth_device_disconnected_toast" msgid="7459239447363156499">"%1$s துண்டிக்கப்பட்டது"</string>
-    <string name="connected_devices_slice_pref_title" msgid="6761921505544005991">"ரிமோட்களும் துணைக்கருவிகளும்"</string>
+    <string name="connected_devices_slice_pref_title" msgid="6761921505544005991">"Bluetooth and accessories"</string>
     <string name="bluetooth_toggle_title" msgid="3808904783456336104">"புளூடூத்"</string>
     <string name="bluetooth_toggle_confirmation_dialog_title" msgid="3906746631391295717">"புளூடூத்தை ஆஃப் செய்தல்"</string>
-    <string name="bluetooth_toggle_confirmation_dialog_summary" msgid="9017044450625172698">"புளுடூத் ஆஃபில் இருக்கும்போது உங்கள் ரிமோட்டிலிருந்து Google Assistantடை அணுக முடியாது."</string>
+    <string name="bluetooth_toggle_confirmation_dialog_summary" msgid="9017044450625172698">"Are you sure you want to turn Bluetooth off?"</string>
     <string name="bluetooth_pair_accessory" msgid="5508750142754420984">"துணைக்கருவியை இணை"</string>
     <string name="bluetooth_known_devices_category" msgid="6895470515631452961">"துணைக்கருவிகள்"</string>
     <string name="bluetooth_official_remote_category" msgid="5817814488268307170">"ரிமோட் கன்ட்ரோல்"</string>

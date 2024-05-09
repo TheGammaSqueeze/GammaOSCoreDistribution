@@ -16,6 +16,7 @@
 package com.android.server;
 
 import android.annotation.Nullable;
+import android.os.FileUtils;
 import android.annotation.StringDef;
 import android.os.FileUtils;
 import android.os.UEventObserver;
@@ -28,7 +29,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.regex.Pattern;
+
 
 /**
  * A specialized UEventObserver that receives UEvents from the kernel for devices in the {@code
@@ -113,6 +117,7 @@ public abstract class ExtconUEventObserver extends UEventObserver {
         public static final String EXTCON_VGA = "VGA";
         public static final String EXTCON_SPDIF_IN = "SPDIF-IN";
         public static final String EXTCON_SPDIF_OUT = "SPDIF-OUT";
+        public static final String EXTCON_DP = "DP";
         public static final String EXTCON_VIDEO_IN = "VIDEO-IN";
         public static final String EXTCON_VIDEO_OUT = "VIDEO-OUT";
 
@@ -138,6 +143,7 @@ public abstract class ExtconUEventObserver extends UEventObserver {
                 EXTCON_VGA,
                 EXTCON_SPDIF_IN,
                 EXTCON_SPDIF_OUT,
+                EXTCON_DP,
                 EXTCON_VIDEO_IN,
                 EXTCON_VIDEO_OUT,
                 EXTCON_DOCK,
@@ -149,6 +155,82 @@ public abstract class ExtconUEventObserver extends UEventObserver {
 
         private static final Object sLock = new Object();
         private static ExtconInfo[] sExtconInfos = null;
+
+        public static List<ExtconInfo> getHdmiExtconInfos(@Nullable String regex) {
+            if (!extconExists()) {
+                return new ArrayList<>(0);  // Always return a new list.
+            }
+            Pattern p = regex == null ? null : Pattern.compile(regex);
+            File file = new File("/sys/class/extcon");
+            File[] files = file.listFiles();
+            if (files == null) {
+                Slog.wtf(TAG, file + " exists " + file.exists() + " isDir " + file.isDirectory()
+                        + " but listFiles returns null. "
+                        + SELINUX_POLICIES_NEED_TO_BE_CHANGED);
+                return new ArrayList<>(0);  // Always return a new list.
+            } else {
+                ArrayList list = new ArrayList(files.length);
+                for (File f : files) {
+                    String name = f.getName();
+                    if (p == null || p.matcher(name).matches()) {
+                        Slog.d(TAG, name + " matches " + regex);
+                        try {
+                            String statePath = String.format(Locale.US, "/sys/class/extcon/%s/state", name);
+                            String state = FileUtils.readTextFile(new File(statePath), 0, null).trim();
+                            Slog.d(TAG,"state="+state);
+                            if (state.contains("HDMI=")) {
+                                ExtconInfo uei = new ExtconInfo(name);
+                                list.add(uei);
+                                Slog.d(TAG,"HDMI list add"+uei.getName());
+                            }
+                        }catch (IOException e){
+                            e.printStackTrace();
+                        }
+                    } else {
+                        if (LOG) Slog.d(TAG, name + " does not match " + regex);
+                    }
+                }
+                return list;
+            }
+        }
+
+        public static List<ExtconInfo> getDpExtconInfos(@Nullable String regex) {
+            if (!extconExists()) {
+                return new ArrayList<>(0);  // Always return a new list.
+            }
+            Pattern p = regex == null ? null : Pattern.compile(regex);
+            File file = new File("/sys/class/extcon");
+            File[] files = file.listFiles();
+            if (files == null) {
+                Slog.wtf(TAG, file + " exists " + file.exists() + " isDir " + file.isDirectory()
+                        + " but listFiles returns null. "
+                        + SELINUX_POLICIES_NEED_TO_BE_CHANGED);
+                return new ArrayList<>(0);  // Always return a new list.
+            } else {
+                ArrayList list = new ArrayList(files.length);
+                for (File f : files) {
+                    String name = f.getName();
+                    if (p == null || p.matcher(name).matches()) {
+                        Slog.d(TAG, name + " matches " + regex);
+                        try {
+                            String statePath = String.format(Locale.US, "/sys/class/extcon/%s/state", name);
+                            String state = FileUtils.readTextFile(new File(statePath), 0, null).trim();
+                            Slog.d(TAG,"state="+state);
+                            if (state.contains("DP=")) {
+                                ExtconInfo uei = new ExtconInfo(name);
+                                list.add(uei);
+                                Slog.d(TAG,"DP list add"+uei.getName());
+                            }
+                        }catch (IOException e){
+                            e.printStackTrace();
+                        }
+                    } else {
+                        if (LOG) Slog.d(TAG, name + " does not match " + regex);
+                    }
+                }
+                return list;
+            }
+        }
 
         private final String mName;
         private final @ExtconDeviceType HashSet<String> mDeviceTypes = new HashSet<>();
@@ -203,7 +285,7 @@ public abstract class ExtconUEventObserver extends UEventObserver {
             return mDeviceTypes.contains(type);
         }
 
-        private ExtconInfo(String extconName) {
+        public ExtconInfo(String extconName) {
             mName = extconName;
 
             // Retrieve device types from /sys/class/extcon/extcon[X]/cable.[Y]/name
@@ -266,6 +348,11 @@ public abstract class ExtconUEventObserver extends UEventObserver {
         /** The path to the state file */
         public String getStatePath() {
             return TextUtils.formatSimple("/sys/class/extcon/%s/state", mName);
+        }
+
+        /** The path to the device uevent */
+        public String getDeviceUeventPath() {
+            return String.format(Locale.US, "/sys/class/extcon/%s/device/uevent", mName);
         }
     }
 

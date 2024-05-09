@@ -1,0 +1,38 @@
+From 537c016cb997a3cfec814d64d83b1d5276062a08 Mon Sep 17 00:00:00 2001
+From: Paul Lawrence <paullawrence@google.com>
+Date: Tue, 27 Apr 2021 13:55:47 -0700
+Subject: [PATCH 28/31] ANDROID: Incremental fs: Fix pseudo-file attributes
+
+Prior change
+
+ANDROID: Incremental fs: stat should return actual used blocks
+
+adds blocks to getattr. Unfortunately the code always looks for the
+backing file, and pseudo files don't have backing files, so getattr
+fails for pseudo files.
+
+Bug: 186567511
+Test: incfs_test passes, can do incremental installs on test device
+Signed-off-by: Paul Lawrence <paullawrence@google.com>
+Change-Id: Ia3df87f3683e095d05c822b69747515963c95f1c
+---
+ fs/incfs/vfs.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/fs/incfs/vfs.c b/fs/incfs/vfs.c
+index 9531f20b300f..0d5cb86f89ef 100644
+--- a/fs/incfs/vfs.c
++++ b/fs/incfs/vfs.c
+@@ -1619,6 +1619,9 @@ static int incfs_getattr(const struct path *path,
+ 
+ 	generic_fillattr(inode, stat);
+ 
++	if (inode->i_ino < INCFS_START_INO_RANGE)
++		return 0;
++
+ 	stat->attributes &= ~STATX_ATTR_VERITY;
+ 	if (IS_VERITY(inode))
+ 		stat->attributes |= STATX_ATTR_VERITY;
+-- 
+2.17.1
+

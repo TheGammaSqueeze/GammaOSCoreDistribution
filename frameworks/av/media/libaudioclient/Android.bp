@@ -1,3 +1,24 @@
+bootstrap_go_package {
+    name: "soong-libaudioclient",
+    pkgPath: "android/soong/libaudioclient",
+    deps: [
+        "blueprint",
+        "blueprint-pathtools",
+        "soong",
+        "soong-android",
+        "soong-cc",
+        "soong-genrule",
+    ],
+    srcs: [
+          "Android.go",
+    ],
+    pluginFor: ["soong_build"],
+}
+
+cc_libaudioclient {
+   name: "cc_libaudioclient_defaults",
+}
+
 package {
     // See: http://go/android-license-faq
     // A large-scale-change added 'default_applicable_licenses' to import
@@ -90,7 +111,7 @@ cc_library {
 
 cc_library {
     name: "libaudioclient",
-
+    defaults: ["cc_libaudioclient_defaults"],
     aidl: {
         export_aidl_headers: true,
         local_include_dirs: ["aidl"],

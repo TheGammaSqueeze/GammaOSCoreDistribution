@@ -352,3 +352,6 @@ packages/modules/GeoTZ/tzbb_data/input-data.zip filter=lfs diff=lfs merge=lfs -t
 packages/modules/BootPrebuilt/5.4/arm64/boot-userdebug.img filter=lfs diff=lfs merge=lfs -text
 packages/modules/BootPrebuilt/5.10/arm64/boot-userdebug.img filter=lfs diff=lfs merge=lfs -text
 kernel/prebuilts/5.10/arm64/kernel-5.10-allsyms filter=lfs diff=lfs merge=lfs -text
+device/google/atv/gammaos/retroarch/retroarch64.tar.gz filter=lfs diff=lfs merge=lfs -text
+device/google/atv/gammaos/retroarch/RetroArch_aarch64.apk filter=lfs diff=lfs merge=lfs -text
+device/google/atv/gammaos/daijisho/399.apk filter=lfs diff=lfs merge=lfs -text
