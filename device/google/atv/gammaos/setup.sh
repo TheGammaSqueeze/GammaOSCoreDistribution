@@ -47,13 +47,28 @@ launchergroup=$(stat -c "%G" /data/data/com.spocky.projengmenu)
 tar -xvf /system/etc/com.spocky.projengmenu.data.tar.gz -C /
 chown -R $launcheruser:$launchergroup /data/data/com.spocky.projengmenu
 
-echo "Installing RetroArch application."
+echo "Installing PlainLauncher."
+pm install /system/etc/PlainLauncher.apk
+launcheruser=$(stat -c "%U" /data/data/org.plain.launcher)
+launchergroup=$(stat -c "%G" /data/data/org.plain.launcher)
+tar -xvf /system/etc/plainlauncher.tar.gz -C /
+chown -R $launcheruser:$launchergroup /data/data/org.plain.launcher
+chown -R $launcheruser:ext_data_rw /sdcard/Android/data/org.plain.launcher
+
+echo "Installing Aurora Store."
+pm install /system/etc/AuroraStore-4.4.4-nightly-signed-09-05-2024.apk
+
+echo "Installing MiXplorer."
+pm install /system/etc/MiXplorer_v6.64.3-API29_B23090720.apk
+
+echo "Installing RetroArch."
 pm install /system/etc/RetroArch_aarch64.apk
 
 echo "Granting permissions to applications."
 appops set --uid org.plain.launcher MANAGE_EXTERNAL_STORAGE allow
 pm grant com.spocky.projengmenu android.permission.READ_TV_LISTINGS
 cmd notification allow_listener com.spocky.projengmenu/.services.notification.NotificationListener
+cmd package set-home-activity com.spocky.projengmenu/com.spocky.projengmenu.ui.home.MainActivity
 
 echo "Extracting and setting up ROMs."
 tar -xvf /system/etc/roms.tar.gz -C /

@@ -126,6 +126,10 @@ PRODUCT_COPY_FILES += \
     device/google/atv/gammaos/hdmiaudio/hdmiaudio.sh:system/bin/hdmiaudio.sh \
     device/google/atv/gammaos/rgb30/rgb30_v2_boot.zip:system/etc/rgb30_v2_boot.zip \
     device/google/atv/gammaos/setup.sh:system/bin/setup.sh \
+    device/google/atv/gammaos/launcher/PlainLauncher.apk:system/etc/PlainLauncher.apk \
+    device/google/atv/gammaos/launcher/plainlauncher.tar.gz:system/etc/plainlauncher.tar.gz \
+    device/google/atv/gammaos/launcher/MiXplorer_v6.64.3-API29_B23090720.apk:system/etc/MiXplorer_v6.64.3-API29_B23090720.apk \
+    device/google/atv/gammaos/launcher/AuroraStore-4.4.4-nightly-signed-09-05-2024.apk:system/etc/AuroraStore-4.4.4-nightly-signed-09-05-2024.apk \
 
 # Enable dynamic partition size
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
