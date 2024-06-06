@@ -279,7 +279,6 @@ cc_library_shared {
         "libui",
         "libutils",
         "liblog",
-	"libcutils",
     ],
     static_libs: [
         "SurfaceFlingerProperties",

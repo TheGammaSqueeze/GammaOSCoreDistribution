@@ -40,10 +40,6 @@
 #include <media/MediaMetricsItem.h>
 #include <media/TypeConverter.h>
 
-#if SUPPORT_MULTIAUDIO
-#include <binder/PermissionController.h>
-#endif
-
 #define WAIT_PERIOD_MS                  10
 #define WAIT_STREAM_END_TIMEOUT_SEC     120
 static const int kMaxLoopCountNotifications = 32;
@@ -561,68 +557,6 @@ status_t AudioTrack::set(
     uid_t uid = VALUE_OR_FATAL(aidl2legacy_int32_t_uid_t(attributionSource.uid));
     pid_t pid = VALUE_OR_FATAL(aidl2legacy_int32_t_pid_t(attributionSource.pid));
     std::string errorMessage;
-#if SUPPORT_MULTIAUDIO
-#if MultiAudioTest
-    Vector<String16> packages;
-    PermissionController{}.getPackagesForUid(uid, packages);
-    if(!packages.isEmpty()) {
-        ALOGD("RKMultiAudio:package name: %s uid %d",String8(packages[0]).string(),uid);
-        mPackageName = packages[0];
-    } else {
-        mPackageName = String16("default");
-    }
-    String8 tmp = String8(mPackageName);
-    unsigned int numPorts;
-    unsigned int generation1;
-    unsigned int generation;
-    struct audio_port_v7 *audioPorts = nullptr;
-    int attempts = 10;
-    do {
-        if (attempts-- < 0) {
-            free(audioPorts);
-            ALOGE("Query audio ports time out");
-            break;
-        }
-        numPorts = 0;
-        status = AudioSystem::listAudioPorts(
-                AUDIO_PORT_ROLE_SINK, AUDIO_PORT_TYPE_DEVICE, &numPorts, nullptr,
-                &generation1);
-        if (numPorts == 0 || status != NO_ERROR) {
-            free(audioPorts);
-            ALOGE("Number of audio ports should not be zero");
-            break;
-        }
-        audioPorts = (struct audio_port_v7 *)realloc(
-                    audioPorts, numPorts * sizeof(struct audio_port_v7));
-        status = AudioSystem::listAudioPorts(
-                AUDIO_PORT_ROLE_SINK, AUDIO_PORT_TYPE_DEVICE, &numPorts, audioPorts,
-                &generation);
-        if (status != NO_ERROR) {
-            free(audioPorts);
-            ALOGE("Query audio ports failed");
-        }
-    } while (generation1 != generation);
-    for (int i = 0 ; i < numPorts; i++) {
-        ALOGD("listDeviceType: %d type:0x%x addr:%s id:%d", i,
-            audioPorts[i].ext.device.type, audioPorts[i].ext.device.address, audioPorts[i].id);
-        if (strstr(audioPorts[i].ext.device.address, "speaker0") != nullptr
-            && audioPorts[i].ext.device.type == AUDIO_DEVICE_OUT_SPEAKER
-            && strstr(tmp.string(), "RockVideoPlayer")) {
-           if (streamType == AUDIO_STREAM_MUSIC) {
-                selectedDeviceId = audioPorts[i].id;
-                ALOGD("select id:%d", selectedDeviceId);
-           }
-        } else if (audioPorts[i].ext.device.type == AUDIO_DEVICE_OUT_HDMI
-                        && strstr(tmp.string(), "gallery3d") != nullptr) {
-           if (streamType == AUDIO_STREAM_MUSIC) {
-                selectedDeviceId = audioPorts[i].id;
-                ALOGD("select id:%d", selectedDeviceId);
-           }
-        }
-    }
-    free(audioPorts);
-#endif
-#endif
     // Note mPortId is not valid until the track is created, so omit mPortId in ALOG for set.
     ALOGV("%s(): streamType %d, sampleRate %u, format %#x, channelMask %#x, frameCount %zu, "
           "flags #%x, notificationFrames %d, sessionId %d, transferType %d, uid %d, pid %d",
@@ -1857,12 +1791,6 @@ status_t AudioTrack::setOutputDevice(audio_port_handle_t deviceId) {
     AutoMutex lock(mLock);
     ALOGV("%s(%d): deviceId=%d mSelectedDeviceId=%d mRoutedDeviceId %d",
             __func__, mPortId, deviceId, mSelectedDeviceId, mRoutedDeviceId);
-#if SUPPORT_MULTIAUDIO
-#if MultiAudioTest
-    if (deviceId == AUDIO_PORT_HANDLE_NONE)
-        return NO_ERROR;
-#endif
-#endif
     if (mSelectedDeviceId != deviceId) {
         mSelectedDeviceId = deviceId;
         if (mStatus == NO_ERROR && mSelectedDeviceId != mRoutedDeviceId) {
@@ -2031,7 +1959,6 @@ status_t AudioTrack::createTrack_l()
         input.speed  = !isPurePcmData_l() || isOffloadedOrDirect_l() ? 1.0f :
                         max(mMaxRequiredSpeed, mPlaybackRate.mSpeed);
     }
-
     input.flags = mFlags;
     input.frameCount = mReqFrameCount;
     input.notificationFrameCount = mNotificationFramesReq;

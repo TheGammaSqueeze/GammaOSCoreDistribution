@@ -49,19 +49,6 @@ int8_t property_get_bool(const char* key, int8_t default_value) {
     return result;
 }
 
-
-// Function to check if the specified property contains "HDMI"
-bool property_contains_hdmi(const char* key) {
-    char value[PROPERTY_VALUE_MAX] = {};
-    property_get(key, value, "");
-    std::string valueStr = value;
-    // Convert to lowercase for case-insensitive comparison
-    std::transform(valueStr.begin(), valueStr.end(), valueStr.begin(),
-                   [](unsigned char c) { return std::tolower(c); });
-
-    return valueStr.find("hdmi") != std::string::npos;
-}
-
 template <typename T>
 static T property_get_int(const char* key, T default_value) {
     if (!key) return default_value;

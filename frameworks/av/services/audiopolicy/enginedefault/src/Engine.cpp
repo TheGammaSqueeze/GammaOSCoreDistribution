@@ -210,8 +210,7 @@ void Engine::filterOutputDevicesForStrategy(legacy_strategy strategy,
             if (desc->isActive() && !audio_is_linear_pcm(desc->getFormat())) {
                 availableOutputDevices.remove(desc->devices().getDevicesFromTypes({
                         AUDIO_DEVICE_OUT_HDMI, AUDIO_DEVICE_OUT_SPDIF,
-                        AUDIO_DEVICE_OUT_HDMI_ARC, AUDIO_DEVICE_OUT_HDMI_EARC,
-                        VX_ROCKCHIP_OUT_HDMI0, VX_ROCKCHIP_OUT_SPDIF0, }));
+                        AUDIO_DEVICE_OUT_HDMI_ARC, AUDIO_DEVICE_OUT_HDMI_EARC}));
             }
         }
         } break;
@@ -397,20 +396,14 @@ DeviceVector Engine::getDevicesForStrategyInt(legacy_strategy strategy,
             // no sonification on aux digital (e.g. HDMI)
             devices2 = availableOutputDevices.getDevicesFromType(AUDIO_DEVICE_OUT_AUX_DIGITAL);
         }
-        //priority Wired > a2dp > hdmi > hdmi 1 > spdif > spdif 1
-        if ((devices2.isEmpty()) && (strategy != STRATEGY_SONIFICATION)) {
-            devices2 = availableOutputDevices.getDevicesFromType(VX_ROCKCHIP_OUT_HDMI0);
-        }
-        if ((devices2.isEmpty()) && (strategy != STRATEGY_SONIFICATION)) {
-            devices2 = availableOutputDevices.getDevicesFromType(AUDIO_DEVICE_OUT_SPDIF);
-        }
-        if ((devices2.isEmpty()) && (strategy != STRATEGY_SONIFICATION)) {
-            devices2 = availableOutputDevices.getDevicesFromType(VX_ROCKCHIP_OUT_SPDIF0);
-        }
         if ((devices2.isEmpty()) &&
                 (getForceUse(AUDIO_POLICY_FORCE_FOR_DOCK) == AUDIO_POLICY_FORCE_ANALOG_DOCK)) {
             devices2 = availableOutputDevices.getDevicesFromType(
                     AUDIO_DEVICE_OUT_ANLG_DOCK_HEADSET);
+        }
+        if ((devices2.isEmpty()) && (strategy != STRATEGY_SONIFICATION)) {
+            // no sonification on WFD sink
+            devices2 = availableOutputDevices.getDevicesFromType(AUDIO_DEVICE_OUT_PROXY);
         }
         if (devices2.isEmpty()) {
             devices2 = availableOutputDevices.getFirstDevicesFromTypes({
@@ -418,10 +411,11 @@ DeviceVector Engine::getDevicesForStrategyInt(legacy_strategy strategy,
         }
         DeviceVector devices3;
         if (strategy == STRATEGY_MEDIA) {
-            // ARC and AUX_LINE can co-exist with others.
+            // ARC, SPDIF and AUX_LINE can co-exist with others.
             devices3 = availableOutputDevices.getDevicesFromTypes({
                     AUDIO_DEVICE_OUT_HDMI_ARC, AUDIO_DEVICE_OUT_HDMI_EARC,
-                    AUDIO_DEVICE_OUT_AUX_LINE, });
+                    AUDIO_DEVICE_OUT_SPDIF, AUDIO_DEVICE_OUT_AUX_LINE,
+                    });
         }
 
         devices2.add(devices3);

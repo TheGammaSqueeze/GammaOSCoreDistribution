@@ -78,7 +78,6 @@ final class WiredAccessoryManager implements WiredAccessoryCallbacks {
     private static final String NAME_USB_AUDIO = "usb_audio";
     private static final String NAME_HDMI_AUDIO = "hdmi_audio";
     private static final String NAME_HDMI = "hdmi";
-    private static final String NAME_DP = "dp";
 
     private static final int MSG_NEW_DEVICE_STATE = 1;
     private static final int MSG_SYSTEM_READY = 2;
@@ -517,7 +516,9 @@ final class WiredAccessoryManager implements WiredAccessoryCallbacks {
                     ExtconInfo.EXTCON_HEADPHONE,
                     ExtconInfo.EXTCON_MICROPHONE,
                     ExtconInfo.EXTCON_HDMI,
+                    ExtconInfo.EXTCON_DP,
                     ExtconInfo.EXTCON_LINE_OUT,
+                    ExtconInfo.EXTCON_VIDEO_IN,
             });
         }
 
@@ -548,25 +549,30 @@ final class WiredAccessoryManager implements WiredAccessoryCallbacks {
         @Override
         public Pair<Integer, Integer> parseState(ExtconInfo extconInfo, String status) {
             if (LOG) Slog.v(TAG, "status  " + status);
-            int []maskAndState = {0,0};
+            int[] maskAndState = {0, 0};
             // extcon event state changes from kernel4.9
             // new state will be like STATE=MICROPHONE=1\nHEADPHONE=0
-            //if (isTablet()) {
-            //    updateBit(maskAndState, BIT_HDMI_AUDIO, status, "hdmi0");
-            //    updateBit(maskAndState, BIT_HDMI_AUDIO_1, status, "hdmi1");
-            //    updateBit(maskAndState, BIT_DP_AUDIO, status, "dp0");
-            //    updateBit(maskAndState, BIT_DP_AUDIO_1, status, "dp1");
-            //    updateBit(maskAndState, BIT_HDMIIN_AUDIO, status, "hdmirx0");
-            //    updateBit(maskAndState, BIT_HDMIIN_AUDIO_1, status, "hdmirx1");
-            //}
-            updateBit(maskAndState, BIT_HDMIIN_AUDIO, status, "VIDEO-IN");
-            updateBit(maskAndState, BIT_HDMI_AUDIO, status, "HDMI");
-            updateBit(maskAndState, BIT_DP_AUDIO, status, "DP");
-            updateBit(maskAndState, BIT_HEADSET_NO_MIC, status, "HEADPHONE");
-            updateBit(maskAndState, BIT_HEADSET, status, "MICROPHONE");
-            updateBit(maskAndState, BIT_LINEOUT, status, "LINE-OUT");
-            if (LOG)
-                Slog.v(TAG, "status  " + status + "mask " + maskAndState[0] + " state " + maskAndState[1]);
+            if (extconInfo.hasCableType(ExtconInfo.EXTCON_HEADPHONE)) {
+                updateBit(maskAndState, BIT_HEADSET_NO_MIC, status, ExtconInfo.EXTCON_HEADPHONE);
+            }
+            if (extconInfo.hasCableType(ExtconInfo.EXTCON_MICROPHONE)) {
+                updateBit(maskAndState, BIT_HEADSET, status, ExtconInfo.EXTCON_MICROPHONE);
+            }
+            if (extconInfo.hasCableType(ExtconInfo.EXTCON_HDMI)) {
+                //updateBit(maskAndState, BIT_HDMI_AUDIO, status, ExtconInfo.EXTCON_HDMI);
+            }
+            if (extconInfo.hasCableType(ExtconInfo.EXTCON_LINE_OUT)) {
+                updateBit(maskAndState, BIT_LINEOUT, status, ExtconInfo.EXTCON_LINE_OUT);
+            }
+
+            updateBit(maskAndState, BIT_HDMI_AUDIO,     status, "hdmi0");
+            updateBit(maskAndState, BIT_HDMI_AUDIO_1,   status, "hdmi1");
+            updateBit(maskAndState, BIT_DP_AUDIO,       status, "dp0");
+            updateBit(maskAndState, BIT_DP_AUDIO_1,     status, "dp1");
+            updateBit(maskAndState, BIT_HDMIIN_AUDIO,   status, "hdmirx0");
+            updateBit(maskAndState, BIT_HDMIIN_AUDIO_1, status, "hdmirx1");
+
+            if (LOG) Slog.v(TAG, "mask " + maskAndState[0] + " state " + maskAndState[1]);
             return Pair.create(maskAndState[0], maskAndState[1]);
         }
 
@@ -587,10 +593,6 @@ final class WiredAccessoryManager implements WiredAccessoryCallbacks {
      * if {@code name=1}  or false if {}@code name=0} is contained in {@code state}.
      */
     private static void updateBit(int[] maskAndState, int position, String state, String name) {
-        if (state.contains("CDP=")) {
-                Slog.d(TAG, "state.contains(CDP=) return");
-                return;
-        }
         if (state.contains(name + "=1")) {
             maskAndState[0] |= position;
             maskAndState[1] |= position;

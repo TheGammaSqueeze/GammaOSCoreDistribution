@@ -86,7 +86,6 @@ public:
 
     virtual status_t flush();
     virtual status_t standby();
-    virtual audio_config_base_t getAudioProperties() const;
 
 private:
 

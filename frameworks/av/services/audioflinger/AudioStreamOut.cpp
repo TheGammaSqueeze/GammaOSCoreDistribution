@@ -40,7 +40,6 @@ AudioStreamOut::AudioStreamOut(AudioHwDevice *dev, audio_output_flags_t flags)
         , mHalFormatHasProportionalFrames(false)
         , mHalFrameSize(0)
         , mExpectRetrograde(false)
-        , mHalBufferSize(0)
 {
 }
 
@@ -170,14 +169,12 @@ status_t AudioStreamOut::open(
         stream = outStream;
         mHalFormatHasProportionalFrames = audio_has_proportional_frames(config->format);
         status = stream->getFrameSize(&mHalFrameSize);
-        stream->getBufferSize(&mHalBufferSize);
         LOG_ALWAYS_FATAL_IF(status != OK, "Error retrieving frame size from HAL: %d", status);
         LOG_ALWAYS_FATAL_IF(mHalFrameSize <= 0, "Error frame size was %zu but must be greater than"
                 " zero", mHalFrameSize);
 
     }
 
-    mConfigFormat = config->format;
     return status;
 }
 
@@ -206,9 +203,7 @@ int AudioStreamOut::standby()
 {
     mRenderPosition = 0;
     mExpectRetrograde = false;
-    if (AUDIO_FORMAT_IEC61937 != mConfigFormat) {
-        mFramesWrittenAtStandby = mFramesWritten;
-    }
+    mFramesWrittenAtStandby = mFramesWritten;
     return stream->standby();
 }
 

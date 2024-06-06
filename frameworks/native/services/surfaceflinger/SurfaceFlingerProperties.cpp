@@ -18,7 +18,6 @@
 #include <android/hardware/configstore/1.1/ISurfaceFlingerConfigs.h>
 #include <android/hardware/configstore/1.1/types.h>
 #include <configstore/Utils.h>
-#include <cutils/properties.h>
 #include <utils/Log.h>
 
 #include <log/log.h>
@@ -160,31 +159,11 @@ bool start_graphics_allocator_service(bool defaultValue) {
 
 SurfaceFlingerProperties::primary_display_orientation_values primary_display_orientation(
         SurfaceFlingerProperties::primary_display_orientation_values defaultValue) {
-    char propBypass[PROPERTY_VALUE_MAX];
-    property_get("vendor.hwc.device.display-0.bypass", propBypass, "0"); // Default to "0" if not set
-
-    // Check the bypass property
-    if (strcmp(propBypass, "1") != 0) {
-        // If bypass is not enabled, check for HDMI
-        char propValue[PROPERTY_VALUE_MAX];
-        property_get("vendor.hwc.device.display-0", propValue, "");
-        std::string propValueStr = propValue;
-
-        // Convert to lowercase to make the comparison case-insensitive
-        std::transform(propValueStr.begin(), propValueStr.end(), propValueStr.begin(), ::tolower);
-
-        if (propValueStr.find("hdmi") != std::string::npos) {
-            return SurfaceFlingerProperties::primary_display_orientation_values::ORIENTATION_0;
-        }
-    }
-
-    // Continue with existing logic if bypass is enabled or HDMI is not found
     auto temp = SurfaceFlingerProperties::primary_display_orientation();
     if (temp.has_value()) {
         return *temp;
     }
-
-    DisplayOrientation configDefault = DisplayOrientation::ORIENTATION_0;
+    auto configDefault = DisplayOrientation::ORIENTATION_0;
     switch (defaultValue) {
         case SurfaceFlingerProperties::primary_display_orientation_values::ORIENTATION_90:
             configDefault = DisplayOrientation::ORIENTATION_90;
@@ -196,14 +175,13 @@ SurfaceFlingerProperties::primary_display_orientation_values primary_display_ori
             configDefault = DisplayOrientation::ORIENTATION_270;
             break;
         default:
+            configDefault = DisplayOrientation::ORIENTATION_0;
             break;
     }
-
     DisplayOrientation result =
             getDisplayOrientation<V1_1::ISurfaceFlingerConfigs,
                                   &V1_1::ISurfaceFlingerConfigs::primaryDisplayOrientation>(
                     configDefault);
-
     switch (result) {
         case DisplayOrientation::ORIENTATION_90:
             return SurfaceFlingerProperties::primary_display_orientation_values::ORIENTATION_90;
