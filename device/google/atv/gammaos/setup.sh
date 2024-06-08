@@ -26,8 +26,8 @@ setprop persist.vendor.resolution.HDMI-A-0 1920x1200@60
 setprop persist.vendor.framebuffer.hdmi 1280x720
 
 echo "Setting up swap space."
-[ ! -f /cache/swap ] && dd if=/dev/zero of=/cache/swap bs=1M count=300 && mkswap /cache/swap
-swapon /cache/swap
+[ ! -f /mnt/pass_through/0/emulated/swap ] && dd if=/dev/zero of=/mnt/pass_through/0/emulated/swap bs=1M count=1200 && mkswap /mnt/pass_through/0/emulated/swap
+swapon /mnt/pass_through/0/emulated/swap -p 1
 
 echo "Maximizing screen brightness."
 settings put system screen_brightness 255
