@@ -32,8 +32,8 @@ else
     setenforce 0
     setprop ctl.stop "tee-supplicant"
 
-    [ ! -f /cache/swap ] && dd if=/dev/zero of=/cache/swap bs=1M count=300 && mkswap /cache/swap
-    swapon /cache/swap
+    #[ ! -f /mnt/pass_through/0/emulated/swap ] && dd if=/dev/zero of=/mnt/pass_through/0/emulated/swap bs=1M count=1200 && mkswap /mnt/pass_through/0/emulated/swap
+    #swapon /mnt/pass_through/0/emulated/swap -p 1
 
     # Retrieve the value of the Android property
     sleep 10
@@ -46,5 +46,7 @@ else
         sleep 1
         input keyevent 26 && sleep 5 && input keyevent 26
     fi
+
+    while [ ! -e /mnt/pass_through/0/emulated/swap ]; do sleep 1; done; swapon /mnt/pass_through/0/emulated/swap -p 1
 
 fi
