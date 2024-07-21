@@ -19,6 +19,9 @@ package org.lineageos.setupwizard;
 
 import android.app.Application;
 import android.app.StatusBarManager;
+import android.app.UiModeManager;
+import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -100,6 +103,15 @@ public class SetupWizardApp extends Application {
         }
         sStatusBarManager = SetupWizardUtils.disableStatusBar(this);
         mHandler.postDelayed(mRadioTimeoutRunnable, SetupWizardApp.RADIO_READY_TIMEOUT);
+
+        // Set UI mode to television with night mode enabled
+        UiModeManager uiModeManager = (UiModeManager) getSystemService(Context.UI_MODE_SERVICE);
+        if (uiModeManager != null) {
+            uiModeManager.setNightMode(UiModeManager.MODE_NIGHT_YES); // Enable night mode for dark UI
+            Configuration config = getResources().getConfiguration();
+            config.uiMode = Configuration.UI_MODE_TYPE_TELEVISION | Configuration.UI_MODE_NIGHT_YES;
+            getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+        }
     }
 
     public static StatusBarManager getStatusBarManager() {
