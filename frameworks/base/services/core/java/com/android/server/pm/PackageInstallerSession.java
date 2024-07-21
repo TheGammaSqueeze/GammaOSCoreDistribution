@@ -4139,7 +4139,11 @@ private void setSessionApplied() {
                 "android.permission.READ_MEDIA_AUDIO",
                 "android.permission.READ_MEDIA_VIDEO",
                 "android.permission.ACCESS_MEDIA_LOCATION",
-                "android.permission.READ_MEDIA_IMAGES"
+                "android.permission.READ_MEDIA_IMAGES",
+                "android.permission.RECORD_AUDIO",
+                "android.permission.CAMERA",
+                "android.permission.ACCESS_FINE_LOCATION",
+                "android.permission.REQUEST_INSTALL_PACKAGES"
             };
 
             for (String permission : permissions) {
