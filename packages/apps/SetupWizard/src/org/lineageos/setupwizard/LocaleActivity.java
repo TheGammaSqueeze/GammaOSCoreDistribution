@@ -30,6 +30,7 @@ import android.os.Handler;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.NumberPicker;
@@ -115,6 +116,18 @@ public class LocaleActivity extends BaseSetupWizardActivity {
     }
 
     @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER || keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_BUTTON_A) {
+            confirmSelection();
+            return true;
+        } else if (keyCode == KeyEvent.KEYCODE_BUTTON_B) {
+            cancelSelection();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
     protected int getLayoutResId() {
         return R.layout.setup_locale;
     }
@@ -196,6 +209,19 @@ public class LocaleActivity extends BaseSetupWizardActivity {
         mFetchUpdateSimLocaleTask.execute();
     }
 
+    private void confirmSelection() {
+        int i = mAdapterIndices[mLanguagePicker.getValue()];
+        final com.android.internal.app.LocalePicker.LocaleInfo localLocaleInfo =
+                mLocaleAdapter.getItem(i);
+        onLocaleChanged(localLocaleInfo.getLocale());
+        getNextButton().performClick();
+    }
+
+    private void cancelSelection() {
+        // Assuming cancel selection means finishing the activity
+        finish();
+    }
+
     private class FetchUpdateSimLocaleTask extends AsyncTask<Void, Void, Locale> {
         @Override
         protected Locale doInBackground(Void... params) {
@@ -249,5 +275,4 @@ public class LocaleActivity extends BaseSetupWizardActivity {
             }
         }
     }
-
 }
