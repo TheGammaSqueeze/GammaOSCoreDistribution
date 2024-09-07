@@ -518,21 +518,21 @@ public class KeyguardIndicationController {
         }
     }
 
-    private void updateLockScreenUserLockedMsg(int userId) {
-        if (!mKeyguardUpdateMonitor.isUserUnlocked(userId)
-                || mKeyguardUpdateMonitor.isEncryptedOrLockdown(userId)) {
-            mRotateTextViewController.updateIndication(
-                    INDICATION_TYPE_USER_LOCKED,
-                    new KeyguardIndication.Builder()
-                            .setMessage(mContext.getResources().getText(
-                                    com.android.internal.R.string.lockscreen_storage_locked))
-                            .setTextColor(mInitialTextColorState)
-                            .build(),
-                    false);
-        } else {
-            mRotateTextViewController.hideIndication(INDICATION_TYPE_USER_LOCKED);
-        }
+private void updateLockScreenUserLockedMsg(int userId) {
+    // Always treat the user as unlocked and prevent the message from being displayed
+    if (false) {  // This ensures the check is always false, skipping the lock screen logic
+        mRotateTextViewController.updateIndication(
+                INDICATION_TYPE_USER_LOCKED,
+                new KeyguardIndication.Builder()
+                        .setMessage(mContext.getResources().getText(
+                                com.android.internal.R.string.lockscreen_storage_locked))
+                        .setTextColor(mInitialTextColorState)
+                        .build(),
+                false);
+    } else {
+        mRotateTextViewController.hideIndication(INDICATION_TYPE_USER_LOCKED);
     }
+}
 
     private void updateBiometricMessage() {
         if (mDozing) {

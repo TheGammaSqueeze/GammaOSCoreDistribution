@@ -640,18 +640,7 @@ public class LockPatternUtils {
      */
     @UnsupportedAppUsage
     public boolean isLockScreenDisabled(int userId) {
-        if (isSecure(userId)) {
-            return false;
-        }
-        boolean disabledByDefault = mContext.getResources().getBoolean(
-                com.android.internal.R.bool.config_disableLockscreenByDefault);
-        boolean isSystemUser = UserManager.isSplitSystemUser() && userId == UserHandle.USER_SYSTEM;
-        UserInfo userInfo = getUserManager().getUserInfo(userId);
-        boolean isDemoUser = UserManager.isDeviceInDemoMode(mContext) && userInfo != null
-                && userInfo.isDemo();
-        return getBoolean(DISABLE_LOCKSCREEN_KEY, false, userId)
-                || (disabledByDefault && !isSystemUser)
-                || isDemoUser;
+        return true;
     }
 
     /** Returns if the given quality maps to an alphabetic password */
