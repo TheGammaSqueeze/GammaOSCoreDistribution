@@ -104,4 +104,6 @@ rm -rf /data/tmpsetup/*
 mkdir -p /data/setupcompleted
 sleep 4 && settings put system screen_off_timeout 240000 &
 
+setprop persist.sys.usb.config mtp,adb
+
 echo "All settings have been applied successfully."
