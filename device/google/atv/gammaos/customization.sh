@@ -4,6 +4,7 @@ if [ ! -d /data/setupcompleted ] && [ -z $(getprop persist.sys.device_provisione
     wm density 137
     settings put system screen_off_timeout 1800000
     setenforce 0
+    settings put secure navigation_mode 2
 
     echo "Installing Magisk."
     pm install /system/etc/magisk.apk
