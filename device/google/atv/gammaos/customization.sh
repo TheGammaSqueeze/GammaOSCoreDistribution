@@ -48,5 +48,5 @@ else
     fi
 
     while [ ! -e /mnt/pass_through/0/emulated/swap ]; do sleep 1; done; swapon /mnt/pass_through/0/emulated/swap -p 1
-
+    svc usb setFunctions mtp
 fi
