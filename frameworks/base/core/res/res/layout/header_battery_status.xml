@@ -10,7 +10,8 @@
         android:id="@+id/battery_icon"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@drawable/ic_battery" /> <!-- Ensure you have a suitable battery icon in your drawable resources -->
+        android:src="@drawable/ic_battery" 
+	android:tint="@android:color/white" />
 
     <TextView
         android:id="@+id/battery_percentage"

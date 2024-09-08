@@ -343,8 +343,34 @@ private ActionsDialog createDialog() {
     mItems.add(getPerformanceOptionsAction());
     mItems.add(getKillForegroundAppAction());
 
+    // Override ActionsAdapter's getView method to set text color to white
     mAdapter = new ActionsAdapter(mContext, mItems,
-            () -> mDeviceProvisioned, () -> mKeyguardShowing);
+            () -> mDeviceProvisioned, () -> mKeyguardShowing) {
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            // Get the default view for the item
+            View view = super.getView(position, convertView, parent);
+
+            // Traverse view hierarchy to find the TextView
+            if (view instanceof ViewGroup) {
+                findAndSetTextColorWhite((ViewGroup) view);
+            }
+
+            return view;
+        }
+
+        private void findAndSetTextColorWhite(ViewGroup viewGroup) {
+            for (int i = 0; i < viewGroup.getChildCount(); i++) {
+                View child = viewGroup.getChildAt(i);
+                if (child instanceof TextView) {
+                    ((TextView) child).setTextColor(Color.WHITE); // Set text color to white
+                } else if (child instanceof ViewGroup) {
+                    findAndSetTextColorWhite((ViewGroup) child); // Recursively search for TextView
+                }
+            }
+        }
+    };
 
     AlertController.AlertParams params = new AlertController.AlertParams(mContext);
     params.mAdapter = mAdapter;
@@ -377,7 +403,7 @@ private ActionsDialog createDialog() {
     float[] outerRadii = new float[] {16, 16, 16, 16, 16, 16, 16, 16}; // Set corner radius
     RoundRectShape roundedRect = new RoundRectShape(outerRadii, null, null);
     ShapeDrawable shapeDrawable = new ShapeDrawable(roundedRect);
-    shapeDrawable.getPaint().setColor(Color.parseColor("#FAFFFFFF")); // Transparent white
+    shapeDrawable.getPaint().setColor(Color.parseColor("#FA333333")); // Transparent black
     shapeDrawable.getPaint().setStyle(Paint.Style.FILL);
 
     // Apply the rounded background
@@ -482,8 +508,8 @@ private ActionsDialog createDialog() {
 
             @Override
             public void onPress() {
-    		Intent intent = new Intent(Intent.ACTION_MAIN);
-    		intent.addCategory(Intent.CATEGORY_HOME);
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 mContext.startActivity(intent);
             }
@@ -1050,7 +1076,7 @@ public void onDismiss(DialogInterface dialog) {
                         TextView batteryText = headerView.findViewById(R.id.battery_percentage);
                         if (batteryText != null) {
                             batteryText.setText(batteryPct + "%");
-                            batteryText.setTextColor(Color.BLACK);
+                            batteryText.setTextColor(Color.WHITE);
                         } else {
                             Log.e(TAG, "Battery TextView not found");
                         }
