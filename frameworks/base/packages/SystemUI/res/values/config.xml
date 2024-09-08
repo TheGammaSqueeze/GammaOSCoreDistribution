@@ -305,6 +305,9 @@
     <string name="config_navBarLayoutQuickstep" translatable="false">back[1.7WC];home;menu_ime[1.7WC]</string>
     <string name="config_navBarLayoutHandle" translatable="false">back[70AC];home_handle;ime_switcher[70AC]</string>
 
+    <!-- Nav bar default mode - GESTURES -->
+    <integer name="config_navBarInteractionMode">2</integer>
+
     <!-- Whether to show a warning notification when device's skin temperature is high. -->
     <integer name="config_showTemperatureWarning">0</integer>
 

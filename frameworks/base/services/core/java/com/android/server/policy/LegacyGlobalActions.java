@@ -340,6 +340,7 @@ private ActionsDialog createDialog() {
     mItems.add(getSettingsAction());
     mItems.add(getBrightnessOptionsAction());
     mItems.add(getHomeAction());
+    mItems.add(getControllerOptionsAction());
     mItems.add(getPerformanceOptionsAction());
     mItems.add(getKillForegroundAppAction());
 
@@ -533,6 +534,45 @@ private ActionsDialog createDialog() {
 
             public void onPress() {
                 Intent intent = new Intent(mContext, PerformanceOptionsActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+                // Dismiss the dialog completely before launching the new activity
+                if (mDialog != null && mDialog.isShowing()) {
+                    mDialog.dismiss();
+                    mDialog = null; // Clear the reference to help garbage collection
+                }
+
+                mContext.startActivity(intent);
+
+                // Check if mContext is an instance of Activity and then call finish()
+                if (mContext instanceof Activity) {
+                    ((Activity) mContext).finish();
+                }
+            }
+
+            public boolean onLongPress() {
+                return false;
+            }
+
+            @Override
+            public boolean showDuringKeyguard() {
+                return true;
+            }
+
+            @Override
+            public boolean showBeforeProvisioning() {
+                return true;
+            }
+
+        };
+    }
+
+    private Action getControllerOptionsAction() {
+        return new SinglePressAction(R.drawable.ic_menu,
+                R.string.gammaos_controller_options) {
+
+            public void onPress() {
+                Intent intent = new Intent(mContext, ControllerOptionsActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
                 // Dismiss the dialog completely before launching the new activity
