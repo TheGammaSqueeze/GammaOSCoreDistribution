@@ -26,7 +26,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 PRODUCT_PACKAGES += \
     DocumentsUI \
     com.android.mtp \
+    MtpService \
     android.server.tvproviderstub \
+
+PRODUCT_STATIC_LIBRARIES += androidx.appcompat_appcompat
 
 # Wrapped net utils for /vendor access.
 PRODUCT_PACKAGES += netutils-wrapper-1.0
