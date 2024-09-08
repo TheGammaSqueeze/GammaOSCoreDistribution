@@ -6861,6 +6861,11 @@
                   android:theme="@android:style/Theme.DeviceDefault.Dialog.Alert">
         </activity>
 
+        <activity android:name="com.android.server.policy.USBOptionsActivity"
+                  android:excludeFromRecents="true"
+                  android:theme="@android:style/Theme.DeviceDefault.Dialog.Alert">
+        </activity>
+
 	<activity android:name="com.android.server.policy.BrightnessControlActivity"
         	  android:theme="@android:style/Theme.DeviceDefault.Dialog.NoActionBar"
         	  android:excludeFromRecents="true">

@@ -6374,4 +6374,7 @@ ul.</string>
 
     <!-- Title for preference of the GammaOS controller options. [CHAR LIMIT=50]-->
     <string name="gammaos_controller_options">Controller Options</string>
+
+    <!-- Title for preference of the GammaOS USB options. [CHAR LIMIT=50]-->
+    <string name="gammaos_usb_options">USB Options</string>
 </resources>
