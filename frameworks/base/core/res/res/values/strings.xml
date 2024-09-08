@@ -6371,4 +6371,7 @@ ul.</string>
 
     <!-- Title for preference of the GammaOS force close app. [CHAR LIMIT=50]-->
     <string name="gammaos_kill_app">Kill foreground app</string> 
+
+    <!-- Title for preference of the GammaOS controller options. [CHAR LIMIT=50]-->
+    <string name="gammaos_controller_options">Controller Options</string>
 </resources>
