@@ -690,9 +690,10 @@ private ActionsDialog createDialog() {
             @Override
             public void onPress() {
                 ActivityManager am = (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
-                List<ActivityManager.RunningAppProcessInfo> appProcesses = am.getRunningAppProcesses();
-                if (appProcesses != null && !appProcesses.isEmpty()) {
-                    String foregroundProcess = appProcesses.get(0).processName;
+                List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1); // Get the top (foreground) task
+
+                if (taskInfo != null && !taskInfo.isEmpty()) {
+                    String foregroundProcess = taskInfo.get(0).topActivity.getPackageName(); // Get the package name of the top activity
                     try {
                         am.forceStopPackage(foregroundProcess);
                         Toast.makeText(mContext, "Foreground app killed: " + foregroundProcess, Toast.LENGTH_SHORT).show();
@@ -710,7 +711,7 @@ private ActionsDialog createDialog() {
 
             @Override
             public boolean showDuringKeyguard() {
-               return true;
+                return true;
             }
 
             @Override
@@ -719,7 +720,6 @@ private ActionsDialog createDialog() {
             }
         };
     }
-
 
     private Action getEmergencyAction() {
         return new SinglePressAction(com.android.internal.R.drawable.emergency_icon,
