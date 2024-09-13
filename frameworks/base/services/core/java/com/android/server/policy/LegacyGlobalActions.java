@@ -26,6 +26,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.UserInfo;
+import android.content.pm.ApplicationInfo;
 import android.database.ContentObserver;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
@@ -344,6 +345,7 @@ private ActionsDialog createDialog() {
     mItems.add(getUSBOptionsAction());
     mItems.add(getPerformanceOptionsAction());
     mItems.add(getKillForegroundAppAction());
+    mItems.add(getKillAllAppsAction());
 
     // Override ActionsAdapter's getView method to set text color to white
     mAdapter = new ActionsAdapter(mContext, mItems,
@@ -702,6 +704,55 @@ private ActionsDialog createDialog() {
                     }
                 } else {
                     Toast.makeText(mContext, "No foreground app found", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            public boolean onLongPress() {
+                return false;
+            }
+
+            @Override
+            public boolean showDuringKeyguard() {
+                return true;
+            }
+
+            @Override
+            public boolean showBeforeProvisioning() {
+                return true;
+            }
+        };
+    }
+
+    private Action getKillAllAppsAction() {
+        return new SinglePressAction(R.drawable.ic_menu, R.string.gammaos_kill_all_apps) {
+
+            @Override
+            public void onPress() {
+                ActivityManager am = (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
+                PackageManager pm = mContext.getPackageManager();
+                List<ActivityManager.RunningAppProcessInfo> runningAppProcesses = am.getRunningAppProcesses();
+
+                if (runningAppProcesses != null && !runningAppProcesses.isEmpty()) {
+                    for (ActivityManager.RunningAppProcessInfo processInfo : runningAppProcesses) {
+                        String packageName = processInfo.processName;
+
+                        try {
+                            ApplicationInfo appInfo = pm.getApplicationInfo(packageName, 0);
+
+                            // Skip system apps and the current package
+                            if ((appInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
+                                // Force stop the package
+                                am.forceStopPackage(packageName);
+                            }
+                        } catch (PackageManager.NameNotFoundException e) {
+                            // Ignore any packages that cannot be found
+                        } catch (Exception e) {
+                            Toast.makeText(mContext, "Failed to kill app: " + packageName + " due to: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    Toast.makeText(mContext, "All apps have been killed", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(mContext, "No running apps found", Toast.LENGTH_SHORT).show();
                 }
             }
 
