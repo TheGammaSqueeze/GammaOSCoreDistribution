@@ -650,7 +650,7 @@ private ActionsDialog createDialog() {
     }
 
     private Action getBrightnessOptionsAction() {
-        return new SinglePressAction(R.drawable.ic_menu, // Use an appropriate icon for brightness
+        return new SinglePressAction(com.android.internal.R.drawable.ic_menu, // Use an appropriate icon for brightness
                 R.string.gammaos_brightness_settings) { // Define this string in your resources
 
             public void onPress() {
