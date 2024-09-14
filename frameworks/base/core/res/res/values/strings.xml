@@ -6372,6 +6372,9 @@ ul.</string>
     <!-- Title for preference of the GammaOS force close app. [CHAR LIMIT=50]-->
     <string name="gammaos_kill_app">Kill foreground app</string> 
 
+    <!-- Title for preference of the GammaOS force close all background apps. [CHAR LIMIT=50]-->
+    <string name="gammaos_kill_all_background_apps">Kill all background apps</string>
+
     <!-- Title for preference of the GammaOS force close all apps. [CHAR LIMIT=50]-->
     <string name="gammaos_kill_all_apps">Kill all apps</string>
 
