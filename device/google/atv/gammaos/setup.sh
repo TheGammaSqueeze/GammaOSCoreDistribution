@@ -3,6 +3,42 @@
 echo "Starting configuration of the GammaOS system..."
 sleep 1
 
+	settings put secure doze_pulse_on_pick_up 0
+	settings put secure camera_double_tap_power_gesture_disabled 1
+	settings put secure wake_gesture_enabled 0
+	settings put --lineage global wake_when_plugged_or_unplugged 0
+	settings put --lineage global trust_restrict_usb 0
+	settings put --lineage secure advanced_reboot 1
+	settings put --lineage secure trust_warning 0
+	settings put --lineage secure trust_warnings 0
+	settings put --lineage secure power_menu_actions "lockdown|power|restart|screenshot|bugreport|logout"
+	settings put --lineage secure qs_show_auto_brightness 0
+	settings put --lineage secure qs_show_brightness_slider 1
+	settings put --lineage system app_switch_wake_screen 0
+	settings put --lineage system assist_wake_screen 0
+	settings put --lineage system trust_interface_hinted 1
+	settings put --lineage system back_wake_screen 0
+	settings put --lineage system camera_launch 0
+	settings put --lineage system camera_sleep_on_release 0
+	settings put --lineage system camera_wake_screen 0
+	settings put --lineage system click_partial_screenshot 0
+	settings put --lineage system double_tap_sleep_gesture 0
+	settings put --lineage system home_wake_screen 1
+	settings put --lineage system key_back_long_press_action 2
+	settings put --lineage system lockscreen_rotation 1
+	settings put --lineage system menu_wake_screen 0
+	settings put --lineage system navigation_bar_menu_arrow_keys 0
+	settings put --lineage system status_bar_am_pm 2
+	settings put --lineage system status_bar_brightness_control 1
+	settings put --lineage system status_bar_clock_auto_hide 0
+	settings put --lineage system status_bar_show_battery_percent 2
+	settings put --lineage system berry_black_theme 1
+	settings put secure immersive_mode_confirmations confirmed
+	settings put secure ui_night_mode 2
+	settings put global window_animation_scale 0
+	settings put global transition_animation_scale 0
+	settings put global animator_duration_scale 0.5
+
 # Check if the device is Powkiddy RGB30v2 and switch to new boot image for RGB30 v2
 isrgb30=$(cat /proc/device-tree/model)
 if [[ "$isrgb30" == *"Powkiddy RGB30"* ]]; then
