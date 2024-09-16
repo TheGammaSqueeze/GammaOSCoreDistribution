@@ -61,20 +61,20 @@ class AnrController {
     }
 
     void notifyAppUnresponsive(InputApplicationHandle applicationHandle, String reason) {
-        preDumpIfLockTooSlow();
-        final ActivityRecord activity;
-        synchronized (mService.mGlobalLock) {
-            activity = ActivityRecord.forTokenLocked(applicationHandle.token);
-            if (activity == null) {
-                Slog.e(TAG_WM, "Unknown app appToken:" + applicationHandle.name
-                        + ". Dropping notifyNoFocusedWindowAnr request");
-                return;
-            }
-            Slog.i(TAG_WM, "ANR in " + activity.getName() + ".  Reason: " + reason);
-            dumpAnrStateLocked(activity, null /* windowState */, reason);
-            mUnresponsiveAppByDisplay.put(activity.getDisplayId(), activity);
-        }
-        activity.inputDispatchingTimedOut(reason, INVALID_PID);
+        //preDumpIfLockTooSlow();
+        //final ActivityRecord activity;
+        //synchronized (mService.mGlobalLock) {
+        //    activity = ActivityRecord.forTokenLocked(applicationHandle.token);
+        //    if (activity == null) {
+        //        Slog.e(TAG_WM, "Unknown app appToken:" + applicationHandle.name
+        //                + ". Dropping notifyNoFocusedWindowAnr request");
+        //        return;
+        //   }
+        //    Slog.i(TAG_WM, "ANR in " + activity.getName() + ".  Reason: " + reason);
+        //    dumpAnrStateLocked(activity, null /* windowState */, reason);
+        //    mUnresponsiveAppByDisplay.put(activity.getDisplayId(), activity);
+        //}
+        //activity.inputDispatchingTimedOut(reason, INVALID_PID);
     }
 
 
@@ -104,30 +104,30 @@ class AnrController {
      *         handled, false otherwise.
      */
     private boolean notifyWindowUnresponsive(@NonNull IBinder inputToken, String reason) {
-        preDumpIfLockTooSlow();
-        final int pid;
-        final boolean aboveSystem;
-        final ActivityRecord activity;
-        synchronized (mService.mGlobalLock) {
-            InputTarget target = mService.getInputTargetFromToken(inputToken);
-            if (target == null) {
-                return false;
-            }
-            WindowState windowState = target.getWindowState();
-            pid = target.getPid();
+        //preDumpIfLockTooSlow();
+        //final int pid;
+        //final boolean aboveSystem;
+        //final ActivityRecord activity;
+        //synchronized (mService.mGlobalLock) {
+        //    InputTarget target = mService.getInputTargetFromToken(inputToken);
+        //    if (target == null) {
+        //        return false;
+        //    }
+        //    WindowState windowState = target.getWindowState();
+        //    pid = target.getPid();
             // Blame the activity if the input token belongs to the window. If the target is
             // embedded, then we will blame the pid instead.
-            activity = (windowState.mInputChannelToken == inputToken)
-                    ? windowState.mActivityRecord : null;
-            Slog.i(TAG_WM, "ANR in " + target + ". Reason:" + reason);
-            aboveSystem = isWindowAboveSystem(windowState);
-            dumpAnrStateLocked(activity, windowState, reason);
-        }
-        if (activity != null) {
-            activity.inputDispatchingTimedOut(reason, pid);
-        } else {
-            mService.mAmInternal.inputDispatchingTimedOut(pid, aboveSystem, reason);
-        }
+        //    activity = (windowState.mInputChannelToken == inputToken)
+        //           ? windowState.mActivityRecord : null;
+        //    Slog.i(TAG_WM, "ANR in " + target + ". Reason:" + reason);
+        //    aboveSystem = isWindowAboveSystem(windowState);
+        //    dumpAnrStateLocked(activity, windowState, reason);
+        //}
+        //if (activity != null) {
+        //    activity.inputDispatchingTimedOut(reason, pid);
+        //} else {
+        //    mService.mAmInternal.inputDispatchingTimedOut(pid, aboveSystem, reason);
+        //}
         return true;
     }
 
@@ -135,12 +135,12 @@ class AnrController {
      * Notify a window owned by the provided pid was unresponsive.
      */
     private void notifyWindowUnresponsive(int pid, String reason) {
-        Slog.i(TAG_WM, "ANR in input window owned by pid=" + pid + ". Reason: " + reason);
-        dumpAnrStateLocked(null /* activity */, null /* windowState */, reason);
+        //Slog.i(TAG_WM, "ANR in input window owned by pid=" + pid + ". Reason: " + reason);
+        //dumpAnrStateLocked(null /* activity */, null /* windowState */, reason);
 
         // We cannot determine the z-order of the window, so place the anr dialog as high
         // as possible.
-        mService.mAmInternal.inputDispatchingTimedOut(pid, true /*aboveSystem*/, reason);
+        //mService.mAmInternal.inputDispatchingTimedOut(pid, true /*aboveSystem*/, reason);
     }
 
     /**

@@ -24,18 +24,13 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.BidiFormatter;
 import android.util.Slog;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto;
 
-final class AppNotRespondingDialog extends BaseErrorDialog implements View.OnClickListener {
+final class AppNotRespondingDialog extends BaseErrorDialog {
     private static final String TAG = "AppNotRespondingDialog";
 
     // Event 'what' codes
@@ -53,9 +48,13 @@ final class AppNotRespondingDialog extends BaseErrorDialog implements View.OnCli
     public AppNotRespondingDialog(ActivityManagerService service, Context context, Data data) {
         super(context);
 
+        // Initialize mService, mProc, and mData to avoid the "might not have been initialized" error
         mService = service;
         mProc = data.proc;
         mData = data;
+
+        // Prevent the dialog from being created by commenting out the UI initialization code
+        /*
         Resources res = context.getResources();
 
         setCancelable(false);
@@ -84,11 +83,9 @@ final class AppNotRespondingDialog extends BaseErrorDialog implements View.OnCli
             }
         }
 
-        BidiFormatter bidi = BidiFormatter.getInstance();
-
         setTitle(name2 != null
-                ? res.getString(resid, bidi.unicodeWrap(name1.toString()), bidi.unicodeWrap(name2.toString()))
-                : res.getString(resid, bidi.unicodeWrap(name1.toString())));
+                ? res.getString(resid, name1.toString(), name2.toString())
+                : res.getString(resid, name1.toString()));
 
         if (data.aboveSystem) {
             getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ERROR);
@@ -98,47 +95,19 @@ final class AppNotRespondingDialog extends BaseErrorDialog implements View.OnCli
         attrs.privateFlags = WindowManager.LayoutParams.PRIVATE_FLAG_SYSTEM_ERROR |
                 WindowManager.LayoutParams.SYSTEM_FLAG_SHOW_FOR_ALL_USERS;
         getWindow().setAttributes(attrs);
+        */
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final FrameLayout frame = findViewById(android.R.id.custom);
-        final Context context = getContext();
-        LayoutInflater.from(context).inflate(
-                com.android.internal.R.layout.app_anr_dialog, frame, true);
-
-        final TextView report = findViewById(com.android.internal.R.id.aerr_report);
-        report.setOnClickListener(this);
-        final boolean hasReceiver = mProc.mErrorState.getErrorReportReceiver() != null;
-        report.setVisibility(hasReceiver ? View.VISIBLE : View.GONE);
-        final TextView close = findViewById(com.android.internal.R.id.aerr_close);
-        close.setOnClickListener(this);
-        final TextView wait = findViewById(com.android.internal.R.id.aerr_wait);
-        wait.setOnClickListener(this);
-
-        findViewById(com.android.internal.R.id.customPanel).setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case com.android.internal.R.id.aerr_report:
-                mHandler.obtainMessage(WAIT_AND_REPORT).sendToTarget();
-                break;
-            case com.android.internal.R.id.aerr_close:
-                mHandler.obtainMessage(FORCE_CLOSE).sendToTarget();
-                break;
-            case com.android.internal.R.id.aerr_wait:
-                mHandler.obtainMessage(WAIT).sendToTarget();
-                break;
-            default:
-                break;
-        }
+        // Do nothing since the UI is not being shown
     }
 
     private final Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
+            // Comment out all the dialog handling logic to prevent the dialog from appearing
+            /*
             Intent appErrorIntent = null;
 
             MetricsLogger.action(getContext(), MetricsProto.MetricsEvent.ACTION_APP_ANR,
@@ -163,8 +132,6 @@ final class AppNotRespondingDialog extends BaseErrorDialog implements View.OnCli
 
                         synchronized (mService.mProcLock) {
                             errState.setNotResponding(false);
-                            // We're not clearing the ANR report here, in case we'd need to report
-                            // it again when the ANR dialog shows again.
                             // errState.setNotRespondingReport(null);
                             errState.getDialogController().clearAnrDialogs();
                         }
@@ -179,17 +146,19 @@ final class AppNotRespondingDialog extends BaseErrorDialog implements View.OnCli
                 try {
                     getContext().startActivity(appErrorIntent);
                 } catch (ActivityNotFoundException e) {
-                    Slog.w(TAG, "bug report receiver dissappeared", e);
+                    Slog.w(TAG, "bug report receiver disappeared", e);
                 }
             }
 
             dismiss();
+            */
         }
     };
 
     @Override
     protected void closeDialog() {
-        mHandler.obtainMessage(FORCE_CLOSE).sendToTarget();
+        // Prevent any action by disabling the close dialog function
+        // mHandler.obtainMessage(FORCE_CLOSE).sendToTarget();
     }
 
     static class Data {
@@ -204,3 +173,4 @@ final class AppNotRespondingDialog extends BaseErrorDialog implements View.OnCli
         }
     }
 }
+

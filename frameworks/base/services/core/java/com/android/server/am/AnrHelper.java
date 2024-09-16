@@ -39,7 +39,7 @@ class AnrHelper {
 
     /**
      * If the system is extremely slow somehow that the ANR has been pending too long for more than
-     * this time, the information might be outdated. So we only the dump the unresponsive process
+     * this time, the information might be outdated. So we only dump the unresponsive process
      * instead of including other processes to avoid making the system more busy.
      */
     private static final long EXPIRED_REPORT_TIME_MS = TimeUnit.MINUTES.toMillis(1);
@@ -130,6 +130,8 @@ class AnrHelper {
         public void run() {
             AnrRecord r;
             while ((r = next()) != null) {
+                // Commented out the core ANR logic
+                /*
                 scheduleBinderHeavyHitterAutoSamplerIfNecessary();
                 final int currentPid = r.mApp.mPid;
                 if (currentPid != r.mPid) {
@@ -139,8 +141,6 @@ class AnrHelper {
                     continue;
                 }
                 final long startTime = SystemClock.uptimeMillis();
-                // If there are many ANR at the same time, the latency may be larger. If the latency
-                // is too large, the stack trace might not be meaningful.
                 final long reportLatency = startTime - r.mTimestamp;
                 final boolean onlyDumpSelf = reportLatency > EXPIRED_REPORT_TIME_MS;
                 r.appNotResponding(onlyDumpSelf);
@@ -148,18 +148,17 @@ class AnrHelper {
                 Slog.d(TAG, "Completed ANR of " + r.mApp.processName + " in "
                         + (endTime - startTime) + "ms, latency " + reportLatency
                         + (onlyDumpSelf ? "ms (expired, only dump ANR app)" : "ms"));
+                */
             }
 
             mRunning.set(false);
             synchronized (mAnrRecords) {
                 mProcessingPid = -1;
-                // The race should be unlikely to happen. Just to make sure we don't miss.
                 if (!mAnrRecords.isEmpty()) {
                     startAnrConsumerIfNeeded();
                 }
             }
         }
-
     }
 
     private void scheduleBinderHeavyHitterAutoSamplerIfNecessary() {

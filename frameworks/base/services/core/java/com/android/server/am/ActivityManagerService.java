@@ -3507,12 +3507,12 @@ public class ActivityManagerService extends IActivityManager.Stub
         final String formattedDate = sAnrFileDateFormat.format(new Date());
         final File anrFile = new File(tracesDir, ANR_FILE_PREFIX + formattedDate);
 
-        if (anrFile.createNewFile()) {
-            FileUtils.setPermissions(anrFile.getAbsolutePath(), 0600, -1, -1); // -rw-------
-            return anrFile;
-        } else {
-            throw new IOException("Unable to create ANR dump file: createNewFile failed");
-        }
+//        if (anrFile.createNewFile()) {
+//            FileUtils.setPermissions(anrFile.getAbsolutePath(), 0600, -1, -1); // -rw-------
+//            return anrFile;
+//        } else {
+            throw new IOException("Skipping ANR dump");
+//        }
     }
 
     /**
@@ -6481,17 +6481,17 @@ public class ActivityManagerService extends IActivityManager.Stub
 
     @Override
     public void appNotResponding(final String reason) {
-        final int callingPid = Binder.getCallingPid();
+//        final int callingPid = Binder.getCallingPid();
+//
+//        synchronized (mPidsSelfLocked) {
+//            final ProcessRecord app = mPidsSelfLocked.get(callingPid);
+//            if (app == null) {
+//                throw new SecurityException("Unknown process: " + callingPid);
+//            }
 
-        synchronized (mPidsSelfLocked) {
-            final ProcessRecord app = mPidsSelfLocked.get(callingPid);
-            if (app == null) {
-                throw new SecurityException("Unknown process: " + callingPid);
-            }
-
-            mAnrHelper.appNotResponding(app, null, app.info, null, null, false,
-                    "App requested: " + reason);
-        }
+//            mAnrHelper.appNotResponding(app, null, app.info, null, null, false,
+//                    "App requested: " + reason);
+//        }
     }
 
     void startPersistentApps(int matchFlags) {
@@ -17247,11 +17247,11 @@ public class ActivityManagerService extends IActivityManager.Stub
 
         @Override
         public void rescheduleAnrDialog(Object data) {
-            Message msg = Message.obtain();
-            msg.what = SHOW_NOT_RESPONDING_UI_MSG;
-            msg.obj = (AppNotRespondingDialog.Data) data;
+//            Message msg = Message.obtain();
+//            msg.what = SHOW_NOT_RESPONDING_UI_MSG;
+//            msg.obj = (AppNotRespondingDialog.Data) data;
 
-            mUiHandler.sendMessageDelayed(msg, InputConstants.DEFAULT_DISPATCHING_TIMEOUT_MILLIS);
+//            mUiHandler.sendMessageDelayed(msg, InputConstants.DEFAULT_DISPATCHING_TIMEOUT_MILLIS);
         }
 
         @Override
