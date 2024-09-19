@@ -85,6 +85,8 @@ PRODUCT_COPY_FILES += \
 # GammaOS Customizations
 
 PRODUCT_COPY_FILES += \
+    device/google/atv/gammaos/launcher/memallocator:system/bin/memallocator \
+    device/google/atv/gammaos/launcher/init.memclear.rc:system/etc/init/init.memclear.rc \
     device/google/atv/gammaos/rgp2xbox/rgp2xbox:system/bin/rgp2xbox \
     device/google/atv/gammaos/rgp2xbox/rgp2xbox.sh:system/bin/rgp2xbox.sh \
     device/google/atv/gammaos/rgp2xbox/setabxyvalue_default.sh:system/bin/setabxyvalue_default.sh \
