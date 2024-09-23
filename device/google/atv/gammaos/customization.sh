@@ -33,9 +33,6 @@ else
     setenforce 0
     setprop ctl.stop "tee-supplicant"
 
-    #[ ! -f /mnt/pass_through/0/emulated/swap ] && dd if=/dev/zero of=/mnt/pass_through/0/emulated/swap bs=1M count=1200 && mkswap /mnt/pass_through/0/emulated/swap
-    #swapon /mnt/pass_through/0/emulated/swap -p 1
-
     # Retrieve the value of the Android property
     sleep 10
     prop_value=$(getprop vendor.hwc.device.display-0)
@@ -48,8 +45,7 @@ else
         input keyevent 26 && sleep 5 && input keyevent 26
     fi
 
-    while [ ! -e /mnt/pass_through/0/emulated/swap ]; do sleep 1; done; swapon /mnt/pass_through/0/emulated/swap -p 1
+    svc usb setFunctions mtp
 
-    echo 200 > /proc/sys/vm/vfs_cache_pressure
 
 fi

@@ -49,9 +49,8 @@ if [[ "$isrgb30" == *"Powkiddy RGB30"* ]]; then
         unzip /system/etc/rgb30_v2_boot.zip -d /data/tmpsetup/
         dd if=/data/tmpsetup/boot.img of=/dev/block/by-name/boot bs=512
         rm -f /data/tmpsetup/boot.img
-        echo "Boot image updated. Rebooting device."
+        echo "Boot image updated. Continue setup..."
 		sleep 5
-        reboot
     fi
 fi
 
@@ -60,10 +59,6 @@ setprop ctl.stop "tee-supplicant"
 echo "Set HDMI defaults"
 setprop persist.vendor.resolution.HDMI-A-0 1920x1200@60
 setprop persist.vendor.framebuffer.hdmi 1280x720
-
-echo "Setting up swap space."
-[ ! -f /mnt/pass_through/0/emulated/swap ] && dd if=/dev/zero of=/mnt/pass_through/0/emulated/swap bs=1M count=1200 && mkswap /mnt/pass_through/0/emulated/swap
-swapon /mnt/pass_through/0/emulated/swap -p 1
 
 echo "Maximizing screen brightness."
 settings put system screen_brightness 255
@@ -139,7 +134,5 @@ rm -rf /data/tmpsetup/*
 
 mkdir -p /data/setupcompleted
 sleep 4 && settings put system screen_off_timeout 240000 &
-
-setprop persist.sys.usb.config mtp,adb
 
 echo "All settings have been applied successfully."

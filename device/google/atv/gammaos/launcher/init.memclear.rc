@@ -1,8 +1,0 @@
-service drop_caches /system/bin/sh -c "sleep 30; memallocator; while true; do echo 3 > /proc/sys/vm/drop_caches; sleep 10; done"
-    class main
-    user root
-    group root
-    oneshot
-
-on property:init.svc.bootanim=stopped && property:sys.boot_completed=1
-    start drop_caches
