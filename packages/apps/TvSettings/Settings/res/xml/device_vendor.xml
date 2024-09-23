@@ -18,6 +18,12 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
                   xmlns:custom="http://schemas.android.com/apk/res-auto"
                   android:title="@string/device_pref_category_title">
+
+    <Preference
+        android:fragment="com.android.tv.settings.gammasystemtweaks.GammaSystemTweaksFragment"
+        android:icon="@drawable/ic_info_outline"
+        android:key="gamma_system_tweaks"
+        android:title="@string/gamma_system_tweaks_title"/>
     <Preference
         android:fragment="com.android.tv.settings.accessibility.AccessibilityFragment"
         android:icon="@drawable/ic_accessibility_new"
