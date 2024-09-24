@@ -2610,4 +2610,13 @@
     <string name="gamma_system_tweaks_title">GammaOS Core System Tweaks</string>
     <string name="gamma_system_tweaks_category">Settings</string>
 
+    <string name="mem_clear_title">Memory Clear</string>
+    <string name="mem_clear_summary">Enable or disable memory clear on low RAM devices.</string>
+
+    <string name="disable_32bit_mode_title">Disable 32-bit Mode</string>
+    <string name="disable_32bit_mode_summary">Disable 32-bit mode and run in 64-bit mode only</string>
+
+    <string name="disable_webview_title">Disable WebView</string>
+    <string name="disable_webview_summary">Disable the WebView component</string>
+
 </resources>

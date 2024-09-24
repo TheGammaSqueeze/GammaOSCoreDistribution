@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 The Android Open Source Project
+ * Copyright (C) 2024
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -11,46 +11,115 @@
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License
+ * limitations under the License.
  */
 
 package com.android.tv.settings.gammasystemtweaks;
 
 import android.os.Bundle;
+import android.util.Log;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 import com.android.tv.settings.SettingsPreferenceFragment;
 import com.android.tv.settings.R;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
- * The "GammaOS Core System Tweaks" screen in TV settings.
+ * Fragment to manage multiple system properties with toggle switches.
+ * Properties: sys.mem_clear, sys.disable_32bit_mode, sys.disable_webview
  */
 public class GammaSystemTweaksFragment extends SettingsPreferenceFragment {
 
-    public static GammaSystemTweaksFragment newInstance() {
-        return new GammaSystemTweaksFragment();
-    }
+    private static final String TAG = "GammaSystemTweaks";  // Tag for logging
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    // System properties we want to toggle
+    private static final String PROP_MEM_CLEAR = "sys.mem_clear";
+    private static final String PROP_DISABLE_32BIT_MODE = "sys.disable_32bit_mode";
+    private static final String PROP_DISABLE_WEBVIEW = "sys.disable_webview";
 
-        // Set the title of the fragment using the string resource
-        getActivity().setTitle(R.string.gamma_system_tweaks_title);
-    }
+    // Preference keys (matching the XML keys)
+    private static final String KEY_MEM_CLEAR = "mem_clear_toggle";
+    private static final String KEY_DISABLE_32BIT_MODE = "disable_32bit_mode_toggle";
+    private static final String KEY_DISABLE_WEBVIEW = "disable_webview_toggle";
+
+    // Switch preferences
+    private SwitchPreference memClearSwitch;
+    private SwitchPreference disable32BitModeSwitch;
+    private SwitchPreference disableWebviewSwitch;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        // Create a new PreferenceScreen programmatically
-        final PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(getContext());
-        setPreferenceScreen(screen);
+        // Load the preference layout (res/xml/gamma_system_tweaks.xml)
+        setPreferencesFromResource(R.xml.gamma_system_tweaks, rootKey);
 
-        // Create a new preference item
-        Preference helloWorldPreference = new Preference(getContext());
-        helloWorldPreference.setTitle("Hello, World!");
-        helloWorldPreference.setSummary("This is the only option available.");
+        // Find preferences by key
+        memClearSwitch = findPreference(KEY_MEM_CLEAR);
+        disable32BitModeSwitch = findPreference(KEY_DISABLE_32BIT_MODE);
+        disableWebviewSwitch = findPreference(KEY_DISABLE_WEBVIEW);
 
-        // Add the new preference to the screen
-        screen.addPreference(helloWorldPreference);
+        // Initialize the switch states based on the system properties
+        if (memClearSwitch != null) {
+            memClearSwitch.setChecked(getSystemProperty(PROP_MEM_CLEAR).equals("1"));
+            memClearSwitch.setOnPreferenceChangeListener((preference, newValue) -> {
+                setSystemProperty(PROP_MEM_CLEAR, (Boolean) newValue ? "1" : "0");
+                return true;
+            });
+        }
+
+        if (disable32BitModeSwitch != null) {
+            disable32BitModeSwitch.setChecked(getSystemProperty(PROP_DISABLE_32BIT_MODE).equals("1"));
+            disable32BitModeSwitch.setOnPreferenceChangeListener((preference, newValue) -> {
+                setSystemProperty(PROP_DISABLE_32BIT_MODE, (Boolean) newValue ? "1" : "0");
+                return true;
+            });
+        }
+
+        if (disableWebviewSwitch != null) {
+            disableWebviewSwitch.setChecked(getSystemProperty(PROP_DISABLE_WEBVIEW).equals("1"));
+            disableWebviewSwitch.setOnPreferenceChangeListener((preference, newValue) -> {
+                setSystemProperty(PROP_DISABLE_WEBVIEW, (Boolean) newValue ? "1" : "0");
+                return true;
+            });
+        }
+    }
+
+    /**
+     * Get the current value of a system property.
+     * 
+     * @param property The name of the system property.
+     * @return The current value of the property as a string.
+     */
+    private String getSystemProperty(String property) {
+        try {
+            Process process = Runtime.getRuntime().exec(new String[]{"getprop", property});
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            return reader.readLine().trim();
+        } catch (IOException e) {
+            Log.e(TAG, "Error retrieving system property: " + property, e);
+        }
+        return "0";  // Default to "0" if property doesn't exist or fails
+    }
+
+    /**
+     * Set a system property to a given value.
+     * 
+     * @param property The name of the system property.
+     * @param value The value to set for the property.
+     */
+    private void setSystemProperty(String property, String value) {
+        try {
+            Process process = new ProcessBuilder("setprop", property, value).start();
+            process.waitFor();  // Ensure the command completes
+            Log.d(TAG, "Set system property: " + property + " to " + value);
+        } catch (IOException | InterruptedException e) {
+            Log.e(TAG, "Error setting system property: " + property, e);
+        }
+    }
+
+    @Override
+    public int getPageId() {
+        return 0;  // Replace with the actual page ID if needed
     }
 }

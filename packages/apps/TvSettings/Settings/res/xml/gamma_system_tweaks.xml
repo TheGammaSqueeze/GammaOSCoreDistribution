@@ -1,0 +1,24 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Toggle for sys.mem_clear -->
+    <SwitchPreference
+        android:key="mem_clear_toggle"
+        android:title="@string/mem_clear_title"
+        android:summary="@string/mem_clear_summary"
+        android:defaultValue="false" />
+
+    <!-- Toggle for sys.disable_32bit_mode -->
+    <SwitchPreference
+        android:key="disable_32bit_mode_toggle"
+        android:title="@string/disable_32bit_mode_title"
+        android:summary="@string/disable_32bit_mode_summary"
+        android:defaultValue="false" />
+
+    <!-- Toggle for sys.disable_webview -->
+    <SwitchPreference
+        android:key="disable_webview_toggle"
+        android:title="@string/disable_webview_title"
+        android:summary="@string/disable_webview_summary"
+        android:defaultValue="false" />
+
+</PreferenceScreen>
