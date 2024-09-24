@@ -28,16 +28,16 @@ import java.io.InputStreamReader;
 
 /**
  * Fragment to manage multiple system properties with toggle switches.
- * Properties: sys.enable_mem_clear, sys.disable_32bit_mode, sys.disable_webview
+ * Properties: persist.sys.enable_mem_clear, persist.sys.disable_32bit_mode, persist.sys.disable_webview
  */
 public class GammaSystemTweaksFragment extends SettingsPreferenceFragment {
 
     private static final String TAG = "GammaSystemTweaks";  // Tag for logging
 
     // System properties we want to toggle
-    private static final String PROP_MEM_CLEAR = "sys.enable_mem_clear";
-    private static final String PROP_DISABLE_32BIT_MODE = "sys.disable_32bit_mode";
-    private static final String PROP_DISABLE_WEBVIEW = "sys.disable_webview";
+    private static final String PROP_MEM_CLEAR = "persist.sys.enable_mem_clear";
+    private static final String PROP_DISABLE_32BIT_MODE = "persist.sys.disable_32bit_mode";
+    private static final String PROP_DISABLE_WEBVIEW = "persist.sys.disable_webview";
 
     // Preference keys (matching the XML keys)
     private static final String KEY_MEM_CLEAR = "mem_clear_toggle";

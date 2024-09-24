@@ -78,6 +78,8 @@ import java.util.ArrayList;
 import java.util.List;
 import android.app.AlertDialog;
 import android.os.Looper;
+import android.os.Handler;
+import android.os.SystemProperties;
 import android.app.Activity;
 import android.widget.Toast;
 import android.os.BatteryManager;
@@ -338,15 +340,15 @@ private ActionsDialog createDialog() {
     }
 
     // GammaOS - Add our own shortcuts
+    mItems.add(getKillForegroundAppAction());
     mItems.add(getSettingsAction());
     mItems.add(getBrightnessOptionsAction());
-    mItems.add(getHomeAction());
     mItems.add(getControllerOptionsAction());
     mItems.add(getUSBOptionsAction());
     mItems.add(getPerformanceOptionsAction());
-    mItems.add(getKillForegroundAppAction());
     mItems.add(getKillBackgroundAppsAction());
     mItems.add(getKillAllAppsAction());
+    mItems.add(getHomeAction());
 
     // Override ActionsAdapter's getView method to set text color to white
     mAdapter = new ActionsAdapter(mContext, mItems,
@@ -699,17 +701,33 @@ private ActionsDialog createDialog() {
                     String foregroundProcess = taskInfo.get(0).topActivity.getPackageName(); // Get the package name of the top activity
                     try {
                         am.forceStopPackage(foregroundProcess);
-                        Toast.makeText(mContext, "Foreground app killed: " + foregroundProcess, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "Closed app: " + foregroundProcess, Toast.LENGTH_SHORT).show();
+
+                        // Set sys.mem_clear=1 and then reset to 0 after 1 second
+                        setMemoryClearProp();
+
                     } catch (Exception e) {
-                        Toast.makeText(mContext, "Failed to kill app due to: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(mContext, "Close app error: " + e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 } else {
                     Toast.makeText(mContext, "No foreground app found", Toast.LENGTH_SHORT).show();
                 }
             }
 
-            public boolean onLongPress() {
-                return false;
+            private void setMemoryClearProp() {
+                try {
+                    // Set sys.mem_clear to 1
+                    SystemProperties.set("sys.mem_clear", "1");
+                    Log.d(TAG, "sys.mem_clear set to 1");
+
+                    // Reset sys.mem_clear to 0 after 1 second
+                    mHandler.postDelayed(() -> {
+                        SystemProperties.set("sys.mem_clear", "0");
+                        Log.d(TAG, "sys.mem_clear reset to 0");
+                    }, 1000); // Delay of 1 second
+                } catch (Exception e) {
+                    Log.e(TAG, "Failed to set/reset sys.mem_clear", e);
+                }
             }
 
             @Override
