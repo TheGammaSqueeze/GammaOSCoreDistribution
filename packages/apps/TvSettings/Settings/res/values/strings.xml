@@ -2601,6 +2601,8 @@
     <string name="timeout_1_hour_summary">Set screen timeout to 1 hour.</string>
     <string name="timeout_2_hours_summary">Set screen timeout to 2 hours.</string>
 
+    <string name="screen_brightness">Screen Brightness</string>
+
     <string name="rk_hdmi_resolution_title">HDMI Resolution Settings</string>
     <string name="rk_hdmi_resolution_category">Select HDMI Resolution</string>
     <string name="rk_hdmi_resolution_default">Default</string>
