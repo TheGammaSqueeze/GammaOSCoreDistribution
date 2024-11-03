@@ -1284,6 +1284,12 @@
             </intent-filter>
         </activity>
 
+	<activity 
+            android:name=".device.displaysound.ColorControlActivity"
+	    android:exported="true" 
+	    android:theme="@android:style/Theme.Dialog">
+	</activity>
+
         <receiver
             android:name=".GlobalKeyReceiver"
             android:exported="true">

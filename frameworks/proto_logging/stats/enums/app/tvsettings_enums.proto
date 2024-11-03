@@ -417,6 +417,12 @@ enum ItemId {
     // TvSettings > Display & Sound > HDMI Resolution
     DISPLAY_SOUND_RK_HDMI_RESOLUTION = 0x15700000;
 
+    // TvSettings > Display & Sound > Color Settings
+    DISPLAY_SOUND_COLOR_SETTINGS = 0x15800000;
+
+    // TvSettings > Display & Sound > Color Settings > Saturation
+    DISPLAY_SOUND_COLOR_SETTINGS_SATURATION = 0x15810000;
+
     // TvSettings > Apps
     APPS = 0x16000000;
 

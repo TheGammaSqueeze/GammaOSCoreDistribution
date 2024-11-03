@@ -2609,6 +2609,12 @@
     <string name="rk_hdmi_resolution_1080p60">1920x1080@60hz</string>
     <string name="rk_hdmi_resolution_720p60">1280x720@60hz</string>
 
+    <string name="color_settings_title">Color Settings</string>
+    <string name="color_settings_category">Adjust display color settings</string>
+
+    <string name="screen_saturation_title">Screen Saturation Level</string>
+    <string name="screen_saturation_summary">Adjust the screen saturation (0.0 - 2.0, default: 1.0)</string>
+
     <string name="gamma_system_tweaks_title">GammaOS Core System Tweaks</string>
     <string name="gamma_system_tweaks_category">Settings</string>
 

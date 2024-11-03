@@ -1,0 +1,9 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <SeekBarPreference
+        android:key="color_settings"
+        android:title="@string/color_settings_title"
+        android:summary="@string/color_settings_category"
+        android:min="0"
+        android:max="20"
+        android:defaultValue="10"/>
+</PreferenceScreen>

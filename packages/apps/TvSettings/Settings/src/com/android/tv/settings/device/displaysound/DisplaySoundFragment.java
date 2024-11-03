@@ -61,6 +61,7 @@ public class DisplaySoundFragment extends SettingsPreferenceFragment implements
     private static final String KEY_FRAMERATE = "screen_timeout";
     private static final String KEY_RK_HDMI = "rk_hdmi_resolution";
     private static final String KEY_RESOLUTION_TITLE = "resolution_selection";
+    private static final String KEY_COLOR_SETTINGS = "color_settings";
 
     private AudioManager mAudioManager;
     private HdmiControlManager mHdmiControlManager;
@@ -232,4 +233,12 @@ public class DisplaySoundFragment extends SettingsPreferenceFragment implements
             getPreferenceScreen().removePreference(rkhdmiPreference);
         }
     }
+
+    private void removeColorSettingsPreference() {
+        Preference colorsettingsPreference = findPreference(KEY_COLOR_SETTINGS);
+        if (colorsettingsPreference != null) {
+            getPreferenceScreen().removePreference(colorsettingsPreference);
+        }
+    }
+
 }
