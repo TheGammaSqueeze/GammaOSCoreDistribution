@@ -96,6 +96,18 @@
             </intent-filter>
         </provider>
 
+        <!-- LiveDisplay settings (Display category) -->
+        <activity-alias
+            android:name=".livedisplay.LiveDisplaySettings"
+            android:exported="true"
+            android:label="@string/charging_control_title"
+            android:targetActivity="PartsActivity">
+            <intent-filter>
+                <action android:name="org.lineageos.lineageparts.CHARGING_CONTROL_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity-alias>
+
         <!-- Charging control settings (Battery category) -->
         <activity-alias
             android:name=".health.ChargingControlSettings"
