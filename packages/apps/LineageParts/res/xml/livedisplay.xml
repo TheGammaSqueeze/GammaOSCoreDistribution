@@ -5,8 +5,7 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-        android:key="livedisplay"
-        android:title="@*lineageos.platform:string/live_display_title">
+        android:key="livedisplay" >
 
     <!-- Color mode preview -->
     <com.android.settingslib.widget.LayoutPreference

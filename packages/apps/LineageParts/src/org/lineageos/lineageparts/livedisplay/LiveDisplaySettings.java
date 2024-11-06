@@ -1,6 +1,6 @@
 /*
- * SPDX-FileCopyrightText: 2015 The CyanogenMod Project
- * SPDX-FileCopyrightText: 2017-2023 The LineageOS Project
+ * SPDX-License-Identifier: 2015 The CyanogenMod Project
+ * SPDX-License-Identifier: 2017-2023 The LineageOS Project
  * SPDX-License-Identifier: Apache-2.0
  */
 package org.lineageos.lineageparts.livedisplay;
@@ -19,6 +19,8 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.internal.util.ArrayUtils;
 
@@ -107,6 +109,7 @@ public class LiveDisplaySettings extends SettingsPreferenceFragment implements S
     private LiveDisplayManager mLiveDisplayManager;
 
     private LineageHardwareManager mHardware;
+    private RecyclerView mRecyclerView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -241,6 +244,31 @@ public class LiveDisplaySettings extends SettingsPreferenceFragment implements S
                 !mHardware.isSupported(LineageHardwareManager.FEATURE_ANTI_FLICKER)) {
             liveDisplayPrefs.removePreference(antiFlicker);
         }
+
+        mRecyclerView = getListView();
+        if (mRecyclerView != null) {
+            setupFocusChangeListener();
+        }
+    }
+
+    private void setupFocusChangeListener() {
+        // Set layout manager and padding
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        int paddingBottom = getResources().getDimensionPixelSize(R.dimen.recycler_bottom_padding);
+        mRecyclerView.setPadding(0, 0, 0, paddingBottom);
+        mRecyclerView.setClipToPadding(false);
+
+        // Add global focus change listener to handle scrolling
+        mRecyclerView.getViewTreeObserver().addOnGlobalFocusChangeListener((oldFocus, newFocus) -> {
+            if (newFocus != null) {
+                int position = mRecyclerView.getChildAdapterPosition(newFocus);
+                if (position != RecyclerView.NO_POSITION) {
+                    // Scroll with an offset to ensure visibility
+                    ((LinearLayoutManager) mRecyclerView.getLayoutManager())
+                        .scrollToPositionWithOffset(position, paddingBottom);
+                }
+            }
+        });
     }
 
     @Override
@@ -457,3 +485,4 @@ public class LiveDisplaySettings extends SettingsPreferenceFragment implements S
         }
     };
 }
+
