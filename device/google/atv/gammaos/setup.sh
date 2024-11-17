@@ -39,7 +39,7 @@ sleep 1
 	settings put global transition_animation_scale 0
 	settings put global animator_duration_scale 0.5
 	settings put system sound_effects_enabled 0
-	setprop persist.sys.enable_mem_clear 1
+	setprop persist.sys.enable_mem_clear 0
 	setprop persist.sys.disable_32bit_mode 1
 	setprop persist.sys.disable_webview 1
 
@@ -98,6 +98,11 @@ pm install /system/etc/MiXplorer_v6.64.3-API29_B23090720.apk
 
 echo "Installing RetroArch."
 pm install /system/etc/RetroArch_aarch64.apk
+
+echo "Installing GammaOS Splash app."
+pm install /system/etc/gammaos-displayloading.apk
+appops set com.gammaos.displayloading SYSTEM_ALERT_WINDOW allow
+cmd deviceidle whitelist +com.gammaos.displayloading
 
 echo "Granting permissions to applications."
 appops set --uid org.plain.launcher MANAGE_EXTERNAL_STORAGE allow
