@@ -4927,4 +4927,5 @@
   <java-symbol type="layout" name="header_battery_status" />
   <java-symbol type="id" name="battery_percentage" />
   <java-symbol type="id" name="battery_icon" />
+  <java-symbol type="id" name="memory_usage" />
 </resources>

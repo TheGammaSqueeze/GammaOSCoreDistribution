@@ -4,15 +4,27 @@
     android:layout_height="wrap_content"
     android:padding="16dp"
     android:orientation="horizontal"
-    android:gravity="end">
+    android:gravity="center_vertical">
 
+    <!-- Memory usage text on the left -->
+    <TextView
+        android:id="@+id/memory_usage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="18sp"
+        android:layout_marginEnd="8dp"
+        android:textColor="#FFFFFF" />
+
+    <!-- Battery icon -->
     <ImageView
         android:id="@+id/battery_icon"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@drawable/ic_battery" 
-	android:tint="@android:color/white" />
+        android:src="@drawable/ic_battery"
+        android:tint="@android:color/white" />
 
+    <!-- Battery percentage text -->
     <TextView
         android:id="@+id/battery_percentage"
         android:layout_width="wrap_content"
