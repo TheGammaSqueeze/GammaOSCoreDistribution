@@ -201,6 +201,7 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
             mHandler.sendEmptyMessage(MESSAGE_SHOW);
         } else {
             handleShow();
+			updateMemoryUsage();  // Ensure memory update starts when showing the dialog
         }
     }
 
@@ -234,6 +235,9 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
                 mDialog.show();
                 mDialog.getWindow().getDecorView().setSystemUiVisibility(
                         View.STATUS_BAR_DISABLE_EXPAND);
+						
+        // Ensure memory update starts when dialog is shown
+            updateMemoryUsage();
             }
         }
     }
@@ -1016,32 +1020,32 @@ private ActionsDialog createDialog() {
         }
     }
 
-/** {@inheritDoc} */
-@Override
-public void onDismiss(DialogInterface dialog) {
-    if (mOnDismiss != null) {
-        mOnDismiss.run();
-    }
-    if (mShowSilentToggle) {
-        try {
-            mContext.unregisterReceiver(mRingerModeReceiver);
-        } catch (IllegalArgumentException ie) {
-            // This will catch the exception if the receiver was already unregistered or not registered.
-            Log.w(TAG, "Attempted to unregister the ringer mode receiver that was not registered", ie);
-        }
-    }
-    try {
-        mContext.unregisterReceiver(batteryInfoReceiver); // Unregister the battery info receiver
-    } catch (IllegalArgumentException ie) {
-        // This will catch the exception if the receiver was already unregistered or not registered.
-        Log.w(TAG, "Attempted to unregister the battery info receiver that was not registered", ie);
-    }
-	
-    if (mMemoryHandler != null && mMemoryUpdateRunnable != null) {
-        mMemoryHandler.removeCallbacks(mMemoryUpdateRunnable);
-    }
-	
-}
+	/** {@inheritDoc} */
+	@Override
+	public void onDismiss(DialogInterface dialog) {
+		if (mOnDismiss != null) {
+			mOnDismiss.run();
+		}
+		if (mShowSilentToggle) {
+			try {
+				mContext.unregisterReceiver(mRingerModeReceiver);
+			} catch (IllegalArgumentException ie) {
+				// This will catch the exception if the receiver was already unregistered or not registered.
+				Log.w(TAG, "Attempted to unregister the ringer mode receiver that was not registered", ie);
+			}
+		}
+		try {
+			mContext.unregisterReceiver(batteryInfoReceiver); // Unregister the battery info receiver
+		} catch (IllegalArgumentException ie) {
+			// This will catch the exception if the receiver was already unregistered or not registered.
+			Log.w(TAG, "Attempted to unregister the battery info receiver that was not registered", ie);
+		}
+		
+		if (mMemoryHandler != null && mMemoryUpdateRunnable != null) {
+			mMemoryHandler.removeCallbacks(mMemoryUpdateRunnable);
+		}
+		
+	}
 
     /** {@inheritDoc} */
     @Override
@@ -1276,59 +1280,65 @@ public void onDismiss(DialogInterface dialog) {
         mContext.registerReceiver(batteryInfoReceiver, filter);
     }
 
-    private void updateMemoryUsage() {
-        // Define the Runnable to update memory every second
-        mMemoryUpdateRunnable = new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    // Get memory information from /proc/meminfo
-                    int totalMem = extractMemoryValue("MemTotal:");
-                    int freeMem = extractMemoryValue("MemFree:");
-                    int buffers = extractMemoryValue("Buffers:");
-                    int cached = extractMemoryValue("Cached:");
-                    int sreclaimable = extractMemoryValue("SReclaimable:");
-                    int shmem = extractMemoryValue("Shmem:");
+	private void updateMemoryUsage() {
+		// Define the Runnable to update memory every second
+		mMemoryUpdateRunnable = new Runnable() {
+			@Override
+			public void run() {
+				try {
+					// Get memory information from /proc/meminfo
+					int totalMem = extractMemoryValue("MemTotal:");
+					int freeMem = extractMemoryValue("MemFree:");
+					int buffers = extractMemoryValue("Buffers:");
+					int cached = extractMemoryValue("Cached:");
+					int sreclaimable = extractMemoryValue("SReclaimable:");
+					int shmem = extractMemoryValue("Shmem:");
 
-                    int usedMemory = (totalMem - freeMem - buffers - (cached + sreclaimable - shmem)) / 1024; // in MB
-                    int totalMemory = totalMem / 1024; // in MB
-                    String memoryUsage = "Memory: " + usedMemory + "/" + totalMemory + " MB";
+					int usedMemory = (totalMem - freeMem - buffers - (cached + sreclaimable - shmem)) / 1024; // in MB
+					int totalMemory = totalMem / 1024; // in MB
+					String memoryUsage = "Memory: " + usedMemory + "/" + totalMemory + " MB";
 
-                    // Update UI
-                    TextView memoryText = headerView.findViewById(R.id.memory_usage);
-                    if (memoryText != null) {
-                        memoryText.setText(memoryUsage);
-                    } else {
-                        Log.e(TAG, "Memory TextView not found");
-                    }
-                } catch (Exception e) {
-                    Log.e(TAG, "Failed to update memory usage", e);
-                }
+					// Update UI on the main thread
+					mHandler.post(new Runnable() {
+						@Override
+						public void run() {
+							TextView memoryText = headerView.findViewById(R.id.memory_usage);
+							if (memoryText != null) {
+								memoryText.setText(memoryUsage);
+							} else {
+								Log.e(TAG, "Memory TextView not found");
+							}
+						}
+					});
 
-                // Post the Runnable again for repeated execution
-                mMemoryHandler.postDelayed(mMemoryUpdateRunnable, MEMORY_UPDATE_INTERVAL);
-            }
-        };
-        // Start the memory updates
-        mMemoryHandler.post(mMemoryUpdateRunnable);
-    }
+				} catch (Exception e) {
+					Log.e(TAG, "Failed to update memory usage", e);
+				}
 
-private int extractMemoryValue(String key) {
-    try {
-        java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader("/proc/meminfo"));
-        String line;
-        while ((line = reader.readLine()) != null) {
-            if (line.startsWith(key)) {
-                reader.close();
-                return Integer.parseInt(line.replaceAll("\\D+", ""));
-            }
-        }
-        reader.close();
-    } catch (Exception e) {
-        Log.e(TAG, "Failed to read memory info", e);
-    }
-    return 0;
-}
+				// Post the Runnable again for repeated execution
+				mMemoryHandler.postDelayed(mMemoryUpdateRunnable, MEMORY_UPDATE_INTERVAL);
+			}
+		};
+		// Start the memory updates
+		mMemoryHandler.post(mMemoryUpdateRunnable);
+	}
+
+	private int extractMemoryValue(String key) {
+		try {
+			java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader("/proc/meminfo"));
+			String line;
+			while ((line = reader.readLine()) != null) {
+				if (line.startsWith(key)) {
+					reader.close();
+					return Integer.parseInt(line.replaceAll("\\D+", ""));
+				}
+			}
+			reader.close();
+		} catch (Exception e) {
+			Log.e(TAG, "Failed to read memory info", e);
+		}
+		return 0;
+	}
 
     private BroadcastReceiver batteryInfoReceiver = new BroadcastReceiver() {
         @Override
