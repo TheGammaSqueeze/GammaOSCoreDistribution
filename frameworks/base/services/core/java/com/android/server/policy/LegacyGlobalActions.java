@@ -76,6 +76,7 @@ import com.android.server.policy.WindowManagerPolicy.WindowManagerFuncs;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
 import android.app.AlertDialog;
 import android.os.Looper;
 import android.os.Handler;
@@ -140,10 +141,13 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
     private final EmergencyAffordanceManager mEmergencyAffordanceManager;
 
     private View headerView; // Member variable to hold the header view
-	
+
     private Handler mMemoryHandler = new Handler(Looper.getMainLooper());
     private Runnable mMemoryUpdateRunnable;
     private static final int MEMORY_UPDATE_INTERVAL = 1000; // 1 second
+
+    private HashMap<Integer, Long> prevIdleTimes = new HashMap<>();
+    private HashMap<Integer, Long> prevTotalTimes = new HashMap<>();
 
     /**
      * @param context everything needs a context :(
@@ -201,7 +205,7 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
             mHandler.sendEmptyMessage(MESSAGE_SHOW);
         } else {
             handleShow();
-			updateMemoryUsage();  // Ensure memory update starts when showing the dialog
+                        updateMemoryAndCpuUsage();  // Ensure memory update starts when showing the dialog
         }
     }
 
@@ -235,9 +239,9 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
                 mDialog.show();
                 mDialog.getWindow().getDecorView().setSystemUiVisibility(
                         View.STATUS_BAR_DISABLE_EXPAND);
-						
+
         // Ensure memory update starts when dialog is shown
-            updateMemoryUsage();
+            updateMemoryAndCpuUsage();
             }
         }
     }
@@ -251,7 +255,7 @@ private ActionsDialog createDialog() {
     LayoutInflater inflater = LayoutInflater.from(mContext);
     headerView = inflater.inflate(R.layout.header_battery_status, null, false);
     updateBatteryStatus(); // Initial update
-	updateMemoryUsage();   // Start memory update
+        updateMemoryAndCpuUsage();   // Start memory update
 
     // Simple toggle style if there's no vibrator, otherwise use a tri-state
     if (!mHasVibrator) {
@@ -1020,32 +1024,32 @@ private ActionsDialog createDialog() {
         }
     }
 
-	/** {@inheritDoc} */
-	@Override
-	public void onDismiss(DialogInterface dialog) {
-		if (mOnDismiss != null) {
-			mOnDismiss.run();
-		}
-		if (mShowSilentToggle) {
-			try {
-				mContext.unregisterReceiver(mRingerModeReceiver);
-			} catch (IllegalArgumentException ie) {
-				// This will catch the exception if the receiver was already unregistered or not registered.
-				Log.w(TAG, "Attempted to unregister the ringer mode receiver that was not registered", ie);
-			}
-		}
-		try {
-			mContext.unregisterReceiver(batteryInfoReceiver); // Unregister the battery info receiver
-		} catch (IllegalArgumentException ie) {
-			// This will catch the exception if the receiver was already unregistered or not registered.
-			Log.w(TAG, "Attempted to unregister the battery info receiver that was not registered", ie);
-		}
-		
-		if (mMemoryHandler != null && mMemoryUpdateRunnable != null) {
-			mMemoryHandler.removeCallbacks(mMemoryUpdateRunnable);
-		}
-		
-	}
+        /** {@inheritDoc} */
+        @Override
+        public void onDismiss(DialogInterface dialog) {
+                if (mOnDismiss != null) {
+                        mOnDismiss.run();
+                }
+                if (mShowSilentToggle) {
+                        try {
+                                mContext.unregisterReceiver(mRingerModeReceiver);
+                        } catch (IllegalArgumentException ie) {
+                                // This will catch the exception if the receiver was already unregistered or not registered.
+                                Log.w(TAG, "Attempted to unregister the ringer mode receiver that was not registered", ie);
+                        }
+                }
+                try {
+                        mContext.unregisterReceiver(batteryInfoReceiver); // Unregister the battery info receiver
+                } catch (IllegalArgumentException ie) {
+                        // This will catch the exception if the receiver was already unregistered or not registered.
+                        Log.w(TAG, "Attempted to unregister the battery info receiver that was not registered", ie);
+                }
+
+                if (mMemoryHandler != null && mMemoryUpdateRunnable != null) {
+                        mMemoryHandler.removeCallbacks(mMemoryUpdateRunnable);
+                }
+
+        }
 
     /** {@inheritDoc} */
     @Override
@@ -1280,65 +1284,132 @@ private ActionsDialog createDialog() {
         mContext.registerReceiver(batteryInfoReceiver, filter);
     }
 
-	private void updateMemoryUsage() {
-		// Define the Runnable to update memory every second
-		mMemoryUpdateRunnable = new Runnable() {
-			@Override
-			public void run() {
-				try {
-					// Get memory information from /proc/meminfo
-					int totalMem = extractMemoryValue("MemTotal:");
-					int freeMem = extractMemoryValue("MemFree:");
-					int buffers = extractMemoryValue("Buffers:");
-					int cached = extractMemoryValue("Cached:");
-					int sreclaimable = extractMemoryValue("SReclaimable:");
-					int shmem = extractMemoryValue("Shmem:");
+        private void updateMemoryAndCpuUsage() {
+                // Define the Runnable to update memory and CPU usage every second
+                mMemoryUpdateRunnable = new Runnable() {
+                        @Override
+                        public void run() {
+                                try {
+                                        // Get memory information from /proc/meminfo
+                                        int totalMem = extractMemoryValue("MemTotal:");
+                                        int freeMem = extractMemoryValue("MemFree:");
+                                        int buffers = extractMemoryValue("Buffers:");
+                                        int cached = extractMemoryValue("Cached:");
+                                        int sreclaimable = extractMemoryValue("SReclaimable:");
+                                        int shmem = extractMemoryValue("Shmem:");
 
-					int usedMemory = (totalMem - freeMem - buffers - (cached + sreclaimable - shmem)) / 1024; // in MB
-					int totalMemory = totalMem / 1024; // in MB
-					String memoryUsage = "Memory: " + usedMemory + "/" + totalMemory + " MB";
+                                        int usedMemory = (totalMem - freeMem - buffers - (cached + sreclaimable - shmem)) / 1024; // in MB
+                                        int totalMemory = totalMem / 1024; // in MB
+                                        String memoryUsage = "MEM: " + usedMemory + "/" + totalMemory + " MB";
 
-					// Update UI on the main thread
-					mHandler.post(new Runnable() {
-						@Override
-						public void run() {
-							TextView memoryText = headerView.findViewById(R.id.memory_usage);
-							if (memoryText != null) {
-								memoryText.setText(memoryUsage);
-							} else {
-								Log.e(TAG, "Memory TextView not found");
-							}
-						}
-					});
+                                        // Calculate average CPU utilization across all cores
+                                        float avgCpuUsage = getAverageCpuUsage();
+                                        String cpuUsageText = String.format("CPU: %.1f%%", avgCpuUsage);
 
-				} catch (Exception e) {
-					Log.e(TAG, "Failed to update memory usage", e);
-				}
+                                        // Update UI on the main thread
+                                        mHandler.post(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                        TextView memoryText = headerView.findViewById(R.id.memory_usage);
+                                                        TextView cpuText = headerView.findViewById(R.id.cpu_usage);
 
-				// Post the Runnable again for repeated execution
-				mMemoryHandler.postDelayed(mMemoryUpdateRunnable, MEMORY_UPDATE_INTERVAL);
-			}
-		};
-		// Start the memory updates
-		mMemoryHandler.post(mMemoryUpdateRunnable);
-	}
+                                                        if (memoryText != null) {
+                                                                memoryText.setText(memoryUsage);
+                                                        } else {
+                                                                Log.e(TAG, "Memory TextView not found");
+                                                        }
 
-	private int extractMemoryValue(String key) {
-		try {
-			java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader("/proc/meminfo"));
-			String line;
-			while ((line = reader.readLine()) != null) {
-				if (line.startsWith(key)) {
-					reader.close();
-					return Integer.parseInt(line.replaceAll("\\D+", ""));
-				}
-			}
-			reader.close();
-		} catch (Exception e) {
-			Log.e(TAG, "Failed to read memory info", e);
-		}
-		return 0;
-	}
+                                                        if (cpuText != null) {
+                                                                cpuText.setText(cpuUsageText);
+                                                        } else {
+                                                                Log.e(TAG, "CPU TextView not found");
+                                                        }
+                                                }
+                                        });
+
+                                } catch (Exception e) {
+                                        Log.e(TAG, "Failed to update memory or CPU usage", e);
+                                }
+
+                                // Post the Runnable again for repeated execution
+                                mMemoryHandler.postDelayed(mMemoryUpdateRunnable, MEMORY_UPDATE_INTERVAL);
+                        }
+
+                                private float getAverageCpuUsage() {
+                                        try {
+                                                java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader("/proc/stat"));
+                                                String line;
+                                                long totalIdleTime = 0;
+                                                long totalTotalTime = 0;
+                                                int coreCount = 0;
+
+                                                while ((line = reader.readLine()) != null) {
+                                                        if (line.startsWith("cpu")) {
+                                                                // Skip the first line (aggregated CPU usage), and focus on individual cores
+                                                                if (line.startsWith("cpu ")) {
+                                                                        continue;
+                                                                }
+
+                                                                String[] tokens = line.split("\\s+");
+                                                                if (tokens.length < 8) {
+                                                                        continue; // Invalid line format, skip it
+                                                                }
+
+                                                                long idleTime = Long.parseLong(tokens[4]); // Idle time
+                                                                long totalTime = 0;
+
+                                                                for (int i = 1; i < tokens.length; i++) {
+                                                                        totalTime += Long.parseLong(tokens[i]);
+                                                                }
+
+                                                                // Calculate differences from the previous values for each core
+                                                                long prevIdle = prevIdleTimes.getOrDefault(coreCount, 0L);
+                                                                long prevTotal = prevTotalTimes.getOrDefault(coreCount, 0L);
+
+                                                                long diffIdle = idleTime - prevIdle;
+                                                                long diffTotal = totalTime - prevTotal;
+
+                                                                prevIdleTimes.put(coreCount, idleTime);
+                                                                prevTotalTimes.put(coreCount, totalTime);
+
+                                                                totalIdleTime += diffIdle;
+                                                                totalTotalTime += diffTotal;
+                                                                coreCount++;
+                                                        }
+                                                }
+                                                reader.close();
+
+                                                if (coreCount > 0 && totalTotalTime > 0) {
+                                                        return 100.0f * (totalTotalTime - totalIdleTime) / totalTotalTime;
+                                                }
+
+                                        } catch (Exception e) {
+                                                Log.e(TAG, "Failed to read CPU info", e);
+                                        }
+
+                                        return 0.0f;
+                                }
+                        };
+                                // Start the memory and CPU updates
+                mMemoryHandler.post(mMemoryUpdateRunnable);
+        }
+
+        private int extractMemoryValue(String key) {
+                try {
+                        java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader("/proc/meminfo"));
+                        String line;
+                        while ((line = reader.readLine()) != null) {
+                                if (line.startsWith(key)) {
+                                        reader.close();
+                                        return Integer.parseInt(line.replaceAll("\\D+", ""));
+                                }
+                        }
+                        reader.close();
+                } catch (Exception e) {
+                        Log.e(TAG, "Failed to read memory info", e);
+                }
+                return 0;
+        }
 
     private BroadcastReceiver batteryInfoReceiver = new BroadcastReceiver() {
         @Override

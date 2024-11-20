@@ -4928,4 +4928,5 @@
   <java-symbol type="id" name="battery_percentage" />
   <java-symbol type="id" name="battery_icon" />
   <java-symbol type="id" name="memory_usage" />
+  <java-symbol type="id" name="cpu_usage" />
 </resources>
