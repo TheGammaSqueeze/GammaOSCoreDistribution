@@ -1,4 +1,11 @@
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                  android:title="GammaOS Core System Tweaks">
+
+    <Preference
+        android:key="gammaos_settings_heading"
+        android:title="Changes the various GammaOS settings, applies on reboot."
+        android:selectable="false" />
 
     <!-- Toggle for sys.mem_clear -->
     <SwitchPreference

@@ -38,6 +38,7 @@ public class GammaSystemTweaksFragment extends SettingsPreferenceFragment {
     private static final String PROP_MEM_CLEAR = "persist.sys.enable_mem_clear";
     private static final String PROP_DISABLE_32BIT_MODE = "persist.sys.disable_32bit_mode";
     private static final String PROP_DISABLE_WEBVIEW = "persist.sys.disable_webview";
+    private static final String PROP_GAMMA_TWEAK_UPDATE = "sys.gamma_tweak_update";
 
     // Preference keys (matching the XML keys)
     private static final String KEY_MEM_CLEAR = "mem_clear_toggle";
@@ -72,6 +73,7 @@ public class GammaSystemTweaksFragment extends SettingsPreferenceFragment {
             disable32BitModeSwitch.setChecked(getSystemProperty(PROP_DISABLE_32BIT_MODE).equals("1"));
             disable32BitModeSwitch.setOnPreferenceChangeListener((preference, newValue) -> {
                 setSystemProperty(PROP_DISABLE_32BIT_MODE, (Boolean) newValue ? "1" : "0");
+                setSystemProperty(PROP_GAMMA_TWEAK_UPDATE, "1");  // Update tweak property
                 return true;
             });
         }
@@ -80,6 +82,7 @@ public class GammaSystemTweaksFragment extends SettingsPreferenceFragment {
             disableWebviewSwitch.setChecked(getSystemProperty(PROP_DISABLE_WEBVIEW).equals("1"));
             disableWebviewSwitch.setOnPreferenceChangeListener((preference, newValue) -> {
                 setSystemProperty(PROP_DISABLE_WEBVIEW, (Boolean) newValue ? "1" : "0");
+                setSystemProperty(PROP_GAMMA_TWEAK_UPDATE, "1");  // Update tweak property
                 return true;
             });
         }

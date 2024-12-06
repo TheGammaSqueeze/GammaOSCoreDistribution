@@ -64,10 +64,6 @@
         android:key="resolution_selection"
         android:persistent="true"
         android:title="@string/resolution_selection_title"/>
-    <Preference
-        android:key="advanced_display_settings"
-        android:title="@string/advanced_display_settings_title"
-        android:fragment="com.android.tv.settings.device.displaysound.AdvancedDisplayFragment" />
     <PreferenceCategory
         android:key="sound_category"
         android:title="@string/device_sound" />
