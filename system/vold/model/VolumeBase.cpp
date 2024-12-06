@@ -32,6 +32,62 @@ using android::base::StringPrintf;
 namespace android {
 namespace vold {
 
+// Begin global index manager logic
+
+static bool sIndicesInitialized = false;
+static std::set<int> sFreeIndices;
+static int sVolumeCount = 0;  // Track how many volumes are currently active.
+
+// Initialize with a range of indices
+static void initializeIndices() {
+    sFreeIndices.clear();
+    for (int i = 1; i <= 100; i++) {
+        sFreeIndices.insert(i);
+    }
+    sIndicesInitialized = true;
+}
+
+int VolumeBase::allocateIndexForVolume(const std::string& /*volId*/) {
+    if (!sIndicesInitialized) {
+        initializeIndices();
+    }
+
+    if (sFreeIndices.empty()) {
+        LOG(ERROR) << "No more free indices available!";
+        return -1;
+    }
+
+    int idx = *sFreeIndices.begin();
+    sFreeIndices.erase(sFreeIndices.begin());
+    return idx;
+}
+
+void VolumeBase::freeIndexForVolume(int idx) {
+    if (idx > 0 && idx <= 100) {
+        sFreeIndices.insert(idx);
+    }
+}
+
+// Reset indices when no volumes remain
+static void resetIndicesIfNoVolumes() {
+    if (sVolumeCount == 0) {
+        initializeIndices();
+    }
+}
+
+static void incrementVolumeCount() {
+    sVolumeCount++;
+}
+
+static void decrementVolumeCount() {
+    if (sVolumeCount > 0) {
+        sVolumeCount--;
+    }
+    resetIndicesIfNoVolumes();
+}
+
+// End global index manager logic
+
 VolumeBase::VolumeBase(Type type)
     : mType(type),
       mMountFlags(0),
@@ -191,6 +247,10 @@ status_t VolumeBase::create() {
     }
 
     setState(State::kUnmounted);
+
+    // Increment volume count when volume is created
+    incrementVolumeCount();
+
     return res;
 }
 
@@ -215,6 +275,10 @@ status_t VolumeBase::destroy() {
 
     status_t res = doDestroy();
     mCreated = false;
+
+    // Decrement volume count when volume is destroyed
+    decrementVolumeCount();
+
     return res;
 }
 

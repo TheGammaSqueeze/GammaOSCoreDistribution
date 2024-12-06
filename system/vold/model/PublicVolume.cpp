@@ -58,12 +58,25 @@ PublicVolume::PublicVolume(dev_t device, const std::string& fstype /* = "" */,
     mDevPath = StringPrintf("/dev/block/vold/%s", getId().c_str());
     mFuseMounted = false;
     mUseSdcardFs = IsSdcardfsUsed();
+
+    // Add a field to store allocated index
+    mAllocatedIndex = -1;
 }
 
 PublicVolume::~PublicVolume() {}
 
 status_t PublicVolume::readMetadata() {
     status_t res = ReadMetadataUntrusted(mDevPath, &mFsType, &mFsUuid, &mFsLabel);
+
+    // Allocate a new index and use a stable UUID
+    int idx = allocateIndexForVolume(getId());
+    if (idx == -1) {
+        idx = 999; // fallback if no index
+    }
+    mAllocatedIndex = idx;
+
+    // Generate a stable UUID-like string based on idx
+    mFsUuid = StringPrintf("00000000-0000-0000-0000-%012d", idx);
 
     auto listener = getListener();
     if (listener) listener->onVolumeMetadataChanged(getId(), mFsType, mFsUuid, mFsLabel);
@@ -99,6 +112,12 @@ status_t PublicVolume::doCreate() {
 }
 
 status_t PublicVolume::doDestroy() {
+    // Free index when the volume is destroyed
+    if (mAllocatedIndex != -1) {
+        freeIndexForVolume(mAllocatedIndex);
+        mAllocatedIndex = -1;
+    }
+
     return DestroyDeviceNode(mDevPath);
 }
 
@@ -111,11 +130,8 @@ status_t PublicVolume::doMount() {
         return -EIO;
     }
 
-    // Use UUID as stable name, if available
-    std::string stableName = getId();
-    if (!mFsUuid.empty()) {
-        stableName = mFsUuid;
-    }
+    // Use stable UUID internally for naming
+    std::string stableName = mFsUuid;
 
     mRawPath = StringPrintf("/mnt/media_rw/%s", stableName.c_str());
 
@@ -125,8 +141,18 @@ status_t PublicVolume::doMount() {
     mSdcardFsFull = StringPrintf("/mnt/runtime/full/%s", stableName.c_str());
 
     setInternalPath(mRawPath);
+
     if (isVisible) {
-        setPath(StringPrintf("/storage/%s", stableName.c_str()));
+        // Use stableName as user visible path
+        std::string userVisiblePath = StringPrintf("/storage/%s", stableName.c_str());
+
+        // Ensure the directory exists with appropriate permissions
+        if (fs_prepare_dir(userVisiblePath.c_str(), 0755, AID_ROOT, AID_ROOT)) {
+            PLOG(ERROR) << getId() << " failed to create user visible directory " << userVisiblePath;
+            return -errno;
+        }
+
+        setPath(userVisiblePath);
     } else {
         setPath(mRawPath);
     }
@@ -291,12 +317,7 @@ status_t PublicVolume::doUnmount() {
     KillProcessesUsingPath(getPath());
 
     if (mFuseMounted) {
-        // Use UUID as stable name, if available
-        std::string stableName = getId();
-        if (!mFsUuid.empty()) {
-            stableName = mFsUuid;
-        }
-
+        std::string stableName = mFsUuid;
         if (UnmountUserFuse(getMountUserId(), getInternalPath(), stableName) != OK) {
             PLOG(INFO) << "UnmountUserFuse failed on public fuse volume";
             return -errno;

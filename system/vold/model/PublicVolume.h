@@ -80,6 +80,8 @@ class PublicVolume : public VolumeBase {
     std::string mFsLabel;
     /* Mount options */
     std::string mMntOpts;
+    /* Stores the allocated index for this volume */
+    int mAllocatedIndex;
 
     DISALLOW_COPY_AND_ASSIGN(PublicVolume);
 };
