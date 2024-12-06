@@ -29,7 +29,7 @@ import lineageos.hardware.LiveDisplayManager;
  */
 public class DisplayColor extends CustomDialogPreference<AlertDialog> {
     private static final String TAG = "ColorCalibration";
-    private static final String SATURATION_PROPERTY = "persist.sys.display.saturation";
+    private static final String SATURATION_PROPERTY = "persist.sys.sf.color_saturation";
     private static final float DEFAULT_SATURATION = 1.0f;
 
     private final LiveDisplayManager mLiveDisplay;
