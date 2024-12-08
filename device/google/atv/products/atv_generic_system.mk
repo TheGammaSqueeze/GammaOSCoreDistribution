@@ -85,6 +85,7 @@ PRODUCT_COPY_FILES += \
 # GammaOS Customizations
 
 PRODUCT_COPY_FILES += \
+    device/google/atv/gammaos/utils/xz:system/bin/xz \
     device/google/atv/gammaos/rgp2xbox/rgp2xbox:system/bin/rgp2xbox \
     device/google/atv/gammaos/rgp2xbox/rgp2xbox.sh:system/bin/rgp2xbox.sh \
     device/google/atv/gammaos/rgp2xbox/setabxyvalue_default.sh:system/bin/setabxyvalue_default.sh \
@@ -132,8 +133,17 @@ PRODUCT_COPY_FILES += \
     device/google/atv/gammaos/launcher/PlainLauncher.apk:system/etc/PlainLauncher.apk \
     device/google/atv/gammaos/launcher/plainlauncher.tar.gz:system/etc/plainlauncher.tar.gz \
     device/google/atv/gammaos/launcher/MiXplorer_v6.64.3-API29_B23090720.apk:system/etc/MiXplorer_v6.64.3-API29_B23090720.apk \
-    device/google/atv/gammaos/launcher/AuroraStore-4.4.4-nightly-signed-09-05-2024.apk:system/etc/AuroraStore-4.4.4-nightly-signed-09-05-2024.apk \
+    device/google/atv/gammaos/launcher/AuroraStore_4.6.2.apk:system/etc/AuroraStore_4.6.2.apk \
     device/google/atv/gammaos/toast/gammaos-displayloading.apk:system/etc/gammaos-displayloading.apk \
+    device/google/atv/gammaos/daijisho/daijisho_408.tar.gz:system/etc/daijisho_408.tar.gz \
+    device/google/atv/gammaos/daijisho/daijisho.tar.gz:system/etc/daijisho.tar.gz \
+    device/google/atv/gammaos/toast/Toast.apk:system/etc/Toast.apk \
+    device/google/atv/gammaos/emulators/drastic.tar.gz:system/etc/drastic.tar.gz \
+    device/google/atv/gammaos/emulators/drastic_r2.6.0.4a.apk:system/etc/drastic_r2.6.0.4a.apk \
+    device/google/atv/gammaos/emulators/mupen64plusae.tar.gz:system/etc/mupen64plusae.tar.gz \
+    device/google/atv/gammaos/emulators/mupen64plusae_3.0.335.apk:system/etc/mupen64plusae_3.0.335.apk \
+    device/google/atv/gammaos/emulators/ppsspp.tar.gz:system/etc/ppsspp.tar.gz \
+    device/google/atv/gammaos/emulators/ppsspp_1.18.1.apk:system/etc/ppsspp_1.18.1.apk \
 
 # Enable dynamic partition size
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true

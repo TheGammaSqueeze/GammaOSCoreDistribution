@@ -5,6 +5,7 @@ if [ ! -d /data/setupcompleted ] && [ -z $(getprop persist.sys.device_provisione
     settings put system screen_off_timeout 1800000
     setenforce 0
     settings put secure navigation_mode 2
+    cmd bluetooth_manager disable
 
     echo "Installing Magisk."
     pm install /system/etc/magisk.apk
@@ -44,8 +45,5 @@ else
         sleep 1
         input keyevent 26 && sleep 5 && input keyevent 26
     fi
-
-    svc usb setFunctions mtp
-
 
 fi

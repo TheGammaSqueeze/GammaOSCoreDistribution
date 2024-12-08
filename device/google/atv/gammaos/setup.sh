@@ -39,9 +39,11 @@ sleep 1
 	settings put global transition_animation_scale 0
 	settings put global animator_duration_scale 0.5
 	settings put system sound_effects_enabled 0
-	setprop persist.sys.enable_mem_clear 0
+	setprop persist.sys.enable_mem_clear 1
 	setprop persist.sys.disable_32bit_mode 1
 	setprop persist.sys.disable_webview 1
+	setprop sys.gamma_tweak_update 1
+	cmd bluetooth_manager disable
 
 # Check if the device is Powkiddy RGB30v2 and switch to new boot image for RGB30 v2
 isrgb30=$(cat /proc/device-tree/model)
@@ -71,6 +73,8 @@ echo "Enabling developer settings and configuring system behaviors."
 settings put global development_settings_enabled 1
 settings put global stay_on_while_plugged_in 0
 settings put global mobile_data_always_on 0
+settings put global private_dns_mode "hostname"
+settinns put global private_dns_specifier "dns.adguard-dns.com"
 
 echo "Installing applications."
 mkdir -p /data/tmpsetup
@@ -90,8 +94,52 @@ tar -xvf /system/etc/plainlauncher.tar.gz -C /
 chown -R $launcheruser:$launchergroup /data/data/org.plain.launcher
 chown -R $launcheruser:ext_data_rw /sdcard/Android/data/org.plain.launcher
 
+echo "Installing drastic DS emulator."
+pm install /system/etc/drastic_r2.6.0.4a.apk
+launcheruser=$( stat -c "%U" /data/data/com.dsemu.drastic)
+launchergroup=$( stat -c "%G" /data/data/com.dsemu.drastic)
+tar -xvf /system/etc/drastic.tar.gz -C /
+chown -R $launcheruser:$launchergroup /data/data/com.dsemu.drastic
+
+echo "Installing M64Plus FZ N64 Emulator."
+pm install /system/etc/mupen64plusae_3.0.335.apk
+launcheruser=$( stat -c "%U" /data/data/org.mupen64plusae.v3.fzurita)
+launchergroup=$( stat -c "%G" /data/data/org.mupen64plusae.v3.fzurita)
+tar -xvf /system/etc/mupen64plusae.tar.gz -C /
+chown -R $launcheruser:$launchergroup /data/data/org.mupen64plusae.v3.fzurita
+pm grant org.mupen64plusae.v3.fzurita android.permission.POST_NOTIFICATIONS
+
+echo "Installing PPSSPP PSP emulator."
+pm install /system/etc/ppsspp_1.18.1.apk
+launcheruser=$( stat -c "%U" /data/data/org.ppsspp.ppsspp)
+launchergroup=$( stat -c "%G" /data/data/org.ppsspp.ppsspp)
+tar -xvf /system/etc/ppsspp.tar.gz -C /
+chown -R $launcheruser:$launchergroup /data/data/org.ppsspp.ppsspp
+rm -rf /sdcard/Android/data/org.ppsspp.ppsspp
+appops set --uid org.ppsspp.ppsspp MANAGE_EXTERNAL_STORAGE allow
+pm grant org.ppsspp.ppsspp android.permission.WRITE_EXTERNAL_STORAGE
+pm grant org.ppsspp.ppsspp android.permission.READ_EXTERNAL_STORAGE
+
+echo "Installing Daijisho."
+mkdir -p /sdcard/daijisho
+tar -xvf /system/etc/daijisho_408.tar.gz -C /sdcard/daijisho/
+cd /sdcard/daijisho/daijisho_408
+
+session_id=$(pm install-create -r | cut -d '[' -f2 | cut -d ']' -f1)
+for apk in *.apk; do
+    pm install-write $session_id $(basename $apk) $apk
+done
+pm install-commit $session_id
+
+cd /
+rm -rf /sdcard/daijisho
+launcheruser=$( stat -c "%U" /data/data/com.magneticchen.daijishou)
+launchergroup=$( stat -c "%G" /data/data/com.magneticchen.daijishou)
+tar -xvf /system/etc/daijisho.tar.gz -C /
+chown -R $launcheruser:$launchergroup /data/data/com.magneticchen.daijishou
+
 echo "Installing Aurora Store."
-pm install /system/etc/AuroraStore-4.4.4-nightly-signed-09-05-2024.apk
+pm install /system/etc/AuroraStore_4.6.2.apk
 
 echo "Installing MiXplorer."
 pm install /system/etc/MiXplorer_v6.64.3-API29_B23090720.apk
@@ -103,6 +151,7 @@ echo "Installing GammaOS Splash app."
 pm install /system/etc/gammaos-displayloading.apk
 appops set com.gammaos.displayloading SYSTEM_ALERT_WINDOW allow
 cmd deviceidle whitelist +com.gammaos.displayloading
+pm install system/etc/Toast.apk
 
 echo "Granting permissions to applications."
 appops set --uid org.plain.launcher MANAGE_EXTERNAL_STORAGE allow
@@ -128,7 +177,7 @@ chown -R $launcheruser:ext_data_rw /sdcard/Android/data/com.retroarch.aarch64
 isarc=$(cat /proc/device-tree/model)
 if [[ "$isarc" == *"Anbernic RG403H"* ]]; then
     echo "Setting up for Anbernic RG ARC."
-    tar -xvf /system/etc/retroarch64sdcard1-arc.tar.gz -C /
+    #tar -xvf /system/etc/retroarch64sdcard1-arc.tar.gz -C /
     chown -R $launcheruser:media_rw /sdcard/RetroArch
 fi
 
