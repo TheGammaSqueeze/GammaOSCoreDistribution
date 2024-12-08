@@ -3887,7 +3887,7 @@ public class MediaProvider extends ContentProvider {
             final String[] relativePath = values.getAsString(MediaColumns.RELATIVE_PATH).split("/");
             final String primary = extractTopLevelDir(relativePath);
             if (!validPath) {
-                validPath = containsIgnoreCase(allowedPrimary, primary);
+                validPath = true;  // Allow any directory
             }
 
             // Next, consider allowing paths when referencing a related item
@@ -3950,9 +3950,7 @@ public class MediaProvider extends ContentProvider {
 
             // Nothing left to check; caller can't use this path
             if (!validPath) {
-                throw new IllegalArgumentException(
-                        "Primary directory " + primary + " not allowed for " + uri
-                                + "; allowed directories are " + allowedPrimary);
+                Log.w(TAG, "Primary directory " + primary + " is not a predefined directory, but allowing access.");
             }
 
             boolean isFuseThread = isFuseThread();
@@ -9454,74 +9452,50 @@ public class MediaProvider extends ContentProvider {
     @Keep
     public int isDirAccessAllowedForFuse(@NonNull String path, int uid,
             @DirectoryAccessType int accessType) {
-        Preconditions.checkArgumentInRange(accessType, 1, DIRECTORY_ACCESS_FOR_DELETE,
-                "accessType");
+        Preconditions.checkArgumentInRange(accessType, 1, DIRECTORY_ACCESS_FOR_DELETE, "accessType");
 
         final boolean forRead = accessType == DIRECTORY_ACCESS_FOR_READ;
         final LocalCallingIdentity token =
                 clearLocalCallingIdentity(getCachedCallingIdentityForFuse(uid));
         PulledMetrics.logFileAccessViaFuse(getCallingUidOrSelf(), path);
         try {
+            // Allow all access to any path
             if ("/storage/emulated".equals(path)) {
-                return OsConstants.EPERM;
+                return 0; // Allow access
             }
+
+            // Bypass restrictions for Android/data or Android/obb paths
             if (isPrivatePackagePathNotAccessibleByCaller(path)) {
-                Log.e(TAG, "Can't access another app's external directory!");
-                return OsConstants.ENOENT;
+                Log.w(TAG, "Allowing access to another app's external directory.");
+                return 0; // Allow access
             }
 
             if (shouldBypassFuseRestrictions(/* forWrite= */ !forRead, path)) {
-                return 0;
+                return 0; // Allow unrestricted access
             }
 
-            // Do not allow apps that reach this point to access Android/data or Android/obb dirs.
-            // Creation should be via getContext().getExternalFilesDir() etc methods.
-            // Reads and writes on primary volumes should be via mount views of lowerfs for apps
-            // that get special access to these directories.
-            // Reads and writes on secondary volumes would be provided via an early return from
-            // shouldBypassFuseRestrictions above (again just for apps with special access).
+            // Remove restrictions for Android/data or Android/obb directories
             if (isDataOrObbPath(path)) {
-                return OsConstants.EACCES;
+                Log.w(TAG, "Allowing access to Android/data or Android/obb directories.");
+                return 0; // Allow access
             }
 
-            // Legacy apps that made is this far don't have the right storage permission and hence
-            // are not allowed to access anything other than their external app directory
+            // Allow legacy apps full access
             if (isCallingPackageRequestingLegacy()) {
-                return OsConstants.EACCES;
-            }
-            // This is a non-legacy app. Rest of the directories are generally writable
-            // except for non-default top-level directories.
-            if (!forRead) {
-                final String[] relativePath = sanitizePath(extractRelativePath(path));
-                if (relativePath.length == 0) {
-                    Log.e(TAG,
-                            "Directory update not allowed on invalid relative path for " + path);
-                    return OsConstants.EPERM;
-                }
-                final boolean isTopLevelDir =
-                        relativePath.length == 1 && TextUtils.isEmpty(relativePath[0]);
-                if (isTopLevelDir) {
-                    // We don't allow deletion of any top-level folders
-                    if (accessType == DIRECTORY_ACCESS_FOR_DELETE) {
-                        Log.e(TAG, "Deleting top level directories are not allowed!");
-                        return OsConstants.EACCES;
-                    }
-
-                    // We allow creating or writing to default top-level folders, but we don't
-                    // allow creation or writing to non-default top-level folders.
-                    if ((accessType == DIRECTORY_ACCESS_FOR_CREATE
-                            || accessType == DIRECTORY_ACCESS_FOR_WRITE)
-                            && FileUtils.isDefaultDirectoryName(extractDisplayName(path))) {
-                        return 0;
-                    }
-
-                    Log.e(TAG,
-                            "Creating or writing to a non-default top level directory is not "
-                                    + "allowed!");
-                    return OsConstants.EACCES;
-                }
+                Log.w(TAG, "Allowing legacy app unrestricted access.");
+                return 0; // Allow access
             }
 
+            // Allow creation, writing, and deletion of top-level directories
+            final String[] relativePath = sanitizePath(extractRelativePath(path));
+            final boolean isTopLevelDir =
+                    relativePath.length == 1 && TextUtils.isEmpty(relativePath[0]);
+            if (isTopLevelDir) {
+                Log.w(TAG, "Allowing operations on top-level directories: " + path);
+                return 0; // Allow unrestricted access
+            }
+
+            // Default: Allow access
             return 0;
         } finally {
             restoreLocalCallingIdentity(token);
