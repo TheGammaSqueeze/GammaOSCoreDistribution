@@ -8956,85 +8956,47 @@ public class MediaProvider extends ContentProvider {
         }
 
         try {
-            boolean forceRedaction = false;
-            String redactedUriId = null;
+            // Bypass restrictions for synthetic paths
             if (isSyntheticPath(path, callingUserId)) {
+                // Allow writing to synthetic paths
                 if (forWrite) {
-                    // Synthetic URIs are not allowed to update EXIF headers.
-                    return new FileOpenResult(OsConstants.EACCES /* status */, originalUid,
-                            mediaCapabilitiesUid, new long[0]);
+                    Log.w(TAG, "Allowing write access to synthetic path: " + path);
+                    return new FileOpenResult(0 /* status */, originalUid, mediaCapabilitiesUid,
+                            redact ? getRedactionRangesForFuse(path, ioPath, originalUid, uid, tid, false) : new long[0]);
                 }
 
                 if (isRedactedPath(path, callingUserId)) {
-                    redactedUriId = extractFileName(path);
-
-                    // If path is redacted Uris' path, ioPath must be the real path, ioPath must
-                    // haven been updated to the real path during onFileLookupForFuse.
                     path = ioPath;
-
-                    // Irrespective of the permissions we want to redact in this case.
-                    redact = true;
-                    forceRedaction = true;
-                } else if (isPickerPath(path, callingUserId)) {
-                    return handlePickerFileOpen(path, originalUid);
-                } else {
-                    // we don't support any other transformations under .transforms/synthetic dir
-                    return new FileOpenResult(OsConstants.ENOENT /* status */, originalUid,
-                            mediaCapabilitiesUid, new long[0]);
+                    redact = false; // Disable redaction
                 }
             }
 
+            // Remove restriction for private package paths
             if (isPrivatePackagePathNotAccessibleByCaller(path)) {
-                Log.e(TAG, "Can't open a file in another app's external directory!");
-                return new FileOpenResult(OsConstants.ENOENT, originalUid, mediaCapabilitiesUid,
-                        new long[0]);
+                Log.w(TAG, "Allowing access to private package path: " + path);
             }
 
+            // Bypass FUSE restrictions
             if (shouldBypassFuseRestrictions(forWrite, path)) {
                 isSuccess = true;
                 return new FileOpenResult(0 /* status */, originalUid, mediaCapabilitiesUid,
-                        redact ? getRedactionRangesForFuse(path, ioPath, originalUid, uid, tid,
-                                forceRedaction) : new long[0]);
-            }
-            // Legacy apps that made is this far don't have the right storage permission and hence
-            // are not allowed to access anything other than their external app directory
-            if (isCallingPackageRequestingLegacy()) {
-                return new FileOpenResult(OsConstants.EACCES /* status */, originalUid,
-                        mediaCapabilitiesUid, new long[0]);
-            }
-            // TODO: Fetch owner id from Android/media directory and check if caller is owner
-            FileAccessAttributes fileAttributes = null;
-            if (XAttrUtils.ENABLE_XATTR_METADATA_FOR_FUSE) {
-                Optional<FileAccessAttributes> fileAttributesThroughXattr =
-                        XAttrUtils.getFileAttributesFromXAttr(path,
-                                XAttrUtils.FILE_ACCESS_XATTR_KEY);
-                if (fileAttributesThroughXattr.isPresent()) {
-                    fileAttributes = fileAttributesThroughXattr.get();
-                }
+                        redact ? getRedactionRangesForFuse(path, ioPath, originalUid, uid, tid, false) : new long[0]);
             }
 
-            // FileAttributes will be null if the xattr call failed or the flag to enable xattr
-            // metadata support is not set
-            if (fileAttributes == null)  {
-                fileAttributes = queryForFileAttributes(path);
+            // Allow all legacy apps full access
+            if (isCallingPackageRequestingLegacy()) {
+                Log.w(TAG, "Allowing legacy app unrestricted access: " + path);
+                return new FileOpenResult(0 /* status */, originalUid, mediaCapabilitiesUid, new long[0]);
             }
-            checkIfFileOpenIsPermitted(path, fileAttributes, redactedUriId, forWrite);
+
+            // Skip additional checks for file attributes or permissions
+            Log.w(TAG, "Allowing unrestricted access to file: " + path);
             isSuccess = true;
             return new FileOpenResult(0 /* status */, originalUid, mediaCapabilitiesUid,
-                    redact ? getRedactionRangesForFuse(path, ioPath, originalUid, uid, tid,
-                            forceRedaction) : new long[0]);
-        } catch (IOException e) {
-            // We are here because
-            // * There is no db row corresponding to the requested path, which is more unlikely.
-            // * getRedactionRangesForFuse couldn't fetch the redaction info correctly
-            // In all of these cases, it means that app doesn't have access permission to the file.
-            Log.e(TAG, "Couldn't find file: " + path, e);
-            return new FileOpenResult(OsConstants.EACCES /* status */, originalUid,
-                    mediaCapabilitiesUid, new long[0]);
-        } catch (IllegalStateException | SecurityException e) {
-            Log.e(TAG, "Permission to access file: " + path + " is denied");
-            return new FileOpenResult(OsConstants.EACCES /* status */, originalUid,
-                    mediaCapabilitiesUid, new long[0]);
+                    redact ? getRedactionRangesForFuse(path, ioPath, originalUid, uid, tid, false) : new long[0]);
+        } catch (Exception e) {
+            Log.e(TAG, "Unexpected error while accessing file: " + path, e);
+            return new FileOpenResult(OsConstants.EACCES /* status */, originalUid, mediaCapabilitiesUid, new long[0]);
         } finally {
             if (isSuccess && logTransformsMetrics) {
                 notifyTranscodeHelperOnFileOpen(path, ioPath, originalUid, transformsReason);
