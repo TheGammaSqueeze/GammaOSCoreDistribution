@@ -152,12 +152,14 @@ pm install /system/etc/gammaos-displayloading.apk
 appops set com.gammaos.displayloading SYSTEM_ALERT_WINDOW allow
 cmd deviceidle whitelist +com.gammaos.displayloading
 pm install system/etc/Toast.apk
+pm grant bellavita.toast android.permission.POST_NOTIFICATIONS
 
 echo "Granting permissions to applications."
 appops set --uid org.plain.launcher MANAGE_EXTERNAL_STORAGE allow
 pm grant com.spocky.projengmenu android.permission.READ_TV_LISTINGS
 cmd notification allow_listener com.spocky.projengmenu/.services.notification.NotificationListener
-cmd package set-home-activity com.spocky.projengmenu/com.spocky.projengmenu.ui.home.MainActivity
+cmd package set-home-activity com.magneticchen.daijishou/.app.HomeActivity
+pm set-home-activity com.magneticchen.daijishou/.app.HomeActivity -user --user 0
 
 echo "Extracting and setting up ROMs."
 tar -xvf /system/etc/roms.tar.gz -C /
