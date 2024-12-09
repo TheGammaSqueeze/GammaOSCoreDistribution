@@ -155,9 +155,10 @@ class AppWarnings {
      * @param r activity record for which the warning may be displayed
      */
     public void showDeprecatedTargetDialogIfNeeded(ActivityRecord r) {
-        if (r.info.applicationInfo.targetSdkVersion < Build.VERSION.MIN_SUPPORTED_TARGET_SDK_INT) {
-            mUiHandler.showDeprecatedTargetDialog(r);
-        }
+        // Disable the deprecated target SDK warning entirely
+        // if (r.info.applicationInfo.targetSdkVersion < Build.VERSION.MIN_SUPPORTED_TARGET_SDK_INT) {
+        //     mUiHandler.showDeprecatedTargetDialog(r);
+        // }
     }
 
     /**
