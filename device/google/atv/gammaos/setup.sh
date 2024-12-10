@@ -179,8 +179,9 @@ chown -R $launcheruser:ext_data_rw /sdcard/Android/data/com.retroarch.aarch64
 isarc=$(cat /proc/device-tree/model)
 if [[ "$isarc" == *"Anbernic RG403H"* ]]; then
     echo "Setting up for Anbernic RG ARC."
-    #tar -xvf /system/etc/retroarch64sdcard1-arc.tar.gz -C /
+    tar -xvf /system/etc/retroarch64sdcard1-arc.tar.gz -C /
     chown -R $launcheruser:media_rw /sdcard/RetroArch
+    chown -R $launcheruser:ext_data_rw /sdcard/Android/data/com.retroarch.aarch64
 fi
 
 echo "Granting read/write permissions to RetroArch."
