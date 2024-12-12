@@ -193,6 +193,13 @@ tar -xvf /system/etc/retroarch64.tar.gz -C /
 chown -R $launcheruser:$launchergroup /data/data/com.retroarch.aarch64
 rm -rf /data/tmpsetup/*
 
+# Check if the device is Powkiddy RGB20 Pro, enable system sounds, avoids interference when no audio is being played
+isrgb20pro=$(cat /proc/device-tree/model)
+if [[ "$isrgb20pro" == *"Powkiddy RGB20 Pro aka wonderfully wacky unit"* ]]; then
+    settings put system sound_effects_enabled 1
+    rm /sdcard/RetroArch/config/global.slangp
+fi
+
 mkdir -p /data/setupcompleted
 sleep 4 && settings put system screen_off_timeout 240000 &
 
