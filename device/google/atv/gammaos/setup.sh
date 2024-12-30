@@ -39,10 +39,10 @@ sleep 1
 	settings put global transition_animation_scale 0
 	settings put global animator_duration_scale 0.5
 	settings put system sound_effects_enabled 0
-	setprop persist.sys.enable_mem_clear 1
-	setprop persist.sys.disable_32bit_mode 1
-	setprop persist.sys.disable_webview 1
-	setprop sys.gamma_tweak_update 1
+	setprop persist.sys.enable_mem_clear 0
+	setprop persist.sys.disable_32bit_mode 0
+	setprop persist.sys.disable_webview 0
+	setprop sys.gamma_tweak_update 0
 	cmd bluetooth_manager disable
 
 # Check if the device is Powkiddy RGB30v2 and switch to new boot image for RGB30 v2
