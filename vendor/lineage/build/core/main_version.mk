@@ -6,7 +6,7 @@ endif
 
 # LineageOS System Version
 ADDITIONAL_SYSTEM_PROPERTIES += \
-    ro.lineage.version=GammaOS_Core_Beta2 \
+    ro.lineage.version=GammaOS_Core_Beta3 \
     ro.lineage.releasetype=$(LINEAGE_BUILDTYPE) \
     ro.lineage.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
     ro.modversion=$(LINEAGE_VERSION) \

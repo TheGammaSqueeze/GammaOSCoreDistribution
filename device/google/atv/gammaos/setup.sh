@@ -41,7 +41,7 @@ sleep 1
 	settings put system sound_effects_enabled 0
 	setprop persist.sys.enable_mem_clear 1
 	setprop persist.sys.disable_32bit_mode 1
-	setprop persist.sys.disable_webview 1
+	setprop persist.sys.disable_webview 0
 	setprop sys.gamma_tweak_update 1
 	cmd bluetooth_manager disable
 
@@ -79,20 +79,20 @@ settinns put global private_dns_specifier "dns.adguard-dns.com"
 echo "Installing applications."
 mkdir -p /data/tmpsetup
 
-echo "Installing Projectivy Launcher."
-pm install /system/etc/projectivylauncher_4.36.apk
-launcheruser=$(stat -c "%U" /data/data/com.spocky.projengmenu)
-launchergroup=$(stat -c "%G" /data/data/com.spocky.projengmenu)
-tar -xvf /system/etc/com.spocky.projengmenu.data.tar.gz -C /
-chown -R $launcheruser:$launchergroup /data/data/com.spocky.projengmenu
+#echo "Installing Projectivy Launcher."
+#pm install /system/etc/projectivylauncher_4.36.apk
+#launcheruser=$(stat -c "%U" /data/data/com.spocky.projengmenu)
+#launchergroup=$(stat -c "%G" /data/data/com.spocky.projengmenu)
+#tar -xvf /system/etc/com.spocky.projengmenu.data.tar.gz -C /
+#chown -R $launcheruser:$launchergroup /data/data/com.spocky.projengmenu
 
-echo "Installing PlainLauncher."
-pm install /system/etc/PlainLauncher.apk
-launcheruser=$(stat -c "%U" /data/data/org.plain.launcher)
-launchergroup=$(stat -c "%G" /data/data/org.plain.launcher)
-tar -xvf /system/etc/plainlauncher.tar.gz -C /
-chown -R $launcheruser:$launchergroup /data/data/org.plain.launcher
-chown -R $launcheruser:ext_data_rw /sdcard/Android/data/org.plain.launcher
+#echo "Installing PlainLauncher."
+#pm install /system/etc/PlainLauncher.apk
+#launcheruser=$(stat -c "%U" /data/data/org.plain.launcher)
+#launchergroup=$(stat -c "%G" /data/data/org.plain.launcher)
+#tar -xvf /system/etc/plainlauncher.tar.gz -C /
+#chown -R $launcheruser:$launchergroup /data/data/org.plain.launcher
+#chown -R $launcheruser:ext_data_rw /sdcard/Android/data/org.plain.launcher
 
 echo "Installing drastic DS emulator."
 pm install /system/etc/drastic_r2.6.0.4a.apk
@@ -202,5 +202,7 @@ fi
 
 mkdir -p /data/setupcompleted
 sleep 4 && settings put system screen_off_timeout 240000 &
+
+rm /sdcard/RetroArch/config/global.slangp
 
 echo "All settings have been applied successfully."

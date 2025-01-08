@@ -1,7 +1,7 @@
 #!/system/bin/sh
 
 echo "performance" > /sys/class/devfreq/fde60000.gpu/governor
-echo "800000000" > /sys/class/devfreq/fde60000.gpu/min_freq
+echo "90000000" > /sys/class/devfreq/fde60000.gpu/min_freq
 echo "800000000" > /sys/class/devfreq/fde60000.gpu/max_freq
 echo "performance" > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
 echo "1992000" > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
