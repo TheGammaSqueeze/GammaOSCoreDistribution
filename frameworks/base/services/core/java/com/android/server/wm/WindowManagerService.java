@@ -5146,36 +5146,48 @@ public class WindowManagerService extends IWindowManager.Stub
     }
 
     public boolean detectSafeMode() {
-        // Still wait for input devices, just as in the original code
         if (!mInputManagerCallback.waitForInputDevicesReady(
                 INPUT_DEVICES_READY_FOR_SAFE_MODE_DETECTION_TIMEOUT_MILLIS)) {
             ProtoLog.w(WM_ERROR, "Devices still not ready after waiting %d"
-                    + " milliseconds before attempting to detect safe mode.",
+                            + " milliseconds before attempting to detect safe mode.",
                     INPUT_DEVICES_READY_FOR_SAFE_MODE_DETECTION_TIMEOUT_MILLIS);
         }
 
-        // Keep the SAFE_BOOT_DISALLOWED check if you want to respect that policy
-        // Or remove it if you don't care about the setting.
-        if (Settings.Global.getInt(mContext.getContentResolver(),
-                Settings.Global.SAFE_BOOT_DISALLOWED, 0) != 0) {
+        if (Settings.Global.getInt(
+                mContext.getContentResolver(), Settings.Global.SAFE_BOOT_DISALLOWED, 0) != 0) {
             return false;
         }
 
-        // Force Safe Mode OFF
-        mSafeMode = false;
-
-        // (Optional) Clear or ignore any safemode-related SystemProperties
-        // to avoid confusion in other parts of the system
-        SystemProperties.set(ShutdownThread.REBOOT_SAFEMODE_PROPERTY, "");
-        SystemProperties.set(ShutdownThread.RO_SAFEMODE_PROPERTY, "0");
-
-        // Log that you're forcing Safe Mode off
-        ProtoLog.i(WM_ERROR, "SAFE MODE forced disabled");
-
-        // Inform the policy
+        int menuState = mInputManager.getKeyCodeState(-1, InputDevice.SOURCE_ANY,
+                KeyEvent.KEYCODE_MENU);
+        int sState = mInputManager.getKeyCodeState(-1, InputDevice.SOURCE_ANY, KeyEvent.KEYCODE_S);
+        int dpadState = mInputManager.getKeyCodeState(-1, InputDevice.SOURCE_DPAD,
+                KeyEvent.KEYCODE_DPAD_CENTER);
+        int trackballState = mInputManager.getScanCodeState(-1, InputDevice.SOURCE_TRACKBALL,
+                InputManagerService.BTN_MOUSE);
+        int volumeDownState = mInputManager.getKeyCodeState(-1, InputDevice.SOURCE_ANY,
+                KeyEvent.KEYCODE_VOLUME_DOWN);
+        mSafeMode = menuState > 0 || sState > 0 || dpadState > 0 || trackballState > 0
+                || volumeDownState > 0;
+        try {
+            if (SystemProperties.getInt(ShutdownThread.REBOOT_SAFEMODE_PROPERTY, 0) != 0
+                    || SystemProperties.getInt(ShutdownThread.RO_SAFEMODE_PROPERTY, 0) != 0) {
+                mSafeMode = true;
+                SystemProperties.set(ShutdownThread.REBOOT_SAFEMODE_PROPERTY, "");
+            }
+        } catch (IllegalArgumentException e) {
+        }
+        if (mSafeMode) {
+            ProtoLog.i(WM_ERROR, "SAFE MODE ENABLED (menu=%d s=%d dpad=%d"
+                    + " trackball=%d)", menuState, sState, dpadState, trackballState);
+            // May already be set if (for instance) this process has crashed
+            if (SystemProperties.getInt(ShutdownThread.RO_SAFEMODE_PROPERTY, 0) == 0) {
+                SystemProperties.set(ShutdownThread.RO_SAFEMODE_PROPERTY, "1");
+            }
+        } else {
+            ProtoLog.i(WM_ERROR, "SAFE MODE not enabled");
+        }
         mPolicy.setSafeMode(mSafeMode);
-
-        // Return false, indicating safe mode is NOT enabled
         return mSafeMode;
     }
 
