@@ -21,6 +21,7 @@
 #include "TouchInputMapper.h"
 
 #include <ftl/enum.h>
+#include <cutils/properties.h>
 
 #include "CursorButtonAccumulator.h"
 #include "CursorScrollAccumulator.h"
@@ -182,6 +183,24 @@ TouchInputMapper::~TouchInputMapper() {}
 
 uint32_t TouchInputMapper::getSources() const {
     return mSource;
+}
+
+static int parsePrimaryTouchOrientationProp() {
+    // We'll read a string "ORIENTATION_0", "ORIENTATION_90", "ORIENTATION_180", "ORIENTATION_270"
+    // from the system property ro.input_flinger.primary_touch_orientation.
+    // If it's invalid or not set, we'll treat it like ORIENTATION_0.
+    char propValue[PROPERTY_VALUE_MAX];
+    property_get("ro.input_flinger.primary_touch_orientation", propValue, "");
+
+    if (!strcmp(propValue, "ORIENTATION_90")) {
+        return DISPLAY_ORIENTATION_90;
+    } else if (!strcmp(propValue, "ORIENTATION_180")) {
+        return DISPLAY_ORIENTATION_180;
+    } else if (!strcmp(propValue, "ORIENTATION_270")) {
+        return DISPLAY_ORIENTATION_270;
+    }
+    // Fallback
+    return DISPLAY_ORIENTATION_0;
 }
 
 void TouchInputMapper::populateDeviceInfo(InputDeviceInfo* info) {
@@ -1034,6 +1053,21 @@ void TouchInputMapper::configureInputDevice(nsecs_t when, bool* outResetNeeded) 
             mDisplayHeight = rawHeight;
             mInputDeviceOrientation = DISPLAY_ORIENTATION_0;
         }
+    }
+
+    // Override with ro.input_flinger.primary_touch_orientation after the viewport orientation is applied, but before finalize.
+    {
+        int systemPropOrientation = parsePrimaryTouchOrientationProp();
+        mInputDeviceOrientation =
+                (mInputDeviceOrientation + systemPropOrientation) % 4;
+				
+		// If the final orientation is 90 or 270, swap the width/height so
+		// that scaling and coordinate logic use (640x480) instead of (480x640).
+		if (mInputDeviceOrientation == DISPLAY_ORIENTATION_90 ||
+			mInputDeviceOrientation == DISPLAY_ORIENTATION_270) {
+			std::swap(mDisplayWidth, mDisplayHeight);
+			std::swap(mPhysicalWidth, mPhysicalHeight);
+		}
     }
 
     // If moving between pointer modes, need to reset some state.
