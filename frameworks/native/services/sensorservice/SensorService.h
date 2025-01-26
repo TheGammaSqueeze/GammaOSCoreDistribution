@@ -522,6 +522,10 @@ private:
     bool mLastReportedProxIsActive;
     // Listeners subscribed to receive updates on the proximity sensor active state.
     std::vector<sp<ProximityActiveListener>> mProximityActiveListeners;
+
+    // Used for sensor orientation
+    int mSensorOrientation;
+
 };
 
 } // namespace android

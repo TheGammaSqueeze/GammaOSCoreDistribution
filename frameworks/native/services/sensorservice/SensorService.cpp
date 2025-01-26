@@ -130,8 +130,12 @@ static bool isAutomotive() {
 }
 
 SensorService::SensorService()
-    : mInitCheck(NO_INIT), mSocketBufferSize(SOCKET_BUFFER_SIZE_NON_BATCHED),
-      mWakeLockAcquired(false), mLastReportedProxIsActive(false) {
+    : mInitCheck(NO_INIT),
+      mSocketBufferSize(SOCKET_BUFFER_SIZE_NON_BATCHED),
+      mWakeLockAcquired(false),
+      mLastReportedProxIsActive(false),
+      mSensorOrientation(0) // ADDED: initialize our orientation to 0 (no rotation).
+{
     mUidPolicy = new UidPolicy(this);
     mSensorPrivacyPolicy = new SensorPrivacyPolicy(this);
     mMicSensorPrivacyPolicy = new MicrophonePrivacyPolicy(this);
@@ -188,6 +192,23 @@ void SensorService::onFirstRef() {
     SensorDevice& dev(SensorDevice::getInstance());
 
     sHmacGlobalKeyIsValid = initializeHmacKey();
+
+    // ADDED CODE: parse ro.sensors.primary_sensor_orientation
+    {
+        char propValue[PROPERTY_VALUE_MAX];
+        property_get("ro.sensors.primary_sensor_orientation", propValue, "");
+        int orientation = 0;
+        if (!strcmp(propValue, "ORIENTATION_90")) {
+            orientation = 1;
+        } else if (!strcmp(propValue, "ORIENTATION_180")) {
+            orientation = 2;
+        } else if (!strcmp(propValue, "ORIENTATION_270")) {
+            orientation = 3;
+        }
+        // If none of the above, orientation remains 0 (no rotation)
+        mSensorOrientation = orientation;
+        ALOGI("SensorService: mSensorOrientation = %d", mSensorOrientation);
+    }
 
     if (dev.initCheck() == NO_ERROR) {
         sensor_t const* list;
@@ -951,6 +972,66 @@ void SensorService::cleanupAutoDisabledSensorLocked(const sp<SensorEventConnecti
    }
 }
 
+// ADDED CODE: helpers to rotate sensor events around Z-axis (like 0°, 90°, 180°, 270°).
+static void rotateXYZ(float& x, float& y, float& /*z*/, int orientation) {
+    float ox = x;
+    float oy = y;
+
+    switch (orientation) {
+        case 1: // 90 deg (clockwise)
+            x = -oy;
+            y = ox;
+            break;
+
+        case 2: // 180 deg
+            x = -ox;
+            y = -oy;
+            break;
+
+        case 3: // 270 deg (clockwise)
+            // Typically x = y; y = -x but with sign flips for device
+            // If up/down are still inverted, swap sign logic
+            x = oy;
+            y = -ox;
+            break;
+
+        default: // 0 or unknown => no rotation
+            break;
+    }
+}
+
+static void rotateSensorEventIfNeeded(sensors_event_t& event, int orientation) {
+    // If orientation=0, do nothing. 1=90°, 2=180°, 3=270°.
+    if (orientation == 0) {
+        return;
+    }
+    switch (event.type) {
+        // Accelerometer
+        case SENSOR_TYPE_ACCELEROMETER:
+        case SENSOR_TYPE_ACCELEROMETER_UNCALIBRATED:
+            rotateXYZ(event.acceleration.x, event.acceleration.y, event.acceleration.z,
+                      orientation);
+            break;
+
+        // Gyro
+        case SENSOR_TYPE_GYROSCOPE:
+        case SENSOR_TYPE_GYROSCOPE_UNCALIBRATED:
+            rotateXYZ(event.gyro.x, event.gyro.y, event.gyro.z, orientation);
+            break;
+
+        // Magnetometer or orientation-aware
+        case SENSOR_TYPE_MAGNETIC_FIELD:
+        case SENSOR_TYPE_MAGNETIC_FIELD_UNCALIBRATED:
+        case SENSOR_TYPE_ORIENTATION:
+            rotateXYZ(event.magnetic.x, event.magnetic.y, event.magnetic.z, orientation);
+            break;
+
+        default:
+            // No rotation for other sensor types
+            break;
+    }
+}
+
 bool SensorService::threadLoop() {
     ALOGD("nuSensorService thread starting...");
 
@@ -1052,6 +1133,13 @@ bool SensorService::threadLoop() {
                     // No heading accuracy. Set it to -1
                     mSensorEventBuffer[i].data[4] = -1;
                 }
+            }
+        }
+
+        // ADDED CODE: rotate sensor data if needed
+        if (mSensorOrientation != 0 && count > 0) {
+            for (int i = 0; i < count; i++) {
+                rotateSensorEventIfNeeded(mSensorEventBuffer[i], mSensorOrientation);
             }
         }
 
