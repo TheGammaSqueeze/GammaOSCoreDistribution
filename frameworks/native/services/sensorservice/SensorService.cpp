@@ -193,21 +193,48 @@ void SensorService::onFirstRef() {
 
     sHmacGlobalKeyIsValid = initializeHmacKey();
 
-    // ADDED CODE: parse ro.sensors.primary_sensor_orientation
+    // ADDED: Read per-sensor-type orientation properties instead of a single global value.
     {
         char propValue[PROPERTY_VALUE_MAX];
-        property_get("ro.sensors.primary_sensor_orientation", propValue, "");
-        int orientation = 0;
+
+        // Read accelerometer orientation property.
+        property_get("ro.sensors.accelerometer_orientation", propValue, "ORIENTATION_0");
+        int accelOrient = 0;
         if (!strcmp(propValue, "ORIENTATION_90")) {
-            orientation = 1;
+            accelOrient = 1;
         } else if (!strcmp(propValue, "ORIENTATION_180")) {
-            orientation = 2;
+            accelOrient = 2;
         } else if (!strcmp(propValue, "ORIENTATION_270")) {
-            orientation = 3;
+            accelOrient = 3;
         }
-        // If none of the above, orientation remains 0 (no rotation)
-        mSensorOrientation = orientation;
-        ALOGI("SensorService: mSensorOrientation = %d", mSensorOrientation);
+        mAccelerometerOrientation = accelOrient;
+        ALOGI("SensorService: mAccelerometerOrientation = %d", mAccelerometerOrientation);
+
+        // Read gyroscope orientation property.
+        property_get("ro.sensors.gyroscope_orientation", propValue, "ORIENTATION_0");
+        int gyroOrient = 0;
+        if (!strcmp(propValue, "ORIENTATION_90")) {
+            gyroOrient = 1;
+        } else if (!strcmp(propValue, "ORIENTATION_180")) {
+            gyroOrient = 2;
+        } else if (!strcmp(propValue, "ORIENTATION_270")) {
+            gyroOrient = 3;
+        }
+        mGyroscopeOrientation = gyroOrient;
+        ALOGI("SensorService: mGyroscopeOrientation = %d", mGyroscopeOrientation);
+
+        // Read magnetometer orientation property.
+        property_get("ro.sensors.magnetometer_orientation", propValue, "ORIENTATION_0");
+        int magOrient = 0;
+        if (!strcmp(propValue, "ORIENTATION_90")) {
+            magOrient = 1;
+        } else if (!strcmp(propValue, "ORIENTATION_180")) {
+            magOrient = 2;
+        } else if (!strcmp(propValue, "ORIENTATION_270")) {
+            magOrient = 3;
+        }
+        mMagnetometerOrientation = magOrient;
+        ALOGI("SensorService: mMagnetometerOrientation = %d", mMagnetometerOrientation);
     }
 
     if (dev.initCheck() == NO_ERROR) {
@@ -1136,10 +1163,33 @@ bool SensorService::threadLoop() {
             }
         }
 
-        // ADDED CODE: rotate sensor data if needed
-        if (mSensorOrientation != 0 && count > 0) {
+        // ADDED CODE: rotate sensor events if needed based on sensor type.
+        if (count > 0) {
             for (int i = 0; i < count; i++) {
-                rotateSensorEventIfNeeded(mSensorEventBuffer[i], mSensorOrientation);
+                switch (mSensorEventBuffer[i].type) {
+                    case SENSOR_TYPE_ACCELEROMETER:
+                    case SENSOR_TYPE_ACCELEROMETER_UNCALIBRATED:
+                        if (mAccelerometerOrientation != 0) {
+                            rotateSensorEventIfNeeded(mSensorEventBuffer[i], mAccelerometerOrientation);
+                        }
+                        break;
+                    case SENSOR_TYPE_GYROSCOPE:
+                    case SENSOR_TYPE_GYROSCOPE_UNCALIBRATED:
+                        if (mGyroscopeOrientation != 0) {
+                            rotateSensorEventIfNeeded(mSensorEventBuffer[i], mGyroscopeOrientation);
+                        }
+                        break;
+                    case SENSOR_TYPE_MAGNETIC_FIELD:
+                    case SENSOR_TYPE_MAGNETIC_FIELD_UNCALIBRATED:
+                    case SENSOR_TYPE_ORIENTATION:
+                        if (mMagnetometerOrientation != 0) {
+                            rotateSensorEventIfNeeded(mSensorEventBuffer[i], mMagnetometerOrientation);
+                        }
+                        break;
+                    default:
+                        // No rotation for other sensor types
+                        break;
+                }
             }
         }
 

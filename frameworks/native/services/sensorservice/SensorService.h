@@ -524,7 +524,9 @@ private:
     std::vector<sp<ProximityActiveListener>> mProximityActiveListeners;
 
     // Used for sensor orientation
-    int mSensorOrientation;
+    int mAccelerometerOrientation;
+    int mGyroscopeOrientation;
+    int mMagnetometerOrientation;
 
 };
 
