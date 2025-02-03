@@ -133,7 +133,7 @@ PRODUCT_COPY_FILES += \
     device/google/atv/gammaos/daijisho/daijisho_408.tar.gz:system/etc/daijisho_408.tar.gz \
     device/google/atv/gammaos/daijisho/daijisho.tar.xz:system/etc/daijisho.tar.xz \
     device/google/atv/gammaos/toast/Toast.apk:system/etc/Toast.apk \
-    device/google/atv/gammaos/emulators/drastic.tar.xz:system/etc/drastic.tar.xz \
+    device/google/atv/gammaos/emulators/drastic.tar.gz:system/etc/drastic.tar.gz \
     device/google/atv/gammaos/emulators/drastic_r2.6.0.4a.apk:system/etc/drastic_r2.6.0.4a.apk \
     device/google/atv/gammaos/emulators/mupen64plusae.tar.gz:system/etc/mupen64plusae.tar.gz \
     device/google/atv/gammaos/emulators/mupen64plusae_3.0.335.apk:system/etc/mupen64plusae_3.0.335.apk \
