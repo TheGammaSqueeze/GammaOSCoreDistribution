@@ -39,14 +39,19 @@ if [ ! -d /data/setupcompleted ] && [ -z $(getprop persist.sys.device_provisione
     pm install-commit $session_id
 
     ime enable com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME
-
     ime set com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME
 
     svc usb setFunctions mtp
 
+    ime enable --user 0 com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME && \
+    ime set --user 0 com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME
+
 else
     setenforce 0
     setprop ctl.stop "tee-supplicant"
+
+    ime enable --user 0 com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME && \
+    ime set --user 0 com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME
 
     # Retrieve the value of the Android property
     sleep 10

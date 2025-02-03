@@ -86,13 +86,8 @@ session_id=$(pm install-create -r | cut -d '[' -f2 | cut -d ']' -f1)
 pm install-commit $session_id && \
 ime enable com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME && \
 ime set com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME
-
-echo "Installing drastic DS emulator." && \
-pm install /system/etc/drastic_r2.6.0.4a.apk && \
-launcheruser=$( stat -c "%U" /data/data/com.dsemu.drastic) && \
-launchergroup=$( stat -c "%G" /data/data/com.dsemu.drastic) && \
-tar -xvf /system/etc/drastic.tar.gz -C / && \
-chown -R $launcheruser:$launchergroup /data/data/com.dsemu.drastic
+cd /
+rm -rf /sdcard/gboard
 
 echo "Installing flycast DC emulator." && \
 pm install /system/etc/flycast-release.apk && \
@@ -120,6 +115,13 @@ rm -rf /sdcard/Android/data/org.ppsspp.ppsspp && \
 appops set --uid org.ppsspp.ppsspp MANAGE_EXTERNAL_STORAGE allow && \
 pm grant org.ppsspp.ppsspp android.permission.WRITE_EXTERNAL_STORAGE && \
 pm grant org.ppsspp.ppsspp android.permission.READ_EXTERNAL_STORAGE
+
+echo "Installing drastic DS emulator."
+pm install /system/etc/drastic_r2.6.0.4a.apk
+launcheruser=$( stat -c "%U" /data/data/com.dsemu.drastic)
+launchergroup=$( stat -c "%G" /data/data/com.dsemu.drastic)
+tar -xvf /system/etc/drastic.tar.gz -C /
+chown -R $launcheruser:$launchergroup /data/data/com.dsemu.drastic
 
 echo "Installing Daijisho." && \
 mkdir -p /sdcard/daijisho && \
@@ -189,5 +191,8 @@ mkdir -p /data/setupcompleted
 sleep 4
 settings put system screen_off_timeout 240000
 rm /sdcard/RetroArch/config/global.slangp
+
+ime enable --user 0 com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME && \
+ime set --user 0 com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME
 
 echo "All settings have been applied successfully."
