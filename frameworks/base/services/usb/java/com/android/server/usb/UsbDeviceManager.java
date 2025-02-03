@@ -1436,7 +1436,7 @@ public class UsbDeviceManager implements ActivityTaskManagerInternal.ScreenObser
             // if ADB is enabled, reset functions to ADB
             // else enable MTP as usual.
             if (isAdbEnabled()) {
-                return UsbManager.FUNCTION_ADB;
+                return UsbManager.FUNCTION_MTP | UsbManager.FUNCTION_ADB;
             } else {
                 return UsbManager.FUNCTION_MTP;
             }

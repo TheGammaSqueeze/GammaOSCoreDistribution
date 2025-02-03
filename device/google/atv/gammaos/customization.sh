@@ -1,7 +1,6 @@
 #!/system/bin/sh
 
 if [ ! -d /data/setupcompleted ] && [ -z $(getprop persist.sys.device_provisioned) ]; then
-    wm density 137
     settings put system screen_off_timeout 1800000
     setenforce 0
     settings put secure navigation_mode 2
@@ -30,6 +29,21 @@ if [ ! -d /data/setupcompleted ] && [ -z $(getprop persist.sys.device_provisione
         input keyevent 26 && sleep 5 && input keyevent 26
     fi
 
+    tar -xvf /system/etc/gboard.tar.gz -C /
+    cd /sdcard/gboard/
+
+    session_id=$(pm install-create -r | cut -d '[' -f2 | cut -d ']' -f1)
+    for apk in *.apk; do
+        pm install-write $session_id $(basename $apk) $apk
+    done
+    pm install-commit $session_id
+
+    ime enable com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME
+
+    ime set com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME
+
+    svc usb setFunctions mtp
+
 else
     setenforce 0
     setprop ctl.stop "tee-supplicant"
@@ -45,5 +59,7 @@ else
         sleep 1
         input keyevent 26 && sleep 5 && input keyevent 26
     fi
+
+    svc usb setFunctions mtp
 
 fi

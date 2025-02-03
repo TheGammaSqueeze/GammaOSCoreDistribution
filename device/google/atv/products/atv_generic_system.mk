@@ -119,31 +119,29 @@ PRODUCT_COPY_FILES += \
     device/google/atv/gammaos/magisk/magisk.apk:system/etc/magisk.apk \
     device/google/atv/gammaos/magisk/magisk.tar.gz:system/etc/magisk.tar.gz \
     device/google/atv/gammaos/retroarch/RetroArch_aarch64.apk:system/etc/RetroArch_aarch64.apk \
-    device/google/atv/gammaos/retroarch/retroarch64.tar.gz:system/etc/retroarch64.tar.gz \
-    device/google/atv/gammaos/retroarch/retroarch64sdcard.tar.gz:system/etc/retroarch64sdcard.tar.gz \
+    device/google/atv/gammaos/retroarch/retroarch.tar.xz:system/etc/retroarch.tar.xz \
     device/google/atv/gammaos/retroarch/retroarch64sdcard1-arc.tar.gz:system/etc/retroarch64sdcard1-arc.tar.gz \
-    device/google/atv/gammaos/retroarch/retroarch64sdcard2.tar.gz:system/etc/retroarch64sdcard2.tar.gz \
-    device/google/atv/gammaos/retroarch/roms.tar.gz:system/etc/roms.tar.gz \
-    device/google/atv/gammaos/launcher/projectivylauncher_4.36.apk:system/etc/projectivylauncher_4.36.apk \
-    device/google/atv/gammaos/launcher/com.spocky.projengmenu.data.tar.gz:system/etc/com.spocky.projengmenu.data.tar.gz \
+    device/google/atv/gammaos/retroarch/roms.tar.xz:system/etc/roms.tar.xz \
     device/google/atv/gammaos/hdmiaudio/silent.mp3:system/etc/silent.mp3 \
     device/google/atv/gammaos/hdmiaudio/hdmiaudio.sh:system/bin/hdmiaudio.sh \
     device/google/atv/gammaos/rgb30/rgb30_v2_boot.zip:system/etc/rgb30_v2_boot.zip \
     device/google/atv/gammaos/setup.sh:system/bin/setup.sh \
-    device/google/atv/gammaos/launcher/PlainLauncher.apk:system/etc/PlainLauncher.apk \
-    device/google/atv/gammaos/launcher/plainlauncher.tar.gz:system/etc/plainlauncher.tar.gz \
     device/google/atv/gammaos/launcher/MiXplorer_v6.64.3-API29_B23090720.apk:system/etc/MiXplorer_v6.64.3-API29_B23090720.apk \
     device/google/atv/gammaos/launcher/AuroraStore_4.6.2.apk:system/etc/AuroraStore_4.6.2.apk \
+    device/google/atv/gammaos/launcher/aurorastore.tar.gz:system/etc/aurorastore.tar.gz \
     device/google/atv/gammaos/toast/gammaos-displayloading.apk:system/etc/gammaos-displayloading.apk \
     device/google/atv/gammaos/daijisho/daijisho_408.tar.gz:system/etc/daijisho_408.tar.gz \
-    device/google/atv/gammaos/daijisho/daijisho.tar.gz:system/etc/daijisho.tar.gz \
+    device/google/atv/gammaos/daijisho/daijisho.tar.xz:system/etc/daijisho.tar.xz \
     device/google/atv/gammaos/toast/Toast.apk:system/etc/Toast.apk \
-    device/google/atv/gammaos/emulators/drastic.tar.gz:system/etc/drastic.tar.gz \
+    device/google/atv/gammaos/emulators/drastic.tar.xz:system/etc/drastic.tar.xz \
     device/google/atv/gammaos/emulators/drastic_r2.6.0.4a.apk:system/etc/drastic_r2.6.0.4a.apk \
     device/google/atv/gammaos/emulators/mupen64plusae.tar.gz:system/etc/mupen64plusae.tar.gz \
     device/google/atv/gammaos/emulators/mupen64plusae_3.0.335.apk:system/etc/mupen64plusae_3.0.335.apk \
-    device/google/atv/gammaos/emulators/ppsspp.tar.gz:system/etc/ppsspp.tar.gz \
+    device/google/atv/gammaos/emulators/ppsspp.tar.xz:system/etc/ppsspp.tar.xz \
     device/google/atv/gammaos/emulators/ppsspp_1.18.1.apk:system/etc/ppsspp_1.18.1.apk \
+    device/google/atv/gammaos/emulators/flycast-release.apk:system/etc/flycast-release.apk \
+    device/google/atv/gammaos/emulators/flycast.tar.xz:system/etc/flycast.tar.xz \
+    device/google/atv/gammaos/launcher/gboard.tar.gz:system/etc/gboard.tar.gz \
 
 # Enable dynamic partition size
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
