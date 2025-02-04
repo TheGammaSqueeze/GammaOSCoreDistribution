@@ -75,26 +75,15 @@ settings put global private_dns_specifier "dns.adguard-dns.com"
 echo "Installing applications."
 mkdir -p /data/tmpsetup
 
-tar -xvf /system/etc/gboard.tar.gz -C /
-cd /sdcard/gboard/
-
-echo "Installing GBoard."
-session_id=$(pm install-create -r | cut -d '[' -f2 | cut -d ']' -f1)
-    for apk in *.apk; do
-        pm install-write $session_id $(basename $apk) $apk
-    done
-pm install-commit $session_id && \
-ime enable com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME && \
-ime set com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME
-cd /
-rm -rf /sdcard/gboard
+echo "Installing MiXplorer."
+pm install /system/etc/MiXplorer_v6.64.3-API29_B23090720.apk
 
 echo "Installing flycast DC emulator." && \
 pm install /system/etc/flycast-release.apk && \
 launcheruser=$( stat -c "%U" /data/data/com.flycast.emulator) && \
 launchergroup=$( stat -c "%G" /data/data/com.flycast.emulator) && \
 tar -xJvf /system/etc/flycast.tar.xz -P -C / && \
-chown -R $launcheruser:$launchergroup /data/data/com.dsemu.drastic && \
+chown -R $launcheruser:$launchergroup /data/data/com.flycast.emulator && \
 chown -R $launcheruser:ext_data_rw /sdcard/Android/data/com.flycast.emulator
 
 echo "Installing M64Plus FZ N64 Emulator." && \
@@ -148,9 +137,6 @@ launchergroup=$( stat -c "%G" /data/data/com.aurora.store) && \
 tar -xvf /system/etc/aurorastore.tar.gz -C / && \
 chown -R $launcheruser:$launchergroup /data/data/com.aurora.store
 
-echo "Installing MiXplorer."
-pm install /system/etc/MiXplorer_v6.64.3-API29_B23090720.apk
-
 echo "Installing RetroArch." && \
 pm install /system/etc/RetroArch_aarch64.apk && \
 launcheruser=$(stat -c "%U" /data/data/com.retroarch.aarch64) && \
@@ -181,7 +167,9 @@ cmd package set-home-activity com.magneticchen.daijishou/.app.HomeActivity
 pm set-home-activity com.magneticchen.daijishou/.app.HomeActivity -user --user 0
 
 echo "Extracting and setting up ROMs."
-tar -xJvf /system/etc/roms.tar.xz -P -C /
+tar -xJvf /system/etc/roms.tar.xz -P -C / && \
+find /sdcard/ROMs/ -type f \( -iname '*state.auto' -o -iname '*state.auto.png' \) -delete
+find /sdcard/ROMs/ -type f \( -iname '*state.auto' -o -iname '*state.auto.png' \) -exec rm -f {} \;
 
 echo "Granting read/write permissions to RetroArch."
 pm grant com.retroarch.aarch64 android.permission.WRITE_EXTERNAL_STORAGE
@@ -192,7 +180,24 @@ sleep 4
 settings put system screen_off_timeout 240000
 rm /sdcard/RetroArch/config/global.slangp
 
+tar -xvf /system/etc/gboard.tar.gz -C /
+cd /sdcard/gboard/
+
+echo "Installing GBoard."
+session_id=$(pm install-create -r | cut -d '[' -f2 | cut -d ']' -f1)
+    for apk in *.apk; do
+        pm install-write $session_id $(basename $apk) $apk
+    done
+pm install-commit $session_id && \
+ime enable com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME && \
+ime set com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME
+cd /
+rm -rf /sdcard/gboard
+
 ime enable --user 0 com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME && \
 ime set --user 0 com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME
+
+# Enable GSYNC for high refresh rate devices
+dumpsys SurfaceFlinger | grep -i refresh-rate | grep -q "120.00 Hz" && sed -i 's/vrr_runloop_enable = "false"/vrr_runloop_enable = "true"/' /sdcard/Android/data/com.retroarch.aarch64/files/retroarch.cfg
 
 echo "All settings have been applied successfully."

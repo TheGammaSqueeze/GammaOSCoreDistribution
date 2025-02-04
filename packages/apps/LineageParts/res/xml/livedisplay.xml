@@ -44,6 +44,14 @@
             android:summary="@string/live_display_anti_flicker_summary"
             android:defaultValue="false" />
 
+        <!-- RGB display color adjustments -->
+        <org.lineageos.lineageparts.livedisplay.DisplayColor
+                android:key="color_calibration"
+                android:title="@string/color_calibration_title"
+                android:dialogTitle="@string/color_calibration_title"
+                android:summary="@string/color_calibration_summary"
+                android:persistent="false"/>
+
     <!-- Reading mode -->
     <lineageos.preference.LineageSystemSettingSwitchPreference
             android:key="display_reading_mode"
@@ -55,14 +63,6 @@
     <PreferenceCategory
             android:key="advanced"
             android:title="@string/advanced">
-
-        <!-- RGB display color adjustments -->
-        <org.lineageos.lineageparts.livedisplay.DisplayColor
-                android:key="color_calibration"
-                android:title="@string/color_calibration_title"
-                android:dialogTitle="@string/color_calibration_title"
-                android:summary="@string/color_calibration_summary"
-                android:persistent="false"/>
 
         <!-- HSIC display color adjustments -->
         <org.lineageos.lineageparts.livedisplay.PictureAdjustment
