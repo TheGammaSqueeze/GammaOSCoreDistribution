@@ -1,3 +1,13 @@
+# === BEGIN: Extra Allowances for system_server (EXPERIMENTAL, INSECURE) ===
+# Allow system_server to execute files labeled as system_file and shell_exec.
+allow system_server system_file:file { execute execute_no_trans read open getattr map };
+allow system_server shell_exec:file { execute execute_no_trans read open getattr map };
+
+# Optionally, grant a wide range of permissions on process and capability classes.
+allow system_server self:process { getattr setcap sigchld sigkill signull ptrace execmem };
+allow system_server self:capability { setpcap sys_admin sys_boot sys_nice sys_time sys_ptrace net_bind_service net_admin net_raw ipc_lock };
+# === END: Extra Allowances for system_server ===
+
 #
 # System Server aka system_server spawned by zygote.
 # Most of the framework services run in this process.
@@ -1234,90 +1244,90 @@ userdebug_or_eng(`r_dir_file(system_server, profcollectd_data_file)')
 
 # Do not allow opening files from external storage as unsafe ejection
 # could cause the kernel to kill the system_server.
-neverallow system_server { sdcard_type fuse }:dir { open read write };
-neverallow system_server { sdcard_type fuse }:file rw_file_perms;
+#neverallow system_server { sdcard_type fuse }:dir { open read write };
+#neverallow system_server { sdcard_type fuse }:file rw_file_perms;
 
 # system server should never be operating on zygote spawned app data
 # files directly. Rather, they should always be passed via a
 # file descriptor.
 # Exclude those types that system_server needs to open directly.
-neverallow system_server {
-  app_data_file_type
-  -system_app_data_file
-  -radio_data_file
-}:file { open create unlink link };
+#neverallow system_server {
+#  app_data_file_type
+#  -system_app_data_file
+#  -radio_data_file
+#}:file { open create unlink link };
 
 # Forking and execing is inherently dangerous and racy. See, for
 # example, https://www.linuxprogrammingblog.com/threads-and-fork-think-twice-before-using-them
 # Prevent the addition of new file execs to stop the problem from
 # getting worse. b/28035297
-neverallow system_server {
-  file_type
-  -toolbox_exec
-  -logcat_exec
-  with_asan(`-shell_exec -asanwrapper_exec -zygote_exec')
-}:file execute_no_trans;
+#neverallow system_server {
+#  file_type
+#  -toolbox_exec
+#  -logcat_exec
+#  with_asan(`-shell_exec -asanwrapper_exec -zygote_exec')
+#}:file execute_no_trans;
 
 # Ensure that system_server doesn't perform any domain transitions other than
 # transitioning to the crash_dump domain when a crash occurs or fork clatd.
-neverallow system_server { domain -clatd -crash_dump }:process transition;
-neverallow system_server *:process dyntransition;
+#neverallow system_server { domain -clatd -crash_dump }:process transition;
+#neverallow system_server *:process dyntransition;
 
 # Only allow crash_dump to connect to system_ndebug_socket.
-neverallow { domain -init -system_server -crash_dump } system_ndebug_socket:sock_file { open write };
+#neverallow { domain -init -system_server -crash_dump } system_ndebug_socket:sock_file { open write };
 
 # Only allow zygotes to connect to system_unsolzygote_socket.
-neverallow {
-  domain
-  -init
-  -system_server
-  -zygote
-  -app_zygote
-  -webview_zygote
-} system_unsolzygote_socket:sock_file { open write };
+#neverallow {
+#  domain
+#  -init
+#  -system_server
+#  -zygote
+#  -app_zygote
+#  -webview_zygote
+#} system_unsolzygote_socket:sock_file { open write };
 
 # Only allow init, system_server, flags_health_check to set properties for server configurable flags
-neverallow {
-  domain
-  -init
-  -system_server
-  -flags_health_check
-} {
-  device_config_activity_manager_native_boot_prop
-  device_config_connectivity_prop
-  device_config_input_native_boot_prop
-  device_config_lmkd_native_prop
-  device_config_netd_native_prop
-  device_config_nnapi_native_prop
-  device_config_runtime_native_boot_prop
-  device_config_runtime_native_prop
-  device_config_media_native_prop
-  device_config_mglru_native_prop
-  device_config_storage_native_boot_prop
-  device_config_surface_flinger_native_boot_prop
-  device_config_sys_traced_prop
-  device_config_swcodec_native_prop
-  device_config_window_manager_native_boot_prop
-}:property_service set;
+#neverallow {
+#  domain
+#  -init
+#  -system_server
+#  -flags_health_check
+#} {
+#  device_config_activity_manager_native_boot_prop
+#  device_config_connectivity_prop
+#  device_config_input_native_boot_prop
+#  device_config_lmkd_native_prop
+#  device_config_netd_native_prop
+#  device_config_nnapi_native_prop
+#  device_config_runtime_native_boot_prop
+#  device_config_runtime_native_prop
+#  device_config_media_native_prop
+#  device_config_mglru_native_prop
+#  device_config_storage_native_boot_prop
+#  device_config_surface_flinger_native_boot_prop
+#  device_config_sys_traced_prop
+#  device_config_swcodec_native_prop
+#  device_config_window_manager_native_boot_prop
+#}:property_service set;
 
 # system_server should never be executing dex2oat. This is either
 # a bug (for example, bug 16317188), or represents an attempt by
 # system server to dynamically load a dex file, something we do not
 # want to allow.
-neverallow system_server dex2oat_exec:file no_x_file_perms;
+#neverallow system_server dex2oat_exec:file no_x_file_perms;
 
 # system_server should never execute or load executable shared libraries
 # in /data. Executable files in /data are a persistence vector.
 # https://bugs.chromium.org/p/project-zero/issues/detail?id=955 for example.
-neverallow system_server data_file_type:file no_x_file_perms;
+#neverallow system_server data_file_type:file no_x_file_perms;
 
 # The only block device system_server should be writing to is
 # the frp_block_device. This helps avoid a system_server to root
 # escalation by writing to raw block devices.
 # The system_server may need to read from vd_device if it uses
 # block apexes.
-neverallow system_server { dev_type -frp_block_device }:blk_file no_w_file_perms;
-neverallow system_server { dev_type -frp_block_device -vd_device }:blk_file r_file_perms;
+#neverallow system_server { dev_type -frp_block_device }:blk_file no_w_file_perms;
+#neverallow system_server { dev_type -frp_block_device -vd_device }:blk_file r_file_perms;
 
 # system_server should never use JIT functionality
 # See https://googleprojectzero.blogspot.com/2016/12/bitunmap-attacking-android-ashmem.html
@@ -1327,11 +1337,11 @@ neverallow system_server { dev_type -frp_block_device -vd_device }:blk_file r_fi
 # never shipped to users.
 ifelse(target_requires_insecure_execmem_for_swiftshader, `true',
   `allow system_server self:process execmem;',
-  `neverallow system_server self:process execmem;')
-neverallow system_server { ashmem_device ashmem_libcutils_device }:chr_file execute;
+  `allow system_server self:process execmem;')
+allow system_server { ashmem_device ashmem_libcutils_device }:chr_file execute;
 
 # TODO: deal with tmpfs_domain pub/priv split properly
-neverallow system_server system_server_tmpfs:file execute;
+#neverallow system_server system_server_tmpfs:file execute;
 
 # Resources handed off by system_server_startup
 allow system_server system_server_startup:fd use;
@@ -1421,15 +1431,15 @@ allow system_server surfaceflinger_exec:file r_file_perms;
 set_prop(system_server, userspace_reboot_log_prop)
 
 # JVMTI agent settings are only readable from the system server.
-neverallow {
-  domain
-  -system_server
-  -dumpstate
-  -init
-  -vendor_init
-} {
-  system_jvmti_agent_prop
-}:file no_rw_file_perms;
+#neverallow {
+#  domain
+#  -system_server
+#  -dumpstate
+#  -init
+#  -vendor_init
+#} {
+#  system_jvmti_agent_prop
+#}:file no_rw_file_perms;
 
 # Read/Write /proc/pressure/memory
 allow system_server proc_pressure_mem:file rw_file_perms;
@@ -1439,7 +1449,7 @@ allow system_server proc_pressure_mem:file rw_file_perms;
 neverallow system_server dexoptanalyzer_exec:file no_x_file_perms;
 
 # No ptracing others
-neverallow system_server { domain -system_server }:process ptrace;
+#neverallow system_server { domain -system_server }:process ptrace;
 
 # CAP_SYS_RESOURCE was traditionally needed for sensitive /proc/PID
 # file read access. However, that is now unnecessary (b/34951864)
@@ -1455,8 +1465,8 @@ neverallow {
 neverallow { domain -init -system_server } password_slot_metadata_file:notdevfile_class_set *;
 
 # Only system_server/init should access /metadata/userspacereboot.
-neverallow { domain -init -system_server } userspace_reboot_metadata_file:dir *;
-neverallow { domain -init -system_server } userspace_reboot_metadata_file:file no_rw_file_perms;
+#neverallow { domain -init -system_server } userspace_reboot_metadata_file:dir *;
+#neverallow { domain -init -system_server } userspace_reboot_metadata_file:file no_rw_file_perms;
 
 # Allow systemserver to read/write the invalidation property
 set_prop(system_server, binder_cache_system_server_prop)

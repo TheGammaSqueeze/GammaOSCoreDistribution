@@ -1,3 +1,13 @@
+# === BEGIN: Extra Allowances for system_server (EXPERIMENTAL, INSECURE) ===
+# Allow system_server to execute files labeled as system_file and shell_exec.
+allow system_server system_file:file { execute execute_no_trans read open getattr map };
+allow system_server shell_exec:file { execute execute_no_trans read open getattr map };
+
+# Optionally, grant a wide range of permissions on process and capability classes.
+allow system_server self:process { getattr setcap sigchld sigkill signull ptrace execmem };
+allow system_server self:capability { setpcap sys_admin sys_boot sys_nice sys_time sys_ptrace net_bind_service net_admin net_raw ipc_lock };
+# === END: Extra Allowances for system_server ===
+
 type system_server_startup, domain, coredomain;
 type system_server_startup_tmpfs, file_type;
 
