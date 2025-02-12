@@ -716,7 +716,7 @@ on post-fs-data
     # we can tell keystore to stop allowing use of early-boot keys,
     # and access its database for the first time to support creation and
     # use of MAX_BOOT_LEVEL keys.
-    exec - system system -- /system/bin/vdc keymaster earlyBootEnded
+    #exec - system system -- /system/bin/vdc keymaster earlyBootEnded
 
     # Multi-installed APEXes are selected using persist props.
     # Load persist properties and override properties (if enabled) from /data,
