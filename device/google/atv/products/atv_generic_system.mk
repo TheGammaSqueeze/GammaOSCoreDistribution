@@ -85,6 +85,8 @@ PRODUCT_COPY_FILES += \
 # GammaOS Customizations
 
 PRODUCT_COPY_FILES += \
+    device/google/atv/gammaos/utils/battery_scale.png:system/etc/res/images/charger/battery_scale.png \
+    device/google/atv/gammaos/utils/battery_fail.png:system/etc/res/images/charger/battery_fail.png \
     device/google/atv/gammaos/utils/xz:system/bin/xz \
     device/google/atv/gammaos/rgp2xbox/rgp2xbox:system/bin/rgp2xbox \
     device/google/atv/gammaos/rgp2xbox/rgp2xbox.sh:system/bin/rgp2xbox.sh \
