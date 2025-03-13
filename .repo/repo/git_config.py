@@ -107,7 +107,7 @@ class GitConfig:
         self._json = jsonFile
         if self._json is None:
             self._json = os.path.join(
-                os.path.dirname(self.file),
+                os.environ.get("OUT_DIR", os.path.dirname(self.file)),
                 ".repo_" + os.path.basename(self.file) + ".json",
             )
 
