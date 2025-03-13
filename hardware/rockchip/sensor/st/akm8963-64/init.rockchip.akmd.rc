@@ -1,5 +1,0 @@
-service akmd /vendor/bin/akmd
-    class main
-    user system
-    group system
-    oneshot

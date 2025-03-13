@@ -32,7 +32,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_STATIC_LIBRARIES += androidx.appcompat_appcompat
 
 # Wrapped net utils for /vendor access.
-PRODUCT_PACKAGES += netutils-wrapper-1.0
+PRODUCT_PACKAGES += netutils-wrapper-1.0 \
+
+# Bluetooth Audio (System-side HAL, sysbta)
+PRODUCT_PACKAGES += \
+    audio.sysbta.default \
+    android.hardware.bluetooth.audio-service-system \
 
 # system_other support
 #PRODUCT_PACKAGES += \
@@ -50,14 +55,14 @@ PRODUCT_PACKAGES += \
     liblz4 \
     libminui \
     libnl \
-    libprotobuf-cpp-full
+    libprotobuf-cpp-full \
 
 # These libraries are empty and have been combined into libhidlbase, but are still depended
 # on by things off /system.
 # TODO(b/135686713): remove these
 PRODUCT_PACKAGES += \
     libhidltransport \
-    libhwbinder
+    libhwbinder \
 
 PRODUCT_PACKAGES_ENG += \
     avbctl \
@@ -66,7 +71,7 @@ PRODUCT_PACKAGES_ENG += \
     tinycap \
     tinymix \
     tinypcminfo \
-    update_engine_client
+    update_engine_client \
 
 PRODUCT_HOST_PACKAGES += \
     tinyplay
@@ -85,6 +90,8 @@ PRODUCT_COPY_FILES += \
 # GammaOS Customizations
 
 PRODUCT_COPY_FILES += \
+    device/google/atv/bluetooth/audio/config/sysbta_audio_policy_configuration.xml:system/etc/sysbta_audio_policy_configuration.xml \
+    device/google/atv/bluetooth/audio/config/sysbta_audio_policy_configuration_7_0.xml:system/etc/sysbta_audio_policy_configuration_7_0.xml \
     device/google/atv/gammaos/utils/xz:system/bin/xz \
     device/google/atv/gammaos/rgp2xbox/rgp2xbox:system/bin/rgp2xbox \
     device/google/atv/gammaos/rgp2xbox/rgp2xbox.sh:system/bin/rgp2xbox.sh \
