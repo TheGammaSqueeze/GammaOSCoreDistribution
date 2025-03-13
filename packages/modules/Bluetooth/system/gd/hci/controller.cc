@@ -16,7 +16,7 @@
 
 #include "hci/controller.h"
 
-#include <android-base/strings.h>
+#include <base/strings/string_split.h>
 #include <future>
 #include <memory>
 #include <string>
@@ -27,12 +27,10 @@
 #include "hci_controller_generated.h"
 #include "os/metrics.h"
 #include "os/system_properties.h"
+using bluetooth::os::GetSystemProperty;
 
 namespace bluetooth {
 namespace hci {
-
-static const char kPropertyDisabledCommands[] =
-    "bluetooth.hci.disabled_commands";
 
 using os::Handler;
 
@@ -264,16 +262,23 @@ struct Controller::impl {
     ASSERT(complete_view.IsValid());
     ErrorCode status = complete_view.GetStatus();
     ASSERT_LOG(status == ErrorCode::SUCCESS, "Status 0x%02hhx, %s", status, ErrorCodeText(status).c_str());
-    local_supported_commands_ = complete_view.GetSupportedCommands();
+    //local_supported_commands_ = complete_view.GetSupportedCommands();
 
-    if (auto disabledCommands = os::GetSystemProperty(kPropertyDisabledCommands)) {
-      for (const auto& command : android::base::Split(*disabledCommands, ",")) {
-        uint16_t index = std::stoi(command);
-        uint16_t byte_index = index / 10;
-        uint16_t bit_index = index % 10;
-        local_supported_commands_[byte_index] &= ~(1 << bit_index);
-      }
+    auto local_commands = complete_view.GetSupportedCommands();
+    std::string ignored_commands = GetSystemProperty("persist.sys.bt.unsupported.commands").value_or("");
+
+    if (ignored_commands != "") {
+        auto s = base::SplitString(ignored_commands, ",", base::TRIM_WHITESPACE, base::SPLIT_WANT_ALL);
+        for(auto command: s) {
+            int index = std::stoi(command);
+            LOG_WARN("Ignoring local supported command %d", index);
+            uint16_t byte_index = index / 10;
+            uint16_t bit_index = index % 10;
+            local_commands[byte_index] &= ~(1 << bit_index);
+        }
     }
+
+    local_supported_commands_ = local_commands;
   }
 
   void read_local_extended_features_complete_handler(std::promise<void> promise, CommandCompleteView view) {
@@ -282,7 +287,25 @@ struct Controller::impl {
     ErrorCode status = complete_view.GetStatus();
     ASSERT_LOG(status == ErrorCode::SUCCESS, "Status 0x%02hhx, %s", status, ErrorCodeText(status).c_str());
     uint8_t page_number = complete_view.GetPageNumber();
-    extended_lmp_features_array_.push_back(complete_view.GetExtendedLmpFeatures());
+
+    //extended_lmp_features_array_.push_back(complete_view.GetExtendedLmpFeatures());
+    auto lmp_features = complete_view.GetExtendedLmpFeatures();
+
+    std::string ignored_features = GetSystemProperty("persist.sys.bt.unsupported.ogfeatures").value_or("");
+
+    if (ignored_features != "") {
+        auto s = base::SplitString(ignored_features, ",", base::TRIM_WHITESPACE, base::SPLIT_WANT_ALL);
+        int offset = page_number * 64;
+        for(auto feature: s) {
+            int index = std::stoi(feature) - offset;
+            if(index >= 0 && index < 64) {
+                LOG_WARN("Ignoring local supported feature %d", index);
+                lmp_features &= ~(1ULL << index);
+            }
+        }
+    }
+    extended_lmp_features_array_.push_back(lmp_features);
+
     bluetooth::os::LogMetricBluetoothLocalSupportedFeatures(page_number, complete_view.GetExtendedLmpFeatures());
     // Query all extended features
     if (page_number < complete_view.GetMaximumPageNumber()) {
@@ -362,7 +385,21 @@ struct Controller::impl {
     ASSERT(complete_view.IsValid());
     ErrorCode status = complete_view.GetStatus();
     ASSERT_LOG(status == ErrorCode::SUCCESS, "Status 0x%02hhx, %s", status, ErrorCodeText(status).c_str());
-    le_local_supported_features_ = complete_view.GetLeFeatures();
+
+    //le_local_supported_features_ = complete_view.GetLeFeatures();
+    auto local_features = complete_view.GetLeFeatures();
+    std::string ignored_features = GetSystemProperty("persist.sys.bt.unsupported.lefeatures").value_or("");
+
+    if (ignored_features != "") {
+        auto s = base::SplitString(ignored_features, ",", base::TRIM_WHITESPACE, base::SPLIT_WANT_ALL);
+        for(auto feature: s) {
+            int index = std::stoi(feature);
+            LOG_WARN("Ignoring local supported feature %d", index);
+            local_features &= ~(1ULL << index);
+        }
+    }
+
+    le_local_supported_features_ = local_features;
   }
 
   void le_read_supported_states_handler(CommandCompleteView view) {
@@ -370,7 +407,21 @@ struct Controller::impl {
     ASSERT(complete_view.IsValid());
     ErrorCode status = complete_view.GetStatus();
     ASSERT_LOG(status == ErrorCode::SUCCESS, "Status 0x%02hhx, %s", status, ErrorCodeText(status).c_str());
-    le_supported_states_ = complete_view.GetLeStates();
+    //le_supported_states_ = complete_view.GetLeStates();
+
+    auto local_states = complete_view.GetLeStates();
+    std::string ignored_states = GetSystemProperty("persist.sys.bt.unsupported.states").value_or("");
+
+    if (ignored_states != "") {
+        auto s = base::SplitString(ignored_states, ",", base::TRIM_WHITESPACE, base::SPLIT_WANT_ALL);
+        for(auto state: s) {
+            int index = std::stoi(state);
+            LOG_WARN("Ignoring local supported state %d", index);
+            local_states &= ~(1ULL << index);
+        }
+    }
+
+    le_supported_states_ = local_states;
   }
 
   void le_read_connect_list_size_handler(CommandCompleteView view) {
@@ -452,6 +503,13 @@ struct Controller::impl {
     if (complete_view.IsValid()) {
       vendor_capabilities_.is_supported_ = 0x01;
 
+      int vendor_cap_max = 0xffff;
+      std::string vendor_cap_max_prop = GetSystemProperty("persist.sys.bt.max_vendor_cap").value_or("");
+      if (vendor_cap_max_prop != "") {
+          vendor_cap_max = std::stoi(vendor_cap_max_prop);
+      }
+      if (vendor_cap_max < 55) return;
+
       // v0.55
       BaseVendorCapabilities base_vendor_capabilities = complete_view.GetBaseVendorCapabilities();
       vendor_capabilities_.max_advt_instances_ = base_vendor_capabilities.max_advt_instances_;
@@ -467,6 +525,8 @@ struct Controller::impl {
         return;
       }
 
+      if (vendor_cap_max < 95) return;
+
       // v0.95
       auto v95 = LeGetVendorCapabilitiesComplete095View::Create(complete_view);
       if (!v95.IsValid()) {
@@ -481,6 +541,7 @@ struct Controller::impl {
         return;
       }
 
+      if (vendor_cap_max < 96) return;
       // v0.96
       auto v96 = LeGetVendorCapabilitiesComplete096View::Create(v95);
       if (!v96.IsValid()) {
@@ -492,6 +553,7 @@ struct Controller::impl {
         return;
       }
 
+      if (vendor_cap_max < 98) return;
       // v0.98
       auto v98 = LeGetVendorCapabilitiesComplete098View::Create(v96);
       if (!v98.IsValid()) {

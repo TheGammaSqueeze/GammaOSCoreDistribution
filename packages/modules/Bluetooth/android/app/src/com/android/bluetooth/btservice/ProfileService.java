@@ -252,7 +252,6 @@ public abstract class ProfileService extends Service {
         if (component == null) {
             return;
         }
-        enable = true;
         getPackageManager().setComponentEnabledSetting(
                 component,
                 enable ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED

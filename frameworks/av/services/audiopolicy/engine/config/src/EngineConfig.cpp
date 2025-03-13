@@ -724,7 +724,12 @@ android::status_t parseLegacyVolumeFile(const char* path, VolumeGroups &volumeGr
 android::status_t parseLegacyVolumes(VolumeGroups &volumeGroups) {
     if (std::string audioPolicyXmlConfigFile = audio_get_audio_policy_config_file();
             !audioPolicyXmlConfigFile.empty()) {
-        return parseLegacyVolumeFile(audioPolicyXmlConfigFile.c_str(), volumeGroups);
+        int ret = parseLegacyVolumeFile(audioPolicyXmlConfigFile.c_str(), volumeGroups);
+        if (ret == NO_ERROR && volumeGroups.size() == 0) {
+            ret = parseLegacyVolumeFile("/system/etc/fake_audio_policy_volume.xml", volumeGroups);
+            ALOGE("Parsing volume for /system/etc/fake_audio_policy_volume.xml gave %zu",  volumeGroups.size());
+        }
+	return ret;
     } else {
         ALOGE("No readable audio policy config file found");
         return BAD_VALUE;

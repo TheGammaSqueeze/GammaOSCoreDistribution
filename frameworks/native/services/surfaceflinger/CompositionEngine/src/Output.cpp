@@ -22,7 +22,6 @@
 #include <compositionengine/LayerFE.h>
 #include <compositionengine/LayerFECompositionState.h>
 #include <compositionengine/RenderSurface.h>
-#include <compositionengine/UdfpsExtension.h>
 #include <compositionengine/impl/HwcAsyncWorker.h>
 #include <compositionengine/impl/Output.h>
 #include <compositionengine/impl/OutputCompositionState.h>
@@ -836,10 +835,7 @@ void Output::writeCompositionState(const compositionengine::CompositionRefreshAr
 
 compositionengine::OutputLayer* Output::findLayerRequestingBackgroundComposition() const {
     compositionengine::OutputLayer* layerRequestingBgComposition = nullptr;
-    for (size_t i = 0; i < getOutputLayerCount(); i++) {
-        compositionengine::OutputLayer* layer = getOutputLayerOrderedByZByIndex(i);
-        compositionengine::OutputLayer* nextLayer = getOutputLayerOrderedByZByIndex(i + 1);
-
+    for (auto* layer : getOutputLayersOrderedByZ()) {
         auto* compState = layer->getLayerFE().getCompositionState();
 
         // If any layer has a sideband stream, we will disable blurs. In that case, we don't
@@ -852,16 +848,6 @@ compositionengine::OutputLayer* Output::findLayerRequestingBackgroundComposition
         }
         if (compState->backgroundBlurRadius > 0 || compState->blurRegions.size() > 0) {
             layerRequestingBgComposition = layer;
-        }
-
-        // If the next layer is the Udfps touched layer, enable client composition for it
-        // because that somehow leads to the Udfps touched layer getting device composition
-        // consistently.
-        if ((nextLayer != nullptr && layerRequestingBgComposition == nullptr) &&
-            (strncmp(nextLayer->getLayerFE().getDebugName(), UDFPS_TOUCHED_LAYER_NAME,
-                     strlen(UDFPS_TOUCHED_LAYER_NAME)) == 0)) {
-            layerRequestingBgComposition = layer;
-            break;
         }
     }
     return layerRequestingBgComposition;

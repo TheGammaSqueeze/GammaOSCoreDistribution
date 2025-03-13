@@ -36,12 +36,13 @@ namespace {
  */
 #define CONC_VERSION(maj, min) #maj "." #min
 #define DECLARE_VERSION(maj, min) std::make_pair(std::make_pair(maj, min), CONC_VERSION(maj, min))
-static constexpr std::array<std::pair<std::pair<int, int>, const char*>, 5> sAudioHALVersions = {
+static constexpr std::array<std::pair<std::pair<int, int>, const char*>, 6> sAudioHALVersions = {
     DECLARE_VERSION(7, 1),
     DECLARE_VERSION(7, 0),
     DECLARE_VERSION(6, 0),
     DECLARE_VERSION(5, 0),
-    DECLARE_VERSION(4, 0)
+    DECLARE_VERSION(4, 0),
+    DECLARE_VERSION(2, 0)
 };
 
 bool createHalService(const std::string& version, const std::string& interface,

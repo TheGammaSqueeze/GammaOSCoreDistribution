@@ -32,6 +32,7 @@ import android.os.Bundle;
 import android.os.Message;
 import android.os.UserHandle;
 import android.util.Log;
+import android.util.Pair;
 
 import com.android.bluetooth.BluetoothStatsLog;
 import com.android.bluetooth.Utils;
@@ -48,6 +49,7 @@ import com.android.internal.util.StateMachine;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -384,7 +386,37 @@ final class BondStateMachine extends StateMachine {
         return false;
     }
 
+    // Defining these properly would break current api
+    private static int PERIPHERAL_GAMEPAD = BluetoothClass.Device.Major.PERIPHERAL | 0x08;
+    private static int PERIPHERAL_REMOTE = BluetoothClass.Device.Major.PERIPHERAL | 0x0C;
+
+    private static List<Pair<String, Integer>> accConfirmSkip = new ArrayList<>();
+
+    static {
+        // Jarvis, SHIELD Remote 2015
+        accConfirmSkip.add(new Pair<>("SHIELD Remote", PERIPHERAL_REMOTE));
+        // Thunderstrike, SHIELD Controller 2017
+        accConfirmSkip.add(new Pair<>("NVIDIA Controller v01.04", PERIPHERAL_GAMEPAD));
+    };
+
+    private boolean isSkipConfirmationAccessory(BluetoothDevice device) {
+        for (Pair<String, Integer> entry : accConfirmSkip) {
+            if (device.getName().equals(entry.first)
+                    && device.getBluetoothClass().getDeviceClass() == entry.second) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private void sendDisplayPinIntent(byte[] address, Optional<Integer> maybePin, int variant) {
+        BluetoothDevice device = mRemoteDevices.getDevice(address);
+        if (device != null && device.isBondingInitiatedLocally()
+                && isSkipConfirmationAccessory(device)) {
+            device.setPairingConfirmation(true);
+            return;
+        }
         Intent intent = new Intent(BluetoothDevice.ACTION_PAIRING_REQUEST);
         intent.putExtra(BluetoothDevice.EXTRA_DEVICE, mRemoteDevices.getDevice(address));
         maybePin.ifPresent(pin -> intent.putExtra(BluetoothDevice.EXTRA_PAIRING_KEY, pin));

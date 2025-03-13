@@ -516,6 +516,7 @@ status_t DeviceHalHidl::removeDeviceEffect(
 status_t DeviceHalHidl::setConnectedState(const struct audio_port_v7 *port, bool connected) {
     TIME_CHECK();
     if (mDevice == 0) return NO_INIT;
+#if MAJOR_VERSION > 2
 #if MAJOR_VERSION == 7 && MINOR_VERSION == 1
     if (supportsSetConnectedState7_1) {
         AudioPort hidlPort;
@@ -538,11 +539,17 @@ status_t DeviceHalHidl::setConnectedState(const struct audio_port_v7 *port, bool
         return result;
     }
     return processReturn("setConnectedState", mDevice->setConnectedState(hidlAddress, connected));
+#else
+    (void) port;
+    (void) connected;
+    return NO_ERROR;
+#endif
 }
 
 error::Result<audio_hw_sync_t> DeviceHalHidl::getHwAvSync() {
     TIME_CHECK();
     if (mDevice == 0) return NO_INIT;
+#if MAJOR_VERSION > 2
     audio_hw_sync_t value;
     Result result;
     Return<void> ret = mDevice->getHwAvSync([&value, &result](Result r, audio_hw_sync_t v) {
@@ -551,6 +558,9 @@ error::Result<audio_hw_sync_t> DeviceHalHidl::getHwAvSync() {
     });
     RETURN_IF_ERROR(processReturn("getHwAvSync", ret, result));
     return value;
+#else
+    return 0xdeadbeef;
+#endif
 }
 
 status_t DeviceHalHidl::dump(int fd, const Vector<String16>& args) {

@@ -222,9 +222,9 @@ engineConfig::ParsingResult EngineBase::loadAudioPolicyEngineConfig()
             }
             if (group.stream != AUDIO_STREAM_DEFAULT) {
                 // A legacy stream can be assigned once to a volume group
-                LOG_ALWAYS_FATAL_IF(checkStreamForGroups(group.stream, mVolumeGroups),
-                                    "stream %s already assigned to a volume group, "
-                                    "review the configuration", toString(group.stream).c_str());
+                if(checkStreamForGroups(group.stream, mVolumeGroups)) {
+                    ALOGE("stream %s already assigned to a volume group, review the configuration", toString(group.stream).c_str());
+                }
                 volumeGroup->addSupportedStream(group.stream);
             }
             addSupportedAttributesToGroup(group, volumeGroup, strategy);

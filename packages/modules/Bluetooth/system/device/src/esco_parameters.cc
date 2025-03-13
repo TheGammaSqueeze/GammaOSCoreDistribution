@@ -22,7 +22,8 @@
 
 #include "check.h"
 
-static const enh_esco_params_t default_esco_parameters[ESCO_NUM_CODECS] = {
+#include <cutils/properties.h>
+static enh_esco_params_t default_esco_parameters[ESCO_NUM_CODECS] = {
     // CVSD D1
     {
         .transmit_bandwidth = TXRX_64KBITS_RATE,
@@ -215,5 +216,10 @@ enh_esco_params_t esco_parameters_for_codec(esco_codec_t codec) {
   CHECK(codec >= 0) << "codec index " << (int)codec << "< 0";
   CHECK(codec < ESCO_NUM_CODECS) << "codec index " << (int)codec << " > "
                                  << ESCO_NUM_CODECS;
+  int escoTransportUnitSize = property_get_int32("persist.sys.bt.esco_transport_unit_size", 0);
+  if(escoTransportUnitSize) {
+    default_esco_parameters[codec].input_transport_unit_size = escoTransportUnitSize;
+    default_esco_parameters[codec].output_transport_unit_size = escoTransportUnitSize;
+  }
   return default_esco_parameters[codec];
 }

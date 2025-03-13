@@ -675,6 +675,17 @@ status_t AudioPolicyManager::updateCallRoutingInternal(
     disconnectTelephonyAudioSource(mCallRxSourceClient);
     disconnectTelephonyAudioSource(mCallTxSourceClient);
 
+    // release existing RX patch if any
+    if (mCallRxPatch != 0) {
+        releaseAudioPatchInternal(mCallRxPatch->getHandle());
+        mCallRxPatch.clear();
+    }
+    // release TX patch if any
+    if (mCallTxPatch != 0) {
+        releaseAudioPatchInternal(mCallTxPatch->getHandle());
+        mCallTxPatch.clear();
+    }
+
     auto telephonyRxModule =
         mHwModules.getModuleForDeviceType(AUDIO_DEVICE_IN_TELEPHONY_RX, AUDIO_FORMAT_DEFAULT);
     auto telephonyTxModule =
@@ -697,9 +708,20 @@ status_t AudioPolicyManager::updateCallRoutingInternal(
             ALOGE("%s() no telephony Tx and/or RX device", __func__);
             return INVALID_OPERATION;
         }
-        // createAudioPatchInternal now supports both HW / SW bridging
-        createRxPatch = true;
-        createTxPatch = true;
+        if (property_get_int32("ro.vndk.version", 31) >= 30) {
+            // createAudioPatchInternal now supports both HW / SW bridging
+            createRxPatch = true;
+            createTxPatch = true;
+        } else {
+            // pre-R behavior: some devices before VNDK 30 do not support createAudioPatch correctly
+            // for HW bridging even though they declare support for it
+            // do not create a patch (aka Sw Bridging) if Primary HW module has declared supporting a
+            // route between telephony RX to Sink device and Source device to telephony TX
+            ALOGI("%s() Using pre-R behavior for createRxPatch and createTxPatch", __func__);
+            const auto &primaryModule = telephonyRxModule;
+            createRxPatch = !primaryModule->supportsPatch(rxSourceDevice, rxDevices.itemAt(0));
+            createTxPatch = !primaryModule->supportsPatch(txSourceDevice, txSinkDevice);
+        }
     } else {
         // If the RX device is on the primary HW module, then use legacy routing method for
         // voice calls via setOutputDevice() on primary output.
@@ -716,7 +738,14 @@ status_t AudioPolicyManager::updateCallRoutingInternal(
     if (!createRxPatch) {
         muteWaitMs = setOutputDevices(mPrimaryOutput, rxDevices, true, delayMs);
     } else { // create RX path audio patch
-        connectTelephonyRxAudioSource();
+        if (property_get_int32("ro.vndk.version", 31) >= 31) {
+            connectTelephonyRxAudioSource();
+        } else {
+            // pre-S behavior: some devices do not support SW bridging correctly when HW bridge is
+            // available through createAudioPatch(); startAudioSource() forces SW bridging.
+            ALOGI("%s() Using pre-S behavior to create HW Rx patch", __func__);
+            mCallRxPatch = createTelephonyPatch(true /*isRx*/, rxDevices.itemAt(0), delayMs);
+        }
         // If the TX device is on the primary HW module but RX device is
         // on other HW module, SinkMetaData of telephony input should handle it
         // assuming the device uses audio HAL V5.0 and above
@@ -731,12 +760,47 @@ status_t AudioPolicyManager::updateCallRoutingInternal(
                 closeActiveClients(activeDesc);
             }
         }
-        connectTelephonyTxAudioSource(txSourceDevice, txSinkDevice, delayMs);
+        if (property_get_int32("ro.vndk.version", 33) >= 33) {
+            connectTelephonyTxAudioSource(txSourceDevice, txSinkDevice, delayMs);
+        } else {
+            // pre-T behavior: hw bridging for tx too; skip the SwOutput
+            mCallTxPatch = createTelephonyPatch(false /*isRx*/, txSourceDevice, delayMs);
+        }
     }
     if (waitMs != nullptr) {
         *waitMs = muteWaitMs;
     }
     return NO_ERROR;
+}
+
+sp<AudioPatch> AudioPolicyManager::createTelephonyPatch(
+        bool isRx, const sp<DeviceDescriptor> &device, uint32_t delayMs) {
+    PatchBuilder patchBuilder;
+
+    if (device == nullptr) {
+        return nullptr;
+    }
+
+    // @TODO: still ignoring the address, or not dealing platform with multiple telephony devices
+    if (isRx) {
+        patchBuilder.addSink(device).
+                addSource(mAvailableInputDevices.getDevice(
+                    AUDIO_DEVICE_IN_TELEPHONY_RX, String8(), AUDIO_FORMAT_DEFAULT));
+    } else {
+        patchBuilder.addSource(device).
+                addSink(mAvailableOutputDevices.getDevice(
+                    AUDIO_DEVICE_OUT_TELEPHONY_TX, String8(), AUDIO_FORMAT_DEFAULT));
+    }
+
+    audio_patch_handle_t patchHandle = AUDIO_PATCH_HANDLE_NONE;
+    status_t status =
+            createAudioPatchInternal(patchBuilder.patch(), &patchHandle, mUidCached, delayMs, nullptr);
+    ssize_t index = mAudioPatches.indexOfKey(patchHandle);
+    if (status != NO_ERROR || index < 0) {
+        ALOGW("%s() error %d creating %s audio patch", __func__, status, isRx ? "RX" : "TX");
+        return nullptr;
+    }
+    return mAudioPatches.valueAt(index);
 }
 
 bool AudioPolicyManager::isDeviceOfModule(
@@ -4550,78 +4614,97 @@ status_t AudioPolicyManager::createAudioPatchInternal(const struct audio_patch *
                 // in config XML to reach the sink so that is can be declared as available.
                 audio_io_handle_t output = AUDIO_IO_HANDLE_NONE;
                 sp<SwAudioOutputDescriptor> outputDesc;
-                if (!sourceDesc->isInternal()) {
-                    // take care of dynamic routing for SwOutput selection,
-                    audio_attributes_t attributes = sourceDesc->attributes();
-                    audio_stream_type_t stream = sourceDesc->stream();
-                    audio_attributes_t resultAttr;
-                    audio_config_t config = AUDIO_CONFIG_INITIALIZER;
-                    config.sample_rate = sourceDesc->config().sample_rate;
-                    config.channel_mask = sourceDesc->config().channel_mask;
-                    config.format = sourceDesc->config().format;
-                    audio_output_flags_t flags = AUDIO_OUTPUT_FLAG_NONE;
-                    audio_port_handle_t selectedDeviceId = AUDIO_PORT_HANDLE_NONE;
-                    bool isRequestedDeviceForExclusiveUse = false;
-                    output_type_t outputType;
-                    bool isSpatialized;
-                    getOutputForAttrInt(&resultAttr, &output, AUDIO_SESSION_NONE, &attributes,
-                                        &stream, sourceDesc->uid(), &config, &flags,
-                                        &selectedDeviceId, &isRequestedDeviceForExclusiveUse,
-                                        nullptr, &outputType, &isSpatialized);
-                    if (output == AUDIO_IO_HANDLE_NONE) {
-                        ALOGV("%s no output for device %s",
-                              __FUNCTION__, sinkDevice->toString().c_str());
-                        return INVALID_OPERATION;
+                if (sourceDesc != nullptr) {
+                    if (!sourceDesc->isInternal()) {
+                        // take care of dynamic routing for SwOutput selection,
+                        audio_attributes_t attributes = sourceDesc->attributes();
+                        audio_stream_type_t stream = sourceDesc->stream();
+                        audio_attributes_t resultAttr;
+                        audio_config_t config = AUDIO_CONFIG_INITIALIZER;
+                        config.sample_rate = sourceDesc->config().sample_rate;
+                        config.channel_mask = sourceDesc->config().channel_mask;
+                        config.format = sourceDesc->config().format;
+                        audio_output_flags_t flags = AUDIO_OUTPUT_FLAG_NONE;
+                        audio_port_handle_t selectedDeviceId = AUDIO_PORT_HANDLE_NONE;
+                        bool isRequestedDeviceForExclusiveUse = false;
+                        output_type_t outputType;
+                        bool isSpatialized;
+                        getOutputForAttrInt(&resultAttr, &output, AUDIO_SESSION_NONE, &attributes,
+                                            &stream, sourceDesc->uid(), &config, &flags,
+                                            &selectedDeviceId, &isRequestedDeviceForExclusiveUse,
+                                            nullptr, &outputType, &isSpatialized);
+                        if (output == AUDIO_IO_HANDLE_NONE) {
+                            ALOGV("%s no output for device %s",
+                                __FUNCTION__, sinkDevice->toString().c_str());
+                            return INVALID_OPERATION;
+                        }
+                        outputDesc = mOutputs.valueFor(output);
+                        if (outputDesc->isDuplicated()) {
+                            ALOGE("%s output is duplicated", __func__);
+                            return INVALID_OPERATION;
+                        }
+                        bool closeOutput = outputDesc->mDirectOpenCount != 0;
+                        sourceDesc->setSwOutput(outputDesc, closeOutput);
+                    } else {
+                        // Same for "raw patches" aka created from createAudioPatch API
+                        SortedVector<audio_io_handle_t> outputs =
+                                getOutputsForDevices(DeviceVector(sinkDevice), mOutputs);
+                        // if the sink device is reachable via an opened output stream, request to
+                        // go via this output stream by adding a second source to the patch
+                        // description
+                        output = selectOutput(outputs);
+                        if (output == AUDIO_IO_HANDLE_NONE) {
+                            ALOGE("%s no output available for internal patch sink", __func__);
+                            return INVALID_OPERATION;
+                        }
+                        outputDesc = mOutputs.valueFor(output);
+                        if (outputDesc->isDuplicated()) {
+                            ALOGV("%s output for device %s is duplicated",
+                                __func__, sinkDevice->toString().c_str());
+                            return INVALID_OPERATION;
+                        }
+                        sourceDesc->setSwOutput(outputDesc, /* closeOutput= */ false);
                     }
-                    outputDesc = mOutputs.valueFor(output);
-                    if (outputDesc->isDuplicated()) {
-                        ALOGE("%s output is duplicated", __func__);
-                        return INVALID_OPERATION;
-                    }
-                    bool closeOutput = outputDesc->mDirectOpenCount != 0;
-                    sourceDesc->setSwOutput(outputDesc, closeOutput);
-                } else {
-                    // Same for "raw patches" aka created from createAudioPatch API
-                    SortedVector<audio_io_handle_t> outputs =
-                            getOutputsForDevices(DeviceVector(sinkDevice), mOutputs);
-                    // if the sink device is reachable via an opened output stream, request to
-                    // go via this output stream by adding a second source to the patch
-                    // description
-                    output = selectOutput(outputs);
-                    if (output == AUDIO_IO_HANDLE_NONE) {
-                        ALOGE("%s no output available for internal patch sink", __func__);
-                        return INVALID_OPERATION;
-                    }
-                    outputDesc = mOutputs.valueFor(output);
-                    if (outputDesc->isDuplicated()) {
-                        ALOGV("%s output for device %s is duplicated",
-                              __func__, sinkDevice->toString().c_str());
-                        return INVALID_OPERATION;
-                    }
-                    sourceDesc->setSwOutput(outputDesc, /* closeOutput= */ false);
                 }
                 // create a software bridge in PatchPanel if:
                 // - source and sink devices are on different HW modules OR
                 // - audio HAL version is < 3.0
                 // - audio HAL version is >= 3.0 but no route has been declared between devices
-                // - called from startAudioSource (aka sourceDesc is not internal) and source device
+                // - called from startAudioSource (aka sourceDesc is neither null nor internal) and source device
                 //   does not have a gain controller
                 if (!srcDevice->hasSameHwModuleAs(sinkDevice) ||
                         (srcDevice->getModuleVersionMajor() < 3) ||
                         !srcDevice->getModule()->supportsPatch(srcDevice, sinkDevice) ||
-                        (!sourceDesc->isInternal() &&
+                        ((sourceDesc != nullptr && !sourceDesc->isInternal()) &&
                          srcDevice->getAudioPort()->getGains().size() == 0)) {
                     // support only one sink device for now to simplify output selection logic
                     if (patch->num_sinks > 1) {
                         return INVALID_OPERATION;
                     }
-                    sourceDesc->setUseSwBridge();
+                    if (sourceDesc == nullptr) {
+                        SortedVector<audio_io_handle_t> outputs =
+                                getOutputsForDevices(DeviceVector(sinkDevice), mOutputs);
+                        // if the sink device is reachable via an opened output stream, request to
+                        // go via this output stream by adding a second source to the patch
+                        // description
+                        output = selectOutput(outputs);
+                        if (output != AUDIO_IO_HANDLE_NONE) {
+                            outputDesc = mOutputs.valueFor(output);
+                            if (outputDesc->isDuplicated()) {
+                                ALOGV("%s output for device %s is duplicated",
+                                      __FUNCTION__, sinkDevice->toString().c_str());
+                                return INVALID_OPERATION;
+                            }
+                        }
+                    } else {
+                        sourceDesc->setUseSwBridge();
+                    }
                     if (outputDesc != nullptr) {
                         audio_port_config srcMixPortConfig = {};
                         outputDesc->toAudioPortConfig(&srcMixPortConfig, nullptr);
                         // for volume control, we may need a valid stream
                         srcMixPortConfig.ext.mix.usecase.stream =
-                            (!sourceDesc->isInternal() || isCallTxAudioSource(sourceDesc)) ?
+                            (sourceDesc != nullptr && (!sourceDesc->isInternal() || isCallTxAudioSource(sourceDesc))) ?
                                     mEngine->getStreamTypeForAttributes(sourceDesc->attributes()) :
                                     AUDIO_STREAM_PATCH;
                         patchBuilder.addSource(srcMixPortConfig);
@@ -5150,7 +5233,7 @@ status_t AudioPolicyManager::getReportedSurroundFormats(unsigned int *numSurroun
         audio_devices_t deviceType = device->type();
         // Enabling/disabling formats are applied to only HDMI devices. So, this function
         // returns formats reported by HDMI devices.
-        if (deviceType != AUDIO_DEVICE_OUT_HDMI && deviceType != VX_ROCKCHIP_OUT_HDMI0) {
+        if (deviceType != AUDIO_DEVICE_OUT_HDMI) {
             continue;
         }
         // Formats reported by sink devices
@@ -5240,7 +5323,6 @@ status_t AudioPolicyManager::setSurroundFormatEnabled(audio_format_t audioFormat
                                              AUDIO_FORMAT_DEFAULT);
         profileUpdated |= (status == NO_ERROR);
     }
-
     // FIXME: Why doing this for input HDMI devices if we don't augment their reported formats?
     DeviceVector hdmiInputDevices = mAvailableInputDevices.getDevicesFromType(
                 AUDIO_DEVICE_IN_HDMI);
@@ -6280,47 +6362,8 @@ SortedVector<audio_io_handle_t> AudioPolicyManager::getOutputsForDevices(
             const SwAudioOutputCollection& openOutputs)
 {
     SortedVector<audio_io_handle_t> outputs;
+
     ALOGVV("%s() devices %s", __func__, devices.toString().c_str());
-#if SUPPORT_MULTIAUDIO
-    DeviceVector newDevice;
-    if ((devices.containsDeviceWithType(AUDIO_DEVICE_OUT_HDMI) &&
-            devices.containsDeviceWithType(VX_ROCKCHIP_OUT_HDMI0)) ||
-        (devices.containsDeviceWithType(AUDIO_DEVICE_OUT_HDMI) &&
-            devices.containsDeviceWithType(AUDIO_DEVICE_OUT_SPDIF))) {
-        newDevice = devices.getDevicesFromType(AUDIO_DEVICE_OUT_HDMI);
-    } else if ((devices.containsDeviceWithType(VX_ROCKCHIP_OUT_HDMI0) &&
-            devices.containsDeviceWithType(AUDIO_DEVICE_OUT_SPDIF)) ||
-            (devices.containsDeviceWithType(VX_ROCKCHIP_OUT_HDMI0) &&
-            devices.containsDeviceWithType(VX_ROCKCHIP_OUT_SPDIF0))) {
-        newDevice = devices.getDevicesFromType(VX_ROCKCHIP_OUT_HDMI0);
-    } else if (devices.containsDeviceWithType(AUDIO_DEVICE_OUT_SPDIF) &&
-            devices.containsDeviceWithType(VX_ROCKCHIP_OUT_SPDIF0)) {
-        newDevice = devices.getDevicesFromType(AUDIO_DEVICE_OUT_SPDIF);
-    }
-    if (!newDevice.isEmpty()) {
-        for (size_t i = 0; i < openOutputs.size(); i++) {
-            ALOGVV("output %zu isDuplicated=%d device=%s",
-                    i, openOutputs.valueAt(i)->isDuplicated(),
-                    openOutputs.valueAt(i)->supportedDevices().toString().c_str());
-            if (openOutputs.valueAt(i)->supportsAllDevices(newDevice)
-                    && openOutputs.valueAt(i)->devicesSupportEncodedFormats(newDevice.types())) {
-                ALOGVV("%s() found output %d", __func__, openOutputs.keyAt(i));
-                outputs.add(openOutputs.keyAt(i));
-            }
-        }
-    } else {
-        for (size_t i = 0; i < openOutputs.size(); i++) {
-            ALOGVV("output %zu isDuplicated=%d device=%s",
-                    i, openOutputs.valueAt(i)->isDuplicated(),
-                    openOutputs.valueAt(i)->supportedDevices().toString().c_str());
-            if (openOutputs.valueAt(i)->supportsAllDevices(devices)
-                    && openOutputs.valueAt(i)->devicesSupportEncodedFormats(devices.types())) {
-                ALOGVV("%s() found output %d", __func__, openOutputs.keyAt(i));
-                outputs.add(openOutputs.keyAt(i));
-            }
-        }
-    }
-#else
     for (size_t i = 0; i < openOutputs.size(); i++) {
         ALOGVV("output %zu isDuplicated=%d device=%s",
                 i, openOutputs.valueAt(i)->isDuplicated(),
@@ -6331,7 +6374,6 @@ SortedVector<audio_io_handle_t> AudioPolicyManager::getOutputsForDevices(
             outputs.add(openOutputs.keyAt(i));
         }
     }
-#endif
     return outputs;
 }
 
@@ -6738,7 +6780,6 @@ sp<DeviceDescriptor> AudioPolicyManager::getNewInputDevice(
     if (attributes.source == AUDIO_SOURCE_DEFAULT && isInCall()) {
         attributes.source = AUDIO_SOURCE_VOICE_COMMUNICATION;
     }
-
     if (attributes.source != AUDIO_SOURCE_DEFAULT) {
         device = mEngine->getInputDeviceForAttributes(attributes, uid);
     }
@@ -7719,7 +7760,7 @@ void AudioPolicyManager::updateAudioProfiles(const sp<DeviceDescriptor>& devDesc
         }
         FormatVector formats = formatsFromString(reply.string());
         mReportedFormatsMap[devDesc] = formats;
-        if (device == AUDIO_DEVICE_OUT_HDMI || device == VX_ROCKCHIP_OUT_HDMI0
+        if (device == AUDIO_DEVICE_OUT_HDMI
                 || isDeviceOfModule(devDesc, AUDIO_HARDWARE_MODULE_ID_MSD)) {
             modifySurroundFormats(devDesc, &formats);
         }
@@ -7753,7 +7794,7 @@ void AudioPolicyManager::updateAudioProfiles(const sp<DeviceDescriptor>& devDesc
             if (repliedParameters.get(
                     String8(AudioParameter::keyStreamSupportedChannels), reply) == NO_ERROR) {
                 channelMasks = channelMasksFromString(reply.string());
-                if (device == AUDIO_DEVICE_OUT_HDMI || device == VX_ROCKCHIP_OUT_HDMI0
+                if (device == AUDIO_DEVICE_OUT_HDMI
                         || isDeviceOfModule(devDesc, AUDIO_HARDWARE_MODULE_ID_MSD)) {
                     modifySurroundChannelMasks(&channelMasks);
                 }
