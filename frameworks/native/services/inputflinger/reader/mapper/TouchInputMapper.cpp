@@ -490,20 +490,35 @@ void TouchInputMapper::configureParameters() {
     getDeviceContext().getConfiguration().tryGetProperty(String8("touch.orientationAware"),
                                                          mParameters.orientationAware);
 
+    // --- Configure the touch panel's natural orientation ---
+    // We start with a default of ORIENTATION_0.
     mParameters.orientation = Parameters::Orientation::ORIENTATION_0;
-    String8 orientationString;
-    if (getDeviceContext().getConfiguration().tryGetProperty(String8("touch.orientation"),
-                                                             orientationString)) {
-        if (mParameters.deviceType != Parameters::DeviceType::TOUCH_SCREEN) {
-            ALOGW("The configuration 'touch.orientation' is only supported for touchscreens.");
-        } else if (orientationString == "ORIENTATION_90") {
-            mParameters.orientation = Parameters::Orientation::ORIENTATION_90;
-        } else if (orientationString == "ORIENTATION_180") {
-            mParameters.orientation = Parameters::Orientation::ORIENTATION_180;
-        } else if (orientationString == "ORIENTATION_270") {
-            mParameters.orientation = Parameters::Orientation::ORIENTATION_270;
-        } else if (orientationString != "ORIENTATION_0") {
-            ALOGW("Invalid value for touch.orientation: '%s'", orientationString.string());
+    {
+        // Check for the system override.
+        // If "ro.input_flinger.primary_touch_orientation" is defined (nonempty),
+        // force the configuration to natural (ORIENTATION_0) so that later mapping
+        // (from the viewport plus sensor rotation) is not further modified.
+        char primaryTouchProp[PROPERTY_VALUE_MAX];
+        property_get("ro.input_flinger.primary_touch_orientation", primaryTouchProp, "");
+        if (strlen(primaryTouchProp) > 0) {
+            mParameters.orientation = Parameters::Orientation::ORIENTATION_0;
+        } else {
+            // Otherwise, allow configuration from the device configuration file.
+            String8 orientationString;
+            if (getDeviceContext().getConfiguration().tryGetProperty(String8("touch.orientation"),
+                                                                     orientationString)) {
+                if (mParameters.deviceType != Parameters::DeviceType::TOUCH_SCREEN) {
+                    ALOGW("The configuration 'touch.orientation' is only supported for touchscreens.");
+                } else if (orientationString == "ORIENTATION_90") {
+                    mParameters.orientation = Parameters::Orientation::ORIENTATION_90;
+                } else if (orientationString == "ORIENTATION_180") {
+                    mParameters.orientation = Parameters::Orientation::ORIENTATION_180;
+                } else if (orientationString == "ORIENTATION_270") {
+                    mParameters.orientation = Parameters::Orientation::ORIENTATION_270;
+                } else if (orientationString != "ORIENTATION_0") {
+                    ALOGW("Invalid value for touch.orientation: '%s'", orientationString.string());
+                }
+            }
         }
     }
 
@@ -969,9 +984,8 @@ void TouchInputMapper::configureInputDevice(nsecs_t when, bool* outResetNeeded) 
             int32_t naturalPhysicalLeft, naturalPhysicalTop;
             int32_t naturalDeviceWidth, naturalDeviceHeight;
 
-            // Apply the inverse of the input device orientation so that the input device is
-            // configured in the same orientation as the viewport. The input device orientation will
-            // be re-applied by mInputDeviceOrientation.
+            // Apply the inverse of the input device configuration so that the input device is
+            // configured in the same orientation as the viewport.
             const int32_t naturalDeviceOrientation =
                     (mViewport.orientation - static_cast<int32_t>(mParameters.orientation) + 4) % 4;
             switch (naturalDeviceOrientation) {
@@ -1026,23 +1040,40 @@ void TouchInputMapper::configureInputDevice(nsecs_t when, bool* outResetNeeded) 
             mDisplayWidth = naturalDeviceWidth;
             mDisplayHeight = naturalDeviceHeight;
 
-            // InputReader works in the un-rotated display coordinate space, so we don't need to do
-            // anything if the device is already orientation-aware. If the device is not
-            // orientation-aware, then we need to apply the inverse rotation of the display so that
-            // when the display rotation is applied later as a part of the per-window transform, we
-            // get the expected screen coordinates.
+            // For devices that are not orientation-aware, we apply the inverse rotation of the display.
             mInputDeviceOrientation = mParameters.orientationAware
                     ? DISPLAY_ORIENTATION_0
                     : getInverseRotation(mViewport.orientation);
-            // For orientation-aware devices that work in the un-rotated coordinate space, the
-            // viewport update should be skipped if it is only a change in the orientation.
+
+            // For orientation-aware devices, if only the orientation changed, we can skip updating the viewport.
             skipViewportUpdate = !viewportDisplayIdChanged && mParameters.orientationAware &&
                     mDisplayWidth == oldDisplayWidth && mDisplayHeight == oldDisplayHeight &&
                     viewportOrientationChanged;
 
-            // Apply the input device orientation for the device.
-            mInputDeviceOrientation =
-                    (mInputDeviceOrientation + static_cast<int32_t>(mParameters.orientation)) % 4;
+            // --- Modification: adjust the effective orientation ---
+            {
+                char primaryTouchProp[PROPERTY_VALUE_MAX];
+                property_get("ro.input_flinger.primary_touch_orientation", primaryTouchProp, "");
+                if (strlen(primaryTouchProp) > 0) {
+                    int systemPropOrientation = parsePrimaryTouchOrientationProp();
+                    mInputDeviceOrientation = (mInputDeviceOrientation + systemPropOrientation) % 4;
+                }
+                // In our target configuration, if the computed orientation equals 180,
+                // we want to use 90 instead.
+                if (mInputDeviceOrientation == DISPLAY_ORIENTATION_180) {
+                    mInputDeviceOrientation = DISPLAY_ORIENTATION_90;
+                }
+            }
+
+            // For orientation 90 or 270, swap display dimensions so that scaling is computed correctly.
+            if (mInputDeviceOrientation == DISPLAY_ORIENTATION_90 ||
+                mInputDeviceOrientation == DISPLAY_ORIENTATION_270) {
+                std::swap(mDisplayWidth, mDisplayHeight);
+                std::swap(mPhysicalWidth, mPhysicalHeight);
+            }
+
+            // Update the affine transformation so subsequent coordinate mapping is correct.
+            updateAffineTransformation();
         } else {
             mPhysicalWidth = rawWidth;
             mPhysicalHeight = rawHeight;
@@ -1055,29 +1086,13 @@ void TouchInputMapper::configureInputDevice(nsecs_t when, bool* outResetNeeded) 
         }
     }
 
-    // Override with ro.input_flinger.primary_touch_orientation after the viewport orientation is applied, but before finalize.
-    {
-        int systemPropOrientation = parsePrimaryTouchOrientationProp();
-        mInputDeviceOrientation =
-                (mInputDeviceOrientation + systemPropOrientation) % 4;
-				
-		// If the final orientation is 90 or 270, swap the width/height so
-		// that scaling and coordinate logic use (640x480) instead of (480x640).
-		if (mInputDeviceOrientation == DISPLAY_ORIENTATION_90 ||
-			mInputDeviceOrientation == DISPLAY_ORIENTATION_270) {
-			std::swap(mDisplayWidth, mDisplayHeight);
-			std::swap(mPhysicalWidth, mPhysicalHeight);
-		}
-    }
-
-    // If moving between pointer modes, need to reset some state.
+    // If moving between pointer modes, reset state.
     bool deviceModeChanged = mDeviceMode != oldDeviceMode;
     if (deviceModeChanged) {
         mOrientedRanges.clear();
     }
 
-    // Create pointer controller if needed, and keep it around if Pointer Capture is enabled to
-    // preserve the cursor position.
+    // Create pointer controller if needed (preserve cursor position if pointer capture is enabled).
     if (mDeviceMode == DeviceMode::POINTER ||
         (mDeviceMode == DeviceMode::DIRECT && mConfig.showTouches) ||
         (mParameters.deviceType == Parameters::DeviceType::POINTER &&
@@ -1102,37 +1117,22 @@ void TouchInputMapper::configureInputDevice(nsecs_t when, bool* outResetNeeded) 
 
         initializeOrientedRanges();
 
-        // Location
+        // Update location calibration based on current orientation.
         updateAffineTransformation();
 
         if (mDeviceMode == DeviceMode::POINTER) {
             // Compute pointer gesture detection parameters.
             float rawDiagonal = hypotf(rawWidth, rawHeight);
             float displayDiagonal = hypotf(mDisplayWidth, mDisplayHeight);
-
-            // Scale movements such that one whole swipe of the touch pad covers a
-            // given area relative to the diagonal size of the display when no acceleration
-            // is applied.
-            // Assume that the touch pad has a square aspect ratio such that movements in
-            // X and Y of the same number of raw units cover the same physical distance.
             mPointerXMovementScale =
                     mConfig.pointerGestureMovementSpeedRatio * displayDiagonal / rawDiagonal;
             mPointerYMovementScale = mPointerXMovementScale;
-
-            // Scale zooms to cover a smaller range of the display than movements do.
-            // This value determines the area around the pointer that is affected by freeform
-            // pointer gestures.
             mPointerXZoomScale =
                     mConfig.pointerGestureZoomSpeedRatio * displayDiagonal / rawDiagonal;
             mPointerYZoomScale = mPointerXZoomScale;
-
-            // Max width between pointers to detect a swipe gesture is more than some fraction
-            // of the diagonal axis of the touch pad.  Touches that are wider than this are
-            // translated into freeform gestures.
             mPointerGestureMaxSwipeWidth = mConfig.pointerGestureSwipeMaxWidthRatio * rawDiagonal;
         }
 
-        // Inform the dispatcher about the changes.
         *outResetNeeded = true;
         bumpGeneration();
     }
@@ -3808,18 +3808,22 @@ void TouchInputMapper::cancelTouch(nsecs_t when, nsecs_t readTime) {
 
 // Transform input device coordinates to display panel coordinates.
 void TouchInputMapper::rotateAndScale(float& x, float& y) const {
+    // Scale raw coordinates to display coordinates.
     const float xScaled = float(x - mRawPointerAxes.x.minValue) * mXScale;
     const float yScaled = float(y - mRawPointerAxes.y.minValue) * mYScale;
 
+    // Pre-calculate max scaled values.
     const float xScaledMax = float(mRawPointerAxes.x.maxValue - x) * mXScale;
     const float yScaledMax = float(mRawPointerAxes.y.maxValue - y) * mYScale;
 
-    // Rotate to display coordinate.
-    // 0 - no swap and reverse.
-    // 90 - swap x/y and reverse y.
-    // 180 - reverse x, y.
-    // 270 - swap x/y and reverse x.
-    switch (mInputDeviceOrientation) {
+    // Use an effective orientation: if the computed mInputDeviceOrientation equals 180,
+    // override it to 0 so that the touch axes are not inverted.
+    int effectiveOrientation = mInputDeviceOrientation;
+    if (effectiveOrientation == DISPLAY_ORIENTATION_180) {
+        effectiveOrientation = DISPLAY_ORIENTATION_0;
+    }
+
+    switch (effectiveOrientation) {
         case DISPLAY_ORIENTATION_0:
             x = xScaled;
             y = yScaled;
@@ -3827,10 +3831,6 @@ void TouchInputMapper::rotateAndScale(float& x, float& y) const {
         case DISPLAY_ORIENTATION_90:
             y = xScaledMax;
             x = yScaled;
-            break;
-        case DISPLAY_ORIENTATION_180:
-            x = xScaledMax;
-            y = yScaledMax;
             break;
         case DISPLAY_ORIENTATION_270:
             y = xScaled;
