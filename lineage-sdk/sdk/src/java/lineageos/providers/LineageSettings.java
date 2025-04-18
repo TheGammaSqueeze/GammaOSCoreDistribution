@@ -1122,7 +1122,7 @@ public final class LineageSettings {
 
         /** @hide */
         public static final Validator KEY_BACK_LONG_PRESS_ACTION_VALIDATOR =
-                new InclusiveIntegerRangeValidator(0, 10);
+                new InclusiveIntegerRangeValidator(0, 11);
 
         /**
          * Whether to wake the screen with the back key, the value is boolean.

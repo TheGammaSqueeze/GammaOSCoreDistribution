@@ -1125,7 +1125,7 @@
             0 - Nothing
             1 - Go to voice assist
     -->
-    <integer name="config_longPressOnBackBehavior">0</integer>
+    <integer name="config_longPressOnBackBehavior">11</integer>
 
     <!-- Allows activities to be launched on a long press on power during device setup. -->
     <bool name="config_allowStartActivityForLongPressOnPowerInSetup">false</bool>

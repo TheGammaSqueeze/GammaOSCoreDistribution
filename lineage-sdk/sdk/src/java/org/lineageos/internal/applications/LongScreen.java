@@ -57,7 +57,7 @@ public class LongScreen {
     }
 
     public boolean shouldForceLongScreen(String packageName) {
-        return isSupported() && mApps.contains(packageName);
+        return isSupported() && !(mApps.contains(packageName));
     }
 
     public Set<String> getApps() {

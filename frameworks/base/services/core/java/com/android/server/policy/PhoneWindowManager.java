@@ -241,6 +241,7 @@ import org.lineageos.internal.util.ActionUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FilenameFilter;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -249,6 +250,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.io.BufferedReader;
 
 /**
  * WindowManagerPolicy implementation for the Android phone UI.  This
@@ -367,6 +369,27 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     private static final String ACTION_TORCH_OFF =
             "com.android.server.policy.PhoneWindowManager.ACTION_TORCH_OFF";
+
+    // New flag to indicate that brightness adjustment via volume keys is active.
+    private boolean mBackBrightnessMode = false;
+
+    // Number of steps between minimum and maximum brightness.
+    private static final int BRIGHTNESS_STEPS = 10;
+
+    // Track whether the back key is currently pressed.
+	private boolean mBackPressed = false;
+	
+    // Flag indicating that a long press on the back key has been activated.
+    private boolean mBackLongPressActivated = false;
+
+    // Timer to count how long back button has been pressed
+    private long mBackDownTime = 0;
+    private boolean mRetroarchBlockOverride = false;
+
+	// The device id from which the BACK key event came.
+	private int mBackDeviceId = -1;
+	// The device id from which the non-BACK (combo) key was received (if different from BACK).
+	private int mRetroarchComboDeviceId = -1;
 
     /**
      * Keyguard stuff
@@ -671,9 +694,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     int mRingerToggleChord = VOLUME_HUSH_OFF;
 
     private static final long BUGREPORT_TV_GESTURE_TIMEOUT_MILLIS = 1000;
-
-    /* The number of steps between min and max brightness */
-    private static final int BRIGHTNESS_STEPS = 10;
 
     SettingsObserver mSettingsObserver;
     ModifierShortcutManager mModifierShortcutManager;
@@ -1036,6 +1056,22 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     // returns true if the key was handled and should not be passed to the user
     private boolean backKeyPress() {
         mLogger.count("key_back_press", 1);
+        // If retroarch override is enabled...
+        if (SystemProperties.getInt("persist.gammaos.retroarchoverride.backbutton", 0) == 1) {
+            // If a simultaneous physical key (from a joypad) was detected,
+            // do not trigger the F1 logic; just consume the event.
+            if (mRetroarchBlockOverride) {
+                mRetroarchBlockOverride = false; // reset for next round
+                return true; // consume the event without further processing
+            }
+            // Otherwise, if retroarch is the foreground app, send F1 on short press.
+            String fgApp = getForegroundAppPackageName();
+            if (fgApp != null && fgApp.toLowerCase().contains("retroarch")) {
+                triggerVirtualKeypress(KeyEvent.KEYCODE_F1);
+                return true; // event handled
+            }
+        }
+
         // Cache handled state
         boolean handled = mBackKeyHandled;
 
@@ -1466,14 +1502,27 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     }
 
     private void backLongPress() {
+        // When retroarch override is enabled...
+        if (SystemProperties.getInt("persist.gammaos.retroarchoverride.backbutton", 0) == 1) {
+            // If the block flag is set due to a concurrent physical key, consume the event.
+            if (mRetroarchBlockOverride) {
+                mRetroarchBlockOverride = false;
+                return;
+            }
+            // If retroarch is foregrounded, send ESC on long press instead.
+            String fgApp = getForegroundAppPackageName();
+            if (fgApp != null && fgApp.toLowerCase().contains("retroarch")) {
+                triggerVirtualKeypress(KeyEvent.KEYCODE_ESCAPE);
+                return;
+            }
+        }
+        // Otherwise use the regular long press behavior.
         if (hasLongPressOnBackBehavior()) {
             mBackKeyHandled = true;
-
             long now = SystemClock.uptimeMillis();
             KeyEvent event = new KeyEvent(now, now, KeyEvent.ACTION_DOWN,
                     KEYCODE_BACK, 0, 0, KeyCharacterMap.VIRTUAL_KEYBOARD, 0,
                     KeyEvent.FLAG_FROM_SYSTEM, InputDevice.SOURCE_KEYBOARD);
-
             performHapticFeedback(HapticFeedbackConstants.LONG_PRESS, false,
                     "Back - Long Press");
             performKeyAction(mBackLongPressAction, event);
@@ -1989,6 +2038,19 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         im.injectInputEvent(upEvent, InputManager.INJECT_INPUT_EVENT_MODE_ASYNC);
     }
 
+    /**
+     * Returns the package name of the current foreground app.
+     * (Uses getRunningTasks, which is allowed for system components.)
+     */
+    private String getForegroundAppPackageName() {
+        ActivityManager am = (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningTaskInfo> tasks = am.getRunningTasks(1);
+        if (tasks != null && !tasks.isEmpty() && tasks.get(0).topActivity != null) {
+            return tasks.get(0).topActivity.getPackageName();
+        }
+        return null;
+    }
+
     private void performKeyAction(Action action, KeyEvent event) {
         // By default, pass INVOCATION_TYPE_UNKNOWN to launch assistant.
         performKeyAction(action, event, AssistUtils.INVOCATION_TYPE_UNKNOWN);
@@ -2028,6 +2090,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 break;
             case KILL_APP:
                 ActionUtils.killForegroundApp(mContext, mCurrentUserId);
+                break;
+            case GO_HOME:
+                triggerVirtualKeypress(KeyEvent.KEYCODE_HOME);
                 break;
             default:
                 break;
@@ -3238,6 +3303,85 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             WindowManager.LayoutParams.TYPE_SYSTEM_ERROR,
         };
 
+	private String readFile(String path) throws IOException {
+		BufferedReader reader = new BufferedReader(new FileReader(path));
+		StringBuilder sb = new StringBuilder();
+		String line;
+		while ((line = reader.readLine()) != null) {
+			sb.append(line);
+		}
+		reader.close();
+		return sb.toString();
+	}
+
+	private String findDevicePathByName(String deviceName) {
+		File inputDir = new File("/dev/input");
+		File[] eventFiles = inputDir.listFiles(new FilenameFilter() {
+			public boolean accept(File dir, String name) {
+				return name.startsWith("event");
+			}
+		});
+
+		if (eventFiles != null) {
+			for (File eventFile : eventFiles) {
+				String eventFilePath = eventFile.getAbsolutePath();
+				// Build the sysfs path for this event device.
+				String sysfsPath = "/sys/class/input/" + eventFile.getName() + "/device/name";
+				try {
+					String sysfsName = readFile(sysfsPath).trim();
+					Log.d(TAG, "Found sysfs name for " + eventFilePath + ": " + sysfsName);
+					if (sysfsName.equals(deviceName)) {
+						return eventFilePath;
+					}
+				} catch (IOException e) {
+					Log.e(TAG, "Error reading " + sysfsPath, e);
+				}
+			}
+		}
+		return null;
+	}
+
+    private void sendBtnSelectDown(String devicePath) {
+        try {
+            // Send BTN_SELECT down: type 1 (EV_KEY), code 314, value 1
+            Runtime.getRuntime().exec("sendevent " + devicePath + " 1 314 1");
+            // Follow with a synchronization event
+            Runtime.getRuntime().exec("sendevent " + devicePath + " 0 0 0");
+        } catch (IOException e) {
+            Log.e(TAG, "Failed to send BTN_SELECT down event", e);
+        }
+    }
+
+    private void sendBtnSelectUp(String devicePath) {
+        try {
+            // Send BTN_SELECT up: type 1 (EV_KEY), code 314, value 0
+            Runtime.getRuntime().exec("sendevent " + devicePath + " 1 314 0");
+            // Follow with a synchronization event
+            Runtime.getRuntime().exec("sendevent " + devicePath + " 0 0 0");
+        } catch (IOException e) {
+            Log.e(TAG, "Failed to send BTN_SELECT up event", e);
+        }
+    }
+
+	private String getDevicePathForDeviceId(int deviceId) {
+		InputDevice device = InputManager.getInstance().getInputDevice(deviceId);
+		if (device != null) {
+			String deviceName = device.getName();
+			Log.d(TAG, "Target InputDevice name: " + deviceName + " (deviceId: " + deviceId + ")");
+			String devicePath = findDevicePathByName(deviceName);
+			if (devicePath != null) {
+				Log.d(TAG, "Found matching device path for target: " + devicePath);
+				return devicePath;
+			} else {
+				Log.e(TAG, "No matching event file found for device: " + deviceName);
+			}
+		} else {
+			Log.e(TAG, "InputDevice is null for device id: " + deviceId);
+		}
+		Log.e(TAG, "Falling back to /dev/input/event5 for target");
+		return "/dev/input/event5";
+	}
+
     // TODO(b/117479243): handle it in InputPolicy
     /** {@inheritDoc} */
     @Override
@@ -3255,6 +3399,84 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         final long key_not_consumed = 0;
         final boolean longPress = (flags & KeyEvent.FLAG_LONG_PRESS) != 0;
         final boolean virtualKey = event.getDeviceId() == KeyCharacterMap.VIRTUAL_KEYBOARD;
+
+        // Begin custom brightness adjustment logic.
+        // Track the state of the BACK key.
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			if (down) {
+				// On first DOWN, record the event time and the device id for BACK.
+				if (mBackDownTime == 0) {
+					mBackDownTime = event.getEventTime();
+				}
+				mBackPressed = true;
+				mBackDeviceId = event.getDeviceId();
+				// Also, reset any stored combo device id.
+				mRetroarchComboDeviceId = -1;
+				if (longPress) {
+					mBackLongPressActivated = true;
+				}
+			} else {
+				// On BACK key release, reset flags.
+				mBackPressed = false;
+				mBackLongPressActivated = false;
+				mBackBrightnessMode = false;
+				mRetroarchBlockOverride = false;
+			}
+		}
+
+        // If brightness mode is active, intercept back, home, F1, or ESC keys.
+        if (mBackBrightnessMode &&
+                (keyCode == KeyEvent.KEYCODE_BACK ||
+                 keyCode == KeyEvent.KEYCODE_HOME ||
+                 keyCode == KeyEvent.KEYCODE_F1 ||
+                 keyCode == KeyEvent.KEYCODE_ESCAPE)) {
+            if (keyCode == KeyEvent.KEYCODE_BACK && !down) {
+                mBackBrightnessMode = false;
+            }
+            return key_consumed;
+        }
+
+        if ((keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN)
+                && mBackPressed && !mBackLongPressActivated) {
+            if (!mBackBrightnessMode) {
+                mBackBrightnessMode = true;
+            }
+            if (down) {
+                int direction = (keyCode == KeyEvent.KEYCODE_VOLUME_UP) ? 1 : -1;
+                adjustScreenBrightness(direction);
+            }
+            return key_consumed;
+        }
+
+		if (SystemProperties.getInt("persist.gammaos.retroarchoverride.backbutton", 0) == 1) {
+			String fgApp = getForegroundAppPackageName();
+			if (fgApp != null && fgApp.toLowerCase().contains("retroarch")) {
+				// For non-BACK events while BACK is pressed:
+				if (keyCode != KeyEvent.KEYCODE_BACK && mBackPressed) {
+					// If the non-BACK key comes from a different device than the BACK key,
+					// record that device id as the combo device.
+					if (event.getDeviceId() != mBackDeviceId) {
+						mRetroarchComboDeviceId = event.getDeviceId();
+					}
+					// Determine the target device: use the combo device if set; otherwise, fall back to the BACK device.
+					int targetDeviceId = (mRetroarchComboDeviceId != -1) ? mRetroarchComboDeviceId : mBackDeviceId;
+					String devicePath = getDevicePathForDeviceId(targetDeviceId);
+					sendBtnSelectDown(devicePath);
+				}
+			}
+		}
+
+		// Later, when processing the BACK key release:
+		if (keyCode == KeyEvent.KEYCODE_BACK && !down) {
+			int targetDeviceId = (mRetroarchComboDeviceId != -1) ? mRetroarchComboDeviceId : mBackDeviceId;
+			String devicePath = getDevicePathForDeviceId(targetDeviceId);
+			sendBtnSelectUp(devicePath);
+			mBackPressed = false;
+			mRetroarchBlockOverride = false;
+			// Reset stored device ids.
+			mRetroarchComboDeviceId = -1;
+			mBackDeviceId = -1;
+		}
 
         if (DEBUG_INPUT) {
             Log.d(TAG, "interceptKeyTi keyCode=" + keyCode + " down=" + down + " repeatCount="
@@ -3659,6 +3881,41 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
         // Let the application handle the key.
         return key_not_consumed;
+    }
+
+    /**
+     * Adjusts the screen brightness by a fixed step.
+     * A positive direction increases brightness while a negative value decreases it.
+     *
+     * This method retrieves the minimum and maximum brightness constraints, computes a step
+     * value based on the configured number of brightness steps, and then adjusts the current
+     * brightness accordingly. Finally, it launches the brightness dialog so the user can
+     * see the change.
+     *
+     * @param direction +1 to increase brightness, -1 to decrease brightness.
+     */
+    private void adjustScreenBrightness(int direction) {
+        // Retrieve the brightness constraints from the PowerManager.
+        float minBrightness = mPowerManager.getBrightnessConstraint(
+                PowerManager.BRIGHTNESS_CONSTRAINT_TYPE_MINIMUM);
+        float maxBrightness = mPowerManager.getBrightnessConstraint(
+                PowerManager.BRIGHTNESS_CONSTRAINT_TYPE_MAXIMUM);
+
+        // Use the default display for the brightness adjustment.
+        int defaultDisplayId = Display.DEFAULT_DISPLAY;
+
+        // Retrieve the current brightness for the default display.
+        float currentBrightness = mDisplayManager.getBrightness(defaultDisplayId);
+
+        // Calculate the step size based on the total range and number of steps.
+        float step = (maxBrightness - minBrightness) / BRIGHTNESS_STEPS;
+
+        // Compute the new brightness value, clamped between the min and max.
+        float newBrightness = currentBrightness + (step * direction);
+        newBrightness = Math.max(minBrightness, Math.min(maxBrightness, newBrightness));
+
+        // Apply the new brightness value.
+        mDisplayManager.setBrightness(defaultDisplayId, newBrightness);
     }
 
     /**
