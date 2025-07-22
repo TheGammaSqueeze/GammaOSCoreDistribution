@@ -1197,7 +1197,6 @@ on property:sys.boot_completed=1
     exec - system system -- /bin/rm -rf /data/per_boot
     mkdir /data/per_boot 0700 system system encryption=Require key=per_boot_ref
     exec -- /system/bin/service call activity 44 i32 0
-    start rgp2xbox
     start gammaoscustomization
 
 #    exec -- /system/bin/settings put global always_finish_activities 1
@@ -1273,9 +1272,6 @@ service console /system/bin/sh
     group shell log readproc
     seclabel u:r:shell:s0
     setenv HOSTNAME console
-
-service rgp2xbox /system/bin/rgp2xbox.sh
-    disabled
 
 service gammaoscustomization /system/bin/customization.sh
     disabled

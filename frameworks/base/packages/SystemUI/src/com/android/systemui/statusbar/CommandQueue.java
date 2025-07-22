@@ -577,6 +577,8 @@ public class CommandQueue extends IStatusBar.Stub implements
      */
     public void disable(int displayId, @DisableFlags int state1, @Disable2Flags int state2,
             boolean animate) {
+        state1 &= ~StatusBarManager.DISABLE_EXPAND;
+        state2 &= ~StatusBarManager.DISABLE2_QUICK_SETTINGS;
         synchronized (mLock) {
             setDisabled(displayId, state1, state2);
             mHandler.removeMessages(MSG_DISABLE);
@@ -661,8 +663,11 @@ public class CommandQueue extends IStatusBar.Stub implements
 
     public void togglePanel() {
         synchronized (mLock) {
-            mHandler.removeMessages(MSG_TOGGLE_PANEL);
-            mHandler.obtainMessage(MSG_TOGGLE_PANEL, 0, 0).sendToTarget();
+            // Instead of toggling the notifications shade (MSG_TOGGLE_PANEL),
+            // always expand the Quick Settings panel (MSG_EXPAND_SETTINGS).
+            mHandler.removeMessages(MSG_EXPAND_SETTINGS);
+            // “settings” is the sub‑panel token that tells SystemUI “open QS”
+            mHandler.obtainMessage(MSG_EXPAND_SETTINGS, "settings").sendToTarget();
         }
     }
 

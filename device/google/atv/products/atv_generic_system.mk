@@ -93,35 +93,6 @@ PRODUCT_COPY_FILES += \
     device/google/atv/bluetooth/audio/config/sysbta_audio_policy_configuration.xml:system/etc/sysbta_audio_policy_configuration.xml \
     device/google/atv/bluetooth/audio/config/sysbta_audio_policy_configuration_7_0.xml:system/etc/sysbta_audio_policy_configuration_7_0.xml \
     device/google/atv/gammaos/utils/xz:system/bin/xz \
-    device/google/atv/gammaos/rgp2xbox/rgp2xbox:system/bin/rgp2xbox \
-    device/google/atv/gammaos/rgp2xbox/rgp2xbox.sh:system/bin/rgp2xbox.sh \
-    device/google/atv/gammaos/rgp2xbox/setabxyvalue_default.sh:system/bin/setabxyvalue_default.sh \
-    device/google/atv/gammaos/rgp2xbox/setabxyvalue_swapped.sh:system/bin/setabxyvalue_swapped.sh \
-    device/google/atv/gammaos/rgp2xbox/setanalogaxisvalue_default.sh:system/bin/setanalogaxisvalue_default.sh \
-    device/google/atv/gammaos/rgp2xbox/setanalogaxisvalue_swapped.sh:system/bin/setanalogaxisvalue_swapped.sh \
-    device/google/atv/gammaos/rgp2xbox/setanalogsensitivity_15.sh:system/bin/setanalogsensitivity_15.sh \
-    device/google/atv/gammaos/rgp2xbox/setanalogsensitivity_25.sh:system/bin/setanalogsensitivity_25.sh \
-    device/google/atv/gammaos/rgp2xbox/setanalogsensitivity_50.sh:system/bin/setanalogsensitivity_50.sh \
-    device/google/atv/gammaos/rgp2xbox/setanalogsensitivity_custom.sh:system/bin/setanalogsensitivity_custom.sh \
-    device/google/atv/gammaos/rgp2xbox/setanalogsensitivity_default.sh:system/bin/setanalogsensitivity_default.sh \
-    device/google/atv/gammaos/rgp2xbox/setclock_max.sh:system/bin/setclock_max.sh \
-    device/google/atv/gammaos/rgp2xbox/setclock_powersave.sh:system/bin/setclock_powersave.sh \
-    device/google/atv/gammaos/rgp2xbox/setclock_stock.sh:system/bin/setclock_stock.sh \
-    device/google/atv/gammaos/rgp2xbox/setclockvalue_max.sh:system/bin/setclockvalue_max.sh \
-    device/google/atv/gammaos/rgp2xbox/setclockvalue_powersave.sh:system/bin/setclockvalue_powersave.sh \
-    device/google/atv/gammaos/rgp2xbox/setclockvalue_stock.sh:system/bin/setclockvalue_stock.sh \
-    device/google/atv/gammaos/rgp2xbox/setdpadanalogtoggle_off.sh:system/bin/setdpadanalogtoggle_off.sh \
-    device/google/atv/gammaos/rgp2xbox/setdpadanalogtoggle_on.sh:system/bin/setdpadanalogtoggle_on.sh \
-    device/google/atv/gammaos/rgp2xbox/setfan_auto.sh:system/bin/setfan_auto.sh \
-    device/google/atv/gammaos/rgp2xbox/setfan_cool.sh:system/bin/setfan_cool.sh \
-    device/google/atv/gammaos/rgp2xbox/setfan_max.sh:system/bin/setfan_max.sh \
-    device/google/atv/gammaos/rgp2xbox/setfan_off.sh:system/bin/setfan_off.sh \
-    device/google/atv/gammaos/rgp2xbox/setfanvalue_auto.sh:system/bin/setfanvalue_auto.sh \
-    device/google/atv/gammaos/rgp2xbox/setfanvalue_cool.sh:system/bin/setfanvalue_cool.sh \
-    device/google/atv/gammaos/rgp2xbox/setfanvalue_max.sh:system/bin/setfanvalue_max.sh \
-    device/google/atv/gammaos/rgp2xbox/setfanvalue_off.sh:system/bin/setfanvalue_off.sh \
-    device/google/atv/gammaos/rgp2xbox/setrightanalogaxisvalue_default.sh:system/bin/setrightanalogaxisvalue_default.sh \
-    device/google/atv/gammaos/rgp2xbox/setrightanalogaxisvalue_swapped.sh:system/bin/setrightanalogaxisvalue_swapped.sh \
     device/google/atv/gammaos/customization.sh:system/bin/customization.sh \
     device/google/atv/gammaos/magisk/magisk.apk:system/etc/magisk.apk \
     device/google/atv/gammaos/magisk/magisk.tar.gz:system/etc/magisk.tar.gz \
@@ -131,7 +102,6 @@ PRODUCT_COPY_FILES += \
     device/google/atv/gammaos/retroarch/roms.tar.xz:system/etc/roms.tar.xz \
     device/google/atv/gammaos/hdmiaudio/silent.mp3:system/etc/silent.mp3 \
     device/google/atv/gammaos/hdmiaudio/hdmiaudio.sh:system/bin/hdmiaudio.sh \
-    device/google/atv/gammaos/rgb30/rgb30_v2_boot.zip:system/etc/rgb30_v2_boot.zip \
     device/google/atv/gammaos/setup.sh:system/bin/setup.sh \
     device/google/atv/gammaos/launcher/MiXplorer_v6.64.3-API29_B23090720.apk:system/etc/MiXplorer_v6.64.3-API29_B23090720.apk \
     device/google/atv/gammaos/launcher/AuroraStore_4.6.2.apk:system/etc/AuroraStore_4.6.2.apk \

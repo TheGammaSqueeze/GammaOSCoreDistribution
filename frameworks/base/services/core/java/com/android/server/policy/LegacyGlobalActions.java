@@ -27,6 +27,7 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.UserInfo;
 import android.content.pm.ApplicationInfo;
+import android.content.res.Configuration;
 import android.database.ContentObserver;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
@@ -47,6 +48,7 @@ import android.telephony.PhoneStateListener;
 import android.telephony.ServiceState;
 import android.telephony.TelephonyManager;
 import android.util.ArraySet;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,6 +56,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.WindowManagerGlobal;
 import android.widget.AdapterView;
+import android.widget.ListView;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.ShapeDrawable;
@@ -85,6 +88,7 @@ import android.app.Activity;
 import android.widget.Toast;
 import android.os.BatteryManager;
 import android.widget.TextView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.os.Build;
@@ -208,6 +212,37 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
                         updateMemoryAndCpuUsage();  // Ensure memory update starts when showing the dialog
         }
     }
+	
+    /**
+     * Helper to enable immersive mode on the global actions dialog.
+     */
+    private void enableImmersiveModeForDialog(ActionsDialog dialog) {
+        if (dialog != null && dialog.getWindow() != null) {
+            final View decorView = dialog.getWindow().getDecorView();
+            decorView.setSystemUiVisibility(
+                  View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                | View.SYSTEM_UI_FLAG_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+            decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
+                @Override
+                public void onSystemUiVisibilityChange(int visibility) {
+                    // If the system bars become visible, reapply immersive mode.
+                    if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
+                        decorView.setSystemUiVisibility(
+                              View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+                    }
+                }
+            });
+        }
+    }
 
     private void awakenIfNecessary() {
         if (mDreamManager != null) {
@@ -221,218 +256,281 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
         }
     }
 
+    /**
+     * Modified method to show the global actions dialog in immersive mode,
+     * blur it, and size it to 50% width in landscape (full width in portrait),
+     * re-applying on rotation/layout changes.
+     */
     private void handleShow() {
         awakenIfNecessary();
         mDialog = createDialog();
         prepareDialog();
 
-        // If we only have 1 item and it's a simple press action, just do this action.
+        // If there's only one simple action, just fire it
         if (mAdapter.getCount() == 1
                 && mAdapter.getItem(0) instanceof SinglePressAction
                 && !(mAdapter.getItem(0) instanceof LongPressAction)) {
             ((SinglePressAction) mAdapter.getItem(0)).onPress();
-        } else {
-            if (mDialog != null) {
-                WindowManager.LayoutParams attrs = mDialog.getWindow().getAttributes();
-                attrs.setTitle("LegacyGlobalActions");
-                mDialog.getWindow().setAttributes(attrs);
-                mDialog.show();
-                mDialog.getWindow().getDecorView().setSystemUiVisibility(
-                        View.STATUS_BAR_DISABLE_EXPAND);
-
-        // Ensure memory update starts when dialog is shown
-            updateMemoryAndCpuUsage();
-            }
+            return;
         }
+
+        // Otherwise show the full dialog
+        if (mDialog == null) return;
+        Window w = mDialog.getWindow();
+
+        // 1) Set title on the window
+        WindowManager.LayoutParams attrs = w.getAttributes();
+        attrs.setTitle("LegacyGlobalActions");
+        w.setAttributes(attrs);
+
+        // 2) Show it
+        mDialog.show();
+
+        // 3) Tidy up the ListView (transparent, no dividers)
+        ListView list = mDialog.getListView();
+        list.setBackgroundColor(Color.TRANSPARENT);
+        list.setDivider(null);
+        list.setDividerHeight(0);
+        list.setPadding(0, 0, 0, 0);
+
+        // 4) Android 12+ cross-window blur
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            w.addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+            WindowManager.LayoutParams lp = w.getAttributes();
+            lp.setBlurBehindRadius(20);
+            lp.dimAmount = 0.1f;
+            w.setAttributes(lp);
+            w.setBackgroundBlurRadius(50);
+        }
+
+        // 5) Size & center the window based on current orientation
+        applyAdaptiveWidth(w);
+
+        // 6) Listen for any layout changes (including rotation) and re-apply
+        View decor = w.getDecorView();
+        decor.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View v,
+                                       int left, int top, int right, int bottom,
+                                       int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                // if size really changed, re-apply
+                if (right - left != oldRight - oldLeft
+                        || bottom - top != oldBottom - oldTop) {
+                    applyAdaptiveWidth(w);
+                }
+            }
+        });
+
+        // 7) Finally, immersive mode & start memory updates
+        enableImmersiveModeForDialog(mDialog);
+        updateMemoryAndCpuUsage();
+    }
+
+    /** 
+     * Helper: sets the window width to MATCH_PARENT in portrait, 60% in landscape,
+     * and always centers it.
+     */
+    private void applyAdaptiveWidth(Window w) {
+        int orientation = mContext.getResources().getConfiguration().orientation;
+        int width;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            DisplayMetrics dm = new DisplayMetrics();
+            w.getWindowManager().getDefaultDisplay().getMetrics(dm);
+            width = (int) (dm.widthPixels * 0.6f);
+        } else {
+            width = ViewGroup.LayoutParams.MATCH_PARENT;
+        }
+        w.setLayout(width, WindowManager.LayoutParams.WRAP_CONTENT);
+        w.setGravity(Gravity.CENTER);
     }
 
     /**
      * Create the global actions dialog.
      * @return A new dialog.
      */
-private ActionsDialog createDialog() {
+    private ActionsDialog createDialog() {
 
-    LayoutInflater inflater = LayoutInflater.from(mContext);
-    headerView = inflater.inflate(R.layout.header_battery_status, null, false);
-    updateBatteryStatus(); // Initial update
-        updateMemoryAndCpuUsage();   // Start memory update
+        LayoutInflater inflater = LayoutInflater.from(mContext);
+        headerView = inflater.inflate(R.layout.header_battery_status, null, false);
+        updateBatteryStatus(); // Initial update
+            updateMemoryAndCpuUsage();   // Start memory update
 
-    // Simple toggle style if there's no vibrator, otherwise use a tri-state
-    if (!mHasVibrator) {
-        mSilentModeAction = new SilentModeToggleAction();
-    } else {
-        mSilentModeAction = new SilentModeTriStateAction(mContext, mAudioManager, mHandler);
-    }
-    mAirplaneModeOn = new ToggleAction(
-            R.drawable.ic_lock_airplane_mode,
-            R.drawable.ic_lock_airplane_mode_off,
-            R.string.global_actions_toggle_airplane_mode,
-            R.string.global_actions_airplane_mode_on_status,
-            R.string.global_actions_airplane_mode_off_status) {
-
-        @Override
-        public void onToggle(boolean on) {
-            if (mHasTelephony && TelephonyProperties.in_ecm_mode().orElse(false)) {
-                mIsWaitingForEcmExit = true;
-                // Launch ECM exit dialog
-                Intent ecmDialogIntent =
-                        new Intent(TelephonyManager.ACTION_SHOW_NOTICE_ECM_BLOCK_OTHERS, null);
-                ecmDialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(ecmDialogIntent);
-            } else {
-                changeAirplaneModeSystemSetting(on);
-            }
-        }
-
-        @Override
-        protected void changeStateFromPress(boolean buttonOn) {
-            if (!mHasTelephony) return;
-
-            // In ECM mode airplane state cannot be changed
-            if (!TelephonyProperties.in_ecm_mode().orElse(false)) {
-                mState = buttonOn ? State.TurningOn : State.TurningOff;
-                mAirplaneState = mState;
-            }
-        }
-
-        @Override
-        public boolean showDuringKeyguard() {
-            return true;
-        }
-
-        @Override
-        public boolean showBeforeProvisioning() {
-            return false;
-        }
-    };
-    onAirplaneModeChanged();
-
-    mItems = new ArrayList<Action>();
-    String[] defaultActions = mContext.getResources().getStringArray(
-            com.android.internal.R.array.config_globalActionsList);
-
-    ArraySet<String> addedKeys = new ArraySet<String>();
-    for (int i = 0; i < defaultActions.length; i++) {
-        String actionKey = defaultActions[i];
-        if (addedKeys.contains(actionKey)) {
-            // If we already have added this, don't add it again.
-            continue;
-        }
-        if (GLOBAL_ACTION_KEY_POWER.equals(actionKey)) {
-            mItems.add(new PowerAction(mContext, mWindowManagerFuncs));
-        } else if (GLOBAL_ACTION_KEY_AIRPLANE.equals(actionKey)) {
-            mItems.add(mAirplaneModeOn);
-        } else if (GLOBAL_ACTION_KEY_BUGREPORT.equals(actionKey)) {
-            if (Settings.Global.getInt(mContext.getContentResolver(),
-                    Settings.Global.BUGREPORT_IN_POWER_MENU, 0) != 0 && isCurrentUserOwner()) {
-                mItems.add(new BugReportAction());
-            }
-        } else if (GLOBAL_ACTION_KEY_SILENT.equals(actionKey)) {
-            if (mShowSilentToggle) {
-                mItems.add(mSilentModeAction);
-            }
-        } else if (GLOBAL_ACTION_KEY_USERS.equals(actionKey)) {
-            if (SystemProperties.getBoolean("fw.power_user_switcher", false)) {
-                addUsersToMenu(mItems);
-            }
-        } else if (GLOBAL_ACTION_KEY_VOICEASSIST.equals(actionKey)) {
-            mItems.add(getVoiceAssistAction());
-        } else if (GLOBAL_ACTION_KEY_ASSIST.equals(actionKey)) {
-            mItems.add(getAssistAction());
-        } else if (GLOBAL_ACTION_KEY_RESTART.equals(actionKey)) {
-            mItems.add(new RestartAction(mContext, mWindowManagerFuncs));
+        // Simple toggle style if there's no vibrator, otherwise use a tri-state
+        if (!mHasVibrator) {
+            mSilentModeAction = new SilentModeToggleAction();
         } else {
-            Log.e(TAG, "Invalid global action key " + actionKey);
+            mSilentModeAction = new SilentModeTriStateAction(mContext, mAudioManager, mHandler);
         }
-        // Add here so we don't add more than one.
-        addedKeys.add(actionKey);
-    }
+        mAirplaneModeOn = new ToggleAction(
+                R.drawable.ic_lock_airplane_mode,
+                R.drawable.ic_lock_airplane_mode_off,
+                R.string.global_actions_toggle_airplane_mode,
+                R.string.global_actions_airplane_mode_on_status,
+                R.string.global_actions_airplane_mode_off_status) {
 
-    if (mEmergencyAffordanceManager.needsEmergencyAffordance()) {
-        mItems.add(getEmergencyAction());
-    }
-
-    // GammaOS - Add our own shortcuts
-    mItems.add(getKillForegroundAppAction());
-    mItems.add(getSettingsAction());
-    mItems.add(getBrightnessOptionsAction());
-    mItems.add(getControllerOptionsAction());
-    mItems.add(getUSBOptionsAction());
-    mItems.add(getPerformanceOptionsAction());
-    mItems.add(getKillBackgroundAppsAction());
-    mItems.add(getKillAllAppsAction());
-    mItems.add(getHomeAction());
-
-    // Override ActionsAdapter's getView method to set text color to white
-    mAdapter = new ActionsAdapter(mContext, mItems,
-            () -> mDeviceProvisioned, () -> mKeyguardShowing) {
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            // Get the default view for the item
-            View view = super.getView(position, convertView, parent);
-
-            // Traverse view hierarchy to find the TextView
-            if (view instanceof ViewGroup) {
-                findAndSetTextColorWhite((ViewGroup) view);
-            }
-
-            return view;
-        }
-
-        private void findAndSetTextColorWhite(ViewGroup viewGroup) {
-            for (int i = 0; i < viewGroup.getChildCount(); i++) {
-                View child = viewGroup.getChildAt(i);
-                if (child instanceof TextView) {
-                    ((TextView) child).setTextColor(Color.WHITE); // Set text color to white
-                } else if (child instanceof ViewGroup) {
-                    findAndSetTextColorWhite((ViewGroup) child); // Recursively search for TextView
+            @Override
+            public void onToggle(boolean on) {
+                if (mHasTelephony && TelephonyProperties.in_ecm_mode().orElse(false)) {
+                    mIsWaitingForEcmExit = true;
+                    // Launch ECM exit dialog
+                    Intent ecmDialogIntent =
+                            new Intent(TelephonyManager.ACTION_SHOW_NOTICE_ECM_BLOCK_OTHERS, null);
+                    ecmDialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    mContext.startActivity(ecmDialogIntent);
+                } else {
+                    changeAirplaneModeSystemSetting(on);
                 }
             }
+
+            @Override
+            protected void changeStateFromPress(boolean buttonOn) {
+                if (!mHasTelephony) return;
+
+                // In ECM mode airplane state cannot be changed
+                if (!TelephonyProperties.in_ecm_mode().orElse(false)) {
+                    mState = buttonOn ? State.TurningOn : State.TurningOff;
+                    mAirplaneState = mState;
+                }
+            }
+
+            @Override
+            public boolean showDuringKeyguard() {
+                return true;
+            }
+
+            @Override
+            public boolean showBeforeProvisioning() {
+                return false;
+            }
+        };
+        onAirplaneModeChanged();
+
+        mItems = new ArrayList<Action>();
+        String[] defaultActions = mContext.getResources().getStringArray(
+                com.android.internal.R.array.config_globalActionsList);
+
+        ArraySet<String> addedKeys = new ArraySet<String>();
+        for (int i = 0; i < defaultActions.length; i++) {
+            String actionKey = defaultActions[i];
+            if (addedKeys.contains(actionKey)) {
+                // If we already have added this, don't add it again.
+                continue;
+            }
+            if (GLOBAL_ACTION_KEY_POWER.equals(actionKey)) {
+                mItems.add(new PowerAction(mContext, mWindowManagerFuncs));
+            } else if (GLOBAL_ACTION_KEY_AIRPLANE.equals(actionKey)) {
+                mItems.add(mAirplaneModeOn);
+            } else if (GLOBAL_ACTION_KEY_BUGREPORT.equals(actionKey)) {
+                if (Settings.Global.getInt(mContext.getContentResolver(),
+                        Settings.Global.BUGREPORT_IN_POWER_MENU, 0) != 0 && isCurrentUserOwner()) {
+                    mItems.add(new BugReportAction());
+                }
+            } else if (GLOBAL_ACTION_KEY_SILENT.equals(actionKey)) {
+                if (mShowSilentToggle) {
+                    mItems.add(mSilentModeAction);
+                }
+            } else if (GLOBAL_ACTION_KEY_USERS.equals(actionKey)) {
+                if (SystemProperties.getBoolean("fw.power_user_switcher", false)) {
+                    addUsersToMenu(mItems);
+                }
+            } else if (GLOBAL_ACTION_KEY_VOICEASSIST.equals(actionKey)) {
+                mItems.add(getVoiceAssistAction());
+            } else if (GLOBAL_ACTION_KEY_ASSIST.equals(actionKey)) {
+                mItems.add(getAssistAction());
+            } else if (GLOBAL_ACTION_KEY_RESTART.equals(actionKey)) {
+                mItems.add(new RestartAction(mContext, mWindowManagerFuncs));
+            } else {
+                Log.e(TAG, "Invalid global action key " + actionKey);
+            }
+            // Add here so we don't add more than one.
+            addedKeys.add(actionKey);
         }
-    };
 
-    AlertController.AlertParams params = new AlertController.AlertParams(mContext);
-    params.mAdapter = mAdapter;
-    params.mOnClickListener = this;
-    params.mForceInverseBackground = true;
-    params.mCustomTitleView = headerView; // Set custom header
+        if (mEmergencyAffordanceManager.needsEmergencyAffordance()) {
+            mItems.add(getEmergencyAction());
+        }
 
-    ActionsDialog dialog = new ActionsDialog(mContext, params);
-    dialog.setCanceledOnTouchOutside(false); // Handled by the custom class.
+        // GammaOS - Add our own shortcuts
+        mItems.add(getKillForegroundAppAction());
+        mItems.add(getSettingsAction());
+        //mItems.add(getBrightnessOptionsAction());
+        //mItems.add(getControllerOptionsAction());
+       // mItems.add(getUSBOptionsAction());
+        //mItems.add(getPerformanceOptionsAction());
+        mItems.add(getKillBackgroundAppsAction());
+        mItems.add(getKillAllAppsAction());
+        //mItems.add(getHomeAction());
 
-    dialog.getListView().setItemsCanFocus(true);
-    dialog.getListView().setLongClickable(true);
-    dialog.getListView().setOnItemLongClickListener(
-            new AdapterView.OnItemLongClickListener() {
-                @Override
-                public boolean onItemLongClick(AdapterView<?> parent, View view, int position,
-                        long id) {
-                    final Action action = mAdapter.getItem(position);
-                    if (action instanceof LongPressAction) {
-                        return ((LongPressAction) action).onLongPress();
+        // Override ActionsAdapter's getView method to set text color to white
+        mAdapter = new ActionsAdapter(mContext, mItems,
+                () -> mDeviceProvisioned, () -> mKeyguardShowing) {
+
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                // Get the default view for the item
+                View view = super.getView(position, convertView, parent);
+
+                // Traverse view hierarchy to find the TextView
+                if (view instanceof ViewGroup) {
+                    findAndSetTextColorWhite((ViewGroup) view);
+                }
+
+                return view;
+            }
+
+            private void findAndSetTextColorWhite(ViewGroup viewGroup) {
+                for (int i = 0; i < viewGroup.getChildCount(); i++) {
+                    View child = viewGroup.getChildAt(i);
+                    if (child instanceof TextView) {
+                        ((TextView) child).setTextColor(Color.WHITE); // Set text color to white
+                    } else if (child instanceof ViewGroup) {
+                        findAndSetTextColorWhite((ViewGroup) child); // Recursively search for TextView
                     }
-                    return false;
                 }
-    });
-    dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
-    // Don't acquire soft keyboard focus, to avoid destroying state when capturing bug reports
-    dialog.getWindow().setFlags(FLAG_ALT_FOCUSABLE_IM, FLAG_ALT_FOCUSABLE_IM);
+            }
+        };
 
-    // Define rounded corners
-    float[] outerRadii = new float[] {16, 16, 16, 16, 16, 16, 16, 16}; // Set corner radius
-    RoundRectShape roundedRect = new RoundRectShape(outerRadii, null, null);
-    ShapeDrawable shapeDrawable = new ShapeDrawable(roundedRect);
-    shapeDrawable.getPaint().setColor(Color.parseColor("#FA333333")); // Transparent black
-    shapeDrawable.getPaint().setStyle(Paint.Style.FILL);
+        AlertController.AlertParams params = new AlertController.AlertParams(mContext);
+        params.mAdapter = mAdapter;
+        params.mOnClickListener = this;
+        params.mForceInverseBackground = true;
+        params.mCustomTitleView = headerView; // Set custom header
 
-    // Apply the rounded background
-    dialog.getWindow().setBackgroundDrawable(shapeDrawable);
+        ActionsDialog dialog = new ActionsDialog(mContext, params);
+        dialog.setCanceledOnTouchOutside(false); // Handled by the custom class.
 
-    dialog.setOnDismissListener(this);
+        dialog.getListView().setItemsCanFocus(true);
+        dialog.getListView().setLongClickable(true);
+        dialog.getListView().setOnItemLongClickListener(
+                new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position,
+                            long id) {
+                        final Action action = mAdapter.getItem(position);
+                        if (action instanceof LongPressAction) {
+                            return ((LongPressAction) action).onLongPress();
+                        }
+                        return false;
+                    }
+        });
+        dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
+        // Don't acquire soft keyboard focus, to avoid destroying state when capturing bug reports
+        dialog.getWindow().setFlags(FLAG_ALT_FOCUSABLE_IM, FLAG_ALT_FOCUSABLE_IM);
 
-    return dialog;
-}
+        // Define rounded corners
+        float[] outerRadii = new float[] {16, 16, 16, 16, 16, 16, 16, 16}; // Set corner radius
+        RoundRectShape roundedRect = new RoundRectShape(outerRadii, null, null);
+        ShapeDrawable shapeDrawable = new ShapeDrawable(roundedRect);
+        shapeDrawable.getPaint().setColor(Color.parseColor("#FA111111")); // Transparent black
+        shapeDrawable.getPaint().setStyle(Paint.Style.FILL);
+
+        // Apply the rounded background
+        dialog.getWindow().setBackgroundDrawable(shapeDrawable);
+
+        dialog.setOnDismissListener(this);
+
+        return dialog;
+    }
 
     private class BugReportAction extends SinglePressAction implements LongPressAction {
 
@@ -703,7 +801,7 @@ private ActionsDialog createDialog() {
     }
 
     private Action getKillForegroundAppAction() {
-        return new SinglePressAction(R.drawable.ic_menu, R.string.gammaos_kill_app) {
+        return new SinglePressAction(R.drawable.ic_close, R.string.gammaos_kill_app) {
 
             @Override
             public void onPress() {
@@ -756,7 +854,7 @@ private ActionsDialog createDialog() {
     }
 
     private Action getKillBackgroundAppsAction() {
-        return new SinglePressAction(R.drawable.ic_menu, R.string.gammaos_kill_all_background_apps) {
+        return new SinglePressAction(R.drawable.ic_close, R.string.gammaos_kill_all_background_apps) {
 
             @Override
             public void onPress() {
@@ -813,7 +911,7 @@ private ActionsDialog createDialog() {
     }
 
     private Action getKillAllAppsAction() {
-        return new SinglePressAction(R.drawable.ic_menu, R.string.gammaos_kill_all_apps) {
+        return new SinglePressAction(R.drawable.ic_close, R.string.gammaos_kill_all_apps) {
 
             @Override
             public void onPress() {

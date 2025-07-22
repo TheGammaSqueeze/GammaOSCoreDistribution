@@ -66,6 +66,29 @@ vintf::Transport getTransport(const std::string &interfaceName, const std::strin
         return tr;
     }
 
+    // --- BEGIN 1.1→1.0 fallback hack ---
+    {
+        auto version = fqName.getVersion();
+        if (fqName.package() == "android.hardware.bluetooth"
+                && version.first == 1 && version.second == 1) {
+            // build a 1.0 interface name and reparse
+            std::string fallbackIface = fqName.package()
+                    + "@1.0::" + fqName.name();
+            FQName fallbackFq;
+            if (FQName::parse(fallbackIface, &fallbackFq)) {
+                // try framework manifest first (IBluetoothHci lives here)
+                tr = getTransportFromManifest(fallbackFq, instanceName,
+                        vintf::VintfObject::GetFrameworkHalManifest());
+                if (tr != vintf::Transport::EMPTY) return tr;
+                // then device manifest
+                tr = getTransportFromManifest(fallbackFq, instanceName,
+                        vintf::VintfObject::GetDeviceHalManifest());
+                if (tr != vintf::Transport::EMPTY) return tr;
+            }
+        }
+    }
+    // --- END fallback hack ---
+
     LOG(INFO) << __FUNCTION__ << ": Cannot find entry " << fqName.string() << "/" << instanceName
               << " in either framework or device VINTF manifest.";
     return vintf::Transport::EMPTY;

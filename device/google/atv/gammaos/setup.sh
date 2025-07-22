@@ -45,6 +45,8 @@ echo "Starting configuration of the GammaOS system..."
 	cmd bluetooth_manager disable
 	settings put global airplane_mode_on 1
 	am broadcast -a android.intent.action.AIRPLANE_MODE --ez state true
+	setprop persist.gammaos.retroarchoverride.backbutton 1
+	settings put --lineage system key_back_long_press_action 11
 
 # Check if the device is Powkiddy RGB30v2 and switch to new boot image for RGB30 v2
 isrgb30=$(cat /proc/device-tree/model)
