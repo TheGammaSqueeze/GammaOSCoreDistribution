@@ -53,7 +53,7 @@
     <integer name="config_defaultNightMode">2</integer>
 
     <!-- default device has recents property -->
-    <bool name="config_hasRecents">false</bool>
+    <bool name="config_hasRecents">true</bool>
 
     <!-- Control the behavior when the user long presses the home button.
             0 - Nothing
@@ -94,10 +94,10 @@
     <bool name="config_autoPowerModeUseMotionSensor">false</bool>
 
     <!-- True if the device supports split screen as a form of multi-window. -->
-    <bool name="config_supportsSplitScreenMultiWindow">false</bool>
+    <bool name="config_supportsSplitScreenMultiWindow">true</bool>
 
     <!-- Whether the device supports quick settings and its associated APIs -->
-    <bool name="config_quickSettingsSupported">false</bool>
+    <bool name="config_quickSettingsSupported">true</bool>
 
     <!-- True if the device supports system decorations on secondary displays. -->
     <bool name="config_supportsSystemDecorsOnSecondaryDisplays">false</bool>

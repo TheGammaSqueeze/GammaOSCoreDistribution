@@ -172,6 +172,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManagerInternal;
@@ -528,6 +529,19 @@ public class WindowManagerService extends IWindowManager.Stub
             doDump(fd, pw, args, asProto);
         }
     };
+
+	/**
+	 * Returns true if auto‑rotation is enabled according to system settings.
+	 * This method queries Settings.System.ACCELEROMETER_ROTATION for the current user.
+	 *
+	 * @return true if auto‑rotation is enabled; false otherwise.
+	 */
+	private boolean isAutoRotationEnabled() {
+		ContentResolver resolver = mContext.getContentResolver();
+		// Default to enabled (1) if not found.
+		return Settings.System.getIntForUser(resolver,
+				Settings.System.ACCELEROMETER_ROTATION, 1, UserHandle.USER_CURRENT) != 0;
+	}
 
     /**
      * Current user when multi-user is enabled. Don't show windows of
@@ -4210,18 +4224,35 @@ public class WindowManagerService extends IWindowManager.Stub
         }
     }
 
-    /**
-     * When {@link mIsIgnoreOrientationRequestDisabled} is {@value true} this method returns the
-     * orientation to use in place of the one in input. It returns the same requestedOrientation in
-     * input otherwise.
-     *
-     * @param requestedOrientation The orientation that can be mapped.
-     * @return The orientation to use in place of requestedOrientation.
-     */
+	/**
+	 * When auto‑rotation is disabled, this method forces a fixed landscape orientation regardless
+	 * of the requested orientation. Otherwise, if {@code mIsIgnoreOrientationRequestDisabled} is
+	 * true the method applies the mapping from {@code mOrientationMapping} (if any); if not, it
+	 * returns the requested orientation unchanged.
+	 *
+	 * @param requestedOrientation The orientation requested by the app.
+	 * @return The orientation to use in place of requestedOrientation.
+	 */
     int mapOrientationRequest(int requestedOrientation) {
+        // If auto‑rotation is disabled, honor natural display orientation:
+        if (!isAutoRotationEnabled()) {
+            // Read the natural orientation prop (defaults to "landscape" if unset/invalid)
+            String nat = SystemProperties.get(
+                    "ro.surface_flinger.naturalorientation", "landscape");
+            if ("portrait".equalsIgnoreCase(nat)) {
+                return ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
+            } else {
+                // any other value (including "landscape" or empty/typo) → landscape
+                return ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
+            }
+        }
+
+        // If the ignore‑orientation‑request policy is off, honor the app’s request:
         if (!mIsIgnoreOrientationRequestDisabled) {
             return requestedOrientation;
         }
+
+        // Otherwise, apply any custom mapping:
         return mOrientationMapping.get(requestedOrientation, requestedOrientation);
     }
 

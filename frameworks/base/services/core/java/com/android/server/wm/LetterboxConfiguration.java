@@ -379,15 +379,17 @@ final class LetterboxConfiguration {
      * Gets the aspect ratio of letterbox for fixed orientation.
      */
     float getFixedOrientationLetterboxAspectRatio() {
-        return mFixedOrientationLetterboxAspectRatio;
+        // Disable any fixed‑orientation letterbox by making the threshold unachievably large
+        return Float.MAX_VALUE;
+        // return mFixedOrientationLetterboxAspectRatio;  // original
     }
 
     /**
      * Resets the min aspect ratio for unresizable apps that are eligible for size compat mode.
      */
     void resetDefaultMinAspectRatioForUnresizableApps() {
-        setDefaultMinAspectRatioForUnresizableApps(mContext.getResources().getFloat(
-                R.dimen.config_letterboxDefaultMinAspectRatioForUnresizableApps));
+        // Force apps to always be considered “inside” the display aspect ratio
+        mDefaultMinAspectRatioForUnresizableApps = Float.MAX_VALUE;
     }
 
     /**

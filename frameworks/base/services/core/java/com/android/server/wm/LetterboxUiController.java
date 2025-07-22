@@ -806,6 +806,12 @@ final class LetterboxUiController {
         if (w == null || winHint != null && w != winHint) {
             return;
         }
+        
+        if (mLetterbox != null) {
+            mLetterbox.hide();
+            return;  // only bail out here after hiding; keep the rest reachable
+        }
+
         updateRoundedCornersIfNeeded(w);
         // If there is another main window that is not an application-starting window, we should
         // update rounded corners for it as well, to avoid flickering rounded corners.
