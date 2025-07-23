@@ -116,6 +116,39 @@ public abstract class BaseSetupWizardActivity extends Activity implements Naviga
         if (mNavigationBar != null) {
             mNavigationBar.setNavigationBarListener(this);
         }
+        
+        // Enable immersive mode and listen for system UI visibility changes.
+        enableImmersiveMode();
+        getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(
+            new View.OnSystemUiVisibilityChangeListener() {
+                @Override
+                public void onSystemUiVisibilityChange(int visibility) {
+                    if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
+                        enableImmersiveMode();
+                    }
+                }
+            });
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            enableImmersiveMode();
+        }
+    }
+
+    /**
+     * Enforces immersive mode by hiding the status and navigation bars.
+     */
+    protected void enableImmersiveMode() {
+        getWindow().getDecorView().setSystemUiVisibility(
+              View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            | View.SYSTEM_UI_FLAG_FULLSCREEN
+            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+            | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
     }
 
     @Override
@@ -212,8 +245,7 @@ public abstract class BaseSetupWizardActivity extends Activity implements Naviga
     }
 
     /**
-     * @return The navigation bar instance in the layout, or null if the layout does not have a
-     * navigation bar.
+     * @return The navigation bar instance in the layout, or null if the layout does not have a navigation bar.
      */
     public NavigationLayout getNavigationBar() {
         final View view = findViewById(R.id.navigation_bar);
@@ -227,10 +259,7 @@ public abstract class BaseSetupWizardActivity extends Activity implements Naviga
     }
 
     protected boolean isNextAllowed() {
-        if (mNavigationBar != null) {
-            mNavigationBar.getNextButton().isEnabled();
-        }
-        return false;
+        return mNavigationBar != null && mNavigationBar.getNextButton().isEnabled();
     }
 
     protected void onNextPressed() {
@@ -340,6 +369,7 @@ public abstract class BaseSetupWizardActivity extends Activity implements Naviga
         finish();
     }
 
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (LOGV) {
             Log.v(TAG, "onActivityResult(" + getRequestName(requestCode) + ", " +
@@ -347,8 +377,7 @@ public abstract class BaseSetupWizardActivity extends Activity implements Naviga
         }
         mIsGoingBack = true;
         if (requestCode != NEXT_REQUEST || resultCode != RESULT_CANCELED) {
-            if (requestCode == EMERGENCY_DIAL_ACTIVITY_REQUEST |
-                    requestCode == ACCESSIBILITY_SETTINGS_ACTIVITY_REQUEST) {
+            if (requestCode == EMERGENCY_DIAL_ACTIVITY_REQUEST || requestCode == ACCESSIBILITY_SETTINGS_ACTIVITY_REQUEST) {
                 applyBackwardTransition(TRANSITION_ID_DEFAULT);
                 return;
             }
@@ -360,6 +389,7 @@ public abstract class BaseSetupWizardActivity extends Activity implements Naviga
         }
     }
 
+    @Override
     public void finish() {
         if (LOGV) {
             Log.v(TAG, "finish");
@@ -415,6 +445,7 @@ public abstract class BaseSetupWizardActivity extends Activity implements Naviga
         sendActionResults();
     }
 
+    @Override
     public void startActivity(Intent intent) {
         super.startActivity(intent);
         if (isResumed() && mIsActivityVisible) {
@@ -423,6 +454,7 @@ public abstract class BaseSetupWizardActivity extends Activity implements Naviga
         mIsExiting = true;
     }
 
+    @Override
     public void startActivityForResult(Intent intent, int requestCode) {
         super.startActivityForResult(intent, requestCode);
         if (isResumed() && mIsActivityVisible) {
@@ -439,7 +471,7 @@ public abstract class BaseSetupWizardActivity extends Activity implements Naviga
         intent.putExtra(EXTRA_SCRIPT_URI, getIntent().getStringExtra(EXTRA_SCRIPT_URI));
         intent.putExtra(EXTRA_ACTION_ID, getIntent().getStringExtra(EXTRA_ACTION_ID));
         intent.putExtra(EXTRA_RESULT_CODE, mResultCode);
-        if (!(mResultData == null || mResultData.getExtras() == null)) {
+        if (mResultData != null && mResultData.getExtras() != null) {
             intent.putExtras(mResultData.getExtras());
         }
         startActivityForResult(intent, NEXT_REQUEST);
@@ -570,8 +602,10 @@ public abstract class BaseSetupWizardActivity extends Activity implements Naviga
                         sb.append("RESULT_WIFI_SKIP");
                         break;
                     default:
+                        sb.append("UNKNOWN");
                         break;
                 }
+                break;
             case BLUETOOTH_ACTIVITY_REQUEST:
                 switch (resultCode) {
                     case RESULT_OK:
@@ -584,8 +618,10 @@ public abstract class BaseSetupWizardActivity extends Activity implements Naviga
                         sb.append("RESULT_BLUETOOTH_SKIP");
                         break;
                     default:
+                        sb.append("UNKNOWN");
                         break;
                 }
+                break;
             case BIOMETRIC_ACTIVITY_REQUEST:
                 switch (resultCode) {
                     case RESULT_OK:
@@ -598,8 +634,10 @@ public abstract class BaseSetupWizardActivity extends Activity implements Naviga
                         sb.append("RESULT_BIOMETRIC_SKIP");
                         break;
                     default:
+                        sb.append("UNKNOWN");
                         break;
                 }
+                break;
             case SCREENLOCK_ACTIVITY_REQUEST:
                 switch (resultCode) {
                     case RESULT_OK:
@@ -612,8 +650,10 @@ public abstract class BaseSetupWizardActivity extends Activity implements Naviga
                         sb.append("RESULT_SCREENLOCK_SKIP");
                         break;
                     default:
+                        sb.append("UNKNOWN");
                         break;
                 }
+                break;
             default:
                 switch (resultCode) {
                     case RESULT_OK:
@@ -630,6 +670,9 @@ public abstract class BaseSetupWizardActivity extends Activity implements Naviga
                         break;
                     case RESULT_ACTIVITY_NOT_FOUND:
                         sb.append("RESULT_ACTIVITY_NOT_FOUND");
+                        break;
+                    default:
+                        sb.append("UNKNOWN");
                         break;
                 }
                 break;

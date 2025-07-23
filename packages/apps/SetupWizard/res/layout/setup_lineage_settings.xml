@@ -1,31 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
 
-    <!-- Scaled logo image at 75% of screen size and centered, opacity adjusted to 25% -->
+    <!-- Logo (75% size / centered / 25% opacity) -->
     <ImageView
         android:id="@+id/logoImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:src="@drawable/logo"
+        android:alpha="0.25"
+        android:scaleType="fitCenter"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.75"
-        app:layout_constraintHeight_percent="0.75"
-        android:src="@drawable/logo"
-        android:alpha="0.25"
-        android:scaleType="fitCenter" />
+        app:layout_constraintHeight_percent="0.75" />
 
-    <!-- Heading TextView always visible -->
+    <!-- Heading -->
     <TextView
         android:id="@+id/headingTextView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Configuring GammaOS Core..."
-        android:gravity="center_horizontal"
+        android:text="Configure Analog Sticks"
+        android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@android:color/white"
         android:paddingTop="24dp"
@@ -34,25 +37,222 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- ScrollView containing only the script output TextView -->
+    <!-- Left & Right stick previews -->
+    <org.lineageos.setupwizard.StickTestView
+        android:id="@+id/left_stick_view"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        app:layout_constraintTop_toBottomOf="@id/headingTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/right_stick_view"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <org.lineageos.setupwizard.StickTestView
+        android:id="@+id/right_stick_view"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        app:layout_constraintTop_toBottomOf="@id/headingTextView"
+        app:layout_constraintStart_toEndOf="@id/left_stick_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <!-- Control panel (scrollable, shows vertical scrollbar) -->
+    <ScrollView
+        android:id="@+id/control_scroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="8dp"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false"
+        app:layout_constraintTop_toBottomOf="@id/left_stick_view"
+        app:layout_constraintBottom_toTopOf="@id/continue_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <!-- Reset -->
+            <Button
+                android:id="@+id/btn_reset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reset All Settings" />
+
+            <!-- Centre -->
+            <Button
+                android:id="@+id/btn_centre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Centre Sticks (Calibration Mode)" />
+
+            <!-- Sensitivity group -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Analog Sensitivity: (ensure that sticks reach all the way to the edge of the box)"
+                android:textColor="@android:color/white"
+                android:paddingTop="8dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn_sens_0"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="0%" />
+                <Button
+                    android:id="@+id/btn_sens_10"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="+10%" />
+                <Button
+                    android:id="@+id/btn_sens_25"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="+25%" />
+                <Button
+                    android:id="@+id/btn_sens_50"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="+50%" />
+            </LinearLayout>
+
+            <!-- Deadzone group -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Analog Deadzone: (ensure that sticks don't shake/jump/jitter in the centre of the box, recommend 10%)"
+                android:textColor="@android:color/white"
+                android:paddingTop="8dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn_dead_0"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="0%" />
+                <Button
+                    android:id="@+id/btn_dead_5"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="+5%" />
+                <Button
+                    android:id="@+id/btn_dead_10"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="+10%" />
+                <Button
+                    android:id="@+id/btn_dead_15"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="+15%" />
+                <Button
+                    android:id="@+id/btn_dead_20"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="+20%" />
+            </LinearLayout>
+
+            <!-- Invert Left -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Invert Left Stick:"
+                android:textColor="@android:color/white"
+                android:paddingTop="8dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn_invert_left_off"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Off" />
+                <Button
+                    android:id="@+id/btn_invert_left_on"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="On" />
+            </LinearLayout>
+
+            <!-- Invert Right -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Invert Right Stick:"
+                android:textColor="@android:color/white"
+                android:paddingTop="8dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn_invert_right_off"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Off" />
+                <Button
+                    android:id="@+id/btn_invert_right_on"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="On" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Continue button at bottom -->
+    <Button
+        android:id="@+id/continue_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Script-output area (hidden until Continue) -->
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/headingTextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="16dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/right_stick_view"
+        app:layout_constraintBottom_toTopOf="@id/continue_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:padding="16dp">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
             android:id="@+id/script_output_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Initializing...\n"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:background="@android:color/transparent"
-            android:text="Initializing...\n" />
+            android:textIsSelectable="true" />
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

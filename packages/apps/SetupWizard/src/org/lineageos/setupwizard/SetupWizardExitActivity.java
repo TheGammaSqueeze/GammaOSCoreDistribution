@@ -45,7 +45,6 @@ public class SetupWizardExitActivity extends BaseSetupWizardActivity {
         PhoneMonitor.onSetupFinished();
         if (!SetupWizardUtils.isManagedProfile(this)) {
             markSetupAsCompleted();
-            rebootDevice();
         }
         finish();
         applyForwardTransition(TRANSITION_ID_FADE);

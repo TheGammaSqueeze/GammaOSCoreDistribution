@@ -2989,22 +2989,6 @@
                        android:value="@string/menu_key_accounts"/>
         </activity>
 
-        <!-- Triggered when user-selected home app isn't encryption aware -->
-        <activity android:name=".FallbackHome"
-                  android:excludeFromRecents="true"
-                  android:label=""
-                  android:taskAffinity="com.android.settings.FallbackHome"
-                  android:exported="true"
-                  android:theme="@style/FallbackHome"
-                  android:permission="android.permission.DEVICE_POWER"
-                  android:configChanges="keyboardHidden">
-            <intent-filter android:priority="-1000">
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.HOME" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
         <activity
             android:name="Settings$DataUsageSummaryActivity"
             android:label="@string/data_usage_summary_title"

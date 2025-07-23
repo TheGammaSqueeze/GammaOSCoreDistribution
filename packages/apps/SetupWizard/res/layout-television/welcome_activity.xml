@@ -1,20 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-     Copyright (C) 2016 The CyanogenMod Project
-                   2017-2022 The LineageOS Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -23,74 +7,94 @@
     android:layout_height="match_parent"
     style="@style/SudContentFrame">
 
+    <!-- Top container: dynamically scales the logo and welcome text -->
     <LinearLayout
+        android:id="@+id/top_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:weightSum="100"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
 
-        <ImageView
-            android:id="@+id/brand_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="65"
-            android:layout_gravity="center"
-            android:src="@drawable/logo"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:gravity="center"
-            android:paddingTop="@dimen/content_margin_top"
-            android:paddingRight="@dimen/content_margin_left"
-            android:paddingLeft="@dimen/content_margin_left"
-            android:paddingBottom="0dp"/>
-
+        <!-- Nested container for logo and welcome text -->
         <LinearLayout
+            android:id="@+id/logo_welcome_container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="35"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
-            <TextView
-                style="@style/WelcomeTitle"
-                android:id="@+id/welcome_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hyphenationFrequency="none"
-                android:gravity="center" />
-            <Button
-                android:id="@+id/start"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/start"
-                style="@style/SudGlifButton.Primary" />
-        </LinearLayout>
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
 
+            <!-- Logo ImageView with maximum height -->
+            <ImageView
+                android:id="@+id/brand_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="457dp"
+                android:layout_weight="2"
+                android:adjustViewBounds="true"
+                android:maxHeight="400dp"
+                android:paddingTop="16dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/logo" />
+
+            <!-- Welcome TextView (text already set via style) with auto-size enabled -->
+            <TextView
+                android:id="@+id/welcome_title"
+                style="@style/WelcomeTitle"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="0"
+                android:autoSizeMaxTextSize="48sp"
+                android:autoSizeMinTextSize="12sp"
+                android:autoSizeStepGranularity="2sp"
+                android:autoSizeTextType="uniform"
+                android:gravity="bottom|center"
+                android:paddingTop="8dp"
+                />
+        </LinearLayout>
     </LinearLayout>
 
+    <!-- Bottom container: always visible area for the Start button and extra controls -->
     <LinearLayout
+        android:id="@+id/bottom_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:visibility="gone">
+        android:orientation="vertical"
+        android:gravity="right"
+        android:paddingBottom="16dp">
 
+        <!-- Start button -->
         <Button
-            android:id="@+id/emerg_dialer"
+            android:id="@+id/start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableTop="@drawable/ic_dialer"
-            android:text="@string/emergency_call"
-            style="@style/SudGlifButton.Secondary" />
+            android:text="@string/start"
+            style="@style/SudGlifButton.Primary" />
 
-        <Button
-            android:id="@+id/launch_accessibility"
-            android:layout_width="wrap_content"
+        <!-- Extra controls: emergency dialer and accessibility settings -->
+        <LinearLayout
+            android:id="@+id/extra_controls"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableTop="@drawable/ic_eye"
-            android:text="@string/accessibility_settings"
-            style="@style/SudGlifButton.Secondary" />
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:visibility="gone">
 
+            <Button
+                android:id="@+id/emerg_dialer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_dialer"
+                android:text="@string/emergency_call"
+                style="@style/SudGlifButton.Secondary" />
+
+            <Button
+                android:id="@+id/launch_accessibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_eye"
+                android:text="@string/accessibility_settings"
+                style="@style/SudGlifButton.Secondary" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -31,6 +31,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;  // Added for immersive mode
 
 import com.google.android.setupcompat.util.ResultCodes;
 import com.google.android.setupcompat.util.WizardManagerHelper;
@@ -49,6 +50,22 @@ public class WizardManager extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Enable immersive mode as early as possible
+        enableImmersiveMode();
+
+        // Listen for any changes in the system UI and reapply immersive mode if needed.
+        getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(
+            new View.OnSystemUiVisibilityChangeListener() {
+                @Override
+                public void onSystemUiVisibilityChange(int visibility) {
+                    // If the system bars become visible, reapply immersive mode.
+                    if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
+                        enableImmersiveMode();
+                    }
+                }
+            });
+
         if (LOGV) {
             Log.v(TAG, "onCreate savedInstanceState=" + savedInstanceState);
         }
@@ -80,6 +97,28 @@ public class WizardManager extends Activity {
             Log.e(TAG, "ERROR: Intent not available");
         }
         finish();
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        // Reapply immersive mode when the window gains focus.
+        if (hasFocus) {
+            enableImmersiveMode();
+        }
+    }
+
+    /**
+     * Enforces immersive mode by hiding the navigation and status bars.
+     */
+    private void enableImmersiveMode() {
+        getWindow().getDecorView().setSystemUiVisibility(
+              View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            | View.SYSTEM_UI_FLAG_FULLSCREEN
+            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+            | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
     }
 
     private void addExtras(Intent intent) {
